@@ -1,0 +1,21 @@
+
+name-template: 'HIDROFLOW v$NEXT_PATCH_VERSION'
+tag-template: 'v$NEXT_PATCH_VERSION'
+categories:
+  - title: '🚀 Features'
+    labels: ['feat']
+  - title: '🐞 Fixes'
+    labels: ['fix']
+  - title: '⚡ Performance'
+    labels: ['perf']
+  - title: '🧰 Refactors'
+    labels: ['refactor']
+  - title: '🧱 Build / CI'
+    labels: ['build', 'ci']
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+template: |
+  ## Cambios
+  $CHANGES
+
+  ---
+  _Generado automáticamente por Release Drafter_
