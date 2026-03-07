@@ -133,6 +133,34 @@ function calcHietograma(est, Tr, dur_h, dt_min, distType="EPM_Q1"){
 }
 
 // ─── CN & PÉRDIDAS SCS ────────────────────────────────────────────────────────
+// ── CN dinámico real (castellano) ─────────────────────────────────────────────
+function cnIIaCNI(cnII){ return (cnII>0 ? (4.2*cnII)/(10+0.058*cnII) : cnII); }
+function cnIIaCNIII(cnII){ return (cnII>0 ? (23*cnII)/(10+0.13*cnII) : cnII); }
+function mezclaImpermeable(cnPermeable, porcentajeImp, cnImperv=98){
+  const w = Math.max(0, Math.min(100, porcentajeImp))/100; 
+  return cnPermeable*(1-w) + cnImperv*w;
+}
+function calcCNdinamico({ amcActual, porcentajeImpermeable, cnBase }){
+  let cnPermeable_CNII = Number.isFinite(cnBase) ? +cnBase : 75;
+  cnPermeable_CNII = Math.max(30, Math.min(98, cnPermeable_CNII));
+  let cnAjustado = amcActual==="I" ? cnIIaCNI(cnPermeable_CNII)
+                  : amcActual==="III" ? cnIIaCNIII(cnPermeable_CNII)
+                  : cnPermeable_CNII; // AMC II
+  const cnEfectivo = mezclaImpermeable(cnAjustado, porcentajeImpermeable, 98);
+  return +Math.max(30, Math.min(98, cnEfectivo)).toFixed(1);
+}
+// Derivar AMC desde SIATA con informe contextualizado
+function derivarAMCDesdeSIATA(humedadSuelo){
+  const hs = Number.isFinite(humedadSuelo) ? +humedadSuelo : 0.35; // fallback
+  const amcActual = hs < 0.25 ? "I" : hs > 0.45 ? "III" : "II";
+  const informe = amcActual==="I"
+    ? "El suelo está sequito. Absorbe más agua. Esperamos menos escorrentía."
+    : amcActual==="II"
+    ? "El suelo está normal. Ni muy seco ni saturado. Comportamiento intermedio."
+    : "El suelo está mojadito/saturado. Absorbe menos. Aumenta la escorrentía.";
+  const contexto = `HS≈${hs.toFixed(2)} → AMC ${amcActual}`;
+  return { amcActual, amcFuente: "SIATA", amcInforme: `${contexto}. ${informe}` };
+}
 function cnMixto(SI){return 0.12*SI+86;}
 function cnII_to_III(cnII){return 23*cnII/(10+0.13*cnII);}
 
@@ -887,7 +915,12 @@ function ModHietogramas({est,name,params}){
 function ModHidrogramas({params,est,name}){
   const [Tr,setTr]=useState(25);
   const [dtMin,setDtMin]=useState(()=>+params.dt||5);
-  const CNactSafe = Number.isFinite(params?.CN) ? +params.CN : 75;
+  const CNact = useMemo(() => calcCNdinamico({
+  amcActual: params.amcActual ?? "II",
+  porcentajeImpermeable: params.porcentajeImpermeable ?? 80,
+  cnBase: Number.isFinite(params.cnBase) ? params.cnBase : (params.CN ?? 75)
+}), [params.amcActual, params.porcentajeImpermeable, params.cnBase, params.CN]);
+  
   useEffect(()=>{ if(params.dt&&+params.dt!==dtMin) setDtMin(+params.dt); },[params.dt]);
   const [tcSrc,setTcSrc]=useState(0); // índice en lista de métodos Tc
   const [kR,setKR]=useState(1.2);    // Clark kR
@@ -904,13 +937,13 @@ function ModHidrogramas({params,est,name}){
 
   // Hietograma para este Tr+dt
   const hiet=useMemo(()=>calcHietograma(est,Tr,3,dtMin,"EPM_Q1"),[est,Tr,dtMin]);
-  const lluvEfect=useMemo(()=>calcLluviaEfectiva(hiet, CNactSafe),[hiet, CNactSafe]);
+  const lluvEfect=useMemo(()=>calcLluviaEfectiva(hiet, CNact),[hiet, CNact]);
 
   // Construir los 5 HU
   const hu_scs    =useMemo(()=>calcHUSCS(params.area,tc_h,dtMin),[params.area,tc_h,dtMin]);
   const hu_scsMod =useMemo(()=>calcHUSCS_Mod(params.area,tc_h,dtMin,CpSCSMod),[params.area,tc_h,dtMin,CpSCSMod]);
   const hu_snyder =useMemo(()=>calcHUSnyder(area_mi2,L_mi,L_mi*0.35,dtMin,Ct,Cp),[area_mi2,L_mi,dtMin,Ct,Cp]);
-  const hu_wh     =useMemo(()=>calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,params.CN,dtMin),[params,dtMin]);
+  const hu_wh     =useMemo(()=>calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,params.CN,dtMin),[params, dtMin, CNact]);
   const hu_clark  =useMemo(()=>calcClarkIUH(params.area,tc_h,dtMin,kR),[params.area,tc_h,dtMin,kR]);
 
   // Hidrogramas completos (convolución)
@@ -939,7 +972,7 @@ function ModHidrogramas({params,est,name}){
   });
 
   const lePe=lluvEfect.reduce((s,r)=>s+(r.PeIncrem||0),0);
-  const resumenQ = useMemo(() => buildResumenQ(params, est, dtMin, CNactSafe), [params, est, dtMin, CNactSafe]);
+  const resumenQ = useMemo(() => buildResumenQ(params, est, dtMin, CNact), [params, est, dtMin, CNact]);
 
   return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
     <SectionHeader icon="≋" title="Hidrogramas Unitarios Sintéticos — 5 Métodos" sub="SCS · SCS Mod. · Snyder · Williams & Hann · Clark IUH · Convolución completa" accent={C.accent2}/>
@@ -1045,7 +1078,7 @@ function ModHidrogramas({params,est,name}){
     </Card>
 
     {/* Lluvia efectiva Pe */}
-    <Card title={`Lluvia Efectiva — CN=${CNactSafe} → Pe total = ${lePe.toFixed(2)} mm`} accent={C.rose}>
+    <Card title={`Lluvia Efectiva — CN=${CNact} → Pe total = ${lePe.toFixed(2)} mm`} accent={C.rose}>
       <ResponsiveContainer width="100%" height={200}>
         <AreaChart data={lluvEfect.filter((_,i)=>i%Math.max(1,Math.floor(lluvEfect.length/80))===0)} margin={{left:0,right:14,bottom:14}}>
           <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
