@@ -887,6 +887,7 @@ function ModHietogramas({est,name,params}){
 function ModHidrogramas({params,est,name}){
   const [Tr,setTr]=useState(25);
   const [dtMin,setDtMin]=useState(()=>+params.dt||5);
+  const CNactSafe = Number.isFinite(params?.CN) ? +params.CN : 75;
   useEffect(()=>{ if(params.dt&&+params.dt!==dtMin) setDtMin(+params.dt); },[params.dt]);
   const [tcSrc,setTcSrc]=useState(0); // índice en lista de métodos Tc
   const [kR,setKR]=useState(1.2);    // Clark kR
@@ -903,7 +904,7 @@ function ModHidrogramas({params,est,name}){
 
   // Hietograma para este Tr+dt
   const hiet=useMemo(()=>calcHietograma(est,Tr,3,dtMin,"EPM_Q1"),[est,Tr,dtMin]);
-  const lluvEfect=useMemo(()=>calcLluviaEfectiva(hiet,params.CN),[hiet,params.CN]);
+  const lluvEfect=useMemo(()=>calcLluviaEfectiva(hiet, CNactSafe),[hiet, CNactSafe]);
 
   // Construir los 5 HU
   const hu_scs    =useMemo(()=>calcHUSCS(params.area,tc_h,dtMin),[params.area,tc_h,dtMin]);
@@ -938,7 +939,7 @@ function ModHidrogramas({params,est,name}){
   });
 
   const lePe=lluvEfect.reduce((s,r)=>s+(r.PeIncrem||0),0);
-  const resumenQ = useMemo(() => buildResumenQ(params, est, dtMin, CNact), [params, est, dtMin, CNact]);
+  const resumenQ = useMemo(() => buildResumenQ(params, est, dtMin, CNactSafe), [params, est, dtMin, CNactSafe]);
 
   return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
     <SectionHeader icon="≋" title="Hidrogramas Unitarios Sintéticos — 5 Métodos" sub="SCS · SCS Mod. · Snyder · Williams & Hann · Clark IUH · Convolución completa" accent={C.accent2}/>
@@ -1044,7 +1045,7 @@ function ModHidrogramas({params,est,name}){
     </Card>
 
     {/* Lluvia efectiva Pe */}
-    <Card title={`Lluvia Efectiva — CN=${CNact} → Pe total = ${lePe.toFixed(2)} mm`} accent={C.rose}>
+    <Card title={`Lluvia Efectiva — CN=${CNactSafe} → Pe total = ${lePe.toFixed(2)} mm`} accent={C.rose}>
       <ResponsiveContainer width="100%" height={200}>
         <AreaChart data={lluvEfect.filter((_,i)=>i%Math.max(1,Math.floor(lluvEfect.length/80))===0)} margin={{left:0,right:14,bottom:14}}>
           <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
@@ -2148,7 +2149,10 @@ export default function HidroFlow(){
             borderBottom:tab===t.id?`2px solid ${t.acc}`:"2px solid transparent",transition:"all .12s"}}>
           {t.icon} {t.label}
         </button>))}
-      </nav>
+      
+      <button data-id="blind-hidro" onClick={(e)=>{e.preventDefault(); e.stopPropagation(); setTab("hidro");}}
+        style={{padding:"4px 9px",borderRadius:6,border:"none",cursor:"pointer",background:"transparent",color:C.muted, fontSize:9.5,fontWeight:500}}
+        title="Ir a Hidrogramas (SPA)">≋</button></nav>
     </div>
 
     {/* Accent bar */}
