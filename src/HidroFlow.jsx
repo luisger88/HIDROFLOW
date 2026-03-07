@@ -943,7 +943,7 @@ function ModHidrogramas({params,est,name}){
   const hu_scs    =useMemo(()=>calcHUSCS(params.area,tc_h,dtMin),[params.area,tc_h,dtMin]);
   const hu_scsMod =useMemo(()=>calcHUSCS_Mod(params.area,tc_h,dtMin,CpSCSMod),[params.area,tc_h,dtMin,CpSCSMod]);
   const hu_snyder =useMemo(()=>calcHUSnyder(area_mi2,L_mi,L_mi*0.35,dtMin,Ct,Cp),[area_mi2,L_mi,dtMin,Ct,Cp]);
-  const hu_wh     =useMemo(()=>calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,params.CN,dtMin),[params, dtMin, CNact]);
+  const hu_wh     =useMemo(()=>calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,CNact,dtMin),[params, dtMin, CNact]);
   const hu_clark  =useMemo(()=>calcClarkIUH(params.area,tc_h,dtMin,kR),[params.area,tc_h,dtMin,kR]);
 
   // Hidrogramas completos (convolución)
