@@ -3,3 +3,6 @@ dist/
 .env
 .env.*.local
 .DS_Store
+
+# backups locales
+/src/HidroFlow - copia.jsx
