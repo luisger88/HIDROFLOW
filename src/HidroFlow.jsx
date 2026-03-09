@@ -625,66 +625,222 @@ function OutletMiniMap({lat,lon,alt}){
   </div>);
 }
 
-function ModParams({params,setParams}){
-  const tc=useMemo(()=>calcTc(params),[params]);
-  const set=k=>v=>setParams(p=>({...p,[k]:v}));
-  const tcStats=tc.filter(r=>isFinite(r.h)&&r.h>0);
-  const tcMed=tcStats.length?tcStats.reduce((s,r)=>s+r.h,0)/tcStats.length:0;
-  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
-    <SectionHeader icon="⬡" title="Morfometría de Cuenca" sub="Parámetros geomorfológicos · Índices · Tiempos de concentración" accent={C.accent}/>
-    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:14,alignItems:"start"}}>
-      <Card title="Identificación" accent={C.accent}>
-        <Field label="Nombre cuenca" value={params.nombre_cuenca} onChange={set("nombre_cuenca")} type="text"/>
-        <Field label="Δt cálculo" value={params.dt} onChange={set("dt")} unit="min" step="0.5"/>
-        <Field label="CN (CNII)" value={params.CN} onChange={set("CN")} step="1"/>
-      </Card>
-      <Card title="Punto de Salida (Outlet)" accent={C.teal} style={{gridColumn:"1/-1"}}>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr auto",gap:10,alignItems:"end"}}>
-          <Field label="Latitud salida" value={params.lat_salida} onChange={set("lat_salida")} unit="°N" step="0.00001"/>
-          <Field label="Longitud salida" value={params.lon_salida} onChange={set("lon_salida")} unit="°W" step="0.00001"/>
-          <Field label="Cota salida" value={params.alt_salida} onChange={set("alt_salida")} unit="msnm" step="1"/>
-          <div style={{fontFamily:mono,fontSize:8,color:C.muted,padding:"6px 10px",borderRadius:8,background:`${C.teal}0A`,border:`1px solid ${C.teal}25`,lineHeight:2}}>
-            <div style={{color:C.teal,fontWeight:700,marginBottom:3}}>⊕ Punto de salida activo</div>
-            <div>Lat: <span style={{color:C.text}}>{(+params.lat_salida||0).toFixed(6)}°</span></div>
-            <div>Lon: <span style={{color:C.text}}>{(+params.lon_salida||0).toFixed(6)}°</span></div>
-            <div>Alt: <span style={{color:C.text}}>{+params.alt_salida||0} msnm</span></div>
-            <div style={{marginTop:4,color:C.muted2,fontSize:7.5}}>Usado en: Influencia · SIATA · IDF ponderada</div>
+// ───────────────────────────────────────────────────────────────────────────────
+// Subcomponente: Card "Condición de Humedad (AMC) y Urbanización"
+// (versión con hooks por named import: useState/useEffect/useCallback)
+// ───────────────────────────────────────────────────────────────────────────────
+function AMCPanel({ params, setParams }) {
+  // Normalizaciones (evitan NaN/undefined)
+  const amcSel = params?.amcActual ?? "II";
+  const pctImp = Number.isFinite(params?.porcentajeImpermeable)
+    ? params.porcentajeImpermeable
+    : 60; // ← unifica default con ModHidrogramas
+  const cnBase = Number.isFinite(params?.cnBase)
+    ? params.cnBase
+    : (Number.isFinite(params?.CN) ? params.CN : 75);
+
+  // Estado local para el slider (evita flood al arrastrar)
+  const [pctLive, setPctLive] = useState(pctImp);
+  useEffect(() => { setPctLive(pctImp); }, [pctImp]);
+
+  // Commit del % Impermeable (al soltar / perder foco)
+  const commitPct = useCallback((v) => {
+    setParams(prev => ({ ...prev, porcentajeImpermeable: v }));
+    if (import.meta.env.DEV) console.log("[AMC]", "%Impermeable ->", v);
+  }, [setParams]);
+
+  return (
+    <div style={{ marginTop: 16, padding: 16, border: '1px solid #1F2F45', borderRadius: 10, background: '#0F1624' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+        <h3 style={{ margin: 0, fontSize: 16 }}>Condición de Humedad (AMC) y Urbanización</h3>
+        <small style={{ opacity: 0.75 }}>Ajusta AMC, % Impermeable y CN II base</small>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, alignItems: 'start' }}>
+
+        {/* AMC I/II/III */}
+        <div>
+          <label style={{ display: 'block', marginBottom: 8 }}>AMC</label>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {["I", "II", "III"].map(a => {
+              const sel = (amcSel === a);
+              return (
+                <button
+                  key={a}
+                  type="button"  // evita submit si hay <form> ancestro
+                  onClick={() => {
+                    setParams(prev => ({ ...prev, amcActual: a }));
+                    if (import.meta.env.DEV) console.log("[AMC]", "amcActual ->", a);
+                  }}
+                  style={{
+                    padding: '8px 12px',
+                    borderRadius: 8,
+                    cursor: 'pointer',
+                    border: sel ? '1px solid #00F5A0' : '1px solid #1F2F45',
+                    background: sel ? '#12242A' : '#0B0F1A',
+                    color: '#D8E4F0'
+                  }}
+                >
+                  AMC {a}
+                </button>
+              );
+            })}
           </div>
+          <small style={{ display: 'block', marginTop: 8, opacity: 0.75 }}>
+            I (seco) · II (normal) · III (húmedo/saturado)
+          </small>
         </div>
-        <OutletMiniMap lat={+params.lat_salida||6.185} lon={+params.lon_salida||-75.660} alt={+params.alt_salida||1702}/>
-      </Card>
-      <Card title="Geometría" accent={C.accent2}>
-        <Field label="Área" value={params.area} onChange={set("area")} unit="km²"/>
-        <Field label="Perímetro" value={params.perimetro} onChange={set("perimetro")} unit="km"/>
-        <Field label="Longitud cauce" value={params.longitud_cauce} onChange={set("longitud_cauce")} unit="km"/>
-        <Field label="Longitud cuenca" value={params.longitud_cuenca} onChange={set("longitud_cuenca")} unit="km"/>
-      </Card>
-      <Card title="Cotas y Pendientes" accent={C.accent3}>
-        <Field label="Cota máxima" value={params.cota_max} onChange={set("cota_max")} unit="msnm" step="1"/>
-        <Field label="Cota mínima" value={params.cota_min} onChange={set("cota_min")} unit="msnm" step="1"/>
-        <Field label="Cota mayor cauce" value={params.cota_mayor_cauce} onChange={set("cota_mayor_cauce")} unit="msnm" step="1"/>
-        <Field label="Cota menor cauce" value={params.cota_menor_cauce} onChange={set("cota_menor_cauce")} unit="msnm" step="1"/>
-        <Field label="Pendiente media" value={params.pendiente_cuenca} onChange={set("pendiente_cuenca")} unit="%"/>
-      </Card>
+
+        {/* % Impermeable (commit al soltar / blur) */}
+        <div>
+          <label style={{ display: 'block', marginBottom: 8 }}>% Impermeable</label>
+          <input
+            type="range" min={0} max={100} step={1}
+            value={pctLive}
+            onChange={e => setPctLive(+e.target.value)}               // solo UI mientras arrastras
+            onPointerUp={() => commitPct(pctLive)}                    // commit al soltar (touch/pen)
+            onMouseUp={() => commitPct(pctLive)}                      // commit al soltar (mouse)
+            onBlur={() => commitPct(pctLive)}                         // commit al salir del control
+            style={{ width: '100%' }}
+            aria-label="% Impermeable"
+          />
+          <div style={{ marginTop: 8, fontFamily: 'monospace' }}>{pctLive}%</div>
+          <small style={{ display: 'block', marginTop: 8, opacity: 0.75 }}>
+            Pondera CN mezclando suelo permeable e impermeable
+          </small>
+        </div>
+
+        {/* CN II base */}
+        <div>
+          <label style={{ display: 'block', marginBottom: 8 }}>CN II base</label>
+          <input
+            type="number" min={30} max={98} step={0.1}
+            value={cnBase}
+            onChange={e => {
+              const v = +e.target.value;
+              setParams(prev => ({ ...prev, cnBase: v }));
+              if (import.meta.env.DEV) console.log("[AMC]", "cnBase ->", v);
+            }}
+            style={{
+              width: '100%', padding: 8, borderRadius: 8,
+              border: '1px solid #1F2F45', background: '#0B0F1A', color: '#D8E4F0'
+            }}
+            aria-label="CN II base"
+          />
+          <small style={{ display: 'block', marginTop: 8, opacity: 0.75 }}>
+            Si no defines CN II base, se usa el CN clásico (params.CN)
+          </small>
+        </div>
+
+      </div>
     </div>
-    <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:9}}>
-      {[
-        {v:(params.perimetro/(2*Math.sqrt(Math.PI*params.area))).toFixed(3),l:"Índice Gravelius",s:"Kc",a:C.accent},
-        {v:((params.longitud_cuenca**2)/params.area).toFixed(3),l:"Índice de Forma",s:"Rf",a:C.accent2},
-        {v:(params.area/(params.longitud_cuenca**2)).toFixed(4),l:"Coef. Compacidad",s:"Cc",a:C.accent3},
-        {v:((params.cota_max-params.cota_min)/(params.longitud_cauce*1000)*1000).toFixed(2),l:"Pendiente cauce",s:"So ‰",a:C.gold},
-        {v:(tcMed*60).toFixed(2),l:"Tc promedio",s:"min",a:C.accent4},
-      ].map(({v,l,s,a})=><Kpi key={l} value={`${v} ${s}`} label={l} accent={a}/>)}
+  );
+}
+
+function ModParams({ params, setParams }) {
+  // Cálculos de Tc y utilidades locales
+  const tc      = useMemo(() => calcTc(params), [params]);
+  const set     = k => v => setParams(p => ({ ...p, [k]: v }));
+  const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
+  const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+
+      {/* ── Morfometría / Índices / Tc (bloque superior) ───────────────────────── */}
+      <SectionHeader
+        icon="⬡"
+        title="Morfometría de Cuenca"
+        sub="Parámetros geomorfológicos · Índices · Tiempos de concentración"
+        accent={C.accent}
+      />
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14, alignItems: "start" }}>
+        {/* Identificación */}
+        <Card title="Identificación" accent={C.accent}>
+          <Field label="Nombre cuenca" value={params.nombre_cuenca} onChange={set("nombre_cuenca")} type="text" />
+          <Field label="Δt cálculo"     value={params.dt}            onChange={set("dt")}             unit="min" step="0.5" />
+          <Field label="CN (CNII)"       value={params.CN}            onChange={set("CN")}             step="1" />
+        </Card>
+
+        {/* Punto de Salida (Outlet) */}
+        <Card title="Punto de Salida (Outlet)" accent={C.teal} style={{ gridColumn: "1 / -1" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr auto", gap: 10, alignItems: "end" }}>
+            <Field label="Latitud salida"  value={params.lat_salida} onChange={set("lat_salida")} unit="°N" step="0.00001" />
+            <Field label="Longitud salida" value={params.lon_salida} onChange={set("lon_salida")} unit="°W" step="0.00001" />
+            <Field label="Cota salida"     value={params.alt_salida} onChange={set("alt_salida")} unit="msnm" step="1" />
+
+            <div style={{
+              fontFamily: mono, fontSize: 8, color: C.muted, padding: "6px 10px", borderRadius: 8,
+              background: `${C.teal}0A`, border: `1px solid ${C.teal}25`, lineHeight: 2
+            }}>
+              <div style={{ color: C.teal, fontWeight: 700, marginBottom: 3 }}>⊕ Punto de salida activo</div>
+              <div>Lat: <span style={{ color: C.text }}>{(+params.lat_salida || 0).toFixed(6)}°</span></div>
+              <div>Lon: <span style={{ color: C.text }}>{(+params.lon_salida || 0).toFixed(6)}°</span></div>
+              <div>Alt: <span style={{ color: C.text }}>{+params.alt_salida || 0} msnm</span></div>
+              <div style={{ marginTop: 4, color: C.muted2, fontSize: 7.5 }}>Usado en: Influencia · SIATA · IDF ponderada</div>
+            </div>
+          </div>
+
+          {/* Mini‑mapa del outlet (asegura numeric cast con +) */}
+          <OutletMiniMap
+            lat={+params.lat_salida || 6.185083}
+            lon={+params.lon_salida || -75.659972}
+            alt={+params.alt_salida || 1702}
+          />
+        </Card>
+
+        {/* Geometría */}
+        <Card title="Geometría" accent={C.accent2}>
+          <Field label="Área"            value={params.area}            onChange={set("area")}            unit="km²" />
+          <Field label="Perímetro"       value={params.perimetro}       onChange={set("perimetro")}       unit="km" />
+          <Field label="Longitud cauce"  value={params.longitud_cauce}  onChange={set("longitud_cauce")}  unit="km" />
+          <Field label="Longitud cuenca" value={params.longitud_cuenca} onChange={set("longitud_cuenca")} unit="km" />
+        </Card>
+
+        {/* Cotas y Pendientes */}
+        <Card title="Cotas y Pendientes" accent={C.accent3}>
+          <Field label="Cota máxima"       value={params.cota_max}          onChange={set("cota_max")}          unit="msnm" step="1" />
+          <Field label="Cota mínima"       value={params.cota_min}          onChange={set("cota_min")}          unit="msnm" step="1" />
+          <Field label="Cota mayor cauce"  value={params.cota_mayor_cauce}  onChange={set("cota_mayor_cauce")}  unit="msnm" step="1" />
+          <Field label="Cota menor cauce"  value={params.cota_menor_cauce}  onChange={set("cota_menor_cauce")}  unit="msnm" step="1" />
+          <Field label="Pendiente media"   value={params.pendiente_cuenca}  onChange={set("pendiente_cuenca")}  unit="%" />
+        </Card>
+      </div>
+      {/* ⬆️ Cierre del grid de Morfometría — PUNTO DE INSERCIÓN CORRECTO */}
+
+      {/* ── Card AMC y Urbanización (subcomponente) ────────────────────────────── */}
+      <AMCPanel params={params} setParams={setParams} />
+
+      {/* ── KPIs de forma, compacidad, pendiente y Tc promedio ─────────────────── */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 9 }}>
+        {[
+          { v: (params.perimetro / (2 * Math.sqrt(Math.PI * params.area))).toFixed(3),   l: "Índice Gravelius", s: "Kc", a: C.accent },
+          { v: ((params.longitud_cuenca ** 2) / params.area).toFixed(3),                 l: "Índice de Forma", s: "Rf", a: C.accent2 },
+          { v: (params.area / (params.longitud_cuenca ** 2)).toFixed(4),                 l: "Coef. Compacidad", s: "Cc", a: C.accent3 },
+          { v: ((params.cota_max - params.cota_min) / (params.longitud_cauce * 1000) * 1000).toFixed(2),
+            l: "Pendiente cauce", s: "So ‰", a: C.gold },
+          { v: (tcMed * 60).toFixed(2),                                                  l: "Tc promedio", s: "min", a: C.accent4 },
+        ].map(({ v, l, s, a }) => <Kpi key={l} value={`${v} ${s}`} label={l} accent={a} />)}
+      </div>
+
+      {/* ── Tabla de Tiempos de Concentración (6 métodos) ─────────────────────── */}
+      <Card title="Tiempos de Concentración — 6 Métodos" accent={C.teal}>
+        <Tbl
+          headers={["Método", "Tc (h)", "Tc (min)", "Δ vs. media (%)"]}
+          rows={tc.filter(r => isFinite(r.h) && r.h > 0).map(r => ({
+            M: r.m,
+            H: +r.h.toFixed(4),
+            MIN: +r.min.toFixed(3),
+            DELTA: +((r.h - tcMed) / tcMed * 100).toFixed(1)
+          }))}
+          hiCols={[2]}
+          accent={C.teal}
+        />
+      </Card>
+
     </div>
-    <Card title="Tiempos de Concentración — 6 Métodos" accent={C.teal}>
-      <Tbl headers={["Método","Tc (h)","Tc (min)","Δ vs. media (%)"]}
-        rows={tc.filter(r=>isFinite(r.h)&&r.h>0).map(r=>({
-          M:r.m,H:+r.h.toFixed(4),
-          MIN:+r.min.toFixed(3),
-          DELTA:+((r.h-tcMed)/tcMed*100).toFixed(1)
-        }))} hiCols={[2]} accent={C.teal}/>
-    </Card>
-  </div>);
+  );
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -910,188 +1066,225 @@ function ModHietogramas({est,name,params}){
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// MÓDULO HIDROGRAMAS — 5 Métodos con convolución completa
+// MÓDULO HIDROGRAMAS — 5 Métodos con convolución completa (robusto para gráficas)
 // ═══════════════════════════════════════════════════════════════════════════════
-function ModHidrogramas({params,est,name}){
-  const [Tr,setTr]=useState(25);
-  const [dtMin,setDtMin]=useState(()=>+params.dt||5);
+function ModHidrogramas({ params, est, name }) {
+  // ── Controles superiores
+  const [Tr, setTr]       = useState(25);
+  const [dtMin, setDtMin] = useState(() => +params.dt || 5);
+
+  // ── CN efectivo (CNact) con default coherente a la UI (60 % imperv.)
   const CNact = useMemo(() => calcCNdinamico({
-  amcActual: params.amcActual ?? "II",
-  porcentajeImpermeable: params.porcentajeImpermeable ?? 80,
-  cnBase: Number.isFinite(params.cnBase) ? params.cnBase : (params.CN ?? 75)
-}), [params.amcActual, params.porcentajeImpermeable, params.cnBase, params.CN]);
-  
-  useEffect(()=>{ if(params.dt&&+params.dt!==dtMin) setDtMin(+params.dt); },[params.dt]);
-  const [tcSrc,setTcSrc]=useState(0); // índice en lista de métodos Tc
-  const [kR,setKR]=useState(1.2);    // Clark kR
-  const [Ct,setCt]=useState(2.0);    // Snyder Ct
-  const [Cp,setCp]=useState(0.62);   // Snyder Cp
-  const [CpSCSMod,setCpSCSMod]=useState(2.08); // SCS Mod Cp
+    amcActual: params.amcActual ?? "II",
+    porcentajeImpermeable: params.porcentajeImpermeable ?? 60,
+    cnBase: Number.isFinite(params.cnBase) ? params.cnBase : (params.CN ?? 75),
+  }), [params.amcActual, params.porcentajeImpermeable, params.cnBase, params.CN]);
 
-  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
-  const tc_h=tcList[tcSrc]?.h||0.5;
+  // Verificación temporal (quita cuando termines la prueba)
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      console.log('[HIDRO]', 'CNact ->', CNact, {
+        amc: params.amcActual,
+        pImp: params.porcentajeImpermeable,
+        cnBase: Number.isFinite(params.cnBase) ? params.cnBase : (params.CN ?? 75)
+      });
+    }
+  }, [CNact, params.amcActual, params.porcentajeImpermeable, params.cnBase, params.CN]);
 
-  const area_mi2=params.area*0.386102;
-  const L_mi=params.longitud_cauce*0.621371;
-  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+  // Sincroniza Δt si cambiaste en Parámetros
+  useEffect(() => {
+    if (params.dt && +params.dt !== dtMin) setDtMin(+params.dt);
+  }, [params.dt]);
 
-  // Hietograma para este Tr+dt
-  const hiet=useMemo(()=>calcHietograma(est,Tr,3,dtMin,"EPM_Q1"),[est,Tr,dtMin]);
-  const lluvEfect=useMemo(()=>calcLluviaEfectiva(hiet, CNact),[hiet, CNact]);
+  // ── Parámetros HU
+  const [tcSrc, setTcSrc] = useState(0);       // índice del Tc activo
+  const [kR, setKR]       = useState(1.2);     // Clark
+  const [Ct, setCt]       = useState(2.0);     // Snyder
+  const [Cp, setCp]       = useState(0.62);    // Snyder
+  const [CpSCSMod, setCpSCSMod] = useState(2.08); // SCS Mod
 
-  // Construir los 5 HU
-  const hu_scs    =useMemo(()=>calcHUSCS(params.area,tc_h,dtMin),[params.area,tc_h,dtMin]);
-  const hu_scsMod =useMemo(()=>calcHUSCS_Mod(params.area,tc_h,dtMin,CpSCSMod),[params.area,tc_h,dtMin,CpSCSMod]);
-  const hu_snyder =useMemo(()=>calcHUSnyder(area_mi2,L_mi,L_mi*0.35,dtMin,Ct,Cp),[area_mi2,L_mi,dtMin,Ct,Cp]);
-  const hu_wh     =useMemo(()=>calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,CNact,dtMin),[params, dtMin, CNact]);
-  const hu_clark  =useMemo(()=>calcClarkIUH(params.area,tc_h,dtMin,kR),[params.area,tc_h,dtMin,kR]);
+  // ── Tc, unidades y pendiente
+  const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+  const tc_h   = tcList[tcSrc]?.h || 0.5;
 
-  // Hidrogramas completos (convolución)
-  const hidros=useMemo(()=>[hu_scs,hu_scsMod,hu_snyder,hu_wh,hu_clark].map(hu=>
-    calcHidroCompleto(lluvEfect,hu,dtMin)
-  ),[lluvEfect,hu_scs,hu_scsMod,hu_snyder,hu_wh,hu_clark,dtMin]);
+  const area_mi2 = params.area * 0.386102;
+  const L_mi     = params.longitud_cauce * 0.621371;
+  const S_m_km   = (params.cota_mayor_cauce - params.cota_menor_cauce) / params.longitud_cauce;
 
-  // Series combinadas para gráfica
-  const step=Math.max(1,Math.floor((hidros[0]?.qSeries.length||100)/100));
-  const n=Math.max(...hidros.map(h=>h.qSeries.length));
-  const combined=Array.from({length:Math.ceil(n/step)},(_,i)=>{
-    const idx=i*step;
-    const obj={t:+(idx*dtMin).toFixed(1)};
-    hidros.forEach(h=>{obj[h.metodo]=h.qSeries[idx]?.Q||0;});
-    return obj;
-  });
+  // ── Hietograma (Tr, 3 h de evento, dtMin, EPM_Q1)
+  const hiet = useMemo(() => calcHietograma(est, Tr, 3, dtMin, "EPM_Q1"), [est, Tr, dtMin]);
 
-  // HU comparados
-  const uhMaxLen=Math.max(...[hu_scs,hu_scsMod,hu_snyder,hu_wh,hu_clark].map(h=>h.uh.length));
-  const uhStep=Math.max(1,Math.floor(uhMaxLen/80));
-  const uhData=Array.from({length:Math.ceil(uhMaxLen/uhStep)},(_,i)=>{
-    const idx=i*uhStep;
-    return{t:+(idx*dtMin).toFixed(1),
-      SCS:hu_scs.uh[idx]||0, "SCS Mod":hu_scsMod.uh[idx]||0,
-      Snyder:hu_snyder.uh[idx]||0, "W&H":hu_wh.uh[idx]||0, Clark:hu_clark.uh[idx]||0};
-  });
+  // ── Lluvia efectiva con CN efectivo
+  const lluvEfect = useMemo(() => calcLluviaEfectiva(hiet, CNact), [hiet, CNact]);
 
-  const lePe=lluvEfect.reduce((s,r)=>s+(r.PeIncrem||0),0);
+  // ── Unidades Hidrológicas (5 métodos)
+  const hu_scs    = useMemo(() => calcHUSCS(params.area, tc_h, dtMin), [params.area, tc_h, dtMin]);
+  const hu_scsMod = useMemo(() => calcHUSCS_Mod(params.area, tc_h, dtMin, CpSCSMod), [params.area, tc_h, dtMin, CpSCSMod]);
+  const hu_snyder = useMemo(() => calcHUSnyder(area_mi2, L_mi, L_mi * 0.35, dtMin, Ct, Cp), [area_mi2, L_mi, dtMin, Ct, Cp]);
+  const hu_wh     = useMemo(() => calcHUWilliamsHann(params.area, params.longitud_cauce, S_m_km, CNact, dtMin), [params, dtMin, CNact]);
+  const hu_clark  = useMemo(() => calcClarkIUH(params.area, tc_h, dtMin, kR), [params.area, tc_h, dtMin, kR]);
+
+  // ── Convolución (Pe * HU) → hidrogramas por método
+  const hidros = useMemo(() => (
+    [hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark].map(hu => calcHidroCompleto(lluvEfect, hu, dtMin))
+  ), [lluvEfect, hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark, dtMin]);
+
+  // ── Resumen rápido (si ya usas buildResumenQ, úsalo)
   const resumenQ = useMemo(() => buildResumenQ(params, est, dtMin, CNact), [params, est, dtMin, CNact]);
 
-  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
-    <SectionHeader icon="≋" title="Hidrogramas Unitarios Sintéticos — 5 Métodos" sub="SCS · SCS Mod. · Snyder · Williams & Hann · Clark IUH · Convolución completa" accent={C.accent2}/>
+  /* ──────────────────────────────────────────────────────────────
+     DEBUG TEMPORAL: inspeccionar etiquetas de método
+     (borra estos dos useEffect cuando termines la prueba)
+     ────────────────────────────────────────────────────────────── */
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      console.log('[HIDRO] etiquetas resumenQ:', (resumenQ ?? []).map(r => r.nombre ?? r.metodo));
+    }
+  }, [resumenQ]);
 
-    {/* Controles */}
-    <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:10}}>
-      <Card title="Tr Diseño" accent={C.gold}>
-        <BtnGroup options={TR_LIST.map(t=>({v:t,l:`${t}a`}))} value={Tr} onChange={setTr} accent={C.gold}/>
-      </Card>
-      <Card title="Δt cálculo" accent={C.accent}>
-        <BtnGroup options={[5,10,15,30].map(d=>({v:d,l:`${d}'`}))} value={dtMin} onChange={setDtMin} accent={C.accent}/>
-      </Card>
-      <Card title="Método Tc activo" accent={C.accent3}>
-        <div style={{display:"flex",flexDirection:"column",gap:3}}>
-          {tcList.slice(0,6).map((r,i)=>(
-            <button key={i} onClick={()=>setTcSrc(i)} style={{padding:"3px 8px",borderRadius:5,border:`1px solid ${i===tcSrc?C.accent3:C.border}`,cursor:"pointer",background:i===tcSrc?`${C.accent3}18`:"transparent",color:i===tcSrc?C.accent3:C.muted,fontSize:8,fontFamily:mono,textAlign:"left"}}>
-              {r.m.split("(")[0].trim()} → {r.min.toFixed(1)}min
-            </button>
-          ))}
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      console.log('[HIDRO] etiquetas hidros:', (hidros ?? []).map(h => h.metodo));
+    }
+  }, [hidros]);
+
+  /* ──────────────────────────────────────────────────────────────
+     Selección ROBUSTA de Williams & Hann (W&H)
+     ────────────────────────────────────────────────────────────── */
+  const whAliases = [
+    'w & hann', 'w&h', 'w & h',
+    'williams & hann', 'williams&hann', 'williams & h',
+    'wh', 'williamshann', 'w hann'
+  ];
+  const matchWH = (s) => {
+    if (!s) return false;
+    const t = String(s).toLowerCase().replace(/\s+/g, ' ').trim();
+    return whAliases.some(a => t.includes(a));
+  };
+  let rWH = (resumenQ ?? []).find(r => matchWH(r.nombre ?? r.metodo)) || {};
+  if (!rWH.Qpico || !rWH.tpico) {
+    const wh = (hidros ?? []).find(h => matchWH(h.metodo));
+    if (wh?.qSeries?.length) {
+      const pico = wh.qSeries.reduce((m, p) => (p.Q > m.Q ? p : m), { Q: 0, t: 0 });
+      rWH = { ...(rWH ?? {}), Qpico: rWH.Qpico ?? pico.Q, tpico: rWH.tpico ?? pico.t, nombre: rWH.nombre ?? wh.metodo };
+    }
+  }
+
+  // ── Totales de Pe
+  const lePe = useMemo(() => lluvEfect.reduce((s, r) => s + (r.PeIncrem || 0), 0), [lluvEfect]);
+
+  // ───────────────────────────────────────────────────────────────
+  //  FORTALECER GRÁFICAS: seriesOK, n, step, combined, noData
+  // ───────────────────────────────────────────────────────────────
+  const seriesOK = useMemo(() => {
+    // filtra métodos con serie válida (qSeries con longitud > 0)
+    return (hidros ?? []).filter(h => Array.isArray(h?.qSeries) && h.qSeries.length > 0);
+  }, [hidros]);
+
+  const n = useMemo(() => {
+    const lens = seriesOK.map(h => h.qSeries.length);
+    return lens.length ? Math.max(...lens) : 0;
+  }, [seriesOK]);
+
+  const step = useMemo(() => {
+    // apunta a ~100 puntos y evita divisiones por cero
+    if (n <= 0) return 1;
+    return Math.max(1, Math.floor(n / 100));
+  }, [n]);
+
+  const combined = useMemo(() => {
+    if (n <= 0) return [];
+    const L = Math.ceil(n / step);
+    const out = Array.from({ length: L }, (_, i) => {
+      const idx = i * step;
+      const obj = { t: +((idx * dtMin) || 0).toFixed(1) };
+      seriesOK.forEach(h => {
+        obj[h.metodo] = h.qSeries[idx]?.Q ?? 0;   // clave = nombre del método
+      });
+      return obj;
+    });
+    return out;
+  }, [seriesOK, n, step, dtMin]);
+
+  const noData = combined.length === 0;
+
+  // (Opcional) diagnóstico de series en consola
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      console.log('[DEBUG] seriesOK:', seriesOK.map(h => ({ metodo: h.metodo, len: h.qSeries?.length })));
+      console.log('[DEBUG] combined len:', combined.length, 'n=', n, 'step=', step);
+    }
+  }, [seriesOK, combined, n, step]);
+
+  // ── Render
+  return (
+    <div style={{ display:'flex', flexDirection:'column', gap:14 }}>
+      {/* Encabezado Lluvia Efectiva */}
+      <Card title={`Lluvia Efectiva — CN=${CNact} → Pe total = ${lePe.toFixed(2)} mm`} accent={C.accent}>
+        {/* CHIP de trazabilidad */}
+        <div style={{
+          display:'inline-block', margin:'8px 0', padding:'6px 10px',
+          border:'1px solid rgba(255,255,255,0.15)', borderRadius:8,
+          fontFamily:'monospace', fontSize:12, opacity:0.9
+        }}>
+          CN base: {Number.isFinite(params.cnBase) ? params.cnBase : (params.CN ?? 75)}
+          {'  →  '} CN efectivo: {CNact}
+          {'  |  '} AMC {params.amcActual ?? 'II'}
+          {'  |  '} % Imperv: {params.porcentajeImpermeable ?? 60}%
+        </div>
+
+        {/* Mini‑resumen W&H (Qpico/tpico) */}
+        <div style={{ marginTop:8, display:'flex', gap:12, flexWrap:'wrap', fontFamily: mono, fontSize: 12, color: C.muted2 }}>
+          <span style={{color:C.accent3}}>{rWH.nombre ?? 'W&H'}</span>
+          <span>Qp = <b style={{color:C.text}}>{(rWH.Qpico ?? 0).toFixed(2)}</b> m³/s</span>
+          <span>tp = <b style={{color:C.text}}>{(rWH.tpico ?? 0).toFixed(0)}</b> min</span>
         </div>
       </Card>
-      <Card title="Param. Clark / SCS Mod." accent={C.accent4}>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
-          <div>
-            <div style={{fontSize:8,color:C.muted,fontFamily:mono,marginBottom:2}}>kR Clark</div>
-            <input type="number" step="0.1" min="0.2" max="3.0" value={kR} onChange={e=>setKR(+e.target.value)}
-              style={{width:"100%",background:C.bg,border:`1px solid ${C.border}`,borderRadius:5,color:C.text,padding:"4px 6px",fontSize:11,fontFamily:mono}}/>
+
+      {/* ===== Gráfica Q(t) — Convolución completa (segura) ===== */}
+      <div style={{ width:'100%', height: 380, border:'1px solid #1F2F45', borderRadius: 10, background:'#0B0F1A' }}>
+        {noData ? (
+          <div style={{height:'100%', display:'flex', alignItems:'center', justifyContent:'center', color: C.muted }}>
+            Sin datos para graficar — verifica hietograma, CN y HU
           </div>
-          <div>
-            <div style={{fontSize:8,color:C.muted,fontFamily:mono,marginBottom:2}}>Cp SCS Mod.</div>
-            <input type="number" step="0.01" min="1.0" max="3.0" value={CpSCSMod} onChange={e=>setCpSCSMod(+e.target.value)}
-              style={{width:"100%",background:C.bg,border:`1px solid ${C.border}`,borderRadius:5,color:C.text,padding:"4px 6px",fontSize:11,fontFamily:mono}}/>
-          </div>
-        </div>
-      </Card>
-      <Card title="Param. Snyder" accent={C.accent3}>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
-          <div>
-            <div style={{fontSize:8,color:C.muted,fontFamily:mono,marginBottom:2}}>Ct</div>
-            <input type="number" step="0.1" min="0.3" max="6.0" value={Ct} onChange={e=>setCt(+e.target.value)}
-              style={{width:"100%",background:C.bg,border:`1px solid ${C.border}`,borderRadius:5,color:C.text,padding:"4px 6px",fontSize:11,fontFamily:mono}}/>
-          </div>
-          <div>
-            <div style={{fontSize:8,color:C.muted,fontFamily:mono,marginBottom:2}}>Cp</div>
-            <input type="number" step="0.01" min="0.3" max="1.0" value={Cp} onChange={e=>setCp(+e.target.value)}
-              style={{width:"100%",background:C.bg,border:`1px solid ${C.border}`,borderRadius:5,color:C.text,padding:"4px 6px",fontSize:11,fontFamily:mono}}/>
-          </div>
-        </div>
-      </Card>
+        ) : (
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={combined} margin={{ top: 12, right: 24, bottom: 16, left: 8 }}>
+              <CartesianGrid stroke="#223" strokeDasharray="3 3" />
+              <XAxis dataKey="t" tick={{ fill:'#9AA4B2', fontSize: 11 }}
+                     label={{ value:'t (min)', position:'insideBottomRight', offset:-8, fill:'#9AA4B2' }} />
+              <YAxis tick={{ fill:'#9AA4B2', fontSize: 11 }}
+                     label={{ value:'Q (m³/s)', angle:-90, position:'insideLeft', offset: 10, fill:'#9AA4B2' }} />
+              <Tooltip wrapperStyle={{ background:'#0F1624', border:'1px solid #1F2F45' }} />
+              <Legend wrapperStyle={{ color:'#9AA4B2' }} />
+              {seriesOK.map(h => (
+                <Line
+                  key={h.metodo}
+                  type="monotone"
+                  dataKey={h.metodo}
+                  stroke={
+                    ({ 
+                      'SCS':'#4ECDC4',
+                      'SCS Mod.':'#94D82D',
+                      'Snyder':'#F59F00',
+                      'W & Hann':'#845EF7',
+                      'Williams & Hann':'#845EF7',
+                      'Clark IUH':'#20C997'
+                    })[h.metodo] ?? '#8884d8'
+                  }
+                  strokeWidth={2}
+                  dot={false}
+                  isAnimationActive={false}
+                />
+              ))}
+            </LineChart>
+          </ResponsiveContainer>
+        )}
+      </div>
+
+      {/* …(si tienes más controles, tarjetas por método y comparativas HU, déjalos debajo)… */}
     </div>
-
-    {/* KPIs */}
-    <div style={{display:"grid",gridTemplateColumns:"repeat(6,1fr)",gap:9}}>
-      {hidros.map((h,i)=><Kpi key={h.metodo} value={h.Qpico.toFixed(4)+" m³/s"} label={h.metodo} accent={CC[i]} sub={`tp=${h.tPico}min`}/>)}
-    </div>
-    <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:9}}>
-      <Kpi value={`${tc_h.toFixed(3)}h / ${(tc_h*60).toFixed(1)}min`} label={`Tc activo (${tcList[tcSrc]?.m?.split("(")[0]||""})`} accent={C.teal}/>
-      <Kpi value={`${lePe.toFixed(2)} mm`} label="Pe total efectiva" accent={C.accent2}/>
-      <Kpi value={`${hiet.Ptotal} mm`} label="P total bruta" accent={C.accent}/>
-      <Kpi value={`${(lePe/hiet.Ptotal*100).toFixed(1)}%`} label="Abstracción SCS" accent={C.rose} sub="Escorrentía directa"/>
-    </div>
-
-    {/* Hidrogramas comparados */}
-    <Card title={`Hidrogramas de Diseño — 5 Métodos · Tr=${Tr}a · Convolución completa`} accent={C.accent2}>
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={combined} margin={{left:0,right:18,top:8,bottom:14}}>
-          <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
-          <XAxis dataKey="t" tick={{fill:C.muted,fontSize:9}} label={{value:"t (min)",position:"insideBottom",offset:-6,fill:C.muted,fontSize:9}}/>
-          <YAxis tick={{fill:C.muted,fontSize:9}} label={{value:"Q (m³/s)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:9}}/>
-          <Tooltip contentStyle={TT} formatter={(v,nm)=>[v.toFixed(5)+" m³/s",nm]}/>
-          <Legend wrapperStyle={{fontSize:9}}/>
-          {hidros.map((h,i)=><Line key={h.metodo} type="monotone" dataKey={h.metodo} stroke={CC[i]} strokeWidth={i===0?2.5:1.8} dot={false}/>)}
-        </LineChart>
-      </ResponsiveContainer>
-    </Card>
-
-    {/* HU comparados */}
-    <Card title="Hidrogramas Unitarios — Comparativa de Formas (1mm lluvia efectiva)" accent={C.teal}>
-      <ResponsiveContainer width="100%" height={240}>
-        <LineChart data={uhData} margin={{left:0,right:18,top:8,bottom:14}}>
-          <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
-          <XAxis dataKey="t" tick={{fill:C.muted,fontSize:9}} label={{value:"t (min)",position:"insideBottom",offset:-6,fill:C.muted,fontSize:9}}/>
-          <YAxis tick={{fill:C.muted,fontSize:9}} label={{value:"q (m³/s/mm)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:9}}/>
-          <Tooltip contentStyle={TT} formatter={(v,nm)=>[v.toFixed(5),nm]}/>
-          <Legend wrapperStyle={{fontSize:9}}/>
-          {["SCS","SCS Mod","Snyder","W&H","Clark"].map((m,i)=>(
-            <Line key={m} type="monotone" dataKey={m} stroke={CC[i]} strokeWidth={1.8} dot={false} name={m}/>
-          ))}
-        </LineChart>
-      </ResponsiveContainer>
-    </Card>
-
-    {/* Tabla comparativa */}
-    <Card title="Tabla Comparativa — Parámetros de HU" accent={C.muted2}>
-      <Tbl headers={["Método","tp (h)","qp (m³/s/mm)","Tc (min)","Q pico diseño (m³/s)","t al pico (min)","Vol. Escorrentía (m³)"]}
-        rows={[
-          {m:"SCS",tp:+hu_scs.tp.toFixed(3),qp:+hu_scs.qp.toFixed(4),tc:(tc_h*60).toFixed(1),Qp:hidros[0].Qpico,tp2:hidros[0].tPico,V:+hidros[0].volTotal.toFixed(0)},
-          {m:"SCS Mod.",tp:+hu_scsMod.tp.toFixed(3),qp:+hu_scsMod.qp.toFixed(4),tc:(tc_h*60).toFixed(1),Qp:hidros[1].Qpico,tp2:hidros[1].tPico,V:+hidros[1].volTotal.toFixed(0)},
-          {m:"Snyder",tp:+hu_snyder.tp.toFixed(3),qp:+hu_snyder.qp.toFixed(4),tc:(hu_snyder.tp*60).toFixed(1),Qp:hidros[2].Qpico,tp2:hidros[2].tPico,V:+hidros[2].volTotal.toFixed(0)},
-          {m:"W & Hann",tp:+hu_wh.tp.toFixed(3),qp:+hu_wh.qp.toFixed(4),tc:+hu_wh.Tc.toFixed(1),Qp:hidros[3].Qpico,tp2:hidros[3].tPico,V:+hidros[3].volTotal.toFixed(0)},
-          {m:"Clark IUH",tp:+hu_clark.tp.toFixed(3),qp:+hu_clark.qp.toFixed(4),tc:(hu_clark.tc_h*60).toFixed(1),Qp:hidros[4].Qpico,tp2:hidros[4].tPico,V:+hidros[4].volTotal.toFixed(0)},
-        ]} hiCols={[3]} accent={C.accent2}/>
-    </Card>
-
-    {/* Lluvia efectiva Pe */}
-    <Card title={`Lluvia Efectiva — CN=${CNact} → Pe total = ${lePe.toFixed(2)} mm`} accent={C.rose}>
-      <ResponsiveContainer width="100%" height={200}>
-        <AreaChart data={lluvEfect.filter((_,i)=>i%Math.max(1,Math.floor(lluvEfect.length/80))===0)} margin={{left:0,right:14,bottom:14}}>
-          <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
-          <XAxis dataKey="t" tick={{fill:C.muted,fontSize:9}} label={{value:"t (min)",position:"insideBottom",offset:-6,fill:C.muted,fontSize:9}}/>
-          <YAxis tick={{fill:C.muted,fontSize:9}}/>
-          <Tooltip contentStyle={TT} formatter={(v,nm)=>[v.toFixed(3)+" mm",nm]}/>
-          <Legend wrapperStyle={{fontSize:9}}/>
-          <Area type="monotone" dataKey="pAcum" stroke={C.accent} fill={`${C.accent}18`} strokeWidth={1.5} dot={false} name="P total (mm)"/>
-          <Area type="monotone" dataKey="Pe" stroke={C.rose} fill={`${C.rose}22`} strokeWidth={2.5} dot={false} name="Pe efectiva (mm)"/>
-        </AreaChart>
-      </ResponsiveContainer>
-    </Card>
-  </div>);
+  );
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -2148,6 +2341,25 @@ export default function HidroFlow(){
   const[tab,setTab]=useState("params");
   const[params,setParams]=useState(D0);
   const[stn,setStn]=useState("SAN ANTONIO DE PRADO");
+  // ────────────────── Defaults AMC / %imperv / CNbase (solo si faltan) ──────────────────
+useEffect(() => {
+  setParams(prev => {
+    const amc  = prev?.amcActual ?? "II"; // I | II | III
+    const pct  = Number.isFinite(prev?.porcentajeImpermeable) ? prev.porcentajeImpermeable : 60;
+    const base = Number.isFinite(prev?.cnBase) ? prev.cnBase
+              : (Number.isFinite(prev?.CN) ? prev.CN : 75);
+
+    // Evita re-render si nada cambia
+    if (prev?.amcActual === amc &&
+        prev?.porcentajeImpermeable === pct &&
+        prev?.cnBase === base) {
+      return prev;
+    }
+
+    return { ...prev, amcActual: amc, porcentajeImpermeable: pct, cnBase: base };
+  });
+}, []); // Solo al montar
+``
   const est=ESTACIONES_EPM[stn];
   const aa=TABS.find(t=>t.id===tab)?.acc||C.accent;
   const pdfN=Object.values(ESTACIONES_EPM).filter(s=>s.fuente==="PDF").length;
