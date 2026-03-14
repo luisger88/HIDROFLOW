@@ -1,23 +1,24 @@
 // src/dominio/calcHietograma.ts
 import { HietogramaOut, ParametrosCuenca } from "./tipos";
-import { I_fromFuente } from "../services/I_fromFuente";
+import { I_fromFuente } from "../services/I_fromFuente"; // AJUSTA RUTA EN EL PASO C
 import {
   EPM_Q1_CUM,
   HUFF_Q1_CUM,
   HUFF_Q2_CUM,
   HUFF_Q3_CUM,
   HUFF_Q4_CUM
-} from "../services/hietogramaMotor";
+} from "../services/hietogramaMotor"; // ya lo creaste
 
 function assertDtDivide(d_min: number, dt_min: number) {
   if (d_min % dt_min !== 0) {
+    // Validación coherente con la idea de “Control/Δt” (HMS avisa cuando el intervalo no es adecuado) [1](https://areametro-my.sharepoint.com/personal/luis_montoya_metropol_gov_co/Documents/Archivos%20de%20chat%20de%20Microsoft%C2%A0Copilot/GT-AS-004GuiaSistemasAlmacenamientoRegulacionAguasLluvias_RevA.pdf)
     throw new Error(`Δt=${dt_min} no divide d=${d_min}. Cambia Δt o usa un chip de duración válido.`);
   }
 }
 
 function pickCurve(dist: HietogramaOut['distribucion']): number[] {
   switch (dist) {
-    case "EPM_Q1":  return EPM_Q1_CUM;
+    case "EPM_Q1":  return EPM_Q1_CUM;  // Curva oficial (GT‑AS‑004, Tabla 4) [1](https://areametro-my.sharepoint.com/personal/luis_montoya_metropol_gov_co/Documents/Archivos%20de%20chat%20de%20Microsoft%C2%A0Copilot/GT-AS-004GuiaSistemasAlmacenamientoRegulacionAguasLluvias_RevA.pdf)
     case "Huff_Q1": return HUFF_Q1_CUM;
     case "Huff_Q2": return HUFF_Q2_CUM;
     case "Huff_Q3": return HUFF_Q3_CUM;
@@ -59,7 +60,7 @@ function construirSerie(
     return { t_min, dP_mm, I_mm_h, P_acum_mm: +P_acum.toFixed(5) };
   });
 
-  // Normalización estricta: Σ dP = P_total  (ajuste en el último bloque)
+  // Normalización estricta: Σ dP = P_total  (ajuste del último bloque)
   const suma = serie.reduce((acc, s) => acc + s.dP_mm, 0);
   const diff = +(P_total_mm - suma).toFixed(5);
   if (Math.abs(diff) > 1e-4) {
@@ -85,7 +86,7 @@ export function calcHietograma(
 
   assertDtDivide(d_min, dt_min);
 
-  // 1) Intensidad (mm/h) desde “Fuente”
+  // 1) Intensidad (mm/h) desde Fuente IDF Global (Día 1)
   const I_ref = I_fromFuente(d_min, Tr);
 
   // 2) Precipitación total (mm)
@@ -100,8 +101,9 @@ export function calcHietograma(
 
   // 5) Trazabilidad (chips)
   const trazabilidad = {
-    fuente: "Ponderado" as const,             // En el PR siguiente lo pondremos dinámico (Estación/Ponderado/Fallback)
+    fuente: "Ponderado" as const,             // si tu store tiene el detalle, cámbialo dinámicamente
     etiqueta: "IDF Ponderada (IDW/Thiessen)",
+    // Nota HMS: SCS‑UH suele usar lag≈0.6·Tc; aquí solo mostramos sustitución IDF/ponderado. [1](https://areametro-my.sharepoint.com/personal/luis_montoya_metropol_gov_co/Documents/Archivos%20de%20chat%20de%20Microsoft%C2%A0Copilot/GT-AS-004GuiaSistemasAlmacenamientoRegulacionAguasLluvias_RevA.pdf)
     sustitucion: "I(d,Tr)=k/(c+d_h)^n | I_pond=Σ(Ii·Wi)"
   };
 
