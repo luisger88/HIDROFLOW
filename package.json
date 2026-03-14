@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "demo:dia3": "tsx src/dominio/_demoDia3.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",
@@ -21,6 +22,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.2.0",
+    "tsx": "^4.21.0",
     "vite": "^5.0.0"
   }
 }
