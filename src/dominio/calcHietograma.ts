@@ -1,152 +1,108 @@
-feat/d2-huff-epm-distribucion
-/**
- * Cálculo de hietograma con interpolación EPM_Q1 y Huff
- * Integra normalización para asegurar que Σ dP = P_total
- */
-
-interface DatosHietograma {
-    P_total: number; // Precipitación total (mm)
-    duracion: number; // Duración (minutos)
-    metodo: 'EPM_Q1' | 'Huff';
-    posicion_pico?: number; // Posición relativa del pico (0-1)
-}
-
-interface ResultadoHietograma {
-    tiempo: number[]; // Minutos
-    precipitacion: number[]; // mm
-    precipitacion_acumulada: number[]; // mm
-}
-
-/**
- * Interpola valores entre dos puntos
- */
-function interpolar(x0: number, y0: number, x1: number, y1: number, x: number): number {
-    return y0 + ((x - x0) / (x1 - x0)) * (y1 - y1);
-}
-
-/**
- * Calcula hietograma con método EPM_Q1
- */
-function hietogramaEPM_Q1(datos: DatosHietograma): number[] {
-    const { P_total, duracion } = datos;
-    const pasos = Math.ceil(duracion / 5);
-    const incremento = duracion / pasos;
-    
-    const dP: number[] = [];
-    for (let i = 0; i < pasos; i++) {
-        const t_rel = (i * incremento) / duracion;
-        // Fórmula EPM_Q1: distribución típica CENICAFÉ
-        const valor = P_total * Math.exp(-2 * (1 - t_rel) ** 2) / pasos;
-        dP.push(valor);
-    }
-    
-    return normalizar(dP, P_total);
-}
-
-/**
- * Calcula hietograma con método Huff
- */
-function hietogramaHuff(datos: DatosHietograma): number[] {
-    const { P_total, duracion, posicion_pico = 0.4 } = datos;
-    const pasos = Math.ceil(duracion / 5);
-    const incremento = duracion / pasos;
-    
-    const dP: number[] = [];
-    for (let i = 0; i < pasos; i++) {
-        const t_rel = (i * incremento) / duracion;
-        // Curva Huff asimétrica
-        let valor: number;
-        if (t_rel <= posicion_pico) {
-            valor = P_total * (t_rel / posicion_pico) ** 1.5 / pasos;
-        } else {
-            valor = P_total * ((1 - t_rel) / (1 - posicion_pico)) ** 0.8 / pasos;
-        }
-        dP.push(valor);
-    }
-    
-    return normalizar(dP, P_total);
-}
-
-/**
- * Normaliza incrementos para garantizar Σ dP = P_total
- */
-function normalizar(dP: number[], P_total: number): number[] {
-    const suma = dP.reduce((a, b) => a + b, 0);
-    const factor = P_total / suma;
-    return dP.map(val => val * factor);
-}
-
-/**
- * Calcula hietograma completo
- */
-export function calcHietograma(datos: DatosHietograma): ResultadoHietograma {
-    const dP = datos.metodo === 'EPM_Q1' 
-        ? hietogramaEPM_Q1(datos) 
-        : hietogramaHuff(datos);
-    
-    const pasos = dP.length;
-    const incremento = datos.duracion / pasos;
-    
-    const tiempo = Array.from({ length: pasos }, (_, i) => i * incremento);
-    const acumulada = dP.reduce((acc, val) => [...acc, (acc[acc.length - 1] || 0) + val], [] as number[]);
-    
-    return {
-        tiempo,
-        precipitacion: dP,
-        precipitacion_acumulada: acumulada
-    };
-}// touch 2026-03-12T18:14:47
-=======
+// src/dominio/calcHietograma.ts
 import { HietogramaOut, ParametrosCuenca } from "./tipos";
-// Día 1: servicio existente en tu base
 import { I_fromFuente } from "../services/I_fromFuente";
+import {
+  EPM_Q1_CUM,
+  HUFF_Q1_CUM,
+  HUFF_Q2_CUM,
+  HUFF_Q3_CUM,
+  HUFF_Q4_CUM
+} from "../services/hietogramaMotor";
 
 function assertDtDivide(d_min: number, dt_min: number) {
   if (d_min % dt_min !== 0) {
-    throw new Error(`Δt=${dt_min} no divide la duración d=${d_min}. Ajusta Δt o d para que d/Δt sea entero.`);
+    throw new Error(`Δt=${dt_min} no divide d=${d_min}. Cambia Δt o usa un chip de duración válido.`);
   }
 }
 
-/** Construcción de distribución acumulada (%) con nSteps intervalos.
- *  NOTA: por ahora es uniforme; TODO: wire con tus tablas EPM_Q1/Huff reales.
- */
-function construirDistribucionAcum(nSteps: number): number[] {
-  return Array.from({ length: nSteps + 1 }, (_, i) => (i / nSteps) * 100);
+function pickCurve(dist: HietogramaOut['distribucion']): number[] {
+  switch (dist) {
+    case "EPM_Q1":  return EPM_Q1_CUM;
+    case "Huff_Q1": return HUFF_Q1_CUM;
+    case "Huff_Q2": return HUFF_Q2_CUM;
+    case "Huff_Q3": return HUFF_Q3_CUM;
+    case "Huff_Q4": return HUFF_Q4_CUM;
+    default:        return EPM_Q1_CUM;
+  }
+}
+
+/** Interpola una curva 0..100% a nSteps+1 valores (incluye 0 y 100). */
+function interpAcumPercent(curvePct: number[], nSteps: number): number[] {
+  const M = curvePct.length - 1;
+  if (M <= 0) return Array.from({ length: nSteps + 1 }, (_, i) => (i / nSteps) * 100);
+
+  const out: number[] = [];
+  for (let i = 0; i <= nSteps; i++) {
+    const t = (i / nSteps) * M;
+    const i0 = Math.floor(t);
+    const i1 = Math.min(M, i0 + 1);
+    const frac = t - i0;
+    const y0 = curvePct[i0], y1 = curvePct[i1];
+    out.push(y0 + (y1 - y0) * frac);
+  }
+  out[0] = 0; out[out.length - 1] = 100;
+  return out;
+}
+
+function construirSerie(
+  Pacum_pct: number[],
+  P_total_mm: number,
+  dt_min: number
+): { t_min: number; dP_mm: number; I_mm_h: number; P_acum_mm: number }[] {
+
+  const Pacum_mm = Pacum_pct.map(p => (p / 100) * P_total_mm);
+
+  const serie = Pacum_mm.map((P_acum, i) => {
+    const t_min = i * dt_min;
+    const dP_mm = i === 0 ? 0 : +(Pacum_mm[i] - Pacum_mm[i - 1]).toFixed(5);
+    const I_mm_h = i === 0 ? 0 : +(dP_mm / (dt_min / 60)).toFixed(5);
+    return { t_min, dP_mm, I_mm_h, P_acum_mm: +P_acum.toFixed(5) };
+  });
+
+  // Normalización estricta: Σ dP = P_total  (ajuste en el último bloque)
+  const suma = serie.reduce((acc, s) => acc + s.dP_mm, 0);
+  const diff = +(P_total_mm - suma).toFixed(5);
+  if (Math.abs(diff) > 1e-4) {
+    const last = serie.length - 1;
+    serie[last].dP_mm = +(serie[last].dP_mm + diff).toFixed(5);
+    serie[last].I_mm_h = +(serie[last].dP_mm / (dt_min / 60)).toFixed(5);
+    let acc = 0;
+    for (let i = 0; i < serie.length; i++) {
+      acc += serie[i].dP_mm;
+      serie[i].P_acum_mm = +acc.toFixed(5);
+    }
+  }
+  return serie;
 }
 
 export function calcHietograma(
-  p: ParametrosCuenca,
+  _p: ParametrosCuenca,
   d_min: number,
   dt_min: number,
   Tr: number,
   distribucion: HietogramaOut["distribucion"] = "EPM_Q1"
 ): HietogramaOut {
+
   assertDtDivide(d_min, dt_min);
 
-  // 1) Intensidad de referencia (mm/h) desde la Fuente IDF Global (Día 1)
+  // 1) Intensidad (mm/h) desde “Fuente”
   const I_ref = I_fromFuente(d_min, Tr);
 
-  // 2) Lluvia total (mm)
+  // 2) Precipitación total (mm)
   const P_total = I_ref * (d_min / 60);
 
-  // 3) Distribución acumulada (0..100%) y series
-  const nSteps = d_min / dt_min;
-  const Ppct = construirDistribucionAcum(nSteps); // TODO: reemplazar por EPM_Q1/Huff reales
-  const Pacum = Ppct.map(pct => (pct / 100) * P_total);
+  // 3) Interpolación acumulada a nSteps
+  const nSteps = Math.round(d_min / dt_min);
+  const Pacum_pct = interpAcumPercent(pickCurve(distribucion), nSteps);
 
-  const serie = Array.from({ length: nSteps + 1 }, (_, i) => {
-    const t = i * dt_min;
-    const P_acum_mm = +(Pacum[i]).toFixed(4);
-    const dP_mm = i === 0 ? 0 : +(Pacum[i] - Pacum[i - 1]).toFixed(4);
-    const I_mm_h = i === 0 ? 0 : +(dP_mm / (dt_min / 60)).toFixed(3);
-    return { t_min: t, dP_mm, I_mm_h, P_acum_mm };
-  });
+  // 4) Serie por bloques + normalización
+  const serie = construirSerie(Pacum_pct, P_total, dt_min);
 
-  // 4) Trazabilidad: ajusta según tu store de fuente
+  // 5) Trazabilidad (chips)
   const trazabilidad = {
-    fuente: "Ponderado" as const,
+    fuente: "Ponderado" as const,             // En el PR siguiente lo pondremos dinámico (Estación/Ponderado/Fallback)
     etiqueta: "IDF Ponderada (IDW/Thiessen)",
-    sustitucion: "I_pond = Σ(Ii·Wi)",
+    sustitucion: "I(d,Tr)=k/(c+d_h)^n | I_pond=Σ(Ii·Wi)"
   };
 
   return {
@@ -157,7 +113,6 @@ export function calcHietograma(
     I_ref_mm_h: +I_ref.toFixed(3),
     distribucion,
     serie,
-    trazabilidad,
+    trazabilidad
   };
 }
-main
