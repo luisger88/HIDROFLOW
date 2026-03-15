@@ -12,6 +12,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   ResponsiveContainer, ReferenceLine, ComposedChart, ScatterChart, Scatter, Cell,
 } from "recharts";
+import HidrogramaResultado from "./components/HidrogramaResultado";
 
 // ─── PALETA Y CONSTANTES ─────────────────────────────────────────────────────
 const C = {
@@ -938,6 +939,19 @@ function ModHietogramas({est,name,params}){
     return types.map(tp=>({tp, data:calcHietograma(est,Tr,durH,dtMin,tp)}));
   },[est,Tr,durH,dtMin]);
 
+  // === Día 3 (MVP) — Orquestación P → Pn → UH → Q(t) ===
+  // Vector P_mm (incrementos del hietograma) y Δt
+  const P_mm  = hiet.data.map((r, i, a) => i === 0 ? 0 : +(r.pAcum - a[i - 1].pAcum).toFixed(5));
+  const dt_min = dtMin;
+
+  // Parámetros SCS-CN y UH (MVP). Luego cableamos al panel "Preliminares".
+  const [CN, setCN]               = useState(Number.isFinite(params?.CN) ? params.CN : 78);
+  const [AMC, setAMC]             = useState(params?.amcActual ?? "III");   // "I" | "II" | "III"
+  const [pctImperv, setPctImperv] = useState(Number.isFinite(params?.porcentajeImpermeable) ? params.porcentajeImpermeable : 10);
+  const [A_km2, setA]             = useState(Number.isFinite(params?.area) ? params.area : 36.58);
+  const [Tc_min, setTc]           = useState(120); // si ya tienes Tc seleccionado, lo reemplazamos luego
+
+
   // Combinar bloques de intensidad para gráfica comparativa
   const compData=useMemo(()=>{
     const len=hiet.data.length;
@@ -988,6 +1002,74 @@ function ModHietogramas({est,name,params}){
         ]} value={distType} onChange={setDistType} accent={C.accent2}/>
       </Card>
     </div>
+    
+    {/* === Parámetros lluvia efectiva (SCS‑CN) y UH (MVP Día 3) === */}
+  <Card title="Parámetros lluvia efectiva (SCS‑CN) y UH" accent={C.accent4}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 8 }}>
+      <div>
+        <label style={{ display: 'block', marginBottom: 6, fontSize: 10, color: C.muted, fontFamily: 'monospace' }}>CN (CNII)</label>
+        <input
+          type="number" min={30} max={98} step={0.1} value={CN}
+          onChange={e => setCN(+e.target.value)}
+          style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
+        />
+      </div>
+
+      <div>
+        <label style={{ display: 'block', marginBottom: 6, fontSize: 10, color: C.muted, fontFamily: 'monospace' }}>AMC</label>
+        <select
+          value={AMC}
+          onChange={e => setAMC(e.target.value)}
+          style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
+        >
+          <option value="I">AMC I</option>
+          <option value="II">AMC II</option>
+          <option value="III">AMC III</option>
+        </select>
+        <small style={{ display: 'block', marginTop: 6, color: C.muted, fontFamily: 'monospace' }}>
+          I=seco · II=normal · III=húmedo/saturado
+        </small>
+      </div>
+
+      <div>
+        <label style={{ display: 'block', marginBottom: 6, fontSize: 10, color: C.muted, fontFamily: 'monospace' }}>% Impermeable</label>
+        <input
+          type="number" min={0} max={100} step={1} value={pctImperv}
+          onChange={e => setPctImperv(+e.target.value)}
+          style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
+        />
+      </div>
+
+      <div>
+        <label style={{ display: 'block', marginBottom: 6, fontSize: 10, color: C.muted, fontFamily: 'monospace' }}>A (km²)</label>
+        <input
+          type="number" min={0.001} step={0.001} value={A_km2}
+          onChange={e => setA(+e.target.value)}
+          style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
+        />
+      </div>
+
+      <div>
+        <label style={{ display: 'block', marginBottom: 6, fontSize: 10, color: C.muted, fontFamily: 'monospace' }}>Tc (min)</label>
+        <input
+          type="number" min={1} step={1} value={Tc_min}
+          onChange={e => setTc(+e.target.value)}
+          style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
+        />
+      </div>
+    </div>
+  </Card>
+
+  {/* === Hidrograma Q(t) — MVP Día 3 (usa hook useHidrograma) === */}
+  <HidrogramaResultado
+    P_mm={P_mm}
+    dt_min={dt_min}
+    A_km2={A_km2}
+    Tc_min={Tc_min}
+    CN={CN}
+    AMC={AMC}
+    pctImperv={pctImperv}
+  />
 
     {/* KPIs */}
     <div style={{display:"grid",gridTemplateColumns:"repeat(6,1fr)",gap:9}}>

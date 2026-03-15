@@ -4,18 +4,13 @@ import { scsCN, AMC } from "../dominio/scsCn";
 import { buildSCS_UH, convolvePnToQ, kpisQ } from "../dominio/scsUh";
 
 export type EntradasHidro = {
-  // Lluvia
-  P_mm: number[];    // P(t) en mm por bloque Δt (del hietograma)
+  P_mm: number[];    // lluvia por bloque (mm) desde hietograma
   dt_min: number;    // Δt (min)
-
-  // Cuenca
-  A_km2: number;     // Área (km²)
+  A_km2: number;     // área de cuenca (km²)
   Tc_min: number;    // Tc (min)
-
-  // SCS-CN
-  CN: number;        // CN AMC II
+  CN: number;        // CN (AMC II base)
   AMC: AMC;          // "I" | "II" | "III"
-  pctImperv: number; // 0–100 %
+  pctImperv: number; // % impermeable (0–100)
 };
 
 export function useHidrograma(entradas: EntradasHidro) {
@@ -29,7 +24,7 @@ export function useHidrograma(entradas: EntradasHidro) {
         UH_m3s_per_mm: [],
         Q_m3s: [],
         kpis: { Qp_m3s: 0, Tp_idx: 0, Vol_m3: 0 },
-        meta: { Tp_min: 0, Tb_min: 0, qp_m3s_mm: 0 }
+        meta: { Tp_min: 0, Tb_min: 0, qp_m3s_mm: 0, S: 0, Ia: 0 }
       };
     }
 
@@ -41,14 +36,14 @@ export function useHidrograma(entradas: EntradasHidro) {
       pctImpermeable: pctImperv
     });
 
-    // 2) UH SCS
+    // 2) UH SCS triangular (MVP)
     const { UH, Tp_min, Tb_min, qp_m3s_mm } = buildSCS_UH({
       A_km2,
       Tc_min,
       dt_min
     });
 
-    // 3) Convolución Q(t)
+    // 3) Convolución Pn * UH → Q
     const Q = convolvePnToQ(Pn, UH);
 
     // 4) KPIs
