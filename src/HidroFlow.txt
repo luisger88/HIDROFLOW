@@ -744,21 +744,7 @@ function ModParams({ params, setParams }) {
   const set     = k => v => setParams(p => ({ ...p, [k]: v }));
   const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
   const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
-  
-  // Persistir Tc medio (min) en params para otros módulos (Hietogramas, Hidrogramas)
-  useEffect(() => {
-    if (!isFinite(tcMed) || tcMed <= 0) return;
 
-    const tcMedMin = tcMed * 60; // horas → minutos
-
-    if (params.tcMedMin === tcMedMin) return;
-
-    setParams(p => ({
-     ...p,
-     tcMedMin
-   }));
- }, [tcMed, params.tcMedMin, setParams]);
- ``
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
@@ -937,13 +923,13 @@ function ModIDF({est,name}){
 // ═══════════════════════════════════════════════════════════════════════════════
 // MÓDULO HIETOGRAMAS — Distribución temporal + Curvas Huff
 // ═══════════════════════════════════════════════════════════════════════════════
-function ModHietogramas({ est, name, params, setParams }) {
+function ModHietogramas({ est, name, params }) {
   const [Tr, setTr] = useState(25);
   const [durH, setDurH] = useState(3);
   const [dtMin, setDtMin] = useState(() => +params.dt || 5);
   // Sync dtMin when params.dt changes externally (ej: carga de datos)
   useEffect(() => { if (params.dt && +params.dt !== dtMin) setDtMin(+params.dt); }, [params.dt]);
-  const [guardarAMCenPanel, setGuardarAMCenPanel] = useState(false);
+
   const [distType, setDistType] = useState("EPM_Q1");
 
   // Hietograma activo
@@ -982,26 +968,7 @@ function ModHietogramas({ est, name, params, setParams }) {
   const [Tc_override_min, setTcOverride]   = useState(Tc_sugerido_min);
 
   // Tc efectivo que entra a Q(t)
-  const tc_min = usarOverrideTc
-  ? Tc_override_min 
-  : +(params?.tcMedMin ?? Tc_sugerido_min);
-
-  
-  // ✅ QA hidrológico (solo observación, no modifica nada)
-const qaHidro = useMemo(() => {
-  const tcBajo = tc_min < 5;
-  const tcAlto = tc_min > 180;
-
-  return {
-    tcWarning: tcBajo || tcAlto,
-    amcWarning: !params?.amcFuente,
-
-    // En Hidrología no hay persistencia ni override de UI
-    amcPersistiendo: false,
-    isOverride: false
-  };
-}, [tc_min, params?.amcFuente]);
-
+  const Tc_min = usarOverrideTc ? Tc_override_min : Tc_sugerido_min;
 
   // Informe amigable
   const infoTc = useMemo(() => {
@@ -1052,10 +1019,15 @@ const qaHidro = useMemo(() => {
     : `AMC desde panel: ${AMC_panel}`;
   
   // Toggle para decidir si persistimos AMC auto en el panel (opt-in)
-
+const [guardarAMCenPanel, setGuardarAMCenPanel] = useState(true); // por defecto: ON (puedes iniciar en false si prefieres)
 
    // Persistir AMC auto en el panel (Preliminares) cuando el toggle está activo
-
+useEffect(() => {
+  if (usarAMCauto && amcAuto?.amcActual && params?.amcActual !== amcAuto.amcActual) {
+    // Requiere que ModHietogramas reciba setParams como prop desde el padre
+    setParams(prev => ({ ...prev, amcActual: amcAuto.amcActual }));
+  }
+}, [usarAMCauto, amcAuto?.amcActual, params?.amcActual, setParams]);
 
   // ── Exportar PNG para gráficas del módulo (vía CDN, sin instalar) ─────────────
   // Refs: contenedores de las dos gráficas a exportar (Distribuciones e Intensidades)
@@ -1307,7 +1279,7 @@ useEffect(() => {
                   style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
                 />
               ) : (
-                <Kpi value={`${tc_min.toFixed(1)}`} label="Tc sugerido" accent={C.accent4} />
+                <Kpi value={`${Tc_min.toFixed(1)}`} label="Tc sugerido" accent={C.accent4} />
               )}
             </div>
           </div>
@@ -1329,7 +1301,7 @@ useEffect(() => {
         P_mm={P_mm}
         dt_min={dt_min}
         A_km2={A_km2}
-        Tc_min={tc_min}
+        Tc_min={Tc_min}
         CN={CN}
         AMC={AMC_eff}
         pctImperv={pctImperv}
@@ -1420,16 +1392,9 @@ useEffect(() => {
 // MÓDULO HIDROGRAMAS — 5 Métodos con convolución completa (robusto para gráficas)
 // ═══════════════════════════════════════════════════════════════════════════════
 function ModHidrogramas({ params, est, name }) {
-
-  // --- DEBUG: blindaje temporal ---
-  // Evita crash por referencias residuales a guardarAMCenPanel
-  
-
   // ── Controles superiores
   const [Tr, setTr]       = useState(25);
   const [dtMin, setDtMin] = useState(() => +params.dt || 5);
-  // --- DEBUG: blindaje temporal ---
-  
 
   // ── CN efectivo (CNact) con default coherente a la UI (60 % imperv.)
   const CNact = useMemo(() => calcCNdinamico({
@@ -1464,8 +1429,7 @@ function ModHidrogramas({ params, est, name }) {
   // ── Tc, unidades y pendiente
   const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
   const tc_h   = tcList[tcSrc]?.h || 0.5;
-  const tc_min = tc_h * 60;
-  
+
   const area_mi2 = params.area * 0.386102;
   const L_mi     = params.longitud_cauce * 0.621371;
   const S_m_km   = (params.cota_mayor_cauce - params.cota_menor_cauce) / params.longitud_cauce;
@@ -1488,30 +1452,6 @@ function ModHidrogramas({ params, est, name }) {
     [hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark].map(hu => calcHidroCompleto(lluvEfect, hu, dtMin))
   ), [lluvEfect, hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark, dtMin]);
 
-  // Hidrograma activo (SCS por defecto)
-  const h0 = hidros?.[0] ?? null;
-
-
-  // Estado del hidrograma (QA) — objeto con flags para el panel
-const qaStatus = useMemo(() => {
-  const tcWarning = tc_min < 5 || tc_min > 180;
-
-  const amcWarning = params?.amcActual === "III";
-
-  // En Hidrología solo observamos estados, no persistimos ni override
-  const amcPersistiendo = false;
-  const isOverride = false;
-
-  return {
-    tcWarning,
-    amcWarning,
-    amcPersistiendo,
-    isOverride
-  };
-}, [tc_min, params?.amcActual]);
-
-
- 
   // ── Resumen rápido (si ya usas buildResumenQ, úsalo)
   const resumenQ = useMemo(() => buildResumenQ(params, est, dtMin, CNact), [params, est, dtMin, CNact]);
 
@@ -1664,28 +1604,6 @@ const qaStatus = useMemo(() => {
           <span>tp = <b style={{color:C.text}}>{(rWH.tpico ?? 0).toFixed(0)}</b> min</span>
         </div>
       </Card>
-      
-      {/* Panel QA - Estado hidrológico efectivo */}
-      <div className="flex flex-wrap gap-4 p-3 mb-2 bg-slate-900 text-white rounded-md text-sm font-mono">
-       <div className={qaStatus.tcWarning ? "text-yellow-400" : "text-green-400"}>
-         Tc: {tc_min.toFixed(1)} min
-         {qaStatus.tcWarning && " ⚠️"}
-       </div>
-
-       <div className={qaStatus.amcWarning ? "text-red-400" : "text-blue-400"}>
-         AMC: {params?.amcActual ?? "N/A"} ({params?.amcFuente ?? "Sin fuente"})
-       </div>
-
-       <div className={qaStatus.amcPersistiendo ? "text-green-400" : "text-slate-400"}>
-         Persistencia AMC: {qaStatus.amcPersistiendo ? "ON" : "OFF"}
-       </div>
-
-       {qaStatus.isOverride && (
-         <span className="bg-orange-600 px-2 rounded text-black">
-           Tc MANUAL
-         </span>
-       )}
-     </div>
 
       {/* ===== Gráfica Q(t) — Convolución completa (segura) ===== */}
       <div style={{ width:'100%', height: 380, border:'1px solid #1F2F45', borderRadius: 10, background:'#0B0F1A' }}>
@@ -2856,14 +2774,7 @@ useEffect(() => {
       </div>
       {tab==="params"     &&<ModParams     params={params} setParams={setParams}/>}
       {tab==="idf"        &&<ModIDF        est={est} name={stn}/>}
-      {tab === "hiet" && (
-        <ModHietogramas
-          est={est}
-          name={stn}
-          params={params}
-          setParams={setParams}
-        />
-      )}
+      {tab==="hiet"       &&<ModHietogramas est={est} name={stn} params={params}/>}
       {tab==="hidro"      &&<ModHidrogramas params={params} est={est} name={stn}/>}
       {tab==="racional"   &&<ModRacional   params={params} est={est} name={stn}/>}
       {tab==="sar"        &&<ModSAR        params={params} est={est} name={stn}/>}

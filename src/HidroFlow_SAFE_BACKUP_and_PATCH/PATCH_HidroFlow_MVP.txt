@@ -1,0 +1,37 @@
+# PATCH HidroFlow.jsx — MVP Hietogramas (NO BORRA NADA)
+# Fecha: 2026-03-16T03:17:04.066003
+# Este parche NO reemplaza tu archivo completo.
+# Solo indica cambios mínimos y seguros.
+
+1) Router / Tabs
+   Reemplaza la línea de Hietogramas por:
+
+   {tab === "hiet" && (
+     <ModHietogramas
+       est={est}
+       name={stn}
+       params={params}
+       setParams={setParams}
+     />
+   )}
+
+2) Firma del componente
+   function ModHietogramas({ est, name, params, setParams })
+
+3) Toggle Guardar AMC auto (default OFF)
+   const [guardarAMCenPanel, setGuardarAMCenPanel] = useState(false);
+
+4) Persistencia AMC auto (OPT-IN)
+   Usa UN SOLO useEffect con guard clause:
+
+   if (!guardarAMCenPanel) return;
+
+5) Tc efectivo
+   const Tc_min = usarOverrideTc
+     ? Tc_override_min
+     : +(params?.tcSeleccionadoMin ?? Tc_sugerido_min);
+
+IMPORTANTE:
+- No elimines módulos SAR, Racional, Influencia, SIATA.
+- No reemplaces el archivo completo si no es necesario.
+- Haz backup antes de pegar cambios.

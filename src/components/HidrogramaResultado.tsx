@@ -1,5 +1,7 @@
 // src/components/HidrogramaResultado.tsx
-import React from "react";
+import React, { useRef } from "react";
+import html2canvas from "html2canvas";
+
 import { useHidrograma } from "../hooks/useHidrograma";
 import {
   LineChart, Line, XAxis, YAxis, Tooltip,
@@ -56,6 +58,24 @@ export default function HidrogramaResultado({
     URL.revokeObjectURL(url);
   };
 
+  // Ref para capturar el contenedor del gráfico (si no lo tienes ya)
+const chartRef = useRef<HTMLDivElement | null>(null);
+
+// Exportar PNG del gráfico Q(t)
+const onExportPNG = async () => {
+  if (!chartRef.current) return;
+  const canvas = await html2canvas(chartRef.current, {
+    backgroundColor: "#0B0F1A", // fondo de tu UI
+    scale: 2,                   // mejor resolución
+    useCORS: true
+  });
+  const url = canvas.toDataURL("image/png", 0.95);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "Hidrograma_Q.png";
+  a.click();
+};
+
   return (
     <div className="card" style={{ padding: 12 }}>
       <h3>Hidrograma Q(t) — SCS</h3>
@@ -69,7 +89,7 @@ export default function HidrogramaResultado({
         <div className="kpi">qp_UH: <b>{meta.qp_m3s_mm}</b> m³/s/mm</div>
       </div>
 
-      <div style={{ width: "100%", height: 320, marginTop: 8 }}>
+      <div ref={chartRef} style={{ width: "100%", height: 320, marginTop: 8 }}>
         <ResponsiveContainer>
           <LineChart data={data} margin={{ left: 8, right: 16, top: 8, bottom: 8 }}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -84,8 +104,9 @@ export default function HidrogramaResultado({
         </ResponsiveContainer>
       </div>
 
-      <div style={{ marginTop: 8 }}>
-        <button className="btn" onClick={onExportCSV}>Exportar CSV Q(t)</button>
+      <div style={{ marginTop: 8, display: "flex", gap: 8 }}>
+       <button className="btn" onClick={onExportCSV}>Exportar CSV Q(t)</button>
+       <button className="btn" onClick={onExportPNG}>Exportar PNG Q(t)</button>
       </div>
     </div>
   );

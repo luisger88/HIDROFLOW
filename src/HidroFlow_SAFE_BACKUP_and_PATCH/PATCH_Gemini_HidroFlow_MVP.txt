@@ -1,0 +1,101 @@
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Info, Settings2, Save, FileText, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+
+// ... [Importaciones de componentes locales y lógica de EPM originales] ...
+
+const HidroFlow = () => {
+  // --- PUNTO 3 DEL PATCH: ESTADO GLOBAL PARA GUARDAR AMC ---
+  const [guardarAMCenPanel, setGuardarAMCenPanel] = useState(false);
+  
+  // --- PUNTO 4 DEL PATCH: LÓGICA DE PERSISTENCIA ---
+  const handleGuardarAMC = (idEstacion, nuevosDatos) => {
+    // Cláusula de guarda para evitar sobrescritura accidental
+    if (!guardarAMCenPanel) {
+      console.log("Persistencia de AMC desactivada por switch global.");
+      return;
+    }
+    // Lógica original de guardado...
+    console.log(`Guardando AMC para ${idEstacion}`, nuevosDatos);
+  };
+
+  // ... [Resto de estados originales: idfData, area, etc.] ...
+
+  return (
+    <div className="p-4 max-w-7xl mx-auto space-y-4">
+      {/* PANEL DE CONTROL MVP INTEGRADO */}
+      <Card className="border-blue-200 bg-blue-50/30">
+        <CardHeader className="pb-2">
+          <div className="flex justify-between items-center">
+            <CardTitle className="text-lg flex items-center gap-2">
+              <Settings2 className="w-5 h-5 text-blue-600" />
+              Configuración del MVP - HidroFlow 2026
+            </CardTitle>
+            <div className="flex items-center space-x-2 bg-white p-2 rounded-lg border shadow-sm">
+              <Switch 
+                id="amc-mode" 
+                checked={guardarAMCenPanel}
+                onCheckedChange={setGuardarAMCenPanel}
+              />
+              <Label htmlFor="amc-mode" className="text-xs font-medium">
+                Permitir Guardado Automático AMC
+              </Label>
+            </div>
+          </div>
+        </CardHeader>
+      </Card>
+
+      <Tabs defaultValue="hietogramas" className="w-full">
+        <TabsList className="grid w-full grid-cols-4 mb-4">
+          <TabsTrigger value="hietogramas">Hietogramas</TabsTrigger>
+          <TabsTrigger value="caudales">Caudales (Racional/SAR)</TabsTrigger>
+          <TabsTrigger value="estaciones">Estaciones EPM</TabsTrigger>
+          <TabsTrigger value="config">Configuración Sistema</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="hietogramas">
+          {/* --- PUNTO 1 & 2 DEL PATCH: PASO DE PARAMS A COMPONENTE --- */}
+          <ModHietogramas 
+            idfData={idfData}
+            params={params} 
+            setParams={setParams}
+            onUpdateAMC={handleGuardarAMC}
+          />
+        </TabsContent>
+
+        <TabsContent value="caudales">
+          <Card>
+            <CardContent className="pt-6">
+              {/* --- PUNTO 5 DEL PATCH: LÓGICA DE TIEMPO DE CONCENTRACIÓN --- */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 border rounded-lg bg-slate-50">
+                   <div>
+                     <p className="font-medium">Tiempo de Concentración ($T_c$)</p>
+                     <p className="text-sm text-muted-foreground">
+                       Calculado: {Tc_sugerido_min} min | Manual: {Tc_override_min} min
+                     </p>
+                   </div>
+                   <div className="text-right">
+                     <span className="text-2xl font-bold text-blue-700">
+                       {usarOverrideTc ? Tc_override_min : Tc_sugerido_min} min
+                     </span>
+                   </div>
+                </div>
+                {/* [Resto de lógica de Caudales...] */}
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* ... [Tabs de Estaciones y Configuración originales] ... */}
+      </Tabs>
+    </div>
+  );
+};
+
+export default HidroFlow;

@@ -1,9 +1,10 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./styles/focusHighlight.css";
+import HidroFlowLayout from "./layouts/HidroFlowLayout.jsx";
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import HidroFlow from './HidroFlow.jsx'
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HidroFlow />
-  </React.StrictMode>,
-)
+    <HidroFlowLayout />
+  </React.StrictMode>
+);

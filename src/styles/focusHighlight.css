@@ -1,0 +1,14 @@
+.focus-highlight {
+  outline: 2px solid #4fd1c5;
+  outline-offset: 6px;
+  border-radius: 6px;
+  background: rgba(79, 209, 197, 0.08);
+  transition: all 0.3s ease;
+}
+.focus-highlight:focus {
+  outline: 2px solid #4fd1c5;
+  outline-offset: 6px;
+  border-radius: 6px;
+  background: rgba(79, 209, 197, 0.08);
+}
+
