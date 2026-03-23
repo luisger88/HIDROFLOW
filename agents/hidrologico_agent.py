@@ -1,3 +1,4 @@
+# Agent: Hidrología – verificador de coherencia (HidroFlow)
 # agents/hidrologico_agent.py
 
 from typing import Dict, List
