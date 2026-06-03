@@ -1,0 +1,1019 @@
+=====================================================
+BÚSQUEDA: pendiente_cuenca en HidroFlow
+Fecha: 05/31/2026 09:00:02
+=====================================================
+
+----- PATRON: pendiente_cuenca -----
+
+  src\data\cuencasCatalogo.js:169:    cota_mayor_cauce: 2819.27,
+  src\data\cuencasCatalogo.js:170:    cota_menor_cauce: 1511.36,
+  src\data\cuencasCatalogo.js:171:
+> src\data\cuencasCatalogo.js:172:    // HidroFlow.jsx todavía lee pendiente_cuenca para:
+  src\data\cuencasCatalogo.js:173:    // 1. Mostrar "Pendiente media" en el módulo Parámetros.
+  src\data\cuencasCatalogo.js:174:    // 2. Calcular el método SCS-Ranser dentro de calcTc().
+> src\data\cuencasCatalogo.js:175:    pendiente_cuenca: 8.43,
+  src\data\cuencasCatalogo.js:176:
+  src\data\cuencasCatalogo.js:177:    // Alias técnico para paneles nuevos y trazabilidad.
+  src\data\cuencasCatalogo.js:178:    pendiente_media: 8.43,
+  src\data\cuencasCatalogo.js:179:
+  src\data\cuencasCatalogo.js:180:    longitud_red: 127.1283,
+  src\data\cuencasCatalogo.js:181:    densidad_drenaje: 2.7134,
+  src\services\hidroEngine.js:194:export function calcTc(p) {
+  src\services\hidroEngine.js:195:  const L = p.longitud_cauce;
+  src\services\hidroEngine.js:196:  const A = p.area;
+> src\services\hidroEngine.js:197:  const Sp = p.pendiente_cuenca;
+  src\services\hidroEngine.js:198:
+  src\services\hidroEngine.js:199:  const So =
+  src\services\hidroEngine.js:200:    ((p.cota_mayor_cauce - p.cota_menor_cauce) / (L * 1000)) * 1000;
+  src\services\hidroEngine.js:201:
+  src\services\hidroEngine.js:202:  const Lft = L * 3280.84;
+  src\services\hidroEngine.js:203:  const Sf =
+  src\services\hidroEngine.js:335:  const pendienteMediaPct =
+  src\services\hidroEngine.js:336:    relieve.pendiente_media_pct ??
+  src\services\hidroEngine.js:337:    params.pendiente_media ??
+> src\services\hidroEngine.js:338:    params.pendiente_cuenca ??
+  src\services\hidroEngine.js:339:    null;
+  src\services\hidroEngine.js:340:
+  src\services\hidroEngine.js:341:  // ------------------------------------------------------------
+  src\services\hidroEngine.js:342:  // 2. IDF adoptada
+  src\services\hidroEngine.js:343:  // ------------------------------------------------------------
+  src\services\hidroEngine.js:344:  const estacionesIDF =
+  src\services\hidroEngine.js:445:    longitud_cauce:
+  src\services\hidroEngine.js:446:      geometria.longitud_cauce_km ??
+  src\services\hidroEngine.js:447:      params.longitud_cauce,
+> src\services\hidroEngine.js:448:    pendiente_cuenca:
+> src\services\hidroEngine.js:449:      params.pendiente_cuenca ??
+  src\services\hidroEngine.js:450:      pendienteMediaPct,
+  src\services\hidroEngine.js:451:    cota_mayor_cauce:
+  src\services\hidroEngine.js:452:      relieve.cota_mayor_cauce_msnm ??
+  src\services\hidroEngine.js:453:      relieve.cota_max_msnm ??
+  src\services\hidroEngine.js:454:      params.cota_mayor_cauce ??
+  src\services\hidroEngine.js:455:      params.cota_max,
+  src\services\hidroEngine.js:480:  const tieneInsumosTc =
+  src\services\hidroEngine.js:481:    Number.isFinite(paramsTc.area) &&
+  src\services\hidroEngine.js:482:    Number.isFinite(paramsTc.longitud_cauce) &&
+> src\services\hidroEngine.js:483:    Number.isFinite(paramsTc.pendiente_cuenca) &&
+  src\services\hidroEngine.js:484:    Number.isFinite(paramsTc.cota_mayor_cauce) &&
+  src\services\hidroEngine.js:485:    Number.isFinite(paramsTc.cota_menor_cauce) &&
+  src\services\hidroEngine.js:486:    Number.isFinite(paramsTc.cota_max) &&
+  src\services\hidroEngine.js:487:    Number.isFinite(paramsTc.cota_min) &&
+  src\services\hidroEngine.js:488:    Number.isFinite(paramsTc.CN);
+  src\services\hidroEngine.js:489:
+
+
+
+----- PATRON: pendiente -----
+
+  src\data\cuencasCatalogo.js:76:      cota_mayor_cauce_msnm: 2762.5,
+  src\data\cuencasCatalogo.js:77:      cota_menor_cauce_msnm: 1702.7,
+  src\data\cuencasCatalogo.js:78:      desnivel_m: 1247.3,
+> src\data\cuencasCatalogo.js:79:      pendiente_media_pct: null,
+> src\data\cuencasCatalogo.js:80:      metodo_pendiente: "Pendiente media no recalculada en esta actualizacion."
+  src\data\cuencasCatalogo.js:81:    },
+  src\data\cuencasCatalogo.js:82:
+  src\data\cuencasCatalogo.js:83:    idf: {
+  src\data\cuencasCatalogo.js:84:      estacion_id: null,
+  src\data\cuencasCatalogo.js:85:      estacion_nombre: null,
+  src\data\cuencasCatalogo.js:86:      metodo_asociacion: "no_definido",
+  src\data\cuencasCatalogo.js:87:      distancia_km: null,
+  src\data\cuencasCatalogo.js:88:      peso_idw: null,
+  src\data\cuencasCatalogo.js:89:      peso_thiessen: null,
+> src\data\cuencasCatalogo.js:90:      estado: "pendiente_validacion",
+  src\data\cuencasCatalogo.js:91:      observacion:
+  src\data\cuencasCatalogo.js:92:        "La estacion IDF debe mostrarse separada de la cuenca activa."
+  src\data\cuencasCatalogo.js:93:    },
+  src\data\cuencasCatalogo.js:94:
+  src\data\cuencasCatalogo.js:95:    hidrologia: {
+  src\data\cuencasCatalogo.js:96:      punto_calculo: "salida_cuenca",
+  src\data\cuencasCatalogo.js:169:    cota_mayor_cauce: 2819.27,
+  src\data\cuencasCatalogo.js:170:    cota_menor_cauce: 1511.36,
+  src\data\cuencasCatalogo.js:171:
+> src\data\cuencasCatalogo.js:172:    // HidroFlow.jsx todavía lee pendiente_cuenca para:
+> src\data\cuencasCatalogo.js:173:    // 1. Mostrar "Pendiente media" en el módulo Parámetros.
+  src\data\cuencasCatalogo.js:174:    // 2. Calcular el método SCS-Ranser dentro de calcTc().
+> src\data\cuencasCatalogo.js:175:    pendiente_cuenca: 8.43,
+  src\data\cuencasCatalogo.js:176:
+  src\data\cuencasCatalogo.js:177:    // Alias técnico para paneles nuevos y trazabilidad.
+> src\data\cuencasCatalogo.js:178:    pendiente_media: 8.43,
+  src\data\cuencasCatalogo.js:179:
+  src\data\cuencasCatalogo.js:180:    longitud_red: 127.1283,
+  src\data\cuencasCatalogo.js:181:    densidad_drenaje: 2.7134,
+  src\data\cuencasCatalogo.js:182:    kc_compacidad: 1.9468,
+  src\data\cuencasCatalogo.js:183:    kf_forma: 0.1946,
+  src\data\cuencasCatalogo.js:184:
+  src\data\cuencasCatalogo.js:200:    dt_min: 5,
+  src\data\cuencasCatalogo.js:201:
+  src\data\cuencasCatalogo.js:202:    fuente: "HidroFlow Modulo 1 Geomorfologia - Parametros Geomorf Iguana",
+> src\data\cuencasCatalogo.js:203:    estado: "validado_geomorfologia_pendiente_hidrologia",
+  src\data\cuencasCatalogo.js:204:
+  src\data\cuencasCatalogo.js:205:    // ------------------------------------------------------------
+  src\data\cuencasCatalogo.js:206:    // ESTRUCTURA PROFESIONAL NUEVA HIDROFLOW APP
+  src\data\cuencasCatalogo.js:207:    // ------------------------------------------------------------
+  src\data\cuencasCatalogo.js:208:    estado_tecnico: {
+  src\data\cuencasCatalogo.js:209:      cuencaActiva: true,
+  src\data\cuencasCatalogo.js:210:      validacionGeomorfologica: "validada",
+> src\data\cuencasCatalogo.js:211:      validacionHidrologica: "pendiente_simulacion",
+  src\data\cuencasCatalogo.js:212:      fuente: "HidroFlow Modulo 1 Geomorfologia - Parametros Geomorf Iguana",
+  src\data\cuencasCatalogo.js:213:      observacion:
+> src\data\cuencasCatalogo.js:214:        "Cuenca La Iguana PC_80 cargada con coordenadas, cotas y parametros geomorfologicos validados desde Modulo 1. Pendiente hidrologica lista para simulacion en app."
+  src\data\cuencasCatalogo.js:215:    },
+  src\data\cuencasCatalogo.js:216:
+  src\data\cuencasCatalogo.js:217:    salida: {
+  src\data\cuencasCatalogo.js:218:      lat: 6.271785117145225,
+  src\data\cuencasCatalogo.js:219:      lon: -75.59408755595547,
+  src\data\cuencasCatalogo.js:220:      cota_msnm: 1511.36,
+  src\data\cuencasCatalogo.js:239:      cota_mayor_cauce_msnm: 2819.27,
+  src\data\cuencasCatalogo.js:240:      cota_menor_cauce_msnm: 1511.36,
+  src\data\cuencasCatalogo.js:241:      desnivel_m: 1307.91,
+> src\data\cuencasCatalogo.js:242:      pendiente_media_pct: 8.43,
+> src\data\cuencasCatalogo.js:243:      metodo_pendiente:
+> src\data\cuencasCatalogo.js:244:        "Pendiente media calculada a partir del desnivel entre cota maxima y cota de salida sobre la longitud del cauce principal."
+  src\data\cuencasCatalogo.js:245:    },
+  src\data\cuencasCatalogo.js:246:
+  src\data\cuencasCatalogo.js:247:    geomorfologia: {
+  src\data\cuencasCatalogo.js:248:      tramos_qc: 4,
+  src\data\cuencasCatalogo.js:249:      quiebres_qc: 3,
+  src\data\cuencasCatalogo.js:250:      estado: "validada_modulo_1",
+  src\data\cuencasCatalogo.js:272:        }
+  src\data\cuencasCatalogo.js:273:      ],
+  src\data\cuencasCatalogo.js:274:
+> src\data\cuencasCatalogo.js:275:      referencias_externas_pendientes: [
+  src\data\cuencasCatalogo.js:276:        {
+  src\data\cuencasCatalogo.js:277:          id: "MIGUEL_DE_AGUINAGA",
+  src\data\cuencasCatalogo.js:278:          nombre: "Miguel de Aguinaga",
+> src\data\cuencasCatalogo.js:279:          rol: "referencia_pluviometrica_pendiente",
+  src\data\cuencasCatalogo.js:280:          estado: "no_disponible_en_ESTACIONES_EPM",
+  src\data\cuencasCatalogo.js:281:          observacion:
+  src\data\cuencasCatalogo.js:282:            "No se usa en calculo IDF hasta incorporar coordenadas, codigo, altitud y parametros k-n-c por periodo de retorno."
+  src\data\cuencasCatalogo.js:283:        }
+  src\data\cuencasCatalogo.js:284:      ],
+  src\data\cuencasCatalogo.js:285:
+  src\data\cuencasCatalogo.js:286:      observacion:
+> src\data\cuencasCatalogo.js:287:        "Para La Iguana PC_80 se adopta San Cristobal como estacion IDF operativa. Miguel de Aguinaga queda registrada solo como referencia pendiente de incorporacion, no participa en calculos."
+  src\data\cuencasCatalogo.js:288:    },
+  src\data\cuencasCatalogo.js:289:
+  src\data\cuencasCatalogo.js:290:    hidrologia: {
+  src\data\cuencasCatalogo.js:291:      punto_calculo: "PC_80",
+  src\data\cuencasCatalogo.js:292:      CN: 88,
+  src\data\cuencasCatalogo.js:293:      dt_min: 5,
+> src\data\cuencasCatalogo.js:294:      estado: "pendiente_simulacion",
+  src\data\cuencasCatalogo.js:295:      
+  src\data\cuencasCatalogo.js:296:      precipitacion_efectiva_scs: {
+  src\data\cuencasCatalogo.js:297:        metodo: "SCS-CN",
+  src\data\cuencasCatalogo.js:298:        descripcion:
+  src\data\cuencasCatalogo.js:299:          "Calculo de precipitacion efectiva mediante metodo de infiltracion del SCS, usando Numero de Curva CN ajustado por cobertura, uso del suelo y condicion antecedente de humedad.",
+  src\data\cuencasCatalogo.js:300:        CN_base: 88,
+  src\data\cuencasCatalogo.js:303:        humedad_antecedente: {
+  src\data\cuencasCatalogo.js:304:          fuente: "SIATA",
+  src\data\cuencasCatalogo.js:305:          variable: "AMC",
+> src\data\cuencasCatalogo.js:306:          estado: "pendiente_integracion_dinamica",
+  src\data\cuencasCatalogo.js:307:          criterio:
+  src\data\cuencasCatalogo.js:308:            "El CN base debe ajustarse segun condicion antecedente de humedad AMC derivada de informacion SIATA."
+  src\data\cuencasCatalogo.js:309:        },
+  src\data\cuencasCatalogo.js:310:        parametros_scs: {
+  src\data\cuencasCatalogo.js:311:          unidad: "mm",
+  src\data\cuencasCatalogo.js:312:          abstraccion_inicial_lambda: 0.2,
+  src\data\cuencasCatalogo.js:315:          formula_Pe:
+  src\data\cuencasCatalogo.js:316:            "Pe = ((P - Ia)^2) / (P - Ia + S), si P > Ia; en caso contrario Pe = 0"
+  src\data\cuencasCatalogo.js:317:        },
+> src\data\cuencasCatalogo.js:318:        estado: "regla_definida_pendiente_motor_calculo"
+  src\data\cuencasCatalogo.js:319:      },
+  src\data\cuencasCatalogo.js:320:
+  src\data\cuencasCatalogo.js:321:      tiempo_concentracion: {
+  src\data\cuencasCatalogo.js:322:        simbolo: "Tc",
+  src\data\cuencasCatalogo.js:323:        unidad: "min",
+> src\data\cuencasCatalogo.js:324:        estado: "pendiente_regla_operativa_final",
+  src\data\cuencasCatalogo.js:325:        metodos_disponibles: [
+  src\data\cuencasCatalogo.js:326:          {
+  src\data\cuencasCatalogo.js:327:            id: "tc_cn",
+  src\data\cuencasCatalogo.js:328:            nombre: "Tc = f(CN)",
+  src\data\cuencasCatalogo.js:329:            tipo: "hidrologico",
+  src\data\cuencasCatalogo.js:330:            descripcion:
+  src\data\cuencasCatalogo.js:335:            nombre: "Tc = f(parametros geometricos)",
+  src\data\cuencasCatalogo.js:336:            tipo: "geomorfologico",
+  src\data\cuencasCatalogo.js:337:            descripcion:
+> src\data\cuencasCatalogo.js:338:              "Estimacion de tiempo de concentracion a partir de longitud hidraulica, pendiente, desnivel y parametros geometricos de la cuenca."
+  src\data\cuencasCatalogo.js:339:          }
+  src\data\cuencasCatalogo.js:340:        ],
+  src\data\cuencasCatalogo.js:341:        regla_seleccion_preliminar: {
+  src\data\cuencasCatalogo.js:342:          criterio_base:
+> src\data\cuencasCatalogo.js:343:            "Usar Tc geometrico como valor rector inicial cuando exista eje principal, longitud de cauce, cotas y pendiente media validadas por Modulo 1.",
+  src\data\cuencasCatalogo.js:344:          criterio_ajuste:
+  src\data\cuencasCatalogo.js:345:            "Usar Tc = f(CN) como contraste hidrologico y ajuste por cobertura, uso del suelo y condicion antecedente de humedad SIATA.",
+  src\data\cuencasCatalogo.js:346:          criterio_alerta:
+  src\data\cuencasCatalogo.js:347:            "Si la diferencia relativa entre Tc geometrico y Tc_CN supera el 25 %, marcar revision tecnica antes de adoptar el Tc definitivo.",
+  src\data\cuencasCatalogo.js:348:          criterio_adopcion:
+  src\data\cuencasCatalogo.js:349:            "Adoptar Tc definitivo solo despues de comparar consistencia fisica, respuesta hidrologica esperada y sensibilidad del hidrograma Q(t)."
+  src\services\hidroEngine.js:194:export function calcTc(p) {
+  src\services\hidroEngine.js:195:  const L = p.longitud_cauce;
+  src\services\hidroEngine.js:196:  const A = p.area;
+> src\services\hidroEngine.js:197:  const Sp = p.pendiente_cuenca;
+  src\services\hidroEngine.js:198:
+  src\services\hidroEngine.js:199:  const So =
+  src\services\hidroEngine.js:200:    ((p.cota_mayor_cauce - p.cota_menor_cauce) / (L * 1000)) * 1000;
+  src\services\hidroEngine.js:201:
+  src\services\hidroEngine.js:202:  const Lft = L * 3280.84;
+  src\services\hidroEngine.js:203:  const Sf =
+  src\services\hidroEngine.js:332:    params.area ??
+  src\services\hidroEngine.js:333:    null;
+  src\services\hidroEngine.js:334:
+> src\services\hidroEngine.js:335:  const pendienteMediaPct =
+> src\services\hidroEngine.js:336:    relieve.pendiente_media_pct ??
+> src\services\hidroEngine.js:337:    params.pendiente_media ??
+> src\services\hidroEngine.js:338:    params.pendiente_cuenca ??
+  src\services\hidroEngine.js:339:    null;
+  src\services\hidroEngine.js:340:
+  src\services\hidroEngine.js:341:  // ------------------------------------------------------------
+  src\services\hidroEngine.js:342:  // 2. IDF adoptada
+  src\services\hidroEngine.js:343:  // ------------------------------------------------------------
+  src\services\hidroEngine.js:344:  const estacionesIDF =
+  src\services\hidroEngine.js:386:      estacionesIDF?.[0]?.nombre ||
+  src\services\hidroEngine.js:387:      "San Cristóbal",
+  src\services\hidroEngine.js:388:    estaciones: estacionesIDF,
+> src\services\hidroEngine.js:389:    ponderacion_formal_pendiente: true,
+  src\services\hidroEngine.js:390:    observacion:
+> src\services\hidroEngine.js:391:      "La ponderación IDF multies­tación queda pendiente de cálculo formal. Solo deben participar estaciones disponibles y parametrizadas."
+  src\services\hidroEngine.js:392:  };
+  src\services\hidroEngine.js:393:
+  src\services\hidroEngine.js:394:  // ------------------------------------------------------------
+  src\services\hidroEngine.js:395:  // 3. CN base, AMC y CN efectivo
+  src\services\hidroEngine.js:396:  // ------------------------------------------------------------
+  src\services\hidroEngine.js:397:  const CNbase =
+  src\services\hidroEngine.js:445:    longitud_cauce:
+  src\services\hidroEngine.js:446:      geometria.longitud_cauce_km ??
+  src\services\hidroEngine.js:447:      params.longitud_cauce,
+> src\services\hidroEngine.js:448:    pendiente_cuenca:
+> src\services\hidroEngine.js:449:      params.pendiente_cuenca ??
+> src\services\hidroEngine.js:450:      pendienteMediaPct,
+  src\services\hidroEngine.js:451:    cota_mayor_cauce:
+  src\services\hidroEngine.js:452:      relieve.cota_mayor_cauce_msnm ??
+  src\services\hidroEngine.js:453:      relieve.cota_max_msnm ??
+  src\services\hidroEngine.js:454:      params.cota_mayor_cauce ??
+  src\services\hidroEngine.js:455:      params.cota_max,
+  src\services\hidroEngine.js:456:    cota_menor_cauce:
+  src\services\hidroEngine.js:480:  const tieneInsumosTc =
+  src\services\hidroEngine.js:481:    Number.isFinite(paramsTc.area) &&
+  src\services\hidroEngine.js:482:    Number.isFinite(paramsTc.longitud_cauce) &&
+> src\services\hidroEngine.js:483:    Number.isFinite(paramsTc.pendiente_cuenca) &&
+  src\services\hidroEngine.js:484:    Number.isFinite(paramsTc.cota_mayor_cauce) &&
+  src\services\hidroEngine.js:485:    Number.isFinite(paramsTc.cota_menor_cauce) &&
+  src\services\hidroEngine.js:486:    Number.isFinite(paramsTc.cota_max) &&
+  src\services\hidroEngine.js:487:    Number.isFinite(paramsTc.cota_min) &&
+  src\services\hidroEngine.js:488:    Number.isFinite(paramsTc.CN);
+  src\services\hidroEngine.js:489:
+  src\services\hidroEngine.js:557:      params.C_racional ??
+  src\services\hidroEngine.js:558:      null,
+  src\services\hidroEngine.js:559:    c_en_funcion_cn: {
+> src\services\hidroEngine.js:560:      estado: "pendiente_motor",
+  src\services\hidroEngine.js:561:      criterio:
+  src\services\hidroEngine.js:562:        "Mantener en radar el cálculo del coeficiente C como función del Número de Curva CN."
+  src\services\hidroEngine.js:563:    },
+  src\services\hidroEngine.js:564:    observacion: racionalCompetente
+  src\services\hidroEngine.js:565:      ? "El área de la cuenca está dentro del rango usual de aplicación referencial del Método Racional."
+  src\services\hidroEngine.js:566:      : "Para esta cuenca, por área mayor a 5 km², el Método Racional no se adopta como método principal. Se conserva como contraste."
+  src\services\hidroEngine.js:575:      nombre: nombreCuenca,
+  src\services\hidroEngine.js:576:      punto_control: puntoControl,
+  src\services\hidroEngine.js:577:      area_km2: areaKm2,
+> src\services\hidroEngine.js:578:      pendiente_media_pct: pendienteMediaPct,
+  src\services\hidroEngine.js:579:      estado_tecnico:
+  src\services\hidroEngine.js:580:        params.estado_tecnico?.validacionGeomorfologica ||
+  src\services\hidroEngine.js:581:        params.estado ||
+  src\services\hidroEngine.js:582:        "en_validacion"
+  src\services\hidroEngine.js:583:    },
+  src\services\hidroEngine.js:584:
+  src\services\hidroEngine.js:593:    racional: resumenRacional,
+  src\services\hidroEngine.js:594:
+  src\services\hidroEngine.js:595:    flags: {
+> src\services\hidroEngine.js:596:      ponderacion_idf_formal_pendiente: true,
+> src\services\hidroEngine.js:597:      c_racional_en_funcion_cn_pendiente: true,
+> src\services\hidroEngine.js:598:      tc_adoptado_pendiente: true
+  src\services\hidroEngine.js:599:    },
+  src\services\hidroEngine.js:600:
+  src\services\hidroEngine.js:601:    trazabilidad: {
+  src\services\hidroEngine.js:602:      fuente: "resumenMotorHidrologico",
+  src\services\hidroEngine.js:603:      motor: "hidroEngine.js",
+  src\services\hidroEngine.js:604:      estado: "resumen_consolidado"
+  src\components\ComparadorMultiMetodo.jsx:11:import { conceptuarCuenca } from "../data/clasificacionCuenca";
+  src\components\ComparadorMultiMetodo.jsx:12:
+  src\components\ComparadorMultiMetodo.jsx:13:import {
+> src\components\ComparadorMultiMetodo.jsx:14:  obtenerAuditoriaPendienteTc,
+> src\components\ComparadorMultiMetodo.jsx:15:  obtenerCriterioPendientesAuditoria,
+> src\components\ComparadorMultiMetodo.jsx:16:} from "../data/auditoriaPendientesTc";
+  src\components\ComparadorMultiMetodo.jsx:17:
+  src\components\ComparadorMultiMetodo.jsx:18:
+  src\components\ComparadorMultiMetodo.jsx:19:export default function ComparadorMultiMetodo({ contexto = null }) {
+  src\components\ComparadorMultiMetodo.jsx:20:  const [filtroEstado, setFiltroEstado] = useState("todos");
+  src\components\ComparadorMultiMetodo.jsx:21:  const [filtroTipo, setFiltroTipo] = useState("todos");
+  src\components\ComparadorMultiMetodo.jsx:22:  const contextoBase = contexto || {
+  src\components\ComparadorMultiMetodo.jsx:23:    cuencaNombre: "Quebrada La Iguaná - PC_80",
+  src\components\ComparadorMultiMetodo.jsx:24:    area_km2: 46.8516,
+> src\components\ComparadorMultiMetodo.jsx:25:    pendiente_media_pct: 8.43,
+  src\components\ComparadorMultiMetodo.jsx:26:    CN: 88,
+  src\components\ComparadorMultiMetodo.jsx:27:    metodoIDF: "San Cristóbal",
+  src\components\ComparadorMultiMetodo.jsx:28:    lluvia_efectiva: true,
+  src\components\ComparadorMultiMetodo.jsx:29:  };
+  src\components\ComparadorMultiMetodo.jsx:30:
+  src\components\ComparadorMultiMetodo.jsx:31:  const fuenteContexto = contexto ? "motor HidroFlow" : "contexto base";
+  src\components\ComparadorMultiMetodo.jsx:70:      activos: metodos.filter(
+  src\components\ComparadorMultiMetodo.jsx:71:        (metodo) => metodo.estadoImplementacion === "activo"
+  src\components\ComparadorMultiMetodo.jsx:72:      ).length,
+> src\components\ComparadorMultiMetodo.jsx:73:      pendientes: metodos.filter(
+> src\components\ComparadorMultiMetodo.jsx:74:        (metodo) => metodo.estadoImplementacion === "pendiente"
+  src\components\ComparadorMultiMetodo.jsx:75:      ).length,
+  src\components\ComparadorMultiMetodo.jsx:76:    };
+  src\components\ComparadorMultiMetodo.jsx:77:  }, [metodos]);
+  src\components\ComparadorMultiMetodo.jsx:78:
+  src\components\ComparadorMultiMetodo.jsx:79:  const estilos = {
+  src\components\ComparadorMultiMetodo.jsx:80:    pagina: {
+  src\components\ComparadorMultiMetodo.jsx:251:      color: "#9fffe8",
+  src\components\ComparadorMultiMetodo.jsx:252:    },
+  src\components\ComparadorMultiMetodo.jsx:253:
+> src\components\ComparadorMultiMetodo.jsx:254:    chipPendiente: {
+  src\components\ComparadorMultiMetodo.jsx:255:      border: "1px solid rgba(255, 209, 102, 0.38)",
+  src\components\ComparadorMultiMetodo.jsx:256:      background: "rgba(255, 209, 102, 0.12)",
+  src\components\ComparadorMultiMetodo.jsx:257:      color: "#ffd166",
+  src\components\ComparadorMultiMetodo.jsx:258:    },
+  src\components\ComparadorMultiMetodo.jsx:259:
+  src\components\ComparadorMultiMetodo.jsx:260:    semaforoWrap: {
+  src\components\ComparadorMultiMetodo.jsx:357:      return { ...estilos.chip, ...estilos.chipActivo };
+  src\components\ComparadorMultiMetodo.jsx:358:    }
+  src\components\ComparadorMultiMetodo.jsx:359:
+> src\components\ComparadorMultiMetodo.jsx:360:    if (estado === "pendiente") {
+> src\components\ComparadorMultiMetodo.jsx:361:      return { ...estilos.chip, ...estilos.chipPendiente };
+  src\components\ComparadorMultiMetodo.jsx:362:    }
+  src\components\ComparadorMultiMetodo.jsx:363:
+  src\components\ComparadorMultiMetodo.jsx:364:    return estilos.chip;
+  src\components\ComparadorMultiMetodo.jsx:365:  };
+  src\components\ComparadorMultiMetodo.jsx:366:
+  src\components\ComparadorMultiMetodo.jsx:367:  const estiloSemaforo = (semaforo) => {
+  src\components\ComparadorMultiMetodo.jsx:559:  };
+  src\components\ComparadorMultiMetodo.jsx:560:};
+  src\components\ComparadorMultiMetodo.jsx:561:
+> src\components\ComparadorMultiMetodo.jsx:562:  const obtenerAuditoriaPendienteMetodo = (metodo) => {
+  src\components\ComparadorMultiMetodo.jsx:563:    if (metodo.tipo !== "tc") return null;
+  src\components\ComparadorMultiMetodo.jsx:564:
+> src\components\ComparadorMultiMetodo.jsx:565:    return obtenerAuditoriaPendienteTc(metodo.id);
+  src\components\ComparadorMultiMetodo.jsx:566:  };
+  src\components\ComparadorMultiMetodo.jsx:567:
+  src\components\ComparadorMultiMetodo.jsx:568:  const renderVariablesSalida = (variablesSalida = []) => {
+  src\components\ComparadorMultiMetodo.jsx:569:    if (!Array.isArray(variablesSalida) || variablesSalida.length === 0) {
+  src\components\ComparadorMultiMetodo.jsx:570:      return <span style={estilos.chip}>Tc / Tr</span>;
+  src\components\ComparadorMultiMetodo.jsx:571:    }
+  src\components\ComparadorMultiMetodo.jsx:595:                <th style={estilos.th}>Requiere</th>
+  src\components\ComparadorMultiMetodo.jsx:596:                <th style={estilos.th}>Salida</th>
+  src\components\ComparadorMultiMetodo.jsx:597:                <th style={estilos.th}>Tc calculado (min)</th>
+> src\components\ComparadorMultiMetodo.jsx:598:                <th style={estilos.th}>Pendiente auditada</th>
+  src\components\ComparadorMultiMetodo.jsx:599:                <th style={estilos.th}>Qp</th>
+  src\components\ComparadorMultiMetodo.jsx:600:                <th style={estilos.th}>Tp</th>
+  src\components\ComparadorMultiMetodo.jsx:601:                <th style={estilos.th}>Volumen</th>
+  src\components\ComparadorMultiMetodo.jsx:602:                <th style={estilos.th}>Observación técnica</th>
+  src\components\ComparadorMultiMetodo.jsx:603:              </tr>
+  src\components\ComparadorMultiMetodo.jsx:604:            </thead>
+  src\components\ComparadorMultiMetodo.jsx:654:
+  src\components\ComparadorMultiMetodo.jsx:655:                 <td style={estilos.td}>
+  src\components\ComparadorMultiMetodo.jsx:656:  {(() => {
+> src\components\ComparadorMultiMetodo.jsx:657:    const auditoriaPendiente = obtenerAuditoriaPendienteMetodo(metodo);
+  src\components\ComparadorMultiMetodo.jsx:658:
+> src\components\ComparadorMultiMetodo.jsx:659:    if (!auditoriaPendiente) {
+  src\components\ComparadorMultiMetodo.jsx:660:      return <span style={estilos.chip}>—</span>;
+  src\components\ComparadorMultiMetodo.jsx:661:    }
+  src\components\ComparadorMultiMetodo.jsx:662:
+  src\components\ComparadorMultiMetodo.jsx:663:    return (
+  src\components\ComparadorMultiMetodo.jsx:664:      <div>
+  src\components\ComparadorMultiMetodo.jsx:665:        <span style={estilos.chip}>
+> src\components\ComparadorMultiMetodo.jsx:666:          {auditoriaPendiente.pendienteEsperada}
+  src\components\ComparadorMultiMetodo.jsx:667:        </span>
+  src\components\ComparadorMultiMetodo.jsx:668:
+  src\components\ComparadorMultiMetodo.jsx:669:        <div
+  src\components\ComparadorMultiMetodo.jsx:670:          style={{
+  src\components\ComparadorMultiMetodo.jsx:671:            marginTop: "6px",
+  src\components\ComparadorMultiMetodo.jsx:672:            color: "#88a7bd",
+  src\components\ComparadorMultiMetodo.jsx:674:            lineHeight: 1.45,
+  src\components\ComparadorMultiMetodo.jsx:675:          }}
+  src\components\ComparadorMultiMetodo.jsx:676:        >
+> src\components\ComparadorMultiMetodo.jsx:677:          {auditoriaPendiente.descripcionPendiente}
+  src\components\ComparadorMultiMetodo.jsx:678:        </div>
+  src\components\ComparadorMultiMetodo.jsx:679:      </div>
+  src\components\ComparadorMultiMetodo.jsx:680:    );
+  src\components\ComparadorMultiMetodo.jsx:681:  })()}
+  src\components\ComparadorMultiMetodo.jsx:682:</td>
+  src\components\ComparadorMultiMetodo.jsx:683:
+  src\components\ComparadorMultiMetodo.jsx:844:
+  src\components\ComparadorMultiMetodo.jsx:845:    <div>
+  src\components\ComparadorMultiMetodo.jsx:846:      <strong>Scp cauce principal:</strong>{" "}
+> src\components\ComparadorMultiMetodo.jsx:847:      {Number.isFinite(contextoBase?.pendiente_media_pct)
+> src\components\ComparadorMultiMetodo.jsx:848:        ? `${contextoBase.pendiente_media_pct} %`
+  src\components\ComparadorMultiMetodo.jsx:849:        : "—"}
+  src\components\ComparadorMultiMetodo.jsx:850:    </div>
+  src\components\ComparadorMultiMetodo.jsx:851:
+  src\components\ComparadorMultiMetodo.jsx:852:    <div>
+  src\components\ComparadorMultiMetodo.jsx:853:      <strong>Longitud cauce:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:854:      {Number.isFinite(contextoBase?.longitud_cauce_km)
+  src\components\ComparadorMultiMetodo.jsx:934:    </div>
+  src\components\ComparadorMultiMetodo.jsx:935:
+  src\components\ComparadorMultiMetodo.jsx:936:    <div>
+> src\components\ComparadorMultiMetodo.jsx:937:      <strong>Clasificación por pendiente:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:938:      <div style={{ color: "#ffe7a3", marginTop: "4px", lineHeight: 1.45 }}>
+  src\components\ComparadorMultiMetodo.jsx:939:        Criterio actual basado en Scp mientras se incorpora Sc de cuenca.
+  src\components\ComparadorMultiMetodo.jsx:940:      </div>
+  src\components\ComparadorMultiMetodo.jsx:941:      <span style={{ color: "#38bdf8", fontWeight: 800 }}>
+> src\components\ComparadorMultiMetodo.jsx:942:        {conceptoCuenca.pendiente.etiqueta}
+  src\components\ComparadorMultiMetodo.jsx:943:      </span>
+  src\components\ComparadorMultiMetodo.jsx:944:      <div style={{ color: "#88a7bd", marginTop: "4px", lineHeight: 1.45 }}>
+> src\components\ComparadorMultiMetodo.jsx:945:        {conceptoCuenca.pendiente.descripcion}
+  src\components\ComparadorMultiMetodo.jsx:946:      </div>
+  src\components\ComparadorMultiMetodo.jsx:947:    </div>
+  src\components\ComparadorMultiMetodo.jsx:948:
+  src\components\ComparadorMultiMetodo.jsx:949:    <div>
+  src\components\ComparadorMultiMetodo.jsx:950:      <strong>Forma hidrológica:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:951:      <span style={{ color: "#facc15", fontWeight: 800 }}>
+  src\components\ComparadorMultiMetodo.jsx:1022:        </div>
+  src\components\ComparadorMultiMetodo.jsx:1023:
+  src\components\ComparadorMultiMetodo.jsx:1024:        <div style={estilos.tarjetaResumen}>
+> src\components\ComparadorMultiMetodo.jsx:1025:          <p style={estilos.numeroResumen}>{conteo.pendientes}</p>
+> src\components\ComparadorMultiMetodo.jsx:1026:          <p style={estilos.etiquetaResumen}>Pendientes</p>
+  src\components\ComparadorMultiMetodo.jsx:1027:        </div>
+  src\components\ComparadorMultiMetodo.jsx:1028:      </section>
+  src\components\ComparadorMultiMetodo.jsx:1029:
+  src\components\ComparadorMultiMetodo.jsx:1030:      <section style={estilos.controles}>
+  src\components\ComparadorMultiMetodo.jsx:1031:        <button
+  src\components\ComparadorMultiMetodo.jsx:1032:          type="button"
+  src\components\ComparadorMultiMetodo.jsx:1046:
+  src\components\ComparadorMultiMetodo.jsx:1047:        <button
+  src\components\ComparadorMultiMetodo.jsx:1048:          type="button"
+> src\components\ComparadorMultiMetodo.jsx:1049:          style={estiloBotonFiltro(filtroEstado === "pendiente")}
+> src\components\ComparadorMultiMetodo.jsx:1050:          onClick={() => setFiltroEstado("pendiente")}
+  src\components\ComparadorMultiMetodo.jsx:1051:        >
+> src\components\ComparadorMultiMetodo.jsx:1052:          Pendientes
+  src\components\ComparadorMultiMetodo.jsx:1053:        </button>
+  src\components\ComparadorMultiMetodo.jsx:1054:
+  src\components\ComparadorMultiMetodo.jsx:1055:        <button
+  src\components\ComparadorMultiMetodo.jsx:1056:          type="button"
+  src\components\ComparadorMultiMetodo.jsx:1057:          style={estiloBotonFiltro(filtroTipo === "todos")}
+  src\components\ComparadorMultiMetodo.jsx:1058:          onClick={() => setFiltroTipo("todos")}
+  src\components\ComparadorMultiMetodo.jsx:1090:          <h3 style={estilos.matrizTitulo}>Competencia</h3>
+  src\components\ComparadorMultiMetodo.jsx:1091:          <p style={estilos.matrizTexto}>
+  src\components\ComparadorMultiMetodo.jsx:1092:            Cada método se clasifica como principal, alterno, referencial,
+> src\components\ComparadorMultiMetodo.jsx:1093:            condicionado o pendiente según escala, insumos y finalidad.
+  src\components\ComparadorMultiMetodo.jsx:1094:          </p>
+  src\components\ComparadorMultiMetodo.jsx:1095:        </article>
+  src\components\ComparadorMultiMetodo.jsx:1096:
+  src\components\ComparadorMultiMetodo.jsx:1097:        <article style={estilos.matrizCard}>
+  src\components\ComparadorMultiMetodo.jsx:1098:          <h3 style={estilos.matrizTitulo}>Trazabilidad</h3>
+  src\components\ComparadorMultiMetodo.jsx:1099:          <p style={estilos.matrizTexto}>
+  src\components\ComparadorMultiMetodo.jsx:1123:    lineHeight: 1.5,
+  src\components\ComparadorMultiMetodo.jsx:1124:  }}
+  src\components\ComparadorMultiMetodo.jsx:1125:>
+> src\components\ComparadorMultiMetodo.jsx:1126:  <strong>Auditoría hidrológica pendiente:</strong> los valores de Tc, Tp,
+  src\components\ComparadorMultiMetodo.jsx:1127:  Qp y Volumen requieren revisión de coherencia antes de adopción técnica.
+  src\components\ComparadorMultiMetodo.jsx:1128:  En particular, debe verificarse la relación Tc vs Tp, las unidades de
+  src\components\ComparadorMultiMetodo.jsx:1129:  Qpico, la integración de volTotal, el paso temporal dtMin y los parámetros
+  src\components\ComparadorMultiMetodo.jsx:1130:  internos de cada hidrograma unitario. Los resultados se muestran como
+  src\components\ComparadorMultiMetodo.jsx:1131:  lectura del motor HidroFlow, no como valores adoptados.
+  src\components\ComparadorMultiMetodo.jsx:1132:</div>
+  src\components\IndiceHidrologico.jsx:33:    // Cuenca
+  src\components\IndiceHidrologico.jsx:34:    cuencaNombre = "Cuenca activa",
+  src\components\IndiceHidrologico.jsx:35:    puntoControl = "PC",
+> src\components\IndiceHidrologico.jsx:36:    pendiente_media_pct = null,
+  src\components\IndiceHidrologico.jsx:37:    estadoTecnico = "En validación",
+  src\components\IndiceHidrologico.jsx:38:
+  src\components\IndiceHidrologico.jsx:39:    // IDF futura
+> src\components\IndiceHidrologico.jsx:40:    referenciaIDFPendiente = [],
+> src\components\IndiceHidrologico.jsx:41:    ponderacionIDFPendiente = false,
+  src\components\IndiceHidrologico.jsx:42:
+  src\components\IndiceHidrologico.jsx:43:    // Tc
+  src\components\IndiceHidrologico.jsx:44:    tc = null,
+  src\components\IndiceHidrologico.jsx:45:    tc_sugerido_min = null,
+  src\components\IndiceHidrologico.jsx:46:    tc_metodos = [],
+  src\components\IndiceHidrologico.jsx:47:    tc_resumen = null,
+  src\components\IndiceHidrologico.jsx:182:    ? estacionesAdoptadas
+  src\components\IndiceHidrologico.jsx:183:    : [];
+  src\components\IndiceHidrologico.jsx:184:
+> src\components\IndiceHidrologico.jsx:185:  const referenciasPendientes = Array.isArray(referenciaIDFPendiente)
+> src\components\IndiceHidrologico.jsx:186:    ? referenciaIDFPendiente
+  src\components\IndiceHidrologico.jsx:187:    : [];
+  src\components\IndiceHidrologico.jsx:188:
+  src\components\IndiceHidrologico.jsx:189:  const metodosTc = Array.isArray(tc_metodos)
+  src\components\IndiceHidrologico.jsx:190:    ? tc_metodos
+  src\components\IndiceHidrologico.jsx:191:    : Array.isArray(tc?.metodos)
+  src\components\IndiceHidrologico.jsx:192:    ? tc.metodos
+  src\components\IndiceHidrologico.jsx:418:        </div>
+  src\components\IndiceHidrologico.jsx:419:
+  src\components\IndiceHidrologico.jsx:420:        <div style={estilos.dato}>
+> src\components\IndiceHidrologico.jsx:421:          <span style={estilos.label}>Pendiente media</span>
+  src\components\IndiceHidrologico.jsx:422:          <span style={estilos.value}>
+> src\components\IndiceHidrologico.jsx:423:            {formatNumero(pendiente_media_pct, 2)} %
+  src\components\IndiceHidrologico.jsx:424:          </span>
+  src\components\IndiceHidrologico.jsx:425:        </div>
+  src\components\IndiceHidrologico.jsx:426:
+  src\components\IndiceHidrologico.jsx:427:        <div style={estilos.chipRow}>
+  src\components\IndiceHidrologico.jsx:428:          <span style={{ ...estilos.chip, ...estilos.chipOk }}>
+  src\components\IndiceHidrologico.jsx:429:            Geometría validada
+  src\components\IndiceHidrologico.jsx:458:          <p style={estilos.texto}>—</p>
+  src\components\IndiceHidrologico.jsx:459:        )}
+  src\components\IndiceHidrologico.jsx:460:
+> src\components\IndiceHidrologico.jsx:461:        {ponderacionIDFPendiente && (
+  src\components\IndiceHidrologico.jsx:462:          <>
+  src\components\IndiceHidrologico.jsx:463:            <div style={estilos.separator} />
+  src\components\IndiceHidrologico.jsx:464:
+  src\components\IndiceHidrologico.jsx:465:            <p style={estilos.muted}>
+> src\components\IndiceHidrologico.jsx:466:              Ponderación IDF multiestación pendiente de cálculo formal.
+  src\components\IndiceHidrologico.jsx:467:            </p>
+  src\components\IndiceHidrologico.jsx:468:
+  src\components\IndiceHidrologico.jsx:469:            <div style={estilos.chipRow}>
+  src\components\IndiceHidrologico.jsx:470:              <span style={{ ...estilos.chip, ...estilos.chipWarn }}>
+> src\components\IndiceHidrologico.jsx:471:                IDW / Thiessen / altitud · pendiente
+  src\components\IndiceHidrologico.jsx:472:              </span>
+  src\components\IndiceHidrologico.jsx:473:            </div>
+  src\components\IndiceHidrologico.jsx:474:          </>
+  src\components\IndiceHidrologico.jsx:475:        )}
+  src\components\IndiceHidrologico.jsx:476:
+> src\components\IndiceHidrologico.jsx:477:        {referenciasPendientes.length > 0 && (
+  src\components\IndiceHidrologico.jsx:478:          <>
+  src\components\IndiceHidrologico.jsx:479:            <div style={estilos.separator} />
+  src\components\IndiceHidrologico.jsx:480:            <p style={estilos.muted}>
+  src\components\IndiceHidrologico.jsx:481:              Referencias externas registradas, no operativas:
+  src\components\IndiceHidrologico.jsx:482:            </p>
+  src\components\IndiceHidrologico.jsx:483:            <div style={estilos.chipRow}>
+> src\components\IndiceHidrologico.jsx:484:              {referenciasPendientes.map((ref, i) => (
+  src\components\IndiceHidrologico.jsx:485:                <span
+  src\components\IndiceHidrologico.jsx:486:                  key={`${ref.nombre || ref.id || "ref"}-${i}`}
+  src\components\IndiceHidrologico.jsx:487:                  style={{ ...estilos.chip, ...estilos.chipWarn }}
+  src\components\IndiceHidrologico.jsx:488:                >
+  src\components\IndiceHidrologico.jsx:489:                  {ref.nombre || ref.id} · no operativa
+  src\components\IndiceHidrologico.jsx:490:                </span>
+  src\components\IndiceHidrologico.jsx:626:
+  src\components\IndiceHidrologico.jsx:627:        <p style={estilos.muted}>
+  src\components\IndiceHidrologico.jsx:628:          El Tc sugerido corresponde al resumen estadístico del motor. El Tc
+> src\components\IndiceHidrologico.jsx:629:          adoptado definitivo queda pendiente de criterio técnico.
+  src\components\IndiceHidrologico.jsx:630:        </p>
+  src\components\IndiceHidrologico.jsx:631:
+  src\components\IndiceHidrologico.jsx:632:        <div style={estilos.chipRow}>
+  src\components\IndiceHidrologico.jsx:633:          {metodosTc.length > 0 ? (
+  src\components\IndiceHidrologico.jsx:634:            metodosTc.map((m, i) => (
+  src\components\IndiceHidrologico.jsx:635:              <span key={`${m.m || "tc"}-${i}`} style={estilos.chip}>
+  src\components\IndiceHidrologico.jsx:752:        <div style={estilos.dato}>
+  src\components\IndiceHidrologico.jsx:753:          <span style={estilos.label}>Coeficiente C</span>
+  src\components\IndiceHidrologico.jsx:754:          <span style={estilos.value}>
+> src\components\IndiceHidrologico.jsx:755:            {C !== null && C !== undefined ? formatNumero(C, 2) : "Pendiente"}
+  src\components\IndiceHidrologico.jsx:756:          </span>
+  src\components\IndiceHidrologico.jsx:757:        </div>
+  src\components\IndiceHidrologico.jsx:758:
+  src\components\IndiceHidrologico.jsx:759:        <p style={estilos.muted}>
+  src\components\IndiceHidrologico.jsx:760:          Para La Iguaná PC_80, el Método Racional se conserva como contraste
+  src\components\IndiceHidrologico.jsx:761:          referencial. El cálculo de C en función del CN queda en radar para el
+  src\components\IndiceHidrologico.jsx:764:
+  src\components\IndiceHidrologico.jsx:765:        <div style={estilos.chipRow}>
+  src\components\IndiceHidrologico.jsx:766:          <span style={{ ...estilos.chip, ...estilos.chipWarn }}>
+> src\components\IndiceHidrologico.jsx:767:            C = f(CN) · pendiente
+  src\components\IndiceHidrologico.jsx:768:          </span>
+  src\components\IndiceHidrologico.jsx:769:          <span style={estilos.chip}>Contraste</span>
+  src\components\IndiceHidrologico.jsx:770:        </div>
+  src\components\IndiceHidrologico.jsx:771:
+  src\components\IndiceHidrologico.jsx:772:        <button style={estilos.button} onClick={() => goToTab("racional")}>
+  src\components\IndiceHidrologico.jsx:773:          Ver método racional
+
+
+
+----- PATRON: slope -----
+
+
+----- PATRON: Scp -----
+
+  src\components\ComparadorMultiMetodo.jsx:843:    </div>
+  src\components\ComparadorMultiMetodo.jsx:844:
+  src\components\ComparadorMultiMetodo.jsx:845:    <div>
+> src\components\ComparadorMultiMetodo.jsx:846:      <strong>Scp cauce principal:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:847:      {Number.isFinite(contextoBase?.pendiente_media_pct)
+  src\components\ComparadorMultiMetodo.jsx:848:        ? `${contextoBase.pendiente_media_pct} %`
+  src\components\ComparadorMultiMetodo.jsx:849:        : "—"}
+  src\components\ComparadorMultiMetodo.jsx:850:    </div>
+  src\components\ComparadorMultiMetodo.jsx:851:
+  src\components\ComparadorMultiMetodo.jsx:852:    <div>
+  src\components\ComparadorMultiMetodo.jsx:936:    <div>
+  src\components\ComparadorMultiMetodo.jsx:937:      <strong>Clasificación por pendiente:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:938:      <div style={{ color: "#ffe7a3", marginTop: "4px", lineHeight: 1.45 }}>
+> src\components\ComparadorMultiMetodo.jsx:939:        Criterio actual basado en Scp mientras se incorpora Sc de cuenca.
+  src\components\ComparadorMultiMetodo.jsx:940:      </div>
+  src\components\ComparadorMultiMetodo.jsx:941:      <span style={{ color: "#38bdf8", fontWeight: 800 }}>
+  src\components\ComparadorMultiMetodo.jsx:942:        {conceptoCuenca.pendiente.etiqueta}
+  src\components\ComparadorMultiMetodo.jsx:943:      </span>
+  src\components\ComparadorMultiMetodo.jsx:944:      <div style={{ color: "#88a7bd", marginTop: "4px", lineHeight: 1.45 }}>
+  src\components\ComparadorMultiMetodo.jsx:945:        {conceptoCuenca.pendiente.descripcion}
+
+
+
+----- PATRON: Sc -----
+
+  src\data\cuencasCatalogo.js:1:/**
+> src\data\cuencasCatalogo.js:2: * cuencasCatalogo.js
+  src\data\cuencasCatalogo.js:3: * Catalogo tecnico de cuencas HidroFlow
+  src\data\cuencasCatalogo.js:4: *
+  src\data\cuencasCatalogo.js:5: * Este archivo desacopla los parametros de cuenca del componente HidroFlow.jsx.
+  src\data\cuencasCatalogo.js:6: * No ejecuta calculos. Solo centraliza datos base validados.
+  src\data\cuencasCatalogo.js:7: *
+  src\data\cuencasCatalogo.js:8: * Actualizacion tecnica:
+  src\data\cuencasCatalogo.js:59:      lat: 6.18508333,
+  src\data\cuencasCatalogo.js:60:      lon: -75.65997222,
+  src\data\cuencasCatalogo.js:61:      cota_msnm: 1702,
+> src\data\cuencasCatalogo.js:62:      descripcion: "Punto de salida de la cuenca San Antonio de Prado"
+  src\data\cuencasCatalogo.js:63:    },
+  src\data\cuencasCatalogo.js:64:
+  src\data\cuencasCatalogo.js:65:    geometria: {
+  src\data\cuencasCatalogo.js:66:      area_km2: 2.83,
+  src\data\cuencasCatalogo.js:67:      perimetro_km: 12.04,
+  src\data\cuencasCatalogo.js:68:      longitud_cauce_km: 5.26,
+  src\data\cuencasCatalogo.js:171:
+  src\data\cuencasCatalogo.js:172:    // HidroFlow.jsx todavía lee pendiente_cuenca para:
+  src\data\cuencasCatalogo.js:173:    // 1. Mostrar "Pendiente media" en el módulo Parámetros.
+> src\data\cuencasCatalogo.js:174:    // 2. Calcular el método SCS-Ranser dentro de calcTc().
+  src\data\cuencasCatalogo.js:175:    pendiente_cuenca: 8.43,
+  src\data\cuencasCatalogo.js:176:
+  src\data\cuencasCatalogo.js:177:    // Alias técnico para paneles nuevos y trazabilidad.
+  src\data\cuencasCatalogo.js:178:    pendiente_media: 8.43,
+  src\data\cuencasCatalogo.js:179:
+  src\data\cuencasCatalogo.js:180:    longitud_red: 127.1283,
+  src\data\cuencasCatalogo.js:218:      lat: 6.271785117145225,
+  src\data\cuencasCatalogo.js:219:      lon: -75.59408755595547,
+  src\data\cuencasCatalogo.js:220:      cota_msnm: 1511.36,
+> src\data\cuencasCatalogo.js:221:      descripcion: "Punto de control y salida hidrologica PC_80"
+  src\data\cuencasCatalogo.js:222:    },
+  src\data\cuencasCatalogo.js:223:
+  src\data\cuencasCatalogo.js:224:    geometria: {
+  src\data\cuencasCatalogo.js:225:      area_km2: 46.8516,
+  src\data\cuencasCatalogo.js:226:      perimetro_km: 47.59,
+  src\data\cuencasCatalogo.js:227:      longitud_cauce_km: 15.524,
+  src\data\cuencasCatalogo.js:293:      dt_min: 5,
+  src\data\cuencasCatalogo.js:294:      estado: "pendiente_simulacion",
+  src\data\cuencasCatalogo.js:295:      
+> src\data\cuencasCatalogo.js:296:      precipitacion_efectiva_scs: {
+> src\data\cuencasCatalogo.js:297:        metodo: "SCS-CN",
+> src\data\cuencasCatalogo.js:298:        descripcion:
+> src\data\cuencasCatalogo.js:299:          "Calculo de precipitacion efectiva mediante metodo de infiltracion del SCS, usando Numero de Curva CN ajustado por cobertura, uso del suelo y condicion antecedente de humedad.",
+  src\data\cuencasCatalogo.js:300:        CN_base: 88,
+  src\data\cuencasCatalogo.js:301:        fuente_CN:
+  src\data\cuencasCatalogo.js:302:          "Cobertura y usos del suelo integrados al parametro CN de la cuenca.",
+  src\data\cuencasCatalogo.js:303:        humedad_antecedente: {
+  src\data\cuencasCatalogo.js:304:          fuente: "SIATA",
+  src\data\cuencasCatalogo.js:305:          variable: "AMC",
+  src\data\cuencasCatalogo.js:307:          criterio:
+  src\data\cuencasCatalogo.js:308:            "El CN base debe ajustarse segun condicion antecedente de humedad AMC derivada de informacion SIATA."
+  src\data\cuencasCatalogo.js:309:        },
+> src\data\cuencasCatalogo.js:310:        parametros_scs: {
+  src\data\cuencasCatalogo.js:311:          unidad: "mm",
+  src\data\cuencasCatalogo.js:312:          abstraccion_inicial_lambda: 0.2,
+  src\data\cuencasCatalogo.js:313:          formula_S: "S = (25400 / CN) - 254",
+  src\data\cuencasCatalogo.js:314:          formula_Ia: "Ia = lambda * S",
+  src\data\cuencasCatalogo.js:315:          formula_Pe:
+  src\data\cuencasCatalogo.js:316:            "Pe = ((P - Ia)^2) / (P - Ia + S), si P > Ia; en caso contrario Pe = 0"
+  src\data\cuencasCatalogo.js:327:            id: "tc_cn",
+  src\data\cuencasCatalogo.js:328:            nombre: "Tc = f(CN)",
+  src\data\cuencasCatalogo.js:329:            tipo: "hidrologico",
+> src\data\cuencasCatalogo.js:330:            descripcion:
+  src\data\cuencasCatalogo.js:331:              "Estimacion de tiempo de concentracion condicionada por Numero de Curva, cobertura, uso del suelo y humedad antecedente."
+  src\data\cuencasCatalogo.js:332:          },
+  src\data\cuencasCatalogo.js:333:          {
+  src\data\cuencasCatalogo.js:334:            id: "tc_geometrico",
+  src\data\cuencasCatalogo.js:335:            nombre: "Tc = f(parametros geometricos)",
+  src\data\cuencasCatalogo.js:336:            tipo: "geomorfologico",
+> src\data\cuencasCatalogo.js:337:            descripcion:
+  src\data\cuencasCatalogo.js:338:              "Estimacion de tiempo de concentracion a partir de longitud hidraulica, pendiente, desnivel y parametros geometricos de la cuenca."
+  src\data\cuencasCatalogo.js:339:          }
+  src\data\cuencasCatalogo.js:340:        ],
+  src\data\cuencasCatalogo.js:341:        regla_seleccion_preliminar: {
+  src\data\cuencasCatalogo.js:342:          criterio_base:
+  src\data\cuencasCatalogo.js:343:            "Usar Tc geometrico como valor rector inicial cuando exista eje principal, longitud de cauce, cotas y pendiente media validadas por Modulo 1.",
+  src\services\hidroEngine.js:3: * Motor hidrológico base de HidroFlow
+  src\services\hidroEngine.js:4: *
+  src\services\hidroEngine.js:5: * Fase 1 de modularización:
+> src\services\hidroEngine.js:6: * - Extrae funciones puras CN / AMC / SCS-CN / Tc desde HidroFlow.jsx.
+  src\services\hidroEngine.js:7: * - No contiene componentes React.
+  src\services\hidroEngine.js:8: * - No renderiza interfaz.
+  src\services\hidroEngine.js:9: * - No depende de estilos ni de Recharts.
+  src\services\hidroEngine.js:10: *
+  src\services\hidroEngine.js:11: * Regla Senior:
+  src\services\hidroEngine.js:12: * HidroFlow.jsx debe visualizar y orquestar.
+  src\services\hidroEngine.js:14: */
+  src\services\hidroEngine.js:15:
+  src\services\hidroEngine.js:16:// ─────────────────────────────────────────────────────────────
+> src\services\hidroEngine.js:17:// Constantes SCS-CN
+  src\services\hidroEngine.js:18:// ─────────────────────────────────────────────────────────────
+  src\services\hidroEngine.js:19:
+> src\services\hidroEngine.js:20:export const SCS_RETENCION_MM = 25400;
+> src\services\hidroEngine.js:21:export const SCS_ABSTRACCION_LAMBDA = 0.2;
+  src\services\hidroEngine.js:22:export const CN_MIN = 30;
+  src\services\hidroEngine.js:23:export const CN_MAX = 98;
+  src\services\hidroEngine.js:24:
+  src\services\hidroEngine.js:25:export function limitarNumero(valor, min, max) {
+  src\services\hidroEngine.js:26:  const n = Number(valor);
+  src\services\hidroEngine.js:27:  if (!Number.isFinite(n)) return min;
+  src\services\hidroEngine.js:115:
+  src\services\hidroEngine.js:116:  const informe =
+  src\services\hidroEngine.js:117:    amcActual === "I"
+> src\services\hidroEngine.js:118:      ? "El suelo está sequito. Absorbe más agua. Esperamos menos escorrentía."
+  src\services\hidroEngine.js:119:      : amcActual === "II"
+  src\services\hidroEngine.js:120:      ? "El suelo está normal. Ni muy seco ni saturado. Comportamiento intermedio."
+> src\services\hidroEngine.js:121:      : "El suelo está mojadito/saturado. Absorbe menos. Aumenta la escorrentía.";
+  src\services\hidroEngine.js:122:
+  src\services\hidroEngine.js:123:  const contexto = `HS≈${hs.toFixed(2)} → AMC ${amcActual}`;
+  src\services\hidroEngine.js:124:
+  src\services\hidroEngine.js:125:  return {
+  src\services\hidroEngine.js:126:    amcActual,
+  src\services\hidroEngine.js:127:    amcFuente: "SIATA",
+  src\services\hidroEngine.js:130:}
+  src\services\hidroEngine.js:131:
+  src\services\hidroEngine.js:132:// ─────────────────────────────────────────────────────────────
+> src\services\hidroEngine.js:133:// Retención, abstracción y precipitación efectiva SCS-CN
+  src\services\hidroEngine.js:134:// ─────────────────────────────────────────────────────────────
+  src\services\hidroEngine.js:135:
+> src\services\hidroEngine.js:136:export function calcRetencionSCS(CN) {
+  src\services\hidroEngine.js:137:  const cn = limitarNumero(CN, CN_MIN, CN_MAX);
+> src\services\hidroEngine.js:138:  const S = SCS_RETENCION_MM / cn - 254;
+> src\services\hidroEngine.js:139:  const Ia = SCS_ABSTRACCION_LAMBDA * S;
+  src\services\hidroEngine.js:140:
+  src\services\hidroEngine.js:141:  return {
+  src\services\hidroEngine.js:142:    CN: +cn.toFixed(3),
+  src\services\hidroEngine.js:143:    S: +S.toFixed(6),
+  src\services\hidroEngine.js:144:    Ia: +Ia.toFixed(6),
+> src\services\hidroEngine.js:145:    lambda: SCS_ABSTRACCION_LAMBDA
+  src\services\hidroEngine.js:146:  };
+  src\services\hidroEngine.js:147:}
+  src\services\hidroEngine.js:148:
+  src\services\hidroEngine.js:149:/**
+> src\services\hidroEngine.js:150: * Lluvia efectiva acumulada Pe(t) mediante método SCS-CN.
+  src\services\hidroEngine.js:151: *
+  src\services\hidroEngine.js:152: * Entrada:
+  src\services\hidroEngine.js:153: * - hiet.data con pAcum
+  src\services\hidroEngine.js:154: * - CN efectivo
+  src\services\hidroEngine.js:155: */
+  src\services\hidroEngine.js:156:export function calcLluviaEfectiva(hiet, CN) {
+> src\services\hidroEngine.js:157:  const { S, Ia } = calcRetencionSCS(CN);
+  src\services\hidroEngine.js:158:
+  src\services\hidroEngine.js:159:  const rows = hiet.data.map((r) => {
+  src\services\hidroEngine.js:160:    const P = r.pAcum;
+  src\services\hidroEngine.js:161:    const Pe = P > Ia ? Math.pow(P - Ia, 2) / (P - Ia + S) : 0;
+  src\services\hidroEngine.js:162:
+  src\services\hidroEngine.js:163:    return {
+  src\services\hidroEngine.js:203:  const Sf =
+  src\services\hidroEngine.js:204:    (p.cota_mayor_cauce - p.cota_menor_cauce) / (L * 3280.84);
+  src\services\hidroEngine.js:205:
+> src\services\hidroEngine.js:206:  const Ss = SCS_RETENCION_MM / p.CN - 254;
+  src\services\hidroEngine.js:207:
+  src\services\hidroEngine.js:208:  return [
+  src\services\hidroEngine.js:209:    {
+  src\services\hidroEngine.js:210:      m: "Témez (1978)",
+  src\services\hidroEngine.js:211:      h: 0.3 * Math.pow(L / Math.pow(So / 1000, 0.25), 0.76)
+  src\services\hidroEngine.js:212:    },
+  src\services\hidroEngine.js:229:        (0.8 * Math.sqrt(p.cota_max - p.cota_min))
+  src\services\hidroEngine.js:230:    },
+  src\services\hidroEngine.js:231:    {
+> src\services\hidroEngine.js:232:      m: "SCS-Ranser (1958)",
+  src\services\hidroEngine.js:233:      h:
+  src\services\hidroEngine.js:234:        (Math.pow(L * 1000, 0.8) * Math.pow(Ss + 1, 0.7)) /
+  src\services\hidroEngine.js:235:        (4655 * Math.pow(Sp, 0.5))
+  src\services\hidroEngine.js:236:    },
+  src\services\hidroEngine.js:237:    {
+  src\services\hidroEngine.js:238:      m: "Pérez-Montg. (1985)",
+  src\services\hidroEngine.js:295: * - IDF adoptada
+  src\services\hidroEngine.js:296: * - CN base / CN efectivo
+  src\services\hidroEngine.js:297: * - AMC
+> src\services\hidroEngine.js:298: * - S e Ia del método SCS-CN
+  src\services\hidroEngine.js:299: * - Tiempo de concentración por métodos
+  src\services\hidroEngine.js:300: * - Resumen estadístico de Tc
+  src\services\hidroEngine.js:301: * - Periodos de retorno activos
+  src\services\hidroEngine.js:302: * - Criterio de competencia del Método Racional
+  src\services\hidroEngine.js:303: *
+  src\services\hidroEngine.js:304: * Regla Senior:
+  src\services\hidroEngine.js:419:    cnBase: CNbase
+  src\services\hidroEngine.js:420:  });
+  src\services\hidroEngine.js:421:
+> src\services\hidroEngine.js:422:  const retencion = calcRetencionSCS(CNefectivo);
+  src\services\hidroEngine.js:423:
+  src\services\hidroEngine.js:424:  const resumenCN = {
+  src\services\hidroEngine.js:425:    CN_base: CNbase,
+  src\services\hidroEngine.js:426:    CN_condicion_base:
+  src\services\hidroEngine.js:427:      hidrologia.CN_condicion_base ||
+  src\services\hidroEngine.js:428:      "CNII",
+  src\services\hidroEngine.js:432:    S_mm: retencion.S,
+  src\services\hidroEngine.js:433:    Ia_mm: retencion.Ia,
+  src\services\hidroEngine.js:434:    lambda: retencion.lambda,
+> src\services\hidroEngine.js:435:    metodo: "SCS-CN",
+  src\services\hidroEngine.js:436:    observacion:
+  src\services\hidroEngine.js:437:      "CN efectivo calculado con ajuste AMC e impermeabilidad cuando existan insumos dinámicos."
+  src\services\hidroEngine.js:438:  };
+  src\services\hidroEngine.js:439:
+  src\services\hidroEngine.js:440:  // ------------------------------------------------------------
+  src\services\hidroEngine.js:441:  // 4. Tiempo de concentración Tc
+  src\services\hidroEngine.js:553:      ? "alta"
+  src\services\hidroEngine.js:554:      : "baja_no_principal",
+  src\services\hidroEngine.js:555:    C:
+> src\services\hidroEngine.js:556:      hidrologia.coeficiente_escorrentia ??
+  src\services\hidroEngine.js:557:      params.C_racional ??
+  src\services\hidroEngine.js:558:      null,
+  src\services\hidroEngine.js:559:    c_en_funcion_cn: {
+  src\services\hidroEngine.js:560:      estado: "pendiente_motor",
+  src\services\hidroEngine.js:561:      criterio:
+  src\services\hidroEngine.js:562:        "Mantener en radar el cálculo del coeficiente C como función del Número de Curva CN."
+  src\components\ComparadorMultiMetodo.jsx:2:
+  src\components\ComparadorMultiMetodo.jsx:3:import {
+  src\components\ComparadorMultiMetodo.jsx:4:  resumenComparadorCatalogo,
+> src\components\ComparadorMultiMetodo.jsx:5:} from "../data/metodosComparadorCatalogo";
+  src\components\ComparadorMultiMetodo.jsx:6:
+  src\components\ComparadorMultiMetodo.jsx:7:import {
+  src\components\ComparadorMultiMetodo.jsx:8:  evaluarCompetenciaComparador,
+  src\components\ComparadorMultiMetodo.jsx:9:} from "../data/matrizCompetenciaComparador";
+  src\components\ComparadorMultiMetodo.jsx:10:
+  src\components\ComparadorMultiMetodo.jsx:11:import { conceptuarCuenca } from "../data/clasificacionCuenca";
+  src\components\ComparadorMultiMetodo.jsx:591:                <th style={estilos.th}>Método</th>
+  src\components\ComparadorMultiMetodo.jsx:592:                <th style={estilos.th}>Estado</th>
+  src\components\ComparadorMultiMetodo.jsx:593:                <th style={estilos.th}>Competencia</th>
+> src\components\ComparadorMultiMetodo.jsx:594:                <th style={estilos.th}>Escala</th>
+  src\components\ComparadorMultiMetodo.jsx:595:                <th style={estilos.th}>Requiere</th>
+  src\components\ComparadorMultiMetodo.jsx:596:                <th style={estilos.th}>Salida</th>
+  src\components\ComparadorMultiMetodo.jsx:597:                <th style={estilos.th}>Tc calculado (min)</th>
+  src\components\ComparadorMultiMetodo.jsx:598:                <th style={estilos.th}>Pendiente auditada</th>
+  src\components\ComparadorMultiMetodo.jsx:599:                <th style={estilos.th}>Qp</th>
+  src\components\ComparadorMultiMetodo.jsx:600:                <th style={estilos.th}>Tp</th>
+  src\components\ComparadorMultiMetodo.jsx:609:                  <td style={estilos.td}>
+  src\components\ComparadorMultiMetodo.jsx:610:                    <div style={estilos.nombreMetodo}>{metodo.nombre}</div>
+  src\components\ComparadorMultiMetodo.jsx:611:                    <div style={{ color: "#88a7bd", marginTop: "4px" }}>
+> src\components\ComparadorMultiMetodo.jsx:612:                      {metodo.descripcion}
+  src\components\ComparadorMultiMetodo.jsx:613:                    </div>
+  src\components\ComparadorMultiMetodo.jsx:614:                  </td>
+  src\components\ComparadorMultiMetodo.jsx:615:
+  src\components\ComparadorMultiMetodo.jsx:616:                  <td style={estilos.td}>
+  src\components\ComparadorMultiMetodo.jsx:617:                    <span style={estiloChipEstado(metodo.estadoImplementacion)}>
+  src\components\ComparadorMultiMetodo.jsx:618:                      {metodo.estadoImplementacion}
+  src\components\ComparadorMultiMetodo.jsx:628:                   </div>
+  src\components\ComparadorMultiMetodo.jsx:629:                  </td>
+  src\components\ComparadorMultiMetodo.jsx:630:
+> src\components\ComparadorMultiMetodo.jsx:631:                  <td style={estilos.td}>{metodo.escala}</td>
+  src\components\ComparadorMultiMetodo.jsx:632:
+  src\components\ComparadorMultiMetodo.jsx:633:                  <td style={estilos.td}>{renderRequiere(metodo.requiere)}</td>
+  src\components\ComparadorMultiMetodo.jsx:634:
+  src\components\ComparadorMultiMetodo.jsx:635:                  <td style={estilos.td}>
+  src\components\ComparadorMultiMetodo.jsx:636:                    {renderVariablesSalida(metodo.variablesSalida)}
+  src\components\ComparadorMultiMetodo.jsx:637:                  </td>
+  src\components\ComparadorMultiMetodo.jsx:674:            lineHeight: 1.45,
+  src\components\ComparadorMultiMetodo.jsx:675:          }}
+  src\components\ComparadorMultiMetodo.jsx:676:        >
+> src\components\ComparadorMultiMetodo.jsx:677:          {auditoriaPendiente.descripcionPendiente}
+  src\components\ComparadorMultiMetodo.jsx:678:        </div>
+  src\components\ComparadorMultiMetodo.jsx:679:      </div>
+  src\components\ComparadorMultiMetodo.jsx:680:    );
+  src\components\ComparadorMultiMetodo.jsx:681:  })()}
+  src\components\ComparadorMultiMetodo.jsx:682:</td>
+  src\components\ComparadorMultiMetodo.jsx:683:
+  src\components\ComparadorMultiMetodo.jsx:843:    </div>
+  src\components\ComparadorMultiMetodo.jsx:844:
+  src\components\ComparadorMultiMetodo.jsx:845:    <div>
+> src\components\ComparadorMultiMetodo.jsx:846:      <strong>Scp cauce principal:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:847:      {Number.isFinite(contextoBase?.pendiente_media_pct)
+  src\components\ComparadorMultiMetodo.jsx:848:        ? `${contextoBase.pendiente_media_pct} %`
+  src\components\ComparadorMultiMetodo.jsx:849:        : "—"}
+  src\components\ComparadorMultiMetodo.jsx:850:    </div>
+  src\components\ComparadorMultiMetodo.jsx:851:
+  src\components\ComparadorMultiMetodo.jsx:852:    <div>
+  src\components\ComparadorMultiMetodo.jsx:924:    }}
+  src\components\ComparadorMultiMetodo.jsx:925:  >
+  src\components\ComparadorMultiMetodo.jsx:926:    <div>
+> src\components\ComparadorMultiMetodo.jsx:927:      <strong>Escala por área:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:928:      <span style={{ color: "#22c55e", fontWeight: 800 }}>
+  src\components\ComparadorMultiMetodo.jsx:929:        {conceptoCuenca.area.etiqueta}
+  src\components\ComparadorMultiMetodo.jsx:930:      </span>
+  src\components\ComparadorMultiMetodo.jsx:931:      <div style={{ color: "#88a7bd", marginTop: "4px", lineHeight: 1.45 }}>
+> src\components\ComparadorMultiMetodo.jsx:932:        {conceptoCuenca.area.descripcion}
+  src\components\ComparadorMultiMetodo.jsx:933:      </div>
+  src\components\ComparadorMultiMetodo.jsx:934:    </div>
+  src\components\ComparadorMultiMetodo.jsx:935:
+  src\components\ComparadorMultiMetodo.jsx:936:    <div>
+  src\components\ComparadorMultiMetodo.jsx:937:      <strong>Clasificación por pendiente:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:938:      <div style={{ color: "#ffe7a3", marginTop: "4px", lineHeight: 1.45 }}>
+> src\components\ComparadorMultiMetodo.jsx:939:        Criterio actual basado en Scp mientras se incorpora Sc de cuenca.
+  src\components\ComparadorMultiMetodo.jsx:940:      </div>
+  src\components\ComparadorMultiMetodo.jsx:941:      <span style={{ color: "#38bdf8", fontWeight: 800 }}>
+  src\components\ComparadorMultiMetodo.jsx:942:        {conceptoCuenca.pendiente.etiqueta}
+  src\components\ComparadorMultiMetodo.jsx:943:      </span>
+  src\components\ComparadorMultiMetodo.jsx:944:      <div style={{ color: "#88a7bd", marginTop: "4px", lineHeight: 1.45 }}>
+> src\components\ComparadorMultiMetodo.jsx:945:        {conceptoCuenca.pendiente.descripcion}
+  src\components\ComparadorMultiMetodo.jsx:946:      </div>
+  src\components\ComparadorMultiMetodo.jsx:947:    </div>
+  src\components\ComparadorMultiMetodo.jsx:948:
+  src\components\ComparadorMultiMetodo.jsx:949:    <div>
+  src\components\ComparadorMultiMetodo.jsx:950:      <strong>Forma hidrológica:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:951:      <span style={{ color: "#facc15", fontWeight: 800 }}>
+  src\components\ComparadorMultiMetodo.jsx:952:        {conceptoCuenca.forma.etiqueta}
+  src\components\ComparadorMultiMetodo.jsx:953:      </span>
+  src\components\ComparadorMultiMetodo.jsx:954:      <div style={{ color: "#88a7bd", marginTop: "4px", lineHeight: 1.45 }}>
+> src\components\ComparadorMultiMetodo.jsx:955:        {conceptoCuenca.forma.descripcion}
+  src\components\ComparadorMultiMetodo.jsx:956:      </div>
+  src\components\ComparadorMultiMetodo.jsx:957:    </div>
+  src\components\ComparadorMultiMetodo.jsx:958:  </div>
+  src\components\ComparadorMultiMetodo.jsx:959:
+  src\components\ComparadorMultiMetodo.jsx:960:  {conceptoCuenca.advertencias.length > 0 && (
+  src\components\ComparadorMultiMetodo.jsx:961:    <div
+  src\components\ComparadorMultiMetodo.jsx:1090:          <h3 style={estilos.matrizTitulo}>Competencia</h3>
+  src\components\ComparadorMultiMetodo.jsx:1091:          <p style={estilos.matrizTexto}>
+  src\components\ComparadorMultiMetodo.jsx:1092:            Cada método se clasifica como principal, alterno, referencial,
+> src\components\ComparadorMultiMetodo.jsx:1093:            condicionado o pendiente según escala, insumos y finalidad.
+  src\components\ComparadorMultiMetodo.jsx:1094:          </p>
+  src\components\ComparadorMultiMetodo.jsx:1095:        </article>
+  src\components\ComparadorMultiMetodo.jsx:1096:
+  src\components\ComparadorMultiMetodo.jsx:1097:        <article style={estilos.matrizCard}>
+  src\components\ComparadorMultiMetodo.jsx:1098:          <h3 style={estilos.matrizTitulo}>Trazabilidad</h3>
+  src\components\ComparadorMultiMetodo.jsx:1099:          <p style={estilos.matrizTexto}>
+  src\components\ComparadorMultiMetodo.jsx:1100:            El comparador debe conservar insumos, supuestos, método, resultado,
+> src\components\ComparadorMultiMetodo.jsx:1101:            advertencias y justificación de adopción o descarte.
+  src\components\ComparadorMultiMetodo.jsx:1102:          </p>
+  src\components\ComparadorMultiMetodo.jsx:1103:        </article>
+  src\components\ComparadorMultiMetodo.jsx:1104:      </section>
+  src\components\ComparadorMultiMetodo.jsx:1105:
+  src\components\ComparadorMultiMetodo.jsx:1106:      <div style={estilos.nota}>
+  src\components\ComparadorMultiMetodo.jsx:1107:  <strong>Nota técnica:</strong> Qp, Tp y Volumen son leídos desde el motor
+  src\components\IndiceHidrologico.jsx:17:    metodoIDF = "—",
+  src\components\IndiceHidrologico.jsx:18:    distribucionTemporal = "—",
+  src\components\IndiceHidrologico.jsx:19:
+> src\components\IndiceHidrologico.jsx:20:    // SCS-CN / motor
+  src\components\IndiceHidrologico.jsx:21:    CN = null,
+  src\components\IndiceHidrologico.jsx:22:    CN_base = null,
+  src\components\IndiceHidrologico.jsx:23:    CN_efectivo = null,
+  src\components\IndiceHidrologico.jsx:24:    AMC = "II",
+  src\components\IndiceHidrologico.jsx:25:    S_mm = null,
+  src\components\IndiceHidrologico.jsx:26:    Ia_mm = null,
+  src\components\IndiceHidrologico.jsx:85:      hidrogramas: "hidrogramas",
+  src\components\IndiceHidrologico.jsx:86:      hidrograma_unitario: "hidrogramas",
+  src\components\IndiceHidrologico.jsx:87:      lluvia_efectiva: "hidrogramas",
+> src\components\IndiceHidrologico.jsx:88:      scs_cn: "hidrogramas",
+> src\components\IndiceHidrologico.jsx:89:      scs: "hidrogramas",
+  src\components\IndiceHidrologico.jsx:90:
+  src\components\IndiceHidrologico.jsx:91:      racional: "racional",
+  src\components\IndiceHidrologico.jsx:92:      metodo_racional: "racional",
+  src\components\IndiceHidrologico.jsx:93:      método_racional: "racional",
+  src\components\IndiceHidrologico.jsx:94:      racional_qp: "racional",
+  src\components\IndiceHidrologico.jsx:95:      tc: "racional",
+  src\components\IndiceHidrologico.jsx:166:    const n = Number(peso);
+  src\components\IndiceHidrologico.jsx:167:    if (!Number.isFinite(n)) return "—";
+  src\components\IndiceHidrologico.jsx:168:
+> src\components\IndiceHidrologico.jsx:169:    // Acepta peso en escala 0-1 o 0-100.
+  src\components\IndiceHidrologico.jsx:170:    const pct = n <= 1 ? n * 100 : n;
+  src\components\IndiceHidrologico.jsx:171:    return `${Math.round(pct)} %`;
+  src\components\IndiceHidrologico.jsx:172:  };
+  src\components\IndiceHidrologico.jsx:173:
+  src\components\IndiceHidrologico.jsx:174:  const formatTR = (p) => {
+  src\components\IndiceHidrologico.jsx:175:    if (p?.etiqueta) return p.etiqueta;
+  src\components\IndiceHidrologico.jsx:519:
+  src\components\IndiceHidrologico.jsx:520:      {/* 3. Lluvia efectiva */}
+  src\components\IndiceHidrologico.jsx:521:      <section style={estiloTarjeta("hidrogramas")}>
+> src\components\IndiceHidrologico.jsx:522:        <h3 style={estilos.cardTitle}>③ Lluvia efectiva SCS-CN</h3>
+  src\components\IndiceHidrologico.jsx:523:
+  src\components\IndiceHidrologico.jsx:524:        <div style={estilos.dato}>
+  src\components\IndiceHidrologico.jsx:525:          <span style={estilos.label}>CN base</span>
+  src\components\IndiceHidrologico.jsx:526:          <span style={estilos.value}>
+  src\components\IndiceHidrologico.jsx:527:            {CN_base !== null && CN_base !== undefined
+  src\components\IndiceHidrologico.jsx:528:              ? formatNumero(CN_base, 1)
+  src\components\IndiceHidrologico.jsx:575:        </div>
+  src\components\IndiceHidrologico.jsx:576:
+  src\components\IndiceHidrologico.jsx:577:        <p style={estilos.muted}>
+> src\components\IndiceHidrologico.jsx:578:          Parámetros leídos desde el resumen oficial del motor SCS-CN.
+  src\components\IndiceHidrologico.jsx:579:        </p>
+  src\components\IndiceHidrologico.jsx:580:
+  src\components\IndiceHidrologico.jsx:581:        <div style={estilos.chipRow}>
+> src\components\IndiceHidrologico.jsx:582:          <span style={estilos.chip}>SCS-CN</span>
+  src\components\IndiceHidrologico.jsx:583:          <span style={estilos.chip}>AMC/SIATA</span>
+  src\components\IndiceHidrologico.jsx:584:          <span style={estilos.chip}>S · Ia</span>
+  src\components\IndiceHidrologico.jsx:585:        </div>
+  src\components\IndiceHidrologico.jsx:586:
+  src\components\IndiceHidrologico.jsx:587:        <button style={estiloBoton("hidrogramas")} onClick={() => goToTab("hidro")}>
+  src\components\IndiceHidrologico.jsx:588:          Ver lluvia efectiva Pe(t)
+  src\components\IndiceHidrologico.jsx:642:              <span style={estilos.chip}>Kirpich</span>
+  src\components\IndiceHidrologico.jsx:643:              <span style={estilos.chip}>California</span>
+  src\components\IndiceHidrologico.jsx:644:              <span style={estilos.chip}>Giandotti</span>
+> src\components\IndiceHidrologico.jsx:645:              <span style={estilos.chip}>SCS-Ranser</span>
+  src\components\IndiceHidrologico.jsx:646:              <span style={estilos.chip}>Pérez-Montg.</span>
+  src\components\IndiceHidrologico.jsx:647:            </>
+  src\components\IndiceHidrologico.jsx:648:          )}
+  src\components\IndiceHidrologico.jsx:649:        </div>
+  src\components\IndiceHidrologico.jsx:650:
+  src\components\IndiceHidrologico.jsx:651:        <button style={estiloBoton("racional")} onClick={() => goToTab("racional")}
+  src\components\IndiceHidrologico.jsx:659:        <h3 style={estilos.cardTitle}>⑤ Periodos de retorno</h3>
+  src\components\IndiceHidrologico.jsx:660:
+  src\components\IndiceHidrologico.jsx:661:        <p style={estilos.muted}>
+> src\components\IndiceHidrologico.jsx:662:          Escenarios activos para cálculo hidrológico.
+  src\components\IndiceHidrologico.jsx:663:        </p>
+  src\components\IndiceHidrologico.jsx:664:
+  src\components\IndiceHidrologico.jsx:665:        <div style={estilos.chipRow}>
+  src\components\IndiceHidrologico.jsx:666:          {periodos.length > 0 ? (
+  src\components\IndiceHidrologico.jsx:667:            periodos.map((p, i) => {
+  src\components\IndiceHidrologico.jsx:668:              const tr = p?.tr ?? p;
+  src\components\IndiceHidrologico.jsx:700:        <h3 style={estilos.cardTitle}>⑥ Hidrograma Q(t)</h3>
+  src\components\IndiceHidrologico.jsx:701:
+  src\components\IndiceHidrologico.jsx:702:        <p style={estilos.muted}>
+> src\components\IndiceHidrologico.jsx:703:          Compara la respuesta hidrológica por métodos SCS, Snyder, Clark,
+  src\components\IndiceHidrologico.jsx:704:          Williams & Hann y otros módulos activos.
+  src\components\IndiceHidrologico.jsx:705:        </p>
+  src\components\IndiceHidrologico.jsx:706:
+  src\components\IndiceHidrologico.jsx:707:        <button style={estilos.button} onClick={() => goToTab("hidro")}>
+  src\components\IndiceHidrologico.jsx:708:          Ver hidrogramas
+  src\components\IndiceHidrologico.jsx:709:        </button>
+
+

@@ -1,0 +1,24 @@
+{
+    "fecha_creacion": "2026-05-24 14:14:10",
+    "modo": "transicion_segura",
+    "descripcion": "Configuracion inicial de rutas HidroFlow. No reemplaza rutas operativas hasta validacion final.",
+    "raiz_hidroflow": "D:\\HIDROFLOW",
+    "repositorio_app_nuevo": "D:\\HIDROFLOW\\01_APP\\HIDROFLOW",
+    "repositorio_app_original": "C:\\Users\\User\\Dev\\HIDROFLOW\\HIDROFLOW-main\\HIDROFLOW",
+    "modelo_terreno_actual": "D:\\Distrito_de_Medellin\\Modelo_D_Terreno",
+    "gdb_oficial_actual": "D:\\Distrito_de_Medellin\\Modelo_D_Terreno\\MDT_Terreno_Base\\MDT_Terreno_Base.gdb",
+    "scripts_actuales": "D:\\Distrito_de_Medellin\\Modelo_D_Terreno\\Scripts",
+    "scripts_modulo1_nuevo": "D:\\HIDROFLOW\\03_MODULOS\\M01_Geomorfologia\\scripts",
+    "exportaciones_actuales_iguana": "D:\\Distrito_de_Medellin\\Modelo_D_Terreno\\Exportaciones\\Iguana",
+    "exportaciones_nuevas_iguana": "D:\\HIDROFLOW\\06_EXPORTACIONES\\Iguana",
+    "toolbox_actual_sugerida": "D:\\Distrito_de_Medellin\\Modelo_D_Terreno\\MDT_Terreno_Base\\HidroFlow_Tools.tbx",
+    "toolbox_nueva_sugerida": "D:\\HIDROFLOW\\07_TOOLBOX\\HidroFlow_Tools.tbx",
+    "modulo1_run_actual": "D:\\Distrito_de_Medellin\\Modelo_D_Terreno\\Scripts\\HFGeomorfologia_Modulo1_Run_v1.py",
+    "modulo1_run_nuevo": "D:\\HIDROFLOW\\03_MODULOS\\M01_Geomorfologia\\scripts\\HFGeomorfologia_Modulo1_Run_v1.py",
+    "estado": {
+        "run_v1_probado_hasta_bloque": 18,
+        "migracion_por_copia": true,
+        "rutas_operativas_aun_en_modelo_terreno_actual": true,
+        "no_modificar_run_v1_hasta_validar_config": true
+    }
+}

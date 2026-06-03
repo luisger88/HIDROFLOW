@@ -1,0 +1,1235 @@
+============================================================
+EVIDENCIA OT-0001 - BUSQUEDA CONTROLADA calcTc
+Fecha: 05/30/2026 20:31:36
+Archivos objetivo: src\HidroFlow.jsx
+============================================================
+
+------------------------------------------------------------
+PATRON: function\s+calcTc
+------------------------------------------------------------
+
+------------------------------------------------------------
+PATRON: export\s+function\s+calcTc
+------------------------------------------------------------
+
+------------------------------------------------------------
+PATRON: const\s+calcTc
+------------------------------------------------------------
+
+------------------------------------------------------------
+PATRON: calcTc\s*\(
+------------------------------------------------------------
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 303
+Texto: const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+
+Contexto anterior:
+  });
+}
+
+function buildResumenQ(params, est, dtMin, CNact) {
+Coincidencia:
+  const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+Contexto posterior:
+  const tc_h = tcList[0]?.h || 0.5;
+  const metodos = [
+    { nombre: 'SCS',     make: () => calcHUSCS(params.area, tc_h, dtMin) },
+    { nombre: 'SCS Mod', make: () => calcHUSCS_Mod(params.area, tc_h, dtMin, 2.08) },
+    { nombre: 'Snyder',  make: () => calcHUSnyder(params.area*0.386102, params.longitud_cauce*0.621371, params.longitud_cauce*0.621371*0.35, dtMin) },
+    { nombre: 'W&H',     make: () => calcHUWilliamsHann(params.area, params.longitud_cauce, (params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce, CNact, dtMin) },
+    { nombre: 'Clark',   make: () => calcClarkIUH(params.area, tc_h, dtMin, 1.2) },
+  ];
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1186
+Texto: const tc      = useMemo(() => calcTc(params), [params]);
+
+Contexto anterior:
+}
+
+function ModParams({ params, setParams }) {
+  // Cálculos de Tc y utilidades locales
+Coincidencia:
+  const tc      = useMemo(() => calcTc(params), [params]);
+Contexto posterior:
+  const set     = k => v => setParams(p => ({ ...p, [k]: v }));
+  const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
+  const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
+  
+  // Persistir Tc medio (min) en params para otros módulos (Hietogramas, Hidrogramas)
+  useEffect(() => {
+    if (!isFinite(tcMed) || tcMed <= 0) return;
+
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1414
+Texto: () => calcTc(params).filter(r => isFinite(r.h) && r.h > 0),
+
+Contexto anterior:
+  const A_km2  = Number.isFinite(params?.area) ? params.area : 36.58;
+
+  // === Tc sugerido desde Panel (geomorfología) — informe amigable ===
+  const tcList = useMemo(
+Coincidencia:
+    () => calcTc(params).filter(r => isFinite(r.h) && r.h > 0),
+Contexto posterior:
+    [params]
+  ); // r.min está en minutos
+
+  const Tc_sugerido_min = useMemo(() => {
+    if (!tcList.length) return 120;
+    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+    const mid = Math.floor(s.length / 2);
+    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1910
+Texto: const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+
+Contexto anterior:
+  const [Cp, setCp]       = useState(0.62);    // Snyder
+  const [CpSCSMod, setCpSCSMod] = useState(2.08); // SCS Mod
+
+  // ── Tc, unidades y pendiente
+Coincidencia:
+  const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+Contexto posterior:
+  const tc_h   = tcList[tcSrc]?.h || 0.5;
+  const tc_min = tc_h * 60;
+  
+  const area_mi2 = params.area * 0.386102;
+  const L_mi     = params.longitud_cauce * 0.621371;
+  const S_m_km   = (params.cota_mayor_cauce - params.cota_menor_cauce) / params.longitud_cauce;
+
+  // ── Hietograma (Tr, 3 h de evento, dtMin, EPM_Q1)
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2378
+Texto: const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+
+Contexto anterior:
+  const lluvPost=useMemo(()=>calcLluviaEfectiva(hiet,cnIII_post),[hiet,cnIII_post]);
+  const lluvPre =useMemo(()=>calcLluviaEfectiva(hiet,cnIII_pre),[hiet]);
+
+  // Tc Témez para la cuenca
+Coincidencia:
+  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+Contexto posterior:
+  const tc_h=tcList[0]?.h||0.5;
+  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+
+  // Método hidrograma post-urbano seleccionable
+  const huPost=useMemo(()=>{
+    if(metodoPost==="Clark") return calcClarkIUH(params.area,tc_h,dtMin,1.2);
+    if(metodoPost==="Snyder") return calcHUSnyder(params.area*0.386102,params.longitud_cauce*0.621371,params.longitud_cauce*0.621371*0.35,dtMin);
+    if(metodoPost==="WH") return calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,cnIII_post,dtMin);
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2586
+Texto: const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+
+Contexto anterior:
+// ═══════════════════════════════════════════════════════════════════════════════
+// MÓDULO MÉTODO RACIONAL
+// ═══════════════════════════════════════════════════════════════════════════════
+function ModRacional({params,est,name}){
+Coincidencia:
+  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+Contexto posterior:
+  const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+  const res=useMemo(()=>calcRacional(est,params.area,tc_min,params.CN),[est,params,tc_min]);
+  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+    <SectionHeader icon="◈" title="Método Racional — Q = C·I·A / 3.6" sub="Abstracción SCS · Tc promedio · Comparativa de períodos de retorno" accent={C.gold}/>
+    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:9}}>
+      <Kpi value={tc_min.toFixed(2)+" min"} label="Tc promedio (6 métodos)" accent={C.accent}/>
+      <Kpi value={res.find(r=>r.Tr===25)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=25a" accent={C.gold}/>
+      <Kpi value={res.find(r=>r.Tr===100)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=100a" accent={C.accent3}/>
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 3468
+Texto: tc_metodos: calcTc(params),
+
+Contexto anterior:
+    CN_base: params?.cnBase ?? params?.CN ?? cnBase,
+    CN_efectivo: params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase,
+    AMC: params?.AMC ?? params?.amcActual ?? params?.amc ?? "II",
+
+Coincidencia:
+    tc_metodos: calcTc(params),
+Contexto posterior:
+    
+    lluvia_efectiva: false,
+    hidrogramas: [],
+    hidrograma_principal: null,
+  });
+}, [onContextoComparador, params]);
+  
+  // ────────────────── Defaults AMC / %imperv / CNbase (solo si faltan) ──────────────────
+
+............................................................
+
+
+------------------------------------------------------------
+PATRON: tcList
+------------------------------------------------------------
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 303
+Texto: const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+
+Contexto anterior:
+  });
+}
+
+function buildResumenQ(params, est, dtMin, CNact) {
+Coincidencia:
+  const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+Contexto posterior:
+  const tc_h = tcList[0]?.h || 0.5;
+  const metodos = [
+    { nombre: 'SCS',     make: () => calcHUSCS(params.area, tc_h, dtMin) },
+    { nombre: 'SCS Mod', make: () => calcHUSCS_Mod(params.area, tc_h, dtMin, 2.08) },
+    { nombre: 'Snyder',  make: () => calcHUSnyder(params.area*0.386102, params.longitud_cauce*0.621371, params.longitud_cauce*0.621371*0.35, dtMin) },
+    { nombre: 'W&H',     make: () => calcHUWilliamsHann(params.area, params.longitud_cauce, (params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce, CNact, dtMin) },
+    { nombre: 'Clark',   make: () => calcClarkIUH(params.area, tc_h, dtMin, 1.2) },
+  ];
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 304
+Texto: const tc_h = tcList[0]?.h || 0.5;
+
+Contexto anterior:
+}
+
+function buildResumenQ(params, est, dtMin, CNact) {
+  const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+Coincidencia:
+  const tc_h = tcList[0]?.h || 0.5;
+Contexto posterior:
+  const metodos = [
+    { nombre: 'SCS',     make: () => calcHUSCS(params.area, tc_h, dtMin) },
+    { nombre: 'SCS Mod', make: () => calcHUSCS_Mod(params.area, tc_h, dtMin, 2.08) },
+    { nombre: 'Snyder',  make: () => calcHUSnyder(params.area*0.386102, params.longitud_cauce*0.621371, params.longitud_cauce*0.621371*0.35, dtMin) },
+    { nombre: 'W&H',     make: () => calcHUWilliamsHann(params.area, params.longitud_cauce, (params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce, CNact, dtMin) },
+    { nombre: 'Clark',   make: () => calcClarkIUH(params.area, tc_h, dtMin, 1.2) },
+  ];
+  return metodos.map(m => {
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1413
+Texto: const tcList = useMemo(
+
+Contexto anterior:
+  const dt_min = dtMin;
+  const A_km2  = Number.isFinite(params?.area) ? params.area : 36.58;
+
+  // === Tc sugerido desde Panel (geomorfología) — informe amigable ===
+Coincidencia:
+  const tcList = useMemo(
+Contexto posterior:
+    () => calcTc(params).filter(r => isFinite(r.h) && r.h > 0),
+    [params]
+  ); // r.min está en minutos
+
+  const Tc_sugerido_min = useMemo(() => {
+    if (!tcList.length) return 120;
+    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+    const mid = Math.floor(s.length / 2);
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1419
+Texto: if (!tcList.length) return 120;
+
+Contexto anterior:
+    [params]
+  ); // r.min está en minutos
+
+  const Tc_sugerido_min = useMemo(() => {
+Coincidencia:
+    if (!tcList.length) return 120;
+Contexto posterior:
+    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+    const mid = Math.floor(s.length / 2);
+    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+  }, [tcList]);
+
+  // Override opcional (para análisis)
+  const [usarOverrideTc, setUsarOverrideTc] = useState(false);
+  const [Tc_override_min, setTcOverride]   = useState(Tc_sugerido_min);
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1420
+Texto: const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+
+Contexto anterior:
+  ); // r.min está en minutos
+
+  const Tc_sugerido_min = useMemo(() => {
+    if (!tcList.length) return 120;
+Coincidencia:
+    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+Contexto posterior:
+    const mid = Math.floor(s.length / 2);
+    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+  }, [tcList]);
+
+  // Override opcional (para análisis)
+  const [usarOverrideTc, setUsarOverrideTc] = useState(false);
+  const [Tc_override_min, setTcOverride]   = useState(Tc_sugerido_min);
+
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1423
+Texto: }, [tcList]);
+
+Contexto anterior:
+    if (!tcList.length) return 120;
+    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+    const mid = Math.floor(s.length / 2);
+    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+Coincidencia:
+  }, [tcList]);
+Contexto posterior:
+
+  // Override opcional (para análisis)
+  const [usarOverrideTc, setUsarOverrideTc] = useState(false);
+  const [Tc_override_min, setTcOverride]   = useState(Tc_sugerido_min);
+
+  // Tc efectivo que entra a Q(t)
+  const tc_min = usarOverrideTc
+  ? Tc_override_min 
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1453
+Texto: if (!tcList.length) return "Sin Tc: faltan parámetros geomorfológicos.";
+
+Contexto anterior:
+
+
+  // Informe amigable
+  const infoTc = useMemo(() => {
+Coincidencia:
+    if (!tcList.length) return "Sin Tc: faltan parámetros geomorfológicos.";
+Contexto posterior:
+    const etiquetas = tcList
+      .map(r => `${r.m.split(" ")[0]}: ${r.min.toFixed(1)} min`)
+      .join(" · ");
+    return `Tc sugerido = mediana de ${tcList.length} métodos -> ${Tc_sugerido_min.toFixed(1)} min. [${etiquetas}]`;
+  }, [tcList, Tc_sugerido_min]);
+
+  // === SCS‑CN desde Preliminares + override + AMC auto (SIATA) ===
+  const CN_panel        = Number.isFinite(params?.cnBase) ? params.cnBase : (params.CN ?? 75);
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1454
+Texto: const etiquetas = tcList
+
+Contexto anterior:
+
+  // Informe amigable
+  const infoTc = useMemo(() => {
+    if (!tcList.length) return "Sin Tc: faltan parámetros geomorfológicos.";
+Coincidencia:
+    const etiquetas = tcList
+Contexto posterior:
+      .map(r => `${r.m.split(" ")[0]}: ${r.min.toFixed(1)} min`)
+      .join(" · ");
+    return `Tc sugerido = mediana de ${tcList.length} métodos -> ${Tc_sugerido_min.toFixed(1)} min. [${etiquetas}]`;
+  }, [tcList, Tc_sugerido_min]);
+
+  // === SCS‑CN desde Preliminares + override + AMC auto (SIATA) ===
+  const CN_panel        = Number.isFinite(params?.cnBase) ? params.cnBase : (params.CN ?? 75);
+  const AMC_panel       = params?.amcActual ?? "II"; // "I" | "II" | "III"
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1457
+Texto: return `Tc sugerido = mediana de ${tcList.length} métodos -> ${Tc_sugerido_min.toFixed(1)} min. [${etiquetas}]`;
+
+Contexto anterior:
+    if (!tcList.length) return "Sin Tc: faltan parámetros geomorfológicos.";
+    const etiquetas = tcList
+      .map(r => `${r.m.split(" ")[0]}: ${r.min.toFixed(1)} min`)
+      .join(" · ");
+Coincidencia:
+    return `Tc sugerido = mediana de ${tcList.length} métodos -> ${Tc_sugerido_min.toFixed(1)} min. [${etiquetas}]`;
+Contexto posterior:
+  }, [tcList, Tc_sugerido_min]);
+
+  // === SCS‑CN desde Preliminares + override + AMC auto (SIATA) ===
+  const CN_panel        = Number.isFinite(params?.cnBase) ? params.cnBase : (params.CN ?? 75);
+  const AMC_panel       = params?.amcActual ?? "II"; // "I" | "II" | "III"
+  const pctImperv_panel = Number.isFinite(params?.porcentajeImpermeable) ? params.porcentajeImpermeable : 60;
+
+  // Override SCS‑CN (para análisis)
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1458
+Texto: }, [tcList, Tc_sugerido_min]);
+
+Contexto anterior:
+    const etiquetas = tcList
+      .map(r => `${r.m.split(" ")[0]}: ${r.min.toFixed(1)} min`)
+      .join(" · ");
+    return `Tc sugerido = mediana de ${tcList.length} métodos -> ${Tc_sugerido_min.toFixed(1)} min. [${etiquetas}]`;
+Coincidencia:
+  }, [tcList, Tc_sugerido_min]);
+Contexto posterior:
+
+  // === SCS‑CN desde Preliminares + override + AMC auto (SIATA) ===
+  const CN_panel        = Number.isFinite(params?.cnBase) ? params.cnBase : (params.CN ?? 75);
+  const AMC_panel       = params?.amcActual ?? "II"; // "I" | "II" | "III"
+  const pctImperv_panel = Number.isFinite(params?.porcentajeImpermeable) ? params.porcentajeImpermeable : 60;
+
+  // Override SCS‑CN (para análisis)
+  const [overrideSCS, setOverrideSCS] = useState(false);
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1910
+Texto: const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+
+Contexto anterior:
+  const [Cp, setCp]       = useState(0.62);    // Snyder
+  const [CpSCSMod, setCpSCSMod] = useState(2.08); // SCS Mod
+
+  // ── Tc, unidades y pendiente
+Coincidencia:
+  const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+Contexto posterior:
+  const tc_h   = tcList[tcSrc]?.h || 0.5;
+  const tc_min = tc_h * 60;
+  
+  const area_mi2 = params.area * 0.386102;
+  const L_mi     = params.longitud_cauce * 0.621371;
+  const S_m_km   = (params.cota_mayor_cauce - params.cota_menor_cauce) / params.longitud_cauce;
+
+  // ── Hietograma (Tr, 3 h de evento, dtMin, EPM_Q1)
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1911
+Texto: const tc_h   = tcList[tcSrc]?.h || 0.5;
+
+Contexto anterior:
+  const [CpSCSMod, setCpSCSMod] = useState(2.08); // SCS Mod
+
+  // ── Tc, unidades y pendiente
+  const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+Coincidencia:
+  const tc_h   = tcList[tcSrc]?.h || 0.5;
+Contexto posterior:
+  const tc_min = tc_h * 60;
+  
+  const area_mi2 = params.area * 0.386102;
+  const L_mi     = params.longitud_cauce * 0.621371;
+  const S_m_km   = (params.cota_mayor_cauce - params.cota_menor_cauce) / params.longitud_cauce;
+
+  // ── Hietograma (Tr, 3 h de evento, dtMin, EPM_Q1)
+  const hiet = useMemo(() => calcHietograma(est, Tr, 3, dtMin, "EPM_Q1"), [est, Tr, dtMin]);
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2378
+Texto: const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+
+Contexto anterior:
+  const lluvPost=useMemo(()=>calcLluviaEfectiva(hiet,cnIII_post),[hiet,cnIII_post]);
+  const lluvPre =useMemo(()=>calcLluviaEfectiva(hiet,cnIII_pre),[hiet]);
+
+  // Tc Témez para la cuenca
+Coincidencia:
+  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+Contexto posterior:
+  const tc_h=tcList[0]?.h||0.5;
+  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+
+  // Método hidrograma post-urbano seleccionable
+  const huPost=useMemo(()=>{
+    if(metodoPost==="Clark") return calcClarkIUH(params.area,tc_h,dtMin,1.2);
+    if(metodoPost==="Snyder") return calcHUSnyder(params.area*0.386102,params.longitud_cauce*0.621371,params.longitud_cauce*0.621371*0.35,dtMin);
+    if(metodoPost==="WH") return calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,cnIII_post,dtMin);
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2379
+Texto: const tc_h=tcList[0]?.h||0.5;
+
+Contexto anterior:
+  const lluvPre =useMemo(()=>calcLluviaEfectiva(hiet,cnIII_pre),[hiet]);
+
+  // Tc Témez para la cuenca
+  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+Coincidencia:
+  const tc_h=tcList[0]?.h||0.5;
+Contexto posterior:
+  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+
+  // Método hidrograma post-urbano seleccionable
+  const huPost=useMemo(()=>{
+    if(metodoPost==="Clark") return calcClarkIUH(params.area,tc_h,dtMin,1.2);
+    if(metodoPost==="Snyder") return calcHUSnyder(params.area*0.386102,params.longitud_cauce*0.621371,params.longitud_cauce*0.621371*0.35,dtMin);
+    if(metodoPost==="WH") return calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,cnIII_post,dtMin);
+    return calcHUSCS(params.area,tc_h,dtMin);
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2586
+Texto: const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+
+Contexto anterior:
+// ═══════════════════════════════════════════════════════════════════════════════
+// MÓDULO MÉTODO RACIONAL
+// ═══════════════════════════════════════════════════════════════════════════════
+function ModRacional({params,est,name}){
+Coincidencia:
+  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+Contexto posterior:
+  const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+  const res=useMemo(()=>calcRacional(est,params.area,tc_min,params.CN),[est,params,tc_min]);
+  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+    <SectionHeader icon="◈" title="Método Racional — Q = C·I·A / 3.6" sub="Abstracción SCS · Tc promedio · Comparativa de períodos de retorno" accent={C.gold}/>
+    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:9}}>
+      <Kpi value={tc_min.toFixed(2)+" min"} label="Tc promedio (6 métodos)" accent={C.accent}/>
+      <Kpi value={res.find(r=>r.Tr===25)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=25a" accent={C.gold}/>
+      <Kpi value={res.find(r=>r.Tr===100)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=100a" accent={C.accent3}/>
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2587
+Texto: const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+
+Contexto anterior:
+// MÓDULO MÉTODO RACIONAL
+// ═══════════════════════════════════════════════════════════════════════════════
+function ModRacional({params,est,name}){
+  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+Coincidencia:
+  const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+Contexto posterior:
+  const res=useMemo(()=>calcRacional(est,params.area,tc_min,params.CN),[est,params,tc_min]);
+  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+    <SectionHeader icon="◈" title="Método Racional — Q = C·I·A / 3.6" sub="Abstracción SCS · Tc promedio · Comparativa de períodos de retorno" accent={C.gold}/>
+    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:9}}>
+      <Kpi value={tc_min.toFixed(2)+" min"} label="Tc promedio (6 métodos)" accent={C.accent}/>
+      <Kpi value={res.find(r=>r.Tr===25)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=25a" accent={C.gold}/>
+      <Kpi value={res.find(r=>r.Tr===100)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=100a" accent={C.accent3}/>
+    </div>
+
+............................................................
+
+
+------------------------------------------------------------
+PATRON: Tc sugerido
+------------------------------------------------------------
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1412
+Texto: // === Tc sugerido desde Panel (geomorfología) — informe amigable ===
+
+Contexto anterior:
+  const P_mm  = hiet.data.map((r, i, a) => (i === 0 ? 0 : +(r.pAcum - a[i - 1].pAcum).toFixed(5)));
+  const dt_min = dtMin;
+  const A_km2  = Number.isFinite(params?.area) ? params.area : 36.58;
+
+Coincidencia:
+  // === Tc sugerido desde Panel (geomorfología) — informe amigable ===
+Contexto posterior:
+  const tcList = useMemo(
+    () => calcTc(params).filter(r => isFinite(r.h) && r.h > 0),
+    [params]
+  ); // r.min está en minutos
+
+  const Tc_sugerido_min = useMemo(() => {
+    if (!tcList.length) return 120;
+    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1457
+Texto: return `Tc sugerido = mediana de ${tcList.length} métodos -> ${Tc_sugerido_min.toFixed(1)} min. [${etiquetas}]`;
+
+Contexto anterior:
+    if (!tcList.length) return "Sin Tc: faltan parámetros geomorfológicos.";
+    const etiquetas = tcList
+      .map(r => `${r.m.split(" ")[0]}: ${r.min.toFixed(1)} min`)
+      .join(" · ");
+Coincidencia:
+    return `Tc sugerido = mediana de ${tcList.length} métodos -> ${Tc_sugerido_min.toFixed(1)} min. [${etiquetas}]`;
+Contexto posterior:
+  }, [tcList, Tc_sugerido_min]);
+
+  // === SCS‑CN desde Preliminares + override + AMC auto (SIATA) ===
+  const CN_panel        = Number.isFinite(params?.cnBase) ? params.cnBase : (params.CN ?? 75);
+  const AMC_panel       = params?.amcActual ?? "II"; // "I" | "II" | "III"
+  const pctImperv_panel = Number.isFinite(params?.porcentajeImpermeable) ? params.porcentajeImpermeable : 60;
+
+  // Override SCS‑CN (para análisis)
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1755
+Texto: <Kpi value={`${tc_min.toFixed(1)}`} label="Tc sugerido" accent={C.accent4} />
+
+Contexto anterior:
+                  onChange={e => setTcOverride(+e.target.value)}
+                  style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
+                />
+              ) : (
+Coincidencia:
+                <Kpi value={`${tc_min.toFixed(1)}`} label="Tc sugerido" accent={C.accent4} />
+Contexto posterior:
+              )}
+            </div>
+          </div>
+
+          {/* Informes */}
+          <div style={{ marginTop: 10, fontFamily: 'monospace', fontSize: 11, color: scsAviso.length ? C.rose : C.muted }}>
+            {infoTc}{scsAviso.length ? ` · Aviso: ${scsAviso.join(" · ")}` : ""}
+          </div>
+
+............................................................
+
+
+------------------------------------------------------------
+PATRON: tc_metodos
+------------------------------------------------------------
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 3468
+Texto: tc_metodos: calcTc(params),
+
+Contexto anterior:
+    CN_base: params?.cnBase ?? params?.CN ?? cnBase,
+    CN_efectivo: params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase,
+    AMC: params?.AMC ?? params?.amcActual ?? params?.amc ?? "II",
+
+Coincidencia:
+    tc_metodos: calcTc(params),
+Contexto posterior:
+    
+    lluvia_efectiva: false,
+    hidrogramas: [],
+    hidrograma_principal: null,
+  });
+}, [onContextoComparador, params]);
+  
+  // ────────────────── Defaults AMC / %imperv / CNbase (solo si faltan) ──────────────────
+
+............................................................
+
+
+------------------------------------------------------------
+PATRON: r\.h
+------------------------------------------------------------
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 303
+Texto: const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+
+Contexto anterior:
+  });
+}
+
+function buildResumenQ(params, est, dtMin, CNact) {
+Coincidencia:
+  const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+Contexto posterior:
+  const tc_h = tcList[0]?.h || 0.5;
+  const metodos = [
+    { nombre: 'SCS',     make: () => calcHUSCS(params.area, tc_h, dtMin) },
+    { nombre: 'SCS Mod', make: () => calcHUSCS_Mod(params.area, tc_h, dtMin, 2.08) },
+    { nombre: 'Snyder',  make: () => calcHUSnyder(params.area*0.386102, params.longitud_cauce*0.621371, params.longitud_cauce*0.621371*0.35, dtMin) },
+    { nombre: 'W&H',     make: () => calcHUWilliamsHann(params.area, params.longitud_cauce, (params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce, CNact, dtMin) },
+    { nombre: 'Clark',   make: () => calcClarkIUH(params.area, tc_h, dtMin, 1.2) },
+  ];
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1188
+Texto: const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
+
+Contexto anterior:
+function ModParams({ params, setParams }) {
+  // Cálculos de Tc y utilidades locales
+  const tc      = useMemo(() => calcTc(params), [params]);
+  const set     = k => v => setParams(p => ({ ...p, [k]: v }));
+Coincidencia:
+  const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
+Contexto posterior:
+  const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
+  
+  // Persistir Tc medio (min) en params para otros módulos (Hietogramas, Hidrogramas)
+  useEffect(() => {
+    if (!isFinite(tcMed) || tcMed <= 0) return;
+
+    const tcMedMin = tcMed * 60; // horas → minutos
+
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1189
+Texto: const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
+
+Contexto anterior:
+  // Cálculos de Tc y utilidades locales
+  const tc      = useMemo(() => calcTc(params), [params]);
+  const set     = k => v => setParams(p => ({ ...p, [k]: v }));
+  const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
+Coincidencia:
+  const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
+Contexto posterior:
+  
+  // Persistir Tc medio (min) en params para otros módulos (Hietogramas, Hidrogramas)
+  useEffect(() => {
+    if (!isFinite(tcMed) || tcMed <= 0) return;
+
+    const tcMedMin = tcMed * 60; // horas → minutos
+
+    if (params.tcMedMin === tcMedMin) return;
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1291
+Texto: rows={tc.filter(r => isFinite(r.h) && r.h > 0).map(r => ({
+
+Contexto anterior:
+      {/* ── Tabla de Tiempos de Concentración (6 métodos) ─────────────────────── */}
+      <Card title="Tiempos de Concentración — 6 Métodos" accent={C.teal}>
+        <Tbl
+          headers={["Método", "Tc (h)", "Tc (min)", "Δ vs. media (%)"]}
+Coincidencia:
+          rows={tc.filter(r => isFinite(r.h) && r.h > 0).map(r => ({
+Contexto posterior:
+            M: r.m,
+            H: +r.h.toFixed(4),
+            MIN: +r.min.toFixed(3),
+            DELTA: +((r.h - tcMed) / tcMed * 100).toFixed(1)
+          }))}
+          hiCols={[2]}
+          accent={C.teal}
+        />
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1293
+Texto: H: +r.h.toFixed(4),
+
+Contexto anterior:
+        <Tbl
+          headers={["Método", "Tc (h)", "Tc (min)", "Δ vs. media (%)"]}
+          rows={tc.filter(r => isFinite(r.h) && r.h > 0).map(r => ({
+            M: r.m,
+Coincidencia:
+            H: +r.h.toFixed(4),
+Contexto posterior:
+            MIN: +r.min.toFixed(3),
+            DELTA: +((r.h - tcMed) / tcMed * 100).toFixed(1)
+          }))}
+          hiCols={[2]}
+          accent={C.teal}
+        />
+      </Card>
+
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1295
+Texto: DELTA: +((r.h - tcMed) / tcMed * 100).toFixed(1)
+
+Contexto anterior:
+          rows={tc.filter(r => isFinite(r.h) && r.h > 0).map(r => ({
+            M: r.m,
+            H: +r.h.toFixed(4),
+            MIN: +r.min.toFixed(3),
+Coincidencia:
+            DELTA: +((r.h - tcMed) / tcMed * 100).toFixed(1)
+Contexto posterior:
+          }))}
+          hiCols={[2]}
+          accent={C.teal}
+        />
+      </Card>
+
+    </div>
+  );
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1414
+Texto: () => calcTc(params).filter(r => isFinite(r.h) && r.h > 0),
+
+Contexto anterior:
+  const A_km2  = Number.isFinite(params?.area) ? params.area : 36.58;
+
+  // === Tc sugerido desde Panel (geomorfología) — informe amigable ===
+  const tcList = useMemo(
+Coincidencia:
+    () => calcTc(params).filter(r => isFinite(r.h) && r.h > 0),
+Contexto posterior:
+    [params]
+  ); // r.min está en minutos
+
+  const Tc_sugerido_min = useMemo(() => {
+    if (!tcList.length) return 120;
+    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+    const mid = Math.floor(s.length / 2);
+    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1910
+Texto: const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+
+Contexto anterior:
+  const [Cp, setCp]       = useState(0.62);    // Snyder
+  const [CpSCSMod, setCpSCSMod] = useState(2.08); // SCS Mod
+
+  // ── Tc, unidades y pendiente
+Coincidencia:
+  const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+Contexto posterior:
+  const tc_h   = tcList[tcSrc]?.h || 0.5;
+  const tc_min = tc_h * 60;
+  
+  const area_mi2 = params.area * 0.386102;
+  const L_mi     = params.longitud_cauce * 0.621371;
+  const S_m_km   = (params.cota_mayor_cauce - params.cota_menor_cauce) / params.longitud_cauce;
+
+  // ── Hietograma (Tr, 3 h de evento, dtMin, EPM_Q1)
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2378
+Texto: const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+
+Contexto anterior:
+  const lluvPost=useMemo(()=>calcLluviaEfectiva(hiet,cnIII_post),[hiet,cnIII_post]);
+  const lluvPre =useMemo(()=>calcLluviaEfectiva(hiet,cnIII_pre),[hiet]);
+
+  // Tc Témez para la cuenca
+Coincidencia:
+  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+Contexto posterior:
+  const tc_h=tcList[0]?.h||0.5;
+  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+
+  // Método hidrograma post-urbano seleccionable
+  const huPost=useMemo(()=>{
+    if(metodoPost==="Clark") return calcClarkIUH(params.area,tc_h,dtMin,1.2);
+    if(metodoPost==="Snyder") return calcHUSnyder(params.area*0.386102,params.longitud_cauce*0.621371,params.longitud_cauce*0.621371*0.35,dtMin);
+    if(metodoPost==="WH") return calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,cnIII_post,dtMin);
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2586
+Texto: const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+
+Contexto anterior:
+// ═══════════════════════════════════════════════════════════════════════════════
+// MÓDULO MÉTODO RACIONAL
+// ═══════════════════════════════════════════════════════════════════════════════
+function ModRacional({params,est,name}){
+Coincidencia:
+  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+Contexto posterior:
+  const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+  const res=useMemo(()=>calcRacional(est,params.area,tc_min,params.CN),[est,params,tc_min]);
+  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+    <SectionHeader icon="◈" title="Método Racional — Q = C·I·A / 3.6" sub="Abstracción SCS · Tc promedio · Comparativa de períodos de retorno" accent={C.gold}/>
+    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:9}}>
+      <Kpi value={tc_min.toFixed(2)+" min"} label="Tc promedio (6 métodos)" accent={C.accent}/>
+      <Kpi value={res.find(r=>r.Tr===25)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=25a" accent={C.gold}/>
+      <Kpi value={res.find(r=>r.Tr===100)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=100a" accent={C.accent3}/>
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 3170
+Texto: <Kpi value={`${(serie.reduce((s,r)=>s+r.humSuelo,0)/serie.length).toFixed(2)}`} label="Hum.suelo media" accent={C.rose}/>
+
+Contexto anterior:
+              <Kpi value={`${acumTotal.toFixed(1)} mm`} label="P acumulada" accent={C.accent}/>
+              <Kpi value={`${maxLluvia.toFixed(1)} mm`} label="Pico 15min" accent={C.accent3}/>
+              <Kpi value={`${(maxLluvia*4).toFixed(0)} mm/h`} label="i máx estimada" accent={C.gold}/>
+              <Kpi value={`${serie.filter(r=>r.lluvia>0).length*15} min`} label="Duración evento" accent={C.teal}/>
+Coincidencia:
+              <Kpi value={`${(serie.reduce((s,r)=>s+r.humSuelo,0)/serie.length).toFixed(2)}`} label="Hum.suelo media" accent={C.rose}/>
+Contexto posterior:
+            </div>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+            <Card title="Hum. Suelo + Nivel Cauce" accent={C.gold}>
+              <ResponsiveContainer width="100%" height={110}>
+                <LineChart data={serie} margin={{left:-18,right:8,top:4,bottom:4}}>
+                  <XAxis dataKey="t" hide/>
+                  <YAxis yAxisId="h" domain={[0,0.8]} tick={{fill:C.muted,fontSize:7.5}} width={28}/>
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 3322
+Texto: <div style={{color:r.col,fontWeight:700,marginBottom:3}}>{r.amc} — {r.hs}</div>
+
+Contexto anterior:
+          {amc:"AMC II",hs:"0.25 ≤ HS ≤ 0.45",cn:"CN = CNII",f:"Sin corrección",efecto:"Condición base",col:C.gold},
+          {amc:"AMC III",hs:"HS &gt; 0.45",cn:"CNII → CNIII",f:"23·CNII/(10+0.13·CNII)",efecto:"↑ Escorrentía (saturado)",col:C.rose},
+        ].map(r=>(
+          <div key={r.amc} style={{padding:"7px 10px",borderRadius:7,background:`${r.col}08`,border:`1px solid ${r.col}20`,marginBottom:6}}>
+Coincidencia:
+            <div style={{color:r.col,fontWeight:700,marginBottom:3}}>{r.amc} — {r.hs}</div>
+Contexto posterior:
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:4,fontSize:8}}>
+              <span style={{color:C.muted}}>Ajuste: <span style={{color:C.text}}>{r.cn}</span></span>
+              <span style={{color:C.muted}}>Efecto: <span style={{color:r.col}}>{r.efecto}</span></span>
+            </div>
+          </div>
+        ))}
+        <div style={{marginTop:6,fontSize:8,color:C.muted,background:`${C.border}20`,borderRadius:5,padding:"5px 8px"}}>
+          Hum.suelo actual: <span style={{color:C.gold,fontWeight:700}}>{serie?serie[Math.floor(serie.length/2)]?.humSuelo?.toFixed(3):0}</span> → AMC {serie&&serie[Math.floor(serie.length/2)]?.humSuelo>0.45?"III":serie[Math.floor(serie.length/2)]?.humSuelo>0.25?"II":"I"} para estación seleccionada
+
+............................................................
+
+
+------------------------------------------------------------
+PATRON: r\.m
+------------------------------------------------------------
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 387
+Texto: datos.resumenQ.forEach(r=>rows.push([r.metodo,...TR_LIST.map(t=>r[t]||0)]));
+
+Contexto anterior:
+
+  // Hoja 5: Resumen caudales
+  if(datos.resumenQ){
+    const rows=[["Método","Tr=2.33a","Tr=5a","Tr=10a","Tr=25a","Tr=50a","Tr=100a"]];
+Coincidencia:
+    datos.resumenQ.forEach(r=>rows.push([r.metodo,...TR_LIST.map(t=>r[t]||0)]));
+Contexto posterior:
+    WX.utils.book_append_sheet(wb,WX.utils.aoa_to_sheet(rows),"Resumen_Q");
+  }
+
+  WX.writeFile(wb,`HidroFlow_${datos.nombre_cuenca.replace(/\s/g,"_")}_${datos.Tr}a.xlsx`);
+}
+
+// ─── EXPORTACIÓN PDF (jsPDF + html2canvas) ────────────────────────────────────
+async function exportarPDF(refEl, datos){
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1292
+Texto: M: r.m,
+
+Contexto anterior:
+      <Card title="Tiempos de Concentración — 6 Métodos" accent={C.teal}>
+        <Tbl
+          headers={["Método", "Tc (h)", "Tc (min)", "Δ vs. media (%)"]}
+          rows={tc.filter(r => isFinite(r.h) && r.h > 0).map(r => ({
+Coincidencia:
+            M: r.m,
+Contexto posterior:
+            H: +r.h.toFixed(4),
+            MIN: +r.min.toFixed(3),
+            DELTA: +((r.h - tcMed) / tcMed * 100).toFixed(1)
+          }))}
+          hiCols={[2]}
+          accent={C.teal}
+        />
+      </Card>
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1294
+Texto: MIN: +r.min.toFixed(3),
+
+Contexto anterior:
+          headers={["Método", "Tc (h)", "Tc (min)", "Δ vs. media (%)"]}
+          rows={tc.filter(r => isFinite(r.h) && r.h > 0).map(r => ({
+            M: r.m,
+            H: +r.h.toFixed(4),
+Coincidencia:
+            MIN: +r.min.toFixed(3),
+Contexto posterior:
+            DELTA: +((r.h - tcMed) / tcMed * 100).toFixed(1)
+          }))}
+          hiCols={[2]}
+          accent={C.teal}
+        />
+      </Card>
+
+    </div>
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1416
+Texto: ); // r.min está en minutos
+
+Contexto anterior:
+  // === Tc sugerido desde Panel (geomorfología) — informe amigable ===
+  const tcList = useMemo(
+    () => calcTc(params).filter(r => isFinite(r.h) && r.h > 0),
+    [params]
+Coincidencia:
+  ); // r.min está en minutos
+Contexto posterior:
+
+  const Tc_sugerido_min = useMemo(() => {
+    if (!tcList.length) return 120;
+    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+    const mid = Math.floor(s.length / 2);
+    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+  }, [tcList]);
+
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1420
+Texto: const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+
+Contexto anterior:
+  ); // r.min está en minutos
+
+  const Tc_sugerido_min = useMemo(() => {
+    if (!tcList.length) return 120;
+Coincidencia:
+    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+Contexto posterior:
+    const mid = Math.floor(s.length / 2);
+    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+  }, [tcList]);
+
+  // Override opcional (para análisis)
+  const [usarOverrideTc, setUsarOverrideTc] = useState(false);
+  const [Tc_override_min, setTcOverride]   = useState(Tc_sugerido_min);
+
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 1455
+Texto: .map(r => `${r.m.split(" ")[0]}: ${r.min.toFixed(1)} min`)
+
+Contexto anterior:
+  // Informe amigable
+  const infoTc = useMemo(() => {
+    if (!tcList.length) return "Sin Tc: faltan parámetros geomorfológicos.";
+    const etiquetas = tcList
+Coincidencia:
+      .map(r => `${r.m.split(" ")[0]}: ${r.min.toFixed(1)} min`)
+Contexto posterior:
+      .join(" · ");
+    return `Tc sugerido = mediana de ${tcList.length} métodos -> ${Tc_sugerido_min.toFixed(1)} min. [${etiquetas}]`;
+  }, [tcList, Tc_sugerido_min]);
+
+  // === SCS‑CN desde Preliminares + override + AMC auto (SIATA) ===
+  const CN_panel        = Number.isFinite(params?.cnBase) ? params.cnBase : (params.CN ?? 75);
+  const AMC_panel       = params?.amcActual ?? "II"; // "I" | "II" | "III"
+  const pctImperv_panel = Number.isFinite(params?.porcentajeImpermeable) ? params.porcentajeImpermeable : 60;
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2142
+Texto: if (import.meta.env.DEV) console.log('[HIDRO] etiquetas resumenQ:', (resumenQ ?? []).map(r => r.nombre ?? r.metodo));
+
+Contexto anterior:
+  /* ──────────────────────────────────────────────────────────────
+     DEBUG TEMPORAL: inspeccionar etiquetas de método
+     ────────────────────────────────────────────────────────────── */
+  useEffect(() => {
+Coincidencia:
+    if (import.meta.env.DEV) console.log('[HIDRO] etiquetas resumenQ:', (resumenQ ?? []).map(r => r.nombre ?? r.metodo));
+Contexto posterior:
+  }, [resumenQ]);
+
+  useEffect(() => {
+    if (import.meta.env.DEV) console.log('[HIDRO] etiquetas hidros:', (hidros ?? []).map(h => h.metodo));
+  }, [hidros]);
+
+  /* ──────────────────────────────────────────────────────────────
+     Parche condicional Snyder (cfs → m³/s) y copia segura: hidrosCorr
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2201
+Texto: let rWH = (resumenQ ?? []).find(r => matchWH(r.nombre ?? r.metodo)) || {};
+
+Contexto anterior:
+    if (!s) return false;
+    const t = String(s).toLowerCase().replace(/\s+/g, ' ').trim();
+    return whAliases.some(a => t.includes(a));
+  };
+Coincidencia:
+  let rWH = (resumenQ ?? []).find(r => matchWH(r.nombre ?? r.metodo)) || {};
+Contexto posterior:
+  if (!rWH.Qpico || !rWH.tpico) {
+    const wh = (hidrosCorr ?? []).find(h => matchWH(h.metodo)); // ← usa corregidas
+    if (wh?.qSeries?.length) {
+      const pico = wh.qSeries.reduce((m, p) => (p.Q > m.Q ? p : m), { Q: 0, t: 0 });
+      rWH = { ...(rWH ?? {}), Qpico: rWH.Qpico ?? pico.Q, tpico: rWH.tpico ?? pico.t, nombre: rWH.nombre ?? wh.metodo };
+    }
+  }
+
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2587
+Texto: const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+
+Contexto anterior:
+// MÓDULO MÉTODO RACIONAL
+// ═══════════════════════════════════════════════════════════════════════════════
+function ModRacional({params,est,name}){
+  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+Coincidencia:
+  const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+Contexto posterior:
+  const res=useMemo(()=>calcRacional(est,params.area,tc_min,params.CN),[est,params,tc_min]);
+  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+    <SectionHeader icon="◈" title="Método Racional — Q = C·I·A / 3.6" sub="Abstracción SCS · Tc promedio · Comparativa de períodos de retorno" accent={C.gold}/>
+    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:9}}>
+      <Kpi value={tc_min.toFixed(2)+" min"} label="Tc promedio (6 métodos)" accent={C.accent}/>
+      <Kpi value={res.find(r=>r.Tr===25)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=25a" accent={C.gold}/>
+      <Kpi value={res.find(r=>r.Tr===100)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=100a" accent={C.accent3}/>
+    </div>
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2688
+Texto: const norm=arr=>{const mx=Math.max(...arr),mn=Math.min(...arr);return arr.map(v=>(v-mn)/(mx-mn+0.001));};
+
+Contexto anterior:
+function calcCompuesto(ests,latC,lonC,altC){
+  const d=ests.map(e=>distKm(latC,lonC,e.lat,e.lon));
+  const dA=ests.map(e=>Math.abs(e.alt-altC));
+  const iObs=ests.map(e=>e.I30_obs||60);
+Coincidencia:
+  const norm=arr=>{const mx=Math.max(...arr),mn=Math.min(...arr);return arr.map(v=>(v-mn)/(mx-mn+0.001));};
+Contexto posterior:
+  const wD=norm(d).map(v=>1-v);
+  const wA=norm(dA).map(v=>1-v);
+  const wI=norm(iObs);
+  const wR=ests.map(e=>e.red==="EPM-SIATA"?1:e.red==="SIATA"?0.85:e.red==="IDEAM-SIATA"?0.75:0.6);
+  const s=ests.map((_,i)=>wD[i]*0.40+wA[i]*0.25+wI[i]*0.20+wR[i]*0.15);
+  const sT=s.reduce((a,b)=>a+b,0);
+  return ests.map((e,i)=>({...e,dist:+d[i].toFixed(3),dAlt:+dA[i].toFixed(0),
+    score:+s[i].toFixed(4),pct:+(s[i]/sT*100).toFixed(2),peso:+(s[i]/sT).toFixed(5)
+
+............................................................
+
+
+------------------------------------------------------------
+PATRON: temez
+------------------------------------------------------------
+
+------------------------------------------------------------
+PATRON: témez
+------------------------------------------------------------
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 344
+Texto: ["Tc (Témez)",datos.tc_h*60,"min"],
+
+Contexto anterior:
+    ["Pendiente media cuenca",datos.pendiente_cuenca,"%"],
+    ["Cota máxima",datos.cota_max,"msnm"],
+    ["Cota mínima",datos.cota_min,"msnm"],
+    ["CN (CNII)",datos.CN,""],
+Coincidencia:
+    ["Tc (Témez)",datos.tc_h*60,"min"],
+Contexto posterior:
+    ["Estación IDF",datos.stn,""],
+    ["Tr de diseño",datos.Tr,"años"],
+    ["Duración lluvia",datos.dur_h,"h"],
+    ["Distribución temporal",datos.distType,""],
+    ["Δt cálculo",datos.dt_min,"min"],
+    ["P total diseño",datos.Ptotal,"mm"],
+    ["CN post-urbano (CNIII)",datos.cnPost,""],
+    ["CN pre-urbano (CNIII)",datos.cnPre,""],
+
+............................................................
+
+Archivo: D:\HidroFlow\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Linea: 2377
+Texto: // Tc Témez para la cuenca
+
+Contexto anterior:
+  const hiet=useMemo(()=>calcHietograma(est,Tr,durH,dtMin,distType),[est,Tr,durH,dtMin,distType]);
+  const lluvPost=useMemo(()=>calcLluviaEfectiva(hiet,cnIII_post),[hiet,cnIII_post]);
+  const lluvPre =useMemo(()=>calcLluviaEfectiva(hiet,cnIII_pre),[hiet]);
+
+Coincidencia:
+  // Tc Témez para la cuenca
+Contexto posterior:
+  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+  const tc_h=tcList[0]?.h||0.5;
+  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+
+  // Método hidrograma post-urbano seleccionable
+  const huPost=useMemo(()=>{
+    if(metodoPost==="Clark") return calcClarkIUH(params.area,tc_h,dtMin,1.2);
+    if(metodoPost==="Snyder") return calcHUSnyder(params.area*0.386102,params.longitud_cauce*0.621371,params.longitud_cauce*0.621371*0.35,dtMin);
+
+............................................................
+
+
+------------------------------------------------------------
+PATRON: kirpich
+------------------------------------------------------------
+
+------------------------------------------------------------
+PATRON: giandotti
+------------------------------------------------------------
+
+------------------------------------------------------------
+PATRON: ranser
+------------------------------------------------------------
+

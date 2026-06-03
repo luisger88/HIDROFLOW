@@ -1,0 +1,135 @@
+============================================================
+EVIDENCIA OT-0003A - BLOQUE calcTc(p) EN hidroEngine.js
+Fecha: 05/30/2026 22:25:36
+Archivo objetivo: src\services\hidroEngine.js
+============================================================
+
+
+  src\services\hidroEngine.js:189: * [
+  src\services\hidroEngine.js:190: *   { m: "Témez (1978)", h: ..., min: ... },
+  src\services\hidroEngine.js:191: *   ...
+  src\services\hidroEngine.js:192: * ]
+  src\services\hidroEngine.js:193: */
+> src\services\hidroEngine.js:194:export function calcTc(p) {
+  src\services\hidroEngine.js:195:  const L = p.longitud_cauce;
+  src\services\hidroEngine.js:196:  const A = p.area;
+  src\services\hidroEngine.js:197:  const Sp = p.pendiente_cuenca;
+  src\services\hidroEngine.js:198:
+  src\services\hidroEngine.js:199:  const So =
+  src\services\hidroEngine.js:200:    ((p.cota_mayor_cauce - p.cota_menor_cauce) / (L * 1000)) * 1000;
+  src\services\hidroEngine.js:201:
+  src\services\hidroEngine.js:202:  const Lft = L * 3280.84;
+  src\services\hidroEngine.js:203:  const Sf =
+  src\services\hidroEngine.js:204:    (p.cota_mayor_cauce - p.cota_menor_cauce) / (L * 3280.84);
+  src\services\hidroEngine.js:205:
+  src\services\hidroEngine.js:206:  const Ss = SCS_RETENCION_MM / p.CN - 254;
+  src\services\hidroEngine.js:207:
+  src\services\hidroEngine.js:208:  return [
+  src\services\hidroEngine.js:209:    {
+  src\services\hidroEngine.js:210:      m: "Témez (1978)",
+  src\services\hidroEngine.js:211:      h: 0.3 * Math.pow(L / Math.pow(So / 1000, 0.25), 0.76)
+  src\services\hidroEngine.js:212:    },
+  src\services\hidroEngine.js:213:    {
+  src\services\hidroEngine.js:214:      m: "Kirpich (1940)",
+  src\services\hidroEngine.js:215:      h: (0.0078 * Math.pow(Lft, 0.77) * Math.pow(Sf, -0.385)) / 60
+  src\services\hidroEngine.js:216:    },
+  src\services\hidroEngine.js:217:    {
+  src\services\hidroEngine.js:218:      m: "California (1942)",
+  src\services\hidroEngine.js:219:      h:
+  src\services\hidroEngine.js:220:        (0.0195 *
+  src\services\hidroEngine.js:221:          Math.pow(L * 1000, 0.77) *
+  src\services\hidroEngine.js:222:          Math.pow(So / 1000, -0.385)) /
+  src\services\hidroEngine.js:223:        60
+  src\services\hidroEngine.js:224:    },
+  src\services\hidroEngine.js:225:    {
+  src\services\hidroEngine.js:226:      m: "Giandotti (1934)",
+  src\services\hidroEngine.js:227:      h:
+  src\services\hidroEngine.js:228:        (4 * Math.sqrt(A) + 1.5 * L) /
+  src\services\hidroEngine.js:229:        (0.8 * Math.sqrt(p.cota_max - p.cota_min))
+  src\services\hidroEngine.js:230:    },
+  src\services\hidroEngine.js:231:    {
+  src\services\hidroEngine.js:232:      m: "SCS-Ranser (1958)",
+  src\services\hidroEngine.js:233:      h:
+  src\services\hidroEngine.js:234:        (Math.pow(L * 1000, 0.8) * Math.pow(Ss + 1, 0.7)) /
+  src\services\hidroEngine.js:235:        (4655 * Math.pow(Sp, 0.5))
+  src\services\hidroEngine.js:236:    },
+  src\services\hidroEngine.js:237:    {
+  src\services\hidroEngine.js:238:      m: "Pérez-Montg. (1985)",
+  src\services\hidroEngine.js:239:      h: 0.1039 * Math.pow(L, 0.7) * Math.pow(So, -0.3)
+  src\services\hidroEngine.js:240:    }
+  src\services\hidroEngine.js:241:  ].map((r) => ({
+  src\services\hidroEngine.js:242:    ...r,
+  src\services\hidroEngine.js:243:    min: +(r.h * 60).toFixed(3)
+  src\services\hidroEngine.js:244:  }));
+  src\services\hidroEngine.js:245:}
+  src\services\hidroEngine.js:246:
+  src\services\hidroEngine.js:247:/**
+  src\services\hidroEngine.js:248: * Estadística básica de Tc.
+  src\services\hidroEngine.js:249: * Esta función no decide el Tc adoptado; solo resume.
+  src\services\hidroEngine.js:250: */
+  src\services\hidroEngine.js:251:export function resumirTc(tcList) {
+  src\services\hidroEngine.js:252:  const validos = (tcList || []).filter((r) => Number.isFinite(r.h) && r.h > 0);
+  src\services\hidroEngine.js:253:
+  src\services\hidroEngine.js:254:  if (!validos.length) {
+  src\services\hidroEngine.js:255:    return {
+  src\services\hidroEngine.js:256:      n: 0,
+  src\services\hidroEngine.js:257:      promedio_h: null,
+  src\services\hidroEngine.js:258:      promedio_min: null,
+  src\services\hidroEngine.js:259:      mediana_min: null,
+  src\services\hidroEngine.js:260:      min_min: null,
+  src\services\hidroEngine.js:261:      max_min: null
+  src\services\hidroEngine.js:262:    };
+  src\services\hidroEngine.js:263:  }
+  src\services\hidroEngine.js:264:
+  src\services\hidroEngine.js:265:  const minutos = validos.map((r) => r.min).sort((a, b) => a - b);
+  src\services\hidroEngine.js:266:  const promedioMin =
+  src\services\hidroEngine.js:267:    minutos.reduce((s, v) => s + v, 0) / minutos.length;
+  src\services\hidroEngine.js:268:  const mid = Math.floor(minutos.length / 2);
+  src\services\hidroEngine.js:269:  const medianaMin =
+  src\services\hidroEngine.js:270:    minutos.length % 2
+  src\services\hidroEngine.js:271:      ? minutos[mid]
+  src\services\hidroEngine.js:272:      : (minutos[mid - 1] + minutos[mid]) / 2;
+  src\services\hidroEngine.js:273:
+  src\services\hidroEngine.js:274:  return {
+  src\services\hidroEngine.js:275:    n: validos.length,
+  src\services\hidroEngine.js:276:    promedio_h: +(promedioMin / 60).toFixed(6),
+  src\services\hidroEngine.js:277:    promedio_min: +promedioMin.toFixed(3),
+  src\services\hidroEngine.js:278:    mediana_min: +medianaMin.toFixed(3),
+  src\services\hidroEngine.js:279:    min_min: +Math.min(...minutos).toFixed(3),
+  src\services\hidroEngine.js:280:    max_min: +Math.max(...minutos).toFixed(3)
+  src\services\hidroEngine.js:281:  };
+  src\services\hidroEngine.js:282:}
+  src\services\hidroEngine.js:283:
+  src\services\hidroEngine.js:284:// ─────────────────────────────────────────────────────────────
+  src\services\hidroEngine.js:285:// Resumen técnico consolidado del motor hidrológico
+  src\services\hidroEngine.js:286:// ─────────────────────────────────────────────────────────────
+  src\services\hidroEngine.js:287:
+  src\services\hidroEngine.js:288:/**
+  src\services\hidroEngine.js:289: * resumenMotorHidrologico(params)
+  src\services\hidroEngine.js:290: *
+  src\services\hidroEngine.js:291: * Consolida en un solo objeto los principales indicadores que debe leer
+  src\services\hidroEngine.js:292: * la interfaz técnica de HidroFlow:
+  src\services\hidroEngine.js:293: *
+  src\services\hidroEngine.js:294: * - Cuenca activa
+  src\services\hidroEngine.js:295: * - IDF adoptada
+  src\services\hidroEngine.js:296: * - CN base / CN efectivo
+  src\services\hidroEngine.js:297: * - AMC
+  src\services\hidroEngine.js:298: * - S e Ia del método SCS-CN
+  src\services\hidroEngine.js:299: * - Tiempo de concentración por métodos
+  src\services\hidroEngine.js:300: * - Resumen estadístico de Tc
+  src\services\hidroEngine.js:301: * - Periodos de retorno activos
+  src\services\hidroEngine.js:302: * - Criterio de competencia del Método Racional
+  src\services\hidroEngine.js:303: *
+  src\services\hidroEngine.js:304: * Regla Senior:
+  src\services\hidroEngine.js:305: * Esta función NO renderiza interfaz.
+  src\services\hidroEngine.js:306: * Esta función NO modifica params.
+  src\services\hidroEngine.js:307: * Esta función NO reemplaza los módulos existentes.
+  src\services\hidroEngine.js:308: * Esta función consolida resultados para lectura técnica.
+  src\services\hidroEngine.js:309: */
+  src\services\hidroEngine.js:310:export function resumenMotorHidrologico(params = {}) {
+  src\services\hidroEngine.js:311:  const geometria = params.geometria || {};
+  src\services\hidroEngine.js:312:  const relieve = params.relieve || {};
+  src\services\hidroEngine.js:313:  const hidrologia = params.hidrologia || {};
+  src\services\hidroEngine.js:314:  const idf = params.idf || {};
+
+

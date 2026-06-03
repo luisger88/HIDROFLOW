@@ -1,0 +1,2913 @@
+INVENTARIO HIDROFLOW
+Fecha: 2026-05-24 13:38:15
+Raiz: D:\HIDROFLOW
+====================================================================================================
+
+DIR: D:\HIDROFLOW\00_ADMIN
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_DEM_HIDRO
+Tamano KB: 0
+Modificado: 2026-04-05 00:52:14
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\02_CORE
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\04_GIS
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\05_PROYECTOS
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\06_EXPORTACIONES
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\07_TOOLBOX
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\08_ENV
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\09_LEGACY
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\10_LOGS
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\00_ADMIN\arquitectura
+Tamano KB: 0
+Modificado: 2026-05-24 13:38:15
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\00_ADMIN\bitacora
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\00_ADMIN\control_cambios
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\00_ADMIN\inventarios
+Tamano KB: 0
+Modificado: 2026-05-24 13:38:15
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW
+Tamano KB: 0
+Modificado: 2026-03-31 18:54:44
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE
+Tamano KB: 0
+Modificado: 2026-04-05 00:45:20
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_DEM_HIDRO\01_FILLED
+Tamano KB: 0
+Modificado: 2026-04-03 20:40:19
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_DEM_HIDRO\02_FLOW
+Tamano KB: 0
+Modificado: 2026-04-03 20:40:19
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_DEM_HIDRO\03_STREAMS_RASTER
+Tamano KB: 0
+Modificado: 2026-04-03 14:01:27
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_DEM_HIDRO\04_STREAMS_VECTOR
+Tamano KB: 0
+Modificado: 2026-04-05 11:39:45
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_DEM_HIDRO\99_TMP
+Tamano KB: 0
+Modificado: 2026-04-02 23:37:01
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_DEM_HIDRO\PROJECTS
+Tamano KB: 0
+Modificado: 2026-04-05 22:20:05
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\02_CORE\config
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\02_CORE\logs
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\02_CORE\run
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\02_CORE\utils
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M02_Hidrologia
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\04_GIS\backups
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\04_GIS\gdb
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\04_GIS\proyectos_aprx
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\04_GIS\rasters_base
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\04_GIS\scratch
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\04_GIS\vectores_base
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\05_PROYECTOS\Iguana
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\06_EXPORTACIONES\Iguana
+Tamano KB: 0
+Modificado: 2026-05-23 23:48:06
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\07_TOOLBOX\backups
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\08_ENV\conda
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\08_ENV\node
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\08_ENV\requirements
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\09_LEGACY\modelos_previos
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\09_LEGACY\respaldo_c
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\09_LEGACY\scripts_historicos
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\10_LOGS\auditoria
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\10_LOGS\errores
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\10_LOGS\run
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\01_Mapas
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas
+Tamano KB: 0
+Modificado: 2026-05-24 01:35:05
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\03_Perfiles
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\04_Reportes
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\05_HMS
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.csv
+Tamano KB: 0.04
+Modificado: 2026-05-23 23:48:29
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.csv.xml
+Tamano KB: 4.04
+Modificado: 2026-05-23 23:48:29
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.xlsx
+Tamano KB: 4.88
+Modificado: 2026-05-23 23:48:27
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.csv
+Tamano KB: 0.04
+Modificado: 2026-05-24 01:35:02
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.csv.xml
+Tamano KB: 4.04
+Modificado: 2026-05-24 01:35:02
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.xlsx
+Tamano KB: 4.88
+Modificado: 2026-05-24 01:35:00
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.csv
+Tamano KB: 0.4
+Modificado: 2026-05-23 23:48:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.csv.xml
+Tamano KB: 13.58
+Modificado: 2026-05-23 23:48:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.xlsx
+Tamano KB: 5.24
+Modificado: 2026-05-23 23:48:09
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.csv
+Tamano KB: 0.4
+Modificado: 2026-05-24 01:34:44
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.csv.xml
+Tamano KB: 13.58
+Modificado: 2026-05-24 01:34:44
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.xlsx
+Tamano KB: 5.24
+Modificado: 2026-05-24 01:34:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.csv
+Tamano KB: 0.05
+Modificado: 2026-05-23 23:48:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.csv.xml
+Tamano KB: 4.45
+Modificado: 2026-05-23 23:48:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.xlsx
+Tamano KB: 4.9
+Modificado: 2026-05-23 23:48:29
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.csv
+Tamano KB: 0.05
+Modificado: 2026-05-24 01:35:04
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.csv.xml
+Tamano KB: 4.45
+Modificado: 2026-05-24 01:35:04
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.xlsx
+Tamano KB: 4.9
+Modificado: 2026-05-24 01:35:02
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.csv
+Tamano KB: 0.01
+Modificado: 2026-05-23 23:48:32
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.csv.xml
+Tamano KB: 3.29
+Modificado: 2026-05-23 23:48:32
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.xlsx
+Tamano KB: 4.85
+Modificado: 2026-05-23 23:48:31
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.csv
+Tamano KB: 0.01
+Modificado: 2026-05-24 01:35:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.csv.xml
+Tamano KB: 3.29
+Modificado: 2026-05-24 01:35:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.xlsx
+Tamano KB: 4.85
+Modificado: 2026-05-24 01:35:04
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.csv
+Tamano KB: 705.63
+Modificado: 2026-05-23 23:48:20
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.csv.xml
+Tamano KB: 18.36
+Modificado: 2026-05-23 23:48:20
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.xlsx
+Tamano KB: 424.41
+Modificado: 2026-05-23 23:48:18
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.csv
+Tamano KB: 705.63
+Modificado: 2026-05-24 01:34:54
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.csv.xml
+Tamano KB: 18.36
+Modificado: 2026-05-24 01:34:54
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.xlsx
+Tamano KB: 424.41
+Modificado: 2026-05-24 01:34:52
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.csv
+Tamano KB: 855.97
+Modificado: 2026-05-23 23:48:18
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.csv.xml
+Tamano KB: 25.05
+Modificado: 2026-05-23 23:48:18
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.xlsx
+Tamano KB: 544.3
+Modificado: 2026-05-23 23:48:16
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.csv
+Tamano KB: 855.97
+Modificado: 2026-05-24 01:34:51
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.csv.xml
+Tamano KB: 25.05
+Modificado: 2026-05-24 01:34:51
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.xlsx
+Tamano KB: 544.3
+Modificado: 2026-05-24 01:34:49
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.csv
+Tamano KB: 621.29
+Modificado: 2026-05-23 23:48:23
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.csv.xml
+Tamano KB: 15.13
+Modificado: 2026-05-23 23:48:23
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.xlsx
+Tamano KB: 350.03
+Modificado: 2026-05-23 23:48:21
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.csv
+Tamano KB: 621.29
+Modificado: 2026-05-24 01:34:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.csv.xml
+Tamano KB: 15.13
+Modificado: 2026-05-24 01:34:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.xlsx
+Tamano KB: 350.03
+Modificado: 2026-05-24 01:34:54
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.csv
+Tamano KB: 338.62
+Modificado: 2026-05-23 23:48:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.csv.xml
+Tamano KB: 11.22
+Modificado: 2026-05-23 23:48:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.xlsx
+Tamano KB: 226.64
+Modificado: 2026-05-23 23:48:23
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.csv
+Tamano KB: 338.62
+Modificado: 2026-05-24 01:34:58
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.csv.xml
+Tamano KB: 11.22
+Modificado: 2026-05-24 01:34:58
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.xlsx
+Tamano KB: 226.64
+Modificado: 2026-05-24 01:34:57
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.csv
+Tamano KB: 1.11
+Modificado: 2026-05-23 23:48:27
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.csv.xml
+Tamano KB: 25.24
+Modificado: 2026-05-23 23:48:27
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.xlsx
+Tamano KB: 5.73
+Modificado: 2026-05-23 23:48:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.csv
+Tamano KB: 1.11
+Modificado: 2026-05-24 01:35:00
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.csv.xml
+Tamano KB: 25.24
+Modificado: 2026-05-24 01:35:00
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.xlsx
+Tamano KB: 5.73
+Modificado: 2026-05-24 01:34:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\schema.ini
+Tamano KB: 8.35
+Modificado: 2026-05-24 01:35:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.csv
+Tamano KB: 1.04
+Modificado: 2026-05-23 23:48:15
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.csv.xml
+Tamano KB: 14.96
+Modificado: 2026-05-23 23:48:15
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.xlsx
+Tamano KB: 5.65
+Modificado: 2026-05-23 23:48:13
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.csv
+Tamano KB: 1.04
+Modificado: 2026-05-24 01:34:48
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.csv.xml
+Tamano KB: 14.96
+Modificado: 2026-05-24 01:34:48
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.xlsx
+Tamano KB: 5.65
+Modificado: 2026-05-24 01:34:46
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.csv
+Tamano KB: 0.94
+Modificado: 2026-05-23 23:48:13
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.csv.xml
+Tamano KB: 13.48
+Modificado: 2026-05-23 23:48:13
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.xlsx
+Tamano KB: 5.6
+Modificado: 2026-05-23 23:48:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.csv
+Tamano KB: 0.94
+Modificado: 2026-05-24 01:34:46
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.csv.xml
+Tamano KB: 13.48
+Modificado: 2026-05-24 01:34:46
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.xlsx
+Tamano KB: 5.6
+Modificado: 2026-05-24 01:34:45
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\05_PROYECTOS\Iguana\auditoria
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\05_PROYECTOS\Iguana\gdb
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\05_PROYECTOS\Iguana\hms
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\05_PROYECTOS\Iguana\mapas
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\05_PROYECTOS\Iguana\reportes
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\05_PROYECTOS\Iguana\tablas
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\docs
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\exports
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\legacy
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts
+Tamano KB: 0
+Modificado: 2026-05-24 01:47:43
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\tests
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\toolbox
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M02_Hidrologia\docs
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M02_Hidrologia\exports
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M02_Hidrologia\hms
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M02_Hidrologia\legacy
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M02_Hidrologia\scripts
+Tamano KB: 0
+Modificado: 2026-05-24 13:37:55
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\EjePrincipal_PC_a_Nacimiento.py
+Tamano KB: 4.3
+Modificado: 2026-05-10 18:11:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\generar_eje_principal_iguana.py
+Tamano KB: 5.53
+Modificado: 2026-05-17 01:02:36
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\generar_eje_principal_iguana1.py
+Tamano KB: 5.53
+Modificado: 2026-05-10 14:06:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\generar_eje_principal_y_geomorfologico.py
+Tamano KB: 2.79
+Modificado: 2026-05-17 01:02:36
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologiav1.py
+Tamano KB: 7.93
+Modificado: 2026-05-22 21:44:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologia_Modulo1_Run_v1.py
+Tamano KB: 77.1
+Modificado: 2026-05-24 01:34:07
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologia_Modulo1_v1.py
+Tamano KB: 3.93
+Modificado: 2026-05-23 20:58:35
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologia_Modulo1_v2.py
+Tamano KB: 7.63
+Modificado: 2026-05-24 00:19:02
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\HFPerfilLongitudinalv1.py
+Tamano KB: 9.12
+Modificado: 2026-05-17 21:25:35
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\HF_generar_eje_principal_y_geo_LIMPIO.py
+Tamano KB: 8.87
+Modificado: 2026-05-10 16:36:44
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\recorte_geomorfologico.py
+Tamano KB: 1.74
+Modificado: 2026-05-10 16:42:31
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\Registro_HidroFlow_Modulo1_Geomorfologia.md
+Tamano KB: 16.59
+Modificado: 2026-05-24 01:35:05
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_activos
+Tamano KB: 0
+Modificado: 2026-05-24 01:47:43
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_inventario
+Tamano KB: 0
+Modificado: 2026-05-24 01:47:43
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_legacy
+Tamano KB: 0
+Modificado: 2026-05-24 01:47:43
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_registro
+Tamano KB: 0
+Modificado: 2026-05-24 01:47:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_activos\HFGeomorfologia_Modulo1_Run_v1.py
+Tamano KB: 77.1
+Modificado: 2026-05-24 01:34:07
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_activos\HFGeomorfologia_Modulo1_v1.py
+Tamano KB: 3.93
+Modificado: 2026-05-23 20:58:35
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_activos\HFGeomorfologia_Modulo1_v2.py
+Tamano KB: 7.63
+Modificado: 2026-05-24 00:19:02
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_inventario\Inventario_Scripts_HidroFlow_20260524_014743.txt
+Tamano KB: 2.55
+Modificado: 2026-05-24 01:47:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_legacy\EjePrincipal_PC_a_Nacimiento.py
+Tamano KB: 4.3
+Modificado: 2026-05-10 18:11:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_legacy\generar_eje_principal_iguana.py
+Tamano KB: 5.53
+Modificado: 2026-05-17 01:02:36
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_legacy\generar_eje_principal_iguana1.py
+Tamano KB: 5.53
+Modificado: 2026-05-10 14:06:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_legacy\generar_eje_principal_y_geomorfologico.py
+Tamano KB: 2.79
+Modificado: 2026-05-17 01:02:36
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_legacy\HFGeomorfologiav1.py
+Tamano KB: 7.93
+Modificado: 2026-05-22 21:44:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_legacy\HFPerfilLongitudinalv1.py
+Tamano KB: 9.12
+Modificado: 2026-05-17 21:25:35
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_legacy\HF_generar_eje_principal_y_geo_LIMPIO.py
+Tamano KB: 8.87
+Modificado: 2026-05-10 16:36:44
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_legacy\recorte_geomorfologico.py
+Tamano KB: 1.74
+Modificado: 2026-05-10 16:42:31
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\03_MODULOS\M01_Geomorfologia\scripts\_registro\Registro_HidroFlow_Modulo1_Geomorfologia.md
+Tamano KB: 16.59
+Modificado: 2026-05-24 01:35:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\DEM_BASE.tif
+Tamano KB: 3474264.8
+Modificado: 2025-08-27 12:59:12
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\DEM_BASE.tif.aux.xml
+Tamano KB: 0.42
+Modificado: 2026-04-05 00:45:20
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\DEM_Copernicus_GLO30_Aburra.tif
+Tamano KB: 24308.14
+Modificado: 2026-04-04 21:25:02
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\MDT1_05001_20241102.tif.aux.xml
+Tamano KB: 2.71
+Modificado: 2025-08-27 12:59:46
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\MDT1_05001_20241102.tif.xml
+Tamano KB: 18.5
+Modificado: 2025-08-28 09:39:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\MDT1_Metadato_05001_20241102.pdf
+Tamano KB: 446.57
+Modificado: 2025-08-28 09:40:24
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\MDT1_Metadato_05001_20241102.xml
+Tamano KB: 23.38
+Modificado: 2025-08-28 09:41:20
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb
+Tamano KB: 0
+Modificado: 2026-04-05 00:00:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.kmz
+Tamano KB: 24719.98
+Modificado: 2016-10-28 10:55:49
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\01_FILLED\dem_filled.tif
+Tamano KB: 5212123.68
+Modificado: 2026-04-03 10:39:16
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\01_FILLED\dem_filled.tif.aux.xml
+Tamano KB: 0.43
+Modificado: 2026-04-03 20:40:19
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\02_FLOW\d8_pointer.tif
+Tamano KB: 1303125.2
+Modificado: 2026-04-03 10:54:50
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\02_FLOW\dinf_pointer.tif
+Tamano KB: 5212123.68
+Modificado: 2026-04-03 11:13:22
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\02_FLOW\flow_accum_dinf.tif
+Tamano KB: 5212123.68
+Modificado: 2026-04-03 11:18:13
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\02_FLOW\flow_accum_dinf.tif.aux.xml
+Tamano KB: 489.78
+Modificado: 2026-04-03 20:40:19
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\03_STREAMS_RASTER\streams_3000.tif
+Tamano KB: 2606249.5
+Modificado: 2026-04-03 12:37:44
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\03_STREAMS_RASTER\streams_3000_bin.tif
+Tamano KB: 2606249.5
+Modificado: 2026-04-03 14:02:07
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\04_STREAMS_VECTOR\streams_3000_lines.shp.mgrd
+Tamano KB: 3.85
+Modificado: 2026-04-03 17:20:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\04_STREAMS_VECTOR\streams_3000_lines.shp.prj
+Tamano KB: 0.49
+Modificado: 2026-04-03 17:20:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\04_STREAMS_VECTOR\streams_3000_lines.shp.sdat
+Tamano KB: 2605874.16
+Modificado: 2026-04-03 17:20:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\04_STREAMS_VECTOR\streams_3000_lines.shp.sdat.aux.xml
+Tamano KB: 0.94
+Modificado: 2026-04-03 20:40:19
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\04_STREAMS_VECTOR\streams_3000_lines.shp.sgrd
+Tamano KB: 0.38
+Modificado: 2026-04-03 17:20:12
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\04_STREAMS_VECTOR\streams_urban_1000_medellin.gpkg
+Tamano KB: 185020.0
+Modificado: 2026-04-05 11:39:45
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\PROJECTS\HidroFlow_Medellin_01_Auditoria_DEM_PreBurnin.qgz
+Tamano KB: 13.88
+Modificado: 2026-04-05 22:20:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000001.gdbindexes
+Tamano KB: 0.11
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000001.gdbtable
+Tamano KB: 0.31
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000001.gdbtablx
+Tamano KB: 5.03
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000001.TablesByName.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000002.gdbtable
+Tamano KB: 2.01
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000002.gdbtablx
+Tamano KB: 5.03
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000003.gdbindexes
+Tamano KB: 0.04
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000003.gdbtable
+Tamano KB: 0.86
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000003.gdbtablx
+Tamano KB: 5.03
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000004.CatItemsByPhysicalName.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000004.CatItemsByType.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000004.FDO_UUID.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000004.freelist
+Tamano KB: 4.34
+Modificado: 2022-12-01 14:42:16
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000004.gdbindexes
+Tamano KB: 0.3
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000004.gdbtable
+Tamano KB: 7.89
+Modificado: 2022-12-01 14:42:16
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000004.gdbtablx
+Tamano KB: 5.03
+Modificado: 2022-12-01 14:42:16
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000004.spx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000005.CatItemTypesByName.atx
+Tamano KB: 12.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000005.CatItemTypesByParentTypeID.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000005.CatItemTypesByUUID.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000005.gdbindexes
+Tamano KB: 0.29
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000005.gdbtable
+Tamano KB: 1.76
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000005.gdbtablx
+Tamano KB: 5.03
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000006.CatRelsByDestinationID.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000006.CatRelsByOriginID.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000006.CatRelsByType.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000006.FDO_UUID.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000006.gdbindexes
+Tamano KB: 0.31
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000006.gdbtable
+Tamano KB: 0.33
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000006.gdbtablx
+Tamano KB: 5.03
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000007.CatRelTypesByBackwardLabel.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000007.CatRelTypesByDestItemTypeID.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000007.CatRelTypesByForwardLabel.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000007.CatRelTypesByName.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000007.CatRelTypesByOriginItemTypeID.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000007.CatRelTypesByUUID.atx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000007.gdbindexes
+Tamano KB: 0.59
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000007.gdbtable
+Tamano KB: 2.45
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000007.gdbtablx
+Tamano KB: 5.03
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000009.gdbindexes
+Tamano KB: 0.09
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000009.gdbtable
+Tamano KB: 71075.78
+Modificado: 2022-12-01 14:42:14
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000009.gdbtablx
+Tamano KB: 235.03
+Modificado: 2022-12-01 14:42:15
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\a00000009.spx
+Tamano KB: 4.02
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\gdb
+Tamano KB: 0.0
+Modificado: 2022-12-01 14:42:05
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\Polylines.DESKTOP-P9LJHOT.32180.17928.sr.lock
+Tamano KB: 0.0
+Modificado: 2026-04-04 20:50:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\Polylines.DESKTOP-P9LJHOT.32180.rd.lock
+Tamano KB: 0.0
+Modificado: 2026-04-04 20:53:31
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\timestamps
+Tamano KB: 0.39
+Modificado: 2022-12-01 14:42:16
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_DEM_HIDRO\00_BASE\red_hidrica_aaron.gdb\_gdb.DESKTOP-P9LJHOT.32180.17928.sr.lock
+Tamano KB: 0.0
+Modificado: 2026-04-04 20:49:52
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git
+Tamano KB: 0
+Modificado: 2026-03-22 23:36:58
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.github
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.gitignore
+Tamano KB: 0.1
+Modificado: 2026-03-08 19:40:53
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\agents
+Tamano KB: 0
+Modificado: 2026-03-22 23:32:17
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\CHANGELOG.md
+Tamano KB: 0.06
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\data
+Tamano KB: 0
+Modificado: 2026-03-31 18:55:02
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\datasets
+Tamano KB: 0
+Modificado: 2026-03-22 14:33:35
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\docs
+Tamano KB: 0
+Modificado: 2026-03-22 23:31:21
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\index.html
+Tamano KB: 0.3
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\LICENSE
+Tamano KB: 1.06
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\package-lock.json
+Tamano KB: 129.44
+Modificado: 2026-03-22 08:48:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\package.json
+Tamano KB: 0.68
+Modificado: 2026-03-22 08:48:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\Practica_HidroFlow.docx
+Tamano KB: 22.0
+Modificado: 2026-03-22 15:38:55
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\proxy
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\public
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\README.md
+Tamano KB: 0.54
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\sig
+Tamano KB: 0
+Modificado: 2026-03-31 19:07:13
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src
+Tamano KB: 0
+Modificado: 2026-03-22 09:11:26
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\tsconfig.json
+Tamano KB: 0.28
+Modificado: 2026-03-21 16:31:44
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\vite.config.js
+Tamano KB: 0.24
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\~$actica_HidroFlow.docx
+Tamano KB: 0.16
+Modificado: 2026-03-22 15:39:14
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\COMMIT_EDITMSG
+Tamano KB: 0.04
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\config
+Tamano KB: 1.09
+Modificado: 2026-03-14 20:53:12
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\description
+Tamano KB: 0.07
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\FETCH_HEAD
+Tamano KB: 0.35
+Modificado: 2026-03-22 23:36:58
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\HEAD
+Tamano KB: 0.05
+Modificado: 2026-03-14 16:34:13
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\index
+Tamano KB: 8.47
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\info
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects
+Tamano KB: 0
+Modificado: 2026-03-22 23:36:58
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\ORIG_HEAD
+Tamano KB: 0.04
+Modificado: 2026-03-22 23:36:58
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\packed-refs
+Tamano KB: 0.37
+Modificado: 2026-03-07 03:12:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.github\ISSUE_TEMPLATE
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.github\PULL_REQUEST_TEMPLATE.md
+Tamano KB: 0.06
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.github\release-drafter.yml
+Tamano KB: 0.5
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.github\workflows
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\agents\hidrologico_agent.py
+Tamano KB: 2.87
+Modificado: 2026-03-22 22:45:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\agents\normativo_agent.py
+Tamano KB: 2.27
+Modificado: 2026-03-22 21:25:04
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\agents\__init__.py
+Tamano KB: 0.09
+Modificado: 2026-03-22 21:31:45
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\data\dem
+Tamano KB: 0
+Modificado: 2026-04-01 15:28:44
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\datasets\hidroflow_normativo_ollama.jsonl
+Tamano KB: 1.5
+Modificado: 2026-03-22 20:45:07
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\docs\agents.md
+Tamano KB: 1.99
+Modificado: 2026-03-22 23:12:37
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\proxy\express-server.js
+Tamano KB: 0.67
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\public\.gitkeep
+Tamano KB: 0.0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\sig\backend
+Tamano KB: 0
+Modificado: 2026-03-31 14:40:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\sig\morfometria.py
+Tamano KB: 1.99
+Modificado: 2026-03-31 15:45:50
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\sig\pipeline.py
+Tamano KB: 1.52
+Modificado: 2026-03-31 15:04:57
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\sig\prepare_dem.py
+Tamano KB: 2.07
+Modificado: 2026-03-31 19:07:57
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\sig\utils.py
+Tamano KB: 0.3
+Modificado: 2026-03-31 18:30:45
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\sig\__init__.py
+Tamano KB: 0.0
+Modificado: 2026-03-31 14:37:57
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\components
+Tamano KB: 0
+Modificado: 2026-03-21 12:51:17
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\dominio
+Tamano KB: 0
+Modificado: 2026-03-21 21:01:02
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\HidroFlow - copia.jsx
+Tamano KB: 154.68
+Modificado: 2026-03-07 21:52:06
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\HidroFlow.BACKUP.20260316_0317.jsx
+Tamano KB: 172.32
+Modificado: 2026-03-15 19:06:03
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\HidroFlow.jsx
+Tamano KB: 174.42
+Modificado: 2026-03-19 21:56:37
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\HidroFlow.txt
+Tamano KB: 172.32
+Modificado: 2026-03-15 22:43:07
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\HidroFlowV4.txt
+Tamano KB: 158.15
+Modificado: 2026-03-11 17:50:02
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\HidroFlow_SAFE_BACKUP_and_PATCH
+Tamano KB: 0
+Modificado: 2026-03-16 09:03:37
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\hooks
+Tamano KB: 0
+Modificado: 2026-03-14 18:19:27
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\layouts
+Tamano KB: 0
+Modificado: 2026-03-20 19:49:13
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\main.jsx
+Tamano KB: 0.3
+Modificado: 2026-03-20 20:51:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\providers
+Tamano KB: 0
+Modificado: 2026-03-13 21:23:12
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services
+Tamano KB: 0
+Modificado: 2026-03-21 21:05:30
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\styles
+Tamano KB: 0
+Modificado: 2026-03-20 20:36:59
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\utils
+Tamano KB: 0
+Modificado: 2026-03-20 20:35:20
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\vite-env.d.ts
+Tamano KB: 0.12
+Modificado: 2026-03-22 09:11:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\components\HidrogramaResultado.tsx
+Tamano KB: 4.05
+Modificado: 2026-03-15 13:34:53
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\components\IndiceHidrologico.jsx
+Tamano KB: 4.86
+Modificado: 2026-03-20 22:22:22
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\components\TablaTcMetodos.jsx
+Tamano KB: 2.03
+Modificado: 2026-03-21 13:00:18
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\dominio\calcHietograma.ts
+Tamano KB: 4.5
+Modificado: 2026-03-14 17:49:52
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\dominio\CuencaGeomorfologica.ts
+Tamano KB: 1.78
+Modificado: 2026-03-21 12:39:29
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\dominio\indicesForma.ts
+Tamano KB: 0.87
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\dominio\motorTc.ts
+Tamano KB: 4.77
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\dominio\SAR.ts
+Tamano KB: 0.75
+Modificado: 2026-03-21 21:01:33
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\dominio\scsCn.ts
+Tamano KB: 1.79
+Modificado: 2026-03-14 16:42:17
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\dominio\scsUh.ts
+Tamano KB: 3.96
+Modificado: 2026-03-14 16:47:15
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\dominio\tipos.ts
+Tamano KB: 1.88
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\dominio\_demoDia3.ts
+Tamano KB: 1.05
+Modificado: 2026-03-14 16:53:19
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\HidroFlow_SAFE_BACKUP_and_PATCH\PATCH_Gemini_HidroFlow_MVP.txt
+Tamano KB: 4.18
+Modificado: 2026-03-16 09:05:04
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\HidroFlow_SAFE_BACKUP_and_PATCH\PATCH_HidroFlow_MVP.txt
+Tamano KB: 0.97
+Modificado: 2026-03-16 03:17:04
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\HidroFlow_SAFE_BACKUP_and_PATCH\README_BACKUP.md
+Tamano KB: 0.45
+Modificado: 2026-03-16 03:17:04
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\hooks\useCuenca.tsx
+Tamano KB: 1.55
+Modificado: 2026-03-14 15:23:51
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\hooks\useHidrograma.ts
+Tamano KB: 1.62
+Modificado: 2026-03-20 19:05:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\hooks\useHietograma.ts
+Tamano KB: 1.6
+Modificado: 2026-03-14 17:38:22
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\hooks\useTc.ts
+Tamano KB: 0.63
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\layouts\HidroFlowLayout.jsx
+Tamano KB: 1.06
+Modificado: 2026-03-20 19:49:42
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\apiClient.js
+Tamano KB: 0.34
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\calcSensibilidadAMC.ts
+Tamano KB: 1.36
+Modificado: 2026-03-21 17:33:00
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\hietogramaMotor.ts
+Tamano KB: 0.65
+Modificado: 2026-03-13 21:11:12
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\I_fromFuente.ts
+Tamano KB: 1.08
+Modificado: 2026-03-13 21:11:12
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes
+Tamano KB: 0
+Modificado: 2026-03-22 14:27:08
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sar
+Tamano KB: 0
+Modificado: 2026-03-21 21:06:01
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sensibilidad
+Tamano KB: 0
+Modificado: 2026-03-21 17:45:53
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\siata.js
+Tamano KB: 0.11
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\tc
+Tamano KB: 0
+Modificado: 2026-03-21 12:19:34
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\styles\focusHighlight.css
+Tamano KB: 0.31
+Modificado: 2026-03-20 21:31:03
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\utils\focusSection.js
+Tamano KB: 0.62
+Modificado: 2026-03-20 20:35:57
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes\capturarElementoPNG.ts
+Tamano KB: 0.47
+Modificado: 2026-03-22 09:34:49
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes\exportarInformeCSV.ts
+Tamano KB: 3.48
+Modificado: 2026-03-22 10:29:38
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes\exportarInformeJSON.ts
+Tamano KB: 1.42
+Modificado: 2026-03-22 10:45:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes\exportarInformePDF.ts
+Tamano KB: 0.95
+Modificado: 2026-03-22 08:58:48
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes\generarChecklistAMVA.ts
+Tamano KB: 1.57
+Modificado: 2026-03-22 14:25:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes\generarInformeHidrologico.ts
+Tamano KB: 2.17
+Modificado: 2026-03-22 14:20:44
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes\generarResumenEjecutivoAmbiental.ts
+Tamano KB: 1.38
+Modificado: 2026-03-22 14:27:40
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes\plantillas
+Tamano KB: 0
+Modificado: 2026-03-22 08:46:45
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes\renderInformeHTML.ts
+Tamano KB: 5.53
+Modificado: 2026-03-22 14:22:06
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sar\calcularSAR.ts
+Tamano KB: 1.05
+Modificado: 2026-03-21 21:06:36
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sensibilidad\calcSensibilidadAMC.ts
+Tamano KB: 1.37
+Modificado: 2026-03-21 17:09:14
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sensibilidad\calcSensibilidadTc.ts
+Tamano KB: 1.28
+Modificado: 2026-03-21 14:55:03
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sensibilidad\compararTcVsAMC.ts
+Tamano KB: 2.47
+Modificado: 2026-03-21 17:46:12
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sensibilidad\index.ts
+Tamano KB: 0.23
+Modificado: 2026-03-21 17:51:04
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sensibilidad\interpretarSensibilidadTc.ts
+Tamano KB: 1.88
+Modificado: 2026-03-21 15:11:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sensibilidad\interpretarTipos.ts
+Tamano KB: 0.23
+Modificado: 2026-03-21 15:10:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sensibilidad\tiposSensibilidad.ts
+Tamano KB: 0.39
+Modificado: 2026-03-21 14:53:31
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\sensibilidad\tiposSensibilidadAMC.ts
+Tamano KB: 0.46
+Modificado: 2026-03-21 16:01:32
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\tc\calcTc.ts
+Tamano KB: 0.82
+Modificado: 2026-03-21 12:21:02
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\tc\metodos
+Tamano KB: 0
+Modificado: 2026-03-21 12:13:36
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\tc\tiposTc.ts
+Tamano KB: 0.41
+Modificado: 2026-03-21 12:09:27
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\tc\metodos\giandotti.ts
+Tamano KB: 0.43
+Modificado: 2026-03-21 12:13:00
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\tc\metodos\kirpich.ts
+Tamano KB: 0.45
+Modificado: 2026-03-21 12:11:07
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\tc\metodos\scsLag.ts
+Tamano KB: 0.2
+Modificado: 2026-03-21 12:14:17
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\tc\metodos\temez.ts
+Tamano KB: 0.39
+Modificado: 2026-03-21 12:12:09
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\src\services\reportes\plantillas\informeHidrologico.css
+Tamano KB: 0.33
+Modificado: 2026-03-22 08:47:09
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\sig\backend\arcpy_backend.py
+Tamano KB: 4.44
+Modificado: 2026-03-31 16:02:21
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\sig\backend\open_backend.py
+Tamano KB: 0.0
+Modificado: 2026-03-31 14:40:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\data\dem\MDT_2024_MEDELLIN.tif
+Tamano KB: 3474264.8
+Modificado: 2025-08-27 12:59:12
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\data\dem\MDT_2024_MEDELLIN.tif.aux.xml
+Tamano KB: 2.82
+Modificado: 2026-03-31 19:46:56
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\data\dem\processed
+Tamano KB: 0
+Modificado: 2026-04-01 17:09:17
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.github\ISSUE_TEMPLATE\bug_report.md
+Tamano KB: 0.14
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.github\ISSUE_TEMPLATE\feature_request.md
+Tamano KB: 0.14
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.github\workflows\ci.yml
+Tamano KB: 0.37
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.github\workflows\release-drafter.yml
+Tamano KB: 0.31
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\applypatch-msg.sample
+Tamano KB: 0.47
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\commit-msg.sample
+Tamano KB: 0.88
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\fsmonitor-watchman.sample
+Tamano KB: 4.62
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\post-update.sample
+Tamano KB: 0.18
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\pre-applypatch.sample
+Tamano KB: 0.41
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\pre-commit.sample
+Tamano KB: 1.61
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\pre-merge-commit.sample
+Tamano KB: 0.41
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\pre-push.sample
+Tamano KB: 1.34
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\pre-rebase.sample
+Tamano KB: 4.78
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\pre-receive.sample
+Tamano KB: 0.53
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\prepare-commit-msg.sample
+Tamano KB: 1.46
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\push-to-checkout.sample
+Tamano KB: 2.72
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\sendemail-validate.sample
+Tamano KB: 2.25
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\hooks\update.sample
+Tamano KB: 3.56
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\info\exclude
+Tamano KB: 0.23
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\HEAD
+Tamano KB: 9.22
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\08
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\0c
+Tamano KB: 0
+Modificado: 2026-03-14 17:21:25
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\0f
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\10
+Tamano KB: 0
+Modificado: 2026-03-10 22:32:14
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\12
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\14
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\18
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\1b
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\1d
+Tamano KB: 0
+Modificado: 2026-03-14 17:20:09
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\22
+Tamano KB: 0
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\23
+Tamano KB: 0
+Modificado: 2026-03-07 13:38:37
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\25
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\26
+Tamano KB: 0
+Modificado: 2026-03-10 22:32:14
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2a
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2b
+Tamano KB: 0
+Modificado: 2026-03-11 17:50:02
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2d
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2e
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2f
+Tamano KB: 0
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\32
+Tamano KB: 0
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\34
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\35
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\38
+Tamano KB: 0
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\39
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\3a
+Tamano KB: 0
+Modificado: 2026-03-10 22:32:14
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\3b
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\40
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\41
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\43
+Tamano KB: 0
+Modificado: 2026-03-12 18:16:31
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\45
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\49
+Tamano KB: 0
+Modificado: 2026-03-22 22:54:59
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\4a
+Tamano KB: 0
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\4c
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\4f
+Tamano KB: 0
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\51
+Tamano KB: 0
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\52
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\56
+Tamano KB: 0
+Modificado: 2026-03-08 20:56:13
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\58
+Tamano KB: 0
+Modificado: 2026-03-13 21:11:12
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\5b
+Tamano KB: 0
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\5d
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\60
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\63
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\64
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\66
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\6a
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\6e
+Tamano KB: 0
+Modificado: 2026-03-14 17:21:25
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\6f
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\70
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\71
+Tamano KB: 0
+Modificado: 2026-03-08 21:03:48
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\74
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\77
+Tamano KB: 0
+Modificado: 2026-03-08 19:41:32
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\78
+Tamano KB: 0
+Modificado: 2026-03-08 19:41:32
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\7b
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\7c
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\7f
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\80
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\81
+Tamano KB: 0
+Modificado: 2026-03-12 18:16:31
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\84
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\86
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\87
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\89
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\8b
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\8d
+Tamano KB: 0
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\8e
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\90
+Tamano KB: 0
+Modificado: 2026-03-14 15:34:08
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\94
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\98
+Tamano KB: 0
+Modificado: 2026-03-07 13:38:37
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\9c
+Tamano KB: 0
+Modificado: 2026-03-14 16:42:46
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\9d
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\9e
+Tamano KB: 0
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\a5
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\a6
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\a8
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\aa
+Tamano KB: 0
+Modificado: 2026-03-22 22:54:59
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ab
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ac
+Tamano KB: 0
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\af
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b2
+Tamano KB: 0
+Modificado: 2026-03-08 21:03:48
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b3
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b4
+Tamano KB: 0
+Modificado: 2026-03-14 15:23:51
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b6
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b7
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\bb
+Tamano KB: 0
+Modificado: 2026-03-14 17:20:09
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\bc
+Tamano KB: 0
+Modificado: 2026-03-14 16:42:46
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\be
+Tamano KB: 0
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\bf
+Tamano KB: 0
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c2
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c3
+Tamano KB: 0
+Modificado: 2026-03-07 03:06:22
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c4
+Tamano KB: 0
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c6
+Tamano KB: 0
+Modificado: 2026-03-22 22:54:59
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c8
+Tamano KB: 0
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c9
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ce
+Tamano KB: 0
+Modificado: 2026-03-12 18:16:31
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\cf
+Tamano KB: 0
+Modificado: 2026-03-14 16:42:46
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d0
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d1
+Tamano KB: 0
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d5
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d6
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d7
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d9
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\dc
+Tamano KB: 0
+Modificado: 2026-03-11 21:08:25
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\e3
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\e8
+Tamano KB: 0
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\e9
+Tamano KB: 0
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\eb
+Tamano KB: 0
+Modificado: 2026-03-14 16:42:46
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ec
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ee
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ef
+Tamano KB: 0
+Modificado: 2026-03-22 22:54:59
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f0
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f1
+Tamano KB: 0
+Modificado: 2026-03-07 13:38:37
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f3
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f6
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f7
+Tamano KB: 0
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f9
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\fa
+Tamano KB: 0
+Modificado: 2026-03-11 21:08:26
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\fb
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\fc
+Tamano KB: 0
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\fd
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ff
+Tamano KB: 0
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\info
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\pack
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\heads
+Tamano KB: 0
+Modificado: 2026-03-14 15:23:51
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\tags
+Tamano KB: 0
+Modificado: 2026-03-14 15:34:08
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\heads\feat
+Tamano KB: 0
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\heads\fix
+Tamano KB: 0
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\heads\main
+Tamano KB: 0.04
+Modificado: 2026-03-14 15:23:51
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin
+Tamano KB: 0
+Modificado: 2026-03-14 15:23:51
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\tags\v0.2.0-dia2
+Tamano KB: 0.04
+Modificado: 2026-03-14 15:34:08
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\feat
+Tamano KB: 0
+Modificado: 2026-03-22 23:36:59
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\fix
+Tamano KB: 0
+Modificado: 2026-03-07 14:53:03
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\HEAD
+Tamano KB: 0.03
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\main
+Tamano KB: 0.04
+Modificado: 2026-03-14 15:23:51
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\feat\d2-hietograma-interpolacion
+Tamano KB: 0.04
+Modificado: 2026-03-13 20:59:49
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\feat\d2-huff-epm-distribucion
+Tamano KB: 0.04
+Modificado: 2026-03-12 18:16:36
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\feat\d2-panel-geomorf
+Tamano KB: 0.04
+Modificado: 2026-03-14 15:15:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\feat\d3-lluvia-efectiva-hidrogramas
+Tamano KB: 0.04
+Modificado: 2026-03-22 23:36:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\feat\hietograma-fuente-global
+Tamano KB: 0.04
+Modificado: 2026-03-11 21:08:29
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\feat\idf-fuente-global
+Tamano KB: 0.04
+Modificado: 2026-03-10 22:32:16
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\remotes\origin\fix\cn-dinamico-real-sync
+Tamano KB: 0.04
+Modificado: 2026-03-07 13:38:38
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\heads\feat\d2-hietograma-interpolacion
+Tamano KB: 0.04
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\heads\feat\d3-lluvia-efectiva-hidrogramas
+Tamano KB: 0.04
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\heads\feat\hietograma-fuente-global
+Tamano KB: 0.04
+Modificado: 2026-03-11 21:08:26
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\heads\feat\idf-fuente-global
+Tamano KB: 0.04
+Modificado: 2026-03-10 22:32:14
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\heads\fix\cn-dinamico-real-sync
+Tamano KB: 0.04
+Modificado: 2026-03-07 13:38:37
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\refs\heads\fix\wh-cnact-wire
+Tamano KB: 0.04
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\08\2208de542f1ac33a68c0f98d01cf245d5d5fe9
+Tamano KB: 33.43
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\0c\ff3cb1eb66308970b2b5b166f01f032282e483
+Tamano KB: 0.42
+Modificado: 2026-03-14 17:21:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\0f\f1f8bde5a9e574499d4a581211a9d63a186c68
+Tamano KB: 0.11
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\10\852fed007b90ae414c02f78de1f4a765eef700
+Tamano KB: 0.13
+Modificado: 2026-03-11 20:55:54
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\12\d96355231ca52a0f3b5d5adec09dbb88fce3ba
+Tamano KB: 0.06
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\14\38cbcecf1c95aa32eeab26775a4b704cdccbf0
+Tamano KB: 0.87
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\14\b956170f2b075cf698b542f4a2a1cd351f6f13
+Tamano KB: 1.9
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\18\56a66506c3a1d3e527c8231bdb26bd5ec8ea2c
+Tamano KB: 1.4
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\1b\177be731a51b681c99bce7e1572cf1415940a5
+Tamano KB: 0.73
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\1b\1eb2a59485981295f12c1012eab3388decbfee
+Tamano KB: 1.49
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\1b\b56d68042ceba40dbbca02616446b92500d4ec
+Tamano KB: 0.29
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\1d\6ab1feaf80aabd7c35b7dd3cf0c534bcc03f89
+Tamano KB: 0.3
+Modificado: 2026-03-14 17:20:09
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\22\0707ca7340cd7cd43b9fd9ec27e0c83a779198
+Tamano KB: 1.9
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\23\e975d4833b86587b398115cedea6d89d761a85
+Tamano KB: 0.12
+Modificado: 2026-03-07 13:38:37
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\25\5856d551f314a8ba66ab70fe9aae0afdd134e8
+Tamano KB: 0.41
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\26\dded98cb8a40000a4b69d18d12c78ccbac8dc3
+Tamano KB: 0.4
+Modificado: 2026-03-11 20:55:54
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2a\6f4338128dbc1a112156130973fed0b4763a8c
+Tamano KB: 30.6
+Modificado: 2026-03-14 17:21:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2a\b90e22e02eabb4852c1088eb7e1f25961cbd11
+Tamano KB: 0.57
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2b\88467cc54a251c26ed1b5a9f6d8a0de9a987dc
+Tamano KB: 0.2
+Modificado: 2026-03-08 21:03:48
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2b\b721224348b2f0fc7741aadbe4eee2a999d4bf
+Tamano KB: 0.91
+Modificado: 2026-03-11 17:50:02
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2d\d4b366e01ccf8027f52f2a6576c7e69f601632
+Tamano KB: 0.12
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2e\6dc751291e026e031e67a0cacb82e4d8d5efac
+Tamano KB: 0.5
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2e\f8a44602be9cf05ce3614e51c211f7296c3567
+Tamano KB: 1.01
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\2f\4a39cf7e97a7e34a5e256e9e900d511bc89a38
+Tamano KB: 0.16
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\32\6b0ca43b8390c6cdb201c9e502a1e77fe8bac3
+Tamano KB: 0.19
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\32\94d94c95ec1bb4297f1f514032843bc81aabb5
+Tamano KB: 0.16
+Modificado: 2026-03-11 21:08:26
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\34\70dc748d818f961c98bf7a39f6794396244041
+Tamano KB: 1.61
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\35\3e5bc7ecd4651755cd3d02f5b53ab12c94b83b
+Tamano KB: 0.25
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\38\cbe59fdaf5b2e388a0c8f4a5bfeb2f84855673
+Tamano KB: 0.4
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\38\cc3966b520b5070920e8a4a24bdc0660a2d61f
+Tamano KB: 27.34
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\38\d99f939343e59170390d4d2c73d906f7e5e324
+Tamano KB: 0.63
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\39\205482d2dad2a37e635f9b25c792f762e08a6b
+Tamano KB: 0.21
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\39\631d2cdee345989ac205ed0b3947440903ee7d
+Tamano KB: 0.27
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\3a\5f2317465d8ce163fb731ff2e2c0609aba0fee
+Tamano KB: 0.23
+Modificado: 2026-03-10 22:32:14
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\3b\0c0a8f663e19901e4826eab86bcacec0738179
+Tamano KB: 0.16
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\3b\4698431557658780c93a294e5c872ffbb69c4b
+Tamano KB: 0.22
+Modificado: 2026-03-11 21:08:26
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\40\6b3ff58ad50d4b4e81bbdc4f57c35a2cfc9c95
+Tamano KB: 0.42
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\41\70519022882c5417b803f349ab5ee81066ba53
+Tamano KB: 0.09
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\43\6464a0fd558bbbedce7d1831367b492f9b5863
+Tamano KB: 0.4
+Modificado: 2026-03-12 18:16:31
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\45\98658e02862b1368ea1b008f4211fee06281b3
+Tamano KB: 0.63
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\49\d6db3af4095ca2ce71d3ab75d911e7d5953df4
+Tamano KB: 0.13
+Modificado: 2026-03-22 22:54:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\4a\cc10020ac744f1b14d1a35e1596a3f0731e5c5
+Tamano KB: 0.12
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\4c\b2e5ebebabecb5295f71eadc19010cc6196b75
+Tamano KB: 0.18
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\4f\c791d04ce6eaf916e21b132c8a1e180d8f7cd8
+Tamano KB: 0.16
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\51\1a0562b92f62d1691e657c2bf30be3f6140c19
+Tamano KB: 0.4
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\52\052c66b61848e3cd11f7a7ae47e5a655ddd317
+Tamano KB: 0.06
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\52\6a67071bc8769bb06bea75473b992e5201dd87
+Tamano KB: 0.16
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\52\e9f026c50765537ec6e8dec08697b3c58e749b
+Tamano KB: 0.3
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\52\ecf1d0633f5c740cf75315bef11bf8d8c93b16
+Tamano KB: 0.2
+Modificado: 2026-03-14 17:20:09
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\56\6cdae138ca032c95c96ccb57cf14e5d863d296
+Tamano KB: 0.22
+Modificado: 2026-03-08 20:56:13
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\58\711fe5a4534dc34d37011e10c328c2fa0e9cc1
+Tamano KB: 0.94
+Modificado: 2026-03-13 21:11:12
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\5b\a27d496aa290129fbb375f6190bf4e2a345df3
+Tamano KB: 0.05
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\5d\596a4cf1af171a121170ec5861648d8963155a
+Tamano KB: 0.74
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\60\bb7185cda9c2c2c486c0a976eae1d70ef9428c
+Tamano KB: 19.31
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\63\32a12c7d421a543baeb24781ac6f1a1c20f5ec
+Tamano KB: 0.56
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\64\16a654a58f8b4dee0babf11108937281a2041d
+Tamano KB: 0.45
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\66\19bab8d77abeff2b4ce8ba918256aa0c969440
+Tamano KB: 0.19
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\6a\449c68ca9639e8ada7ea2ecd3eaca0ab6a5ffa
+Tamano KB: 0.12
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\6a\be49f1f4131273eac75a8f147e826075ad4cbc
+Tamano KB: 0.36
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\6e\290e8e07bdb5365eb97f023ee30407cf2b9aa5
+Tamano KB: 0.18
+Modificado: 2026-03-14 17:21:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\6f\2abd15b54b4129fe06b9f3933d76d13bf5dfae
+Tamano KB: 0.61
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\70\820294c0e5cc888c8db157fd92330c45616a16
+Tamano KB: 0.15
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\71\599727ae55d2eac72f104da59c5f67505e734e
+Tamano KB: 0.4
+Modificado: 2026-03-08 21:03:48
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\74\a1b1a46851c0ca67fca785f11148b99fce90b1
+Tamano KB: 0.67
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\77\f99079af1636e3e07ad54c0fbe56e640d578f0
+Tamano KB: 0.4
+Modificado: 2026-03-08 19:41:32
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\78\3204717682c36b75118ee8ac31edca37496958
+Tamano KB: 48.43
+Modificado: 2026-03-08 19:41:32
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\7b\39d346c874006554f1b28bb529b77f20b42e82
+Tamano KB: 0.15
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\7b\95965381abc834c32380f591c14c4b06b358c5
+Tamano KB: 0.08
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\7b\da7d9dd3edc62289eb9645425e57de7f27c68e
+Tamano KB: 0.79
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\7c\4520b61aab1b9136f20a2e761cc7a2a63e6de5
+Tamano KB: 0.92
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\7f\2e90846756fbc304b74879562fc615b070f942
+Tamano KB: 50.16
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\7f\c2719b9c4ca50aa7e4ad3e32381b2e79387868
+Tamano KB: 0.4
+Modificado: 2026-03-11 21:08:26
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\80\c72e37f360313337fbd0814c2a510174c1675d
+Tamano KB: 53.65
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\81\0d8d78fa9f539bdfe3620db03d15812f7ba13d
+Tamano KB: 1.04
+Modificado: 2026-03-12 18:16:31
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\84\455c4f2df285c928c1ef681e97d415ff8f88c7
+Tamano KB: 0.07
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\86\539e4d1ff7c1bfd170249feb70c34ad6346e7d
+Tamano KB: 0.51
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\86\71919d6df741bbbfb9c413cb5612c0eab02bf4
+Tamano KB: 1.56
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\87\5b69c33308e9462ffe8fbd24b4433bd50e96b4
+Tamano KB: 0.21
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\87\bfe96c3976b40aeee99f0fb7317e1d24c939e9
+Tamano KB: 0.56
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\89\99cb039f6b8545eb664621a66c8ec78dba280b
+Tamano KB: 0.06
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\89\fc30cec928288342ccbe6f445dd0e7f62051ad
+Tamano KB: 0.06
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\8b\7dc31a8dd0e684d199b9d22f388e98f463c857
+Tamano KB: 0.19
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\8d\f72b7c0edd5288b1f3f4be0943362f2b96605a
+Tamano KB: 0.24
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\8e\63cf9ff149eb4253dd8a2ef1920c32f4ee0b57
+Tamano KB: 0.89
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\8e\da3ee6fddb04508b920fd8791e588d0477c11f
+Tamano KB: 0.36
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\90\ba5de4b25b8e63ce736a4b12fcca07985e671b
+Tamano KB: 0.21
+Modificado: 2026-03-14 15:34:08
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\94\6542728dae2f970c1e88d9db707f04883b0888
+Tamano KB: 0.86
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\94\6d2e9328c7f0469e42fc44b803441366463739
+Tamano KB: 0.14
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\98\5af11ab516cabf2c9d015675153da7f6ef2bcf
+Tamano KB: 0.4
+Modificado: 2026-03-07 13:38:37
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\9c\adc5fb807ff8dbff6ceddd8b40c686dc33a5dd
+Tamano KB: 0.42
+Modificado: 2026-03-14 16:42:46
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\9d\0e138a1adc30146bf74496186f786c0522a16d
+Tamano KB: 0.07
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\9e\3a8d26523ee4eab8f9e489e32756607a2fc034
+Tamano KB: 0.68
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\9e\84bc401f53af22bb78c2860634b1fda6f73338
+Tamano KB: 0.95
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\a5\37164fc3d5c9317e16d1f09bd09f02c2c53f77
+Tamano KB: 0.37
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\a6\3ee19f9223665e3e1f0d4dda9ca78277bc3d1b
+Tamano KB: 0.22
+Modificado: 2026-03-12 18:16:31
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\a6\4b358fa3f6b25c7f6cee169bd7f51b6bc59a50
+Tamano KB: 1.99
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\a8\5aed7a298c6a530259a0ca2be146bf9c723bc1
+Tamano KB: 0.3
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\aa\8f4be724b232de6e5e2614a58b4469c366b9ff
+Tamano KB: 0.56
+Modificado: 2026-03-22 22:54:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ab\0ecc4a91659e8e6836c3640f590901db8886f2
+Tamano KB: 0.34
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ac\3fe13a498ce654b852fbde5c51a58c512412a0
+Tamano KB: 0.58
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ac\c84bbbf051437baa256ff6b2e4bdc00be35e3f
+Tamano KB: 0.19
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\af\4bd6d11efaa368ceccf8ddf3f56cd3b3b75925
+Tamano KB: 0.15
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b2\eaed8614691e99603668fb4e87755b5f53eff1
+Tamano KB: 0.1
+Modificado: 2026-03-08 21:03:48
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b3\f43b9eb1afd243a264137c42e89def8695954c
+Tamano KB: 0.17
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b4\acdea21adcb9c7eeba3ce0fd887a3c05278070
+Tamano KB: 0.94
+Modificado: 2026-03-14 15:23:51
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b6\6621c14674477a2be030a63d86646cce888130
+Tamano KB: 0.63
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b6\bce6c02fdedd6f9d7614ed58bfbc0fe79bbacb
+Tamano KB: 0.25
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b7\2f40e36ad6456f8cf3cb3b3c7c2f64f2cb56ae
+Tamano KB: 0.07
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b7\497cb5e6d4085e14ff7c2cb7944426f74a6b76
+Tamano KB: 0.87
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\b7\fc21828e19bca540e56ef3b7e4e38a5a2c4f81
+Tamano KB: 1.71
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\bb\e390fe510fa10ba8b87064f929c04c1c4ff934
+Tamano KB: 0.38
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\bb\ffa9f12ee3a9fe1e8df3f37e9e888a15be501e
+Tamano KB: 0.43
+Modificado: 2026-03-14 17:20:09
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\bc\5f4329238a238298aac43c6f1b290a2c52e242
+Tamano KB: 0.19
+Modificado: 2026-03-14 16:42:46
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\be\6a7b6317c22b2bf76c795bc067965bbdc33c35
+Tamano KB: 0.16
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\be\711ff4061ebec5aa7faa31e11f8dbc85d23526
+Tamano KB: 0.19
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\bf\ab5c6f8e67762afc26ecea7afef80486684d7e
+Tamano KB: 0.27
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\bf\e20998097f2a146638b34c7dc5674ad8fcb885
+Tamano KB: 0.12
+Modificado: 2026-03-08 19:41:32
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c2\93e0b2cc90f02e0a7deee8da3549fd7b5eaaf3
+Tamano KB: 0.32
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c3\e1a3445e21acdd7ad5795e5b5b6458a741df76
+Tamano KB: 0.42
+Modificado: 2026-03-07 03:06:22
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c4\4fa7dca44dc33efeb029e307d1cfab77cf9a76
+Tamano KB: 0.19
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c6\a81d075c81e4ab0cb10752ba5598698bcc5807
+Tamano KB: 0.19
+Modificado: 2026-03-22 22:54:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c8\40b364ce942bac3c643511086e7028e74e88b3
+Tamano KB: 45.27
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c9\4be22281d05cf8a489b2243df6884bf86cdba9
+Tamano KB: 0.81
+Modificado: 2026-03-14 16:42:46
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\c9\5a446372c8b8da298018fd2d813babf3dc3b50
+Tamano KB: 0.21
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ce\39aee59a44a91ccb6062a5ce5f989fcceaa30e
+Tamano KB: 0.06
+Modificado: 2026-03-12 18:16:31
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\cf\720e8553a532fb09722afb02cb456f9b22e5b9
+Tamano KB: 0.19
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\cf\a36caef883837d43820ce2ac6d598ec5c09f24
+Tamano KB: 0.21
+Modificado: 2026-03-14 16:42:46
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\cf\f5fa8435fb3d552e2a187b3a7236ba3326d7f7
+Tamano KB: 49.15
+Modificado: 2026-03-11 20:55:54
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d0\aaf011e9a0c351c6c04ed078c734bf8286c7be
+Tamano KB: 0.25
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d1\5cdc9e4a6cc56455d500d772ce910ed26e7fdc
+Tamano KB: 0.16
+Modificado: 2026-03-12 18:16:31
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d1\723b5ca98b005b90458b0a6db9616c030748a5
+Tamano KB: 0.93
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d5\3aa4b36d1b2c1c9c5f359cf78bfeb6453d5bb5
+Tamano KB: 0.76
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d6\0551f1b5116f89784d12c4576112e8692c233a
+Tamano KB: 0.32
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d7\0f381abd2413c4cdbd45db1e092467c6439c11
+Tamano KB: 0.85
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d7\18007f29fb835a284e36644a75464dc2ade504
+Tamano KB: 0.26
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d9\0805e8638e33714440e9aa527b5970cb28ac39
+Tamano KB: 0.6
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\d9\ae68dcc889d01a0541f67ca603779274365618
+Tamano KB: 0.19
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\dc\b9ea7e10b7c8404808136464b658a56ca1bef5
+Tamano KB: 0.97
+Modificado: 2026-03-11 21:08:25
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\e3\accbcab0deaf4822e3b66f308d44dd317cfb77
+Tamano KB: 1.72
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\e8\944e0ed0b6b731c8ad5ecf5cc786518cc94a86
+Tamano KB: 0.4
+Modificado: 2026-03-12 18:45:30
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\e9\36a2788ed1fcfd9d8643220d3011390685a86b
+Tamano KB: 1.54
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\eb\65b935ef5c04f17849e8963cad52fd28b9123e
+Tamano KB: 0.19
+Modificado: 2026-03-14 16:42:46
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ec\6a4f799496797fe2e586807634d37eb1efc979
+Tamano KB: 0.33
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ee\7cd1ae079f5933b19e04283a884ddbb047a749
+Tamano KB: 0.1
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ef\140ee699e23211c260fe21fbf14dc110bb5716
+Tamano KB: 0.46
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ef\2be7eaa7cbb0d3aba0885fd58d03bd25022b12
+Tamano KB: 1.01
+Modificado: 2026-03-22 22:54:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f0\226705ef1e36997f271c3a04b1b1b7541ceaf2
+Tamano KB: 0.23
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f0\bf790cb0c3439d69405f1a434b5ed311c072ba
+Tamano KB: 0.35
+Modificado: 2026-03-07 14:12:35
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f1\1a1a15b98ae10a301b1656b3642e8a9c6cb016
+Tamano KB: 45.27
+Modificado: 2026-03-07 13:38:37
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f3\519e3e9c266cdfd9ec30ca5091a888170c9f85
+Tamano KB: 0.13
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f3\564b8d6513dbc7385526e6694dd813712d7ab4
+Tamano KB: 0.31
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f3\6470cb794986cff720f4b30a68accc11335f06
+Tamano KB: 0.28
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f6\1d34559cc1b5d82715018f4d071689a0b3435b
+Tamano KB: 54.54
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f6\2cd03d746e0527a3fe6c52337c32b42e4dd068
+Tamano KB: 0.42
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f7\bce3ff5234483800d2f90d206270e3cbd0a016
+Tamano KB: 0.24
+Modificado: 2026-03-14 20:53:10
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f9\11ba7bb65f5ce0533498f15c218867cadbc60b
+Tamano KB: 0.8
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\f9\53150a57f781eee94781bb862fa49e47aa3417
+Tamano KB: 0.22
+Modificado: 2026-03-07 13:38:37
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\fa\9ef9189819fb860365123a3b04908f8c0a001c
+Tamano KB: 0.09
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\fb\080e5b447a442f1c9948093ff3dce45cccd11a
+Tamano KB: 0.97
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\fb\76f4a570e54d7c9da471a5dfa7467bac7827e8
+Tamano KB: 0.88
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\fc\bcfb637199f9c62a07915074b97b4f490e4440
+Tamano KB: 0.6
+Modificado: 2026-03-14 15:15:56
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\fd\27df80724f2ba77b2557dad720ba788beae20f
+Tamano KB: 0.14
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\fd\b257e74a4ae04d962ac4473b303485a385e57f
+Tamano KB: 0.26
+Modificado: 2026-03-08 19:41:32
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ff\6a76c6588ad8d224c821eadc42146bc940262f
+Tamano KB: 0.64
+Modificado: 2026-03-22 21:43:47
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\ff\7721a2420566861bb74a0877c27224a7d270d6
+Tamano KB: 0.19
+Modificado: 2026-03-11 21:08:26
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\pack\pack-fe524251d4ed4244a899db760715af39e3293b75.idx
+Tamano KB: 2.2
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\pack\pack-fe524251d4ed4244a899db760715af39e3293b75.pack
+Tamano KB: 68.56
+Modificado: 2026-03-11 20:55:54
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\objects\pack\pack-fe524251d4ed4244a899db760715af39e3293b75.rev
+Tamano KB: 0.21
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\heads
+Tamano KB: 0
+Modificado: 2026-03-10 22:32:13
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes
+Tamano KB: 0
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\heads\feat
+Tamano KB: 0
+Modificado: 2026-03-14 16:34:13
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\heads\fix
+Tamano KB: 0
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\heads\main
+Tamano KB: 1.87
+Modificado: 2026-03-14 15:23:51
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin
+Tamano KB: 0
+Modificado: 2026-03-10 22:32:16
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\feat
+Tamano KB: 0
+Modificado: 2026-03-14 17:20:12
+----------------------------------------------------------------------------------------------------
+DIR: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\fix
+Tamano KB: 0
+Modificado: 2026-03-07 14:53:03
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\HEAD
+Tamano KB: 0.19
+Modificado: 2026-03-07 03:01:11
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\main
+Tamano KB: 1.42
+Modificado: 2026-03-14 15:23:51
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\feat\d2-hietograma-interpolacion
+Tamano KB: 0.15
+Modificado: 2026-03-13 20:59:49
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\feat\d2-huff-epm-distribucion
+Tamano KB: 0.3
+Modificado: 2026-03-12 18:16:36
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\feat\d2-panel-geomorf
+Tamano KB: 0.3
+Modificado: 2026-03-14 15:15:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\feat\d3-lluvia-efectiva-hidrogramas
+Tamano KB: 0.9
+Modificado: 2026-03-22 23:36:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\feat\hietograma-fuente-global
+Tamano KB: 0.3
+Modificado: 2026-03-11 21:08:29
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\feat\idf-fuente-global
+Tamano KB: 0.15
+Modificado: 2026-03-10 22:32:16
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\remotes\origin\fix\cn-dinamico-real-sync
+Tamano KB: 0.3
+Modificado: 2026-03-07 13:38:38
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\heads\feat\d2-hietograma-interpolacion
+Tamano KB: 0.41
+Modificado: 2026-03-13 20:59:43
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\heads\feat\d3-lluvia-efectiva-hidrogramas
+Tamano KB: 1.55
+Modificado: 2026-03-22 23:36:52
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\heads\feat\hietograma-fuente-global
+Tamano KB: 0.39
+Modificado: 2026-03-11 21:08:26
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\heads\feat\idf-fuente-global
+Tamano KB: 0.4
+Modificado: 2026-03-10 22:32:14
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\heads\fix\cn-dinamico-real-sync
+Tamano KB: 0.39
+Modificado: 2026-03-07 13:38:37
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\01_APP\HIDROFLOW\.git\logs\refs\heads\fix\wh-cnact-wire
+Tamano KB: 0.37
+Modificado: 2026-03-07 14:36:59
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\00_ADMIN\arquitectura\README_ESTRUCTURA_HIDROFLOW_20260524_133755.md
+Tamano KB: 1.1
+Modificado: 2026-05-24 13:38:15
+----------------------------------------------------------------------------------------------------
+FILE: D:\HIDROFLOW\00_ADMIN\inventarios\Inventario_HIDROFLOW_20260524_133755.txt
+Tamano KB: 120.5
+Modificado: 2026-05-24 13:38:15
+----------------------------------------------------------------------------------------------------

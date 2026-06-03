@@ -1,0 +1,93 @@
+# =========================================
+# HidroFlow - Git Ignore Profesional
+# Ruta raíz: D:\HidroFlow
+# =========================================
+
+# Dependencias / builds web
+node_modules/
+dist/
+build/
+.vite/
+
+# Variables de entorno / secretos
+.env
+.env.*
+!.env.example
+08_ENV/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+10_LOGS/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Sistemas / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Backups locales
+*_BACKUP*/
+*.bak
+*.tmp
+*.old
+*.zip
+*.rar
+*.7z
+
+# Legacy local
+09_LEGACY/
+
+# Exportaciones generadas: ignorar contenido, conservar README
+06_EXPORTACIONES/*
+!06_EXPORTACIONES/README.md
+
+# Datos hidrológicos/DEM: ignorar contenido, conservar README
+01_DEM_HIDRO/*
+!01_DEM_HIDRO/README.md
+
+# GIS pesado: ignorar contenido, conservar README
+04_GIS/*
+!04_GIS/README.md
+
+# ArcGIS / geoprocesamiento
+*.gdb/
+*.lock
+*.aux.xml
+*.ovr
+*.tif
+*.tiff
+*.img
+*.adf
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.sbn
+*.sbx
+
+# HidroFlow temporales
+HidroFlow - copia.jsx
+
+# Respaldos internos de Git - no versionar
+.git_BACKUP*/
+**/.git_BACKUP*/
+**/.git_BACKUP_APP*/
+
+# Ruido histórico dentro de la app - no versionar
+01_APP/HIDROFLOW/*.docx
+01_APP/HIDROFLOW/src/*.BACKUP.*
+01_APP/HIDROFLOW/src/HidroFlow*.txt
+01_APP/HIDROFLOW/src/**/*BACKUP*
+01_APP/HIDROFLOW/**/*BACKUP*
+*.docx

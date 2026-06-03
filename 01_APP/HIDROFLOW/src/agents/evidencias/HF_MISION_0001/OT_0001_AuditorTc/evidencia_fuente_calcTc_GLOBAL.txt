@@ -1,0 +1,366 @@
+============================================================
+EVIDENCIA GLOBAL FUENTE calcTc
+Fecha: 05/30/2026 21:03:23
+============================================================
+
+
+  src\data\auditoriaPendientesTc.js:8:    descripcionPendiente:
+  src\data\auditoriaPendientesTc.js:9:      "Debe usar pendiente longitudinal representativa del cauce principal hasta PC_80.",
+  src\data\auditoriaPendientesTc.js:10:    auditoria:
+> src\data\auditoriaPendientesTc.js:11:      "Verificar si calcTc usa longitud hidráulica efectiva y desnivel total del eje principal validado. Revisar sensibilidad frente a pendientes segmentadas por quiebres críticos.",
+  src\data\auditoriaPendientesTc.js:12:    riesgo:
+  src\data\auditoriaPendientesTc.js:13:      "Si usa una pendiente demasiado baja, Tc puede crecer de forma importante.",
+  src\data\auditoriaPendientesTc.js:14:  },
+  src\data\auditoriaPendientesTc.js:15:  {
+  src\data\auditoriaPendientesTc.js:16:    idMetodo: "tc_kirpich",
+  src\data\auditoriaPendientesTc.js:17:    metodo: "Kirpich",
+  src\data\auditoriaPendientesTc.js:18:    pendienteEsperada: "Scp / H-L",
+  src\data\auditoriaPendientesTc.js:19:    descripcionPendiente:
+  src\data\cuencasCatalogo.js:171:
+  src\data\cuencasCatalogo.js:172:    // HidroFlow.jsx todavía lee pendiente_cuenca para:
+  src\data\cuencasCatalogo.js:173:    // 1. Mostrar "Pendiente media" en el módulo Parámetros.
+> src\data\cuencasCatalogo.js:174:    // 2. Calcular el método SCS-Ranser dentro de calcTc().
+  src\data\cuencasCatalogo.js:175:    pendiente_cuenca: 8.43,
+  src\data\cuencasCatalogo.js:176:
+  src\data\cuencasCatalogo.js:177:    // Alias técnico para paneles nuevos y trazabilidad.
+  src\data\cuencasCatalogo.js:178:    pendiente_media: 8.43,
+  src\data\cuencasCatalogo.js:179:
+  src\data\cuencasCatalogo.js:180:    longitud_red: 127.1283,
+  src\data\cuencasCatalogo.js:181:    densidad_drenaje: 2.7134,
+  src\data\cuencasCatalogo.js:182:    kc_compacidad: 1.9468,
+  src\dominio\CuencaGeomorfologica.ts:37:  tiempo_concentracion: {
+  src\dominio\CuencaGeomorfologica.ts:38:    /**
+  src\dominio\CuencaGeomorfologica.ts:39:     * Resultados Tc por todos los métodos disponibles
+> src\dominio\CuencaGeomorfologica.ts:40:     * (calculados por calcTc)
+  src\dominio\CuencaGeomorfologica.ts:41:     */
+  src\dominio\CuencaGeomorfologica.ts:42:    metodos: {
+  src\dominio\CuencaGeomorfologica.ts:43:      kirpich_min?: number | null;
+  src\dominio\CuencaGeomorfologica.ts:44:      california_min?: number | null;
+  src\dominio\CuencaGeomorfologica.ts:45:      temez_min?: number | null;
+  src\dominio\CuencaGeomorfologica.ts:46:      giandotti_min?: number | null;
+  src\dominio\CuencaGeomorfologica.ts:47:      scs_lag_min?: number | null;
+  src\dominio\CuencaGeomorfologica.ts:48:      kerby_hathaway_min?: number | null;
+  src\dominio\motorTc.ts:69:}
+  src\dominio\motorTc.ts:70:
+  src\dominio\motorTc.ts:71:// ===== API =====
+> src\dominio\motorTc.ts:72:export function calcTcTodos(p: ParametrosCuenca): TcResultado[] {
+  src\dominio\motorTc.ts:73:  return [
+  src\dominio\motorTc.ts:74:    tc_Temez(p), tc_Kirpich(p), tc_California(p), tc_Giandotti(p),
+  src\dominio\motorTc.ts:75:    tc_SCS_Ranser(p), tc_PerezMontgomery(p),
+  src\dominio\motorTc.ts:76:    tc_TR55_segmentado(p), tc_KerbyHathaway(p), tc_BransbyWilliams(p),
+  src\dominio\motorTc.ts:77:    tc_Izzard(p), tc_JohnstoneCross(p), tc_Ventura(p),
+  src\dominio\motorTc.ts:78:  ];
+  src\dominio\motorTc.ts:79:}
+  src\dominio\motorTc.ts:80:
+  src\dominio\motorTc.ts:93:  return { metodo: "Témez (1978)", motivo: "Condición estándar; método robusto para cuencas medias" };
+  src\dominio\motorTc.ts:94:}
+  src\dominio\motorTc.ts:95:
+> src\dominio\motorTc.ts:96:export function calcTcSeleccion(p: ParametrosCuenca, metodo: string): TcResultado {
+> src\dominio\motorTc.ts:97:  const res = calcTcTodos(p).find(t => t.metodo.toLowerCase() === metodo.toLowerCase());
+  src\dominio\motorTc.ts:98:  if (!res) throw new Error(`Método Tc no reconocido: ${metodo}`);
+  src\dominio\motorTc.ts:99:  return res;
+  src\dominio\motorTc.ts:100:}
+  src\hooks\useTc.ts:1:import { useMemo, useState } from "react";
+  src\hooks\useTc.ts:2:import { ParametrosCuenca, TcResultado } from "../dominio/tipos";
+> src\hooks\useTc.ts:3:import { calcTcTodos, sugerirMetodoTc } from "../dominio/motorTc";
+  src\hooks\useTc.ts:4:
+  src\hooks\useTc.ts:5:export function useTc(params: ParametrosCuenca) {
+> src\hooks\useTc.ts:6:  const resultados = useMemo<TcResultado[]>(() => calcTcTodos(params), [params]);
+  src\hooks\useTc.ts:7:  const sugerido = useMemo(() => sugerirMetodoTc(params), [params]);
+  src\hooks\useTc.ts:8:  const [metodo, setMetodo] = useState<string>(sugerido.metodo);
+  src\hooks\useTc.ts:9:  const activo = useMemo(
+  src\hooks\useTc.ts:10:    () => resultados.find(r => r.metodo === metodo) ?? resultados[0],
+  src\hooks\useTc.ts:11:    [resultados, metodo]
+  src\hooks\useTc.ts:12:  );
+  src\hooks\useTc.ts:13:  return { resultados, sugerido, metodo, setMetodo, activo };
+  src\hooks\useTc.ts:14:}
+  src\services\tc\calcTc.ts:9: * Motor de cálculo de Tiempo de Concentración
+  src\services\tc\calcTc.ts:10: * Estilo HEC-HMS: calcula TODOS los métodos
+  src\services\tc\calcTc.ts:11: */
+> src\services\tc\calcTc.ts:12:export function calcTc(inputs: TcInputs): TcResultados {
+  src\services\tc\calcTc.ts:13:  return {
+  src\services\tc\calcTc.ts:14:    kirpich_min: tcKirpich(inputs),
+  src\services\tc\calcTc.ts:15:    temez_min: tcTemez(inputs),
+  src\services\tc\calcTc.ts:16:    giandotti_min: tcGiandotti(inputs),
+  src\services\tc\calcTc.ts:17:    scs_lag_min: tcScsLag(inputs),
+  src\services\tc\calcTc.ts:18:
+  src\services\tc\calcTc.ts:19:    // Stubs listos
+  src\services\tc\calcTc.ts:20:    kerby_hathaway_min: null,
+  src\services\hidroEngine.js:191: *   ...
+  src\services\hidroEngine.js:192: * ]
+  src\services\hidroEngine.js:193: */
+> src\services\hidroEngine.js:194:export function calcTc(p) {
+  src\services\hidroEngine.js:195:  const L = p.longitud_cauce;
+  src\services\hidroEngine.js:196:  const A = p.area;
+  src\services\hidroEngine.js:197:  const Sp = p.pendiente_cuenca;
+  src\services\hidroEngine.js:198:
+  src\services\hidroEngine.js:199:  const So =
+  src\services\hidroEngine.js:200:    ((p.cota_mayor_cauce - p.cota_menor_cauce) / (L * 1000)) * 1000;
+  src\services\hidroEngine.js:201:
+  src\services\hidroEngine.js:202:  const Lft = L * 3280.84;
+  src\services\hidroEngine.js:488:    Number.isFinite(paramsTc.CN);
+  src\services\hidroEngine.js:489:
+  src\services\hidroEngine.js:490:  if (tieneInsumosTc) {
+> src\services\hidroEngine.js:491:    tcMetodos = calcTc(paramsTc).filter(
+  src\services\hidroEngine.js:492:      (r) =>
+  src\services\hidroEngine.js:493:        Number.isFinite(r.h) &&
+  src\services\hidroEngine.js:494:        Number.isFinite(r.min) &&
+  src\services\hidroEngine.js:495:        r.h > 0 &&
+  src\services\hidroEngine.js:496:        r.min > 0
+  src\services\hidroEngine.js:497:    );
+  src\services\hidroEngine.js:498:
+  src\services\hidroEngine.js:499:    tcResumen = resumirTc(tcMetodos);
+  src\HidroFlow - copia.jsx:286:}
+  src\HidroFlow - copia.jsx:287:
+  src\HidroFlow - copia.jsx:288:// ─── FUNCIONES AUXILIARES ────────────────────────────────────────────────────
+> src\HidroFlow - copia.jsx:289:function calcTc(p){
+  src\HidroFlow - copia.jsx:290:  const L=p.longitud_cauce,A=p.area,Sp=p.pendiente_cuenca;
+  src\HidroFlow - copia.jsx:291:  const So=(p.cota_mayor_cauce-p.cota_menor_cauce)/(L*1000)*1000;
+  src\HidroFlow - copia.jsx:292:  const Lft=L*3280.84,Sf=(p.cota_mayor_cauce-p.cota_menor_cauce)/(L*3280.84);
+  src\HidroFlow - copia.jsx:293:  const Ss=25400/p.CN-254;
+  src\HidroFlow - copia.jsx:294:  return[
+  src\HidroFlow - copia.jsx:295:    {m:"Témez (1978)",h:0.3*Math.pow(L/Math.pow(So/1000,0.25),0.76)},
+  src\HidroFlow - copia.jsx:296:    {m:"Kirpich (1940)",h:0.0078*Math.pow(Lft,0.77)*Math.pow(Sf,-0.385)/60},
+  src\HidroFlow - copia.jsx:297:    {m:"California (1942)",h:0.0195*Math.pow(L*1000,0.77)*Math.pow(So/1000,-0.385)/60},
+  src\HidroFlow - copia.jsx:327:}
+  src\HidroFlow - copia.jsx:328:
+  src\HidroFlow - copia.jsx:329:function buildResumenQ(params, est, dtMin, CNact) {
+> src\HidroFlow - copia.jsx:330:  const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+  src\HidroFlow - copia.jsx:331:  const tc_h = tcList[0]?.h || 0.5;
+  src\HidroFlow - copia.jsx:332:  const metodos = [
+  src\HidroFlow - copia.jsx:333:    { nombre: 'SCS',     make: () => calcHUSCS(params.area, tc_h, dtMin) },
+  src\HidroFlow - copia.jsx:334:    { nombre: 'SCS Mod', make: () => calcHUSCS_Mod(params.area, tc_h, dtMin, 2.08) },
+  src\HidroFlow - copia.jsx:335:    { nombre: 'Snyder',  make: () => calcHUSnyder(params.area*0.386102, params.longitud_cauce*0.621371, params.longitud_cauce*0.621371*0.35, dtMin) },
+  src\HidroFlow - copia.jsx:336:    { nombre: 'W&H',     make: () => calcHUWilliamsHann(params.area, params.longitud_cauce, (params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce, CNact, dtMin) },
+  src\HidroFlow - copia.jsx:337:    { nombre: 'Clark',   make: () => calcClarkIUH(params.area, tc_h, dtMin, 1.2) },
+  src\HidroFlow - copia.jsx:338:  ];
+  src\HidroFlow - copia.jsx:626:}
+  src\HidroFlow - copia.jsx:627:
+  src\HidroFlow - copia.jsx:628:function ModParams({ params, setParams }) {
+> src\HidroFlow - copia.jsx:629:  const tc = useMemo(() => calcTc(params), [params]);
+  src\HidroFlow - copia.jsx:630:  const set = k => v => setParams(p => ({ ...p, [k]: v }));
+  src\HidroFlow - copia.jsx:631:  const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
+  src\HidroFlow - copia.jsx:632:  const tcMed = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
+  src\HidroFlow - copia.jsx:633:
+  src\HidroFlow - copia.jsx:634: return (
+  src\HidroFlow - copia.jsx:635:    <div style={{display:"flex",flexDirection:"column",gap:14}}>
+  src\HidroFlow - copia.jsx:636:
+  src\HidroFlow - copia.jsx:637:      {/* ── Morfometría / Índices / Tc (tu bloque existente) ───────────────────── */}
+  src\HidroFlow - copia.jsx:1058:  const [Cp,setCp]=useState(0.62);   // Snyder Cp
+  src\HidroFlow - copia.jsx:1059:  const [CpSCSMod,setCpSCSMod]=useState(2.08); // SCS Mod Cp
+  src\HidroFlow - copia.jsx:1060:
+> src\HidroFlow - copia.jsx:1061:  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+  src\HidroFlow - copia.jsx:1062:  const tc_h=tcList[tcSrc]?.h||0.5;
+  src\HidroFlow - copia.jsx:1063:
+  src\HidroFlow - copia.jsx:1064:  const area_mi2=params.area*0.386102;
+  src\HidroFlow - copia.jsx:1065:  const L_mi=params.longitud_cauce*0.621371;
+  src\HidroFlow - copia.jsx:1066:  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+  src\HidroFlow - copia.jsx:1067:
+  src\HidroFlow - copia.jsx:1068:  // Hietograma para este Tr+dt
+  src\HidroFlow - copia.jsx:1069:  const hiet=useMemo(()=>calcHietograma(est,Tr,3,dtMin,"EPM_Q1"),[est,Tr,dtMin]);
+  src\HidroFlow - copia.jsx:1250:  const lluvPre =useMemo(()=>calcLluviaEfectiva(hiet,cnIII_pre),[hiet]);
+  src\HidroFlow - copia.jsx:1251:
+  src\HidroFlow - copia.jsx:1252:  // Tc Témez para la cuenca
+> src\HidroFlow - copia.jsx:1253:  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+  src\HidroFlow - copia.jsx:1254:  const tc_h=tcList[0]?.h||0.5;
+  src\HidroFlow - copia.jsx:1255:  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+  src\HidroFlow - copia.jsx:1256:
+  src\HidroFlow - copia.jsx:1257:  // Método hidrograma post-urbano seleccionable
+  src\HidroFlow - copia.jsx:1258:  const huPost=useMemo(()=>{
+  src\HidroFlow - copia.jsx:1259:    if(metodoPost==="Clark") return calcClarkIUH(params.area,tc_h,dtMin,1.2);
+  src\HidroFlow - copia.jsx:1260:    if(metodoPost==="Snyder") return calcHUSnyder(params.area*0.386102,params.longitud_cauce*0.621371,params.longitud_cauce*0.621371*0.35,dtMin);
+  src\HidroFlow - copia.jsx:1261:    if(metodoPost==="WH") return calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,cnIII_post,dtMin);
+  src\HidroFlow - copia.jsx:1458:// MÓDULO MÉTODO RACIONAL
+  src\HidroFlow - copia.jsx:1459:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow - copia.jsx:1460:function ModRacional({params,est,name}){
+> src\HidroFlow - copia.jsx:1461:  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+  src\HidroFlow - copia.jsx:1462:  const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+  src\HidroFlow - copia.jsx:1463:  const res=useMemo(()=>calcRacional(est,params.area,tc_min,params.CN),[est,params,tc_min]);
+  src\HidroFlow - copia.jsx:1464:  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+  src\HidroFlow - copia.jsx:1465:    <SectionHeader icon="◈" title="Método Racional — Q = C·I·A / 3.6" sub="Abstracción SCS · Tc promedio · Comparativa de períodos de retorno" accent={C.gold}/>
+  src\HidroFlow - copia.jsx:1466:    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:9}}>
+  src\HidroFlow - copia.jsx:1467:      <Kpi value={tc_min.toFixed(2)+" min"} label="Tc promedio (6 métodos)" accent={C.accent}/>
+  src\HidroFlow - copia.jsx:1468:      <Kpi value={res.find(r=>r.Tr===25)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=25a" accent={C.gold}/>
+  src\HidroFlow - copia.jsx:1469:      <Kpi value={res.find(r=>r.Tr===100)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=100a" accent={C.accent3}/>
+  src\HidroFlow.BACKUP.20260316_0317.jsx:287:}
+  src\HidroFlow.BACKUP.20260316_0317.jsx:288:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:289:// ─── FUNCIONES AUXILIARES ────────────────────────────────────────────────────
+> src\HidroFlow.BACKUP.20260316_0317.jsx:290:function calcTc(p){
+  src\HidroFlow.BACKUP.20260316_0317.jsx:291:  const L=p.longitud_cauce,A=p.area,Sp=p.pendiente_cuenca;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:292:  const So=(p.cota_mayor_cauce-p.cota_menor_cauce)/(L*1000)*1000;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:293:  const Lft=L*3280.84,Sf=(p.cota_mayor_cauce-p.cota_menor_cauce)/(L*3280.84);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:294:  const Ss=25400/p.CN-254;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:295:  return[
+  src\HidroFlow.BACKUP.20260316_0317.jsx:296:    {m:"Témez (1978)",h:0.3*Math.pow(L/Math.pow(So/1000,0.25),0.76)},
+  src\HidroFlow.BACKUP.20260316_0317.jsx:297:    {m:"Kirpich (1940)",h:0.0078*Math.pow(Lft,0.77)*Math.pow(Sf,-0.385)/60},
+  src\HidroFlow.BACKUP.20260316_0317.jsx:298:    {m:"California (1942)",h:0.0195*Math.pow(L*1000,0.77)*Math.pow(So/1000,-0.385)/60},
+  src\HidroFlow.BACKUP.20260316_0317.jsx:328:}
+  src\HidroFlow.BACKUP.20260316_0317.jsx:329:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:330:function buildResumenQ(params, est, dtMin, CNact) {
+> src\HidroFlow.BACKUP.20260316_0317.jsx:331:  const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:332:  const tc_h = tcList[0]?.h || 0.5;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:333:  const metodos = [
+  src\HidroFlow.BACKUP.20260316_0317.jsx:334:    { nombre: 'SCS',     make: () => calcHUSCS(params.area, tc_h, dtMin) },
+  src\HidroFlow.BACKUP.20260316_0317.jsx:335:    { nombre: 'SCS Mod', make: () => calcHUSCS_Mod(params.area, tc_h, dtMin, 2.08) },
+  src\HidroFlow.BACKUP.20260316_0317.jsx:336:    { nombre: 'Snyder',  make: () => calcHUSnyder(params.area*0.386102, params.longitud_cauce*0.621371, params.longitud_cauce*0.621371*0.35, dtMin) },
+  src\HidroFlow.BACKUP.20260316_0317.jsx:337:    { nombre: 'W&H',     make: () => calcHUWilliamsHann(params.area, params.longitud_cauce, (params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce, CNact, dtMin) },
+  src\HidroFlow.BACKUP.20260316_0317.jsx:338:    { nombre: 'Clark',   make: () => calcClarkIUH(params.area, tc_h, dtMin, 1.2) },
+  src\HidroFlow.BACKUP.20260316_0317.jsx:339:  ];
+  src\HidroFlow.BACKUP.20260316_0317.jsx:740:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:741:function ModParams({ params, setParams }) {
+  src\HidroFlow.BACKUP.20260316_0317.jsx:742:  // Cálculos de Tc y utilidades locales
+> src\HidroFlow.BACKUP.20260316_0317.jsx:743:  const tc      = useMemo(() => calcTc(params), [params]);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:744:  const set     = k => v => setParams(p => ({ ...p, [k]: v }));
+  src\HidroFlow.BACKUP.20260316_0317.jsx:745:  const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:746:  const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:747:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:748:  return (
+  src\HidroFlow.BACKUP.20260316_0317.jsx:749:    <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+  src\HidroFlow.BACKUP.20260316_0317.jsx:750:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:751:      {/* ── Morfometría / Índices / Tc (bloque superior) ───────────────────────── */}
+  src\HidroFlow.BACKUP.20260316_0317.jsx:952:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:953:  // === Tc sugerido desde Panel (geomorfología) — informe amigable ===
+  src\HidroFlow.BACKUP.20260316_0317.jsx:954:  const tcList = useMemo(
+> src\HidroFlow.BACKUP.20260316_0317.jsx:955:    () => calcTc(params).filter(r => isFinite(r.h) && r.h > 0),
+  src\HidroFlow.BACKUP.20260316_0317.jsx:956:    [params]
+  src\HidroFlow.BACKUP.20260316_0317.jsx:957:  ); // r.min está en minutos
+  src\HidroFlow.BACKUP.20260316_0317.jsx:958:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:959:  const Tc_sugerido_min = useMemo(() => {
+  src\HidroFlow.BACKUP.20260316_0317.jsx:960:    if (!tcList.length) return 120;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:961:    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:962:    const mid = Math.floor(s.length / 2);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:963:    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1427:  const [CpSCSMod, setCpSCSMod] = useState(2.08); // SCS Mod
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1428:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1429:  // ── Tc, unidades y pendiente
+> src\HidroFlow.BACKUP.20260316_0317.jsx:1430:  const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1431:  const tc_h   = tcList[tcSrc]?.h || 0.5;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1432:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1433:  const area_mi2 = params.area * 0.386102;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1434:  const L_mi     = params.longitud_cauce * 0.621371;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1435:  const S_m_km   = (params.cota_mayor_cauce - params.cota_menor_cauce) / params.longitud_cauce;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1436:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1437:  // ── Hietograma (Tr, 3 h de evento, dtMin, EPM_Q1)
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1438:  const hiet = useMemo(() => calcHietograma(est, Tr, 3, dtMin, "EPM_Q1"), [est, Tr, dtMin]);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1673:  const lluvPre =useMemo(()=>calcLluviaEfectiva(hiet,cnIII_pre),[hiet]);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1674:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1675:  // Tc Témez para la cuenca
+> src\HidroFlow.BACKUP.20260316_0317.jsx:1676:  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1677:  const tc_h=tcList[0]?.h||0.5;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1678:  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1679:
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1680:  // Método hidrograma post-urbano seleccionable
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1681:  const huPost=useMemo(()=>{
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1682:    if(metodoPost==="Clark") return calcClarkIUH(params.area,tc_h,dtMin,1.2);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1683:    if(metodoPost==="Snyder") return calcHUSnyder(params.area*0.386102,params.longitud_cauce*0.621371,params.longitud_cauce*0.621371*0.35,dtMin);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1684:    if(metodoPost==="WH") return calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,cnIII_post,dtMin);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1881:// MÓDULO MÉTODO RACIONAL
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1882:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1883:function ModRacional({params,est,name}){
+> src\HidroFlow.BACKUP.20260316_0317.jsx:1884:  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1885:  const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1886:  const res=useMemo(()=>calcRacional(est,params.area,tc_min,params.CN),[est,params,tc_min]);
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1887:  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1888:    <SectionHeader icon="◈" title="Método Racional — Q = C·I·A / 3.6" sub="Abstracción SCS · Tc promedio · Comparativa de períodos de retorno" accent={C.gold}/>
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1889:    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:9}}>
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1890:      <Kpi value={tc_min.toFixed(2)+" min"} label="Tc promedio (6 métodos)" accent={C.accent}/>
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1891:      <Kpi value={res.find(r=>r.Tr===25)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=25a" accent={C.gold}/>
+  src\HidroFlow.BACKUP.20260316_0317.jsx:1892:      <Kpi value={res.find(r=>r.Tr===100)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=100a" accent={C.accent3}/>
+  src\HidroFlow.jsx:28:  calcCNdinamico,
+  src\HidroFlow.jsx:29:  derivarAMCDesdeSIATA,
+  src\HidroFlow.jsx:30:  calcLluviaEfectiva,
+> src\HidroFlow.jsx:31:  calcTc,
+  src\HidroFlow.jsx:32:  cnMixto,
+  src\HidroFlow.jsx:33:  cnII_to_III
+  src\HidroFlow.jsx:34:} from "./services/hidroEngine";
+  src\HidroFlow.jsx:35:
+  src\HidroFlow.jsx:36:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:37:// HIDROFLOW v3.1 — Arquitectura Senior · GT-AS-004 · EPM 2025 · SIATA
+  src\HidroFlow.jsx:38:// Motor: Clark IUH · W&H · Snyder · SCS Mod. · Huff · Convolución completa
+  src\HidroFlow.jsx:39:// Módulos: Ponderación estaciones (IDW/Thiessen/Altitudinal/Compuesto) + SIATA
+  src\HidroFlow.jsx:300:}
+  src\HidroFlow.jsx:301:
+  src\HidroFlow.jsx:302:function buildResumenQ(params, est, dtMin, CNact) {
+> src\HidroFlow.jsx:303:  const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+  src\HidroFlow.jsx:304:  const tc_h = tcList[0]?.h || 0.5;
+  src\HidroFlow.jsx:305:  const metodos = [
+  src\HidroFlow.jsx:306:    { nombre: 'SCS',     make: () => calcHUSCS(params.area, tc_h, dtMin) },
+  src\HidroFlow.jsx:307:    { nombre: 'SCS Mod', make: () => calcHUSCS_Mod(params.area, tc_h, dtMin, 2.08) },
+  src\HidroFlow.jsx:308:    { nombre: 'Snyder',  make: () => calcHUSnyder(params.area*0.386102, params.longitud_cauce*0.621371, params.longitud_cauce*0.621371*0.35, dtMin) },
+  src\HidroFlow.jsx:309:    { nombre: 'W&H',     make: () => calcHUWilliamsHann(params.area, params.longitud_cauce, (params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce, CNact, dtMin) },
+  src\HidroFlow.jsx:310:    { nombre: 'Clark',   make: () => calcClarkIUH(params.area, tc_h, dtMin, 1.2) },
+  src\HidroFlow.jsx:311:  ];
+  src\HidroFlow.jsx:1183:
+  src\HidroFlow.jsx:1184:function ModParams({ params, setParams }) {
+  src\HidroFlow.jsx:1185:  // Cálculos de Tc y utilidades locales
+> src\HidroFlow.jsx:1186:  const tc      = useMemo(() => calcTc(params), [params]);
+  src\HidroFlow.jsx:1187:  const set     = k => v => setParams(p => ({ ...p, [k]: v }));
+  src\HidroFlow.jsx:1188:  const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
+  src\HidroFlow.jsx:1189:  const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
+  src\HidroFlow.jsx:1190:  
+  src\HidroFlow.jsx:1191:  // Persistir Tc medio (min) en params para otros módulos (Hietogramas, Hidrogramas)
+  src\HidroFlow.jsx:1192:  useEffect(() => {
+  src\HidroFlow.jsx:1193:    if (!isFinite(tcMed) || tcMed <= 0) return;
+  src\HidroFlow.jsx:1194:
+  src\HidroFlow.jsx:1411:
+  src\HidroFlow.jsx:1412:  // === Tc sugerido desde Panel (geomorfología) — informe amigable ===
+  src\HidroFlow.jsx:1413:  const tcList = useMemo(
+> src\HidroFlow.jsx:1414:    () => calcTc(params).filter(r => isFinite(r.h) && r.h > 0),
+  src\HidroFlow.jsx:1415:    [params]
+  src\HidroFlow.jsx:1416:  ); // r.min está en minutos
+  src\HidroFlow.jsx:1417:
+  src\HidroFlow.jsx:1418:  const Tc_sugerido_min = useMemo(() => {
+  src\HidroFlow.jsx:1419:    if (!tcList.length) return 120;
+  src\HidroFlow.jsx:1420:    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+  src\HidroFlow.jsx:1421:    const mid = Math.floor(s.length / 2);
+  src\HidroFlow.jsx:1422:    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+  src\HidroFlow.jsx:1907:  const [CpSCSMod, setCpSCSMod] = useState(2.08); // SCS Mod
+  src\HidroFlow.jsx:1908:
+  src\HidroFlow.jsx:1909:  // ── Tc, unidades y pendiente
+> src\HidroFlow.jsx:1910:  const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+  src\HidroFlow.jsx:1911:  const tc_h   = tcList[tcSrc]?.h || 0.5;
+  src\HidroFlow.jsx:1912:  const tc_min = tc_h * 60;
+  src\HidroFlow.jsx:1913:  
+  src\HidroFlow.jsx:1914:  const area_mi2 = params.area * 0.386102;
+  src\HidroFlow.jsx:1915:  const L_mi     = params.longitud_cauce * 0.621371;
+  src\HidroFlow.jsx:1916:  const S_m_km   = (params.cota_mayor_cauce - params.cota_menor_cauce) / params.longitud_cauce;
+  src\HidroFlow.jsx:1917:
+  src\HidroFlow.jsx:1918:  // ── Hietograma (Tr, 3 h de evento, dtMin, EPM_Q1)
+  src\HidroFlow.jsx:2375:  const lluvPre =useMemo(()=>calcLluviaEfectiva(hiet,cnIII_pre),[hiet]);
+  src\HidroFlow.jsx:2376:
+  src\HidroFlow.jsx:2377:  // Tc Témez para la cuenca
+> src\HidroFlow.jsx:2378:  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+  src\HidroFlow.jsx:2379:  const tc_h=tcList[0]?.h||0.5;
+  src\HidroFlow.jsx:2380:  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+  src\HidroFlow.jsx:2381:
+  src\HidroFlow.jsx:2382:  // Método hidrograma post-urbano seleccionable
+  src\HidroFlow.jsx:2383:  const huPost=useMemo(()=>{
+  src\HidroFlow.jsx:2384:    if(metodoPost==="Clark") return calcClarkIUH(params.area,tc_h,dtMin,1.2);
+  src\HidroFlow.jsx:2385:    if(metodoPost==="Snyder") return calcHUSnyder(params.area*0.386102,params.longitud_cauce*0.621371,params.longitud_cauce*0.621371*0.35,dtMin);
+  src\HidroFlow.jsx:2386:    if(metodoPost==="WH") return calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,cnIII_post,dtMin);
+  src\HidroFlow.jsx:2583:// MÓDULO MÉTODO RACIONAL
+  src\HidroFlow.jsx:2584:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:2585:function ModRacional({params,est,name}){
+> src\HidroFlow.jsx:2586:  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+  src\HidroFlow.jsx:2587:  const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+  src\HidroFlow.jsx:2588:  const res=useMemo(()=>calcRacional(est,params.area,tc_min,params.CN),[est,params,tc_min]);
+  src\HidroFlow.jsx:2589:  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+  src\HidroFlow.jsx:2590:    <SectionHeader icon="◈" title="Método Racional — Q = C·I·A / 3.6" sub="Abstracción SCS · Tc promedio · Comparativa de períodos de retorno" accent={C.gold}/>
+  src\HidroFlow.jsx:2591:    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:9}}>
+  src\HidroFlow.jsx:2592:      <Kpi value={tc_min.toFixed(2)+" min"} label="Tc promedio (6 métodos)" accent={C.accent}/>
+  src\HidroFlow.jsx:2593:      <Kpi value={res.find(r=>r.Tr===25)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=25a" accent={C.gold}/>
+  src\HidroFlow.jsx:2594:      <Kpi value={res.find(r=>r.Tr===100)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=100a" accent={C.accent3}/>
+  src\HidroFlow.jsx:3465:    CN_efectivo: params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase,
+  src\HidroFlow.jsx:3466:    AMC: params?.AMC ?? params?.amcActual ?? params?.amc ?? "II",
+  src\HidroFlow.jsx:3467:
+> src\HidroFlow.jsx:3468:    tc_metodos: calcTc(params),
+  src\HidroFlow.jsx:3469:    
+  src\HidroFlow.jsx:3470:    lluvia_efectiva: false,
+  src\HidroFlow.jsx:3471:    hidrogramas: [],
+  src\HidroFlow.jsx:3472:    hidrograma_principal: null,
+  src\HidroFlow.jsx:3473:  });
+  src\HidroFlow.jsx:3474:}, [onContextoComparador, params]);
+  src\HidroFlow.jsx:3475:  
+  src\HidroFlow.jsx:3476:  // ────────────────── Defaults AMC / %imperv / CNbase (solo si faltan) ──────────────────
+
+

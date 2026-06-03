@@ -1,0 +1,11 @@
+{"tipo":"norma","dominio":"ambiental","tema":"ocupacion_cauce","fuente":"Decreto Ley 2811 de 1974","articulo":"102","contenido":"La ocupación de cauces naturales requiere autorización previa de la autoridad ambiental competente y no debe alterar significativamente el régimen hidráulico natural."}
+
+{"tipo":"norma","dominio":"ambiental","tema":"ocupacion_cauce","fuente":"Decreto 1541 de 1978","articulo":"104","contenido":"Toda ocupación permanente o temporal de cauces, riberas o zonas inundables requiere permiso de la autoridad ambiental."}
+
+{"tipo":"criterio_tecnico","dominio":"hidrologia","tema":"caudal_diseno","contenido":"La selección del caudal de diseño debe basarse en la comparación de metodologías lluvia-escorrentía y en la coherencia con las características morfométricas de la cuenca."}
+
+{"tipo":"criterio_tecnico","dominio":"hidrologia","tema":"perdidas","contenido":"La condición de humedad antecedente AMC-III puede emplearse como escenario desfavorable para evaluar la respuesta hidrológica sin reemplazar el método principal."}
+
+{"tipo":"criterio_tecnico","dominio":"hidrologia","tema":"hietograma","contenido":"El hietograma debe permitir interpretar la concentración temporal de la precipitación y su relación con la respuesta hidrológica de la cuenca."}
+
+{"tipo":"criterio_redaccion","dominio":"documental","tema":"autoridad_ambiental","contenido":"El informe debe emplear lenguaje técnico-descriptivo, evitando afirmaciones categóricas sin respaldo metodológico o normativo."}

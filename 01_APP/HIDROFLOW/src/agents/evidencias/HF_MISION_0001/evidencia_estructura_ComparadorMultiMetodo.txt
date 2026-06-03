@@ -1,0 +1,675 @@
+============================================================
+EVIDENCIA ESTRUCTURA ComparadorMultiMetodo.jsx
+Fecha: 06/01/2026 21:01:56
+Archivo: src\components\ComparadorMultiMetodo.jsx
+============================================================
+
+
+------------------------------------------------------------
+PATRON: export default function
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:20:} from "../data/auditoriaPendientesTc";
+  src\components\ComparadorMultiMetodo.jsx:21:
+> src\components\ComparadorMultiMetodo.jsx:22:export default function ComparadorMultiMetodo({ contexto = null }) {
+  src\components\ComparadorMultiMetodo.jsx:23:
+  src\components\ComparadorMultiMetodo.jsx:24:  const [filtroEstado, setFiltroEstado] = useState("todos");
+  src\components\ComparadorMultiMetodo.jsx:25:  const [filtroTipo, setFiltroTipo] = useState("todos");
+  src\components\ComparadorMultiMetodo.jsx:26:
+
+
+
+------------------------------------------------------------
+PATRON: return \(
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:122:
+  src\components\ComparadorMultiMetodo.jsx:123:// ✅ RETURN FINAL DEL COMPONENTE
+> src\components\ComparadorMultiMetodo.jsx:124:return (
+  src\components\ComparadorMultiMetodo.jsx:125:  <div>
+  src\components\ComparadorMultiMetodo.jsx:126:    <h3>Comparador Multi-Método</h3>
+  src\components\ComparadorMultiMetodo.jsx:127:
+  src\components\ComparadorMultiMetodo.jsx:128:    <p>Cuenca: {contextoBase.cuencaNombre}</p>
+  src\components\ComparadorMultiMetodo.jsx:444:
+  src\components\ComparadorMultiMetodo.jsx:445:  const renderSemaforo = (metodo) => {
+> src\components\ComparadorMultiMetodo.jsx:446:    return (
+  src\components\ComparadorMultiMetodo.jsx:447:      <div style={estilos.semaforoWrap}>
+  src\components\ComparadorMultiMetodo.jsx:448:        <span style={estiloSemaforo(metodo.semaforo)} />
+  src\components\ComparadorMultiMetodo.jsx:449:        <span style={estilos.chip}>
+  src\components\ComparadorMultiMetodo.jsx:450:          {metodo.estadoCompetencia || "sin evaluar"}
+  src\components\ComparadorMultiMetodo.jsx:481:
+  src\components\ComparadorMultiMetodo.jsx:482:    if (valor && typeof valor === "object") {
+> src\components\ComparadorMultiMetodo.jsx:483:      return (
+  src\components\ComparadorMultiMetodo.jsx:484:        Number(valor.tc) ||
+  src\components\ComparadorMultiMetodo.jsx:485:        Number(valor.tc_min) ||
+  src\components\ComparadorMultiMetodo.jsx:486:        Number(valor.Tc) ||
+  src\components\ComparadorMultiMetodo.jsx:487:        Number(valor.TC) ||
+  src\components\ComparadorMultiMetodo.jsx:532:    );
+  src\components\ComparadorMultiMetodo.jsx:533:
+> src\components\ComparadorMultiMetodo.jsx:534:    return (
+  src\components\ComparadorMultiMetodo.jsx:535:      nombreDato.includes(nombreCatalogo) ||
+  src\components\ComparadorMultiMetodo.jsx:536:      nombreCatalogo.includes(nombreDato)
+  src\components\ComparadorMultiMetodo.jsx:537:    );
+  src\components\ComparadorMultiMetodo.jsx:538:  });
+  src\components\ComparadorMultiMetodo.jsx:593:    );
+  src\components\ComparadorMultiMetodo.jsx:594:
+> src\components\ComparadorMultiMetodo.jsx:595:    return (
+  src\components\ComparadorMultiMetodo.jsx:596:      nombreDato.includes(nombreCatalogo) ||
+  src\components\ComparadorMultiMetodo.jsx:597:      nombreCatalogo.includes(nombreDato)
+  src\components\ComparadorMultiMetodo.jsx:598:    );
+  src\components\ComparadorMultiMetodo.jsx:599:  });
+  src\components\ComparadorMultiMetodo.jsx:637:    const datos = metodos.filter((metodo) => metodo.tipo === tipo);
+  src\components\ComparadorMultiMetodo.jsx:638:
+> src\components\ComparadorMultiMetodo.jsx:639:    return (
+  src\components\ComparadorMultiMetodo.jsx:640:      <section style={estilos.bloque}>
+  src\components\ComparadorMultiMetodo.jsx:641:        <h2 style={estilos.bloqueTitulo}>{titulo}</h2>
+  src\components\ComparadorMultiMetodo.jsx:642:
+  src\components\ComparadorMultiMetodo.jsx:643:        <div style={estilos.tablaWrap}>
+  src\components\ComparadorMultiMetodo.jsx:701:                    }
+  src\components\ComparadorMultiMetodo.jsx:702:
+> src\components\ComparadorMultiMetodo.jsx:703:                      return (
+  src\components\ComparadorMultiMetodo.jsx:704:                        <span style={estilos.chip}>
+  src\components\ComparadorMultiMetodo.jsx:705:                          {tcValor.toFixed(2)} min
+  src\components\ComparadorMultiMetodo.jsx:706:                        </span>
+  src\components\ComparadorMultiMetodo.jsx:707:                      );
+  src\components\ComparadorMultiMetodo.jsx:717:    }
+  src\components\ComparadorMultiMetodo.jsx:718:
+> src\components\ComparadorMultiMetodo.jsx:719:    return (
+  src\components\ComparadorMultiMetodo.jsx:720:      <div>
+  src\components\ComparadorMultiMetodo.jsx:721:        <span style={estilos.chip}>
+  src\components\ComparadorMultiMetodo.jsx:722:          {auditoriaPendiente.pendienteEsperada}
+  src\components\ComparadorMultiMetodo.jsx:723:        </span>
+  src\components\ComparadorMultiMetodo.jsx:750:    }
+  src\components\ComparadorMultiMetodo.jsx:751:
+> src\components\ComparadorMultiMetodo.jsx:752:    return (
+  src\components\ComparadorMultiMetodo.jsx:753:      <span style={estilos.chip}>
+  src\components\ComparadorMultiMetodo.jsx:754:        {resultadoQ.Qp.toFixed(2)} m³/s
+  src\components\ComparadorMultiMetodo.jsx:755:      </span>
+  src\components\ComparadorMultiMetodo.jsx:756:    );
+  src\components\ComparadorMultiMetodo.jsx:770:    }
+  src\components\ComparadorMultiMetodo.jsx:771:
+> src\components\ComparadorMultiMetodo.jsx:772:    return (
+  src\components\ComparadorMultiMetodo.jsx:773:      <span style={estilos.chip}>
+  src\components\ComparadorMultiMetodo.jsx:774:        {resultadoQ.Tp.toFixed(2)} min
+  src\components\ComparadorMultiMetodo.jsx:775:      </span>
+  src\components\ComparadorMultiMetodo.jsx:776:    );
+  src\components\ComparadorMultiMetodo.jsx:790:    }
+  src\components\ComparadorMultiMetodo.jsx:791:
+> src\components\ComparadorMultiMetodo.jsx:792:    return (
+  src\components\ComparadorMultiMetodo.jsx:793:      <span style={estilos.chip}>
+  src\components\ComparadorMultiMetodo.jsx:794:        {resultadoQ.volumen.toFixed(2)}
+  src\components\ComparadorMultiMetodo.jsx:795:      </span>
+  src\components\ComparadorMultiMetodo.jsx:796:    );
+  src\components\ComparadorMultiMetodo.jsx:852:  };
+  src\components\ComparadorMultiMetodo.jsx:853:
+> src\components\ComparadorMultiMetodo.jsx:854:  return (
+  src\components\ComparadorMultiMetodo.jsx:855:    <main style={estilos.pagina}>
+  src\components\ComparadorMultiMetodo.jsx:856:      <header style={estilos.encabezado}>
+  src\components\ComparadorMultiMetodo.jsx:857:        {/* CONTEXTO HIDROLÓGICO ACTIVO */}
+  src\components\ComparadorMultiMetodo.jsx:858:<section
+
+
+
+------------------------------------------------------------
+PATRON: Tc final
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:64:}, [contextoBase]);
+  src\components\ComparadorMultiMetodo.jsx:65:
+> src\components\ComparadorMultiMetodo.jsx:66:// ✅ Tc FINAL
+  src\components\ComparadorMultiMetodo.jsx:67:
+  src\components\ComparadorMultiMetodo.jsx:68:const Tc_final = seleccionarTc("hidrograma", metodosTc, contextoTc);
+  src\components\ComparadorMultiMetodo.jsx:69:// ✅ Publicar Tc en el agente DESPUÉS del render
+  src\components\ComparadorMultiMetodo.jsx:70:useEffect(() => {
+  src\components\ComparadorMultiMetodo.jsx:128:    <p>Cuenca: {contextoBase.cuencaNombre}</p>
+  src\components\ComparadorMultiMetodo.jsx:129:
+> src\components\ComparadorMultiMetodo.jsx:130:    <p>✅ Tc final: {Tc_final?.toFixed(2)}</p>
+  src\components\ComparadorMultiMetodo.jsx:131:  </div>
+  src\components\ComparadorMultiMetodo.jsx:132:);
+  src\components\ComparadorMultiMetodo.jsx:133:
+  src\components\ComparadorMultiMetodo.jsx:134:  
+
+
+
+------------------------------------------------------------
+PATRON: Contexto hidrológico activo
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:855:    <main style={estilos.pagina}>
+  src\components\ComparadorMultiMetodo.jsx:856:      <header style={estilos.encabezado}>
+> src\components\ComparadorMultiMetodo.jsx:857:        {/* CONTEXTO HIDROLÓGICO ACTIVO */}
+  src\components\ComparadorMultiMetodo.jsx:858:<section
+  src\components\ComparadorMultiMetodo.jsx:859:  style={{
+  src\components\ComparadorMultiMetodo.jsx:860:    border: "1px solid rgba(34, 211, 238, 0.25)",
+  src\components\ComparadorMultiMetodo.jsx:861:    background: "rgba(15, 23, 42, 0.65)",
+  src\components\ComparadorMultiMetodo.jsx:875:    }}
+  src\components\ComparadorMultiMetodo.jsx:876:  >
+> src\components\ComparadorMultiMetodo.jsx:877:    Contexto hidrológico activo
+  src\components\ComparadorMultiMetodo.jsx:878:  </div>
+  src\components\ComparadorMultiMetodo.jsx:879:
+  src\components\ComparadorMultiMetodo.jsx:880:  <div
+  src\components\ComparadorMultiMetodo.jsx:881:    style={{
+
+
+
+------------------------------------------------------------
+PATRON: Concepto técnico de cuenca
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:948:</section>
+  src\components\ComparadorMultiMetodo.jsx:949:
+> src\components\ComparadorMultiMetodo.jsx:950:{/* CONCEPTO TÉCNICO DE CUENCA */}
+  src\components\ComparadorMultiMetodo.jsx:951:<section
+  src\components\ComparadorMultiMetodo.jsx:952:  style={{
+  src\components\ComparadorMultiMetodo.jsx:953:    border: "1px solid rgba(34, 211, 238, 0.22)",
+  src\components\ComparadorMultiMetodo.jsx:954:    background: "rgba(8, 47, 73, 0.28)",
+  src\components\ComparadorMultiMetodo.jsx:968:    }}
+  src\components\ComparadorMultiMetodo.jsx:969:  >
+> src\components\ComparadorMultiMetodo.jsx:970:    Concepto técnico de cuenca
+  src\components\ComparadorMultiMetodo.jsx:971:  </div>
+  src\components\ComparadorMultiMetodo.jsx:972:
+  src\components\ComparadorMultiMetodo.jsx:973:  <div
+  src\components\ComparadorMultiMetodo.jsx:974:    style={{
+
+
+
+------------------------------------------------------------
+PATRON: Auditoría hidrológica pendiente
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:1180:  }}
+  src\components\ComparadorMultiMetodo.jsx:1181:>
+> src\components\ComparadorMultiMetodo.jsx:1182:  <strong>Auditoría hidrológica pendiente:</strong> los valores de Tc, Tp,
+  src\components\ComparadorMultiMetodo.jsx:1183:  Qp y Volumen requieren revisión de coherencia antes de adopción técnica.
+  src\components\ComparadorMultiMetodo.jsx:1184:  En particular, debe verificarse la relación Tc vs Tp, las unidades de
+  src\components\ComparadorMultiMetodo.jsx:1185:  Qpico, la integración de volTotal, el paso temporal dtMin y los parámetros
+  src\components\ComparadorMultiMetodo.jsx:1186:  internos de cada hidrograma unitario. Los resultados se muestran como
+
+
+
+------------------------------------------------------------
+PATRON: Pendiente auditada
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:652:                <th style={estilos.th}>Salida</th>
+  src\components\ComparadorMultiMetodo.jsx:653:                <th style={estilos.th}>Tc calculado (min)</th>
+> src\components\ComparadorMultiMetodo.jsx:654:                <th style={estilos.th}>Pendiente auditada</th>
+  src\components\ComparadorMultiMetodo.jsx:655:                <th style={estilos.th}>Qp</th>
+  src\components\ComparadorMultiMetodo.jsx:656:                <th style={estilos.th}>Tp</th>
+  src\components\ComparadorMultiMetodo.jsx:657:                <th style={estilos.th}>Volumen</th>
+  src\components\ComparadorMultiMetodo.jsx:658:                <th style={estilos.th}>Observación técnica</th>
+
+
+
+------------------------------------------------------------
+PATRON: Qp
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:567:  if (!bruto) {
+  src\components\ComparadorMultiMetodo.jsx:568:    return {
+> src\components\ComparadorMultiMetodo.jsx:569:      Qp: null,
+  src\components\ComparadorMultiMetodo.jsx:570:      Tp: null,
+  src\components\ComparadorMultiMetodo.jsx:571:      volumen: null,
+  src\components\ComparadorMultiMetodo.jsx:572:      disponible: false,
+  src\components\ComparadorMultiMetodo.jsx:573:    };
+  src\components\ComparadorMultiMetodo.jsx:601:  if (!match) {
+  src\components\ComparadorMultiMetodo.jsx:602:    return {
+> src\components\ComparadorMultiMetodo.jsx:603:      Qp: null,
+  src\components\ComparadorMultiMetodo.jsx:604:      Tp: null,
+  src\components\ComparadorMultiMetodo.jsx:605:      volumen: null,
+  src\components\ComparadorMultiMetodo.jsx:606:      disponible: false,
+  src\components\ComparadorMultiMetodo.jsx:607:    };
+  src\components\ComparadorMultiMetodo.jsx:609:
+  src\components\ComparadorMultiMetodo.jsx:610:  return {
+> src\components\ComparadorMultiMetodo.jsx:611:    Qp: extraerNumero(match, ["Qp", "qp", "q_pico", "caudalPico", "caudal_pico"]),
+  src\components\ComparadorMultiMetodo.jsx:612:    Tp: extraerNumero(match, ["Tp", "tp", "t_pico", "tiempoPico", "tiempo_pico"]),
+  src\components\ComparadorMultiMetodo.jsx:613:    volumen: extraerNumero(match, ["volumen", "V", "vol", "volume"]),
+  src\components\ComparadorMultiMetodo.jsx:614:    disponible: true,
+  src\components\ComparadorMultiMetodo.jsx:615:  };
+  src\components\ComparadorMultiMetodo.jsx:653:                <th style={estilos.th}>Tc calculado (min)</th>
+  src\components\ComparadorMultiMetodo.jsx:654:                <th style={estilos.th}>Pendiente auditada</th>
+> src\components\ComparadorMultiMetodo.jsx:655:                <th style={estilos.th}>Qp</th>
+  src\components\ComparadorMultiMetodo.jsx:656:                <th style={estilos.th}>Tp</th>
+  src\components\ComparadorMultiMetodo.jsx:657:                <th style={estilos.th}>Volumen</th>
+  src\components\ComparadorMultiMetodo.jsx:658:                <th style={estilos.th}>Observación técnica</th>
+  src\components\ComparadorMultiMetodo.jsx:659:              </tr>
+  src\components\ComparadorMultiMetodo.jsx:746:    const resultadoQ = obtenerResultadoQMetodo(metodo);
+  src\components\ComparadorMultiMetodo.jsx:747:
+> src\components\ComparadorMultiMetodo.jsx:748:    if (!Number.isFinite(resultadoQ.Qp)) {
+  src\components\ComparadorMultiMetodo.jsx:749:      return <span style={estilos.chip}>—</span>;
+  src\components\ComparadorMultiMetodo.jsx:750:    }
+  src\components\ComparadorMultiMetodo.jsx:751:
+  src\components\ComparadorMultiMetodo.jsx:752:    return (
+  src\components\ComparadorMultiMetodo.jsx:753:      <span style={estilos.chip}>
+> src\components\ComparadorMultiMetodo.jsx:754:        {resultadoQ.Qp.toFixed(2)} m³/s
+  src\components\ComparadorMultiMetodo.jsx:755:      </span>
+  src\components\ComparadorMultiMetodo.jsx:756:    );
+  src\components\ComparadorMultiMetodo.jsx:757:  })()}
+  src\components\ComparadorMultiMetodo.jsx:758:</td>
+  src\components\ComparadorMultiMetodo.jsx:1161:
+  src\components\ComparadorMultiMetodo.jsx:1162:      <div style={estilos.nota}>
+> src\components\ComparadorMultiMetodo.jsx:1163:  <strong>Nota técnica:</strong> Qp, Tp y Volumen son leídos desde el motor
+  src\components\ComparadorMultiMetodo.jsx:1164:  HidroFlow a partir de los hidrogramas calculados. El comparador no recalcula
+  src\components\ComparadorMultiMetodo.jsx:1165:  hidrogramas, no recalcula CN, no reemplaza el motor hidrológico y no adopta
+  src\components\ComparadorMultiMetodo.jsx:1166:  automáticamente ningún método. La adopción final requiere criterio técnico,
+  src\components\ComparadorMultiMetodo.jsx:1167:  competencia hidrológica y trazabilidad explícita.
+  src\components\ComparadorMultiMetodo.jsx:1181:>
+  src\components\ComparadorMultiMetodo.jsx:1182:  <strong>Auditoría hidrológica pendiente:</strong> los valores de Tc, Tp,
+> src\components\ComparadorMultiMetodo.jsx:1183:  Qp y Volumen requieren revisión de coherencia antes de adopción técnica.
+  src\components\ComparadorMultiMetodo.jsx:1184:  En particular, debe verificarse la relación Tc vs Tp, las unidades de
+> src\components\ComparadorMultiMetodo.jsx:1185:  Qpico, la integración de volTotal, el paso temporal dtMin y los parámetros
+  src\components\ComparadorMultiMetodo.jsx:1186:  internos de cada hidrograma unitario. Los resultados se muestran como
+  src\components\ComparadorMultiMetodo.jsx:1187:  lectura del motor HidroFlow, no como valores adoptados.
+  src\components\ComparadorMultiMetodo.jsx:1188:</div>
+  src\components\ComparadorMultiMetodo.jsx:1189:
+
+
+
+------------------------------------------------------------
+PATRON: Volumen
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:569:      Qp: null,
+  src\components\ComparadorMultiMetodo.jsx:570:      Tp: null,
+> src\components\ComparadorMultiMetodo.jsx:571:      volumen: null,
+  src\components\ComparadorMultiMetodo.jsx:572:      disponible: false,
+  src\components\ComparadorMultiMetodo.jsx:573:    };
+  src\components\ComparadorMultiMetodo.jsx:574:  }
+  src\components\ComparadorMultiMetodo.jsx:575:
+  src\components\ComparadorMultiMetodo.jsx:603:      Qp: null,
+  src\components\ComparadorMultiMetodo.jsx:604:      Tp: null,
+> src\components\ComparadorMultiMetodo.jsx:605:      volumen: null,
+  src\components\ComparadorMultiMetodo.jsx:606:      disponible: false,
+  src\components\ComparadorMultiMetodo.jsx:607:    };
+  src\components\ComparadorMultiMetodo.jsx:608:  }
+  src\components\ComparadorMultiMetodo.jsx:609:
+  src\components\ComparadorMultiMetodo.jsx:611:    Qp: extraerNumero(match, ["Qp", "qp", "q_pico", "caudalPico", "caudal_pico"]),
+  src\components\ComparadorMultiMetodo.jsx:612:    Tp: extraerNumero(match, ["Tp", "tp", "t_pico", "tiempoPico", "tiempo_pico"]),
+> src\components\ComparadorMultiMetodo.jsx:613:    volumen: extraerNumero(match, ["volumen", "V", "vol", "volume"]),
+  src\components\ComparadorMultiMetodo.jsx:614:    disponible: true,
+  src\components\ComparadorMultiMetodo.jsx:615:  };
+  src\components\ComparadorMultiMetodo.jsx:616:};
+  src\components\ComparadorMultiMetodo.jsx:617:
+  src\components\ComparadorMultiMetodo.jsx:655:                <th style={estilos.th}>Qp</th>
+  src\components\ComparadorMultiMetodo.jsx:656:                <th style={estilos.th}>Tp</th>
+> src\components\ComparadorMultiMetodo.jsx:657:                <th style={estilos.th}>Volumen</th>
+  src\components\ComparadorMultiMetodo.jsx:658:                <th style={estilos.th}>Observación técnica</th>
+  src\components\ComparadorMultiMetodo.jsx:659:              </tr>
+  src\components\ComparadorMultiMetodo.jsx:660:            </thead>
+  src\components\ComparadorMultiMetodo.jsx:661:
+  src\components\ComparadorMultiMetodo.jsx:786:    const resultadoQ = obtenerResultadoQMetodo(metodo);
+  src\components\ComparadorMultiMetodo.jsx:787:
+> src\components\ComparadorMultiMetodo.jsx:788:    if (!Number.isFinite(resultadoQ.volumen)) {
+  src\components\ComparadorMultiMetodo.jsx:789:      return <span style={estilos.chip}>—</span>;
+  src\components\ComparadorMultiMetodo.jsx:790:    }
+  src\components\ComparadorMultiMetodo.jsx:791:
+  src\components\ComparadorMultiMetodo.jsx:792:    return (
+  src\components\ComparadorMultiMetodo.jsx:793:      <span style={estilos.chip}>
+> src\components\ComparadorMultiMetodo.jsx:794:        {resultadoQ.volumen.toFixed(2)}
+  src\components\ComparadorMultiMetodo.jsx:795:      </span>
+  src\components\ComparadorMultiMetodo.jsx:796:    );
+  src\components\ComparadorMultiMetodo.jsx:797:  })()}
+  src\components\ComparadorMultiMetodo.jsx:798:</td>
+  src\components\ComparadorMultiMetodo.jsx:1161:
+  src\components\ComparadorMultiMetodo.jsx:1162:      <div style={estilos.nota}>
+> src\components\ComparadorMultiMetodo.jsx:1163:  <strong>Nota técnica:</strong> Qp, Tp y Volumen son leídos desde el motor
+  src\components\ComparadorMultiMetodo.jsx:1164:  HidroFlow a partir de los hidrogramas calculados. El comparador no recalcula
+  src\components\ComparadorMultiMetodo.jsx:1165:  hidrogramas, no recalcula CN, no reemplaza el motor hidrológico y no adopta
+  src\components\ComparadorMultiMetodo.jsx:1166:  automáticamente ningún método. La adopción final requiere criterio técnico,
+  src\components\ComparadorMultiMetodo.jsx:1167:  competencia hidrológica y trazabilidad explícita.
+  src\components\ComparadorMultiMetodo.jsx:1181:>
+  src\components\ComparadorMultiMetodo.jsx:1182:  <strong>Auditoría hidrológica pendiente:</strong> los valores de Tc, Tp,
+> src\components\ComparadorMultiMetodo.jsx:1183:  Qp y Volumen requieren revisión de coherencia antes de adopción técnica.
+  src\components\ComparadorMultiMetodo.jsx:1184:  En particular, debe verificarse la relación Tc vs Tp, las unidades de
+  src\components\ComparadorMultiMetodo.jsx:1185:  Qpico, la integración de volTotal, el paso temporal dtMin y los parámetros
+  src\components\ComparadorMultiMetodo.jsx:1186:  internos de cada hidrograma unitario. Los resultados se muestran como
+  src\components\ComparadorMultiMetodo.jsx:1187:  lectura del motor HidroFlow, no como valores adoptados.
+
+
+
+------------------------------------------------------------
+PATRON: Resultados característicos
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PATRON: </section>
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:848:          </table>
+  src\components\ComparadorMultiMetodo.jsx:849:        </div>
+> src\components\ComparadorMultiMetodo.jsx:850:      </section>
+  src\components\ComparadorMultiMetodo.jsx:851:    );
+  src\components\ComparadorMultiMetodo.jsx:852:  };
+  src\components\ComparadorMultiMetodo.jsx:853:
+  src\components\ComparadorMultiMetodo.jsx:854:  return (
+  src\components\ComparadorMultiMetodo.jsx:946:    </div>
+  src\components\ComparadorMultiMetodo.jsx:947:  </div>
+> src\components\ComparadorMultiMetodo.jsx:948:</section>
+  src\components\ComparadorMultiMetodo.jsx:949:
+  src\components\ComparadorMultiMetodo.jsx:950:{/* CONCEPTO TÉCNICO DE CUENCA */}
+  src\components\ComparadorMultiMetodo.jsx:951:<section
+  src\components\ComparadorMultiMetodo.jsx:952:  style={{
+  src\components\ComparadorMultiMetodo.jsx:1037:    </div>
+  src\components\ComparadorMultiMetodo.jsx:1038:  )}
+> src\components\ComparadorMultiMetodo.jsx:1039:</section>
+  src\components\ComparadorMultiMetodo.jsx:1040:
+  src\components\ComparadorMultiMetodo.jsx:1041:        <div>
+  src\components\ComparadorMultiMetodo.jsx:1042:          <h1 style={estilos.titulo}>
+  src\components\ComparadorMultiMetodo.jsx:1043:            Comparador Hidrológico Multi-Método
+  src\components\ComparadorMultiMetodo.jsx:1082:          <p style={estilos.etiquetaResumen}>Pendientes</p>
+  src\components\ComparadorMultiMetodo.jsx:1083:        </div>
+> src\components\ComparadorMultiMetodo.jsx:1084:      </section>
+  src\components\ComparadorMultiMetodo.jsx:1085:
+  src\components\ComparadorMultiMetodo.jsx:1086:      <section style={estilos.controles}>
+  src\components\ComparadorMultiMetodo.jsx:1087:        <button
+  src\components\ComparadorMultiMetodo.jsx:1088:          type="button"
+  src\components\ComparadorMultiMetodo.jsx:1132:          Solo Q
+  src\components\ComparadorMultiMetodo.jsx:1133:        </button>
+> src\components\ComparadorMultiMetodo.jsx:1134:      </section>
+  src\components\ComparadorMultiMetodo.jsx:1135:
+  src\components\ComparadorMultiMetodo.jsx:1136:      <section style={estilos.matriz}>
+  src\components\ComparadorMultiMetodo.jsx:1137:        <article style={estilos.matrizCard}>
+  src\components\ComparadorMultiMetodo.jsx:1138:          <h3 style={estilos.matrizTitulo}>Regla de adopción</h3>
+  src\components\ComparadorMultiMetodo.jsx:1158:          </p>
+  src\components\ComparadorMultiMetodo.jsx:1159:        </article>
+> src\components\ComparadorMultiMetodo.jsx:1160:      </section>
+  src\components\ComparadorMultiMetodo.jsx:1161:
+  src\components\ComparadorMultiMetodo.jsx:1162:      <div style={estilos.nota}>
+  src\components\ComparadorMultiMetodo.jsx:1163:  <strong>Nota técnica:</strong> Qp, Tp y Volumen son leídos desde el motor
+  src\components\ComparadorMultiMetodo.jsx:1164:  HidroFlow a partir de los hidrogramas calculados. El comparador no recalcula
+
+
+
+------------------------------------------------------------
+PATRON: </table>
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:846:              )}
+  src\components\ComparadorMultiMetodo.jsx:847:            </tbody>
+> src\components\ComparadorMultiMetodo.jsx:848:          </table>
+  src\components\ComparadorMultiMetodo.jsx:849:        </div>
+  src\components\ComparadorMultiMetodo.jsx:850:      </section>
+  src\components\ComparadorMultiMetodo.jsx:851:    );
+  src\components\ComparadorMultiMetodo.jsx:852:  };
+
+
+
+------------------------------------------------------------
+PATRON: </div>
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:129:
+  src\components\ComparadorMultiMetodo.jsx:130:    <p>✅ Tc final: {Tc_final?.toFixed(2)}</p>
+> src\components\ComparadorMultiMetodo.jsx:131:  </div>
+  src\components\ComparadorMultiMetodo.jsx:132:);
+  src\components\ComparadorMultiMetodo.jsx:133:
+  src\components\ComparadorMultiMetodo.jsx:134:  
+  src\components\ComparadorMultiMetodo.jsx:135:  const estilos = {
+  src\components\ComparadorMultiMetodo.jsx:453:          {metodo.puntajeCompetencia ?? "—"} / 100
+  src\components\ComparadorMultiMetodo.jsx:454:        </span>
+> src\components\ComparadorMultiMetodo.jsx:455:      </div>
+  src\components\ComparadorMultiMetodo.jsx:456:    );
+  src\components\ComparadorMultiMetodo.jsx:457:  };
+  src\components\ComparadorMultiMetodo.jsx:458:
+  src\components\ComparadorMultiMetodo.jsx:459:  const renderRequiere = (requiere = []) => {
+  src\components\ComparadorMultiMetodo.jsx:664:                <tr key={metodo.id}>
+  src\components\ComparadorMultiMetodo.jsx:665:                  <td style={estilos.td}>
+> src\components\ComparadorMultiMetodo.jsx:666:                    <div style={estilos.nombreMetodo}>{metodo.nombre}</div>
+  src\components\ComparadorMultiMetodo.jsx:667:                    <div style={{ color: "#88a7bd", marginTop: "4px" }}>
+  src\components\ComparadorMultiMetodo.jsx:668:                      {metodo.descripcion}
+> src\components\ComparadorMultiMetodo.jsx:669:                    </div>
+  src\components\ComparadorMultiMetodo.jsx:670:                  </td>
+  src\components\ComparadorMultiMetodo.jsx:671:
+  src\components\ComparadorMultiMetodo.jsx:672:                  <td style={estilos.td}>
+  src\components\ComparadorMultiMetodo.jsx:673:                    <span style={estiloChipEstado(metodo.estadoImplementacion)}>
+  src\components\ComparadorMultiMetodo.jsx:682:                   <div style={{ marginTop: "6px", color: "#88a7bd" }}>
+  src\components\ComparadorMultiMetodo.jsx:683:                     Catálogo: {metodo.competencia}
+> src\components\ComparadorMultiMetodo.jsx:684:                   </div>
+  src\components\ComparadorMultiMetodo.jsx:685:                  </td>
+  src\components\ComparadorMultiMetodo.jsx:686:
+  src\components\ComparadorMultiMetodo.jsx:687:                  <td style={estilos.td}>{metodo.escala}</td>
+  src\components\ComparadorMultiMetodo.jsx:688:
+  src\components\ComparadorMultiMetodo.jsx:732:        >
+  src\components\ComparadorMultiMetodo.jsx:733:          {auditoriaPendiente.descripcionPendiente}
+> src\components\ComparadorMultiMetodo.jsx:734:        </div>
+> src\components\ComparadorMultiMetodo.jsx:735:      </div>
+  src\components\ComparadorMultiMetodo.jsx:736:    );
+  src\components\ComparadorMultiMetodo.jsx:737:  })()}
+  src\components\ComparadorMultiMetodo.jsx:738:</td>
+  src\components\ComparadorMultiMetodo.jsx:739:
+  src\components\ComparadorMultiMetodo.jsx:818:    >
+  src\components\ComparadorMultiMetodo.jsx:819:                      Justificación automática
+> src\components\ComparadorMultiMetodo.jsx:820:                    </div>
+  src\components\ComparadorMultiMetodo.jsx:821:
+  src\components\ComparadorMultiMetodo.jsx:822:                    <strong style={{ color: "#ffffff" }}>
+  src\components\ComparadorMultiMetodo.jsx:823:                      {metodo.justificacionCompetencia || metodo.observacion}
+  src\components\ComparadorMultiMetodo.jsx:824:                    </strong>
+> src\components\ComparadorMultiMetodo.jsx:825:                  </div>
+  src\components\ComparadorMultiMetodo.jsx:826:
+  src\components\ComparadorMultiMetodo.jsx:827:                  <div
+  src\components\ComparadorMultiMetodo.jsx:828:                     style={{
+  src\components\ComparadorMultiMetodo.jsx:829:                      color: "#88a7bd",
+  src\components\ComparadorMultiMetodo.jsx:833:  >
+  src\components\ComparadorMultiMetodo.jsx:834:                    <strong>Catálogo técnico:</strong> {metodo.observacion}
+> src\components\ComparadorMultiMetodo.jsx:835:                  </div>
+  src\components\ComparadorMultiMetodo.jsx:836:                </td>
+  src\components\ComparadorMultiMetodo.jsx:837:                </tr>
+  src\components\ComparadorMultiMetodo.jsx:838:              ))}
+  src\components\ComparadorMultiMetodo.jsx:839:
+  src\components\ComparadorMultiMetodo.jsx:847:            </tbody>
+  src\components\ComparadorMultiMetodo.jsx:848:          </table>
+> src\components\ComparadorMultiMetodo.jsx:849:        </div>
+  src\components\ComparadorMultiMetodo.jsx:850:      </section>
+  src\components\ComparadorMultiMetodo.jsx:851:    );
+  src\components\ComparadorMultiMetodo.jsx:852:  };
+  src\components\ComparadorMultiMetodo.jsx:853:
+  src\components\ComparadorMultiMetodo.jsx:876:  >
+  src\components\ComparadorMultiMetodo.jsx:877:    Contexto hidrológico activo
+> src\components\ComparadorMultiMetodo.jsx:878:  </div>
+  src\components\ComparadorMultiMetodo.jsx:879:
+  src\components\ComparadorMultiMetodo.jsx:880:  <div
+  src\components\ComparadorMultiMetodo.jsx:881:    style={{
+  src\components\ComparadorMultiMetodo.jsx:882:      display: "grid",
+  src\components\ComparadorMultiMetodo.jsx:890:      <strong>Cuenca:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:891:      {contextoBase?.cuencaNombre ?? "—"}
+> src\components\ComparadorMultiMetodo.jsx:892:    </div>
+  src\components\ComparadorMultiMetodo.jsx:893:
+  src\components\ComparadorMultiMetodo.jsx:894:    <div>
+  src\components\ComparadorMultiMetodo.jsx:895:      <strong>Área:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:896:      {Number.isFinite(contextoBase?.area_km2)
+  src\components\ComparadorMultiMetodo.jsx:897:        ? `${contextoBase.area_km2.toFixed(4)} km²`
+  src\components\ComparadorMultiMetodo.jsx:898:        : "—"}
+> src\components\ComparadorMultiMetodo.jsx:899:    </div>
+  src\components\ComparadorMultiMetodo.jsx:900:
+  src\components\ComparadorMultiMetodo.jsx:901:    <div>
+  src\components\ComparadorMultiMetodo.jsx:902:      <strong>Scp cauce principal:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:903:      {Number.isFinite(contextoBase?.pendiente_media_pct)
+  src\components\ComparadorMultiMetodo.jsx:904:        ? `${contextoBase.pendiente_media_pct} %`
+  src\components\ComparadorMultiMetodo.jsx:905:        : "—"}
+> src\components\ComparadorMultiMetodo.jsx:906:    </div>
+  src\components\ComparadorMultiMetodo.jsx:907:
+  src\components\ComparadorMultiMetodo.jsx:908:    <div>
+  src\components\ComparadorMultiMetodo.jsx:909:      <strong>Longitud cauce:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:910:      {Number.isFinite(contextoBase?.longitud_cauce_km)
+  src\components\ComparadorMultiMetodo.jsx:911:        ? `${contextoBase.longitud_cauce_km} km`
+  src\components\ComparadorMultiMetodo.jsx:912:        : "—"}
+> src\components\ComparadorMultiMetodo.jsx:913:    </div>
+  src\components\ComparadorMultiMetodo.jsx:914:
+  src\components\ComparadorMultiMetodo.jsx:915:    <div>
+  src\components\ComparadorMultiMetodo.jsx:916:      <strong>CN:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:917:      {Number.isFinite(contextoBase?.CN)
+  src\components\ComparadorMultiMetodo.jsx:918:        ? contextoBase.CN
+  src\components\ComparadorMultiMetodo.jsx:919:        : "—"}
+> src\components\ComparadorMultiMetodo.jsx:920:    </div>
+  src\components\ComparadorMultiMetodo.jsx:921:
+  src\components\ComparadorMultiMetodo.jsx:922:    <div>
+  src\components\ComparadorMultiMetodo.jsx:923:      <strong>CN base:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:924:      {Number.isFinite(contextoBase?.CN_base)
+  src\components\ComparadorMultiMetodo.jsx:925:        ? contextoBase.CN_base
+  src\components\ComparadorMultiMetodo.jsx:926:        : "—"}
+> src\components\ComparadorMultiMetodo.jsx:927:    </div>
+  src\components\ComparadorMultiMetodo.jsx:928:
+  src\components\ComparadorMultiMetodo.jsx:929:    <div>
+  src\components\ComparadorMultiMetodo.jsx:930:      <strong>CN efectivo:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:931:      {Number.isFinite(contextoBase?.CN_efectivo)
+  src\components\ComparadorMultiMetodo.jsx:932:        ? contextoBase.CN_efectivo
+  src\components\ComparadorMultiMetodo.jsx:933:        : "—"}
+> src\components\ComparadorMultiMetodo.jsx:934:    </div>
+  src\components\ComparadorMultiMetodo.jsx:935:
+  src\components\ComparadorMultiMetodo.jsx:936:    <div>
+  src\components\ComparadorMultiMetodo.jsx:937:      <strong>AMC:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:938:      {contextoBase?.AMC ?? "—"}
+> src\components\ComparadorMultiMetodo.jsx:939:    </div>
+  src\components\ComparadorMultiMetodo.jsx:940:
+  src\components\ComparadorMultiMetodo.jsx:941:    <div>
+  src\components\ComparadorMultiMetodo.jsx:942:      <strong>Fuente:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:943:      <span style={{ color: "#22c55e", fontWeight: 800 }}>
+  src\components\ComparadorMultiMetodo.jsx:944:        {fuenteContexto}
+  src\components\ComparadorMultiMetodo.jsx:945:      </span>
+> src\components\ComparadorMultiMetodo.jsx:946:    </div>
+> src\components\ComparadorMultiMetodo.jsx:947:  </div>
+  src\components\ComparadorMultiMetodo.jsx:948:</section>
+  src\components\ComparadorMultiMetodo.jsx:949:
+  src\components\ComparadorMultiMetodo.jsx:950:{/* CONCEPTO TÉCNICO DE CUENCA */}
+  src\components\ComparadorMultiMetodo.jsx:951:<section
+  src\components\ComparadorMultiMetodo.jsx:969:  >
+  src\components\ComparadorMultiMetodo.jsx:970:    Concepto técnico de cuenca
+> src\components\ComparadorMultiMetodo.jsx:971:  </div>
+  src\components\ComparadorMultiMetodo.jsx:972:
+  src\components\ComparadorMultiMetodo.jsx:973:  <div
+  src\components\ComparadorMultiMetodo.jsx:974:    style={{
+  src\components\ComparadorMultiMetodo.jsx:975:      display: "grid",
+  src\components\ComparadorMultiMetodo.jsx:987:      <div style={{ color: "#88a7bd", marginTop: "4px", lineHeight: 1.45 }}>
+  src\components\ComparadorMultiMetodo.jsx:988:        {conceptoCuenca.area.descripcion}
+> src\components\ComparadorMultiMetodo.jsx:989:      </div>
+> src\components\ComparadorMultiMetodo.jsx:990:    </div>
+  src\components\ComparadorMultiMetodo.jsx:991:
+  src\components\ComparadorMultiMetodo.jsx:992:    <div>
+  src\components\ComparadorMultiMetodo.jsx:993:      <strong>Clasificación por pendiente:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:994:      <div style={{ color: "#ffe7a3", marginTop: "4px", lineHeight: 1.45 }}>
+  src\components\ComparadorMultiMetodo.jsx:995:        Criterio actual basado en Scp mientras se incorpora Sc de cuenca.
+> src\components\ComparadorMultiMetodo.jsx:996:      </div>
+  src\components\ComparadorMultiMetodo.jsx:997:      <span style={{ color: "#38bdf8", fontWeight: 800 }}>
+  src\components\ComparadorMultiMetodo.jsx:998:        {conceptoCuenca.pendiente.etiqueta}
+  src\components\ComparadorMultiMetodo.jsx:999:      </span>
+  src\components\ComparadorMultiMetodo.jsx:1000:      <div style={{ color: "#88a7bd", marginTop: "4px", lineHeight: 1.45 }}>
+  src\components\ComparadorMultiMetodo.jsx:1001:        {conceptoCuenca.pendiente.descripcion}
+> src\components\ComparadorMultiMetodo.jsx:1002:      </div>
+> src\components\ComparadorMultiMetodo.jsx:1003:    </div>
+  src\components\ComparadorMultiMetodo.jsx:1004:
+  src\components\ComparadorMultiMetodo.jsx:1005:    <div>
+  src\components\ComparadorMultiMetodo.jsx:1006:      <strong>Forma hidrológica:</strong>{" "}
+  src\components\ComparadorMultiMetodo.jsx:1007:      <span style={{ color: "#facc15", fontWeight: 800 }}>
+  src\components\ComparadorMultiMetodo.jsx:1010:      <div style={{ color: "#88a7bd", marginTop: "4px", lineHeight: 1.45 }}>
+  src\components\ComparadorMultiMetodo.jsx:1011:        {conceptoCuenca.forma.descripcion}
+> src\components\ComparadorMultiMetodo.jsx:1012:      </div>
+> src\components\ComparadorMultiMetodo.jsx:1013:    </div>
+> src\components\ComparadorMultiMetodo.jsx:1014:  </div>
+  src\components\ComparadorMultiMetodo.jsx:1015:
+  src\components\ComparadorMultiMetodo.jsx:1016:  {conceptoCuenca.advertencias.length > 0 && (
+  src\components\ComparadorMultiMetodo.jsx:1017:    <div
+  src\components\ComparadorMultiMetodo.jsx:1018:      style={{
+  src\components\ComparadorMultiMetodo.jsx:1033:        >
+  src\components\ComparadorMultiMetodo.jsx:1034:          ⚠ {advertencia}
+> src\components\ComparadorMultiMetodo.jsx:1035:        </div>
+  src\components\ComparadorMultiMetodo.jsx:1036:      ))}
+> src\components\ComparadorMultiMetodo.jsx:1037:    </div>
+  src\components\ComparadorMultiMetodo.jsx:1038:  )}
+  src\components\ComparadorMultiMetodo.jsx:1039:</section>
+  src\components\ComparadorMultiMetodo.jsx:1040:
+  src\components\ComparadorMultiMetodo.jsx:1041:        <div>
+  src\components\ComparadorMultiMetodo.jsx:1050:            y trazabilidad para soporte de expediente técnico.
+  src\components\ComparadorMultiMetodo.jsx:1051:          </p>
+> src\components\ComparadorMultiMetodo.jsx:1052:        </div>
+  src\components\ComparadorMultiMetodo.jsx:1053:
+  src\components\ComparadorMultiMetodo.jsx:1054:        <div style={estilos.version}>
+  src\components\ComparadorMultiMetodo.jsx:1055:           {resumenComparadorCatalogo.version} · Fuente: {fuenteContexto}
+> src\components\ComparadorMultiMetodo.jsx:1056:        </div>
+  src\components\ComparadorMultiMetodo.jsx:1057:      </header>
+  src\components\ComparadorMultiMetodo.jsx:1058:
+  src\components\ComparadorMultiMetodo.jsx:1059:      <section style={estilos.gridResumen}>
+  src\components\ComparadorMultiMetodo.jsx:1060:        <div style={estilos.tarjetaResumen}>
+  src\components\ComparadorMultiMetodo.jsx:1061:          <p style={estilos.numeroResumen}>{conteo.total}</p>
+  src\components\ComparadorMultiMetodo.jsx:1062:          <p style={estilos.etiquetaResumen}>Métodos visibles</p>
+> src\components\ComparadorMultiMetodo.jsx:1063:        </div>
+  src\components\ComparadorMultiMetodo.jsx:1064:
+  src\components\ComparadorMultiMetodo.jsx:1065:        <div style={estilos.tarjetaResumen}>
+  src\components\ComparadorMultiMetodo.jsx:1066:          <p style={estilos.numeroResumen}>{conteo.tc}</p>
+  src\components\ComparadorMultiMetodo.jsx:1067:          <p style={estilos.etiquetaResumen}>Métodos Tc</p>
+> src\components\ComparadorMultiMetodo.jsx:1068:        </div>
+  src\components\ComparadorMultiMetodo.jsx:1069:
+  src\components\ComparadorMultiMetodo.jsx:1070:        <div style={estilos.tarjetaResumen}>
+  src\components\ComparadorMultiMetodo.jsx:1071:          <p style={estilos.numeroResumen}>{conteo.q}</p>
+  src\components\ComparadorMultiMetodo.jsx:1072:          <p style={estilos.etiquetaResumen}>Métodos Q</p>
+> src\components\ComparadorMultiMetodo.jsx:1073:        </div>
+  src\components\ComparadorMultiMetodo.jsx:1074:
+  src\components\ComparadorMultiMetodo.jsx:1075:        <div style={estilos.tarjetaResumen}>
+  src\components\ComparadorMultiMetodo.jsx:1076:          <p style={estilos.numeroResumen}>{conteo.activos}</p>
+  src\components\ComparadorMultiMetodo.jsx:1077:          <p style={estilos.etiquetaResumen}>Activos</p>
+> src\components\ComparadorMultiMetodo.jsx:1078:        </div>
+  src\components\ComparadorMultiMetodo.jsx:1079:
+  src\components\ComparadorMultiMetodo.jsx:1080:        <div style={estilos.tarjetaResumen}>
+  src\components\ComparadorMultiMetodo.jsx:1081:          <p style={estilos.numeroResumen}>{conteo.pendientes}</p>
+  src\components\ComparadorMultiMetodo.jsx:1082:          <p style={estilos.etiquetaResumen}>Pendientes</p>
+> src\components\ComparadorMultiMetodo.jsx:1083:        </div>
+  src\components\ComparadorMultiMetodo.jsx:1084:      </section>
+  src\components\ComparadorMultiMetodo.jsx:1085:
+  src\components\ComparadorMultiMetodo.jsx:1086:      <section style={estilos.controles}>
+  src\components\ComparadorMultiMetodo.jsx:1087:        <button
+  src\components\ComparadorMultiMetodo.jsx:1166:  automáticamente ningún método. La adopción final requiere criterio técnico,
+  src\components\ComparadorMultiMetodo.jsx:1167:  competencia hidrológica y trazabilidad explícita.
+> src\components\ComparadorMultiMetodo.jsx:1168:</div>
+  src\components\ComparadorMultiMetodo.jsx:1169:
+  src\components\ComparadorMultiMetodo.jsx:1170:<div
+  src\components\ComparadorMultiMetodo.jsx:1171:  style={{
+  src\components\ComparadorMultiMetodo.jsx:1172:    marginTop: "12px",
+  src\components\ComparadorMultiMetodo.jsx:1186:  internos de cada hidrograma unitario. Los resultados se muestran como
+  src\components\ComparadorMultiMetodo.jsx:1187:  lectura del motor HidroFlow, no como valores adoptados.
+> src\components\ComparadorMultiMetodo.jsx:1188:</div>
+  src\components\ComparadorMultiMetodo.jsx:1189:
+  src\components\ComparadorMultiMetodo.jsx:1190:      {renderTabla("Bloque Tc-15 · Tiempo de concentración / respuesta", "tc")}
+  src\components\ComparadorMultiMetodo.jsx:1191:
+  src\components\ComparadorMultiMetodo.jsx:1192:      {renderTabla("Bloque Q-5 · Caudal pico / hidrograma", "q")}
+
+
+
+------------------------------------------------------------
+PATRON: setTcState
+------------------------------------------------------------
+
+  src\components\ComparadorMultiMetodo.jsx:1:import React, { useEffect, useMemo, useState } from "react";
+  src\components\ComparadorMultiMetodo.jsx:2:
+> src\components\ComparadorMultiMetodo.jsx:3:import { setTcState } from "../agents/tcAgent";
+  src\components\ComparadorMultiMetodo.jsx:4:import { calcTc, mapTcResultados } from "../services/hidroEngine";
+  src\components\ComparadorMultiMetodo.jsx:5:import { seleccionarTc } from "../services/tcSelector";
+  src\components\ComparadorMultiMetodo.jsx:6:
+  src\components\ComparadorMultiMetodo.jsx:7:import {
+  src\components\ComparadorMultiMetodo.jsx:70:useEffect(() => {
+  src\components\ComparadorMultiMetodo.jsx:71:  if (Tc_final !== null && Tc_final !== undefined) {
+> src\components\ComparadorMultiMetodo.jsx:72:    setTcState({
+  src\components\ComparadorMultiMetodo.jsx:73:      Tc_final,
+  src\components\ComparadorMultiMetodo.jsx:74:      metodosTc,
+  src\components\ComparadorMultiMetodo.jsx:75:      contextoTc,
+  src\components\ComparadorMultiMetodo.jsx:76:    });
+
+
+
+------------------------------------------------------------
+PATRON: useEffect
+------------------------------------------------------------
+
+> src\components\ComparadorMultiMetodo.jsx:1:import React, { useEffect, useMemo, useState } from "react";
+  src\components\ComparadorMultiMetodo.jsx:2:
+  src\components\ComparadorMultiMetodo.jsx:3:import { setTcState } from "../agents/tcAgent";
+  src\components\ComparadorMultiMetodo.jsx:4:import { calcTc, mapTcResultados } from "../services/hidroEngine";
+  src\components\ComparadorMultiMetodo.jsx:5:import { seleccionarTc } from "../services/tcSelector";
+  src\components\ComparadorMultiMetodo.jsx:68:const Tc_final = seleccionarTc("hidrograma", metodosTc, contextoTc);
+  src\components\ComparadorMultiMetodo.jsx:69:// ✅ Publicar Tc en el agente DESPUÉS del render
+> src\components\ComparadorMultiMetodo.jsx:70:useEffect(() => {
+  src\components\ComparadorMultiMetodo.jsx:71:  if (Tc_final !== null && Tc_final !== undefined) {
+  src\components\ComparadorMultiMetodo.jsx:72:    setTcState({
+  src\components\ComparadorMultiMetodo.jsx:73:      Tc_final,
+  src\components\ComparadorMultiMetodo.jsx:74:      metodosTc,
+
+

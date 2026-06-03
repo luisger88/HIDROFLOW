@@ -1,0 +1,37 @@
+============================================================
+EVIDENCIA FUENTE MODULAR calcTc - src/services/tc/calcTc.ts
+Fecha: 05/30/2026 21:37:25
+Archivo objetivo: src\services\tc\calcTc.ts
+============================================================
+
+
+  src\services\tc\calcTc.ts:2:
+  src\services\tc\calcTc.ts:3:import { tcKirpich } from "./metodos/kirpich";
+  src\services\tc\calcTc.ts:4:import { tcTemez } from "./metodos/temez";
+  src\services\tc\calcTc.ts:5:import { tcGiandotti } from "./metodos/giandotti";
+  src\services\tc\calcTc.ts:6:import { tcScsLag } from "./metodos/scsLag";
+  src\services\tc\calcTc.ts:7:
+  src\services\tc\calcTc.ts:8:/**
+  src\services\tc\calcTc.ts:9: * Motor de cálculo de Tiempo de Concentración
+  src\services\tc\calcTc.ts:10: * Estilo HEC-HMS: calcula TODOS los métodos
+  src\services\tc\calcTc.ts:11: */
+> src\services\tc\calcTc.ts:12:export function calcTc(inputs: TcInputs): TcResultados {
+  src\services\tc\calcTc.ts:13:  return {
+  src\services\tc\calcTc.ts:14:    kirpich_min: tcKirpich(inputs),
+  src\services\tc\calcTc.ts:15:    temez_min: tcTemez(inputs),
+  src\services\tc\calcTc.ts:16:    giandotti_min: tcGiandotti(inputs),
+  src\services\tc\calcTc.ts:17:    scs_lag_min: tcScsLag(inputs),
+  src\services\tc\calcTc.ts:18:
+  src\services\tc\calcTc.ts:19:    // Stubs listos
+  src\services\tc\calcTc.ts:20:    kerby_hathaway_min: null,
+  src\services\tc\calcTc.ts:21:    izzard_min: null,
+  src\services\tc\calcTc.ts:22:    nrcs_velocity_min: null,
+  src\services\tc\calcTc.ts:23:    california_min: null,
+  src\services\tc\calcTc.ts:24:    faa_min: null,
+  src\services\tc\calcTc.ts:25:    dooge_min: null,
+  src\services\tc\calcTc.ts:26:    ventura_min: null,
+  src\services\tc\calcTc.ts:27:    user_defined_min: inputs.tc_user_defined_min ?? null,
+  src\services\tc\calcTc.ts:28:  };
+  src\services\tc\calcTc.ts:29:}
+
+

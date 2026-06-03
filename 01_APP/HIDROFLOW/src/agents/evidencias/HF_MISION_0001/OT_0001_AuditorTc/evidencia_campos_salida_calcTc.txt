@@ -1,0 +1,1784 @@
+============================================================
+EVIDENCIA CAMPOS SALIDA calcTc - REGENERADA
+Fecha: 05/30/2026 20:56:11
+============================================================
+
+
+  src\HidroFlow.jsx:146:    : distType==="Huff_Q3" ? HUFF_DATA.Q3
+  src\HidroFlow.jsx:147:    : HUFF_DATA.Q4;
+  src\HidroFlow.jsx:148:  const data=[];
+  src\HidroFlow.jsx:149:  for(let i=0;i<=steps;i++){
+  src\HidroFlow.jsx:150:    const tPct=(i/steps)*100;
+  src\HidroFlow.jsx:151:    const pPct= distType==="EPM_Q1" ? distPolyQ1(tPct) : interpDist(distTable,tPct);
+> src\HidroFlow.jsx:152:    data.push({t:+(i*dt_min).toFixed(1), tPct:+tPct.toFixed(1), pAcum:+(pPct/100*Ptotal).toFixed(3)});
+  src\HidroFlow.jsx:153:  }
+  src\HidroFlow.jsx:154:  for(let i=1;i<data.length;i++){
+  src\HidroFlow.jsx:155:    data[i].pIncrem=+(data[i].pAcum-data[i-1].pAcum).toFixed(4);
+  src\HidroFlow.jsx:156:    data[i].iBloque=+(data[i].pIncrem/(dt_min/60)).toFixed(3);
+  src\HidroFlow.jsx:157:  }
+  src\HidroFlow.jsx:158:  data[0].pIncrem=0; data[0].iBloque=0;
+  src\HidroFlow.jsx:159:  return {data, Ptotal:+Ptotal.toFixed(2), steps, dur_h, dt_min, Tr, distType};
+  src\HidroFlow.jsx:160:}
+  src\HidroFlow.jsx:161:
+  src\HidroFlow.jsx:162:// ─── CN & PÉRDIDAS SCS ────────────────────────────────────────────────────────
+  src\HidroFlow.jsx:163:// ── CN dinámico real (castellano) ─────────────────────────────────────────────
+  src\HidroFlow.jsx:164:
+  src\HidroFlow.jsx:165:
+  src\HidroFlow.jsx:166:// ─── CONVOLUCIÓN NUMÉRICA COMPLETA ───────────────────────────────────────────
+  src\HidroFlow.jsx:179:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:180:
+  src\HidroFlow.jsx:181:// ① HU SCS (Chow et al., 1994 — GT-AS-004 §3.5)
+  src\HidroFlow.jsx:182:function calcHUSCS(area, tc_h, dt_min){
+  src\HidroFlow.jsx:183:  const dh=dt_min/60, tp=0.5*dh+0.6*tc_h, qp=2.08*area/tp;
+  src\HidroFlow.jsx:184:  const n=Math.ceil(2.67*tp/dh)+12;
+> src\HidroFlow.jsx:185:  const uh=Array.from({length:n},(_,i)=>{
+  src\HidroFlow.jsx:186:    const t=i*dh, tr=t/tp;
+  src\HidroFlow.jsx:187:    return +( tr<=1 ? qp*Math.pow(tr,2.208) : qp*Math.exp(-1.3*(tr-1)) ).toFixed(7);
+  src\HidroFlow.jsx:188:  });
+  src\HidroFlow.jsx:189:  return{tp,qp,Tc:tc_h*60,uh,metadata:{nombre:"SCS",color:C.accent2}};
+  src\HidroFlow.jsx:190:}
+  src\HidroFlow.jsx:191:
+  src\HidroFlow.jsx:192:// ② HU SCS MODIFICADO — SCS con coeficiente de pico Cp variable
+  src\HidroFlow.jsx:193:// Cp estándar=2.08; Cp modificado=(0.2083·A)/tp ajustado por morfología
+  src\HidroFlow.jsx:194:function calcHUSCS_Mod(area, tc_h, dt_min, Cp=2.08){
+  src\HidroFlow.jsx:195:  const dh=dt_min/60, tp=0.5*dh+0.6*tc_h;
+  src\HidroFlow.jsx:196:  const qp=Cp*area/tp;
+  src\HidroFlow.jsx:197:  const n=Math.ceil(3.0*tp/dh)+12;
+> src\HidroFlow.jsx:198:  const uh=Array.from({length:n},(_,i)=>{
+  src\HidroFlow.jsx:199:    const t=i*dh, tr=t/tp;
+  src\HidroFlow.jsx:200:    return +( tr<=1 ? qp*Math.pow(tr,2.208) : qp*Math.exp(-1.3*(tr-1)) ).toFixed(7);
+  src\HidroFlow.jsx:201:  });
+  src\HidroFlow.jsx:202:  return{tp,qp,Tc:tc_h*60,uh,Cp,metadata:{nombre:"SCS Mod.",color:C.teal}};
+  src\HidroFlow.jsx:203:}
+  src\HidroFlow.jsx:204:
+  src\HidroFlow.jsx:205:// ③ HU SNYDER (Chow et al. 1994 — versión Ct/Cp configurable)
+  src\HidroFlow.jsx:206:function calcHUSnyder(area_mi2, L_mi, Lca_mi, dt_min, Ct=2.0, Cp=0.62){
+  src\HidroFlow.jsx:207:  const tlag=Ct*Math.pow(L_mi*Lca_mi,0.3);
+  src\HidroFlow.jsx:208:  const tp=tlag+dt_min/60/2;
+  src\HidroFlow.jsx:209:  const qp=(640*Cp*area_mi2)/tp;
+  src\HidroFlow.jsx:210:  const W50=770/Math.pow(qp/area_mi2,1.08);
+  src\HidroFlow.jsx:211:  const W75=440/Math.pow(qp/area_mi2,1.08);
+  src\HidroFlow.jsx:212:  const n=Math.ceil(5*(tp+tlag)/(dt_min/60))+12;
+> src\HidroFlow.jsx:213:  const uh=Array.from({length:n},(_,i)=>{
+  src\HidroFlow.jsx:214:    const t=i*dt_min/60, tr=t/tp;
+  src\HidroFlow.jsx:215:    return +(tr<=1?qp*Math.pow(tr,2.5):qp*Math.exp(-2.0*(tr-1))).toFixed(7);
+  src\HidroFlow.jsx:216:  });
+  src\HidroFlow.jsx:217:  return{tp,qp,tlag,W50,W75,Ct,Cp,uh,metadata:{nombre:"Snyder",color:C.accent3}};
+  src\HidroFlow.jsx:218:}
+  src\HidroFlow.jsx:219:
+  src\HidroFlow.jsx:220:// ④ HU WILLIAMS & HANN (Williams & Hann, 1973)
+  src\HidroFlow.jsx:221:// Basado en: qp = 2.54·A^0.9·(S/1000)^0.5·CN^3/(Ia·A)  → simplificado
+  src\HidroFlow.jsx:222:// Fórmula geomorfológica: qp=(A^m1·S^m2·CN^m3)·K_WH
+  src\HidroFlow.jsx:223:function calcHUWilliamsHann(area, L_km, S_m_km, CN, dt_min){
+  src\HidroFlow.jsx:224:  // Williams & Hann (1973): Tc = 0.1838·L^0.8·(S+1)^0.7 / (CN^0.35·S^0.5)
+  src\HidroFlow.jsx:225:  const Ss = 25400/CN - 254;
+  src\HidroFlow.jsx:226:  const tc_h = (0.1838*Math.pow(L_km,0.8)*Math.pow(Ss+1,0.7)) / (Math.pow(CN,0.35)*Math.pow(Math.max(S_m_km,0.01),0.5)) / 60;
+  src\HidroFlow.jsx:227:  const tp = 0.5*(dt_min/60) + 0.6*tc_h;
+  src\HidroFlow.jsx:228:  // Caudal pico Williams & Hann: qp = 2.083·A/tp · κ donde κ = 1.12 (calibración W&H)
+  src\HidroFlow.jsx:229:  const kWH = 1.12;
+  src\HidroFlow.jsx:230:  const qp  = kWH * 2.083 * area / tp;
+  src\HidroFlow.jsx:231:  const n   = Math.ceil(2.8*tp/(dt_min/60))+12;
+> src\HidroFlow.jsx:232:  const uh  = Array.from({length:n},(_,i)=>{
+  src\HidroFlow.jsx:233:    const t=i*dt_min/60, tr=t/tp;
+  src\HidroFlow.jsx:234:    return +(tr<=1?qp*Math.pow(tr,2.208):qp*Math.exp(-1.25*(tr-1))).toFixed(7);
+  src\HidroFlow.jsx:235:  });
+  src\HidroFlow.jsx:236:  return{tp,qp,tc_h,Tc:tc_h*60,Ss,uh,metadata:{nombre:"Williams & Hann",color:C.gold}};
+  src\HidroFlow.jsx:237:}
+  src\HidroFlow.jsx:238:
+  src\HidroFlow.jsx:239:// ④b CLARK IUH (Clark, 1945) — Hidrograma Unitario Instantáneo
+  src\HidroFlow.jsx:240:// IUH de Clark: u(t) = qp·exp(-t/R) para t>tp, crecida lineal hasta tp
+  src\HidroFlow.jsx:241:// Parámetros: tc (tiempo concentración), R (coef. almacenamiento cuenca)
+  src\HidroFlow.jsx:242:// R = k_R * tc  (típico k_R = 0.5–2.0, default 1.2)
+  src\HidroFlow.jsx:243:function calcClarkIUH(area, tc_h, dt_min, kR=1.2){
+  src\HidroFlow.jsx:244:  const dh   = dt_min/60;
+  src\HidroFlow.jsx:245:  const R    = kR * tc_h;  // coeficiente almacenamiento
+  src\HidroFlow.jsx:246:  const qp   = 2.08*area/tc_h;  // caudal pico IUH
+  src\HidroFlow.jsx:247:  const n    = Math.ceil((tc_h + 6*R)/dh) + 12;
+> src\HidroFlow.jsx:248:  const uh   = Array.from({length:n},(_,i)=>{
+  src\HidroFlow.jsx:249:    const t = i*dh;
+  src\HidroFlow.jsx:250:    // Antes de tc: crecida lineal; después: recesión exponencial
+  src\HidroFlow.jsx:251:    const u = t<=tc_h ? qp*(t/tc_h) : qp*Math.exp(-(t-tc_h)/R);
+  src\HidroFlow.jsx:252:    return +Math.max(u,0).toFixed(7);
+  src\HidroFlow.jsx:253:  });
+  src\HidroFlow.jsx:254:  const tp   = tc_h;  // tiempo al pico
+  src\HidroFlow.jsx:255:  return{tp,qp,tc_h,R,kR,uh,metadata:{nombre:"Clark IUH",color:C.accent4}};
+  src\HidroFlow.jsx:256:}
+  src\HidroFlow.jsx:257:
+  src\HidroFlow.jsx:258:// ─── HIDROGRAMA COMPLETO (hietograma → convolución → Q(t)) ───────────────────
+  src\HidroFlow.jsx:259:function calcHidroCompleto(lluvRows, uh_struct, dt_min){
+  src\HidroFlow.jsx:260:  const peList=lluvRows.slice(1).map(r=>r.PeIncrem).filter((v,i,a)=>{
+  src\HidroFlow.jsx:261:    // Incluir todos los incrementos positivos y su contexto
+  src\HidroFlow.jsx:262:    return v>0 || (a[i-1]>0||a[i+1]>0);
+  src\HidroFlow.jsx:280:  let volAcum=0;
+  src\HidroFlow.jsx:281:  const exc=[];
+  src\HidroFlow.jsx:282:  for(let i=0;i<n;i++){
+  src\HidroFlow.jsx:283:    const diff=qPost[i].Q-(qPre[i]?.Q||0);
+  src\HidroFlow.jsx:284:    if(diff>0) volAcum+=diff*dt_min*60;
+  src\HidroFlow.jsx:285:    exc.push({t:qPost[i].t, Qpost:+qPost[i].Q.toFixed(5), Qpre:+(qPre[i]?.Q||0).toFixed(5),
+> src\HidroFlow.jsx:286:      exceso:+Math.max(diff,0).toFixed(5), volAcum:+volAcum.toFixed(1)});
+  src\HidroFlow.jsx:287:  }
+  src\HidroFlow.jsx:288:  return{excesos:exc, volTotal:+volAcum.toFixed(1)};
+  src\HidroFlow.jsx:289:}
+  src\HidroFlow.jsx:290:
+  src\HidroFlow.jsx:291:// Resumen racional
+  src\HidroFlow.jsx:292:function calcRacional(est,area,tc_min,CN){
+  src\HidroFlow.jsx:293:  const S=25400/CN-254,Ia=0.2*S;
+  src\HidroFlow.jsx:294:  return TR_LIST.map(Tr=>{
+  src\HidroFlow.jsx:295:    const I=idfI(est,tc_min,Tr),P=I*tc_min/60;
+  src\HidroFlow.jsx:296:    const Pe=P>Ia?Math.pow(P-Ia,2)/(P-Ia+S):0;
+  src\HidroFlow.jsx:297:    const Cc=P>0?Math.min(Pe/P,1):0.3;
+  src\HidroFlow.jsx:298:    return{Tr,I:+I.toFixed(2),P:+P.toFixed(2),C:+Cc.toFixed(4),Q:+((Cc*I*area)/3.6).toFixed(3)};
+  src\HidroFlow.jsx:299:  });
+  src\HidroFlow.jsx:300:}
+  src\HidroFlow.jsx:301:
+  src\HidroFlow.jsx:302:function buildResumenQ(params, est, dtMin, CNact) {
+> src\HidroFlow.jsx:303:  const tcList = calcTc(params).filter(r => isFinite(r.h) && r.h > 0);
+> src\HidroFlow.jsx:304:  const tc_h = tcList[0]?.h || 0.5;
+  src\HidroFlow.jsx:305:  const metodos = [
+  src\HidroFlow.jsx:306:    { nombre: 'SCS',     make: () => calcHUSCS(params.area, tc_h, dtMin) },
+  src\HidroFlow.jsx:307:    { nombre: 'SCS Mod', make: () => calcHUSCS_Mod(params.area, tc_h, dtMin, 2.08) },
+  src\HidroFlow.jsx:308:    { nombre: 'Snyder',  make: () => calcHUSnyder(params.area*0.386102, params.longitud_cauce*0.621371, params.longitud_cauce*0.621371*0.35, dtMin) },
+  src\HidroFlow.jsx:309:    { nombre: 'W&H',     make: () => calcHUWilliamsHann(params.area, params.longitud_cauce, (params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce, CNact, dtMin) },
+  src\HidroFlow.jsx:310:    { nombre: 'Clark',   make: () => calcClarkIUH(params.area, tc_h, dtMin, 1.2) },
+  src\HidroFlow.jsx:311:  ];
+  src\HidroFlow.jsx:312:  return metodos.map(m => {
+  src\HidroFlow.jsx:313:    const row = { metodo: m.nombre };
+  src\HidroFlow.jsx:314:    TR_LIST.forEach(Tr => {
+  src\HidroFlow.jsx:315:      const hiet = calcHietograma(est, Tr, 3, dtMin, 'EPM_Q1');
+  src\HidroFlow.jsx:316:      const Pe   = calcLluviaEfectiva(hiet, CNact);
+  src\HidroFlow.jsx:317:      const HU   = m.make();
+  src\HidroFlow.jsx:318:      const H    = calcHidroCompleto(Pe, HU, dtMin);
+  src\HidroFlow.jsx:381:    WX.utils.book_append_sheet(wb,WX.utils.aoa_to_sheet(rows),"Vol_SAR");
+  src\HidroFlow.jsx:382:  }
+  src\HidroFlow.jsx:383:
+  src\HidroFlow.jsx:384:  // Hoja 5: Resumen caudales
+  src\HidroFlow.jsx:385:  if(datos.resumenQ){
+  src\HidroFlow.jsx:386:    const rows=[["Método","Tr=2.33a","Tr=5a","Tr=10a","Tr=25a","Tr=50a","Tr=100a"]];
+> src\HidroFlow.jsx:387:    datos.resumenQ.forEach(r=>rows.push([r.metodo,...TR_LIST.map(t=>r[t]||0)]));
+  src\HidroFlow.jsx:388:    WX.utils.book_append_sheet(wb,WX.utils.aoa_to_sheet(rows),"Resumen_Q");
+  src\HidroFlow.jsx:389:  }
+  src\HidroFlow.jsx:390:
+  src\HidroFlow.jsx:391:  WX.writeFile(wb,`HidroFlow_${datos.nombre_cuenca.replace(/\s/g,"_")}_${datos.Tr}a.xlsx`);
+  src\HidroFlow.jsx:392:}
+  src\HidroFlow.jsx:393:
+  src\HidroFlow.jsx:394:// ─── EXPORTACIÓN PDF (jsPDF + html2canvas) ────────────────────────────────────
+  src\HidroFlow.jsx:395:async function exportarPDF(refEl, datos){
+  src\HidroFlow.jsx:396:  try{
+  src\HidroFlow.jsx:397:    const [h2c, jsPDF_mod] = await Promise.all([
+  src\HidroFlow.jsx:398:      import("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"),
+  src\HidroFlow.jsx:399:      import("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"),
+  src\HidroFlow.jsx:400:    ]);
+  src\HidroFlow.jsx:401:    const html2canvas=h2c.default||h2c;
+  src\HidroFlow.jsx:418:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:419:// COMPONENTES UI
+  src\HidroFlow.jsx:420:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:421:
+  src\HidroFlow.jsx:422:function Field({label,value,onChange,unit,step="0.001",type="number"}){
+  src\HidroFlow.jsx:423:  const[f,setF]=useState(false);
+> src\HidroFlow.jsx:424:  return(<div style={{marginBottom:11}}>
+> src\HidroFlow.jsx:425:    <label style={{display:"block",fontSize:10,color:C.muted,marginBottom:3,textTransform:"uppercase",letterSpacing:"0.1em",fontFamily:mono}}>{label}</label>
+  src\HidroFlow.jsx:426:    <div style={{display:"flex",gap:8,alignItems:"center"}}>
+  src\HidroFlow.jsx:427:      <input type={type} step={step} value={value}
+  src\HidroFlow.jsx:428:        onChange={e=>onChange(type==="number"?parseFloat(e.target.value)||0:e.target.value)}
+  src\HidroFlow.jsx:429:        onFocus={()=>setF(true)} onBlur={()=>setF(false)}
+  src\HidroFlow.jsx:430:        style={{flex:1,background:C.bg,border:`1px solid ${f?C.accent:C.border}`,borderRadius:6,
+  src\HidroFlow.jsx:431:          color:C.text,padding:"6px 10px",fontSize:13,outline:"none",fontFamily:mono,transition:"border-color .2s"}}/>
+> src\HidroFlow.jsx:432:      {unit&&<span style={{fontSize:10,color:C.muted,minWidth:40,fontFamily:mono}}>{unit}</span>}
+  src\HidroFlow.jsx:433:    </div>
+  src\HidroFlow.jsx:434:  </div>);
+  src\HidroFlow.jsx:435:}
+  src\HidroFlow.jsx:436:
+  src\HidroFlow.jsx:437:function Card({title,accent=C.accent,children,style={},id}){
+  src\HidroFlow.jsx:438:  return(<div id={id} style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:12,overflow:"hidden",...style}}>
+> src\HidroFlow.jsx:439:    {title&&<div style={{padding:"9px 15px",borderBottom:`1px solid ${C.border}`,background:`linear-gradient(90deg,${accent}12,transparent)`,display:"flex",alignItems:"center",gap:8}}>
+> src\HidroFlow.jsx:440:      <div style={{width:3,height:14,background:accent,borderRadius:2}}/>
+> src\HidroFlow.jsx:441:      <span style={{fontSize:10,fontWeight:700,color:accent,textTransform:"uppercase",letterSpacing:"0.1em",fontFamily:mono}}>{title}</span>
+  src\HidroFlow.jsx:442:    </div>}
+  src\HidroFlow.jsx:443:    <div style={{padding:15}}>{children}</div>
+  src\HidroFlow.jsx:444:  </div>);
+  src\HidroFlow.jsx:445:}
+  src\HidroFlow.jsx:446:
+  src\HidroFlow.jsx:447:function Kpi({value,label,accent=C.accent,sub}){
+  src\HidroFlow.jsx:448:  return(<div style={{background:`${accent}0C`,border:`1px solid ${accent}22`,borderRadius:10,padding:"10px 13px",textAlign:"center"}}>
+  src\HidroFlow.jsx:449:    <div style={{fontSize:16,fontWeight:800,color:accent,fontFamily:mono,lineHeight:1.1}}>{value}</div>
+  src\HidroFlow.jsx:450:    {sub&&<div style={{fontSize:9,color:`${accent}80`,fontFamily:mono,marginTop:2}}>{sub}</div>}
+> src\HidroFlow.jsx:451:    <div style={{fontSize:9,color:C.muted,marginTop:4,textTransform:"uppercase",letterSpacing:"0.07em"}}>{label}</div>
+  src\HidroFlow.jsx:452:  </div>);
+  src\HidroFlow.jsx:453:}
+  src\HidroFlow.jsx:454:
+  src\HidroFlow.jsx:455:function Tbl({headers,rows,hiCols=[],accent=C.accent}){
+  src\HidroFlow.jsx:456:  return(<div style={{overflowX:"auto"}}>
+> src\HidroFlow.jsx:457:    <table style={{width:"100%",borderCollapse:"collapse",fontSize:10.5,fontFamily:mono}}>
+  src\HidroFlow.jsx:458:      <thead><tr>{headers.map((h,i)=>(
+> src\HidroFlow.jsx:459:        <th key={i} style={{padding:"6px 9px",background:`${C.bg}CC`,color:C.muted,textAlign:i===0?"left":"right",fontWeight:600,fontSize:9,textTransform:"uppercase",letterSpacing:"0.07em",borderBottom:`1px solid 
+${C.border}`,whiteSpace:"nowrap"}}>{h}</th>
+  src\HidroFlow.jsx:460:      ))}</tr></thead>
+  src\HidroFlow.jsx:461:      <tbody>{rows.map((row,i)=>(
+  src\HidroFlow.jsx:462:        <tr key={i} style={{background:i%2===0?"transparent":`${C.border}20`}}>
+  src\HidroFlow.jsx:463:          {Object.entries(row).map(([,v],j)=>{
+  src\HidroFlow.jsx:464:            const hi=hiCols.includes(j);
+  src\HidroFlow.jsx:465:            return(<td key={j} style={{padding:"5px 9px",textAlign:j===0?"left":"right",
+  src\HidroFlow.jsx:466:              color:hi?accent:C.text,fontWeight:hi?700:400,
+> src\HidroFlow.jsx:467:              borderBottom:`1px solid ${C.border}18`,whiteSpace:"nowrap"}}>
+  src\HidroFlow.jsx:468:              {typeof v==="number"?v.toFixed(v>9999?0:v>999?1:v>99?2:v>9?3:4):v}
+  src\HidroFlow.jsx:469:            </td>);
+  src\HidroFlow.jsx:470:          })}
+  src\HidroFlow.jsx:471:        </tr>
+  src\HidroFlow.jsx:472:      ))}</tbody>
+  src\HidroFlow.jsx:473:    </table>
+  src\HidroFlow.jsx:474:  </div>);
+  src\HidroFlow.jsx:475:}
+  src\HidroFlow.jsx:476:
+  src\HidroFlow.jsx:477:function BtnGroup({options,value,onChange,accent=C.accent}){
+  src\HidroFlow.jsx:478:  return(<div style={{display:"flex",flexWrap:"wrap",gap:4}}>
+  src\HidroFlow.jsx:479:    {options.map(o=>{
+  src\HidroFlow.jsx:480:      const active=value===o.v;
+  src\HidroFlow.jsx:481:      return(<button key={o.v} onClick={()=>onChange(o.v)}
+  src\HidroFlow.jsx:487:      </button>);
+  src\HidroFlow.jsx:488:    })}
+  src\HidroFlow.jsx:489:  </div>);
+  src\HidroFlow.jsx:490:}
+  src\HidroFlow.jsx:491:
+  src\HidroFlow.jsx:492:function SectionHeader({icon,title,sub,accent}){
+> src\HidroFlow.jsx:493:  return(<div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingBottom:10,borderBottom:`1px solid ${C.border}`}}>
+> src\HidroFlow.jsx:494:    <div style={{width:36,height:36,borderRadius:9,background:`${accent}15`,border:`1px solid ${accent}30`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,flexShrink:0}}>{icon}</div>
+  src\HidroFlow.jsx:495:    <div>
+  src\HidroFlow.jsx:496:      <div style={{fontSize:15,fontWeight:800,color:C.text,letterSpacing:"-0.02em"}}>{title}</div>
+  src\HidroFlow.jsx:497:      {sub&&<div style={{fontSize:9,color:C.muted,marginTop:1,fontFamily:mono}}>{sub}</div>}
+  src\HidroFlow.jsx:498:    </div>
+  src\HidroFlow.jsx:499:  </div>);
+  src\HidroFlow.jsx:500:}
+  src\HidroFlow.jsx:501:
+  src\HidroFlow.jsx:502:function StationRow({name,est,sel,onSel}){
+  src\HidroFlow.jsx:503:  const act=name===sel;
+> src\HidroFlow.jsx:504:  return(<button onClick={()=>onSel(name)} style={{display:"flex",alignItems:"center",gap:9,width:"100%",padding:"7px 
+13px",background:act?`${C.accent}10`:"transparent",border:"none",cursor:"pointer",borderBottom:`1px solid ${C.border}18`,transition:"background .15s"}}
+  src\HidroFlow.jsx:505:    onMouseEnter={ev=>ev.currentTarget.style.background=`${C.accent}08`}
+  src\HidroFlow.jsx:506:    onMouseLeave={ev=>ev.currentTarget.style.background=act?`${C.accent}10`:"transparent"}>
+> src\HidroFlow.jsx:507:    <div style={{width:5,height:5,borderRadius:"50%",background:act?C.accent:est.fuente==="PDF"?C.accent2:C.gold,flexShrink:0}}/>
+  src\HidroFlow.jsx:508:    <div style={{textAlign:"left"}}>
+  src\HidroFlow.jsx:509:      <div style={{fontSize:11,color:act?C.accent:C.text,fontWeight:act?700:400,fontFamily:sans}}>{name}</div>
+  src\HidroFlow.jsx:510:      <div style={{fontSize:9,color:C.muted,fontFamily:mono}}>{est.codigo!=="——"?est.codigo+" · ":""}{est.alt} msnm</div>
+  src\HidroFlow.jsx:511:    </div>
+  src\HidroFlow.jsx:512:  </button>);
+  src\HidroFlow.jsx:513:}
+  src\HidroFlow.jsx:514:
+  src\HidroFlow.jsx:515:function StationSel({sel,onSel}){
+  src\HidroFlow.jsx:516:  const[open,setOpen]=useState(false);
+  src\HidroFlow.jsx:517:  const e=ESTACIONES_EPM[sel];
+  src\HidroFlow.jsx:518:  const pdfN=Object.values(ESTACIONES_EPM).filter(s=>s.fuente==="PDF").length;
+  src\HidroFlow.jsx:519:  const refN=Object.values(ESTACIONES_EPM).filter(s=>s.fuente==="REF").length;
+  src\HidroFlow.jsx:520:  return(<div style={{position:"relative",zIndex:300}}>
+> src\HidroFlow.jsx:521:    <button onClick={()=>setOpen(o=>!o)} style={{display:"flex",alignItems:"center",gap:9,background:C.card,border:`1px solid ${open?C.accent:C.border}`,borderRadius:10,padding:"6px 
+12px",cursor:"pointer",color:C.text,fontFamily:sans,fontSize:12,transition:"all .2s",minWidth:240}}>
+> src\HidroFlow.jsx:522:      <div style={{width:7,height:7,borderRadius:"50%",background:e.fuente==="PDF"?C.accent2:C.gold,flexShrink:0}}/>
+  src\HidroFlow.jsx:523:      <div style={{flex:1,textAlign:"left"}}>
+  src\HidroFlow.jsx:524:        <div style={{fontSize:11,fontWeight:700}}>{sel}</div>
+  src\HidroFlow.jsx:525:        <div style={{fontSize:9,color:C.muted,fontFamily:mono}}>{e.alt} msnm · {e.fuente==="PDF"?"✓ PDF":"~ Ref"}</div>
+  src\HidroFlow.jsx:526:      </div>
+  src\HidroFlow.jsx:527:      <span style={{color:C.muted,fontSize:9}}>{open?"▲":"▼"}</span>
+  src\HidroFlow.jsx:528:    </button>
+> src\HidroFlow.jsx:529:    {open&&<div style={{position:"absolute",top:"110%",left:0,background:C.panel,border:`1px solid ${C.border}`,borderRadius:10,width:280,maxHeight:380,overflowY:"auto",boxShadow:"0 16px 40px #00000080",zIndex:400}}>
+> src\HidroFlow.jsx:530:      <div style={{padding:"8px 13px 6px",borderBottom:`1px solid ${C.border}`,fontSize:9,color:C.muted,fontFamily:mono}}>
+  src\HidroFlow.jsx:531:        <span style={{color:C.accent2}}>● {pdfN} PDF calibradas</span><span style={{margin:"0 8px"}}>·</span><span style={{color:C.gold}}>● {refN} de referencia</span>
+  src\HidroFlow.jsx:532:      </div>
+> src\HidroFlow.jsx:533:      <div style={{padding:"4px 0 2px",fontSize:9,color:C.muted,fontFamily:mono,paddingLeft:13,paddingTop:8,paddingBottom:2}}>✓ CALIBRADAS PDF EPM 2025</div>
+  src\HidroFlow.jsx:534:      {Object.entries(ESTACIONES_EPM).filter(([,v])=>v.fuente==="PDF").map(([n,v])=><StationRow key={n} name={n} est={v} sel={sel} onSel={nm=>{onSel(nm);setOpen(false)}}/>)}
+> src\HidroFlow.jsx:535:      <div style={{padding:"4px 0 2px",fontSize:9,color:C.muted,fontFamily:mono,paddingLeft:13,paddingTop:8,paddingBottom:2,borderTop:`1px solid ${C.border}`}}>~ REFERENCIA ESTIMADA</div>
+  src\HidroFlow.jsx:536:      {Object.entries(ESTACIONES_EPM).filter(([,v])=>v.fuente==="REF").map(([n,v])=><StationRow key={n} name={n} est={v} sel={sel} onSel={nm=>{onSel(nm);setOpen(false)}}/>)}
+  src\HidroFlow.jsx:537:    </div>}
+  src\HidroFlow.jsx:538:  </div>);
+  src\HidroFlow.jsx:539:}
+  src\HidroFlow.jsx:540:
+  src\HidroFlow.jsx:541:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:542:// MÓDULO PARÁMETROS
+  src\HidroFlow.jsx:543:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:544:
+  src\HidroFlow.jsx:545:// ─── OUTLET MINI MAP ─────────────────────────────────────────────────────────
+  src\HidroFlow.jsx:546:// Mini mapa SVG que muestra el punto de salida en contexto del Valle de Aburrá
+  src\HidroFlow.jsx:547:// Se embebe dentro de la card Punto de Salida en ModParams
+  src\HidroFlow.jsx:548:
+  src\HidroFlow.jsx:549:function OutletMiniMap({ lat, lon, alt, idf }) {
+  src\HidroFlow.jsx:672:      {/* Encabezado técnico del mini-mapa */}
+  src\HidroFlow.jsx:673:      <div
+  src\HidroFlow.jsx:674:        style={{
+  src\HidroFlow.jsx:675:          display: "flex",
+  src\HidroFlow.jsx:676:          flexDirection: "column",
+  src\HidroFlow.jsx:677:          gap: 5,
+> src\HidroFlow.jsx:678:          marginBottom: 8,
+  src\HidroFlow.jsx:679:          fontSize: 10,
+  src\HidroFlow.jsx:680:          fontFamily: "monospace"
+  src\HidroFlow.jsx:681:        }}
+  src\HidroFlow.jsx:682:      >
+  src\HidroFlow.jsx:683:        <div
+  src\HidroFlow.jsx:684:          style={{
+  src\HidroFlow.jsx:685:            display: "flex",
+  src\HidroFlow.jsx:686:            flexWrap: "wrap",
+  src\HidroFlow.jsx:687:            gap: 8,
+  src\HidroFlow.jsx:688:            alignItems: "center"
+  src\HidroFlow.jsx:689:          }}
+  src\HidroFlow.jsx:690:        >
+  src\HidroFlow.jsx:691:          <span
+  src\HidroFlow.jsx:692:            style={{
+  src\HidroFlow.jsx:794:        {[0, 1, 2, 3, 4].map((i) => (
+  src\HidroFlow.jsx:795:          <div
+  src\HidroFlow.jsx:796:            key={`grid-v-${i}`}
+  src\HidroFlow.jsx:797:            style={{
+  src\HidroFlow.jsx:798:              position: "absolute",
+  src\HidroFlow.jsx:799:              top: 0,
+> src\HidroFlow.jsx:800:              bottom: 0,
+  src\HidroFlow.jsx:801:              left: `${12 + i * 20}%`,
+  src\HidroFlow.jsx:802:              borderLeft: "1px solid rgba(90,130,180,0.07)"
+  src\HidroFlow.jsx:803:            }}
+  src\HidroFlow.jsx:804:          />
+  src\HidroFlow.jsx:805:        ))}
+  src\HidroFlow.jsx:806:
+  src\HidroFlow.jsx:807:        {/* Río Medellín — referencia oriental del valle.
+  src\HidroFlow.jsx:808:    La subcuenca La Iguaná PC_80 se representa al occidente del río.
+  src\HidroFlow.jsx:809:    Este trazo es conceptual: no representa conectividad hidráulica ni cruce del cauce. */}
+  src\HidroFlow.jsx:810:<div
+  src\HidroFlow.jsx:811:  style={{
+  src\HidroFlow.jsx:812:    position: "absolute",
+  src\HidroFlow.jsx:813:    right: "16%",
+  src\HidroFlow.jsx:814:    top: "8%",
+> src\HidroFlow.jsx:815:    width: 5,
+  src\HidroFlow.jsx:816:    height: "84%",
+  src\HidroFlow.jsx:817:    background:
+  src\HidroFlow.jsx:818:      "linear-gradient(180deg, rgba(0,150,255,0.12), rgba(0,190,255,0.68), rgba(0,150,255,0.12))",
+  src\HidroFlow.jsx:819:    borderRadius: 999,
+  src\HidroFlow.jsx:820:    boxShadow: "0 0 16px rgba(0,180,255,0.38)",
+  src\HidroFlow.jsx:821:    zIndex: 2
+  src\HidroFlow.jsx:822:  }}
+  src\HidroFlow.jsx:823:/>
+  src\HidroFlow.jsx:824:
+  src\HidroFlow.jsx:825:<div
+  src\HidroFlow.jsx:826:  style={{
+  src\HidroFlow.jsx:827:    position: "absolute",
+  src\HidroFlow.jsx:828:    right: "18.5%",
+  src\HidroFlow.jsx:829:    top: "52%",
+  src\HidroFlow.jsx:830:    color: C.accent2,
+  src\HidroFlow.jsx:831:    fontSize: 12,
+  src\HidroFlow.jsx:832:    fontFamily: "monospace",
+  src\HidroFlow.jsx:833:    fontWeight: 800,
+  src\HidroFlow.jsx:834:    letterSpacing: 0.4,
+  src\HidroFlow.jsx:835:    opacity: 0.9,
+> src\HidroFlow.jsx:836:    transform: "rotate(-90deg)",
+  src\HidroFlow.jsx:837:    transformOrigin: "center",
+  src\HidroFlow.jsx:838:    textShadow: "0 1px 4px #000",
+  src\HidroFlow.jsx:839:    zIndex: 3
+  src\HidroFlow.jsx:840:  }}
+  src\HidroFlow.jsx:841:>
+  src\HidroFlow.jsx:842:  Río Medellín
+  src\HidroFlow.jsx:843:</div>
+  src\HidroFlow.jsx:844:
+  src\HidroFlow.jsx:845:{/* Banda occidental conceptual de la subcuenca La Iguaná PC_80.
+  src\HidroFlow.jsx:846:    Ayuda a leer que PC_80 y la subcuenca quedan al occidente del Río Medellín. */}
+  src\HidroFlow.jsx:847:<div
+  src\HidroFlow.jsx:848:  style={{
+  src\HidroFlow.jsx:849:    position: "absolute",
+  src\HidroFlow.jsx:850:    left: "8%",
+  src\HidroFlow.jsx:851:    top: "14%",
+> src\HidroFlow.jsx:852:    width: "60%",
+  src\HidroFlow.jsx:853:    height: "70%",
+  src\HidroFlow.jsx:854:    borderRadius: 14,
+  src\HidroFlow.jsx:855:    background:
+  src\HidroFlow.jsx:856:      "linear-gradient(90deg, rgba(0,230,184,0.055), rgba(0,230,184,0.018))",
+  src\HidroFlow.jsx:857:    border: "1px dashed rgba(0,230,184,0.18)",
+  src\HidroFlow.jsx:858:    boxShadow: "inset 0 0 18px rgba(0,230,184,0.035)",
+  src\HidroFlow.jsx:859:    zIndex: 1
+  src\HidroFlow.jsx:860:  }}
+  src\HidroFlow.jsx:861:/>
+  src\HidroFlow.jsx:862:
+  src\HidroFlow.jsx:863:<div
+  src\HidroFlow.jsx:864:  style={{
+  src\HidroFlow.jsx:865:    position: "absolute",
+  src\HidroFlow.jsx:866:    left: "10%",
+  src\HidroFlow.jsx:888:            key={`cercana-${e.n}`}
+  src\HidroFlow.jsx:889:            title={`${e.n} · ${distKm(lat, lon, e.lat, e.lon).toFixed(1)} km`}
+  src\HidroFlow.jsx:890:            style={{
+  src\HidroFlow.jsx:891:              position: "absolute",
+  src\HidroFlow.jsx:892:              left: xMap(e.lon),
+  src\HidroFlow.jsx:893:              top: yMap(e.lat),
+> src\HidroFlow.jsx:894:              width: 8,
+  src\HidroFlow.jsx:895:              height: 8,
+  src\HidroFlow.jsx:896:              borderRadius: "50%",
+  src\HidroFlow.jsx:897:              background:
+  src\HidroFlow.jsx:898:                e.n === "CUCARACHO"
+  src\HidroFlow.jsx:899:                  ? "rgba(255, 180, 80, 0.88)"
+  src\HidroFlow.jsx:900:                  : "rgba(105, 145, 190, 0.60)",
+> src\HidroFlow.jsx:901:              transform: "translate(-50%, -50%)",
+  src\HidroFlow.jsx:902:              boxShadow:
+  src\HidroFlow.jsx:903:                e.n === "CUCARACHO"
+  src\HidroFlow.jsx:904:                  ? "0 0 13px rgba(255,180,80,0.70)"
+  src\HidroFlow.jsx:905:                  : "0 0 7px rgba(105,145,190,0.38)",
+  src\HidroFlow.jsx:906:
+  src\HidroFlow.jsx:907:              zIndex: 4
+  src\HidroFlow.jsx:908:            }}
+  src\HidroFlow.jsx:909:          />
+  src\HidroFlow.jsx:910:        ))}
+  src\HidroFlow.jsx:911:
+  src\HidroFlow.jsx:912:        {/* Estación IDF adoptada: San Cristóbal */}
+  src\HidroFlow.jsx:913:        {puntoIDF && (
+  src\HidroFlow.jsx:914:          <>
+  src\HidroFlow.jsx:915:            <div
+  src\HidroFlow.jsx:917:                1
+  src\HidroFlow.jsx:918:              )} km`}
+  src\HidroFlow.jsx:919:              style={{
+  src\HidroFlow.jsx:920:                position: "absolute",
+  src\HidroFlow.jsx:921:                left: "27%",
+  src\HidroFlow.jsx:922:                top: "47%",
+> src\HidroFlow.jsx:923:                width: 18,
+  src\HidroFlow.jsx:924:                height: 18,
+  src\HidroFlow.jsx:925:                borderRadius: 4,
+  src\HidroFlow.jsx:926:                background: "#ffd166",
+  src\HidroFlow.jsx:927:                border: "2px solid #fff3b0",
+> src\HidroFlow.jsx:928:                transform: "translate(-50%, -50%) rotate(45deg)",
+  src\HidroFlow.jsx:929:                boxShadow: "0 0 18px rgba(255, 209, 102, 0.85)",
+  src\HidroFlow.jsx:930:                zIndex: 7
+  src\HidroFlow.jsx:931:              }}
+  src\HidroFlow.jsx:932:            />
+  src\HidroFlow.jsx:933:
+  src\HidroFlow.jsx:934:            <div
+  src\HidroFlow.jsx:935:              style={{
+  src\HidroFlow.jsx:936:                position: "absolute",
+  src\HidroFlow.jsx:937:                left: "28%",
+  src\HidroFlow.jsx:938:                top: "40%",
+> src\HidroFlow.jsx:939:                transform: "translate(16px, 4px)",
+  src\HidroFlow.jsx:940:                color: "#ffd166",
+  src\HidroFlow.jsx:941:                fontSize: 10,
+  src\HidroFlow.jsx:942:                fontWeight: 900,
+  src\HidroFlow.jsx:943:                textShadow: "0 1px 4px #000",
+  src\HidroFlow.jsx:944:                whiteSpace: "nowrap",
+  src\HidroFlow.jsx:945:                zIndex: 8,
+  src\HidroFlow.jsx:946:                fontFamily: "monospace",
+  src\HidroFlow.jsx:947:                background: "rgba(3, 10, 20, 0.78)",
+  src\HidroFlow.jsx:948:                border: "1px solid rgba(255, 209, 102, 0.32)",
+  src\HidroFlow.jsx:949:                borderRadius: 999,
+  src\HidroFlow.jsx:950:                padding: "2px 7px"
+  src\HidroFlow.jsx:951:              }}
+  src\HidroFlow.jsx:952:            >
+  src\HidroFlow.jsx:953:              SAN CRISTÓBAL · IDF
+  src\HidroFlow.jsx:960:          <div
+  src\HidroFlow.jsx:961:            title={`PC_80 · salida · ${lat.toFixed(6)}, ${lon.toFixed(6)}`}
+  src\HidroFlow.jsx:962:            style={{
+  src\HidroFlow.jsx:963:              position: "absolute",
+  src\HidroFlow.jsx:964:              left: "58%",
+  src\HidroFlow.jsx:965:              top: "50%",
+> src\HidroFlow.jsx:966:              width: 22,
+  src\HidroFlow.jsx:967:              height: 22,
+  src\HidroFlow.jsx:968:              borderRadius: "50%",
+  src\HidroFlow.jsx:969:              background: "#00e6b8",
+  src\HidroFlow.jsx:970:              border: "3px solid rgba(255,255,255,0.88)",
+> src\HidroFlow.jsx:971:              transform: "translate(-50%, -50%)",
+  src\HidroFlow.jsx:972:              boxShadow: "0 0 22px rgba(0, 230, 184, 0.90)",
+  src\HidroFlow.jsx:973:              zIndex: 9
+  src\HidroFlow.jsx:974:            }}
+  src\HidroFlow.jsx:975:          />
+  src\HidroFlow.jsx:976:
+  src\HidroFlow.jsx:977:          <div
+  src\HidroFlow.jsx:978:            style={{
+  src\HidroFlow.jsx:979:              position: "absolute",
+  src\HidroFlow.jsx:980:              left: "58%",
+  src\HidroFlow.jsx:981:              top: "50%",
+> src\HidroFlow.jsx:982:              transform: "translate(17px, 8px)",
+  src\HidroFlow.jsx:983:              color: "#00e6b8",
+  src\HidroFlow.jsx:984:              fontSize: 12,
+  src\HidroFlow.jsx:985:              fontWeight: 900,
+  src\HidroFlow.jsx:986:              textShadow: "0 1px 4px #000",
+  src\HidroFlow.jsx:987:              whiteSpace: "nowrap",
+  src\HidroFlow.jsx:988:              zIndex: 10,
+  src\HidroFlow.jsx:989:              fontFamily: "monospace"
+  src\HidroFlow.jsx:990:            }}
+  src\HidroFlow.jsx:991:          >
+  src\HidroFlow.jsx:992:            PC_80 · SALIDA
+  src\HidroFlow.jsx:993:          </div>
+  src\HidroFlow.jsx:994:        </>
+  src\HidroFlow.jsx:995:
+  src\HidroFlow.jsx:996:        {/* Caja de coordenadas del PC */}
+  src\HidroFlow.jsx:1020:
+  src\HidroFlow.jsx:1021:        {/* Flecha norte */}
+  src\HidroFlow.jsx:1022:        <div
+  src\HidroFlow.jsx:1023:          style={{
+  src\HidroFlow.jsx:1024:            position: "absolute",
+  src\HidroFlow.jsx:1025:            right: 16,
+> src\HidroFlow.jsx:1026:            bottom: 10,
+  src\HidroFlow.jsx:1027:            color: C.muted2,
+  src\HidroFlow.jsx:1028:            fontSize: 20,
+  src\HidroFlow.jsx:1029:            fontFamily: "monospace",
+  src\HidroFlow.jsx:1030:            opacity: 0.85,
+  src\HidroFlow.jsx:1031:            zIndex: 12
+  src\HidroFlow.jsx:1032:          }}
+  src\HidroFlow.jsx:1033:        >
+  src\HidroFlow.jsx:1034:          N↑
+  src\HidroFlow.jsx:1035:        </div>
+  src\HidroFlow.jsx:1036:      </div>
+  src\HidroFlow.jsx:1037:
+  src\HidroFlow.jsx:1038:      {/* Leyenda inferior */}
+  src\HidroFlow.jsx:1039:      <div
+  src\HidroFlow.jsx:1040:        style={{
+  src\HidroFlow.jsx:1092:    setParams(prev => ({ ...prev, porcentajeImpermeable: v }));
+  src\HidroFlow.jsx:1093:    if (import.meta.env.DEV) console.log("[AMC]", "%Impermeable ->", v);
+  src\HidroFlow.jsx:1094:  }, [setParams]);
+  src\HidroFlow.jsx:1095:
+  src\HidroFlow.jsx:1096:  return (
+  src\HidroFlow.jsx:1097:    <div style={{ marginTop: 16, padding: 16, border: '1px solid #1F2F45', borderRadius: 10, background: '#0F1624' }}>
+> src\HidroFlow.jsx:1098:      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+  src\HidroFlow.jsx:1099:        <h3 style={{ margin: 0, fontSize: 16 }}>Condición de Humedad (AMC) y Urbanización</h3>
+  src\HidroFlow.jsx:1100:        <small style={{ opacity: 0.75 }}>Ajusta AMC, % Impermeable y CN II base</small>
+  src\HidroFlow.jsx:1101:      </div>
+  src\HidroFlow.jsx:1102:
+  src\HidroFlow.jsx:1103:      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, alignItems: 'start' }}>
+  src\HidroFlow.jsx:1104:
+  src\HidroFlow.jsx:1105:        {/* AMC I/II/III */}
+  src\HidroFlow.jsx:1106:        <div>
+> src\HidroFlow.jsx:1107:          <label style={{ display: 'block', marginBottom: 8 }}>AMC</label>
+  src\HidroFlow.jsx:1108:          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+  src\HidroFlow.jsx:1109:            {["I", "II", "III"].map(a => {
+  src\HidroFlow.jsx:1110:              const sel = (amcSel === a);
+  src\HidroFlow.jsx:1111:              return (
+  src\HidroFlow.jsx:1112:                <button
+  src\HidroFlow.jsx:1113:                  key={a}
+  src\HidroFlow.jsx:1114:                  type="button"  // evita submit si hay <form> ancestro
+  src\HidroFlow.jsx:1115:                  onClick={() => {
+  src\HidroFlow.jsx:1116:                    setParams(prev => ({ ...prev, amcActual: a }));
+  src\HidroFlow.jsx:1117:                    if (import.meta.env.DEV) console.log("[AMC]", "amcActual ->", a);
+  src\HidroFlow.jsx:1118:                  }}
+  src\HidroFlow.jsx:1119:                  style={{
+  src\HidroFlow.jsx:1120:                    padding: '8px 12px',
+  src\HidroFlow.jsx:1121:                    borderRadius: 8,
+  src\HidroFlow.jsx:1134:            I (seco) · II (normal) · III (húmedo/saturado)
+  src\HidroFlow.jsx:1135:          </small>
+  src\HidroFlow.jsx:1136:        </div>
+  src\HidroFlow.jsx:1137:
+  src\HidroFlow.jsx:1138:        {/* % Impermeable (commit al soltar / blur) */}
+  src\HidroFlow.jsx:1139:        <div>
+> src\HidroFlow.jsx:1140:          <label style={{ display: 'block', marginBottom: 8 }}>% Impermeable</label>
+  src\HidroFlow.jsx:1141:          <input
+  src\HidroFlow.jsx:1142:            type="range" min={0} max={100} step={1}
+  src\HidroFlow.jsx:1143:            value={pctLive}
+  src\HidroFlow.jsx:1144:            onChange={e => setPctLive(+e.target.value)}               // solo UI mientras arrastras
+  src\HidroFlow.jsx:1145:            onPointerUp={() => commitPct(pctLive)}                    // commit al soltar (touch/pen)
+  src\HidroFlow.jsx:1146:            onMouseUp={() => commitPct(pctLive)}                      // commit al soltar (mouse)
+  src\HidroFlow.jsx:1147:            onBlur={() => commitPct(pctLive)}                         // commit al salir del control
+> src\HidroFlow.jsx:1148:            style={{ width: '100%' }}
+  src\HidroFlow.jsx:1149:            aria-label="% Impermeable"
+  src\HidroFlow.jsx:1150:          />
+  src\HidroFlow.jsx:1151:          <div style={{ marginTop: 8, fontFamily: 'monospace' }}>{pctLive}%</div>
+  src\HidroFlow.jsx:1152:          <small style={{ display: 'block', marginTop: 8, opacity: 0.75 }}>
+  src\HidroFlow.jsx:1153:            Pondera CN mezclando suelo permeable e impermeable
+  src\HidroFlow.jsx:1154:          </small>
+  src\HidroFlow.jsx:1155:        </div>
+  src\HidroFlow.jsx:1156:
+  src\HidroFlow.jsx:1157:        {/* CN II base */}
+  src\HidroFlow.jsx:1158:        <div>
+> src\HidroFlow.jsx:1159:          <label style={{ display: 'block', marginBottom: 8 }}>CN II base</label>
+  src\HidroFlow.jsx:1160:          <input
+  src\HidroFlow.jsx:1161:            type="number" min={30} max={98} step={0.1}
+  src\HidroFlow.jsx:1162:            value={cnBase}
+  src\HidroFlow.jsx:1163:            onChange={e => {
+  src\HidroFlow.jsx:1164:              const v = +e.target.value;
+  src\HidroFlow.jsx:1165:              setParams(prev => ({ ...prev, cnBase: v }));
+  src\HidroFlow.jsx:1166:              if (import.meta.env.DEV) console.log("[AMC]", "cnBase ->", v);
+  src\HidroFlow.jsx:1167:            }}
+  src\HidroFlow.jsx:1168:            style={{
+> src\HidroFlow.jsx:1169:              width: '100%', padding: 8, borderRadius: 8,
+  src\HidroFlow.jsx:1170:              border: '1px solid #1F2F45', background: '#0B0F1A', color: '#D8E4F0'
+  src\HidroFlow.jsx:1171:            }}
+  src\HidroFlow.jsx:1172:            aria-label="CN II base"
+  src\HidroFlow.jsx:1173:          />
+  src\HidroFlow.jsx:1174:          <small style={{ display: 'block', marginTop: 8, opacity: 0.75 }}>
+  src\HidroFlow.jsx:1175:            Si no defines CN II base, se usa el CN clásico (params.CN)
+  src\HidroFlow.jsx:1176:          </small>
+  src\HidroFlow.jsx:1177:        </div>
+  src\HidroFlow.jsx:1178:
+  src\HidroFlow.jsx:1179:      </div>
+  src\HidroFlow.jsx:1180:    </div>
+  src\HidroFlow.jsx:1181:  );
+  src\HidroFlow.jsx:1182:}
+  src\HidroFlow.jsx:1183:
+  src\HidroFlow.jsx:1184:function ModParams({ params, setParams }) {
+  src\HidroFlow.jsx:1185:  // Cálculos de Tc y utilidades locales
+> src\HidroFlow.jsx:1186:  const tc      = useMemo(() => calcTc(params), [params]);
+  src\HidroFlow.jsx:1187:  const set     = k => v => setParams(p => ({ ...p, [k]: v }));
+> src\HidroFlow.jsx:1188:  const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
+> src\HidroFlow.jsx:1189:  const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
+  src\HidroFlow.jsx:1190:  
+  src\HidroFlow.jsx:1191:  // Persistir Tc medio (min) en params para otros módulos (Hietogramas, Hidrogramas)
+  src\HidroFlow.jsx:1192:  useEffect(() => {
+  src\HidroFlow.jsx:1193:    if (!isFinite(tcMed) || tcMed <= 0) return;
+  src\HidroFlow.jsx:1194:
+  src\HidroFlow.jsx:1195:    const tcMedMin = tcMed * 60; // horas → minutos
+  src\HidroFlow.jsx:1196:
+  src\HidroFlow.jsx:1197:    if (params.tcMedMin === tcMedMin) return;
+  src\HidroFlow.jsx:1198:
+  src\HidroFlow.jsx:1199:    setParams(p => ({
+  src\HidroFlow.jsx:1200:     ...p,
+  src\HidroFlow.jsx:1201:     tcMedMin
+  src\HidroFlow.jsx:1202:   }));
+  src\HidroFlow.jsx:1203: }, [tcMed, params.tcMedMin, setParams]);
+  src\HidroFlow.jsx:1229:            <Field label="Cota salida"     value={params.alt_salida} onChange={set("alt_salida")} unit="msnm" step="1" />
+  src\HidroFlow.jsx:1230:
+  src\HidroFlow.jsx:1231:            <div style={{
+  src\HidroFlow.jsx:1232:              fontFamily: mono, fontSize: 8, color: C.muted, padding: "6px 10px", borderRadius: 8,
+  src\HidroFlow.jsx:1233:              background: `${C.teal}0A`, border: `1px solid ${C.teal}25`, lineHeight: 2
+  src\HidroFlow.jsx:1234:            }}>
+> src\HidroFlow.jsx:1235:              <div style={{ color: C.teal, fontWeight: 700, marginBottom: 3 }}>⊕ Punto de salida activo</div>
+  src\HidroFlow.jsx:1236:              <div>Lat: <span style={{ color: C.text }}>{(+params.lat_salida || 0).toFixed(6)}°</span></div>
+  src\HidroFlow.jsx:1237:              <div>Lon: <span style={{ color: C.text }}>{(+params.lon_salida || 0).toFixed(6)}°</span></div>
+  src\HidroFlow.jsx:1238:              <div>Alt: <span style={{ color: C.text }}>{+params.alt_salida || 0} msnm</span></div>
+  src\HidroFlow.jsx:1239:              <div style={{ marginTop: 4, color: C.muted2, fontSize: 7.5 }}>Usado en: Influencia · SIATA · IDF ponderada</div>
+  src\HidroFlow.jsx:1240:            </div>
+  src\HidroFlow.jsx:1241:          </div>
+  src\HidroFlow.jsx:1242:
+  src\HidroFlow.jsx:1243:          {/* Mini‑mapa del outlet (asegura numeric cast con +) */}
+  src\HidroFlow.jsx:1244:          <OutletMiniMap
+  src\HidroFlow.jsx:1245:            lat={+params.lat_salida || 6.185083}
+  src\HidroFlow.jsx:1246:            lon={+params.lon_salida || -75.659972}
+  src\HidroFlow.jsx:1247:            alt={+params.alt_salida || 1702}
+  src\HidroFlow.jsx:1248:            idf={params.idf}
+  src\HidroFlow.jsx:1249:          />
+  src\HidroFlow.jsx:1285:      </div>
+  src\HidroFlow.jsx:1286:
+  src\HidroFlow.jsx:1287:      {/* ── Tabla de Tiempos de Concentración (6 métodos) ─────────────────────── */}
+  src\HidroFlow.jsx:1288:      <Card title="Tiempos de Concentración — 6 Métodos" accent={C.teal}>
+  src\HidroFlow.jsx:1289:        <Tbl
+  src\HidroFlow.jsx:1290:          headers={["Método", "Tc (h)", "Tc (min)", "Δ vs. media (%)"]}
+> src\HidroFlow.jsx:1291:          rows={tc.filter(r => isFinite(r.h) && r.h > 0).map(r => ({
+> src\HidroFlow.jsx:1292:            M: r.m,
+> src\HidroFlow.jsx:1293:            H: +r.h.toFixed(4),
+> src\HidroFlow.jsx:1294:            MIN: +r.min.toFixed(3),
+> src\HidroFlow.jsx:1295:            DELTA: +((r.h - tcMed) / tcMed * 100).toFixed(1)
+  src\HidroFlow.jsx:1296:          }))}
+  src\HidroFlow.jsx:1297:          hiCols={[2]}
+  src\HidroFlow.jsx:1298:          accent={C.teal}
+  src\HidroFlow.jsx:1299:        />
+  src\HidroFlow.jsx:1300:      </Card>
+  src\HidroFlow.jsx:1301:
+  src\HidroFlow.jsx:1302:    </div>
+  src\HidroFlow.jsx:1303:  );
+  src\HidroFlow.jsx:1304:}
+  src\HidroFlow.jsx:1305:
+  src\HidroFlow.jsx:1306:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:1307:// MÓDULO IDF — Curvas Intensidad-Duración-Frecuencia
+  src\HidroFlow.jsx:1308:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:1309:function ModIDF({est,name}){
+  src\HidroFlow.jsx:1326:  })).sort((a,b)=>b.I100-a.I100),[]);
+  src\HidroFlow.jsx:1327:
+  src\HidroFlow.jsx:1328:  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+  src\HidroFlow.jsx:1329:    <SectionHeader icon="⌁" title="Curvas IDF — 20 Estaciones EPM 2025" sub={`I = k/(c+d)ⁿ · d en horas · c = 0.4 · Gumbel · 2000–2023`} accent={C.accent3}/>
+  src\HidroFlow.jsx:1330:    <div style={{background:`${C.accent2}08`,border:`1px solid ${C.accent2}20`,borderRadius:10,padding:"10px 15px",display:"flex",gap:18,flexWrap:"wrap",alignItems:"center"}}>
+  src\HidroFlow.jsx:1331:      <div>
+> src\HidroFlow.jsx:1332:        <div style={{fontSize:9,color:C.muted,fontFamily:mono,textTransform:"uppercase",letterSpacing:"0.08em"}}>Estación activa · {est.fuente==="PDF"?"✓ Calibrada PDF EPM 5/11/2024":"~ Referencia estimada"}</div>
+  src\HidroFlow.jsx:1333:        <div style={{fontSize:14,fontWeight:800,color:C.accent2}}>{name}</div>
+  src\HidroFlow.jsx:1334:      </div>
+  src\HidroFlow.jsx:1335:      <div style={{display:"flex",gap:8,flexWrap:"wrap",fontFamily:mono,fontSize:9}}>
+  src\HidroFlow.jsx:1336:        {[["Código",est.codigo],["Lat.",est.lat.toFixed(5)],["Lon.",est.lon.toFixed(5)],["Alt.",est.alt+" msnm"],["Fuente",est.fuente]].map(([l,v])=>(
+  src\HidroFlow.jsx:1337:          <div key={l} style={{background:C.bg,border:`1px solid ${C.border}`,borderRadius:7,padding:"4px 10px"}}>
+  src\HidroFlow.jsx:1338:            <span style={{color:C.muted}}>{l}: </span><span style={{color:C.text,fontWeight:600}}>{v}</span>
+  src\HidroFlow.jsx:1339:          </div>
+  src\HidroFlow.jsx:1340:        ))}
+  src\HidroFlow.jsx:1341:      </div>
+  src\HidroFlow.jsx:1342:    </div>
+  src\HidroFlow.jsx:1343:    <div style={{display:"grid",gridTemplateColumns:"1.4fr 1fr",gap:14}}>
+  src\HidroFlow.jsx:1344:      <Card title={`Curvas IDF — ${name}`} accent={C.accent3}>
+  src\HidroFlow.jsx:1345:        <ResponsiveContainer width="100%" height={280}>
+> src\HidroFlow.jsx:1346:          <LineChart data={curvasData} margin={{left:0,right:18,top:8,bottom:14}}>
+  src\HidroFlow.jsx:1347:            <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
+  src\HidroFlow.jsx:1348:            <XAxis dataKey="d" tick={{fill:C.muted,fontSize:9}} label={{value:"Duración (min)",position:"insideBottom",offset:-6,fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:1349:            <YAxis tick={{fill:C.muted,fontSize:9}} label={{value:"I (mm/h)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:1350:            <Tooltip contentStyle={TT} formatter={(v,nm)=>[v+" mm/h",nm]}/>
+  src\HidroFlow.jsx:1351:            <Legend wrapperStyle={{fontSize:9}}/>
+  src\HidroFlow.jsx:1352:            {TR_LIST.map((T,i)=><Line key={T} type="monotone" dataKey={`Tr${T}`} stroke={CC[i]} strokeWidth={1.8} dot={false} name={`Tr=${T}a`}/>)}
+  src\HidroFlow.jsx:1353:          </LineChart>
+  src\HidroFlow.jsx:1354:        </ResponsiveContainer>
+  src\HidroFlow.jsx:1355:      </Card>
+  src\HidroFlow.jsx:1356:      <Card title="Tabla IDF — Intensidades (mm/h)" accent={C.accent3}>
+  src\HidroFlow.jsx:1357:        <Tbl headers={["d(min)",...TR_LIST.map(T=>`Tr=${T}a`)]} rows={idfData.map(r=>({d:r.d,...Object.fromEntries(TR_LIST.map(T=>[T,r[`Tr${T}`]]))}))} hiCols={[6]} accent={C.accent3}/>
+  src\HidroFlow.jsx:1358:      </Card>
+  src\HidroFlow.jsx:1359:    </div>
+  src\HidroFlow.jsx:1360:    <Card title="Comparativa 20 Estaciones — I(d=30min, Tr=100a)" accent={C.gold}>
+  src\HidroFlow.jsx:1361:      <ResponsiveContainer width="100%" height={220}>
+> src\HidroFlow.jsx:1362:        <BarChart data={compData} margin={{left:0,right:14,top:8,bottom:44}} layout="vertical">
+  src\HidroFlow.jsx:1363:          <CartesianGrid strokeDasharray="3 3" stroke={C.border} horizontal={false}/>
+  src\HidroFlow.jsx:1364:          <XAxis type="number" tick={{fill:C.muted,fontSize:9}} label={{value:"I (mm/h)",position:"insideBottom",offset:-8,fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:1365:          <YAxis type="category" dataKey="est" tick={{fill:C.muted,fontSize:8}} width={90}/>
+  src\HidroFlow.jsx:1366:          <Tooltip contentStyle={TT} formatter={v=>[v+" mm/h","I"]}/>
+  src\HidroFlow.jsx:1367:          <Bar dataKey="I100" radius={[0,3,3,0]}
+  src\HidroFlow.jsx:1368:            fill={C.accent3}
+  src\HidroFlow.jsx:1369:            label={{position:"right",fill:C.muted2,fontSize:8,formatter:v=>v}}
+  src\HidroFlow.jsx:1370:          />
+  src\HidroFlow.jsx:1371:        </BarChart>
+  src\HidroFlow.jsx:1372:      </ResponsiveContainer>
+  src\HidroFlow.jsx:1373:    </Card>
+  src\HidroFlow.jsx:1374:    <Card title="Parámetros k · n · c — Todos los Tr" accent={C.muted2}>
+  src\HidroFlow.jsx:1375:      <Tbl headers={["Tr (años)","k","n","c","I(10min)","I(30min)","I(60min)","I(120min)"]}
+  src\HidroFlow.jsx:1376:        rows={TR_LIST.map(T=>{const{k,n,c}=est.params[String(T)]||{k:0,n:1,c:0.4};return{T,k:+k.toFixed(4),n:+n.toFixed(4),c,I10:+idfI(est,10,T).toFixed(2),I30:+idfI(est,30,T).toFixed(2),I60:+idfI(est,60,T).toFixed(
+2),I120:+idfI(est,120,T).toFixed(2)};})}
+  src\HidroFlow.jsx:1407:  // Vector de incrementos (mm por bloque) y Δt
+  src\HidroFlow.jsx:1408:  const P_mm  = hiet.data.map((r, i, a) => (i === 0 ? 0 : +(r.pAcum - a[i - 1].pAcum).toFixed(5)));
+  src\HidroFlow.jsx:1409:  const dt_min = dtMin;
+  src\HidroFlow.jsx:1410:  const A_km2  = Number.isFinite(params?.area) ? params.area : 36.58;
+  src\HidroFlow.jsx:1411:
+  src\HidroFlow.jsx:1412:  // === Tc sugerido desde Panel (geomorfología) — informe amigable ===
+> src\HidroFlow.jsx:1413:  const tcList = useMemo(
+> src\HidroFlow.jsx:1414:    () => calcTc(params).filter(r => isFinite(r.h) && r.h > 0),
+  src\HidroFlow.jsx:1415:    [params]
+> src\HidroFlow.jsx:1416:  ); // r.min está en minutos
+  src\HidroFlow.jsx:1417:
+  src\HidroFlow.jsx:1418:  const Tc_sugerido_min = useMemo(() => {
+> src\HidroFlow.jsx:1419:    if (!tcList.length) return 120;
+> src\HidroFlow.jsx:1420:    const s = [...tcList.map(r => r.min)].sort((a, b) => a - b);
+  src\HidroFlow.jsx:1421:    const mid = Math.floor(s.length / 2);
+  src\HidroFlow.jsx:1422:    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+> src\HidroFlow.jsx:1423:  }, [tcList]);
+  src\HidroFlow.jsx:1424:
+  src\HidroFlow.jsx:1425:  // Override opcional (para análisis)
+  src\HidroFlow.jsx:1426:  const [usarOverrideTc, setUsarOverrideTc] = useState(false);
+  src\HidroFlow.jsx:1427:  const [Tc_override_min, setTcOverride]   = useState(Tc_sugerido_min);
+  src\HidroFlow.jsx:1428:
+  src\HidroFlow.jsx:1429:  // Tc efectivo que entra a Q(t)
+  src\HidroFlow.jsx:1430:  const tc_min = usarOverrideTc
+  src\HidroFlow.jsx:1431:  ? Tc_override_min 
+  src\HidroFlow.jsx:1432:  : +(params?.tcMedMin ?? Tc_sugerido_min);
+  src\HidroFlow.jsx:1433:
+  src\HidroFlow.jsx:1434:  
+  src\HidroFlow.jsx:1435:  // ✅ QA hidrológico (solo observación, no modifica nada)
+  src\HidroFlow.jsx:1436:const qaHidro = useMemo(() => {
+  src\HidroFlow.jsx:1437:  const tcBajo = tc_min < 5;
+  src\HidroFlow.jsx:1447:  };
+  src\HidroFlow.jsx:1448:}, [tc_min, params?.amcFuente]);
+  src\HidroFlow.jsx:1449:
+  src\HidroFlow.jsx:1450:
+  src\HidroFlow.jsx:1451:  // Informe amigable
+  src\HidroFlow.jsx:1452:  const infoTc = useMemo(() => {
+> src\HidroFlow.jsx:1453:    if (!tcList.length) return "Sin Tc: faltan parámetros geomorfológicos.";
+> src\HidroFlow.jsx:1454:    const etiquetas = tcList
+> src\HidroFlow.jsx:1455:      .map(r => `${r.m.split(" ")[0]}: ${r.min.toFixed(1)} min`)
+  src\HidroFlow.jsx:1456:      .join(" · ");
+> src\HidroFlow.jsx:1457:    return `Tc sugerido = mediana de ${tcList.length} métodos -> ${Tc_sugerido_min.toFixed(1)} min. [${etiquetas}]`;
+> src\HidroFlow.jsx:1458:  }, [tcList, Tc_sugerido_min]);
+  src\HidroFlow.jsx:1459:
+  src\HidroFlow.jsx:1460:  // === SCS‑CN desde Preliminares + override + AMC auto (SIATA) ===
+  src\HidroFlow.jsx:1461:  const CN_panel        = Number.isFinite(params?.cnBase) ? params.cnBase : (params.CN ?? 75);
+  src\HidroFlow.jsx:1462:  const AMC_panel       = params?.amcActual ?? "II"; // "I" | "II" | "III"
+  src\HidroFlow.jsx:1463:  const pctImperv_panel = Number.isFinite(params?.porcentajeImpermeable) ? params.porcentajeImpermeable : 60;
+  src\HidroFlow.jsx:1464:
+  src\HidroFlow.jsx:1465:  // Override SCS‑CN (para análisis)
+  src\HidroFlow.jsx:1466:  const [overrideSCS, setOverrideSCS] = useState(false);
+  src\HidroFlow.jsx:1467:  const [CN_ovr, setCN_ovr]          = useState(CN_panel);
+  src\HidroFlow.jsx:1468:  const [AMC_ovr, setAMC_ovr]        = useState(AMC_panel);
+  src\HidroFlow.jsx:1469:  const [pctImp_ovr, setPctImp_ovr]  = useState(pctImperv_panel);
+  src\HidroFlow.jsx:1470:
+  src\HidroFlow.jsx:1471:  // Valores efectivos (panel u override)
+  src\HidroFlow.jsx:1472:  const CN        = overrideSCS ? CN_ovr     : CN_panel;
+  src\HidroFlow.jsx:1578:      return obj;
+  src\HidroFlow.jsx:1579:    });
+  src\HidroFlow.jsx:1580:  }, [hiet, hietAll]);
+  src\HidroFlow.jsx:1581:
+  src\HidroFlow.jsx:1582:  // Distribuciones adimensionales comparadas
+  src\HidroFlow.jsx:1583:  const distMerge = useMemo(() => {
+> src\HidroFlow.jsx:1584:    return Array.from({ length: 21 }, (_, i) => {
+  src\HidroFlow.jsx:1585:      const T = i * 5;
+  src\HidroFlow.jsx:1586:      return {
+  src\HidroFlow.jsx:1587:        T,
+  src\HidroFlow.jsx:1588:        EPM_Q1:  interpDist(DIST_TEMPORAL_Q1, T),
+  src\HidroFlow.jsx:1589:        Huff_Q1: interpDist(HUFF_DATA.Q1, T),
+  src\HidroFlow.jsx:1590:        Huff_Q2: interpDist(HUFF_DATA.Q2, T),
+  src\HidroFlow.jsx:1591:        Huff_Q3: interpDist(HUFF_DATA.Q3, T),
+  src\HidroFlow.jsx:1592:        Huff_Q4: interpDist(HUFF_DATA.Q4, T),
+  src\HidroFlow.jsx:1593:      };
+  src\HidroFlow.jsx:1594:    });
+  src\HidroFlow.jsx:1595:  }, []);
+  src\HidroFlow.jsx:1596:
+  src\HidroFlow.jsx:1597:  const dispFilt = hiet.data.filter((_, i) => i % Math.max(1, Math.floor(hiet.data.length / 80)) === 0);
+  src\HidroFlow.jsx:1598:
+  src\HidroFlow.jsx:1648:
+  src\HidroFlow.jsx:1649:      {/* Hietograma de diseño + Parámetros SCS‑CN */}
+  src\HidroFlow.jsx:1650:      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+  src\HidroFlow.jsx:1651:        {/* Hietograma de diseño */}
+  src\HidroFlow.jsx:1652:        <Card title={`Hietograma — ${distType} · Tr=${Tr}a · d=${durH}h · Δt=${dtMin}min`} accent={C.accent}>
+  src\HidroFlow.jsx:1653:          <ResponsiveContainer width="100%" height={260}>
+> src\HidroFlow.jsx:1654:            <ComposedChart data={dispFilt.slice(1)} margin={{ left: 0, right: 8, bottom: 14, top: 8 }}>
+  src\HidroFlow.jsx:1655:              <CartesianGrid strokeDasharray="3 3" stroke={C.border} />
+  src\HidroFlow.jsx:1656:              <XAxis dataKey="t" tick={{ fill: C.muted, fontSize: 8 }}
+  src\HidroFlow.jsx:1657:                     label={{ value: "t (min)", position: "insideBottom", offset: -6, fill: C.muted, fontSize: 9 }} />
+  src\HidroFlow.jsx:1658:              <YAxis yAxisId="i" tick={{ fill: C.muted, fontSize: 8 }}
+  src\HidroFlow.jsx:1659:                     label={{ value: "i (mm/h)", angle: -90, position: "insideLeft", fill: C.muted, fontSize: 8 }} />
+  src\HidroFlow.jsx:1660:              <YAxis yAxisId="p" orientation="right" tick={{ fill: C.muted, fontSize: 8 }}
+  src\HidroFlow.jsx:1661:                     label={{ value: "P acum (mm)", angle: 90, position: "insideRight", fill: C.muted, fontSize: 8 }} />
+  src\HidroFlow.jsx:1662:              <Tooltip contentStyle={TT} />
+  src\HidroFlow.jsx:1663:              <Bar  yAxisId="i" dataKey="iBloque" fill={C.accent}  radius={[2, 2, 0, 0]} name="i bloque (mm/h)" opacity={0.85} />
+  src\HidroFlow.jsx:1664:              <Line yAxisId="p" type="monotone" dataKey="pAcum"   stroke={C.accent2} strokeWidth={2} dot={false} name="P acum (mm)" />
+  src\HidroFlow.jsx:1665:            </ComposedChart>
+  src\HidroFlow.jsx:1666:          </ResponsiveContainer>
+  src\HidroFlow.jsx:1667:        </Card>
+  src\HidroFlow.jsx:1668:
+  src\HidroFlow.jsx:1669:        {/* Parámetros lluvia efectiva (SCS‑CN) y UH */}
+  src\HidroFlow.jsx:1670:        <Card title="Parámetros lluvia efectiva (SCS‑CN) y UH" accent={C.accent4}>
+  src\HidroFlow.jsx:1671:          {/* Toggles */}
+> src\HidroFlow.jsx:1672:          <div style={{ display: 'flex', gap: 10, marginBottom: 10 }}>
+  src\HidroFlow.jsx:1673:            <label style={{ fontFamily: 'monospace', fontSize: 11, color: C.muted }}>
+  src\HidroFlow.jsx:1674:              <input type="checkbox" checked={overrideSCS} onChange={e => setOverrideSCS(e.target.checked)} /> Override SCS‑CN (análisis)
+  src\HidroFlow.jsx:1675:            </label>
+  src\HidroFlow.jsx:1676:            <label style={{ fontFamily: 'monospace', fontSize: 11, color: C.muted }}>
+  src\HidroFlow.jsx:1677:              <input type="checkbox" checked={usarAMCauto} onChange={e => setUsarAMCauto(e.target.checked)} /> AMC automático (SIATA)
+  src\HidroFlow.jsx:1678:            </label>
+  src\HidroFlow.jsx:1679:            <label style={{ fontFamily: 'monospace', fontSize: 11, color: C.muted }}>
+  src\HidroFlow.jsx:1680:              <input type="checkbox" checked={usarOverrideTc} onChange={e => setUsarOverrideTc(e.target.checked)} /> Override Tc
+  src\HidroFlow.jsx:1681:            </label>
+  src\HidroFlow.jsx:1682:            <label style={{ fontFamily:'monospace', fontSize:11, color:C.muted }}>
+  src\HidroFlow.jsx:1683:              <input
+  src\HidroFlow.jsx:1684:               type="checkbox"
+  src\HidroFlow.jsx:1685:               checked={guardarAMCenPanel}
+  src\HidroFlow.jsx:1686:               onChange={e => setGuardarAMCenPanel(e.target.checked)}
+  src\HidroFlow.jsx:1689:          </div>
+  src\HidroFlow.jsx:1690:
+  src\HidroFlow.jsx:1691:          {/* Solo‑lectura u.Override */}
+  src\HidroFlow.jsx:1692:          <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 8 }}>
+  src\HidroFlow.jsx:1693:            {/* CN */}
+  src\HidroFlow.jsx:1694:            <div>
+> src\HidroFlow.jsx:1695:              <label style={{ display: 'block', marginBottom: 6, fontSize: 10, color: C.muted, fontFamily: 'monospace' }}>CN (CNII)</label>
+  src\HidroFlow.jsx:1696:              {overrideSCS ? (
+  src\HidroFlow.jsx:1697:                <input
+  src\HidroFlow.jsx:1698:                  type="number" min={30} max={98} step={0.1} value={CN_ovr}
+  src\HidroFlow.jsx:1699:                  onChange={e => setCN_ovr(+e.target.value)}
+> src\HidroFlow.jsx:1700:                  style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
+  src\HidroFlow.jsx:1701:                />
+  src\HidroFlow.jsx:1702:              ) : (
+  src\HidroFlow.jsx:1703:                <Kpi value={CN.toFixed(1)} label="CN" accent={C.accent2} />
+  src\HidroFlow.jsx:1704:              )}
+  src\HidroFlow.jsx:1705:            </div>
+  src\HidroFlow.jsx:1706:
+  src\HidroFlow.jsx:1707:            {/* AMC */}
+  src\HidroFlow.jsx:1708:            <div>
+> src\HidroFlow.jsx:1709:              <label style={{ display: 'block', marginBottom: 6, fontSize: 10, color: C.muted, fontFamily: 'monospace' }}>AMC</label>
+  src\HidroFlow.jsx:1710:              {overrideSCS ? (
+  src\HidroFlow.jsx:1711:                <select
+  src\HidroFlow.jsx:1712:                  value={AMC_ovr}
+  src\HidroFlow.jsx:1713:                  onChange={e => setAMC_ovr(e.target.value)}
+> src\HidroFlow.jsx:1714:                  style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
+  src\HidroFlow.jsx:1715:                >
+  src\HidroFlow.jsx:1716:                  <option value="I">AMC I</option>
+  src\HidroFlow.jsx:1717:                  <option value="II">AMC II</option>
+  src\HidroFlow.jsx:1718:                  <option value="III">AMC III</option>
+  src\HidroFlow.jsx:1719:                </select>
+  src\HidroFlow.jsx:1720:              ) : (
+  src\HidroFlow.jsx:1721:                <Kpi value={AMC_eff} label="AMC" accent={C.gold} />
+  src\HidroFlow.jsx:1722:              )}
+  src\HidroFlow.jsx:1723:            </div>
+  src\HidroFlow.jsx:1724:
+  src\HidroFlow.jsx:1725:            {/* % Impermeable */}
+  src\HidroFlow.jsx:1726:            <div>
+> src\HidroFlow.jsx:1727:              <label style={{ display: 'block', marginBottom: 6, fontSize: 10, color: C.muted, fontFamily: 'monospace' }}>% Impermeable</label>
+  src\HidroFlow.jsx:1728:              {overrideSCS ? (
+  src\HidroFlow.jsx:1729:                <input
+  src\HidroFlow.jsx:1730:                  type="number" min={0} max={100} step={1} value={pctImp_ovr}
+  src\HidroFlow.jsx:1731:                  onChange={e => setPctImp_ovr(+e.target.value)}
+> src\HidroFlow.jsx:1732:                  style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
+  src\HidroFlow.jsx:1733:                />
+  src\HidroFlow.jsx:1734:              ) : (
+  src\HidroFlow.jsx:1735:                <Kpi value={`${pctImperv}%`} label="% Imperv" accent={C.accent} />
+  src\HidroFlow.jsx:1736:              )}
+  src\HidroFlow.jsx:1737:            </div>
+  src\HidroFlow.jsx:1738:
+  src\HidroFlow.jsx:1739:            {/* A (km²) — KPI para trazabilidad */}
+  src\HidroFlow.jsx:1740:            <div>
+> src\HidroFlow.jsx:1741:              <label style={{ display: 'block', marginBottom: 6, fontSize: 10, color: C.muted, fontFamily: 'monospace' }}>A (km²)</label>
+  src\HidroFlow.jsx:1742:              <Kpi value={`${A_km2}`} label="Área" accent={C.teal} />
+  src\HidroFlow.jsx:1743:            </div>
+  src\HidroFlow.jsx:1744:
+  src\HidroFlow.jsx:1745:            {/* Tc (min) — sugerido u override */}
+  src\HidroFlow.jsx:1746:            <div>
+> src\HidroFlow.jsx:1747:              <label style={{ display: 'block', marginBottom: 6, fontSize: 10, color: C.muted, fontFamily: 'monospace' }}>Tc (min)</label>
+  src\HidroFlow.jsx:1748:              {usarOverrideTc ? (
+  src\HidroFlow.jsx:1749:                <input
+  src\HidroFlow.jsx:1750:                  type="number" min={1} step={1} value={Tc_override_min}
+  src\HidroFlow.jsx:1751:                  onChange={e => setTcOverride(+e.target.value)}
+> src\HidroFlow.jsx:1752:                  style={{ width: '100%', padding: 8, borderRadius: 8, border: `1px solid ${C.border}`, background: C.bg, color: C.text }}
+  src\HidroFlow.jsx:1753:                />
+  src\HidroFlow.jsx:1754:              ) : (
+  src\HidroFlow.jsx:1755:                <Kpi value={`${tc_min.toFixed(1)}`} label="Tc sugerido" accent={C.accent4} />
+  src\HidroFlow.jsx:1756:              )}
+  src\HidroFlow.jsx:1757:            </div>
+  src\HidroFlow.jsx:1758:          </div>
+  src\HidroFlow.jsx:1759:
+  src\HidroFlow.jsx:1760:          {/* Informes */}
+  src\HidroFlow.jsx:1761:          <div style={{ marginTop: 10, fontFamily: 'monospace', fontSize: 11, color: scsAviso.length ? C.rose : C.muted }}>
+  src\HidroFlow.jsx:1762:            {infoTc}{scsAviso.length ? ` · Aviso: ${scsAviso.join(" · ")}` : ""}
+  src\HidroFlow.jsx:1763:          </div>
+  src\HidroFlow.jsx:1764:          {usarAMCauto && amcAuto && (
+  src\HidroFlow.jsx:1765:            <div style={{ marginTop: 6, fontFamily: 'monospace', fontSize: 11, color: C.muted2 }}>
+  src\HidroFlow.jsx:1766:              {infoAMC}
+  src\HidroFlow.jsx:1779:        AMC={AMC_eff}
+  src\HidroFlow.jsx:1780:        pctImperv={pctImperv}
+  src\HidroFlow.jsx:1781:      />
+  src\HidroFlow.jsx:1782:
+  src\HidroFlow.jsx:1783:      {/* Distribuciones temporales comparadas */}
+  src\HidroFlow.jsx:1784:      <Card title="Distribuciones Temporales Comparadas — Adimensional" accent={C.accent4}>
+> src\HidroFlow.jsx:1785:        <div ref={refContenedorDistribuciones} style={{ width: "100%", height: 260 }}>
+  src\HidroFlow.jsx:1786:          <ResponsiveContainer width="100%" height="100%">
+> src\HidroFlow.jsx:1787:            <LineChart data={distMerge} margin={{ left: 0, right: 14, bottom: 14 }}>
+  src\HidroFlow.jsx:1788:              <CartesianGrid strokeDasharray="3 3" stroke={C.border} />
+  src\HidroFlow.jsx:1789:              <XAxis dataKey="T" tick={{ fill: C.muted, fontSize: 9 }}
+  src\HidroFlow.jsx:1790:                     label={{ value: "Tiempo (%)", position: "insideBottom", offset: -6, fill: C.muted, fontSize: 9 }} />
+  src\HidroFlow.jsx:1791:              <YAxis tick={{ fill: C.muted, fontSize: 9 }}
+  src\HidroFlow.jsx:1792:                     label={{ value: "P acum (%)", angle: -90, position: "insideLeft", fill: C.muted, fontSize: 9 }} />
+  src\HidroFlow.jsx:1793:              <Tooltip contentStyle={TT} formatter={v => [Number(v).toFixed(1) + "%"]} />
+  src\HidroFlow.jsx:1794:              <Legend wrapperStyle={{ fontSize: 9 }} />
+  src\HidroFlow.jsx:1795:              <Line type="monotone" dataKey="EPM_Q1"  stroke={C.accent2} strokeWidth={2.5} dot={false} name="EPM Q1 (GT-AS-004)" />
+  src\HidroFlow.jsx:1796:              <Line type="monotone" dataKey="Huff_Q1" stroke={C.accent}  strokeWidth={1.8} strokeDasharray="6 2" dot={false} name="Huff Q1" />
+  src\HidroFlow.jsx:1797:              <Line type="monotone" dataKey="Huff_Q2" stroke={C.gold}    strokeWidth={1.8} strokeDasharray="6 2" dot={false} name="Huff Q2" />
+  src\HidroFlow.jsx:1798:              <Line type="monotone" dataKey="Huff_Q3" stroke={C.accent3}  strokeWidth={1.8} strokeDasharray="6 2" dot={false} name="Huff Q3" />
+  src\HidroFlow.jsx:1799:              <Line type="monotone" dataKey="Huff_Q4" stroke={C.accent4}  strokeWidth={1.8} strokeDasharray="6 2" dot={false} name="Huff Q4" />
+  src\HidroFlow.jsx:1800:            </LineChart>
+  src\HidroFlow.jsx:1801:          </ResponsiveContainer>
+  src\HidroFlow.jsx:1811:          </button>
+  src\HidroFlow.jsx:1812:        </div>
+  src\HidroFlow.jsx:1813:      </Card>
+  src\HidroFlow.jsx:1814:
+  src\HidroFlow.jsx:1815:      {/* Intensidades por bloque — Comparativa Distribuciones (Tr activo) */}
+  src\HidroFlow.jsx:1816:      <Card title="Intensidades por Bloque — Comparativa Distribuciones (Tr activo)" accent={C.accent3}>
+> src\HidroFlow.jsx:1817:        <div ref={refContenedorIntensidades} style={{ width: "100%", height: 220 }}>
+  src\HidroFlow.jsx:1818:          <ResponsiveContainer width="100%" height="100%">
+> src\HidroFlow.jsx:1819:            <LineChart data={compData} margin={{ left: 0, right: 18, bottom: 14 }}>
+  src\HidroFlow.jsx:1820:              <CartesianGrid strokeDasharray="3 3" stroke={C.border} />
+  src\HidroFlow.jsx:1821:              <XAxis dataKey="t" tick={{ fill: C.muted, fontSize: 9 }}
+  src\HidroFlow.jsx:1822:                     label={{ value: "t (min)", position: "insideBottom", offset: -6, fill: C.muted, fontSize: 9 }} />
+  src\HidroFlow.jsx:1823:              <YAxis tick={{ fill: C.muted, fontSize: 9 }}
+  src\HidroFlow.jsx:1824:                     label={{ value: "i (mm/h)", angle: -90, position: "insideLeft", fill: C.muted, fontSize: 9 }} />
+  src\HidroFlow.jsx:1825:              <Tooltip contentStyle={TT} formatter={v => [Number(v).toFixed(2) + " mm/h"]} />
+  src\HidroFlow.jsx:1826:              <Legend wrapperStyle={{ fontSize: 9 }} />
+  src\HidroFlow.jsx:1827:              <Line type="monotone" dataKey="EPM_Q1"  stroke={C.accent2} strokeWidth={2.5} dot={false} name="EPM Q1" />
+  src\HidroFlow.jsx:1828:              <Line type="monotone" dataKey="Huff_Q1" stroke={C.accent}  strokeWidth={1.5} strokeDasharray="5 2" dot={false} name="Huff Q1" />
+  src\HidroFlow.jsx:1829:              <Line type="monotone" dataKey="Huff_Q2" stroke={C.gold}    strokeWidth={1.5} strokeDasharray="5 2" dot={false} name="Huff Q2" />
+  src\HidroFlow.jsx:1830:              <Line type="monotone" dataKey="Huff_Q3" stroke={C.accent3}  strokeWidth={1.5} strokeDasharray="5 2" dot={false} name="Huff Q3" />
+  src\HidroFlow.jsx:1831:              <Line type="monotone" dataKey="Huff_Q4" stroke={C.accent4}  strokeWidth={1.5} strokeDasharray="5 2" dot={false} name="Huff Q4" />
+  src\HidroFlow.jsx:1832:            </LineChart>
+  src\HidroFlow.jsx:1833:          </ResponsiveContainer>
+  src\HidroFlow.jsx:1904:  const [kR, setKR]       = useState(1.2);     // Clark
+  src\HidroFlow.jsx:1905:  const [Ct, setCt]       = useState(2.0);     // Snyder
+  src\HidroFlow.jsx:1906:  const [Cp, setCp]       = useState(0.62);    // Snyder
+  src\HidroFlow.jsx:1907:  const [CpSCSMod, setCpSCSMod] = useState(2.08); // SCS Mod
+  src\HidroFlow.jsx:1908:
+  src\HidroFlow.jsx:1909:  // ── Tc, unidades y pendiente
+> src\HidroFlow.jsx:1910:  const tcList = useMemo(() => calcTc(params).filter(r => isFinite(r.h) && r.h > 0), [params]);
+> src\HidroFlow.jsx:1911:  const tc_h   = tcList[tcSrc]?.h || 0.5;
+  src\HidroFlow.jsx:1912:  const tc_min = tc_h * 60;
+  src\HidroFlow.jsx:1913:  
+  src\HidroFlow.jsx:1914:  const area_mi2 = params.area * 0.386102;
+  src\HidroFlow.jsx:1915:  const L_mi     = params.longitud_cauce * 0.621371;
+  src\HidroFlow.jsx:1916:  const S_m_km   = (params.cota_mayor_cauce - params.cota_menor_cauce) / params.longitud_cauce;
+  src\HidroFlow.jsx:1917:
+  src\HidroFlow.jsx:1918:  // ── Hietograma (Tr, 3 h de evento, dtMin, EPM_Q1)
+  src\HidroFlow.jsx:1919:  const hiet = useMemo(() => calcHietograma(est, Tr, 3, dtMin, "EPM_Q1"), [est, Tr, dtMin]);
+  src\HidroFlow.jsx:1920:
+  src\HidroFlow.jsx:1921:  // ── Lluvia efectiva con CN efectivo
+  src\HidroFlow.jsx:1922:  const lluvEfect = useMemo(() => calcLluviaEfectiva(hiet, CNact), [hiet, CNact]);
+  src\HidroFlow.jsx:1923:
+  src\HidroFlow.jsx:1924:  // ── Unidades Hidrológicas (5 métodos)
+  src\HidroFlow.jsx:1925:  const hu_scs    = useMemo(() => calcHUSCS(params.area, tc_h, dtMin), [params.area, tc_h, dtMin]);
+  src\HidroFlow.jsx:1958:  if (Array.isArray(h?.data)) return h.data;
+  src\HidroFlow.jsx:1959:  if (Array.isArray(h?.puntos)) return h.puntos;
+  src\HidroFlow.jsx:1960:  if (Array.isArray(h?.qt)) return h.qt;
+  src\HidroFlow.jsx:1961:  if (Array.isArray(h?.Q_t)) return h.Q_t;
+  src\HidroFlow.jsx:1962:  if (Array.isArray(h?.valores)) return h.valores;
+  src\HidroFlow.jsx:1963:  if (Array.isArray(h)) return h;
+> src\HidroFlow.jsx:1964:  return [];
+  src\HidroFlow.jsx:1965:};
+  src\HidroFlow.jsx:1966:
+  src\HidroFlow.jsx:1967:  const leerQ = (punto) => {
+  src\HidroFlow.jsx:1968:  if (Array.isArray(punto)) {
+  src\HidroFlow.jsx:1969:    return numeroValido(punto[1] ?? punto[0]?.q ?? punto[0]?.Q);
+  src\HidroFlow.jsx:1970:  }
+  src\HidroFlow.jsx:1971:
+  src\HidroFlow.jsx:1972:  return numeroValido(
+  src\HidroFlow.jsx:1973:    punto?.Q ??
+  src\HidroFlow.jsx:1974:      punto?.q ??
+  src\HidroFlow.jsx:1975:      punto?.q_m3s ??
+  src\HidroFlow.jsx:1976:      punto?.Q_m3s ??
+  src\HidroFlow.jsx:1977:      punto?.caudal ??
+  src\HidroFlow.jsx:1978:      punto?.caudal_m3s ??
+  src\HidroFlow.jsx:2136:  const resumenQ = useMemo(() => buildResumenQ(params, est, dtMin, CNact), [params, est, dtMin, CNact]);
+  src\HidroFlow.jsx:2137:
+  src\HidroFlow.jsx:2138:  /* ──────────────────────────────────────────────────────────────
+  src\HidroFlow.jsx:2139:     DEBUG TEMPORAL: inspeccionar etiquetas de método
+  src\HidroFlow.jsx:2140:     ────────────────────────────────────────────────────────────── */
+  src\HidroFlow.jsx:2141:  useEffect(() => {
+> src\HidroFlow.jsx:2142:    if (import.meta.env.DEV) console.log('[HIDRO] etiquetas resumenQ:', (resumenQ ?? []).map(r => r.nombre ?? r.metodo));
+  src\HidroFlow.jsx:2143:  }, [resumenQ]);
+  src\HidroFlow.jsx:2144:
+  src\HidroFlow.jsx:2145:  useEffect(() => {
+  src\HidroFlow.jsx:2146:    if (import.meta.env.DEV) console.log('[HIDRO] etiquetas hidros:', (hidros ?? []).map(h => h.metodo));
+  src\HidroFlow.jsx:2147:  }, [hidros]);
+  src\HidroFlow.jsx:2148:
+  src\HidroFlow.jsx:2149:  /* ──────────────────────────────────────────────────────────────
+  src\HidroFlow.jsx:2150:     Parche condicional Snyder (cfs → m³/s) y copia segura: hidrosCorr
+  src\HidroFlow.jsx:2151:     ────────────────────────────────────────────────────────────── */
+  src\HidroFlow.jsx:2152:  const factorCFS2M3S   = 0.028316846592;
+  src\HidroFlow.jsx:2153:  // Política: 'auto' | 'force' | 'off'
+  src\HidroFlow.jsx:2154:  const SNYDER_POLICY   = 'auto';
+  src\HidroFlow.jsx:2155:  // Umbral para 'auto' (ratio Qp(Snyder)/max(Qp otros))
+  src\HidroFlow.jsx:2156:  const SNYDER_THRESHOLD = 12;
+  src\HidroFlow.jsx:2195:  ];
+  src\HidroFlow.jsx:2196:  const matchWH = (s) => {
+  src\HidroFlow.jsx:2197:    if (!s) return false;
+  src\HidroFlow.jsx:2198:    const t = String(s).toLowerCase().replace(/\s+/g, ' ').trim();
+  src\HidroFlow.jsx:2199:    return whAliases.some(a => t.includes(a));
+  src\HidroFlow.jsx:2200:  };
+> src\HidroFlow.jsx:2201:  let rWH = (resumenQ ?? []).find(r => matchWH(r.nombre ?? r.metodo)) || {};
+  src\HidroFlow.jsx:2202:  if (!rWH.Qpico || !rWH.tpico) {
+  src\HidroFlow.jsx:2203:    const wh = (hidrosCorr ?? []).find(h => matchWH(h.metodo)); // ← usa corregidas
+  src\HidroFlow.jsx:2204:    if (wh?.qSeries?.length) {
+  src\HidroFlow.jsx:2205:      const pico = wh.qSeries.reduce((m, p) => (p.Q > m.Q ? p : m), { Q: 0, t: 0 });
+  src\HidroFlow.jsx:2206:      rWH = { ...(rWH ?? {}), Qpico: rWH.Qpico ?? pico.Q, tpico: rWH.tpico ?? pico.t, nombre: rWH.nombre ?? wh.metodo };
+  src\HidroFlow.jsx:2207:    }
+  src\HidroFlow.jsx:2208:  }
+  src\HidroFlow.jsx:2209:
+  src\HidroFlow.jsx:2210:  // ── Totales de Pe
+  src\HidroFlow.jsx:2211:  const lePe = useMemo(() => lluvEfect.reduce((s, r) => s + (r.PeIncrem || 0), 0), [lluvEfect]);
+  src\HidroFlow.jsx:2212:
+  src\HidroFlow.jsx:2213:  // ───────────────────────────────────────────────────────────────
+  src\HidroFlow.jsx:2214:  //  FORTALECER GRÁFICAS: seriesOK, n, step, combined, noData (usa hidrosCorr)
+  src\HidroFlow.jsx:2215:  // ───────────────────────────────────────────────────────────────
+  src\HidroFlow.jsx:2224:    return lens.length ? Math.max(...lens) : 0;
+  src\HidroFlow.jsx:2225:  }, [seriesOK]);
+  src\HidroFlow.jsx:2226:
+  src\HidroFlow.jsx:2227:  const step = useMemo(() => (n <= 0 ? 1 : Math.max(1, Math.floor(n / 100))), [n]);
+  src\HidroFlow.jsx:2228:
+  src\HidroFlow.jsx:2229:  const combined = useMemo(() => {
+> src\HidroFlow.jsx:2230:    if (n <= 0) return [];
+  src\HidroFlow.jsx:2231:    const L = Math.ceil(n / step);
+> src\HidroFlow.jsx:2232:    const out = Array.from({ length: L }, (_, i) => {
+  src\HidroFlow.jsx:2233:      const idx = i * step;
+  src\HidroFlow.jsx:2234:      const obj = { t: +((idx * dtMin) || 0).toFixed(1) };
+  src\HidroFlow.jsx:2235:      seriesOK.forEach(h => {
+  src\HidroFlow.jsx:2236:        obj[h.metodo] = h.qSeries[idx]?.Q ?? 0; // clave = nombre del método
+  src\HidroFlow.jsx:2237:      });
+  src\HidroFlow.jsx:2238:      return obj;
+  src\HidroFlow.jsx:2239:    });
+  src\HidroFlow.jsx:2240:    return out;
+  src\HidroFlow.jsx:2241:  }, [seriesOK, n, step, dtMin]);
+  src\HidroFlow.jsx:2242:
+  src\HidroFlow.jsx:2243:  const noData = combined.length === 0;
+  src\HidroFlow.jsx:2244:
+  src\HidroFlow.jsx:2245:  // (Opcional) diagnóstico de series en consola
+  src\HidroFlow.jsx:2246:  useEffect(() => {
+  src\HidroFlow.jsx:2305:           Tc MANUAL
+  src\HidroFlow.jsx:2306:         </span>
+  src\HidroFlow.jsx:2307:       )}
+  src\HidroFlow.jsx:2308:     </div>
+  src\HidroFlow.jsx:2309:
+  src\HidroFlow.jsx:2310:      {/* ===== Gráfica Q(t) — Convolución completa (segura) ===== */}
+> src\HidroFlow.jsx:2311:      <div style={{ width:'100%', height: 380, border:'1px solid #1F2F45', borderRadius: 10, background:'#0B0F1A' }}>
+  src\HidroFlow.jsx:2312:        {noData ? (
+  src\HidroFlow.jsx:2313:          <div style={{height:'100%', display:'flex', alignItems:'center', justifyContent:'center', color: C.muted }}>
+  src\HidroFlow.jsx:2314:            Sin datos para graficar — verifica hietograma, CN y HU
+  src\HidroFlow.jsx:2315:          </div>
+  src\HidroFlow.jsx:2316:        ) : (
+  src\HidroFlow.jsx:2317:          <ResponsiveContainer width="100%" height="100%">
+> src\HidroFlow.jsx:2318:            <LineChart data={combined} margin={{ top: 12, right: 24, bottom: 16, left: 8 }}>
+  src\HidroFlow.jsx:2319:              <CartesianGrid stroke="#223" strokeDasharray="3 3" />
+  src\HidroFlow.jsx:2320:              <XAxis
+  src\HidroFlow.jsx:2321:                dataKey="t"
+  src\HidroFlow.jsx:2322:                tick={{ fill:'#9AA4B2', fontSize: 11 }}
+  src\HidroFlow.jsx:2323:                label={{ value:'t (min)', position:'insideBottomRight', offset:-8, fill:'#9AA4B2' }}
+  src\HidroFlow.jsx:2324:              />
+  src\HidroFlow.jsx:2325:              <YAxis
+  src\HidroFlow.jsx:2326:                tick={{ fill:'#9AA4B2', fontSize: 11 }}
+  src\HidroFlow.jsx:2327:                label={{ value:'Q (m³/s)', angle:-90, position:'insideLeft', offset: 10, fill:'#9AA4B2' }}
+  src\HidroFlow.jsx:2328:              />
+  src\HidroFlow.jsx:2329:              <Tooltip wrapperStyle={{ background:'#0F1624', border:'1px solid #1F2F45' }} />
+  src\HidroFlow.jsx:2330:              <Legend wrapperStyle={{ color:'#9AA4B2' }} />
+  src\HidroFlow.jsx:2331:              {seriesOK.map(h => (
+  src\HidroFlow.jsx:2332:                <Line
+  src\HidroFlow.jsx:2372:  // Hietograma de diseño
+  src\HidroFlow.jsx:2373:  const hiet=useMemo(()=>calcHietograma(est,Tr,durH,dtMin,distType),[est,Tr,durH,dtMin,distType]);
+  src\HidroFlow.jsx:2374:  const lluvPost=useMemo(()=>calcLluviaEfectiva(hiet,cnIII_post),[hiet,cnIII_post]);
+  src\HidroFlow.jsx:2375:  const lluvPre =useMemo(()=>calcLluviaEfectiva(hiet,cnIII_pre),[hiet]);
+  src\HidroFlow.jsx:2376:
+  src\HidroFlow.jsx:2377:  // Tc Témez para la cuenca
+> src\HidroFlow.jsx:2378:  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+> src\HidroFlow.jsx:2379:  const tc_h=tcList[0]?.h||0.5;
+  src\HidroFlow.jsx:2380:  const S_m_km=(params.cota_mayor_cauce-params.cota_menor_cauce)/params.longitud_cauce;
+  src\HidroFlow.jsx:2381:
+  src\HidroFlow.jsx:2382:  // Método hidrograma post-urbano seleccionable
+  src\HidroFlow.jsx:2383:  const huPost=useMemo(()=>{
+  src\HidroFlow.jsx:2384:    if(metodoPost==="Clark") return calcClarkIUH(params.area,tc_h,dtMin,1.2);
+  src\HidroFlow.jsx:2385:    if(metodoPost==="Snyder") return calcHUSnyder(params.area*0.386102,params.longitud_cauce*0.621371,params.longitud_cauce*0.621371*0.35,dtMin);
+  src\HidroFlow.jsx:2386:    if(metodoPost==="WH") return calcHUWilliamsHann(params.area,params.longitud_cauce,S_m_km,cnIII_post,dtMin);
+  src\HidroFlow.jsx:2387:    return calcHUSCS(params.area,tc_h,dtMin);
+  src\HidroFlow.jsx:2388:  },[metodoPost,params,tc_h,dtMin,cnIII_post]);
+  src\HidroFlow.jsx:2389:
+  src\HidroFlow.jsx:2390:  const qPost=useMemo(()=>calcHidroCompleto(lluvPost,huPost,dtMin),[lluvPost,huPost,dtMin]);
+  src\HidroFlow.jsx:2391:  const huPre=useMemo(()=>calcHUSCS(params.area,tc_h,dtMin),[params.area,tc_h,dtMin]);
+  src\HidroFlow.jsx:2392:  const qPre =useMemo(()=>calcHidroCompleto(lluvPre,huPre,dtMin),[lluvPre,huPre,dtMin]);
+  src\HidroFlow.jsx:2393:
+  src\HidroFlow.jsx:2397:  const dispData=volSAR.excesos.filter((_,i)=>i%step===0).slice(0,140);
+  src\HidroFlow.jsx:2398:  const reduccion=qPost.Qpico>0?(100*(qPost.Qpico-qPre.Qpico)/qPost.Qpico).toFixed(1):0;
+  src\HidroFlow.jsx:2399:
+  src\HidroFlow.jsx:2400:  const exportDatos={
+  src\HidroFlow.jsx:2401:    nombre_cuenca:params.nombre_cuenca,area:params.area,perimetro:params.perimetro,
+  src\HidroFlow.jsx:2402:    longitud_cauce:params.longitud_cauce,pendiente_cuenca:params.pendiente_cuenca,
+> src\HidroFlow.jsx:2403:    cota_max:params.cota_max,cota_min:params.cota_min,CN:params.CN,
+> src\HidroFlow.jsx:2404:    tc_h,stn:name,Tr,dur_h:durH,distType,dt_min:dtMin,Ptotal:hiet.Ptotal,
+  src\HidroFlow.jsx:2405:    cnPost:cnIII_post,cnPre:cnIII_pre,siPct,
+  src\HidroFlow.jsx:2406:    hiet,
+  src\HidroFlow.jsx:2407:    hidros:[{...qPost,metodo:metodoPost+" POST"},{...qPre,metodo:"SCS PRE"}],
+  src\HidroFlow.jsx:2408:    volSAR,
+  src\HidroFlow.jsx:2409:  };
+  src\HidroFlow.jsx:2410:
+  src\HidroFlow.jsx:2411:  return(<div style={{display:"flex",flexDirection:"column",gap:14}} ref={reportRef}>
+  src\HidroFlow.jsx:2412:    {/* Banner normativo */}
+  src\HidroFlow.jsx:2413:    <div style={{background:`linear-gradient(135deg,${C.accent2}0A,${C.accent4}08)`,border:`1px solid ${C.accent2}25`,borderRadius:12,padding:"12px 18px",display:"flex",gap:18,flexWrap:"wrap",alignItems:"center"}}>
+  src\HidroFlow.jsx:2414:      <div style={{flexShrink:0}}>
+> src\HidroFlow.jsx:2415:        <div style={{fontSize:9,color:C.muted,fontFamily:mono,textTransform:"uppercase",letterSpacing:"0.1em"}}>Guía Técnica GT-AS-004 · §3 Diseño Hidrológico · Rev.0 · 2026-01-07</div>
+  src\HidroFlow.jsx:2416:        <div style={{fontSize:14,fontWeight:800,color:C.accent2}}>Diseño de Sistemas de Almacenamiento y Regulación de Aguas Lluvias</div>
+  src\HidroFlow.jsx:2417:      </div>
+  src\HidroFlow.jsx:2418:      <div style={{display:"flex",gap:8,flexWrap:"wrap",marginLeft:"auto"}}>
+  src\HidroFlow.jsx:2419:        <button onClick={()=>exportarExcel(exportDatos)} style={{padding:"6px 14px",borderRadius:7,border:`1px solid 
+${C.accent2}40`,background:`${C.accent2}12`,color:C.accent2,fontSize:10,cursor:"pointer",fontFamily:mono,fontWeight:700}}>⬇ Excel</button>
+  src\HidroFlow.jsx:2420:        <button onClick={()=>exportarPDF(reportRef.current,exportDatos)} style={{padding:"6px 14px",borderRadius:7,border:`1px solid 
+${C.accent3}40`,background:`${C.accent3}12`,color:C.accent3,fontSize:10,cursor:"pointer",fontFamily:mono,fontWeight:700}}>⬇ PDF</button>
+  src\HidroFlow.jsx:2421:      </div>
+  src\HidroFlow.jsx:2422:    </div>
+  src\HidroFlow.jsx:2423:
+  src\HidroFlow.jsx:2424:    {/* Controles */}
+  src\HidroFlow.jsx:2425:    <div style={{display:"grid",gridTemplateColumns:"repeat(6,1fr)",gap:10}}>
+  src\HidroFlow.jsx:2426:      <Card title="Categoría SAR" accent={C.accent4}>
+  src\HidroFlow.jsx:2427:        {["Menores","Intermedios","Mayores"].map(c=>(
+> src\HidroFlow.jsx:2428:          <button key={c} onClick={()=>{setCatSAR(c);setTr(TrRec[c]);}} style={{display:"block",width:"100%",margin:"2px 0",padding:"4px 
+8px",borderRadius:5,border:"none",cursor:"pointer",background:catSAR===c?C.accent4:`${C.accent4}12`,color:catSAR===c?C.bg:C.muted,fontSize:9,fontFamily:mono,fontWeight:catSAR===c?700:400,textAlign:"left"}}>
+  src\HidroFlow.jsx:2429:            {c} <span style={{opacity:.55}}>Tr={TrRec[c]}a</span>
+  src\HidroFlow.jsx:2430:          </button>
+  src\HidroFlow.jsx:2431:        ))}
+  src\HidroFlow.jsx:2432:      </Card>
+  src\HidroFlow.jsx:2433:      <Card title="Tr Diseño" accent={C.gold}>
+  src\HidroFlow.jsx:2434:        <BtnGroup options={TR_LIST.map(t=>({v:t,l:`${t}a`}))} value={Tr} onChange={setTr} accent={C.gold}/>
+  src\HidroFlow.jsx:2435:      </Card>
+  src\HidroFlow.jsx:2436:      <Card title="Duración" accent={C.accent3}>
+  src\HidroFlow.jsx:2437:        <BtnGroup options={[1,2,3,6].map(h=>({v:h,l:`${h}h`}))} value={durH} onChange={setDurH} accent={C.accent3}/>
+  src\HidroFlow.jsx:2438:      </Card>
+  src\HidroFlow.jsx:2439:      <Card title="Δt" accent={C.accent}>
+  src\HidroFlow.jsx:2440:        <BtnGroup options={[5,10,15,30].map(d=>({v:d,l:`${d}'`}))} value={dtMin} onChange={setDtMin} accent={C.accent}/>
+  src\HidroFlow.jsx:2441:      </Card>
+  src\HidroFlow.jsx:2442:      <Card title="Dist. temporal" accent={C.teal}>
+  src\HidroFlow.jsx:2467:    </div>
+  src\HidroFlow.jsx:2468:
+  src\HidroFlow.jsx:2469:    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
+  src\HidroFlow.jsx:2470:      {/* Hietograma de diseño */}
+  src\HidroFlow.jsx:2471:      <Card title={`Hietograma SAR — ${distType} · Tr=${Tr}a · d=${durH}h`} accent={C.accent}>
+  src\HidroFlow.jsx:2472:        <ResponsiveContainer width="100%" height={230}>
+> src\HidroFlow.jsx:2473:          <ComposedChart data={hiet.data.slice(1).filter((_,i)=>i%Math.max(1,Math.floor(hiet.steps/50))===0)} margin={{left:0,right:8,bottom:14,top:6}}>
+  src\HidroFlow.jsx:2474:            <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
+  src\HidroFlow.jsx:2475:            <XAxis dataKey="t" tick={{fill:C.muted,fontSize:8}} label={{value:"t (min)",position:"insideBottom",offset:-6,fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:2476:            <YAxis yAxisId="i" tick={{fill:C.muted,fontSize:8}} label={{value:"i (mm/h)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:8}}/>
+  src\HidroFlow.jsx:2477:            <YAxis yAxisId="p" orientation="right" tick={{fill:C.muted,fontSize:8}} label={{value:"P (mm)",angle:90,position:"insideRight",fill:C.muted,fontSize:8}}/>
+  src\HidroFlow.jsx:2478:            <Tooltip contentStyle={TT}/>
+  src\HidroFlow.jsx:2479:            <Bar yAxisId="i" dataKey="iBloque" fill={C.accent} radius={[2,2,0,0]} name="i (mm/h)" opacity={0.8}/>
+  src\HidroFlow.jsx:2480:            <Line yAxisId="p" type="monotone" dataKey="pAcum" stroke={C.accent2} strokeWidth={2} dot={false} name="P acum (mm)"/>
+  src\HidroFlow.jsx:2481:          </ComposedChart>
+  src\HidroFlow.jsx:2482:        </ResponsiveContainer>
+  src\HidroFlow.jsx:2483:      </Card>
+  src\HidroFlow.jsx:2484:
+  src\HidroFlow.jsx:2485:      {/* Distribución temporal adimensional */}
+  src\HidroFlow.jsx:2486:      <Card title="Distribución Temporal Activa + Comparativa Huff" accent={C.accent2}>
+  src\HidroFlow.jsx:2487:        <ResponsiveContainer width="100%" height={230}>
+> src\HidroFlow.jsx:2488:          <LineChart data={HUFF_MERGED} margin={{left:0,right:14,bottom:14}}>
+  src\HidroFlow.jsx:2489:            <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
+  src\HidroFlow.jsx:2490:            <XAxis dataKey="T" tick={{fill:C.muted,fontSize:9}} label={{value:"Tiempo (%)",position:"insideBottom",offset:-6,fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:2491:            <YAxis tick={{fill:C.muted,fontSize:9}} label={{value:"P (%)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:2492:            <Tooltip contentStyle={TT} formatter={v=>[v?.toFixed(1)+"%"]}/>
+  src\HidroFlow.jsx:2493:            <Legend wrapperStyle={{fontSize:9}}/>
+  src\HidroFlow.jsx:2494:            <Line type="monotone" dataKey="EPM_Q1" stroke={C.accent2} strokeWidth={2.5} dot={false} name="EPM Q1 (GT-AS-004)"/>
+  src\HidroFlow.jsx:2495:            <Line type="monotone" dataKey="Huff_Q1" stroke={C.accent}  strokeWidth={1.2} strokeDasharray="5 3" dot={false} name="Huff Q1"/>
+  src\HidroFlow.jsx:2496:            <Line type="monotone" dataKey="Huff_Q2" stroke={C.gold}    strokeWidth={1.2} strokeDasharray="5 3" dot={false} name="Huff Q2"/>
+  src\HidroFlow.jsx:2497:            <Line type="monotone" dataKey="Huff_Q3" stroke={C.accent3} strokeWidth={1.2} strokeDasharray="5 3" dot={false} name="Huff Q3"/>
+  src\HidroFlow.jsx:2498:            <Line type="monotone" dataKey="Huff_Q4" stroke={C.accent4} strokeWidth={1.2} strokeDasharray="5 3" dot={false} name="Huff Q4"/>
+  src\HidroFlow.jsx:2499:          </LineChart>
+  src\HidroFlow.jsx:2500:        </ResponsiveContainer>
+  src\HidroFlow.jsx:2501:      </Card>
+  src\HidroFlow.jsx:2502:    </div>
+  src\HidroFlow.jsx:2503:
+  src\HidroFlow.jsx:2504:    {/* Hidrogramas POST vs PRE */}
+  src\HidroFlow.jsx:2505:    <Card title={`Hidrogramas SAR — POST (${metodoPost}, CN=${cnIII_post}) vs PRE (SCS, CN=${cnIII_pre}) · V_SAR=${volSAR.volTotal.toFixed(0)} m³`} accent={C.accent3}>
+  src\HidroFlow.jsx:2506:      <ResponsiveContainer width="100%" height={290}>
+> src\HidroFlow.jsx:2507:        <AreaChart data={dispData} margin={{left:0,right:18,top:8,bottom:14}}>
+  src\HidroFlow.jsx:2508:          <defs>
+  src\HidroFlow.jsx:2509:            <linearGradient id="gPost" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor={C.accent3} stopOpacity={0.35}/><stop offset="95%" stopColor={C.accent3} stopOpacity={0}/></linearGradient>
+  src\HidroFlow.jsx:2510:            <linearGradient id="gPre"  x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor={C.accent2} stopOpacity={0.25}/><stop offset="95%" stopColor={C.accent2} stopOpacity={0}/></linearGradient>
+  src\HidroFlow.jsx:2511:            <linearGradient id="gVol"  x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor={C.gold}    stopOpacity={0.20}/><stop offset="95%" stopColor={C.gold}    stopOpacity={0}/></linearGradient>
+  src\HidroFlow.jsx:2512:          </defs>
+  src\HidroFlow.jsx:2513:          <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
+  src\HidroFlow.jsx:2514:          <XAxis dataKey="t" tick={{fill:C.muted,fontSize:9}} label={{value:"t (min)",position:"insideBottom",offset:-6,fill:C.muted,fontSize:10}}/>
+  src\HidroFlow.jsx:2515:          <YAxis yAxisId="q" tick={{fill:C.muted,fontSize:9}} label={{value:"Q (m³/s)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:10}}/>
+  src\HidroFlow.jsx:2516:          <YAxis yAxisId="v" orientation="right" tick={{fill:C.muted,fontSize:9}} label={{value:"V acum (m³)",angle:90,position:"insideRight",fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:2517:          <Tooltip contentStyle={TT} formatter={(v,nm)=>[nm.includes("Vol")?v.toFixed(0)+" m³":v.toFixed(5)+" m³/s",nm]}/>
+  src\HidroFlow.jsx:2518:          <Legend wrapperStyle={{fontSize:9}}/>
+  src\HidroFlow.jsx:2519:          <Area yAxisId="q" type="monotone" dataKey="Qpost" stroke={C.accent3} fill="url(#gPost)" strokeWidth={2.5} name={`Q post (${metodoPost})`} dot={false}/>
+  src\HidroFlow.jsx:2520:          <Area yAxisId="q" type="monotone" dataKey="Qpre"  stroke={C.accent2} fill="url(#gPre)"  strokeWidth={2.5} name="Q pre (SCS)" dot={false}/>
+  src\HidroFlow.jsx:2521:          <Area yAxisId="v" type="monotone" dataKey="volAcum" stroke={C.gold} fill="url(#gVol)" strokeWidth={1.5} name="Vol. SAR acum. (m³)" dot={false}/>
+  src\HidroFlow.jsx:2548:          ["Duración lluvia",`${durH} h`],["Distribución",distType.replace("_"," ")],
+  src\HidroFlow.jsx:2549:          ["P total diseño",`${hiet.Ptotal} mm`],["Método HU POST",metodoPost],
+  src\HidroFlow.jsx:2550:          ["CN post (CNIII)",`${cnIII_post} (SI=${siPct}%)`],["CN pre (CNIII)","93.5"],
+  src\HidroFlow.jsx:2551:          ["Q pico POST",`${qPost.Qpico.toFixed(4)} m³/s`],["Q pico PRE (reg.)",`${qPre.Qpico.toFixed(4)} m³/s`],
+  src\HidroFlow.jsx:2552:          ["Reducción pico",`${reduccion}%`],["V almacenamiento",`${volSAR.volTotal.toFixed(0)} m³`],
+  src\HidroFlow.jsx:2553:        ].map(([l,v])=>(
+> src\HidroFlow.jsx:2554:          <div key={l} style={{display:"flex",justifyContent:"space-between",padding:"3px 0",borderBottom:`1px solid ${C.border}15`,fontFamily:mono,fontSize:9}}>
+  src\HidroFlow.jsx:2555:            <span style={{color:C.muted}}>{l}</span>
+  src\HidroFlow.jsx:2556:            <span style={{color:C.text,fontWeight:600}}>{v}</span>
+  src\HidroFlow.jsx:2557:          </div>
+  src\HidroFlow.jsx:2558:        ))}
+  src\HidroFlow.jsx:2559:      </Card>
+  src\HidroFlow.jsx:2560:    </div>
+  src\HidroFlow.jsx:2561:
+  src\HidroFlow.jsx:2562:    {/* Tabla hietograma estructurada */}
+  src\HidroFlow.jsx:2563:    <Card title={`Hietograma de Diseño SAR — Tabla Estructurada · P_total=${hiet.Ptotal}mm · Tr=${Tr}a`} accent={C.muted2}>
+  src\HidroFlow.jsx:2564:      <Tbl headers={["t (min)","T (%)","P acum (mm)","ΔP (mm)","i bloque (mm/h)","Pe post (mm)","Pe pre (mm)"]}
+  src\HidroFlow.jsx:2565:        rows={hiet.data.slice(1).filter((_,i)=>i%Math.max(1,Math.floor(hiet.steps/36))===0).map((r,idx)=>{
+  src\HidroFlow.jsx:2566:          const rPost=lluvPost[idx*Math.max(1,Math.floor(hiet.steps/36))+1]||lluvPost[lluvPost.length-1];
+  src\HidroFlow.jsx:2567:          const rPre =lluvPre [idx*Math.max(1,Math.floor(hiet.steps/36))+1]||lluvPre [lluvPre.length-1];
+  src\HidroFlow.jsx:2568:          return{t:r.t,T:r.tPct,P:r.pAcum,dP:r.pIncrem,i:r.iBloque,
+  src\HidroFlow.jsx:2580:}
+  src\HidroFlow.jsx:2581:
+  src\HidroFlow.jsx:2582:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:2583:// MÓDULO MÉTODO RACIONAL
+  src\HidroFlow.jsx:2584:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:2585:function ModRacional({params,est,name}){
+> src\HidroFlow.jsx:2586:  const tcList=useMemo(()=>calcTc(params).filter(r=>isFinite(r.h)&&r.h>0),[params]);
+> src\HidroFlow.jsx:2587:  const tc_min=useMemo(()=>tcList.reduce((s,r)=>s+r.min,0)/(tcList.length||1),[tcList]);
+  src\HidroFlow.jsx:2588:  const res=useMemo(()=>calcRacional(est,params.area,tc_min,params.CN),[est,params,tc_min]);
+  src\HidroFlow.jsx:2589:  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+  src\HidroFlow.jsx:2590:    <SectionHeader icon="◈" title="Método Racional — Q = C·I·A / 3.6" sub="Abstracción SCS · Tc promedio · Comparativa de períodos de retorno" accent={C.gold}/>
+  src\HidroFlow.jsx:2591:    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:9}}>
+  src\HidroFlow.jsx:2592:      <Kpi value={tc_min.toFixed(2)+" min"} label="Tc promedio (6 métodos)" accent={C.accent}/>
+  src\HidroFlow.jsx:2593:      <Kpi value={res.find(r=>r.Tr===25)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=25a" accent={C.gold}/>
+  src\HidroFlow.jsx:2594:      <Kpi value={res.find(r=>r.Tr===100)?.Q.toFixed(3)+" m³/s"} label="Q pico Tr=100a" accent={C.accent3}/>
+  src\HidroFlow.jsx:2595:    </div>
+  src\HidroFlow.jsx:2596:    <Card title="Caudales Racionales — Todos los Tr" accent={C.gold}>
+  src\HidroFlow.jsx:2597:      <ResponsiveContainer width="100%" height={240}>
+  src\HidroFlow.jsx:2598:        <BarChart data={res} margin={{left:0,right:18,top:8}}>
+  src\HidroFlow.jsx:2599:          <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
+  src\HidroFlow.jsx:2600:          <XAxis dataKey="Tr" tick={{fill:C.muted,fontSize:10}} label={{value:"Tr (años)",position:"insideBottom",offset:-4,fill:C.muted,fontSize:10}}/>
+  src\HidroFlow.jsx:2601:          <YAxis tick={{fill:C.muted,fontSize:9}} label={{value:"Q (m³/s)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:10}}/>
+  src\HidroFlow.jsx:2644:  const base=[0,0,0,0,0,0.3,0.6,1.5,4.2,9.8,16.4,24.1,19.8,13.2,8.1,4.6,2.3,1.1,0.5,0.2,0,0,0,0];
+  src\HidroFlow.jsx:2645:  return base.map((v,i)=>({
+  src\HidroFlow.jsx:2646:    t:i*15, lluvia:+(v*(0.82+rng(semilla+i)*0.36)).toFixed(2),
+  src\HidroFlow.jsx:2647:    humSuelo:+(0.32+rng(semilla+i+50)*0.28).toFixed(3),
+  src\HidroFlow.jsx:2648:    nivelCauce:v>5?+(0.75+v*0.09*rng(semilla+i+100)).toFixed(3):+(0.28+rng(semilla+i+100)*0.12).toFixed(3),
+  src\HidroFlow.jsx:2649:    temp:+(18+rng(semilla+i+200)*6).toFixed(1),
+> src\HidroFlow.jsx:2650:  })).map((r,i,a)=>({...r,acum:+(a.slice(0,i+1).reduce((s,x)=>s+x.lluvia,0)).toFixed(2)}));
+  src\HidroFlow.jsx:2651:}
+  src\HidroFlow.jsx:2652:
+  src\HidroFlow.jsx:2653:// ─── MOTOR DE PONDERACIÓN ─────────────────────────────────────────────────────
+  src\HidroFlow.jsx:2654:function distKm(lat1,lon1,lat2,lon2){
+  src\HidroFlow.jsx:2655:  const dLat=(lat2-lat1)*111.32;
+  src\HidroFlow.jsx:2656:  const dLon=(lon2-lon1)*111.32*Math.cos((lat1+lat2)/2*Math.PI/180);
+  src\HidroFlow.jsx:2657:  return Math.sqrt(dLat**2+dLon**2);
+  src\HidroFlow.jsx:2658:}
+  src\HidroFlow.jsx:2659:
+  src\HidroFlow.jsx:2660:function calcIDW(ests,latC,lonC,p=2){
+  src\HidroFlow.jsx:2661:  const rows=ests.map(e=>({...e,d:distKm(latC,lonC,e.lat,e.lon)}));
+  src\HidroFlow.jsx:2662:  const w=rows.map(e=>1/Math.pow(Math.max(e.d,0.1),p));
+  src\HidroFlow.jsx:2663:  const wT=w.reduce((s,x)=>s+x,0);
+  src\HidroFlow.jsx:2664:  return rows.map((e,i)=>({...e,dist:+e.d.toFixed(3),pct:+(w[i]/wT*100).toFixed(2),peso:+(w[i]/wT).toFixed(5)}));
+  src\HidroFlow.jsx:2682:}
+  src\HidroFlow.jsx:2683:
+  src\HidroFlow.jsx:2684:function calcCompuesto(ests,latC,lonC,altC){
+  src\HidroFlow.jsx:2685:  const d=ests.map(e=>distKm(latC,lonC,e.lat,e.lon));
+  src\HidroFlow.jsx:2686:  const dA=ests.map(e=>Math.abs(e.alt-altC));
+  src\HidroFlow.jsx:2687:  const iObs=ests.map(e=>e.I30_obs||60);
+> src\HidroFlow.jsx:2688:  const norm=arr=>{const mx=Math.max(...arr),mn=Math.min(...arr);return arr.map(v=>(v-mn)/(mx-mn+0.001));};
+  src\HidroFlow.jsx:2689:  const wD=norm(d).map(v=>1-v);
+  src\HidroFlow.jsx:2690:  const wA=norm(dA).map(v=>1-v);
+  src\HidroFlow.jsx:2691:  const wI=norm(iObs);
+  src\HidroFlow.jsx:2692:  const wR=ests.map(e=>e.red==="EPM-SIATA"?1:e.red==="SIATA"?0.85:e.red==="IDEAM-SIATA"?0.75:0.6);
+  src\HidroFlow.jsx:2693:  const s=ests.map((_,i)=>wD[i]*0.40+wA[i]*0.25+wI[i]*0.20+wR[i]*0.15);
+  src\HidroFlow.jsx:2694:  const sT=s.reduce((a,b)=>a+b,0);
+  src\HidroFlow.jsx:2695:  return ests.map((e,i)=>({...e,dist:+d[i].toFixed(3),dAlt:+dA[i].toFixed(0),
+  src\HidroFlow.jsx:2696:    score:+s[i].toFixed(4),pct:+(s[i]/sT*100).toFixed(2),peso:+(s[i]/sT).toFixed(5)
+  src\HidroFlow.jsx:2697:  })).sort((a,b)=>b.score-a.score).map((e,j)=>({...e,rank:j+1,dominante:j===0}));
+  src\HidroFlow.jsx:2698:}
+  src\HidroFlow.jsx:2699:
+  src\HidroFlow.jsx:2700:function calcIDFPond(ests,d_min,Tr){
+  src\HidroFlow.jsx:2701:  const con=ests.filter(e=>e.epm_key&&ESTACIONES_EPM[e.epm_key]);
+  src\HidroFlow.jsx:2702:  if(!con.length) return 0;
+  src\HidroFlow.jsx:2847:
+  src\HidroFlow.jsx:2848:    {/* Controles top */}
+  src\HidroFlow.jsx:2849:    <div style={{display:"grid",gridTemplateColumns:"1.2fr 1fr 1.2fr 1fr 1fr",gap:10}}>
+  src\HidroFlow.jsx:2850:      <Card title="Método de ponderación" accent={C.teal}>
+  src\HidroFlow.jsx:2851:        <BtnGroup options={[{v:"compuesto",l:"Compuesto"},{v:"idw",l:"IDW"},{v:"thiessen",l:"Thiessen"},{v:"alt",l:"Altitudinal"}]} value={method} onChange={setMethod} accent={C.teal}/>
+  src\HidroFlow.jsx:2852:        {method==="idw"&&<div style={{marginTop:8}}>
+> src\HidroFlow.jsx:2853:          <div style={{fontSize:8,color:C.muted,fontFamily:mono,marginBottom:2}}>Potencia IDW (p = {potIDW})</div>
+> src\HidroFlow.jsx:2854:          <input type="range" min={1} max={4} step={0.5} value={potIDW} onChange={e=>setPotIDW(+e.target.value)} style={{width:"100%",accentColor:C.teal}}/>
+  src\HidroFlow.jsx:2855:        </div>}
+  src\HidroFlow.jsx:2856:        {method==="compuesto"&&<div style={{marginTop:7,fontSize:8,color:C.muted,fontFamily:mono,lineHeight:1.7}}>
+  src\HidroFlow.jsx:2857:          Dist 40% · Alt 25%<br/>I obs 20% · Red 15%
+  src\HidroFlow.jsx:2858:        </div>}
+  src\HidroFlow.jsx:2859:      </Card>
+  src\HidroFlow.jsx:2860:      <Card title="Parámetros IDF" accent={C.gold}>
+> src\HidroFlow.jsx:2861:        <div style={{marginBottom:6}}>
+> src\HidroFlow.jsx:2862:          <div style={{fontSize:8,color:C.muted,fontFamily:mono,marginBottom:3}}>Tr (años)</div>
+  src\HidroFlow.jsx:2863:          <BtnGroup options={[{v:5,l:"5a"},{v:25,l:"25a"},{v:100,l:"100a"}]} value={Tr} onChange={setTr} accent={C.gold}/>
+  src\HidroFlow.jsx:2864:        </div>
+  src\HidroFlow.jsx:2865:        <div>
+> src\HidroFlow.jsx:2866:          <div style={{fontSize:8,color:C.muted,fontFamily:mono,marginBottom:3}}>Duración (min)</div>
+  src\HidroFlow.jsx:2867:          <BtnGroup options={[{v:15,l:"15'"},{v:30,l:"30'"},{v:60,l:"60'"}]} value={dMin} onChange={setDMin} accent={C.gold}/>
+  src\HidroFlow.jsx:2868:        </div>
+  src\HidroFlow.jsx:2869:      </Card>
+  src\HidroFlow.jsx:2870:      <Card title="KPIs · Influencia activa" accent={C.accent2}>
+  src\HidroFlow.jsx:2871:        <div style={{display:"flex",flexDirection:"column",gap:4,fontFamily:mono,fontSize:9}}>
+  src\HidroFlow.jsx:2872:          {[["Método",method.toUpperCase()],["Estaciones activas",`${activos.length}/${ESTACIONES_SIATA.length}`],
+  src\HidroFlow.jsx:2873:            ["Dominante",dominante?.nombre?.split(" ")[0]||"—"],["I ponderada",`${idfPond.toFixed(2)} mm/h`],
+  src\HidroFlow.jsx:2874:            ["I dominante",`${idfDom.toFixed(2)} mm/h`],["Δ pond vs dom.",`${idfPond>0?((idfPond-idfDom)/idfDom*100).toFixed(1):"0"}%`],
+  src\HidroFlow.jsx:2875:          ].map(([l,v])=>(
+> src\HidroFlow.jsx:2876:            <div key={l} style={{display:"flex",justifyContent:"space-between",padding:"2px 0",borderBottom:`1px solid ${C.border}15`}}>
+  src\HidroFlow.jsx:2877:              <span style={{color:C.muted}}>{l}</span><span style={{color:C.text,fontWeight:600}}>{v}</span>
+  src\HidroFlow.jsx:2878:            </div>
+  src\HidroFlow.jsx:2879:          ))}
+  src\HidroFlow.jsx:2880:        </div>
+  src\HidroFlow.jsx:2881:      </Card>
+  src\HidroFlow.jsx:2882:      <Card title="Estación seleccionada" accent={C.accent4}>
+  src\HidroFlow.jsx:2883:        {eSel&&<div style={{fontFamily:mono,fontSize:9,display:"flex",flexDirection:"column",gap:3}}>
+  src\HidroFlow.jsx:2884:          <div style={{color:C.accent4,fontWeight:700,fontSize:10,lineHeight:1.3}}>{eSel.nombre}</div>
+  src\HidroFlow.jsx:2885:          <div style={{color:C.muted}}>Código: <span style={{color:C.text}}>{eSel.codigo}</span></div>
+  src\HidroFlow.jsx:2886:          <div style={{color:C.muted}}>Alt: <span style={{color:C.text}}>{eSel.alt} msnm</span></div>
+  src\HidroFlow.jsx:2887:          <div style={{color:C.muted}}>Red: <span style={{color:C.text}}>{eSel.red}</span></div>
+  src\HidroFlow.jsx:2888:          <div style={{color:C.muted}}>Dist: <span style={{color:C.text}}>{distKm(cLat,cLon,eSel.lat,eSel.lon).toFixed(2)} km</span></div>
+  src\HidroFlow.jsx:2889:          <div style={{color:C.muted}}>Influencia: <span style={{color:C.teal,fontWeight:700}}>{pesosMap[selIdx]?.pct.toFixed(2)||0}%</span></div>
+  src\HidroFlow.jsx:2890:          <div style={{marginTop:4,display:"flex",gap:3,flexWrap:"wrap"}}>
+  src\HidroFlow.jsx:2932:            const sIdx=ESTACIONES_SIATA.findIndex(s=>s.codigo===e.codigo);
+  src\HidroFlow.jsx:2933:            const isExcl=excl.has(sIdx);
+  src\HidroFlow.jsx:2934:            return(<div key={e.codigo} style={{display:"flex",alignItems:"center",gap:7,padding:"5px 8px",borderRadius:7,
+  src\HidroFlow.jsx:2935:              background:i===0?`${C.teal}0E`:i<3?`${C.accent2}06`:`${C.border}10`,
+  src\HidroFlow.jsx:2936:              border:`1px solid ${i===0?C.teal:i<3?C.accent2:C.border}${i===0?"35":"15"}`,
+  src\HidroFlow.jsx:2937:              opacity:isExcl?0.35:1,cursor:"pointer"}} onClick={()=>setSelIdx(sIdx)}>
+> src\HidroFlow.jsx:2938:              <div style={{width:19,height:19,borderRadius:"50%",background:i===0?C.teal:i<3?C.accent2:C.muted,
+  src\HidroFlow.jsx:2939:                display:"flex",alignItems:"center",justifyContent:"center",fontSize:8,fontWeight:800,color:C.bg,flexShrink:0}}>{i+1}</div>
+> src\HidroFlow.jsx:2940:              <div style={{flex:1,minWidth:0}}>
+  src\HidroFlow.jsx:2941:                <div style={{fontSize:9.5,fontWeight:i===0?700:400,color:i===0?C.teal:C.text,fontFamily:sans,
+  src\HidroFlow.jsx:2942:                  whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{e.nombre}</div>
+  src\HidroFlow.jsx:2943:                <div style={{height:3,background:C.border,borderRadius:2,marginTop:3}}>
+> src\HidroFlow.jsx:2944:                  <div style={{height:"100%",width:`${e.pct||0}%`,background:i===0?C.teal:i<3?C.accent2:C.accent,borderRadius:2}}/>
+  src\HidroFlow.jsx:2945:                </div>
+  src\HidroFlow.jsx:2946:              </div>
+  src\HidroFlow.jsx:2947:              <div style={{textAlign:"right",flexShrink:0}}>
+  src\HidroFlow.jsx:2948:                <div style={{fontSize:11,fontWeight:700,color:i===0?C.teal:C.muted2,fontFamily:mono}}>{(e.pct||0).toFixed(1)}%</div>
+  src\HidroFlow.jsx:2949:                <div style={{fontSize:7.5,color:C.muted,fontFamily:mono}}>{e.dist||0} km</div>
+  src\HidroFlow.jsx:2950:              </div>
+  src\HidroFlow.jsx:2951:              <button onClick={ev=>{ev.stopPropagation();toggleExcl(sIdx);}} style={{padding:"2px 6px",borderRadius:4,
+  src\HidroFlow.jsx:2952:                border:`1px solid ${isExcl?C.accent2:C.border}`,background:"transparent",
+  src\HidroFlow.jsx:2953:                color:isExcl?C.accent2:C.muted,fontSize:8,cursor:"pointer",fontFamily:mono,flexShrink:0}}>
+  src\HidroFlow.jsx:2954:                {isExcl?"+ incl":"× excl"}
+  src\HidroFlow.jsx:2955:              </button>
+  src\HidroFlow.jsx:2956:            </div>);
+  src\HidroFlow.jsx:2957:          })}
+  src\HidroFlow.jsx:2958:        </div>
+  src\HidroFlow.jsx:2961:
+  src\HidroFlow.jsx:2962:    {/* Gráfica barras influencia */}
+  src\HidroFlow.jsx:2963:    <Card title={`Índice de Influencia — ${method.toUpperCase()} · Tr=${Tr}a · d=${dMin}min`} accent={C.accent2}>
+  src\HidroFlow.jsx:2964:      <ResponsiveContainer width="100%" height={220}>
+  src\HidroFlow.jsx:2965:        <BarChart data={pond.map(e=>({n:e.nombre.length>16?e.nombre.substring(0,15)+"…":e.nombre,
+  src\HidroFlow.jsx:2966:          pct:e.pct||0,dist:e.dist,alt:e.alt}))}
+> src\HidroFlow.jsx:2967:          margin={{left:0,right:12,top:8,bottom:48}}>
+  src\HidroFlow.jsx:2968:          <CartesianGrid strokeDasharray="3 3" stroke={C.border} vertical={false}/>
+  src\HidroFlow.jsx:2969:          <XAxis dataKey="n" tick={{fill:C.muted,fontSize:7.5}} angle={-35} textAnchor="end" interval={0}/>
+  src\HidroFlow.jsx:2970:          <YAxis tick={{fill:C.muted,fontSize:9}} label={{value:"Influencia (%)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:2971:          <Tooltip contentStyle={TT} formatter={(v,nm)=>[v.toFixed(nm==="pct"?2:0)+(nm==="pct"?"%":" km"),nm]}/>
+  src\HidroFlow.jsx:2972:          <Bar dataKey="pct" name="Influencia (%)" radius={[3,3,0,0]}
+  src\HidroFlow.jsx:2973:            label={{position:"top",fill:C.muted2,fontSize:7,formatter:v=>v.toFixed(1)+"%"}}>
+  src\HidroFlow.jsx:2974:            {pond.map((_,i)=><Cell key={i} fill={i===0?C.teal:i<3?C.accent2:C.accent} opacity={0.85}/>)}
+  src\HidroFlow.jsx:2975:          </Bar>
+  src\HidroFlow.jsx:2976:        </BarChart>
+  src\HidroFlow.jsx:2977:      </ResponsiveContainer>
+  src\HidroFlow.jsx:2978:    </Card>
+  src\HidroFlow.jsx:2979:
+  src\HidroFlow.jsx:2980:    {/* IDF ponderada vs referencias */}
+  src\HidroFlow.jsx:2981:    <Card title={`IDF Ponderada (${method}) vs Dominante vs Seleccionada · Tr=${Tr}a`} accent={C.accent3}>
+  src\HidroFlow.jsx:2982:      <ResponsiveContainer width="100%" height={240}>
+> src\HidroFlow.jsx:2983:        <LineChart data={idfCurvas} margin={{left:0,right:18,top:8,bottom:14}}>
+  src\HidroFlow.jsx:2984:          <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
+  src\HidroFlow.jsx:2985:          <XAxis dataKey="d" tick={{fill:C.muted,fontSize:9}} label={{value:"Duración (min)",position:"insideBottom",offset:-6,fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:2986:          <YAxis tick={{fill:C.muted,fontSize:9}} label={{value:"I (mm/h)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:2987:          <Tooltip contentStyle={TT} formatter={(v,nm)=>[v.toFixed(2)+" mm/h",nm]}/>
+  src\HidroFlow.jsx:2988:          <Legend wrapperStyle={{fontSize:10}}/>
+  src\HidroFlow.jsx:2989:          <Line type="monotone" dataKey="IDF Ponderada" stroke={C.teal} strokeWidth={3} dot={false}/>
+  src\HidroFlow.jsx:2990:          <Line type="monotone" dataKey="Dominante"     stroke={C.accent2} strokeWidth={2} strokeDasharray="6 2" dot={false}/>
+  src\HidroFlow.jsx:2991:          <Line type="monotone" dataKey="Estación Sel." stroke={C.accent4} strokeWidth={1.8} strokeDasharray="4 4" dot={false}/>
+  src\HidroFlow.jsx:2992:        </LineChart>
+  src\HidroFlow.jsx:2993:      </ResponsiveContainer>
+  src\HidroFlow.jsx:2994:    </Card>
+  src\HidroFlow.jsx:2995:
+  src\HidroFlow.jsx:2996:    {/* Análisis de escenarios */}
+  src\HidroFlow.jsx:2997:    <Card title={`Análisis de Escenarios — Δ I(d=${dMin}min, Tr=${Tr}a) al Eliminar Cada Estación`} accent={C.rose}>
+  src\HidroFlow.jsx:2998:      <ResponsiveContainer width="100%" height={210}>
+> src\HidroFlow.jsx:2999:        <BarChart data={escenarios} margin={{left:0,right:14,top:8,bottom:50}}>
+  src\HidroFlow.jsx:3000:          <CartesianGrid strokeDasharray="3 3" stroke={C.border} vertical={false}/>
+  src\HidroFlow.jsx:3001:          <XAxis dataKey="nombre" tick={{fill:C.muted,fontSize:7.5}} angle={-35} textAnchor="end" interval={0}/>
+  src\HidroFlow.jsx:3002:          <YAxis tick={{fill:C.muted,fontSize:9}} label={{value:"Δ I (%)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:3003:          <Tooltip contentStyle={TT} formatter={(v,nm)=>[v+(nm==="delta"?"%":" mm/h"),nm]}/>
+  src\HidroFlow.jsx:3004:          <ReferenceLine y={0} stroke={C.muted} strokeWidth={1}/>
+  src\HidroFlow.jsx:3005:          <Bar dataKey="delta" name="Δ IDF (%)" radius={[2,2,0,0]}
+  src\HidroFlow.jsx:3006:            label={{position:"insideTop",fill:C.bg,fontSize:7,formatter:v=>(v>0?"+":"")+v+"%"}}>
+  src\HidroFlow.jsx:3007:            {escenarios.map((e,i)=><Cell key={i} fill={Math.abs(e.delta)>5?C.rose:Math.abs(e.delta)>2?C.gold:C.accent2}/>)}
+  src\HidroFlow.jsx:3008:          </Bar>
+  src\HidroFlow.jsx:3009:        </BarChart>
+  src\HidroFlow.jsx:3010:      </ResponsiveContainer>
+  src\HidroFlow.jsx:3011:      <div style={{marginTop:6,fontSize:8.5,color:C.muted,fontFamily:mono,padding:"6px 10px",background:`${C.border}20`,borderRadius:6}}>
+  src\HidroFlow.jsx:3012:        <span style={{color:C.rose}}>●</span> Δ&gt;5%: impacto alto  <span style={{color:C.gold,marginLeft:12}}>●</span> 2-5%: moderado  <span style={{color:C.accent2,marginLeft:12}}>●</span> &lt;2%: bajo — Valor 
+positivo = la I ponderada sube al eliminar la estación (estación deprimía la media).
+  src\HidroFlow.jsx:3013:      </div>
+  src\HidroFlow.jsx:3063:  const filtradas=ESTACIONES_SIATA.filter(s=>filterVar==="Todas"||s.vars.includes(filterVar));
+  src\HidroFlow.jsx:3064:
+  src\HidroFlow.jsx:3065:  const redStats={
+  src\HidroFlow.jsx:3066:    total:ESTACIONES_SIATA.length,activas:ESTACIONES_SIATA.filter(s=>s.estado==="Activa").length,
+  src\HidroFlow.jsx:3067:    epmSiata:ESTACIONES_SIATA.filter(s=>s.red==="EPM-SIATA").length,
+  src\HidroFlow.jsx:3068:    siata:ESTACIONES_SIATA.filter(s=>s.red==="SIATA").length,
+> src\HidroFlow.jsx:3069:    ideam:ESTACIONES_SIATA.filter(s=>s.red.includes("IDEAM")).length,
+  src\HidroFlow.jsx:3070:    conP:ESTACIONES_SIATA.filter(s=>s.vars.includes("P")).length,
+  src\HidroFlow.jsx:3071:    conN:ESTACIONES_SIATA.filter(s=>s.vars.includes("N.Cauce")).length,
+  src\HidroFlow.jsx:3072:    conHS:ESTACIONES_SIATA.filter(s=>s.vars.includes("HumSuelo")).length,
+  src\HidroFlow.jsx:3073:  };
+  src\HidroFlow.jsx:3074:
+  src\HidroFlow.jsx:3075:  const API_STATUS_CFG={
+  src\HidroFlow.jsx:3076:    idle:{col:C.muted,bg:C.border,label:"⬤ Sin consultar"},
+  src\HidroFlow.jsx:3077:    loading:{col:C.gold,bg:`${C.gold}15`,label:"⟳ Consultando…"},
+  src\HidroFlow.jsx:3078:    ok:{col:C.accent2,bg:`${C.accent2}12`,label:"✓ API Respondió OK"},
+  src\HidroFlow.jsx:3079:    cors:{col:C.gold,bg:`${C.gold}10`,label:"⚠ CORS (esperado en browser)"},
+  src\HidroFlow.jsx:3080:    timeout:{col:C.rose,bg:`${C.rose}10`,label:"⏱ Timeout (red/VPN)"},
+  src\HidroFlow.jsx:3081:    error:{col:C.rose,bg:`${C.rose}12`,label:"✗ Error de conexión"},
+  src\HidroFlow.jsx:3082:  };
+  src\HidroFlow.jsx:3083:  const asc=API_STATUS_CFG[apiStatus];
+  src\HidroFlow.jsx:3089:
+  src\HidroFlow.jsx:3090:  return(<div style={{display:"flex",flexDirection:"column",gap:14}}>
+  src\HidroFlow.jsx:3091:    <SectionHeader icon="🛰" title="SIATA — Sistema de Alertas Tempranas del Valle de Aburrá" sub="Integración hidrometeorológica · API repopruebas.siata.gov.co · 17 estaciones · Series temporales · Arquitectura 
+microservicios" accent={C.accent3}/>
+  src\HidroFlow.jsx:3092:
+  src\HidroFlow.jsx:3093:    {/* Banner API */}
+  src\HidroFlow.jsx:3094:    <div style={{background:`${C.accent3}07`,border:`1px solid ${C.accent3}22`,borderRadius:10,padding:"10px 16px",display:"flex",gap:14,alignItems:"center",flexWrap:"wrap"}}>
+> src\HidroFlow.jsx:3095:      <div style={{flex:1,minWidth:200}}>
+> src\HidroFlow.jsx:3096:        <div style={{fontSize:8,color:C.muted,fontFamily:mono,textTransform:"uppercase",letterSpacing:"0.1em",marginBottom:2}}>Repositorio de pruebas SIATA</div>
+  src\HidroFlow.jsx:3097:        <div style={{fontSize:11,fontWeight:700,color:C.accent3,fontFamily:mono}}>https://repopruebas.siata.gov.co/</div>
+  src\HidroFlow.jsx:3098:        <div style={{fontSize:8,color:C.muted2,fontFamily:mono,marginTop:2}}>
+  src\HidroFlow.jsx:3099:          /datos_siata/application/index.php/estaciones/getEstaciones
+  src\HidroFlow.jsx:3100:        </div>
+  src\HidroFlow.jsx:3101:      </div>
+  src\HidroFlow.jsx:3102:      <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap"}}>
+  src\HidroFlow.jsx:3103:        <div style={{padding:"4px 10px",borderRadius:6,background:asc.bg,border:`1px solid ${asc.col}30`,
+  src\HidroFlow.jsx:3104:          fontSize:9,fontFamily:mono,color:asc.col,fontWeight:600}}>{asc.label}</div>
+  src\HidroFlow.jsx:3105:        <button onClick={consultarAPI} disabled={apiStatus==="loading"} style={{padding:"6px 14px",borderRadius:7,
+  src\HidroFlow.jsx:3106:          border:`1px solid ${C.accent3}40`,background:`${C.accent3}10`,color:C.accent3,
+  src\HidroFlow.jsx:3107:          fontSize:10,cursor:"pointer",fontFamily:mono,fontWeight:700,opacity:apiStatus==="loading"?0.5:1}}>
+  src\HidroFlow.jsx:3108:          {apiStatus==="loading"?"Consultando…":"⚡ Consultar API SIATA"}
+  src\HidroFlow.jsx:3109:        </button>
+  src\HidroFlow.jsx:3110:      </div>
+> src\HidroFlow.jsx:3111:      <div style={{fontSize:8,color:C.muted,fontFamily:mono,maxWidth:260,borderLeft:`1px solid ${C.border}`,paddingLeft:12}}>
+  src\HidroFlow.jsx:3112:        CORS es normal desde el browser. En producción: proxy FastAPI/Node que consume la API SIATA y la sirve a tu frontend sin restricciones.
+  src\HidroFlow.jsx:3113:      </div>
+  src\HidroFlow.jsx:3114:    </div>
+  src\HidroFlow.jsx:3115:
+  src\HidroFlow.jsx:3116:    {/* KPIs red */}
+  src\HidroFlow.jsx:3117:    <div style={{display:"grid",gridTemplateColumns:"repeat(8,1fr)",gap:8}}>
+  src\HidroFlow.jsx:3118:      {[[redStats.total,"Estaciones",C.accent],[redStats.activas,"Activas",C.accent2],
+  src\HidroFlow.jsx:3119:        [redStats.epmSiata,"EPM-SIATA",C.teal],[redStats.siata,"SIATA",C.accent4],
+  src\HidroFlow.jsx:3120:        [redStats.ideam,"IDEAM",C.muted2],[redStats.conP,"Con P(lluvia)",C.accent],
+  src\HidroFlow.jsx:3121:        [redStats.conN,"Con N.Cauce",C.gold],[redStats.conHS,"Hum.Suelo",C.rose],
+  src\HidroFlow.jsx:3122:      ].map(([v,l,a])=><Kpi key={l} value={v} label={l} accent={a}/>)}
+  src\HidroFlow.jsx:3123:    </div>
+  src\HidroFlow.jsx:3124:
+  src\HidroFlow.jsx:3125:    {/* Sub-tabs */}
+> src\HidroFlow.jsx:3126:    <div style={{display:"flex",gap:3,borderBottom:`1px solid ${C.border}`,paddingBottom:8}}>
+  src\HidroFlow.jsx:3127:      {[["series","📈 Series Temporales"],["catalogo","🗂 Catálogo"],["validacion","✓ Validación IDF"],["integracion","⚙ Modelo Hidrológico"],["arquitectura","🏗 Arquitectura"]].map(([id,l])=>(
+  src\HidroFlow.jsx:3128:        <button key={id} onClick={()=>setSubTab(id)} style={{padding:"5px 11px",border:"none",cursor:"pointer",borderRadius:"6px 6px 0 0",
+  src\HidroFlow.jsx:3129:          background:subTab===id?`${C.accent3}15`:"transparent",color:subTab===id?C.accent3:C.muted,
+> src\HidroFlow.jsx:3130:          fontSize:9.5,fontWeight:subTab===id?700:400,borderBottom:subTab===id?`2px solid ${C.accent3}`:"2px solid transparent"}}>
+  src\HidroFlow.jsx:3131:          {l}
+  src\HidroFlow.jsx:3132:        </button>
+  src\HidroFlow.jsx:3133:      ))}
+  src\HidroFlow.jsx:3134:    </div>
+  src\HidroFlow.jsx:3135:
+  src\HidroFlow.jsx:3136:    {/* ── SERIES ── */}
+  src\HidroFlow.jsx:3137:    {subTab==="series"&&<>
+  src\HidroFlow.jsx:3138:      <div style={{display:"grid",gridTemplateColumns:"260px 1fr",gap:12}}>
+  src\HidroFlow.jsx:3139:        <Card title="Estaciones SIATA" accent={C.accent3}>
+> src\HidroFlow.jsx:3140:          <div style={{marginBottom:7}}>
+> src\HidroFlow.jsx:3141:            <div style={{fontSize:8,color:C.muted,fontFamily:mono,marginBottom:3}}>Filtrar variable</div>
+  src\HidroFlow.jsx:3142:            <div style={{display:"flex",flexWrap:"wrap",gap:3}}>
+  src\HidroFlow.jsx:3143:              {vars.map(v=><button key={v} onClick={()=>setFilterVar(v)} style={{padding:"2px 7px",borderRadius:6,border:`1px solid 
+${filterVar===v?C.accent3:C.border}`,background:filterVar===v?`${C.accent3}15`:"transparent",color:filterVar===v?C.accent3:C.muted,fontSize:8,cursor:"pointer",fontFamily:mono}}>{v}</button>)}
+  src\HidroFlow.jsx:3144:            </div>
+  src\HidroFlow.jsx:3145:          </div>
+  src\HidroFlow.jsx:3146:          <div style={{overflowY:"auto",maxHeight:340}}>
+  src\HidroFlow.jsx:3147:            {filtradas.map(stn=>{
+  src\HidroFlow.jsx:3148:              const i=ESTACIONES_SIATA.indexOf(stn);
+  src\HidroFlow.jsx:3149:              const sel=i===selStn;
+> src\HidroFlow.jsx:3150:              return(<button key={i} onClick={()=>setSelStn(i)} style={{display:"flex",alignItems:"center",gap:7,width:"100%",padding:"6px 
+9px",background:sel?`${C.accent3}10`:"transparent",border:"none",cursor:"pointer",borderBottom:`1px solid ${C.border}12`,textAlign:"left"}}>
+> src\HidroFlow.jsx:3151:                <div style={{width:6,height:6,borderRadius:"50%",background:stn.estado==="Activa"?C.accent2:C.rose,flexShrink:0}}/>
+> src\HidroFlow.jsx:3152:                <div style={{flex:1,minWidth:0}}>
+  src\HidroFlow.jsx:3153:                  <div style={{fontSize:9.5,color:sel?C.accent3:C.text,fontWeight:sel?700:400,fontFamily:sans,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{stn.nombre}</div>
+  src\HidroFlow.jsx:3154:                  <div style={{fontSize:7.5,color:C.muted,fontFamily:mono}}>{stn.alt}m · {stn.vars.join(", ")}</div>
+  src\HidroFlow.jsx:3155:                </div>
+  src\HidroFlow.jsx:3156:              </button>);
+  src\HidroFlow.jsx:3157:            })}
+  src\HidroFlow.jsx:3158:          </div>
+  src\HidroFlow.jsx:3159:        </Card>
+  src\HidroFlow.jsx:3160:        <div style={{display:"flex",flexDirection:"column",gap:10}}>
+  src\HidroFlow.jsx:3161:          <div style={{background:`${C.accent3}07`,border:`1px solid ${C.accent3}1A`,borderRadius:10,padding:"9px 13px"}}>
+> src\HidroFlow.jsx:3162:            <div style={{fontSize:10,fontWeight:700,color:C.accent3,fontFamily:mono,marginBottom:7}}>
+  src\HidroFlow.jsx:3163:              {e.nombre} · {e.codigo} · {e.alt} msnm · {e.red} · {e.estado}
+  src\HidroFlow.jsx:3164:            </div>
+  src\HidroFlow.jsx:3165:            <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:7}}>
+  src\HidroFlow.jsx:3166:              <Kpi value={`${acumTotal.toFixed(1)} mm`} label="P acumulada" accent={C.accent}/>
+  src\HidroFlow.jsx:3167:              <Kpi value={`${maxLluvia.toFixed(1)} mm`} label="Pico 15min" accent={C.accent3}/>
+  src\HidroFlow.jsx:3168:              <Kpi value={`${(maxLluvia*4).toFixed(0)} mm/h`} label="i máx estimada" accent={C.gold}/>
+  src\HidroFlow.jsx:3169:              <Kpi value={`${serie.filter(r=>r.lluvia>0).length*15} min`} label="Duración evento" accent={C.teal}/>
+> src\HidroFlow.jsx:3170:              <Kpi value={`${(serie.reduce((s,r)=>s+r.humSuelo,0)/serie.length).toFixed(2)}`} label="Hum.suelo media" accent={C.rose}/>
+  src\HidroFlow.jsx:3171:            </div>
+  src\HidroFlow.jsx:3172:          </div>
+  src\HidroFlow.jsx:3173:          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+  src\HidroFlow.jsx:3174:            <Card title="Hum. Suelo + Nivel Cauce" accent={C.gold}>
+  src\HidroFlow.jsx:3175:              <ResponsiveContainer width="100%" height={110}>
+> src\HidroFlow.jsx:3176:                <LineChart data={serie} margin={{left:-18,right:8,top:4,bottom:4}}>
+  src\HidroFlow.jsx:3177:                  <XAxis dataKey="t" hide/>
+  src\HidroFlow.jsx:3178:                  <YAxis yAxisId="h" domain={[0,0.8]} tick={{fill:C.muted,fontSize:7.5}} width={28}/>
+  src\HidroFlow.jsx:3179:                  <YAxis yAxisId="n" orientation="right" tick={{fill:C.muted,fontSize:7.5}} width={28}/>
+  src\HidroFlow.jsx:3180:                  <Tooltip contentStyle={{...TT,fontSize:9}} formatter={(v,nm)=>[v.toFixed(3),nm]}/>
+  src\HidroFlow.jsx:3181:                  <Line yAxisId="h" type="monotone" dataKey="humSuelo" stroke={C.gold} strokeWidth={2} dot={false} name="Hum.suelo"/>
+  src\HidroFlow.jsx:3182:                  {e.vars.includes("N.Cauce")&&<Line yAxisId="n" type="monotone" dataKey="nivelCauce" stroke={C.rose} strokeWidth={2} dot={false} name="Nivel (m)"/>}
+  src\HidroFlow.jsx:3183:                </LineChart>
+  src\HidroFlow.jsx:3184:              </ResponsiveContainer>
+  src\HidroFlow.jsx:3185:            </Card>
+  src\HidroFlow.jsx:3186:            <Card title="Temperatura" accent={C.muted2}>
+  src\HidroFlow.jsx:3187:              <ResponsiveContainer width="100%" height={110}>
+> src\HidroFlow.jsx:3188:                <LineChart data={serie} margin={{left:-18,right:8,top:4,bottom:4}}>
+  src\HidroFlow.jsx:3189:                  <XAxis dataKey="t" hide/>
+  src\HidroFlow.jsx:3190:                  <YAxis tick={{fill:C.muted,fontSize:7.5}} width={28}/>
+  src\HidroFlow.jsx:3191:                  <Tooltip contentStyle={{...TT,fontSize:9}} formatter={(v,nm)=>[v.toFixed(1)+"°C",nm]}/>
+  src\HidroFlow.jsx:3192:                  <Line type="monotone" dataKey="temp" stroke={C.accent4} strokeWidth={2} dot={false} name="T (°C)"/>
+  src\HidroFlow.jsx:3193:                </LineChart>
+  src\HidroFlow.jsx:3194:              </ResponsiveContainer>
+  src\HidroFlow.jsx:3195:            </Card>
+  src\HidroFlow.jsx:3196:          </div>
+  src\HidroFlow.jsx:3197:        </div>
+  src\HidroFlow.jsx:3198:      </div>
+  src\HidroFlow.jsx:3199:      <Card title={`Evento de Lluvia SIATA — ${e.nombre} · Intervalo 15min · P_acum=${acumTotal.toFixed(1)}mm`} accent={C.accent3}>
+  src\HidroFlow.jsx:3200:        <ResponsiveContainer width="100%" height={260}>
+> src\HidroFlow.jsx:3201:          <ComposedChart data={serie} margin={{left:0,right:18,top:8,bottom:14}}>
+  src\HidroFlow.jsx:3202:            <CartesianGrid strokeDasharray="3 3" stroke={C.border}/>
+  src\HidroFlow.jsx:3203:            <XAxis dataKey="t" tick={{fill:C.muted,fontSize:9}} label={{value:"t (min)",position:"insideBottom",offset:-6,fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:3204:            <YAxis yAxisId="p" tick={{fill:C.muted,fontSize:9}} label={{value:"P (mm/15min)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:8}}/>
+  src\HidroFlow.jsx:3205:            <YAxis yAxisId="a" orientation="right" tick={{fill:C.muted,fontSize:9}} label={{value:"P acum (mm)",angle:90,position:"insideRight",fill:C.muted,fontSize:8}}/>
+  src\HidroFlow.jsx:3206:            <Tooltip contentStyle={TT} formatter={(v,nm)=>[v.toFixed(2)+" mm",nm]}/>
+  src\HidroFlow.jsx:3207:            <Legend wrapperStyle={{fontSize:9}}/>
+  src\HidroFlow.jsx:3208:            <Bar yAxisId="p" dataKey="lluvia" fill={C.accent3} radius={[2,2,0,0]} name="P 15min (mm)" opacity={0.85}/>
+  src\HidroFlow.jsx:3209:            <Line yAxisId="a" type="monotone" dataKey="acum" stroke={C.accent2} strokeWidth={2.5} dot={false} name="P acumulada (mm)"/>
+  src\HidroFlow.jsx:3210:          </ComposedChart>
+  src\HidroFlow.jsx:3211:        </ResponsiveContainer>
+  src\HidroFlow.jsx:3212:      </Card>
+  src\HidroFlow.jsx:3213:    </>}
+  src\HidroFlow.jsx:3214:
+  src\HidroFlow.jsx:3215:    {/* ── CATÁLOGO ── */}
+  src\HidroFlow.jsx:3256:        <ResponsiveContainer width="100%" height={260}>
+  src\HidroFlow.jsx:3257:          <BarChart data={ESTACIONES_SIATA.filter(s=>s.epm_key&&ESTACIONES_EPM[s.epm_key]).map(s=>({
+  src\HidroFlow.jsx:3258:            n:s.nombre.length>14?s.nombre.substring(0,13)+"…":s.nombre,
+  src\HidroFlow.jsx:3259:            iTeor30:+idfI(ESTACIONES_EPM[s.epm_key],30,25).toFixed(1),
+  src\HidroFlow.jsx:3260:            iObs30:s.I30_obs,
+  src\HidroFlow.jsx:3261:            ratio:+(s.I30_obs/idfI(ESTACIONES_EPM[s.epm_key],30,25)*100).toFixed(1),
+> src\HidroFlow.jsx:3262:          }))} margin={{left:0,right:14,top:8,bottom:44}}>
+  src\HidroFlow.jsx:3263:            <CartesianGrid strokeDasharray="3 3" stroke={C.border} vertical={false}/>
+  src\HidroFlow.jsx:3264:            <XAxis dataKey="n" tick={{fill:C.muted,fontSize:7.5}} angle={-35} textAnchor="end" interval={0}/>
+  src\HidroFlow.jsx:3265:            <YAxis tick={{fill:C.muted,fontSize:9}} label={{value:"I (mm/h)",angle:-90,position:"insideLeft",fill:C.muted,fontSize:9}}/>
+  src\HidroFlow.jsx:3266:            <Tooltip contentStyle={TT} formatter={(v,nm)=>[v+(nm==="ratio"?"%":" mm/h"),nm]}/>
+  src\HidroFlow.jsx:3267:            <Legend wrapperStyle={{fontSize:9}}/>
+  src\HidroFlow.jsx:3268:            <Bar dataKey="iTeor30" name="I teórica d=30min (mm/h)" fill={C.accent2} radius={[2,2,0,0]} opacity={0.8}/>
+  src\HidroFlow.jsx:3269:            <Bar dataKey="iObs30"  name="I observada SIATA (mm/h)" fill={C.accent3} radius={[2,2,0,0]} opacity={0.8}/>
+  src\HidroFlow.jsx:3270:          </BarChart>
+  src\HidroFlow.jsx:3271:        </ResponsiveContainer>
+  src\HidroFlow.jsx:3272:        <div style={{marginTop:8,fontSize:8.5,color:C.muted,fontFamily:mono,padding:"5px 10px",background:`${C.border}15`,borderRadius:6}}>
+  src\HidroFlow.jsx:3273:          ⚠ I observada SIATA = intensidad representativa del evento. Tr=25a teórica = valor esperado estadísticamente. Diferencias &gt;15% sugieren revisar calibración IDF o período de retorno real del evento.
+  src\HidroFlow.jsx:3274:        </div>
+  src\HidroFlow.jsx:3275:      </Card>
+  src\HidroFlow.jsx:3276:      <Card title="Tabla Validación — I obs vs I teórica · Ratio de sesgo" accent={C.muted2}>
+  src\HidroFlow.jsx:3298:            ["6","Aplicar pérdidas SCS con CN corregido","✓"],
+  src\HidroFlow.jsx:3299:            ["7","Convolución con HU (SCS/Clark/Snyder)","✓"],
+  src\HidroFlow.jsx:3300:            ["8","Comparar Q(t) con nivel observado","✓"],
+  src\HidroFlow.jsx:3301:            ["9","Calibrar Tc, CN, kR si hay datos de nivel","⚡"],
+  src\HidroFlow.jsx:3302:            ["10","Exportar parámetros calibrados a nueva IDF","⚡"],
+  src\HidroFlow.jsx:3303:          ].map(([n,txt,s])=>(
+> src\HidroFlow.jsx:3304:            <div key={n} style={{display:"flex",gap:9,padding:"4px 9px",borderRadius:5,background:s==="✓"?`${C.teal}08`:`${C.gold}06`,marginBottom:1}}>
+> src\HidroFlow.jsx:3305:              <span style={{color:C.teal,fontWeight:800,minWidth:18}}>{n}.</span>
+  src\HidroFlow.jsx:3306:              <span style={{flex:1,color:C.muted2}}>{txt}</span>
+  src\HidroFlow.jsx:3307:              <span style={{color:s==="✓"?C.accent2:C.gold}}>{s}</span>
+  src\HidroFlow.jsx:3308:            </div>
+  src\HidroFlow.jsx:3309:          ))}
+  src\HidroFlow.jsx:3310:        </div>
+  src\HidroFlow.jsx:3311:      </Card>
+  src\HidroFlow.jsx:3312:      <Card title="CN dinámico por Humedad del Suelo SIATA" accent={C.gold}>
+> src\HidroFlow.jsx:3313:        <div style={{fontFamily:mono,fontSize:9,marginBottom:8,color:C.muted}}>
+  src\HidroFlow.jsx:3314:          Dato SIATA → AMC → CN ajustado → Pe más realista
+  src\HidroFlow.jsx:3315:        </div>
+  src\HidroFlow.jsx:3316:        {[
+  src\HidroFlow.jsx:3317:          {amc:"AMC I",hs:"HS &lt; 0.25",cn:"CNII → CNI",f:"23·CN/(10+0.13·CN)⁻¹",efecto:"↓ Escorrentía (suelo seco)",col:C.accent2},
+  src\HidroFlow.jsx:3318:          {amc:"AMC II",hs:"0.25 ≤ HS ≤ 0.45",cn:"CN = CNII",f:"Sin corrección",efecto:"Condición base",col:C.gold},
+  src\HidroFlow.jsx:3319:          {amc:"AMC III",hs:"HS &gt; 0.45",cn:"CNII → CNIII",f:"23·CNII/(10+0.13·CNII)",efecto:"↑ Escorrentía (saturado)",col:C.rose},
+  src\HidroFlow.jsx:3320:        ].map(r=>(
+> src\HidroFlow.jsx:3321:          <div key={r.amc} style={{padding:"7px 10px",borderRadius:7,background:`${r.col}08`,border:`1px solid ${r.col}20`,marginBottom:6}}>
+> src\HidroFlow.jsx:3322:            <div style={{color:r.col,fontWeight:700,marginBottom:3}}>{r.amc} — {r.hs}</div>
+  src\HidroFlow.jsx:3323:            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:4,fontSize:8}}>
+  src\HidroFlow.jsx:3324:              <span style={{color:C.muted}}>Ajuste: <span style={{color:C.text}}>{r.cn}</span></span>
+  src\HidroFlow.jsx:3325:              <span style={{color:C.muted}}>Efecto: <span style={{color:r.col}}>{r.efecto}</span></span>
+  src\HidroFlow.jsx:3326:            </div>
+  src\HidroFlow.jsx:3327:          </div>
+  src\HidroFlow.jsx:3328:        ))}
+  src\HidroFlow.jsx:3329:        <div style={{marginTop:6,fontSize:8,color:C.muted,background:`${C.border}20`,borderRadius:5,padding:"5px 8px"}}>
+  src\HidroFlow.jsx:3330:          Hum.suelo actual: <span style={{color:C.gold,fontWeight:700}}>{serie?serie[Math.floor(serie.length/2)]?.humSuelo?.toFixed(3):0}</span> → AMC 
+{serie&&serie[Math.floor(serie.length/2)]?.humSuelo>0.45?"III":serie[Math.floor(serie.length/2)]?.humSuelo>0.25?"II":"I"} para estación seleccionada
+  src\HidroFlow.jsx:3331:        </div>
+  src\HidroFlow.jsx:3332:      </Card>
+  src\HidroFlow.jsx:3333:    </div>}
+  src\HidroFlow.jsx:3334:
+  src\HidroFlow.jsx:3335:    {/* ── ARQUITECTURA ── */}
+  src\HidroFlow.jsx:3336:    {subTab==="arquitectura"&&<>
+  src\HidroFlow.jsx:3344:            eps:["Scheduler: cada 15min/1h","Almacenar series temporales","Base datos estaciones","Cache de eventos extremos"]},
+  src\HidroFlow.jsx:3345:          {n:"Nivel 3 — Microservicio Hidrológico",col:C.teal,
+  src\HidroFlow.jsx:3346:            desc:"Pipeline completo: SIATA → filtrado → homologación → parámetros HidroFlow.",
+  src\HidroFlow.jsx:3347:            eps:["SIATA → Filtro → Homologa","→ CN dinámico (AMC)","→ Calibración Tc/kR","→ Tormenta híbrida real"]},
+  src\HidroFlow.jsx:3348:        ].map(({n,col,desc,eps})=>(
+  src\HidroFlow.jsx:3349:          <Card key={n} title={n} accent={col}>
+> src\HidroFlow.jsx:3350:            <div style={{fontFamily:mono,fontSize:8.5,color:C.muted,marginBottom:8,lineHeight:1.5}}>{desc}</div>
+  src\HidroFlow.jsx:3351:            {eps.map((ep,i)=>(
+> src\HidroFlow.jsx:3352:              <div key={i} style={{padding:"4px 9px",marginBottom:3,borderRadius:5,background:`${col}09`,border:`1px solid ${col}1E`,color:col,fontSize:8}}>{ep}</div>
+  src\HidroFlow.jsx:3353:            ))}
+  src\HidroFlow.jsx:3354:          </Card>
+  src\HidroFlow.jsx:3355:        ))}
+  src\HidroFlow.jsx:3356:      </div>
+  src\HidroFlow.jsx:3357:      <Card title="Diagrama de Flujo — SIATA + HidroFlow v3.1" accent={C.accent4}>
+  src\HidroFlow.jsx:3358:        <div style={{display:"flex",gap:6,alignItems:"stretch",flexWrap:"wrap",padding:"6px 0"}}>
+  src\HidroFlow.jsx:3359:          {[
+  src\HidroFlow.jsx:3360:            {box:"SIATA\nGeoportal\nAPI REST",col:C.accent3,sub:"repopruebas\n.siata.gov.co"},
+  src\HidroFlow.jsx:3361:            {arr:"→"},
+  src\HidroFlow.jsx:3362:            {box:"Proxy/Backend\nNode · FastAPI\nCache + Auth",col:C.accent4,sub:"Resuelve CORS\nAutenticación"},
+  src\HidroFlow.jsx:3363:            {arr:"→"},
+  src\HidroFlow.jsx:3364:            {box:"ETL Pipeline\nFiltrar · Validar\nHomologar unidades",col:C.teal,sub:"P→mm, T→°C\nDetecta outliers"},
+  src\HidroFlow.jsx:3365:            {arr:"→"},
+  src\HidroFlow.jsx:3366:            {box:"HidroFlow\nMotor IDF · SAR\nGT-AS-004",col:C.accent2,sub:"CN dinámico\nQ(t) calibrado"},
+  src\HidroFlow.jsx:3367:            {arr:"→"},
+  src\HidroFlow.jsx:3368:            {box:"Dashboard\nPDF · Excel\nAlertas",col:C.gold,sub:"Reportes\nGestión riesgo"},
+  src\HidroFlow.jsx:3369:          ].map((item,i)=>{
+  src\HidroFlow.jsx:3370:            if(item.arr) return(<div key={i} style={{fontSize:18,color:C.muted,alignSelf:"center",padding:"0 2px"}}>{item.arr}</div>);
+> src\HidroFlow.jsx:3371:            return(<div key={i} style={{flex:1,minWidth:90,textAlign:"center"}}>
+> src\HidroFlow.jsx:3372:              <div style={{background:`${item.col}0F`,border:`1px solid ${item.col}28`,borderRadius:8,padding:"9px 7px",marginBottom:5}}>
+  src\HidroFlow.jsx:3373:                <div style={{color:item.col,fontWeight:700,whiteSpace:"pre",fontSize:9,lineHeight:1.5,fontFamily:mono}}>{item.box}</div>
+  src\HidroFlow.jsx:3374:              </div>
+  src\HidroFlow.jsx:3375:              <div style={{color:C.muted,fontSize:7.5,whiteSpace:"pre",lineHeight:1.4,fontFamily:mono}}>{item.sub}</div>
+  src\HidroFlow.jsx:3376:            </div>);
+  src\HidroFlow.jsx:3377:          })}
+  src\HidroFlow.jsx:3378:        </div>
+  src\HidroFlow.jsx:3379:      </Card>
+  src\HidroFlow.jsx:3380:    </>}
+  src\HidroFlow.jsx:3381:  </div>);
+  src\HidroFlow.jsx:3382:}
+  src\HidroFlow.jsx:3383:
+  src\HidroFlow.jsx:3384:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:3385:// APP PRINCIPAL v3.1
+  src\HidroFlow.jsx:3386:// ═══════════════════════════════════════════════════════════════════════════════
+  src\HidroFlow.jsx:3448:  params?.pendienteMedia ??
+  src\HidroFlow.jsx:3449:  params?.pendiente ??
+  src\HidroFlow.jsx:3450:  params?.slope_pct ??
+  src\HidroFlow.jsx:3451:  params?.slopePct ??
+  src\HidroFlow.jsx:3452:  8.43,
+  src\HidroFlow.jsx:3453:
+> src\HidroFlow.jsx:3454:    longitud_cauce_km:
+  src\HidroFlow.jsx:3455:  params?.longitud_cauce_km ??
+  src\HidroFlow.jsx:3456:  params?.longitudCauceKm ??
+  src\HidroFlow.jsx:3457:  params?.longitud_km ??
+  src\HidroFlow.jsx:3458:  params?.L ??
+  src\HidroFlow.jsx:3459:  params?.longitudCauce ??
+  src\HidroFlow.jsx:3460:  params?.longitud_cauce ??
+  src\HidroFlow.jsx:3461:  15.524,
+  src\HidroFlow.jsx:3462:
+  src\HidroFlow.jsx:3463:    CN: cnBase,
+  src\HidroFlow.jsx:3464:    CN_base: params?.cnBase ?? params?.CN ?? cnBase,
+  src\HidroFlow.jsx:3465:    CN_efectivo: params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase,
+  src\HidroFlow.jsx:3466:    AMC: params?.AMC ?? params?.amcActual ?? params?.amc ?? "II",
+  src\HidroFlow.jsx:3467:
+> src\HidroFlow.jsx:3468:    tc_metodos: calcTc(params),
+  src\HidroFlow.jsx:3469:    
+  src\HidroFlow.jsx:3470:    lluvia_efectiva: false,
+  src\HidroFlow.jsx:3471:    hidrogramas: [],
+  src\HidroFlow.jsx:3472:    hidrograma_principal: null,
+  src\HidroFlow.jsx:3473:  });
+  src\HidroFlow.jsx:3474:}, [onContextoComparador, params]);
+  src\HidroFlow.jsx:3475:  
+  src\HidroFlow.jsx:3476:  // ────────────────── Defaults AMC / %imperv / CNbase (solo si faltan) ──────────────────
+  src\HidroFlow.jsx:3477:useEffect(() => {
+  src\HidroFlow.jsx:3478:  setParams(prev => {
+  src\HidroFlow.jsx:3479:    const amc  = prev?.amcActual ?? "II"; // I | II | III
+  src\HidroFlow.jsx:3480:    const pct  = Number.isFinite(prev?.porcentajeImpermeable) ? prev.porcentajeImpermeable : 60;
+  src\HidroFlow.jsx:3481:    const base = Number.isFinite(prev?.cnBase) ? prev.cnBase
+  src\HidroFlow.jsx:3482:              : (Number.isFinite(prev?.CN) ? prev.CN : 75);
+  src\HidroFlow.jsx:3495:  const est=ESTACIONES_EPM[stn];
+  src\HidroFlow.jsx:3496:  const aa=TABS.find(t=>t.id===tab)?.acc||C.accent;
+  src\HidroFlow.jsx:3497:  const pdfN=Object.values(ESTACIONES_EPM).filter(s=>s.fuente==="PDF").length;
+  src\HidroFlow.jsx:3498:  const refN=Object.values(ESTACIONES_EPM).filter(s=>s.fuente==="REF").length;
+  src\HidroFlow.jsx:3499:
+  src\HidroFlow.jsx:3500:  return(<div style={{minHeight:"100vh",background:C.bg,color:C.text,fontFamily:sans}}>
+> src\HidroFlow.jsx:3501:    <style>{`@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');*{box-sizing:border-box;margin:0;padding:0}input::-webkit-inner-sp
+in-button,input::-webkit-outer-spin-button{-webkit-appearance:none}::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:${C.bg}}::-webkit-scrollbar-thumb{background:${C.border};border-radius:3px}button{font-family:i
+nherit}`}</style>
+  src\HidroFlow.jsx:3502:
+  src\HidroFlow.jsx:3503:    {/* ── HEADER ── */}
+> src\HidroFlow.jsx:3504:    <div style={{background:C.panel,borderBottom:`1px solid ${C.border}`,padding:"0 16px",display:"flex",alignItems:"center",gap:8,height:52,position:"sticky",top:0,zIndex:200}}>
+  src\HidroFlow.jsx:3505:      <div style={{display:"flex",alignItems:"center",gap:8,flexShrink:0}}>
+> src\HidroFlow.jsx:3506:        <div 
+style={{width:28,height:28,borderRadius:7,background:`linear-gradient(135deg,${C.accent},${C.accent4})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,fontWeight:900,color:C.bg}}>H</div>
+  src\HidroFlow.jsx:3507:        <div>
+  src\HidroFlow.jsx:3508:          <div style={{fontSize:11,fontWeight:800,letterSpacing:"-0.03em",color:C.text}}>HidroFlow</div>
+  src\HidroFlow.jsx:3509:          <div style={{fontSize:7.5,color:C.muted,fontFamily:mono}}>v3.1 · EPM 2025 · GT-AS-004 · SIATA · {pdfN}+{refN} est.</div>
+  src\HidroFlow.jsx:3510:        </div>
+  src\HidroFlow.jsx:3511:      </div>
+> src\HidroFlow.jsx:3512:      <div style={{width:1,height:20,background:C.border}}/>
+  src\HidroFlow.jsx:3513:      <StationSel sel={stn} onSel={setStn}/>
+> src\HidroFlow.jsx:3514:      <div style={{width:1,height:20,background:C.border}}/>
+  src\HidroFlow.jsx:3515:      <div style={{fontSize:9.5,color:C.muted,display:"flex",gap:9,fontFamily:mono}}>
+  src\HidroFlow.jsx:3516:        <span style={{color:C.text,fontWeight:600,fontFamily:sans}}>{params.nombre_cuenca}</span>
+  src\HidroFlow.jsx:3517:        <span>A={params.area}km²</span>
+  src\HidroFlow.jsx:3518:        <span>CN={params.CN}</span>
+  src\HidroFlow.jsx:3519:        <span>Δt={params.dt}min</span>
+  src\HidroFlow.jsx:3520:      </div>
+  src\HidroFlow.jsx:3521:      <nav style={{display:"flex",gap:1,marginLeft:"auto",flexWrap:"wrap"}}>
+  src\HidroFlow.jsx:3522:        {TABS.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)}
+  src\HidroFlow.jsx:3523:          style={{padding:"4px 9px",borderRadius:6,border:"none",cursor:"pointer",
+  src\HidroFlow.jsx:3524:            background:tab===t.id?`${t.acc}15`:"transparent",color:tab===t.id?t.acc:C.muted,
+  src\HidroFlow.jsx:3525:            fontSize:9.5,fontWeight:tab===t.id?700:500,
+> src\HidroFlow.jsx:3526:            borderBottom:tab===t.id?`2px solid ${t.acc}`:"2px solid transparent",transition:"all .12s"}}>
+  src\HidroFlow.jsx:3527:          {t.icon} {t.label}
+  src\HidroFlow.jsx:3528:        </button>))}
+  src\HidroFlow.jsx:3529:      
+  src\HidroFlow.jsx:3530:      <button data-id="blind-hidro" onClick={(e)=>{e.preventDefault(); e.stopPropagation(); setTab("hidro");}}
+  src\HidroFlow.jsx:3531:        style={{padding:"4px 9px",borderRadius:6,border:"none",cursor:"pointer",background:"transparent",color:C.muted, fontSize:9.5,fontWeight:500}}
+  src\HidroFlow.jsx:3532:        title="Ir a Hidrogramas (SPA)">≋</button></nav>
+  src\HidroFlow.jsx:3533:    </div>
+  src\HidroFlow.jsx:3534:
+  src\HidroFlow.jsx:3535:    {/* Accent bar */}
+  src\HidroFlow.jsx:3536:    <div style={{height:1.5,background:`linear-gradient(90deg,${aa}AA,${aa}22,transparent)`}}/>
+  src\HidroFlow.jsx:3537:
+  src\HidroFlow.jsx:3538:    {/* ── CONTENT ── */}
+> src\HidroFlow.jsx:3539:    <div style={{padding:"14px 18px",maxWidth:1640,margin:"0 auto"}}>
+> src\HidroFlow.jsx:3540:      <div style={{marginBottom:12,display:"flex",alignItems:"center",gap:9}}>
+  src\HidroFlow.jsx:3541:        <span style={{fontSize:18,color:aa}}>{TABS.find(t=>t.id===tab)?.icon}</span>
+  src\HidroFlow.jsx:3542:        <div>
+  src\HidroFlow.jsx:3543:          <h2 style={{fontSize:14,fontWeight:800,letterSpacing:"-0.02em"}}>{TABS.find(t=>t.id===tab)?.label}</h2>
+  src\HidroFlow.jsx:3544:          <p style={{fontSize:8.5,color:C.muted,marginTop:1,fontFamily:mono}}>{TABS.find(t=>t.id===tab)?.desc}</p>
+  src\HidroFlow.jsx:3545:        </div>
+  src\HidroFlow.jsx:3546:      </div>
+  src\HidroFlow.jsx:3547:      {tab==="params"     &&<ModParams     params={params} setParams={setParams}/>}
+  src\HidroFlow.jsx:3548:      {tab==="idf"        &&<ModIDF        est={est} name={stn}/>}
+  src\HidroFlow.jsx:3549:      {tab === "hiet" && (
+  src\HidroFlow.jsx:3550:        <ModHietogramas
+  src\HidroFlow.jsx:3551:          est={est}
+  src\HidroFlow.jsx:3552:          name={stn}
+  src\HidroFlow.jsx:3553:          params={params}
+  src\HidroFlow.jsx:3554:          setParams={setParams}
+
+
