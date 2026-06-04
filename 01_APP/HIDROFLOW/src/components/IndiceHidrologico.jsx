@@ -634,7 +634,7 @@ const rangoTcAgente =
         </div>
 
         <div style={estilos.dato}>
-  <span style={estilos.label}>Rango Tc</span>
+  <span style={estilos.label}>Rango bruto Tc</span>
   <span style={estilos.value}>
     {rangoTcAgente
       ? `${formatNumero(rangoTcAgente.min, 1)}–${formatNumero(
