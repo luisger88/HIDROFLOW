@@ -653,6 +653,16 @@ const rangoTcAgente =
   </span>
 </div>
 
+        <div style={estilos.dato}>
+          <span style={estilos.label}>Rango competente Tc</span>
+          <span style={estilos.value}>
+            {tcState?.rangoCompetenteTc
+              ? formatNumero(tcState.rangoCompetenteTc.min, 1) + "–" +
+                formatNumero(tcState.rangoCompetenteTc.max, 1) + " min"
+              : "—"}
+          </span>
+        </div>
+
         <p style={estilos.muted}>
           El Tc sugerido corresponde al resumen estadístico del motor. El Tc
           adoptado definitivo queda pendiente de criterio técnico.
