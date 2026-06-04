@@ -96,3 +96,21 @@ El rango competente Tc debe calcularse únicamente con métodos cuyo estadoCompe
 ## Estado
 
 Documento de apertura. Sin cambios funcionales aplicados.
+
+## Decisión de arquitectura propuesta
+
+La derivación del Rango competente Tc debe vivir inicialmente en ComparadorMultiMetodo.jsx, porque allí coexisten los valores numéricos de metodosTc y la evaluación técnica evaluacionCompetencia.
+
+El Agente Tc no debe modificarse. Su responsabilidad se mantiene como transporte reactivo de estado mediante getTcState, setTcState y subscribeTc.
+
+IndiceHidrologico.jsx no debe conocer reglas de competencia ni detalles del mapeo entre IDs del catálogo y claves internas del motor. Debe limitarse a visualizar rangoCompetenteTc si está disponible.
+
+La arquitectura recomendada queda definida como:
+
+- Motor hidrológico: calcula valores Tc.
+- Matriz de competencia: evalúa competencia técnica.
+- ComparadorMultiMetodo.jsx: integra metodosTc con evaluacionCompetencia y deriva rangoCompetenteTc.
+- tcAgent.js: transporta estado sin cambios.
+- IndiceHidrologico.jsx: visualiza Rango bruto Tc y Rango competente Tc.
+
+Esta decisión no autoriza todavía cambios funcionales. Cualquier implementación posterior deberá ser mínima, auditable y validada con build.
