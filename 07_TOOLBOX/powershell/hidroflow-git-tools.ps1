@@ -120,3 +120,60 @@ function Nueva-Bitacora {
 
   Confirmar-Bitacora -Archivo $Archivo -Mensaje $Mensaje
 }
+
+function Sincronizar-MainPostMerge {
+  param(
+    [string]$RutaApp = "01_APP\HIDROFLOW"
+  )
+
+  Write-Host ""
+  Write-Host "Sincronizando main local con origin/main..." -ForegroundColor Cyan
+
+  git checkout main
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "ERROR: No se pudo cambiar a main." -ForegroundColor Red
+    return
+  }
+
+  git pull origin main
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "ERROR: No se pudo actualizar main desde origin/main." -ForegroundColor Red
+    return
+  }
+
+  Write-Host ""
+  Write-Host "Estado despues de pull:" -ForegroundColor Cyan
+  git status --short
+
+  Write-Host ""
+  Write-Host "Log reciente en main:" -ForegroundColor Cyan
+  git log --oneline -5
+
+  Write-Host ""
+  Write-Host "Ejecutando build post-merge..." -ForegroundColor Cyan
+
+  Push-Location $RutaApp
+  npm run build
+  $buildExitCode = $LASTEXITCODE
+  Pop-Location
+
+  if ($buildExitCode -ne 0) {
+    Write-Host ""
+    Write-Host "ERROR: Build post-merge fallido." -ForegroundColor Red
+    return
+  }
+
+  Write-Host ""
+  Write-Host "Build post-merge aprobado." -ForegroundColor Green
+
+  Write-Host ""
+  Write-Host "Estado final:" -ForegroundColor Cyan
+  git status --short
+
+  Write-Host ""
+  Write-Host "Log final:" -ForegroundColor Cyan
+  git log --oneline -5
+
+  Write-Host ""
+  Write-Host "main estabilizado post-merge si el estado final esta limpio." -ForegroundColor Green
+}
