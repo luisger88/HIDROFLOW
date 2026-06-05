@@ -2295,6 +2295,10 @@ const qaStatus = useMemo(() => {
          <span className="text-slate-400"> · ruta interna Q(t)</span>
        </div>
 
+       <div className="text-slate-400">
+         Escenarios Tc: operativo Q(t) = {tc_min.toFixed(1)} min · índice global = {Number.isFinite(params?.tcMedMin) ? params.tcMedMin.toFixed(1) : "—"} min · comparador = pendiente
+       </div>
+
        <div className={qaStatus.amcWarning ? "text-red-400" : "text-blue-400"}>
          AMC: {params?.amcActual ?? "N/A"} ({params?.amcFuente ?? "Sin fuente"})
        </div>
@@ -3647,6 +3651,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
