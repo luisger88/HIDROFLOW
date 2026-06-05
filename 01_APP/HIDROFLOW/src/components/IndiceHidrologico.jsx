@@ -663,6 +663,18 @@ const rangoTcAgente =
           </span>
         </div>
 
+        {tcState?.Tc_final !== null &&
+          tcState?.Tc_final !== undefined &&
+          tcState?.rangoCompetenteTc?.min !== undefined &&
+          tcState?.rangoCompetenteTc?.max !== undefined &&
+          tcState.rangoCompetenteTc.max > tcState.rangoCompetenteTc.min &&
+          (tcState.Tc_final - tcState.rangoCompetenteTc.min) /
+            (tcState.rangoCompetenteTc.max - tcState.rangoCompetenteTc.min) <= 0.15 ? (
+          <p style={estilos.muted}>
+            ⚠ Advertencia técnica: el Tc sugerido está cerca del borde inferior del rango competente. Se recomienda revisar sensibilidad con escenario rápido, sugerido y lento antes de adoptarlo como valor único robusto.
+          </p>
+        ) : null}
+
         <p style={estilos.muted}>
           El Tc sugerido corresponde al resumen estadístico del motor. El Tc
           adoptado definitivo queda pendiente de criterio técnico.
