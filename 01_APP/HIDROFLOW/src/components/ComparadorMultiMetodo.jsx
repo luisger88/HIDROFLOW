@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { setTcState } from "../agents/tcAgent";
 import { calcTc, mapTcResultados } from "../services/hidroEngine";
 import { seleccionarTc } from "../services/tcSelector";
+import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteTc";
 
 import {
   resumenComparadorCatalogo,
@@ -72,6 +73,11 @@ const conceptoCuenca = useMemo(() => {
 // ✅ Tc FINAL
 
 const Tc_final = seleccionarTc("hidrograma", metodosTc, contextoTc);
+
+const { metodosTcCompetentes, rangoCompetenteTc } = derivarRangoCompetenteTc(
+  metodosTc,
+  evaluacionCompetencia?.tc
+);
 // ✅ Publicar Tc en el agente DESPUÉS del render
 useEffect(() => {
   if (Tc_final !== null && Tc_final !== undefined) {
@@ -79,6 +85,8 @@ useEffect(() => {
       Tc_final,
       metodosTc,
       contextoTc,
+      metodosTcCompetentes,
+      rangoCompetenteTc,
     });
   }
 }, [Tc_final]);
@@ -1188,3 +1196,4 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
