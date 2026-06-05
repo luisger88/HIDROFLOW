@@ -23,12 +23,14 @@ import {
 } from "recharts";
 
 import HidrogramaResultado from "./components/HidrogramaResultado";
+import { getTcState, setTcState } from "./agents/tcAgent";
 
 import {
   calcCNdinamico,
   derivarAMCDesdeSIATA,
   calcLluviaEfectiva,
   calcTc,
+  mapTcResultados,
   cnMixto,
   cnII_to_III
 } from "./services/hidroEngine";
@@ -3472,6 +3474,67 @@ useEffect(() => {
     hidrograma_principal: null,
   });
 }, [onContextoComparador, params]);
+// Publicación base Tc para despertar el Índice Hidrológico global.
+// No reemplaza el estado especializado publicado por ComparadorMultiMetodo.
+useEffect(() => {
+  const estadoTcActual = getTcState();
+
+  const agenteTieneEstado =
+    estadoTcActual?.Tc_final !== null &&
+    estadoTcActual?.Tc_final !== undefined &&
+    estadoTcActual?.metodosTc;
+
+  const agenteTieneEstadoEspecializado =
+    estadoTcActual?.rangoCompetenteTc ||
+    estadoTcActual?.metodosTcCompetentes;
+
+  if (agenteTieneEstado || agenteTieneEstadoEspecializado) return;
+
+  const tcArrayBase = calcTc(params).filter(
+    (r) => Number.isFinite(r.h) && Number.isFinite(r.min) && r.h > 0 && r.min > 0
+  );
+
+  if (!tcArrayBase.length) return;
+
+  const metodosTcBase = mapTcResultados(tcArrayBase);
+  const valoresTcBase = Object.values(metodosTcBase).filter(Number.isFinite);
+
+  if (!valoresTcBase.length) return;
+
+  const valoresOrdenados = [...valoresTcBase].sort((a, b) => a - b);
+  const mitad = Math.floor(valoresOrdenados.length / 2);
+  const tcMedianaBase =
+    valoresOrdenados.length % 2
+      ? valoresOrdenados[mitad]
+      : (valoresOrdenados[mitad - 1] + valoresOrdenados[mitad]) / 2;
+
+  const tcBase =
+    Number.isFinite(params?.tcMedMin) && params.tcMedMin > 0
+      ? params.tcMedMin
+      : tcMedianaBase;
+
+  setTcState({
+    Tc_final: tcBase,
+    metodosTc: metodosTcBase,
+    contextoTc: {
+      pendiente:
+        params?.pendiente_media_pct ??
+        params?.pendienteMediaPct ??
+        params?.pendiente_pct ??
+        params?.S_pct ??
+        params?.pendiente ??
+        8.43,
+      area:
+        params?.area_km2 ??
+        params?.areaKm2 ??
+        params?.area ??
+        params?.A ??
+        null,
+      CN: params?.CN ?? params?.cnBase ?? null,
+      fuente: "hidroflow_base"
+    }
+  });
+}, [params]);
   
   // ────────────────── Defaults AMC / %imperv / CNbase (solo si faltan) ──────────────────
 useEffect(() => {
@@ -3583,6 +3646,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
