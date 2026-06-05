@@ -91,3 +91,6 @@ HidroFlow - copia.jsx
 01_APP/HIDROFLOW/src/**/*BACKUP*
 01_APP/HIDROFLOW/**/*BACKUP*
 *.docx
+
+# Inventarios locales generados por tooling HidroFlow
+10_LOGS/inventario_hidroflow_*.txt
