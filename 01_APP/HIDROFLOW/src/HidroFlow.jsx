@@ -2290,8 +2290,9 @@ const qaStatus = useMemo(() => {
       {/* Panel QA - Estado hidrológico efectivo */}
       <div className="flex flex-wrap gap-4 p-3 mb-2 bg-slate-900 text-white rounded-md text-sm font-mono">
        <div className={qaStatus.tcWarning ? "text-yellow-400" : "text-green-400"}>
-         Tc: {tc_min.toFixed(1)} min
+         Tc operativo Hidrogramas: {tc_min.toFixed(1)} min
          {qaStatus.tcWarning && " ⚠️"}
+         <span className="text-slate-400"> · ruta interna Q(t)</span>
        </div>
 
        <div className={qaStatus.amcWarning ? "text-red-400" : "text-blue-400"}>
@@ -3646,6 +3647,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
