@@ -772,10 +772,26 @@ const obtenerResultadoQMetodo = (metodo) => {
       return <span style={estilos.chip}>—</span>;
     }
 
+    const tcReferencia = Number(Tc_final);
+    const tpRel =
+      Number.isFinite(tcReferencia) && tcReferencia > 0
+        ? resultadoQ.Tp / tcReferencia
+        : null;
+
+    const alertaTcTp =
+      tpRel !== null && (tpRel < 0.5 || tpRel > 1.5);
+
     return (
-      <span style={estilos.chip}>
-        {resultadoQ.Tp.toFixed(2)} min
-      </span>
+      <div>
+        <span style={estilos.chip}>
+          {resultadoQ.Tp.toFixed(2)} min
+        </span>
+        {alertaTcTp ? (
+          <div style={{ ...estilos.muted, marginTop: "4px" }}>
+            ⚠ Alerta Tc/Tp
+          </div>
+        ) : null}
+      </div>
     );
   })()}
 </td>
@@ -1196,4 +1212,5 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
