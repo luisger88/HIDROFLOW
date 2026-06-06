@@ -611,9 +611,9 @@ const obtenerResultadoQMetodo = (metodo) => {
   }
 
   return {
-    Qp: extraerNumero(match, ["Qp", "qp", "q_pico", "caudalPico", "caudal_pico"]),
-    Tp: extraerNumero(match, ["Tp", "tp", "t_pico", "tiempoPico", "tiempo_pico"]),
-    volumen: extraerNumero(match, ["volumen", "V", "vol", "volume"]),
+    Qp: extraerNumero(match, ["Qp", "qp", "Qpico", "qPico", "q_pico", "caudalPico", "caudal_pico"]),
+    Tp: extraerNumero(match, ["Tp", "tp", "tPico", "TPico", "t_pico", "tiempoPico", "tiempo_pico"]),
+    volumen: extraerNumero(match, ["volumen", "V", "vol", "volume", "volTotal", "vol_total", "volumenTotal"]),
     disponible: true,
   };
 };
@@ -1331,13 +1331,20 @@ const obtenerResultadoQMetodo = (metodo) => {
               ? areaKm2 * peTotalMm * 1000
               : null;
 
-          const formatearNumeroExpediente = (valor, decimales = 2) =>
-            Number.isFinite(Number(valor))
-              ? Number(valor).toLocaleString("es-CO", {
+          const formatearNumeroExpediente = (valor, decimales = 2) => {
+            if (valor === null || valor === undefined || valor === "") {
+              return "—";
+            }
+
+            const numero = Number(valor);
+
+            return Number.isFinite(numero)
+              ? numero.toLocaleString("es-CO", {
                   minimumFractionDigits: decimales,
                   maximumFractionDigits: decimales
                 })
               : "—";
+          };
 
           const obtenerEstadoTemporalExpediente = (resultadoQ) => {
             const tcReferencia = Number(Tc_final);
@@ -1532,6 +1539,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
