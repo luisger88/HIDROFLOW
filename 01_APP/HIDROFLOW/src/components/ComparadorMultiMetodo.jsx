@@ -808,10 +808,38 @@ const obtenerResultadoQMetodo = (metodo) => {
       return <span style={estilos.chip}>—</span>;
     }
 
+    const areaKm2 = Number(contextoBase?.area_km2);
+    const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
+    const volumenEsperadoM3 =
+      Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
+        ? areaKm2 * peTotalMm * 1000
+        : null;
+
+    const relacionVolumen =
+      volumenEsperadoM3 && volumenEsperadoM3 > 0
+        ? resultadoQ.volumen / volumenEsperadoM3
+        : null;
+
+    const estadoEscalaVolumen =
+      relacionVolumen === null
+        ? null
+        : relacionVolumen <= 2
+        ? "escala razonable"
+        : relacionVolumen <= 10
+        ? "revisar escala"
+        : "fuera de escala";
+
     return (
-      <span style={estilos.chip}>
-        {resultadoQ.volumen.toFixed(2)}
-      </span>
+      <div>
+        <span style={estilos.chip}>
+          {resultadoQ.volumen.toFixed(2)}
+        </span>
+        {estadoEscalaVolumen ? (
+          <div style={{ ...estilos.muted, marginTop: "4px" }}>
+            {estadoEscalaVolumen} · {relacionVolumen.toFixed(1)}x
+          </div>
+        ) : null}
+      </div>
     );
   })()}
 </td>
@@ -1232,6 +1260,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
