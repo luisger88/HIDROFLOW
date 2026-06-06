@@ -1353,7 +1353,43 @@ const obtenerResultadoQMetodo = (metodo) => {
             "- No se alteran Qp, Tp, Volumen ni Q(t)."
           ].join("\n");
 
-          navigator.clipboard?.writeText(textoExpediente);
+          const copiarPorTextarea = () => {
+            const areaTexto = document.createElement("textarea");
+            areaTexto.value = textoExpediente;
+            areaTexto.setAttribute("readonly", "");
+            areaTexto.style.position = "fixed";
+            areaTexto.style.left = "-9999px";
+            areaTexto.style.top = "-9999px";
+            document.body.appendChild(areaTexto);
+            areaTexto.select();
+
+            let copiado = false;
+
+            try {
+              copiado = document.execCommand("copy");
+            } catch {
+              copiado = false;
+            }
+
+            document.body.removeChild(areaTexto);
+            return copiado;
+          };
+
+          if (navigator.clipboard?.writeText) {
+            navigator.clipboard.writeText(textoExpediente).then(() => {
+              window.alert("Expediente hidrológico mínimo copiado al portapapeles.");
+            }).catch(() => {
+              if (copiarPorTextarea()) {
+                window.alert("Expediente hidrológico mínimo copiado al portapapeles.");
+              } else {
+                window.prompt("Copie manualmente el expediente hidrológico mínimo:", textoExpediente);
+              }
+            });
+          } else if (copiarPorTextarea()) {
+            window.alert("Expediente hidrológico mínimo copiado al portapapeles.");
+          } else {
+            window.prompt("Copie manualmente el expediente hidrológico mínimo:", textoExpediente);
+          }
         }}
         style={{ ...estilos.chip, cursor: "pointer", marginBottom: "10px", marginLeft: "8px" }}
       >
@@ -1391,6 +1427,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
