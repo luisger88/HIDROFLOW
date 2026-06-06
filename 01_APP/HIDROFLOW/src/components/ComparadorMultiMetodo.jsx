@@ -1208,9 +1208,14 @@ const obtenerResultadoQMetodo = (metodo) => {
 
       {renderTabla("Bloque Tc-15 · Tiempo de concentración / respuesta", "tc")}
 
+      <div style={{ ...estilos.muted, marginBottom: "10px" }}>
+        ⚠ Control de magnitud pendiente: Qp, Tp y Volumen se muestran como resultados no adoptivos hasta validar unidades, integración y escala hidrológica.
+      </div>
+
       {renderTabla("Bloque Q-5 · Caudal pico / hidrograma", "q")}
     </main>
   );
 }
+
 
 
