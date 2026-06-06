@@ -848,7 +848,7 @@ const rangoTcAgente =
         <div style={estilos.dato}>
           <span style={estilos.label}>Área cuenca</span>
           <span style={estilos.value}>
-            {formatNumero(racional?.area_km2 ?? area_km2, 4)} km²
+            {areaRacionalIndice !== null ? formatNumero(areaRacionalIndice, 4) : "—"} km²
           </span>
         </div>
 
@@ -870,7 +870,21 @@ const rangoTcAgente =
         <div style={estilos.dato}>
           <span style={estilos.label}>Coeficiente C</span>
           <span style={estilos.value}>
-            {C !== null && C !== undefined ? formatNumero(C, 2) : "Pendiente"}
+            {coeficienteRacionalTrIndice !== null ? formatNumero(coeficienteRacionalTrIndice, 4) : "Pendiente"}
+          </span>
+        </div>
+
+        <div style={estilos.dato}>
+          <span style={estilos.label}>Tr global activo</span>
+          <span style={estilos.value}>
+            {trActivoIndice} años
+          </span>
+        </div>
+
+        <div style={estilos.dato}>
+          <span style={estilos.label}>Q racional Tr activo</span>
+          <span style={estilos.value}>
+            {qRacionalTrIndice !== null ? `${formatNumero(qRacionalTrIndice, 2)} m³/s` : "Pendiente"}
           </span>
         </div>
 
@@ -882,7 +896,7 @@ const rangoTcAgente =
 
         <div style={estilos.chipRow}>
           <span style={{ ...estilos.chip, ...estilos.chipWarn }}>
-            C = f(CN) · pendiente
+            {coeficienteRacionalTrIndice !== null ? `C Tr ${trActivoIndice}a = ${formatNumero(coeficienteRacionalTrIndice, 4)}` : "C = f(CN) · pendiente"}
           </span>
           <span style={estilos.chip}>Contraste</span>
         </div>
@@ -933,6 +947,7 @@ const rangoTcAgente =
     </aside>
   );
 }
+
 
 
 
