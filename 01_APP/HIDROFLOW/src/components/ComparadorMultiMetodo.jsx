@@ -1267,6 +1267,35 @@ const obtenerResultadoQMetodo = (metodo) => {
       <div style={{ ...estilos.muted, marginBottom: "10px" }}>
         Resumen ejecutivo Q-5 post auditoría: SCS Unit Hydrograph queda como candidato principal de referencia; SCS Mod. como variante ajustable; Snyder, Williams & Hann y Clark IUH como comparativos/referenciales. La masa y el volumen están controlados frente a la referencia física; Qp y Tp permanecen sujetos a revisión temporal antes de adopción técnica. Estado general: diagnóstico no adoptivo.
       </div>
+      <button
+        type="button"
+        onClick={() => {
+          const textoResumenQ5 = [
+            "# Resumen técnico Q-5 post auditoría",
+            "",
+            "Estado general: diagnóstico no adoptivo.",
+            "",
+            "Síntesis:",
+            "- SCS Unit Hydrograph: candidato principal de referencia.",
+            "- SCS Mod.: variante ajustable.",
+            "- Snyder, Williams & Hann y Clark IUH: métodos comparativos/referenciales.",
+            "- Masa y volumen: controlados frente a la referencia física.",
+            "- Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
+            "",
+            "Restricciones:",
+            "- No se usaron caudales externos como fundamento.",
+            "- No se usó SIATA para justificar caudales.",
+            "- No se modifica el motor hidrológico.",
+            "- No se recalculan hidrogramas.",
+            "- No se alteran Qp, Tp, Volumen ni Q(t)."
+          ].join("\n");
+
+          navigator.clipboard?.writeText(textoResumenQ5);
+        }}
+        style={{ ...estilos.chip, cursor: "pointer", marginBottom: "10px" }}
+      >
+        Copiar resumen técnico Q-5
+      </button>
       {(() => {
         const areaKm2 = Number(contextoBase?.area_km2);
         const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
@@ -1299,6 +1328,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
