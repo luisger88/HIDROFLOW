@@ -1313,6 +1313,9 @@ const obtenerResultadoQMetodo = (metodo) => {
             `Cuenca: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}`,
             `Área: ${Number.isFinite(areaKm2) ? areaKm2.toFixed(4) + " km²" : "—"}`,
             `Fuente de contexto: ${contextoBase?.fuente ?? "HidroFlow"}`,
+            `Estación IDF: ${contextoBase?.estacion_idf ?? contextoBase?.estacionIDF ?? "—"}`,
+            `Pendiente media: ${Number.isFinite(Number(contextoBase?.pendiente_media_pct)) ? Number(contextoBase.pendiente_media_pct).toFixed(2) + " %" : "—"}`,
+            `Longitud cauce principal: ${Number.isFinite(Number(contextoBase?.longitud_cauce_km)) ? Number(contextoBase.longitud_cauce_km).toFixed(3) + " km" : "—"}`,
             "",
             "## 2. Parámetros hidrológicos base",
             `CN: ${contextoBase?.CN ?? "—"}`,
@@ -1388,6 +1391,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 

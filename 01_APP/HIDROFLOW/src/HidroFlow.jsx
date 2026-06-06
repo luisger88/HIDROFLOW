@@ -2169,6 +2169,7 @@ const leerT = (punto, indice) => {
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
+    estacion_idf: name ?? null,
     lluvia_efectiva: Boolean(lluvEfect),
     lluvia_efectiva_total_mm: lluviaEfectivaTotalMm,
     hidrogramas: hidrogramasResumen,
@@ -3506,6 +3507,7 @@ useEffect(() => {
 
   onContextoComparador({
     fuente: "motor HidroFlow",
+    estacion_idf: stn,
 
     cuencaNombre:
       params?.nombreCuenca ??
@@ -3552,7 +3554,7 @@ useEffect(() => {
     hidrogramas: [],
     hidrograma_principal: null,
   });
-}, [onContextoComparador, params]);
+}, [onContextoComparador, params, stn]);
 // Publicación base Tc para despertar el Índice Hidrológico global.
 // No reemplaza el estado especializado publicado por ComparadorMultiMetodo.
 useEffect(() => {
@@ -3725,6 +3727,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
