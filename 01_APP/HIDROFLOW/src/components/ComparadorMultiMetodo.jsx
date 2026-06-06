@@ -801,6 +801,19 @@ const obtenerResultadoQMetodo = (metodo) => {
         <div style={{ ...estilos.muted, marginTop: "4px" }}>
           Estado temporal: {estadoTemporal}
         </div>
+        <div style={{ ...estilos.muted, marginTop: "4px" }}>
+          Dictamen Q-5: {metodo.nombre?.includes("SCS Unit")
+            ? `candidato principal; volumen en escala; ${estadoTemporal}.`
+            : metodo.nombre?.includes("SCS Mod")
+            ? `variante ajustable; volumen en escala; ${estadoTemporal}.`
+            : metodo.nombre?.includes("Snyder")
+            ? `comparativo/referencial; volumen en escala; ${estadoTemporal}; requiere justificación técnica.`
+            : metodo.nombre?.includes("Williams")
+            ? `comparativo sensible; volumen en escala; ${estadoTemporal}; revisar concentración del pico.`
+            : metodo.nombre?.includes("Clark")
+            ? `contraste hidrológico; volumen en escala; ${estadoTemporal}; revisar efecto de almacenamiento.`
+            : `método comparativo; ${estadoTemporal}.`}
+        </div>
         {alertaTcTp ? (
           <div style={{ ...estilos.muted, marginTop: "4px" }}>
             ⚠ Alerta Tc/Tp
@@ -1283,6 +1296,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
