@@ -3527,7 +3527,8 @@ useEffect(() => {
           Number(params.CN)
         )
       : [];
-  onContextoComparador({
+  onContextoComparador((previo) => ({
+    ...(previo ?? {}),
     fuente: "motor HidroFlow",
     estacion_idf: stn,
     metodo_racional: {
@@ -3584,7 +3585,7 @@ useEffect(() => {
     lluvia_efectiva: false,
     hidrogramas: [],
     hidrograma_principal: null,
-  });
+  }));
 }, [onContextoComparador, params, stn]);
 // Publicación base Tc para despertar el Índice Hidrológico global.
 // No reemplaza el estado especializado publicado por ComparadorMultiMetodo.
@@ -3758,6 +3759,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
