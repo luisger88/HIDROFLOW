@@ -1426,7 +1426,14 @@ const obtenerResultadoQMetodo = (metodo) => {
             "Tabla Q-5 auditada:",
             ...tablaQ5Markdown,
             "",
-            "## 6. Restricciones técnicas",
+            "",
+            "## 6. Método Racional — contraste global independiente",
+            "Uso: contraste global independiente de caudal pico.",
+            "Disponibilidad: resultados consultables en el módulo Método Racional.",
+            "Relación con Q-5: no pertenece al bloque Q-5 de hidrogramas.",
+            "Criterio técnico: no adoptivo principal para esta cuenca sin revisión de competencia, duración Tc y alcance normativo.",
+            "",
+            "## 7. Restricciones técnicas",
             "- No se usaron caudales externos como fundamento.",
             "- No se usó SIATA para justificar caudales.",
             "- No se modifica el motor hidrológico.",
@@ -1495,6 +1502,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
