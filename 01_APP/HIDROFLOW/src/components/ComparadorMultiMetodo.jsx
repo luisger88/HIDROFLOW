@@ -1377,18 +1377,18 @@ const obtenerResultadoQMetodo = (metodo) => {
 
           if (navigator.clipboard?.writeText) {
             navigator.clipboard.writeText(textoExpediente).then(() => {
-              window.alert("Expediente hidrológico mínimo copiado al portapapeles.");
+              window.prompt("Expediente hidrológico mínimo generado. Copie manualmente el texto:", textoExpediente);
             }).catch(() => {
               if (copiarPorTextarea()) {
-                window.alert("Expediente hidrológico mínimo copiado al portapapeles.");
+                window.prompt("Expediente hidrológico mínimo generado. Copie manualmente el texto:", textoExpediente);
               } else {
-                window.prompt("Copie manualmente el expediente hidrológico mínimo:", textoExpediente);
+                window.prompt("Expediente hidrológico mínimo generado. Copie manualmente el texto:", textoExpediente);
               }
             });
           } else if (copiarPorTextarea()) {
-            window.alert("Expediente hidrológico mínimo copiado al portapapeles.");
+            window.prompt("Expediente hidrológico mínimo generado. Copie manualmente el texto:", textoExpediente);
           } else {
-            window.prompt("Copie manualmente el expediente hidrológico mínimo:", textoExpediente);
+            window.prompt("Expediente hidrológico mínimo generado. Copie manualmente el texto:", textoExpediente);
           }
         }}
         style={{ ...estilos.chip, cursor: "pointer", marginBottom: "10px", marginLeft: "8px" }}
@@ -1427,6 +1427,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
