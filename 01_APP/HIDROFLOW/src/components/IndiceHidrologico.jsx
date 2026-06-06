@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getTcState, subscribeTc } from "../agents/tcAgent";
+import { getTrState, setTrState, subscribeTr } from "../agents/trAgent";
 
 export default function IndiceHidrologico({
   goToTab: goToTabProp,
@@ -411,6 +412,36 @@ const rangoTcAgente =
     };
   };
 
+  const [trStateIndice, setTrStateIndice] = useState(getTrState());
+
+  useEffect(() => {
+    const cancelarSuscripcionTr = subscribeTr(setTrStateIndice);
+    return cancelarSuscripcionTr;
+  }, []);
+
+  const periodosTrIndice = periodos.length > 0 ? periodos : [2.33, 5, 10, 25, 50, 100];
+
+  const trActivoIndice = Number(
+    trStateIndice?.Tr_activo ??
+      contexto?.tr_diseno_activo ??
+      25
+  );
+
+  const seleccionarTrIndice = (trValor) => {
+    const trNumerico = Number(trValor);
+
+    if (!Number.isFinite(trNumerico)) {
+      return;
+    }
+
+    setTrState({
+      Tr_activo: trNumerico,
+      fuente: "IndiceHidrologico"
+    });
+
+    goToTab("hidro");
+  };
+
   return (
     <aside style={estilos.panel}>
       <h2 style={estilos.titulo}>Índice Hidrológico de la Cuenca</h2>
@@ -709,6 +740,34 @@ const rangoTcAgente =
       <section style={estiloTarjeta("racional")}>
         <h3 style={estilos.cardTitle}>⑤ Periodos de retorno</h3>
 
+        <div style={estilos.chipRow}>
+          {periodosTrIndice.map((trValor) => {
+            const activoTr = Number(trValor) === trActivoIndice;
+
+            return (
+              <button
+                key={`tr-global-${trValor}`}
+                type="button"
+                onClick={() => seleccionarTrIndice(trValor)}
+                title={`Activar Tr ${trValor} años`}
+                style={{
+                  ...estilos.chip,
+                  ...(activoTr ? estilos.chipOk : {}),
+                  cursor: "pointer",
+                  border: activoTr
+                    ? "1px solid rgba(34, 211, 238, 0.95)"
+                    : estilos.chip.border,
+                  background: activoTr
+                    ? "rgba(34, 211, 238, 0.22)"
+                    : estilos.chip.background
+                }}
+              >
+                Tr {trValor} años
+              </button>
+            );
+          })}
+        </div>
+
         <p style={estilos.muted}>
           Escenarios activos para cálculo hidrológico.
         </p>
@@ -866,3 +925,4 @@ const rangoTcAgente =
     </aside>
   );
 }
+

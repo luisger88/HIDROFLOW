@@ -1,6 +1,7 @@
 import { CUENCA_DEFAULT_ID, getCuencaById } from "./data/cuencasCatalogo";
 
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
+import { getTrState, subscribeTr } from "./agents/trAgent";
 
 import {
   LineChart,
@@ -23,6 +24,7 @@ import {
 } from "recharts";
 
 import HidrogramaResultado from "./components/HidrogramaResultado";
+import { getTrState, subscribeTr } from "./agents/trAgent";
 import { getTcState, setTcState } from "./agents/tcAgent";
 
 import {
@@ -3509,6 +3511,13 @@ const setTab = setTabExterno ?? setTabInterno;
   const [params, setParams] = useState(() => getCuencaById(CUENCA_DEFAULT_ID));
   const [stn, setStn] = useState("SAN CRISTOBAL");
 
+  const [trStateGlobal, setTrStateGlobal] = useState(getTrState());
+
+  useEffect(() => {
+    const cancelarSuscripcionTr = subscribeTr(setTrStateGlobal);
+    return cancelarSuscripcionTr;
+  }, []);
+
 useEffect(() => {
   if (typeof onContextoComparador !== "function") return;
 
@@ -3544,6 +3553,8 @@ useEffect(() => {
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
     estacion_idf: stn,
+    tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
+    periodos_retorno: TR_LIST,
     metodo_racional: {
       fuente: "calcRacional",
       uso: "contraste global independiente de caudal pico",
@@ -3604,7 +3615,7 @@ useEffect(() => {
     hidrogramas_resumen: previo?.hidrogramas_resumen ?? null,
     hidrograma_principal: previo?.hidrograma_principal ?? null,
   }));
-}, [onContextoComparador, params, stn]);
+}, [onContextoComparador, params, stn, trStateGlobal?.Tr_activo]);
 // Publicación base Tc para despertar el Índice Hidrológico global.
 // No reemplaza el estado especializado publicado por ComparadorMultiMetodo.
 useEffect(() => {
@@ -3777,6 +3788,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
