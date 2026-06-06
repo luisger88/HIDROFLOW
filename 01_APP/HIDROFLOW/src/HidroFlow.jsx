@@ -2166,11 +2166,24 @@ const leerT = (punto, indice) => {
       ? maxLluviaEfectivaMm
       : sumaLluviaEfectivaMm || null;
 
+  const hidrogramasQ5Exportables = (hidros || []).map((h) => ({
+    metodo: h?.metodo ?? "Método Q-5",
+    Qpico: h?.Qpico,
+    tPico: h?.tPico,
+    volTotal: h?.volTotal,
+    Qp: h?.Qpico,
+    Tp: h?.tPico,
+    volumen: h?.volTotal
+  }));
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
     estacion_idf: name ?? null,
     lluvia_efectiva: Boolean(lluvEfect),
+    hidrogramas: {
+      fuente: "ModHidrogramas",
+      resultados: hidrogramasQ5Exportables
+    },
     lluvia_efectiva_total_mm: lluviaEfectivaTotalMm,
     hidrogramas: hidrogramasResumen,
     hidrograma_principal: h0 ?? null,
@@ -3527,6 +3540,15 @@ useEffect(() => {
           Number(params.CN)
         )
       : [];
+  const hidrogramasQ5Exportables = (hidros || []).map((h) => ({
+    metodo: h?.metodo ?? "Método Q-5",
+    Qpico: h?.Qpico,
+    tPico: h?.tPico,
+    volTotal: h?.volTotal,
+    Qp: h?.Qpico,
+    Tp: h?.tPico,
+    volumen: h?.volTotal
+  }));
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
@@ -3759,6 +3781,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
