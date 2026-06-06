@@ -1280,8 +1280,8 @@ const obtenerResultadoQMetodo = (metodo) => {
             "- SCS Mod.: variante ajustable.",
             "- Snyder, Williams & Hann y Clark IUH: métodos comparativos/referenciales.",
             "- Masa y volumen: controlados frente a la referencia física.",
-            "- Qp y Tp: sujetos a revisión temporal antes de adopción técnica.
-- Método Racional: contraste global independiente de caudal pico; no forma parte del bloque Q-5 de hidrogramas.",
+            "- Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
+            "- Método Racional: contraste global independiente de caudal pico; no forma parte del bloque Q-5 de hidrogramas.",
             "",
             "Restricciones:",
             "- No se usaron caudales externos como fundamento.",
@@ -1495,6 +1495,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
