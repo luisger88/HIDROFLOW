@@ -438,8 +438,6 @@ const rangoTcAgente =
       Tr_activo: trNumerico,
       fuente: "IndiceHidrologico"
     });
-
-    goToTab("hidro");
   };
 
   return (
@@ -750,6 +748,7 @@ const rangoTcAgente =
                 type="button"
                 onClick={() => seleccionarTrIndice(trValor)}
                 title={`Activar Tr ${trValor} años`}
+                aria-pressed={activoTr}
                 style={{
                   ...estilos.chip,
                   ...(activoTr ? estilos.chipOk : {}),
@@ -759,7 +758,12 @@ const rangoTcAgente =
                     : estilos.chip.border,
                   background: activoTr
                     ? "rgba(34, 211, 238, 0.22)"
-                    : estilos.chip.background
+                    : estilos.chip.background,
+                  boxShadow: activoTr
+                    ? "0 0 0 1px rgba(34, 211, 238, 0.35), 0 0 12px rgba(34, 211, 238, 0.18)"
+                    : "none",
+                  transform: activoTr ? "translateY(-1px)" : "none",
+                  transition: "background 120ms ease, border 120ms ease, box-shadow 120ms ease, transform 120ms ease"
                 }}
               >
                 Tr {trValor} años
@@ -925,4 +929,5 @@ const rangoTcAgente =
     </aside>
   );
 }
+
 
