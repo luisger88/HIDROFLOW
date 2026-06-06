@@ -2103,10 +2103,23 @@ const leerT = (punto, indice) => {
     : [];
 
     
+  const lluviaEfectivaTotalMm = Array.isArray(lluvEfect)
+    ? lluvEfect.reduce((suma, valor) => {
+        const numero = Number(
+          typeof valor === "object"
+            ? valor?.pe ?? valor?.Pe ?? valor?.pn ?? valor?.Pn ?? valor?.valor ?? valor?.y
+            : valor
+        );
+
+        return Number.isFinite(numero) ? suma + numero : suma;
+      }, 0)
+    : null;
+
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
     lluvia_efectiva: Boolean(lluvEfect),
+    lluvia_efectiva_total_mm: lluviaEfectivaTotalMm,
     hidrogramas: hidrogramasResumen,
     hidrograma_principal: h0 ?? null,
   }));
@@ -3654,6 +3667,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
