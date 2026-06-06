@@ -2360,6 +2360,13 @@ const qaStatus = useMemo(() => {
        </div>
 
        <div className="text-slate-400">
+         <div style={{ marginTop: 6 }}>Roles Tc en HidroFlow:</div>
+         <div>• Tc global Índice: referencia hidrológica general.</div>
+         <div>• Tc operativo Q(t): valor usado por la ruta interna del hidrograma.</div>
+         <div>• Duración evento: 3 h para almacenamiento/regulación.</div>
+         <div>• Lag / forma SCS: parámetro derivado para forma temporal del hidrograma.</div>
+         <div>• Tc comparador: referencia especializada para coherencia Q-5.</div>
+
          <div>Escenarios Tc para Q(t):</div>
          <div>• Operativo Q(t): {tc_min.toFixed(1)} min · activo</div>
          <div>• Índice global: {Number.isFinite(params?.tcMedMin) ? params.tcMedMin.toFixed(1) : "—"} min · referencia</div>
