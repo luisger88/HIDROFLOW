@@ -1487,6 +1487,49 @@ const obtenerResultadoQMetodo = (metodo) => {
           ]
             .map((valor) => String(valor ?? "").trim())
             .find((valor) => valor && valor !== "—") ?? "SAN CRISTOBAL";
+          const faltantesExpediente = [];
+
+          if (!estacionIdfExpediente) {
+            faltantesExpediente.push("Estación IDF");
+          }
+
+          if (!Number.isFinite(areaKm2)) {
+            faltantesExpediente.push("Área de cuenca");
+          }
+
+          if (!Number.isFinite(peTotalMm)) {
+            faltantesExpediente.push("Lluvia efectiva total");
+          }
+
+          if (!Number.isFinite(volumenEsperadoM3)) {
+            faltantesExpediente.push("Volumen esperado");
+          }
+
+          if (!Array.isArray(filasQ5Markdown) || filasQ5Markdown.length === 0) {
+            faltantesExpediente.push("Tabla Q-5 auditada con filas reales");
+          }
+
+          if (
+            !Array.isArray(contextoBase?.metodo_racional?.resultados) ||
+            contextoBase.metodo_racional.resultados.length === 0
+          ) {
+            faltantesExpediente.push("Tabla Método Racional");
+          }
+
+          if (faltantesExpediente.length > 0) {
+            window.alert(
+              [
+                "Expediente hidrológico mínimo incompleto.",
+                "",
+                "Antes de copiar el expediente firmado, publique el contexto hidrológico completo desde Hidrogramas.",
+                "",
+                "Faltan:",
+                ...faltantesExpediente.map((item) => `- ${item}`)
+              ].join("\n")
+            );
+
+            return;
+          }
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
             "",
@@ -1641,6 +1684,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
