@@ -180,6 +180,35 @@ function convolucion(uh_ord, pe_list, dt_min){
 // HIDROGRAMAS UNITARIOS SINTÉTICOS — 4 MÉTODOS
 // ═══════════════════════════════════════════════════════════════════════════════
 
+function normalizarHUaMm(uh, areaKm2, dt_min) {
+  const volumenObjetivo = areaKm2 * 1000;
+  const volumenUH = (uh || []).reduce(
+    (suma, q) => suma + Number(q || 0) * (dt_min * 60),
+    0
+  );
+
+  if (
+    !Number.isFinite(volumenObjetivo) ||
+    volumenObjetivo <= 0 ||
+    !Number.isFinite(volumenUH) ||
+    volumenUH <= 0
+  ) {
+    return {
+      uh,
+      qp: Math.max(...(uh || [0])),
+      factor: 1
+    };
+  }
+
+  const factor = volumenObjetivo / volumenUH;
+  const uhNormalizado = uh.map((q) => +(Number(q || 0) * factor).toFixed(7));
+
+  return {
+    uh: uhNormalizado,
+    qp: +Math.max(...uhNormalizado).toFixed(7),
+    factor
+  };
+}
 // ① HU SCS (Chow et al., 1994 — GT-AS-004 §3.5)
 function calcHUSCS(area, tc_h, dt_min){
   const dh=dt_min/60, tp=0.5*dh+0.6*tc_h, qp=2.08*area/tp;
@@ -188,7 +217,8 @@ function calcHUSCS(area, tc_h, dt_min){
     const t=i*dh, tr=t/tp;
     return +( tr<=1 ? qp*Math.pow(tr,2.208) : qp*Math.exp(-1.3*(tr-1)) ).toFixed(7);
   });
-  return{tp,qp,Tc:tc_h*60,uh,metadata:{nombre:"SCS",color:C.accent2}};
+  const normalizado = normalizarHUaMm(uh, area, dt_min);
+  return{tp,qp:normalizado.qp,Tc:tc_h*60,uh:normalizado.uh,factorNormalizacion:normalizado.factor,metadata:{nombre:"SCS",color:C.accent2}};
 }
 
 // ② HU SCS MODIFICADO — SCS con coeficiente de pico Cp variable
@@ -201,7 +231,8 @@ function calcHUSCS_Mod(area, tc_h, dt_min, Cp=2.08){
     const t=i*dh, tr=t/tp;
     return +( tr<=1 ? qp*Math.pow(tr,2.208) : qp*Math.exp(-1.3*(tr-1)) ).toFixed(7);
   });
-  return{tp,qp,Tc:tc_h*60,uh,Cp,metadata:{nombre:"SCS Mod.",color:C.teal}};
+  const normalizado = normalizarHUaMm(uh, area, dt_min);
+  return{tp,qp:normalizado.qp,Tc:tc_h*60,uh:normalizado.uh,Cp,factorNormalizacion:normalizado.factor,metadata:{nombre:"SCS Mod.",color:C.teal}};
 }
 
 // ③ HU SNYDER (Chow et al. 1994 — versión Ct/Cp configurable)
@@ -216,7 +247,9 @@ function calcHUSnyder(area_mi2, L_mi, Lca_mi, dt_min, Ct=2.0, Cp=0.62){
     const t=i*dt_min/60, tr=t/tp;
     return +(tr<=1?qp*Math.pow(tr,2.5):qp*Math.exp(-2.0*(tr-1))).toFixed(7);
   });
-  return{tp,qp,tlag,W50,W75,Ct,Cp,uh,metadata:{nombre:"Snyder",color:C.accent3}};
+  const areaKm2 = area_mi2 / 0.386102;
+  const normalizado = normalizarHUaMm(uh, areaKm2, dt_min);
+  return{tp,qp:normalizado.qp,tlag,W50,W75,Ct,Cp,uh:normalizado.uh,factorNormalizacion:normalizado.factor,metadata:{nombre:"Snyder",color:C.accent3}};
 }
 
 // ④ HU WILLIAMS & HANN (Williams & Hann, 1973)
@@ -235,7 +268,8 @@ function calcHUWilliamsHann(area, L_km, S_m_km, CN, dt_min){
     const t=i*dt_min/60, tr=t/tp;
     return +(tr<=1?qp*Math.pow(tr,2.208):qp*Math.exp(-1.25*(tr-1))).toFixed(7);
   });
-  return{tp,qp,tc_h,Tc:tc_h*60,Ss,uh,metadata:{nombre:"Williams & Hann",color:C.gold}};
+  const normalizado = normalizarHUaMm(uh, area, dt_min);
+  return{tp,qp:normalizado.qp,tc_h,Tc:tc_h*60,Ss,uh:normalizado.uh,factorNormalizacion:normalizado.factor,metadata:{nombre:"Williams & Hann",color:C.gold}};
 }
 
 // ④b CLARK IUH (Clark, 1945) — Hidrograma Unitario Instantáneo
@@ -254,7 +288,8 @@ function calcClarkIUH(area, tc_h, dt_min, kR=1.2){
     return +Math.max(u,0).toFixed(7);
   });
   const tp   = tc_h;  // tiempo al pico
-  return{tp,qp,tc_h,R,kR,uh,metadata:{nombre:"Clark IUH",color:C.accent4}};
+  const normalizado = normalizarHUaMm(uh, area, dt_min);
+  return{tp,qp:normalizado.qp,tc_h,R,kR,uh:normalizado.uh,factorNormalizacion:normalizado.factor,metadata:{nombre:"Clark IUH",color:C.accent4}};
 }
 
 // ─── HIDROGRAMA COMPLETO (hietograma → convolución → Q(t)) ───────────────────
@@ -3683,6 +3718,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
