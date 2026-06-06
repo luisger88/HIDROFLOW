@@ -1257,6 +1257,10 @@ const obtenerResultadoQMetodo = (metodo) => {
       </div>
 
       <div style={{ ...estilos.muted, marginBottom: "10px" }}>
+        Revalidación post-masa: los volúmenes ya se contrastan contra la referencia física; Qp y Tp permanecen sujetos a revisión temporal mediante alerta Tc/Tp antes de cualquier adopción técnica.
+      </div>
+
+      <div style={{ ...estilos.muted, marginBottom: "10px" }}>
         ⚠ Control de magnitud pendiente: Qp, Tp y Volumen se muestran como resultados no adoptivos hasta validar unidades, integración y escala hidrológica.
       </div>
 
@@ -1264,6 +1268,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
