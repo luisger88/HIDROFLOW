@@ -786,6 +786,9 @@ const obtenerResultadoQMetodo = (metodo) => {
         <span style={estilos.chip}>
           {resultadoQ.Tp.toFixed(2)} min
         </span>
+        <div style={{ ...estilos.muted, marginTop: "4px" }}>
+          Tp/Tc: {tpRel !== null ? tpRel.toFixed(2) + "x" : "—"} · Dur. eq.: {Number.isFinite(resultadoQ.volumen) && Number.isFinite(resultadoQ.Qp) && resultadoQ.Qp > 0 ? (resultadoQ.volumen / resultadoQ.Qp / 60).toFixed(0) + " min" : "—"}
+        </div>
         {alertaTcTp ? (
           <div style={{ ...estilos.muted, marginTop: "4px" }}>
             ⚠ Alerta Tc/Tp
@@ -1268,6 +1271,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
