@@ -483,7 +483,8 @@ const rangoTcAgente =
     numeroIndicePositivo(resultadoRacionalTrIndice?.C) ??
     numeroIndicePositivo(C);
 
-  const qRacionalTrIndice = numeroIndicePositivo(resultadoRacionalTrIndice?.Q);
+  const qRacionalTrIndice =
+    numeroIndicePositivo(resultadoRacionalTrIndice?.Q);
   return (
     <aside style={estilos.panel}>
       <h2 style={estilos.titulo}>Índice Hidrológico de la Cuenca</h2>
@@ -991,6 +992,7 @@ const rangoTcAgente =
     </aside>
   );
 }
+
 
 
 

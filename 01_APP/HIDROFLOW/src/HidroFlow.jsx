@@ -2179,6 +2179,7 @@ const leerT = (punto, indice) => {
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
+    area_km2: Number.isFinite(Number(params?.area)) ? Number(params.area) : null,
     estacion_idf: name ?? null,
     lluvia_efectiva: Boolean(lluvEfect),
     hidrogramas: {
@@ -3551,6 +3552,7 @@ useEffect(() => {
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
+    area_km2: Number.isFinite(Number(params?.area)) ? Number(params.area) : null,
     estacion_idf: stn,
     tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
     periodos_retorno: TR_LIST,
@@ -3787,6 +3789,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
