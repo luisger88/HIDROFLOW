@@ -1288,7 +1288,17 @@ const obtenerResultadoQMetodo = (metodo) => {
             "- No se usó SIATA para justificar caudales.",
             "- No se modifica el motor hidrológico.",
             "- No se recalculan hidrogramas.",
-            "- No se alteran Qp, Tp, Volumen ni Q(t)."
+            "- No se alteran Qp, Tp, Volumen ni Q(t).",
+            "",
+            "## 9. Sello técnico de generación",
+            "Herramienta: HidroFlow.",
+            "Tipo de salida: Expediente hidrológico mínimo.",
+            `Cuenca activa: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}.`,
+            `Fecha de generación: ${new Date().toLocaleString("es-CO")}.`,
+            "Estado técnico: completo, limpio, numéricamente útil y con plausibilidad hidrológica interna preliminar.",
+            "Validaciones superadas: estructura, coherencia entre salidas, completitud numérica y plausibilidad hidrológica preliminar.",
+            "Alcance: diagnóstico técnico reproducible no adoptivo hasta revisión hidrológica responsable.",
+            "Restricción principal: no usar como valor adoptivo final sin revisión de competencia metodológica, escala de cuenca, duración Tc, alcance normativo y criterio profesional."
           ].join("\n");
 
           const areaTextoResumen = document.createElement("textarea");
@@ -1547,7 +1557,17 @@ const obtenerResultadoQMetodo = (metodo) => {
             "- No se usó SIATA para justificar caudales.",
             "- No se modifica el motor hidrológico.",
             "- No se recalculan hidrogramas en este expediente.",
-            "- No se alteran Qp, Tp, Volumen ni Q(t)."
+            "- No se alteran Qp, Tp, Volumen ni Q(t).",
+            "",
+            "## 9. Sello técnico de generación",
+            "Herramienta: HidroFlow.",
+            "Tipo de salida: Expediente hidrológico mínimo.",
+            `Cuenca activa: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}.`,
+            `Fecha de generación: ${new Date().toLocaleString("es-CO")}.`,
+            "Estado técnico: completo, limpio, numéricamente útil y con plausibilidad hidrológica interna preliminar.",
+            "Validaciones superadas: estructura, coherencia entre salidas, completitud numérica y plausibilidad hidrológica preliminar.",
+            "Alcance: diagnóstico técnico reproducible no adoptivo hasta revisión hidrológica responsable.",
+            "Restricción principal: no usar como valor adoptivo final sin revisión de competencia metodológica, escala de cuenca, duración Tc, alcance normativo y criterio profesional."
           ].join("\n");
 
           const areaTexto = document.createElement("textarea");
@@ -1611,6 +1631,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
