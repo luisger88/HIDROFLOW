@@ -1353,44 +1353,31 @@ const obtenerResultadoQMetodo = (metodo) => {
             "- No se alteran Qp, Tp, Volumen ni Q(t)."
           ].join("\n");
 
-          const copiarPorTextarea = () => {
-            const areaTexto = document.createElement("textarea");
-            areaTexto.value = textoExpediente;
-            areaTexto.setAttribute("readonly", "");
-            areaTexto.style.position = "fixed";
-            areaTexto.style.left = "-9999px";
-            areaTexto.style.top = "-9999px";
-            document.body.appendChild(areaTexto);
-            areaTexto.select();
+          const areaTexto = document.createElement("textarea");
+          areaTexto.value = textoExpediente;
+          areaTexto.setAttribute("readonly", "");
+          areaTexto.style.position = "fixed";
+          areaTexto.style.left = "-9999px";
+          areaTexto.style.top = "-9999px";
+          document.body.appendChild(areaTexto);
+          areaTexto.focus();
+          areaTexto.select();
 
-            let copiado = false;
+          let copiado = false;
 
-            try {
-              copiado = document.execCommand("copy");
-            } catch {
-              copiado = false;
-            }
-
-            document.body.removeChild(areaTexto);
-            return copiado;
-          };
-
-          if (navigator.clipboard?.writeText) {
-            navigator.clipboard.writeText(textoExpediente).then(() => {
-              window.prompt("Expediente hidrológico mínimo generado. Copie manualmente el texto:", textoExpediente);
-            }).catch(() => {
-              if (copiarPorTextarea()) {
-                window.prompt("Expediente hidrológico mínimo generado. Copie manualmente el texto:", textoExpediente);
-              } else {
-                window.prompt("Expediente hidrológico mínimo generado. Copie manualmente el texto:", textoExpediente);
-              }
-            });
-          } else if (copiarPorTextarea()) {
-            window.prompt("Expediente hidrológico mínimo generado. Copie manualmente el texto:", textoExpediente);
-          } else {
-            window.prompt("Expediente hidrológico mínimo generado. Copie manualmente el texto:", textoExpediente);
+          try {
+            copiado = document.execCommand("copy");
+          } catch {
+            copiado = false;
           }
-        }}
+
+          document.body.removeChild(areaTexto);
+
+          if (copiado) {
+            window.alert("Expediente hidrológico mínimo copiado al portapapeles.");
+          } else {
+            window.prompt("No fue posible copiar automáticamente. Copie manualmente el expediente hidrológico mínimo:", textoExpediente);
+          }        }}
         style={{ ...estilos.chip, cursor: "pointer", marginBottom: "10px", marginLeft: "8px" }}
       >
         Copiar expediente hidrológico mínimo
@@ -1427,6 +1414,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
