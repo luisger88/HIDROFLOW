@@ -1253,6 +1253,10 @@ const obtenerResultadoQMetodo = (metodo) => {
       })()}
 
       <div style={{ ...estilos.muted, marginBottom: "10px" }}>
+        Lectura metodológica post-conservación de masa: SCS se toma como método principal de referencia para hidrograma; SCS Mod. queda como variante ajustable; Snyder, Williams & Hann y Clark IUH se mantienen como métodos comparativos/referenciales hasta justificación técnica.
+      </div>
+
+      <div style={{ ...estilos.muted, marginBottom: "10px" }}>
         ⚠ Control de magnitud pendiente: Qp, Tp y Volumen se muestran como resultados no adoptivos hasta validar unidades, integración y escala hidrológica.
       </div>
 
@@ -1260,6 +1264,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
