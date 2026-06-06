@@ -439,6 +439,31 @@ const rangoTcAgente =
       fuente: "IndiceHidrologico"
     });
   };
+  const racionalContextoIndice = contexto?.metodo_racional ?? racional ?? null;
+
+  const resultadosRacionalIndice = Array.isArray(racionalContextoIndice?.resultados)
+    ? racionalContextoIndice.resultados
+    : [];
+
+  const resultadoRacionalTrIndice = resultadosRacionalIndice.find((fila) =>
+    Number(fila?.Tr) === Number(trActivoIndice)
+  );
+
+  const areaRacionalIndice = Number.isFinite(Number(racionalContextoIndice?.area_km2))
+    ? Number(racionalContextoIndice.area_km2)
+    : Number.isFinite(Number(area_km2))
+    ? Number(area_km2)
+    : null;
+
+  const coeficienteRacionalTrIndice = Number.isFinite(Number(resultadoRacionalTrIndice?.C))
+    ? Number(resultadoRacionalTrIndice.C)
+    : Number.isFinite(Number(C))
+    ? Number(C)
+    : null;
+
+  const qRacionalTrIndice = Number.isFinite(Number(resultadoRacionalTrIndice?.Q))
+    ? Number(resultadoRacionalTrIndice.Q)
+    : null;
 
   return (
     <aside style={estilos.panel}>
@@ -947,6 +972,7 @@ const rangoTcAgente =
     </aside>
   );
 }
+
 
 
 
