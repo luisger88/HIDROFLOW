@@ -2103,17 +2103,33 @@ const leerT = (punto, indice) => {
     : [];
 
     
-  const lluviaEfectivaTotalMm = Array.isArray(lluvEfect)
-    ? lluvEfect.reduce((suma, valor) => {
-        const numero = Number(
-          typeof valor === "object"
-            ? valor?.pe ?? valor?.Pe ?? valor?.pn ?? valor?.Pn ?? valor?.valor ?? valor?.y
-            : valor
-        );
+  const valoresLluviaEfectivaMm = Array.isArray(lluvEfect)
+    ? lluvEfect
+        .map((valor) =>
+          Number(
+            typeof valor === "object"
+              ? valor?.pe ?? valor?.Pe ?? valor?.pn ?? valor?.Pn ?? valor?.valor ?? valor?.y
+              : valor
+          )
+        )
+        .filter((numero) => Number.isFinite(numero) && numero >= 0)
+    : [];
 
-        return Number.isFinite(numero) ? suma + numero : suma;
-      }, 0)
+  const sumaLluviaEfectivaMm = valoresLluviaEfectivaMm.reduce(
+    (suma, numero) => suma + numero,
+    0
+  );
+
+  const maxLluviaEfectivaMm = valoresLluviaEfectivaMm.length
+    ? Math.max(...valoresLluviaEfectivaMm)
     : null;
+
+  const lluviaEfectivaTotalMm =
+    maxLluviaEfectivaMm !== null &&
+    maxLluviaEfectivaMm > 0 &&
+    sumaLluviaEfectivaMm / maxLluviaEfectivaMm > 3
+      ? maxLluviaEfectivaMm
+      : sumaLluviaEfectivaMm || null;
 
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
@@ -3667,6 +3683,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
