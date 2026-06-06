@@ -3595,9 +3595,14 @@ useEffect(() => {
 
     tc_metodos: calcTc(params),
     
-    lluvia_efectiva: false,
-    hidrogramas: [],
-    hidrograma_principal: null,
+    lluvia_efectiva: previo?.lluvia_efectiva ?? false,
+    lluvia_efectiva_total_mm: previo?.lluvia_efectiva_total_mm ?? null,
+    hidrogramas: previo?.hidrogramas ?? {
+      fuente: "pendiente",
+      resultados: []
+    },
+    hidrogramas_resumen: previo?.hidrogramas_resumen ?? null,
+    hidrograma_principal: previo?.hidrograma_principal ?? null,
   }));
 }, [onContextoComparador, params, stn]);
 // Publicación base Tc para despertar el Índice Hidrológico global.
@@ -3772,6 +3777,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
