@@ -3505,9 +3505,40 @@ useEffect(() => {
     ? params.CN
     : 75;
 
+  const metodosTcRacional = calcTc(params).filter((r) => Number.isFinite(r?.h) && r.h > 0);
+  const tcRacionalMin =
+    metodosTcRacional.length > 0
+      ? metodosTcRacional.reduce((suma, metodo) => suma + Number(metodo.min || 0), 0) /
+        metodosTcRacional.length
+      : null;
+
+  const estacionRacional = ESTACIONES_EPM[stn];
+
+  const resultadosRacionalExportable =
+    estacionRacional &&
+    Number.isFinite(Number(params?.area)) &&
+    Number.isFinite(Number(params?.CN)) &&
+    Number.isFinite(Number(tcRacionalMin)) &&
+    Number(tcRacionalMin) > 0
+      ? calcRacional(
+          estacionRacional,
+          Number(params.area),
+          Number(tcRacionalMin),
+          Number(params.CN)
+        )
+      : [];
   onContextoComparador({
     fuente: "motor HidroFlow",
     estacion_idf: stn,
+    metodo_racional: {
+      fuente: "calcRacional",
+      uso: "contraste global independiente de caudal pico",
+      estado: "informativo_no_adoptivo",
+      tc_min: Number.isFinite(Number(tcRacionalMin))
+        ? Number(Number(tcRacionalMin).toFixed(2))
+        : null,
+      resultados: resultadosRacionalExportable
+    },
 
     cuencaNombre:
       params?.nombreCuenca ??
@@ -3727,6 +3758,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
