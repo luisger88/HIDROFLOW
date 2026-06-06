@@ -1370,7 +1370,11 @@ const obtenerResultadoQMetodo = (metodo) => {
               ? `contraste hidrológico; volumen en escala; ${estadoTemporal}; revisar efecto de almacenamiento.`
               : `método comparativo; ${estadoTemporal}.`;
 
-          const metodosQ5Expediente = metodos.filter((metodo) => metodo.tipo === "q");
+          const metodosQ5Expediente = metodos.filter(
+            (metodo) =>
+              metodo.tipo === "q" &&
+              !String(metodo.nombre ?? "").toLowerCase().includes("racional")
+          );
 
           const tablaQ5Markdown = [
             "| Método | Qp | Tp | Volumen | Estado temporal | Dictamen |",
@@ -1452,7 +1456,14 @@ const obtenerResultadoQMetodo = (metodo) => {
                   "Estado: sección informativa; consultar módulo Método Racional."
                 ]),
             "",
-            "## 7. Restricciones técnicas",
+            "",
+            "## 7. Contraste Q-5 vs Método Racional",
+            "Q-5: bloque de hidrogramas auditados. Evalúa Q(t), Qp, Tp, Volumen, estado temporal y dictamen por método.",
+            "Método Racional: contraste global independiente de caudal pico basado en intensidad, coeficiente C, área y Tc.",
+            "Lectura técnica: Q-5 y Método Racional son complementarios, pero no equivalentes.",
+            "Criterio de adopción: ningún resultado debe adoptarse automáticamente sin revisión de competencia metodológica, escala de cuenca, duración Tc y alcance normativo.",
+            "",
+            "## 8. Restricciones técnicas",
             "- No se usaron caudales externos como fundamento.",
             "- No se usó SIATA para justificar caudales.",
             "- No se modifica el motor hidrológico.",
@@ -1521,6 +1532,8 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
+
 
 
 
