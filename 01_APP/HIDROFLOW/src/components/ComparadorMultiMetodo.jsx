@@ -1426,8 +1426,8 @@ const obtenerResultadoQMetodo = (metodo) => {
             ...tablaQ5Markdown,
             "",
             "## 6. Restricciones técnicas",
-            "- No se usan caudales externos como fundamento.",
-            "- SIATA no se usa para justificar caudales.",
+            "- No se usaron caudales externos como fundamento.",
+            "- No se usó SIATA para justificar caudales.",
             "- No se modifica el motor hidrológico.",
             "- No se recalculan hidrogramas en este expediente.",
             "- No se alteran Qp, Tp, Volumen ni Q(t)."
@@ -1494,6 +1494,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
