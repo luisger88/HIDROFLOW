@@ -757,10 +757,10 @@ const rangoTcAgente =
                     ? "1px solid rgba(34, 211, 238, 0.95)"
                     : estilos.chip.border,
                   background: activoTr
-                    ? "rgba(34, 211, 238, 0.22)"
+                    ? "rgba(34, 211, 238, 0.32)"
                     : estilos.chip.background,
                   boxShadow: activoTr
-                    ? "0 0 0 1px rgba(34, 211, 238, 0.35), 0 0 12px rgba(34, 211, 238, 0.18)"
+                    ? "0 0 0 1px rgba(34, 211, 238, 0.60), 0 0 14px rgba(34, 211, 238, 0.30)"
                     : "none",
                   transform: activoTr ? "translateY(-1px)" : "none",
                   transition: "background 120ms ease, border 120ms ease, box-shadow 120ms ease, transform 120ms ease"
@@ -771,6 +771,10 @@ const rangoTcAgente =
             );
           })}
         </div>
+
+        <p style={{ ...estilos.muted, marginTop: 8 }}>
+          Tr global activo: <strong style={{ color: "#67e8f9" }}>{trActivoIndice} años</strong>
+        </p>
 
         <p style={estilos.muted}>
           Escenarios activos para cálculo hidrológico.
@@ -929,5 +933,6 @@ const rangoTcAgente =
     </aside>
   );
 }
+
 
 
