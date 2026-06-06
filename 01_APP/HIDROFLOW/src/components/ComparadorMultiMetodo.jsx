@@ -1429,9 +1429,28 @@ const obtenerResultadoQMetodo = (metodo) => {
             "",
             "## 6. Método Racional — contraste global independiente",
             "Uso: contraste global independiente de caudal pico.",
-            "Disponibilidad: resultados consultables en el módulo Método Racional.",
             "Relación con Q-5: no pertenece al bloque Q-5 de hidrogramas.",
             "Criterio técnico: no adoptivo principal para esta cuenca sin revisión de competencia, duración Tc y alcance normativo.",
+            ...(Array.isArray(contextoBase?.metodo_racional?.resultados) &&
+            contextoBase.metodo_racional.resultados.length > 0
+              ? [
+                  `Tc racional exportado: ${
+                    Number.isFinite(Number(contextoBase?.metodo_racional?.tc_min))
+                      ? Number(contextoBase.metodo_racional.tc_min).toFixed(2) + " min"
+                      : "—"
+                  }`,
+                  "",
+                  "Tabla Método Racional:",
+                  "| Tr | I | P | C | Q |",
+                  "|---:|---:|---:|---:|---:|",
+                  ...contextoBase.metodo_racional.resultados.map((r) =>
+                    `| ${r.Tr} | ${formatearNumeroExpediente(r.I)} mm/h | ${formatearNumeroExpediente(r.P)} mm | ${formatearNumeroExpediente(r.C, 4)} | ${formatearNumeroExpediente(r.Q)} m³/s |`
+                  )
+                ]
+              : [
+                  "Disponibilidad: resultados no disponibles en el contexto exportable.",
+                  "Estado: sección informativa; consultar módulo Método Racional."
+                ]),
             "",
             "## 7. Restricciones técnicas",
             "- No se usaron caudales externos como fundamento.",
@@ -1502,6 +1521,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
