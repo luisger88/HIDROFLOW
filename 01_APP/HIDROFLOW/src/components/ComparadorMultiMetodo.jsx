@@ -1208,6 +1208,22 @@ const obtenerResultadoQMetodo = (metodo) => {
 
       {renderTabla("Bloque Tc-15 · Tiempo de concentración / respuesta", "tc")}
 
+      {(() => {
+        const areaKm2 = Number(contextoBase?.area_km2);
+        const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
+        const volumenEsperadoM3 =
+          Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
+            ? areaKm2 * peTotalMm * 1000
+            : null;
+
+        return volumenEsperadoM3 ? (
+          <div style={{ ...estilos.muted, marginBottom: "10px" }}>
+            Referencia de escala: Volumen esperado ≈ {volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 })} m³
+            {" "}({peTotalMm.toFixed(2)} mm × {areaKm2.toFixed(4)} km² × 1000).
+          </div>
+        ) : null;
+      })()}
+
       <div style={{ ...estilos.muted, marginBottom: "10px" }}>
         ⚠ Control de magnitud pendiente: Qp, Tp y Volumen se muestran como resultados no adoptivos hasta validar unidades, integración y escala hidrológica.
       </div>
@@ -1216,6 +1232,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 

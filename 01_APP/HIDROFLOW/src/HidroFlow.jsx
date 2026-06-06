@@ -2103,10 +2103,39 @@ const leerT = (punto, indice) => {
     : [];
 
     
+  const valoresLluviaEfectivaMm = Array.isArray(lluvEfect)
+    ? lluvEfect
+        .map((valor) =>
+          Number(
+            typeof valor === "object"
+              ? valor?.pe ?? valor?.Pe ?? valor?.pn ?? valor?.Pn ?? valor?.valor ?? valor?.y
+              : valor
+          )
+        )
+        .filter((numero) => Number.isFinite(numero) && numero >= 0)
+    : [];
+
+  const sumaLluviaEfectivaMm = valoresLluviaEfectivaMm.reduce(
+    (suma, numero) => suma + numero,
+    0
+  );
+
+  const maxLluviaEfectivaMm = valoresLluviaEfectivaMm.length
+    ? Math.max(...valoresLluviaEfectivaMm)
+    : null;
+
+  const lluviaEfectivaTotalMm =
+    maxLluviaEfectivaMm !== null &&
+    maxLluviaEfectivaMm > 0 &&
+    sumaLluviaEfectivaMm / maxLluviaEfectivaMm > 3
+      ? maxLluviaEfectivaMm
+      : sumaLluviaEfectivaMm || null;
+
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
     lluvia_efectiva: Boolean(lluvEfect),
+    lluvia_efectiva_total_mm: lluviaEfectivaTotalMm,
     hidrogramas: hidrogramasResumen,
     hidrograma_principal: h0 ?? null,
   }));
@@ -3654,6 +3683,8 @@ useEffect(() => {
     </div>
   </div>);
 }
+
+
 
 
 
