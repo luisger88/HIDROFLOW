@@ -781,6 +781,15 @@ const obtenerResultadoQMetodo = (metodo) => {
     const alertaTcTp =
       tpRel !== null && (tpRel < 0.5 || tpRel > 1.5);
 
+    const estadoTemporal =
+      tpRel === null
+        ? "sin referencia temporal"
+        : tpRel < 0.5
+        ? "respuesta rápida"
+        : tpRel <= 1.5
+        ? "rango temporal razonable"
+        : "respuesta retardada";
+
     return (
       <div>
         <span style={estilos.chip}>
@@ -788,6 +797,9 @@ const obtenerResultadoQMetodo = (metodo) => {
         </span>
         <div style={{ ...estilos.muted, marginTop: "4px" }}>
           Tp/Tc: {tpRel !== null ? tpRel.toFixed(2) + "x" : "—"} · Dur. eq.: {Number.isFinite(resultadoQ.volumen) && Number.isFinite(resultadoQ.Qp) && resultadoQ.Qp > 0 ? (resultadoQ.volumen / resultadoQ.Qp / 60).toFixed(0) + " min" : "—"}
+        </div>
+        <div style={{ ...estilos.muted, marginTop: "4px" }}>
+          Estado temporal: {estadoTemporal}
         </div>
         {alertaTcTp ? (
           <div style={{ ...estilos.muted, marginTop: "4px" }}>
@@ -1271,6 +1283,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
