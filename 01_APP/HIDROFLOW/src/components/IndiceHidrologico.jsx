@@ -439,32 +439,51 @@ const rangoTcAgente =
       fuente: "IndiceHidrologico"
     });
   };
-  const racionalContextoIndice = contexto?.metodo_racional ?? racional ?? null;
+  const numeroIndiceSeguro = (valor) => {
+    if (valor === null || valor === undefined || valor === "") {
+      return null;
+    }
+
+    const numero = Number(valor);
+    return Number.isFinite(numero) ? numero : null;
+  };
+
+  const numeroIndicePositivo = (valor) => {
+    const numero = numeroIndiceSeguro(valor);
+    return numero !== null && numero > 0 ? numero : null;
+  };
+
+  const racionalContextoIndice =
+    contexto?.metodo_racional ??
+    contexto?.racional ??
+    contexto?.racional_exportable ??
+    racional ??
+    null;
 
   const resultadosRacionalIndice = Array.isArray(racionalContextoIndice?.resultados)
     ? racionalContextoIndice.resultados
+    : Array.isArray(racionalContextoIndice?.tabla)
+    ? racionalContextoIndice.tabla
     : [];
 
+  const trActivoNormalizadoIndice = numeroIndiceSeguro(trActivoIndice) ?? 25;
+
   const resultadoRacionalTrIndice = resultadosRacionalIndice.find((fila) =>
-    Number(fila?.Tr) === Number(trActivoIndice)
+    Math.abs(Number(fila?.Tr) - trActivoNormalizadoIndice) < 0.001
   );
 
-  const areaRacionalIndice = Number.isFinite(Number(racionalContextoIndice?.area_km2))
-    ? Number(racionalContextoIndice.area_km2)
-    : Number.isFinite(Number(area_km2))
-    ? Number(area_km2)
-    : null;
+  const areaRacionalIndice =
+    numeroIndicePositivo(racionalContextoIndice?.area_km2) ??
+    numeroIndicePositivo(contexto?.area_km2) ??
+    numeroIndicePositivo(contexto?.area) ??
+    numeroIndicePositivo(contexto?.cuenca?.area_km2) ??
+    numeroIndicePositivo(area_km2);
 
-  const coeficienteRacionalTrIndice = Number.isFinite(Number(resultadoRacionalTrIndice?.C))
-    ? Number(resultadoRacionalTrIndice.C)
-    : Number.isFinite(Number(C))
-    ? Number(C)
-    : null;
+  const coeficienteRacionalTrIndice =
+    numeroIndicePositivo(resultadoRacionalTrIndice?.C) ??
+    numeroIndicePositivo(C);
 
-  const qRacionalTrIndice = Number.isFinite(Number(resultadoRacionalTrIndice?.Q))
-    ? Number(resultadoRacionalTrIndice.Q)
-    : null;
-
+  const qRacionalTrIndice = numeroIndicePositivo(resultadoRacionalTrIndice?.Q);
   return (
     <aside style={estilos.panel}>
       <h2 style={estilos.titulo}>Índice Hidrológico de la Cuenca</h2>
@@ -972,6 +991,7 @@ const rangoTcAgente =
     </aside>
   );
 }
+
 
 
 
