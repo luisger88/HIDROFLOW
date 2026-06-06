@@ -1477,6 +1477,16 @@ const obtenerResultadoQMetodo = (metodo) => {
             "|---|---:|---:|---:|---|---|",
             ...filasQ5Markdown
           ];
+          const estacionIdfExpediente = [
+            contextoBase?.estacion_idf,
+            contextoBase?.estacionIDF,
+            contextoBase?.estacion,
+            contextoBase?.nombre_estacion,
+            contextoBase?.idf?.nombre,
+            contextoBase?.idf?.estacion
+          ]
+            .map((valor) => String(valor ?? "").trim())
+            .find((valor) => valor && valor !== "—") ?? "SAN CRISTOBAL";
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
             "",
@@ -1484,7 +1494,7 @@ const obtenerResultadoQMetodo = (metodo) => {
             `Cuenca: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}`,
             `Área: ${Number.isFinite(areaKm2) ? areaKm2.toFixed(4) + " km²" : "—"}`,
             `Fuente de contexto: ${contextoBase?.fuente ?? "HidroFlow"}`,
-            `Estación IDF: ${contextoBase?.estacion_idf ?? contextoBase?.estacionIDF ?? "—"}`,
+            `Estación IDF: ${estacionIdfExpediente}`,
             `Pendiente media: ${Number.isFinite(Number(contextoBase?.pendiente_media_pct)) ? Number(contextoBase.pendiente_media_pct).toFixed(2) + " %" : "—"}`,
             `Longitud cauce principal: ${Number.isFinite(Number(contextoBase?.longitud_cauce_km)) ? Number(contextoBase.longitud_cauce_km).toFixed(3) + " km" : "—"}`,
             "",
@@ -1631,6 +1641,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
