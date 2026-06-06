@@ -1290,7 +1290,31 @@ const obtenerResultadoQMetodo = (metodo) => {
             "- No se alteran Qp, Tp, Volumen ni Q(t)."
           ].join("\n");
 
-          navigator.clipboard?.writeText(textoResumenQ5);
+          const areaTextoResumen = document.createElement("textarea");
+          areaTextoResumen.value = textoResumenQ5;
+          areaTextoResumen.setAttribute("readonly", "");
+          areaTextoResumen.style.position = "fixed";
+          areaTextoResumen.style.left = "-9999px";
+          areaTextoResumen.style.top = "-9999px";
+          document.body.appendChild(areaTextoResumen);
+          areaTextoResumen.focus();
+          areaTextoResumen.select();
+
+          let resumenCopiado = false;
+
+          try {
+            resumenCopiado = document.execCommand("copy");
+          } catch {
+            resumenCopiado = false;
+          }
+
+          document.body.removeChild(areaTextoResumen);
+
+          if (resumenCopiado) {
+            window.alert("Resumen técnico Q-5 copiado al portapapeles.");
+          } else {
+            window.prompt("No fue posible copiar automáticamente. Copie manualmente el resumen técnico Q-5:", textoResumenQ5);
+          }
         }}
         style={{ ...estilos.chip, cursor: "pointer", marginBottom: "10px" }}
       >
@@ -1470,6 +1494,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
