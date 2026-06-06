@@ -1383,17 +1383,89 @@ const obtenerResultadoQMetodo = (metodo) => {
               !String(metodo.nombre ?? "").toLowerCase().includes("racional")
           );
 
-          const tablaQ5Markdown = [
-            "| Método | Qp | Tp | Volumen | Estado temporal | Dictamen |",
-            "|---|---:|---:|---:|---|---|",
-            ...metodosQ5Expediente.map((metodo) => {
+          const obtenerCandidatosQ5Contexto = () => {
+            const bruto = contextoBase?.hidrogramas;
+
+            return Array.isArray(bruto)
+              ? bruto
+              : Array.isArray(bruto?.metodos)
+              ? bruto.metodos
+              : Array.isArray(bruto?.resultados)
+              ? bruto.resultados
+              : [];
+          };
+
+          const construirFilaQ5Expediente = (nombreMetodo, resultadoQ, dictamenMetodo = null) => {
+            const estadoTemporal = obtenerEstadoTemporalExpediente(resultadoQ);
+            const dictamen =
+              dictamenMetodo ??
+              obtenerDictamenQ5Expediente({ nombre: nombreMetodo }, estadoTemporal);
+
+            return `| ${String(nombreMetodo ?? "Método Q-5").replaceAll("|", "/")} | ${formatearNumeroExpediente(resultadoQ?.Qp)} m³/s | ${formatearNumeroExpediente(resultadoQ?.Tp)} min | ${formatearNumeroExpediente(resultadoQ?.volumen)} m³ | ${estadoTemporal} | ${dictamen} |`;
+          };
+
+          const filasQ5DesdeCatalogo = metodosQ5Expediente
+            .map((metodo) => {
               const resultadoQ = obtenerResultadoQMetodo(metodo);
               const estadoTemporal = obtenerEstadoTemporalExpediente(resultadoQ);
               const dictamen = obtenerDictamenQ5Expediente(metodo, estadoTemporal);
               const nombreMetodo = String(metodo.nombre ?? "Método Q-5").replaceAll("|", "/");
 
-              return `| ${nombreMetodo} | ${formatearNumeroExpediente(resultadoQ?.Qp)} m³/s | ${formatearNumeroExpediente(resultadoQ?.Tp)} min | ${formatearNumeroExpediente(resultadoQ?.volumen)} m³ | ${estadoTemporal} | ${dictamen} |`;
+              return construirFilaQ5Expediente(nombreMetodo, resultadoQ, dictamen);
             })
+            .filter((fila) => !fila.includes("| — m³/s |"));
+
+          const filasQ5DesdeContexto = obtenerCandidatosQ5Contexto()
+            .filter((h) => !String(h?.metodo ?? h?.nombre ?? h?.label ?? h?.name ?? "").toLowerCase().includes("racional"))
+            .map((h) => {
+              const nombreMetodo =
+                h?.metodo ??
+                h?.nombre ??
+                h?.label ??
+                h?.name ??
+                h?.id ??
+                "Método Q-5";
+
+              const resultadoQ = {
+                Qp:
+                  h?.Qp ??
+                  h?.qp ??
+                  h?.Qpico ??
+                  h?.qPico ??
+                  h?.q_pico ??
+                  h?.caudalPico ??
+                  h?.caudal_pico,
+                Tp:
+                  h?.Tp ??
+                  h?.tp ??
+                  h?.tPico ??
+                  h?.TPico ??
+                  h?.t_pico ??
+                  h?.tiempoPico ??
+                  h?.tiempo_pico,
+                volumen:
+                  h?.volumen ??
+                  h?.V ??
+                  h?.vol ??
+                  h?.volume ??
+                  h?.volTotal ??
+                  h?.vol_total ??
+                  h?.volumenTotal
+              };
+
+              return construirFilaQ5Expediente(nombreMetodo, resultadoQ);
+            })
+            .filter((fila) => !fila.includes("| — m³/s |"));
+
+          const filasQ5Markdown =
+            filasQ5DesdeCatalogo.length > 0
+              ? filasQ5DesdeCatalogo
+              : filasQ5DesdeContexto;
+
+          const tablaQ5Markdown = [
+            "| Método | Qp | Tp | Volumen | Estado temporal | Dictamen |",
+            "|---|---:|---:|---:|---|---|",
+            ...filasQ5Markdown
           ];
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
@@ -1539,6 +1611,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 

@@ -2165,14 +2165,27 @@ const leerT = (punto, indice) => {
     sumaLluviaEfectivaMm / maxLluviaEfectivaMm > 3
       ? maxLluviaEfectivaMm
       : sumaLluviaEfectivaMm || null;
+  const hidrogramasQ5Exportables = (hidros || []).map((h) => ({
+    metodo: h?.metodo ?? "Método Q-5",
+    Qpico: h?.Qpico,
+    tPico: h?.tPico,
+    volTotal: h?.volTotal,
+    Qp: h?.Qpico,
+    Tp: h?.tPico,
+    volumen: h?.volTotal
+  }));
 
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
     estacion_idf: name ?? null,
     lluvia_efectiva: Boolean(lluvEfect),
+    hidrogramas: {
+      fuente: "ModHidrogramas",
+      resultados: hidrogramasQ5Exportables
+    },
     lluvia_efectiva_total_mm: lluviaEfectivaTotalMm,
-    hidrogramas: hidrogramasResumen,
+    hidrogramas_resumen: hidrogramasResumen,
     hidrograma_principal: h0 ?? null,
   }));
 }, [onContextoComparador, hidros, h0, lluvEfect, dtMin]);
@@ -3759,6 +3772,8 @@ useEffect(() => {
     </div>
   </div>);
 }
+
+
 
 
 
