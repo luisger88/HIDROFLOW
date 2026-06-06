@@ -1296,6 +1296,66 @@ const obtenerResultadoQMetodo = (metodo) => {
       >
         Copiar resumen técnico Q-5
       </button>
+      <button
+        type="button"
+        onClick={() => {
+          const areaKm2 = Number(contextoBase?.area_km2);
+          const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
+          const volumenEsperadoM3 =
+            Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
+              ? areaKm2 * peTotalMm * 1000
+              : null;
+
+          const textoExpediente = [
+            "# Expediente hidrológico mínimo — Cuenca activa",
+            "",
+            "## 1. Identificación",
+            `Cuenca: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}`,
+            `Área: ${Number.isFinite(areaKm2) ? areaKm2.toFixed(4) + " km²" : "—"}`,
+            `Fuente de contexto: ${contextoBase?.fuente ?? "HidroFlow"}`,
+            "",
+            "## 2. Parámetros hidrológicos base",
+            `CN: ${contextoBase?.CN ?? "—"}`,
+            `CN base: ${contextoBase?.CN_base ?? "—"}`,
+            `CN efectivo: ${contextoBase?.CN_efectivo ?? "—"}`,
+            `AMC: ${contextoBase?.AMC ?? "—"}`,
+            "",
+            "## 3. Tiempo de concentración y roles Tc",
+            `Tc comparador: ${Tc_final !== null && Tc_final !== undefined ? Number(Tc_final).toFixed(1) + " min" : "—"}`,
+            "Roles Tc:",
+            "- Tc global Índice: referencia hidrológica general.",
+            "- Tc operativo Q(t): ruta interna del hidrograma.",
+            "- Duración evento: 3 h para almacenamiento/regulación.",
+            "- Lag / forma SCS: parámetro derivado para forma temporal.",
+            "- Tc comparador: referencia especializada para coherencia Q-5.",
+            "",
+            "## 4. Volumen de referencia",
+            `Lluvia efectiva total: ${Number.isFinite(peTotalMm) ? peTotalMm.toFixed(2) + " mm" : "—"}`,
+            `Volumen esperado: ${volumenEsperadoM3 ? volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 }) + " m³" : "—"}`,
+            "Fórmula: Pe(mm) × Área(km²) × 1000.",
+            "",
+            "## 5. Resumen Q-5 auditado",
+            "Estado general: diagnóstico no adoptivo.",
+            "SCS Unit Hydrograph: candidato principal de referencia.",
+            "SCS Mod.: variante ajustable.",
+            "Snyder, Williams & Hann y Clark IUH: métodos comparativos/referenciales.",
+            "Masa y volumen: controlados frente a referencia física.",
+            "Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
+            "",
+            "## 6. Restricciones técnicas",
+            "- No se usan caudales externos como fundamento.",
+            "- SIATA no se usa para justificar caudales.",
+            "- No se modifica el motor hidrológico.",
+            "- No se recalculan hidrogramas en este expediente.",
+            "- No se alteran Qp, Tp, Volumen ni Q(t)."
+          ].join("\n");
+
+          navigator.clipboard?.writeText(textoExpediente);
+        }}
+        style={{ ...estilos.chip, cursor: "pointer", marginBottom: "10px", marginLeft: "8px" }}
+      >
+        Copiar expediente hidrológico mínimo
+      </button>
       {(() => {
         const areaKm2 = Number(contextoBase?.area_km2);
         const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
@@ -1328,6 +1388,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
