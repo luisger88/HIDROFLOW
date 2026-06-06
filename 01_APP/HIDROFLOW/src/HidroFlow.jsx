@@ -24,7 +24,6 @@ import {
 } from "recharts";
 
 import HidrogramaResultado from "./components/HidrogramaResultado";
-import { getTrState, subscribeTr } from "./agents/trAgent";
 import { getTcState, setTcState } from "./agents/tcAgent";
 
 import {
