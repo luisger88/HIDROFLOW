@@ -1306,6 +1306,59 @@ const obtenerResultadoQMetodo = (metodo) => {
               ? areaKm2 * peTotalMm * 1000
               : null;
 
+          const formatearNumeroExpediente = (valor, decimales = 2) =>
+            Number.isFinite(Number(valor))
+              ? Number(valor).toLocaleString("es-CO", {
+                  minimumFractionDigits: decimales,
+                  maximumFractionDigits: decimales
+                })
+              : "—";
+
+          const obtenerEstadoTemporalExpediente = (resultadoQ) => {
+            const tcReferencia = Number(Tc_final);
+            const tpRel =
+              Number.isFinite(resultadoQ?.Tp) &&
+              Number.isFinite(tcReferencia) &&
+              tcReferencia > 0
+                ? resultadoQ.Tp / tcReferencia
+                : null;
+
+            return tpRel === null
+              ? "sin referencia temporal"
+              : tpRel < 0.5
+              ? "respuesta rápida"
+              : tpRel <= 1.5
+              ? "rango temporal razonable"
+              : "respuesta retardada";
+          };
+
+          const obtenerDictamenQ5Expediente = (metodo, estadoTemporal) =>
+            metodo.nombre?.includes("SCS Unit")
+              ? `candidato principal; volumen en escala; ${estadoTemporal}.`
+              : metodo.nombre?.includes("SCS Mod")
+              ? `variante ajustable; volumen en escala; ${estadoTemporal}.`
+              : metodo.nombre?.includes("Snyder")
+              ? `comparativo/referencial; volumen en escala; ${estadoTemporal}; requiere justificación técnica.`
+              : metodo.nombre?.includes("Williams")
+              ? `comparativo sensible; volumen en escala; ${estadoTemporal}; revisar concentración del pico.`
+              : metodo.nombre?.includes("Clark")
+              ? `contraste hidrológico; volumen en escala; ${estadoTemporal}; revisar efecto de almacenamiento.`
+              : `método comparativo; ${estadoTemporal}.`;
+
+          const metodosQ5Expediente = metodos.filter((metodo) => metodo.tipo === "q");
+
+          const tablaQ5Markdown = [
+            "| Método | Qp | Tp | Volumen | Estado temporal | Dictamen |",
+            "|---|---:|---:|---:|---|---|",
+            ...metodosQ5Expediente.map((metodo) => {
+              const resultadoQ = obtenerResultadoQMetodo(metodo);
+              const estadoTemporal = obtenerEstadoTemporalExpediente(resultadoQ);
+              const dictamen = obtenerDictamenQ5Expediente(metodo, estadoTemporal);
+              const nombreMetodo = String(metodo.nombre ?? "Método Q-5").replaceAll("|", "/");
+
+              return `| ${nombreMetodo} | ${formatearNumeroExpediente(resultadoQ?.Qp)} m³/s | ${formatearNumeroExpediente(resultadoQ?.Tp)} min | ${formatearNumeroExpediente(resultadoQ?.volumen)} m³ | ${estadoTemporal} | ${dictamen} |`;
+            })
+          ];
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
             "",
@@ -1344,6 +1397,9 @@ const obtenerResultadoQMetodo = (metodo) => {
             "Snyder, Williams & Hann y Clark IUH: métodos comparativos/referenciales.",
             "Masa y volumen: controlados frente a referencia física.",
             "Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
+            "",
+            "Tabla Q-5 auditada:",
+            ...tablaQ5Markdown,
             "",
             "## 6. Restricciones técnicas",
             "- No se usan caudales externos como fundamento.",
@@ -1414,6 +1470,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
