@@ -1264,6 +1264,9 @@ const obtenerResultadoQMetodo = (metodo) => {
 
       {renderTabla("Bloque Tc-15 · Tiempo de concentración / respuesta", "tc")}
 
+      <div style={{ ...estilos.muted, marginBottom: "10px" }}>
+        Resumen ejecutivo Q-5 post auditoría: SCS Unit Hydrograph queda como candidato principal de referencia; SCS Mod. como variante ajustable; Snyder, Williams & Hann y Clark IUH como comparativos/referenciales. La masa y el volumen están controlados frente a la referencia física; Qp y Tp permanecen sujetos a revisión temporal antes de adopción técnica. Estado general: diagnóstico no adoptivo.
+      </div>
       {(() => {
         const areaKm2 = Number(contextoBase?.area_km2);
         const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
@@ -1296,6 +1299,7 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
 
 
 
