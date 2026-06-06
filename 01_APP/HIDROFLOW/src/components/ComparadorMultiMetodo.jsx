@@ -1281,6 +1281,7 @@ const obtenerResultadoQMetodo = (metodo) => {
             "- Snyder, Williams & Hann y Clark IUH: métodos comparativos/referenciales.",
             "- Masa y volumen: controlados frente a la referencia física.",
             "- Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
+            "- Método Racional: contraste global independiente de caudal pico; no forma parte del bloque Q-5 de hidrogramas.",
             "",
             "Restricciones:",
             "- No se usaron caudales externos como fundamento.",
@@ -1426,8 +1427,8 @@ const obtenerResultadoQMetodo = (metodo) => {
             ...tablaQ5Markdown,
             "",
             "## 6. Restricciones técnicas",
-            "- No se usan caudales externos como fundamento.",
-            "- SIATA no se usa para justificar caudales.",
+            "- No se usaron caudales externos como fundamento.",
+            "- No se usó SIATA para justificar caudales.",
             "- No se modifica el motor hidrológico.",
             "- No se recalculan hidrogramas en este expediente.",
             "- No se alteran Qp, Tp, Volumen ni Q(t)."
@@ -1494,6 +1495,9 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
+
+
 
 
 
