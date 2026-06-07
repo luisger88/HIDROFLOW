@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getTcState, subscribeTc } from "../agents/tcAgent";
+import { getTrState, setTrState, subscribeTr } from "../agents/trAgent";
 
 export default function IndiceHidrologico({
   goToTab: goToTabProp,
@@ -411,6 +412,79 @@ const rangoTcAgente =
     };
   };
 
+  const [trStateIndice, setTrStateIndice] = useState(getTrState());
+
+  useEffect(() => {
+    const cancelarSuscripcionTr = subscribeTr(setTrStateIndice);
+    return cancelarSuscripcionTr;
+  }, []);
+
+  const periodosTrIndice = periodos.length > 0 ? periodos : [2.33, 5, 10, 25, 50, 100];
+
+  const trActivoIndice = Number(
+    trStateIndice?.Tr_activo ??
+      contexto?.tr_diseno_activo ??
+      25
+  );
+
+  const seleccionarTrIndice = (trValor) => {
+    const trNumerico = Number(trValor);
+
+    if (!Number.isFinite(trNumerico)) {
+      return;
+    }
+
+    setTrState({
+      Tr_activo: trNumerico,
+      fuente: "IndiceHidrologico"
+    });
+  };
+  const numeroIndiceSeguro = (valor) => {
+    if (valor === null || valor === undefined || valor === "") {
+      return null;
+    }
+
+    const numero = Number(valor);
+    return Number.isFinite(numero) ? numero : null;
+  };
+
+  const numeroIndicePositivo = (valor) => {
+    const numero = numeroIndiceSeguro(valor);
+    return numero !== null && numero > 0 ? numero : null;
+  };
+
+  const racionalContextoIndice =
+    contexto?.metodo_racional ??
+    contexto?.racional ??
+    contexto?.racional_exportable ??
+    racional ??
+    null;
+
+  const resultadosRacionalIndice = Array.isArray(racionalContextoIndice?.resultados)
+    ? racionalContextoIndice.resultados
+    : Array.isArray(racionalContextoIndice?.tabla)
+    ? racionalContextoIndice.tabla
+    : [];
+
+  const trActivoNormalizadoIndice = numeroIndiceSeguro(trActivoIndice) ?? 25;
+
+  const resultadoRacionalTrIndice = resultadosRacionalIndice.find((fila) =>
+    Math.abs(Number(fila?.Tr) - trActivoNormalizadoIndice) < 0.001
+  );
+
+  const areaRacionalIndice =
+    numeroIndicePositivo(racionalContextoIndice?.area_km2) ??
+    numeroIndicePositivo(contexto?.area_km2) ??
+    numeroIndicePositivo(contexto?.area) ??
+    numeroIndicePositivo(contexto?.cuenca?.area_km2) ??
+    numeroIndicePositivo(area_km2);
+
+  const coeficienteRacionalTrIndice =
+    numeroIndicePositivo(resultadoRacionalTrIndice?.C) ??
+    numeroIndicePositivo(C);
+
+  const qRacionalTrIndice =
+    numeroIndicePositivo(resultadoRacionalTrIndice?.Q);
   return (
     <aside style={estilos.panel}>
       <h2 style={estilos.titulo}>Índice Hidrológico de la Cuenca</h2>
@@ -709,6 +783,44 @@ const rangoTcAgente =
       <section style={estiloTarjeta("racional")}>
         <h3 style={estilos.cardTitle}>⑤ Periodos de retorno</h3>
 
+        <div style={estilos.chipRow}>
+          {periodosTrIndice.map((trValor) => {
+            const activoTr = Number(trValor) === trActivoIndice;
+
+            return (
+              <button
+                key={`tr-global-${trValor}`}
+                type="button"
+                onClick={() => seleccionarTrIndice(trValor)}
+                title={`Activar Tr ${trValor} años`}
+                aria-pressed={activoTr}
+                style={{
+                  ...estilos.chip,
+                  ...(activoTr ? estilos.chipOk : {}),
+                  cursor: "pointer",
+                  border: activoTr
+                    ? "1px solid rgba(34, 211, 238, 0.95)"
+                    : estilos.chip.border,
+                  background: activoTr
+                    ? "rgba(34, 211, 238, 0.32)"
+                    : estilos.chip.background,
+                  boxShadow: activoTr
+                    ? "0 0 0 1px rgba(34, 211, 238, 0.60), 0 0 14px rgba(34, 211, 238, 0.30)"
+                    : "none",
+                  transform: activoTr ? "translateY(-1px)" : "none",
+                  transition: "background 120ms ease, border 120ms ease, box-shadow 120ms ease, transform 120ms ease"
+                }}
+              >
+                Tr {trValor} años
+              </button>
+            );
+          })}
+        </div>
+
+        <p style={{ ...estilos.muted, marginTop: 8 }}>
+          Tr global activo: <strong style={{ color: "#67e8f9" }}>{trActivoIndice} años</strong>
+        </p>
+
         <p style={estilos.muted}>
           Escenarios activos para cálculo hidrológico.
         </p>
@@ -781,7 +893,7 @@ const rangoTcAgente =
         <div style={estilos.dato}>
           <span style={estilos.label}>Área cuenca</span>
           <span style={estilos.value}>
-            {formatNumero(racional?.area_km2 ?? area_km2, 4)} km²
+            {areaRacionalIndice !== null ? formatNumero(areaRacionalIndice, 4) : "—"} km²
           </span>
         </div>
 
@@ -803,7 +915,21 @@ const rangoTcAgente =
         <div style={estilos.dato}>
           <span style={estilos.label}>Coeficiente C</span>
           <span style={estilos.value}>
-            {C !== null && C !== undefined ? formatNumero(C, 2) : "Pendiente"}
+            {coeficienteRacionalTrIndice !== null ? formatNumero(coeficienteRacionalTrIndice, 4) : "Pendiente"}
+          </span>
+        </div>
+
+        <div style={estilos.dato}>
+          <span style={estilos.label}>Tr global activo</span>
+          <span style={estilos.value}>
+            {trActivoIndice} años
+          </span>
+        </div>
+
+        <div style={estilos.dato}>
+          <span style={estilos.label}>Q racional Tr activo</span>
+          <span style={estilos.value}>
+            {qRacionalTrIndice !== null ? `${formatNumero(qRacionalTrIndice, 2)} m³/s` : "Pendiente"}
           </span>
         </div>
 
@@ -815,7 +941,7 @@ const rangoTcAgente =
 
         <div style={estilos.chipRow}>
           <span style={{ ...estilos.chip, ...estilos.chipWarn }}>
-            C = f(CN) · pendiente
+            {coeficienteRacionalTrIndice !== null ? `C Tr ${trActivoIndice}a = ${formatNumero(coeficienteRacionalTrIndice, 4)}` : "C = f(CN) · pendiente"}
           </span>
           <span style={estilos.chip}>Contraste</span>
         </div>
@@ -866,3 +992,10 @@ const rangoTcAgente =
     </aside>
   );
 }
+
+
+
+
+
+
+

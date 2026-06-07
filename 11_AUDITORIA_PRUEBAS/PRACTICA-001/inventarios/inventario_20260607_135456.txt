@@ -1,0 +1,323 @@
+PRÁCTICA-001 — Inventario HidroFlow
+Fecha: 06/07/2026 13:54:56
+Punto: Lat 6.174798024437462 Lon -75.63554492429293
+
+=== GIT ===
+?? 11_AUDITORIA_PRUEBAS/
+ot-0048-estado-global-tr-diseno
+6fda296 docs(arquitectura): define contexto motor indice
+350bb89 fix(indice): conecta contexto vivo al indice hidrologico
+3c0c379 fix(tr): conecta racional real al indice
+30d45e9 fix(tr): evita ceros falsos en racional del indice
+36a4f9d fix(tr): define parametros racionales en indice
+307ac9c feat(tr): muestra parametros racionales por Tr global
+43ce595 feat(tr): publica Tr global en expediente
+a43ee0a feat(tr): publica Tr global en expediente
+
+=== HIDROFLOW_TOOLS ===
+
+FullName
+--------
+D:\HidroFlow\07_TOOLBOX\HidroFlow_Tools.tbx
+
+=== EXPORTACIONES ===
+
+FullName
+--------
+D:\HidroFlow\06_EXPORTACIONES\Iguana
+D:\HidroFlow\06_EXPORTACIONES\README.md
+D:\HidroFlow\06_EXPORTACIONES\Iguana\01_Mapas
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas
+D:\HidroFlow\06_EXPORTACIONES\Iguana\03_Perfiles
+D:\HidroFlow\06_EXPORTACIONES\Iguana\04_Reportes
+D:\HidroFlow\06_EXPORTACIONES\Iguana\05_HMS
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\schema.ini
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.xlsx
+
+=== IGUANA ===
+
+FullName
+--------
+D:\HidroFlow\00_ADMIN\bitacora\ACTA_INTEGRACION_APP_IGUANA_PC80.md
+D:\HidroFlow\00_ADMIN\inventarios\Busqueda_App_HidroFlow_PC80_Iguana.txt
+D:\HidroFlow\01_APP\HIDROFLOW\.git_BACKUP_APP_20260603_110423\logs\refs\remotes\origin\feat\d2-panel-geomorf
+D:\HidroFlow\01_APP\HIDROFLOW\.git_BACKUP_APP_20260603_110423\refs\remotes\origin\feat\d2-panel-geomorf
+D:\HidroFlow\01_APP\HIDROFLOW\src\dominio\CuencaGeomorfologica.ts
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\generar_eje_principal_iguana.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\generar_eje_principal_iguana1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\generar_eje_principal_y_geomorfologico.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologia_Modulo1_Run_v1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologia_Modulo1_v1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologia_Modulo1_v2.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologiav1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\recorte_geomorfologico.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\Registro_HidroFlow_Modulo1_Geomorfologia.md
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_activos\HFGeomorfologia_Modulo1_Run_v1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_activos\HFGeomorfologia_Modulo1_v1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_activos\HFGeomorfologia_Modulo1_v2.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_legacy\generar_eje_principal_iguana.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_legacy\generar_eje_principal_iguana1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_legacy\generar_eje_principal_y_geomorfologico.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_legacy\HFGeomorfologiav1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_legacy\recorte_geomorfologico.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_registro\Registro_HidroFlow_Modulo1_Geomorfologia.md
+D:\HidroFlow\05_PROYECTOS\Iguana
+D:\HidroFlow\06_EXPORTACIONES\Iguana
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\09_LEGACY\respaldo_c\app_hidroflow\cuencasCatalogo_PRE_IGUANA_20260524_200046.js
+D:\HidroFlow\09_LEGACY\respaldo_c\app_hidroflow\HidroFlow_PRE_IGUANA_DEFAULT_20260524_200046.jsx
+D:\HidroFlow\10_LOGS\PRÁCTICA-001_inventario_geomorfologia_motor_20260607_132846.txt
+
+=== CUENCAS CATALOGO ===
+
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:3: * Catalogo tecnico de cuencas HidroFlow
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:5: * Este archivo desacopla los parametros de cuenca del componente HidroFlow.jsx.
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:6: * No ejecuta calculos. Solo centraliza datos base validados.
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:8: * Actualizacion tecnica:
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:10: * - Se incorpora estructura profesional por bloques:
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:11: *   estado, salida, geometria, relieve, idf e hidrologia.
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:12: * - Para La Iguana PC_80 se reemplaza Tr = 2 anios por Tr = 2.33 anios
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:25:    area: 2.83,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:26:    perimetro: 12.04,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:40:    CN: 88,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:43:    fuente: "Parametros originales app HidroFlow",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:47:    // ESTRUCTURA PROFESIONAL NUEVA
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:49:    estado_tecnico: {
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:53:      fuente: "Parametros originales app HidroFlow",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:55:        "Registro base de demostracion conservado para compatibilidad de la app HidroFlow."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:65:    geometria: {
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:66:      area_km2: 2.83,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:67:      perimetro_km: 12.04,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:83:    idf: {
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:92:        "La estacion IDF debe mostrarse separada de la cuenca activa."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:97:      CN: 88,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:105:          tr: 2.33,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:106:          etiqueta: "Tr 2.33 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:108:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:111:          tr: 5,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:112:          etiqueta: "Tr 5 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:114:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:117:          tr: 10,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:118:          etiqueta: "Tr 10 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:120:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:123:          tr: 25,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:124:          etiqueta: "Tr 25 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:126:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:129:          tr: 50,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:130:          etiqueta: "Tr 50 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:132:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:135:          tr: 100,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:136:          etiqueta: "Tr 100 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:138:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:143:        "Se adopta Tr 2.33 años como periodo base para calculos hidrologicos."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:152:    punto_control: "PC_80",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:157:    // Estos campos se mantienen mientras HidroFlow.jsx migra gradualmente
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:158:    // hacia la estructura profesional por bloques: geometria, relieve,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:159:    // hidrologia e idf.
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:161:    area: 46.8516,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:162:    perimetro: 47.59,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:173:    // 1. Mostrar "Pendiente media" en el módulo Parámetros.
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:174:    // 2. Calcular el método SCS-Ranser dentro de calcTc().
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:177:    // Alias técnico para paneles nuevos y trazabilidad.
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:185:    tramos_qc: 4,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:192:    // CN base en condición CNII.
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:193:    CN: 88,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:194:    cnBase: 88,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:199:    // Alias técnico nuevo.
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:202:    fuente: "HidroFlow Modulo 1 Geomorfologia - Parametros Geomorf Iguana",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:206:    // ESTRUCTURA PROFESIONAL NUEVA HIDROFLOW APP
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:208:    estado_tecnico: {
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:209:      cuencaActiva: true,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:212:      fuente: "HidroFlow Modulo 1 Geomorfologia - Parametros Geomorf Iguana",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:214:        "Cuenca La Iguana PC_80 cargada con coordenadas, cotas y parametros geomorfologicos validados desde Modulo 1. Pendiente hidrologica lista para simulacion en app."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:221:      descripcion: "Punto de control y salida hidrologica PC_80"
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:224:    geometria: {
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:225:      area_km2: 46.8516,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:226:      perimetro_km: 47.59,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:244:        "Pendiente media calculada a partir del desnivel entre cota maxima y cota de salida sobre la longitud del cauce principal."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:248:      tramos_qc: 4,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:252:        "Parametros derivados del Modulo 1 de Geomorfologia de HidroFlow."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:255:    idf: {
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:270:          rol: "estacion_idf_adoptada",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:279:          rol: "referencia_pluviometrica_pendiente",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:282:            "No se usa en calculo IDF hasta incorporar coordenadas, codigo, altitud y parametros k-n-c por periodo de retorno."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:287:        "Para La Iguana PC_80 se adopta San Cristobal como estacion IDF operativa. Miguel de Aguinaga queda registrada solo como referencia pendiente de incorporacion, no participa en calculos."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:292:      CN: 88,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:297:        metodo: "SCS-CN",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:299:          "Calculo de precipitacion efectiva mediante metodo de infiltracion del SCS, usando Numero de Curva CN ajustado por cobertura, uso del suelo y condicion antecedente de humedad.",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:300:        CN_base: 88,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:301:        fuente_CN:
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:302:          "Cobertura y usos del suelo integrados al parametro CN de la cuenca.",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:308:            "El CN base debe ajustarse segun condicion antecedente de humedad AMC derivada de informacion SIATA."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:310:        parametros_scs: {
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:312:          abstraccion_inicial_lambda: 0.2,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:313:          formula_S: "S = (25400 / CN) - 254",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:316:            "Pe = ((P - Ia)^2) / (P - Ia + S), si P > Ia; en caso contrario Pe = 0"
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:321:      tiempo_concentracion: {
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:322:        simbolo: "Tc",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:327:            id: "tc_cn",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:328:            nombre: "Tc = f(CN)",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:331:              "Estimacion de tiempo de concentracion condicionada por Numero de Curva, cobertura, uso del suelo y humedad antecedente."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:334:            id: "tc_geometrico",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:335:            nombre: "Tc = f(parametros geometricos)",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:338:              "Estimacion de tiempo de concentracion a partir de longitud hidraulica, pendiente, desnivel y parametros geometricos de la cuenca."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:343:            "Usar Tc geometrico como valor rector inicial cuando exista eje principal, longitud de cauce, cotas y pendiente media validadas por Modulo 1.",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:345:            "Usar Tc = f(CN) como contraste hidrologico y ajuste por cobertura, uso del suelo y condicion antecedente de humedad SIATA.",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:347:            "Si la diferencia relativa entre Tc geometrico y Tc_CN supera el 25 %, marcar revision tecnica antes de adoptar el Tc definitivo.",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:349:            "Adoptar Tc definitivo solo despues de comparar consistencia fisica, respuesta hidrologica esperada y sensibilidad del hidrograma Q(t)."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:352:          "Para La Iguana PC_80, el Tc no debe seleccionarse automaticamente por un unico metodo. Debe existir comparacion entre metodo geometrico y metodo condicionado por CN/AMC."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:356:      // Para calculos hidrologicos se usa Tr = 2.33 anios como periodo base,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:357:      // en reemplazo de Tr = 2 anios, por corresponder al evento medio anual.
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:362:          tr: 2.33,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:363:          etiqueta: "Tr 2.33 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:365:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:368:          tr: 5,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:369:          etiqueta: "Tr 5 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:371:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:374:          tr: 10,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:375:          etiqueta: "Tr 10 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:377:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:380:          tr: 25,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:381:          etiqueta: "Tr 25 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:383:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:386:          tr: 50,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:387:          etiqueta: "Tr 50 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:389:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:392:          tr: 100,
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:393:          etiqueta: "Tr 100 años",
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:395:          activo: true
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:400:        "Para los calculos hidrologicos se adopta Tr 2.33 años como periodo base, en reemplazo de Tr 2 años."
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:407:export function getCuencaById(id) {
+01_APP\HIDROFLOW\src\data\cuencasCatalogo.js:417:    estado_tecnico: cuenca.estado_tecnico?.validacionGeomorfologica || cuenca.estado
+

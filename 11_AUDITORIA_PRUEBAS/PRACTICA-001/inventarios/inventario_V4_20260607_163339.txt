@@ -1,0 +1,203 @@
+HIDROFLOW — INVENTARIO V4
+Fecha: 06/07/2026 16:33:39
+Práctica: PRACTICA-001
+Directorio inicial: D:\HidroFlow
+Directorio de ejecución: D:\HidroFlow
+Módulos seleccionados: git, exportaciones, iguana
+
+?? 00_ADMIN/bitacora/PRACTICA-001/
+?? 00_ADMIN/bitacora/PRACTICA-IGUANA/
+?? 07_TOOLBOX/powershell/Ejecutor-HF-V2.ps1
+?? 07_TOOLBOX/powershell/Ejecutor-HF-V4.ps1
+?? 07_TOOLBOX/powershell/Ejecutor-HF.ps1
+?? 07_TOOLBOX/powershell/modulos/
+?? 11_AUDITORIA_PRUEBAS/
+ot-0048-estado-global-tr-diseno
+6fda296 docs(arquitectura): define contexto motor indice
+350bb89 fix(indice): conecta contexto vivo al indice hidrologico
+3c0c379 fix(tr): conecta racional real al indice
+30d45e9 fix(tr): evita ceros falsos en racional del indice
+36a4f9d fix(tr): define parametros racionales en indice
+307ac9c feat(tr): muestra parametros racionales por Tr global
+43ce595 feat(tr): publica Tr global en expediente
+a43ee0a feat(tr): publica Tr global en expediente
+
+FullName
+--------
+D:\HidroFlow\06_EXPORTACIONES\Iguana
+D:\HidroFlow\06_EXPORTACIONES\README.md
+D:\HidroFlow\06_EXPORTACIONES\Iguana\01_Mapas
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas
+D:\HidroFlow\06_EXPORTACIONES\Iguana\03_Perfiles
+D:\HidroFlow\06_EXPORTACIONES\Iguana\04_Reportes
+D:\HidroFlow\06_EXPORTACIONES\Iguana\05_HMS
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\schema.ini
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.xlsx
+
+
+FullName
+--------
+D:\HidroFlow\00_ADMIN\bitacora\PRACTICA-IGUANA
+D:\HidroFlow\00_ADMIN\bitacora\ACTA_INTEGRACION_APP_IGUANA_PC80.md
+D:\HidroFlow\00_ADMIN\inventarios\Busqueda_App_HidroFlow_PC80_Iguana.txt
+D:\HidroFlow\01_APP\HIDROFLOW\.git_BACKUP_APP_20260603_110423\logs\refs\remotes\origin\feat\d2-panel-…
+D:\HidroFlow\01_APP\HIDROFLOW\.git_BACKUP_APP_20260603_110423\refs\remotes\origin\feat\d2-panel-geomo…
+D:\HidroFlow\01_APP\HIDROFLOW\src\dominio\CuencaGeomorfologica.ts
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\generar_eje_principal_iguana.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\generar_eje_principal_iguana1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\generar_eje_principal_y_geomorfologico.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologia_Modulo1_Run_v1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologia_Modulo1_v1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologia_Modulo1_v2.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\HFGeomorfologiav1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\recorte_geomorfologico.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\Registro_HidroFlow_Modulo1_Geomorfologia.md
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_activos\HFGeomorfologia_Modulo1_Run_v1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_activos\HFGeomorfologia_Modulo1_v1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_activos\HFGeomorfologia_Modulo1_v2.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_legacy\generar_eje_principal_iguana.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_legacy\generar_eje_principal_iguana1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_legacy\generar_eje_principal_y_geomorfologico.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_legacy\HFGeomorfologiav1.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_legacy\recorte_geomorfologico.py
+D:\HidroFlow\03_MODULOS\M01_Geomorfologia\scripts\_registro\Registro_HidroFlow_Modulo1_Geomorfologia.…
+D:\HidroFlow\05_PROYECTOS\Iguana
+D:\HidroFlow\06_EXPORTACIONES\Iguana
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Cabecera_Candidata_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Parametros_Geomorf_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Obra_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\PC_Snap_Obra_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_SEG_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_VAR_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Perfil_Puntos_ZM_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Puntos_Quiebre_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_Lineas_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260523_234806.xlsx
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.csv
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.csv.xml
+D:\HidroFlow\06_EXPORTACIONES\Iguana\02_Tablas\Tramos_Geomorf_QC_Iguana_20260524_013443.xlsx
+D:\HidroFlow\07_TOOLBOX\powershell\modulos\modulo.iguana.ps1
+D:\HidroFlow\09_LEGACY\respaldo_c\app_hidroflow\cuencasCatalogo_PRE_IGUANA_20260524_200046.js
+D:\HidroFlow\09_LEGACY\respaldo_c\app_hidroflow\HidroFlow_PRE_IGUANA_DEFAULT_20260524_200046.jsx
+D:\HidroFlow\10_LOGS\PRÁCTICA-001_inventario_geomorfologia_motor_20260607_132846.txt
+D:\HidroFlow\11_AUDITORIA_PRUEBAS\PRACTICA-IGUANA
+

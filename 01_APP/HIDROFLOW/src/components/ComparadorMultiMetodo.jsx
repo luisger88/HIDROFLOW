@@ -1297,6 +1297,7 @@ const obtenerResultadoQMetodo = (metodo) => {
             `Fecha de generación: ${new Date().toLocaleString("es-CO")}.`,
             "Estado técnico: completo, limpio, numéricamente útil y con plausibilidad hidrológica interna preliminar.",
             "Validaciones superadas: estructura, coherencia entre salidas, completitud numérica y plausibilidad hidrológica preliminar.",
+            `Tr global activo al generar expediente: ${trDisenoActivoExpediente} años.`,
             "Alcance: diagnóstico técnico reproducible no adoptivo hasta revisión hidrológica responsable.",
             "Restricción principal: no usar como valor adoptivo final sin revisión de competencia metodológica, escala de cuenca, duración Tc, alcance normativo y criterio profesional."
           ].join("\n");
@@ -1530,6 +1531,9 @@ const obtenerResultadoQMetodo = (metodo) => {
 
             return;
           }
+          const trDisenoActivoExpediente = Number.isFinite(Number(contextoBase?.tr_diseno_activo))
+            ? Number(contextoBase.tr_diseno_activo)
+            : 25;
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
             "",
@@ -1549,6 +1553,8 @@ const obtenerResultadoQMetodo = (metodo) => {
             "",
             "## 3. Tiempo de concentración y roles Tc",
             `Tc comparador: ${Tc_final !== null && Tc_final !== undefined ? Number(Tc_final).toFixed(1) + " min" : "—"}`,
+            `Tr global activo: ${trDisenoActivoExpediente} años`,
+            "Nota Tr: estado global visual/exportable; no implica recálculo automático hasta propagación hidrológica controlada.",
             "Roles Tc:",
             "- Tc global Índice: referencia hidrológica general.",
             "- Tc operativo Q(t): ruta interna del hidrograma.",
@@ -1619,6 +1625,7 @@ const obtenerResultadoQMetodo = (metodo) => {
             `Fecha de generación: ${new Date().toLocaleString("es-CO")}.`,
             "Estado técnico: completo, limpio, numéricamente útil y con plausibilidad hidrológica interna preliminar.",
             "Validaciones superadas: estructura, coherencia entre salidas, completitud numérica y plausibilidad hidrológica preliminar.",
+            `Tr global activo al generar expediente: ${trDisenoActivoExpediente} años.`,
             "Alcance: diagnóstico técnico reproducible no adoptivo hasta revisión hidrológica responsable.",
             "Restricción principal: no usar como valor adoptivo final sin revisión de competencia metodológica, escala de cuenca, duración Tc, alcance normativo y criterio profesional."
           ].join("\n");
@@ -1684,6 +1691,8 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
+
 
 
 
