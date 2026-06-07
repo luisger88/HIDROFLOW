@@ -1,0 +1,21 @@
+HIDROFLOW — INVENTARIO V4
+Fecha: 06/07/2026 16:11:32
+Práctica: PRACTICA-001
+Directorio inicial: D:\HidroFlow
+Directorio de ejecución: D:\HidroFlow
+Módulos seleccionados: git
+
+?? 07_TOOLBOX/powershell/Ejecutor-HF-V2.ps1
+?? 07_TOOLBOX/powershell/Ejecutor-HF-V4.ps1
+?? 07_TOOLBOX/powershell/Ejecutor-HF.ps1
+?? 07_TOOLBOX/powershell/modulos/
+?? 11_AUDITORIA_PRUEBAS/
+ot-0048-estado-global-tr-diseno
+6fda296 docs(arquitectura): define contexto motor indice
+350bb89 fix(indice): conecta contexto vivo al indice hidrologico
+3c0c379 fix(tr): conecta racional real al indice
+30d45e9 fix(tr): evita ceros falsos en racional del indice
+36a4f9d fix(tr): define parametros racionales en indice
+307ac9c feat(tr): muestra parametros racionales por Tr global
+43ce595 feat(tr): publica Tr global en expediente
+a43ee0a feat(tr): publica Tr global en expediente
