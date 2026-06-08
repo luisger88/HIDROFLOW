@@ -1,0 +1,41 @@
+{
+  "version": "0.1",
+  "nombre_fuente_hidrica": "Iguana",
+  "codigo_proyecto": "IGUANA_PC80",
+  "descripcion": "Plantilla de manifiesto portable por fuente hidrica. Copiar como manifesto.proyecto.json y ajustar rutas locales si aplica.",
+  "rutas": {
+    "proyecto": "<HF_ROOT>/05_PROYECTOS/Iguana",
+    "exportaciones": "<HF_ROOT>/06_EXPORTACIONES/Iguana",
+    "tablas": "<HF_ROOT>/06_EXPORTACIONES/Iguana/02_Tablas",
+    "mapas": "<HF_ROOT>/06_EXPORTACIONES/Iguana/01_Mapas",
+    "perfiles": "<HF_ROOT>/06_EXPORTACIONES/Iguana/03_Perfiles",
+    "reportes": "<HF_ROOT>/06_EXPORTACIONES/Iguana/04_Reportes",
+    "hms": "<HF_ROOT>/06_EXPORTACIONES/Iguana/05_HMS"
+  },
+  "geomorfologia": {
+    "backend_geomorfologia": "arcpy",
+    "ruta_mdt": "<RUTA_LOCAL_MDT>",
+    "ruta_gdb_rectora": "<RUTA_LOCAL_GDB_RECTORA>",
+    "sistema_referencia_trabajo": "MAGNA-SIRGAS_2018_Origen-Nacional"
+  },
+  "productos_espaciales_minimos": [
+    "PC_Obra_Iguana",
+    "PC_Snap_Obra_Iguana",
+    "Cuenca_Obra_Iguana",
+    "Cabecera_Candidata_Iguana",
+    "Eje_Principal_Continuo_Iguana",
+    "Perfil_Puntos_QC_Iguana",
+    "Tramos_Geomorf_QC_Iguana",
+    "Parametros_Geomorf_Iguana"
+  ],
+  "productos_tabulares_minimos": [
+    "Parametros_Geomorf_Iguana_*.csv",
+    "PC_Obra_Iguana_*.csv",
+    "PC_Snap_Obra_Iguana_*.csv",
+    "Cabecera_Candidata_Iguana_*.csv",
+    "Perfil_Puntos_QC_Iguana_*.csv",
+    "Tramos_Geomorf_QC_Iguana_*.csv"
+  ],
+  "estado": "plantilla",
+  "fecha_creacion": "YYYY-MM-DD"
+}

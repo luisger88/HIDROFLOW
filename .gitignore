@@ -94,3 +94,6 @@ HidroFlow - copia.jsx
 
 # Inventarios locales generados por tooling HidroFlow
 10_LOGS/inventario_hidroflow_*.txt
+
+# HidroFlow configuracion local por maquina
+.hidroflow.local.json
