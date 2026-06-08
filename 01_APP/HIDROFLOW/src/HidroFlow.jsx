@@ -3555,6 +3555,7 @@ useEffect(() => {
     estacion_idf: stn,
     metodoIDF: "EPM",
     estacionesAdoptadas: stn ? [{ nombre: stn, peso: 1 }] : [],
+    distribucionTemporal: "EPM Q1",
     tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
     periodos_retorno: TR_LIST,
     metodo_racional: {
