@@ -3553,6 +3553,7 @@ useEffect(() => {
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
     estacion_idf: stn,
+    metodoIDF: "EPM",
     tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
     periodos_retorno: TR_LIST,
     metodo_racional: {
