@@ -1,0 +1,24 @@
+{
+  "version": "0.1",
+  "descripcion": "Plantilla de configuracion local portable de HidroFlow. Copiar como .hidroflow.local.json en cada maquina y ajustar rutas locales.",
+  "hf_root": "<RUTA_LOCAL_HIDROFLOW>",
+  "rutas": {
+    "proyectos": "<HF_ROOT>/05_PROYECTOS",
+    "exportaciones": "<HF_ROOT>/06_EXPORTACIONES",
+    "modulos": "<HF_ROOT>/03_MODULOS",
+    "toolbox": "<HF_ROOT>/07_TOOLBOX",
+    "bitacora": "<HF_ROOT>/00_ADMIN/bitacora"
+  },
+  "geomorfologia": {
+    "backend_geomorfologia": "arcpy",
+    "ruta_mdt": "<RUTA_LOCAL_MDT>",
+    "ruta_gdb_rectora": "<RUTA_LOCAL_GDB_RECTORA>",
+    "sistema_referencia_trabajo": "MAGNA-SIRGAS_2018_Origen-Nacional"
+  },
+  "reglas": {
+    "consumir_gdb_directamente_desde_app": false,
+    "consumir_exportaciones_canonicas": true,
+    "versionar_datos_pesados_en_git": false,
+    "crear_carpeta_por_fuente_hidrica": true
+  }
+}
