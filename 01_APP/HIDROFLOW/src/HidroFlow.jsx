@@ -3760,7 +3760,7 @@ useEffect(() => {
         />
       )}
       {tab==="hidro"      &&<ModHidrogramas params={params} est={est} name={name} onContextoComparador={onContextoComparador} />}
-      {tab==="racional"   &&<ModRacional   params={params} est={est} name={stn}/>}
+      {tab==="racional"   &&<ModRacional   params={params} est={est} name={stn} onContextoComparador={onContextoComparador}/>}
       {tab==="sar"        &&<ModSAR        params={params} est={est} name={stn}/>}
       {tab === "Influencia" && (
         <div style={{
