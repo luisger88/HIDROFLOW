@@ -3552,7 +3552,6 @@ useEffect(() => {
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
     fuente: "motor HidroFlow",
-    area_km2: Number.isFinite(Number(params?.area)) ? Number(params.area) : null,
     estacion_idf: stn,
     tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
     periodos_retorno: TR_LIST,
