@@ -56,7 +56,7 @@ export default function HidroFlowLayout() {
   return (
     <div style={estilos.contenedor}>
       <aside style={estilos.lateral}>
-        <IndiceHidrologico
+        <IndiceHidrologico contexto={contextoComparador}
           tabActiva={tabActiva}
           tab={tabActiva}
           setTab={setTabActiva}

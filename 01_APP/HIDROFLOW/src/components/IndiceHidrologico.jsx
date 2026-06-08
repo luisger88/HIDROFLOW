@@ -485,7 +485,17 @@ const rangoTcAgente =
 
   const qRacionalTrIndice =
     numeroIndicePositivo(resultadoRacionalTrIndice?.Q);
+
+  const areaIndice =
+    numeroIndicePositivo(contexto?.area_km2) ??
+    numeroIndicePositivo(area_km2);
+
+  const pendienteIndice =
+    numeroIndicePositivo(contexto?.pendiente_media_pct) ??
+    numeroIndicePositivo(pendiente_media_pct);
+
   return (
+
     <aside style={estilos.panel}>
       <h2 style={estilos.titulo}>Índice Hidrológico de la Cuenca</h2>
 
@@ -509,14 +519,14 @@ const rangoTcAgente =
         <div style={estilos.dato}>
           <span style={estilos.label}>Área</span>
           <span style={estilos.value}>
-            {formatNumero(area_km2, 4)} km²
+            {formatNumero(areaIndice, 4)} km²
           </span>
         </div>
 
         <div style={estilos.dato}>
           <span style={estilos.label}>Pendiente media</span>
           <span style={estilos.value}>
-            {formatNumero(pendiente_media_pct, 2)} %
+            {formatNumero(pendienteIndice, 2)} %
           </span>
         </div>
 
