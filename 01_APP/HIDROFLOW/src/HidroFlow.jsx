@@ -3608,6 +3608,7 @@ useEffect(() => {
     AMC: params?.AMC ?? params?.amcActual ?? params?.amc ?? "II",
     S_mm: Number((25400 / Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) - 254).toFixed(2)),
     Ia_mm: Number((0.2 * (25400 / Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) - 254)).toFixed(2)),
+    porcentaje_impermeable: Number.isFinite(Number(params?.porcentajeImpermeable)) ? Number(params.porcentajeImpermeable) : 60,
 
     tc_metodos: calcTc(params),
     
