@@ -1534,6 +1534,19 @@ const obtenerResultadoQMetodo = (metodo) => {
           const trDisenoActivoExpediente = Number.isFinite(Number(contextoBase?.tr_diseno_activo))
             ? Number(contextoBase.tr_diseno_activo)
             : 25;
+              const estadoQTrActivoExpediente = contextoBase?.q_tr_activo_estado ?? null;
+              const qTrActivoExpediente = estadoQTrActivoExpediente?.q_tr_activo ?? {};
+              const faltantesQTrActivoExpediente = Array.isArray(estadoQTrActivoExpediente?.campos_faltantes)
+                ? estadoQTrActivoExpediente.campos_faltantes
+                : [];
+              const formatearValorQTrExpediente = (valor, sufijo = "", decimales = 2) => {
+                if (valor === null || valor === undefined || valor === "") return "—";
+                const numero = Number(valor);
+                if (Number.isFinite(numero) && String(valor).trim() !== "") {
+                  return numero.toLocaleString("es-CO", { maximumFractionDigits: decimales }) + sufijo;
+                }
+                return String(valor);
+              };
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
             "",
@@ -1567,6 +1580,23 @@ const obtenerResultadoQMetodo = (metodo) => {
             `Volumen esperado: ${volumenEsperadoM3 ? volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 }) + " m³" : "—"}`,
             "Fórmula: Pe(mm) × Área(km²) × 1000.",
             "",
+                "## Escenario Q-Tr activo — control de trazabilidad",
+                `Estado: ${estadoQTrActivoExpediente?.estado ?? "no_publicado"}`,
+                `Tr activo: ${formatearValorQTrExpediente(qTrActivoExpediente.tr_activo, " años", 2)}`,
+                `Estación IDF: ${formatearValorQTrExpediente(qTrActivoExpediente.estacion_idf)}`,
+                `Método IDF: ${formatearValorQTrExpediente(qTrActivoExpediente.metodo_idf)}`,
+                `Distribución temporal: ${formatearValorQTrExpediente(qTrActivoExpediente.distribucion_temporal)}`,
+                `Área: ${formatearValorQTrExpediente(qTrActivoExpediente.area_km2, " km²", 4)}`,
+                `CN efectivo: ${formatearValorQTrExpediente(qTrActivoExpediente.cn_efectivo, "", 2)}`,
+                `S: ${formatearValorQTrExpediente(qTrActivoExpediente.s_mm, " mm", 2)}`,
+                `Ia: ${formatearValorQTrExpediente(qTrActivoExpediente.ia_mm, " mm", 2)}`,
+                `Impermeabilidad: ${formatearValorQTrExpediente(qTrActivoExpediente.porcentaje_impermeable, " %", 2)}`,
+                `Tc: ${formatearValorQTrExpediente(qTrActivoExpediente.tc_min, " min", 4)}`,
+                `Pe total: ${formatearValorQTrExpediente(qTrActivoExpediente.lluvia_efectiva_total_mm, " mm", 4)}`,
+                `Campos mínimos: ${faltantesQTrActivoExpediente.length > 0 ? "faltantes — " + faltantesQTrActivoExpediente.join(", ") : "completos"}`,
+                `Fuente: ${estadoQTrActivoExpediente?.fuente ?? "—"}`,
+                "Lectura técnica: bloque no adoptivo; no recalcula caudales, no modifica Q-5 y queda subordinado a validación hidrológica del expediente.",
+                "",
             "## 5. Resumen Q-5 auditado",
             "Estado general: diagnóstico no adoptivo.",
             "SCS Unit Hydrograph: candidato principal de referencia.",
