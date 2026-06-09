@@ -1687,6 +1687,80 @@ const obtenerResultadoQMetodo = (metodo) => {
         ⚠ Control de magnitud pendiente: Qp, Tp y Volumen se muestran como resultados no adoptivos hasta validar unidades, integración y escala hidrológica.
       </div>
 
+          {(() => {
+            const estadoQTrActivo = contextoBase?.q_tr_activo_estado ?? null;
+            const qTrActivo = estadoQTrActivo?.q_tr_activo ?? {};
+            const faltantesQTrActivo = Array.isArray(estadoQTrActivo?.campos_faltantes)
+              ? estadoQTrActivo.campos_faltantes
+              : [];
+            const disponibleQTrActivo = estadoQTrActivo?.disponible === true;
+
+            const formatearValorQTr = (valor, sufijo = "") => {
+              if (valor === null || valor === undefined || valor === "") return "—";
+              const numero = Number(valor);
+              if (Number.isFinite(numero) && String(valor).trim() !== "") {
+                return numero.toLocaleString("es-CO", { maximumFractionDigits: 4 }) + sufijo;
+              }
+              return String(valor);
+            };
+
+            return (
+              <section
+                style={{
+                  border: disponibleQTrActivo ? "1px solid #16a34a" : "1px solid #a16207",
+                  borderRadius: 12,
+                  padding: 12,
+                  margin: "12px 0",
+                  background: disponibleQTrActivo ? "rgba(22, 163, 74, 0.10)" : "rgba(161, 98, 7, 0.10)"
+                }}
+              >
+                <h3 style={{ margin: "0 0 8px 0" }}>
+                  Bloque Q-Tr activo · Escenario de diseño controlado
+                </h3>
+
+                <div style={{ ...estilos.muted, marginBottom: 10 }}>
+                  Escenario activo de periodo de retorno publicado desde el contexto hidrológico. Este bloque no recalcula caudales, no modifica Q-5 y funciona como control visual del Tr activo.
+                </div>
+
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                    gap: 8,
+                    marginBottom: 10
+                  }}
+                >
+                  <div><strong>Estado:</strong> {estadoQTrActivo?.estado ?? "no_publicado"}</div>
+                  <div><strong>Tr activo:</strong> {formatearValorQTr(qTrActivo.tr_activo, " años")}</div>
+                  <div><strong>Estación IDF:</strong> {formatearValorQTr(qTrActivo.estacion_idf)}</div>
+                  <div><strong>Método IDF:</strong> {formatearValorQTr(qTrActivo.metodo_idf)}</div>
+                  <div><strong>Distribución:</strong> {formatearValorQTr(qTrActivo.distribucion_temporal)}</div>
+                  <div><strong>Área:</strong> {formatearValorQTr(qTrActivo.area_km2, " km²")}</div>
+                  <div><strong>CN efectivo:</strong> {formatearValorQTr(qTrActivo.cn_efectivo)}</div>
+                  <div><strong>S:</strong> {formatearValorQTr(qTrActivo.s_mm, " mm")}</div>
+                  <div><strong>Ia:</strong> {formatearValorQTr(qTrActivo.ia_mm, " mm")}</div>
+                  <div><strong>Impermeabilidad:</strong> {formatearValorQTr(qTrActivo.porcentaje_impermeable, " %")}</div>
+                  <div><strong>Tc:</strong> {formatearValorQTr(qTrActivo.tc_min, " min")}</div>
+                  <div><strong>Pe total:</strong> {formatearValorQTr(qTrActivo.lluvia_efectiva_total_mm, " mm")}</div>
+                </div>
+
+                {faltantesQTrActivo.length > 0 ? (
+                  <div style={{ ...estilos.muted }}>
+                    Campos mínimos faltantes: {faltantesQTrActivo.join(", ")}.
+                  </div>
+                ) : (
+                  <div style={{ ...estilos.muted }}>
+                    Campos mínimos completos para trazabilidad visual del Q-Tr activo.
+                  </div>
+                )}
+
+                <div style={{ ...estilos.muted, marginTop: 8 }}>
+                  Fuente: {estadoQTrActivo?.fuente ?? "—"}. Estado no adoptivo: la adopción técnica permanece subordinada a la validación hidrológica del expediente.
+                </div>
+              </section>
+            );
+          })()}
+
       {renderTabla("Bloque Q-5 · Caudal pico / hidrograma", "q")}
     </main>
   );
