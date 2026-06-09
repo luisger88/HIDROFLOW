@@ -2177,20 +2177,44 @@ const leerT = (punto, indice) => {
     volumen: h?.volTotal
   }));
 
-  onContextoComparador((previo) => ({
-    ...(previo ?? {}),
-    fuente: "motor HidroFlow",
-    area_km2: Number.isFinite(Number(params?.area)) ? Number(params.area) : null,
-    estacion_idf: name ?? null,
-    lluvia_efectiva: Boolean(lluvEfect),
-    hidrogramas: {
-      fuente: "ModHidrogramas",
-      resultados: hidrogramasQ5Exportables
-    },
-    lluvia_efectiva_total_mm: lluviaEfectivaTotalMm,
-    hidrogramas_resumen: hidrogramasResumen,
-    hidrograma_principal: h0 ?? null,
-  }));
+      onContextoComparador((previo) => {
+        const qTrActivoPrevio = previo?.q_tr_activo_estado?.q_tr_activo ?? {};
+
+        const siguienteContexto = {
+          ...(previo ?? {}),
+          fuente: "motor HidroFlow",
+          area_km2: Number.isFinite(Number(params?.area)) ? Number(params.area) : null,
+          estacion_idf: name ?? null,
+          lluvia_efectiva: Boolean(lluvEfect),
+          hidrogramas: {
+            fuente: "ModHidrogramas",
+            resultados: hidrogramasQ5Exportables
+          },
+          lluvia_efectiva_total_mm: lluviaEfectivaTotalMm,
+          hidrogramas_resumen: hidrogramasResumen,
+          hidrograma_principal: h0 ?? null,
+        };
+
+        // OT-0056C4 refresca Q-Tr activo con Pe total sin recalcular caudales.
+        return {
+          ...siguienteContexto,
+          q_tr_activo_estado: previo?.q_tr_activo_estado
+            ? derivarEstadoQTrActivo({
+                ...qTrActivoPrevio,
+                ...siguienteContexto,
+                tr_diseno_activo: qTrActivoPrevio.tr_activo ?? previo?.tr_diseno_activo ?? 25,
+                metodo_idf: qTrActivoPrevio.metodo_idf ?? previo?.metodo_idf ?? null,
+                distribucion_temporal: qTrActivoPrevio.distribucion_temporal ?? previo?.distribucion_temporal ?? null,
+                CN_efectivo: qTrActivoPrevio.cn_efectivo ?? previo?.CN_efectivo ?? previo?.cn_efectivo ?? null,
+                S_mm: qTrActivoPrevio.s_mm ?? previo?.S_mm ?? previo?.s_mm ?? null,
+                Ia_mm: qTrActivoPrevio.ia_mm ?? previo?.Ia_mm ?? previo?.ia_mm ?? null,
+                porcentaje_impermeable: qTrActivoPrevio.porcentaje_impermeable ?? previo?.porcentaje_impermeable ?? null,
+                tc_min: qTrActivoPrevio.tc_min ?? previo?.tc_min ?? null,
+                lluvia_efectiva_total_mm: lluviaEfectivaTotalMm
+              })
+            : previo?.q_tr_activo_estado
+        };
+      });
 }, [onContextoComparador, hidros, h0, lluvEfect, dtMin]);
   
   
