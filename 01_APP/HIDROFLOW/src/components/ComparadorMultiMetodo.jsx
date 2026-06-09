@@ -1660,6 +1660,51 @@ const obtenerResultadoQMetodo = (metodo) => {
             "Restricción principal: no usar como valor adoptivo final sin revisión de competencia metodológica, escala de cuenca, duración Tc, alcance normativo y criterio profesional."
           ].join("\n");
 
+              // OT-0056E valida expediente copiado antes de enviarlo al portapapeles.
+              const tokensInvalidosExpediente = ["undefined", "null", "NaN", "[object Object]"];
+              const tokensDetectadosExpediente = tokensInvalidosExpediente.filter((token) =>
+                textoExpediente.includes(token)
+              );
+
+              const seccionesObligatoriasExpediente = [
+                "# Expediente hidrológico mínimo — Cuenca activa",
+                "## Escenario Q-Tr activo — control de trazabilidad",
+                "## 5. Resumen Q-5 auditado",
+                "## 6. Método Racional — contraste global independiente",
+                "## 7. Contraste Q-5 vs Método Racional",
+                "## 8. Restricciones técnicas",
+                "## 9. Sello técnico de generación"
+              ];
+              const seccionesFaltantesExpediente = seccionesObligatoriasExpediente.filter((seccion) =>
+                !textoExpediente.includes(seccion)
+              );
+
+              if (tokensDetectadosExpediente.length > 0 || seccionesFaltantesExpediente.length > 0) {
+                window.alert(
+                  [
+                    "Validación del expediente copiado fallida.",
+                    "",
+                    "No se copió el expediente porque contiene tokens inválidos o perdió secciones obligatorias.",
+                    "",
+                    ...(tokensDetectadosExpediente.length > 0
+                      ? [
+                          "Tokens inválidos detectados:",
+                          ...tokensDetectadosExpediente.map((token) => `- ${token}`),
+                          ""
+                        ]
+                      : []),
+                    ...(seccionesFaltantesExpediente.length > 0
+                      ? [
+                          "Secciones obligatorias faltantes:",
+                          ...seccionesFaltantesExpediente.map((seccion) => `- ${seccion}`)
+                        ]
+                      : [])
+                  ].join("\n")
+                );
+
+                return;
+              }
+
           const areaTexto = document.createElement("textarea");
           areaTexto.value = textoExpediente;
           areaTexto.setAttribute("readonly", "");
