@@ -25,6 +25,7 @@ import {
 
 import HidrogramaResultado from "./components/HidrogramaResultado";
 import { getTcState, setTcState } from "./agents/tcAgent";
+import { derivarEstadoQTrActivo } from "./services/qtr/derivarEstadoQTrActivo";
 
 import {
   calcCNdinamico,
@@ -3614,6 +3615,21 @@ useEffect(() => {
     
     lluvia_efectiva: previo?.lluvia_efectiva ?? false,
     lluvia_efectiva_total_mm: previo?.lluvia_efectiva_total_mm ?? null,
+    q_tr_activo_estado: derivarEstadoQTrActivo({
+      ...(previo ?? {}),
+      tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
+      estacion_idf: stn,
+      metodoIDF: "EPM",
+      distribucionTemporal: "EPM Q1",
+      area_km2: params?.area_km2 ?? params?.areaKm2 ?? params?.area ?? params?.A ?? null,
+      CN_efectivo: params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase,
+      S_mm: Number((25400 / Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) - 254).toFixed(2)),
+      Ia_mm: Number((0.2 * (25400 / Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) - 254)).toFixed(2)),
+      porcentaje_impermeable: Number.isFinite(Number(params?.porcentajeImpermeable)) ? Number(params.porcentajeImpermeable) : 60,
+      tc_min: getTcState()?.Tc_final ?? null,
+      lluvia_efectiva_total_mm: previo?.lluvia_efectiva_total_mm ?? null
+    }),
+
     hidrogramas: previo?.hidrogramas ?? {
       fuente: "pendiente",
       resultados: []

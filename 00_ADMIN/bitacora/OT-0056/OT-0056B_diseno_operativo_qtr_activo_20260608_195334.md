@@ -1,71 +1,50 @@
-# OT-0056C1 — Adaptador puro Q-Tr activo
+# OT-0056C2 — Publica estado Q-Tr activo
 
-Fecha: 06/08/2026 20:25:42
-Rama: ot-0056c1-adaptador-puro-qtr-activo
+Fecha: 06/08/2026 21:06:36
+Rama: ot-0056c2-publica-estado-qtr-activo
 
 ## 1. Propósito
 
-Crear un adaptador puro para derivar el estado de completitud del futuro Bloque Q-Tr activo a partir del contexto runtime ya disponible.
+Publicar en contextoComparador el estado derivado q_tr_activo_estado usando el adaptador puro derivarEstadoQTrActivo.
 
-Esta OT no calcula caudales, no renderiza UI y no modifica el motor hidrológico.
+Esta OT no calcula Qp, Tp ni Volumen.
 
-## 2. Archivo creado
+## 2. Cambios aplicados
 
-01_APP/HIDROFLOW/src/services/qtr/derivarEstadoQTrActivo.js
+- Se importa derivarEstadoQTrActivo en HidroFlow.jsx.
+- Se publica q_tr_activo_estado dentro del contexto base.
+- El estado publicado incluye disponible, campos_faltantes y q_tr_activo base.
 
-## 3. Responsabilidad del adaptador
+## 3. Ubicación de integración
 
-El adaptador evalúa si existen los campos mínimos requeridos para declarar un escenario Q-Tr activo como disponible.
+El estado q_tr_activo_estado se publica después de lluvia_efectiva_total_mm y antes del bloque hidrogramas.
 
-Campos mínimos evaluados:
+Esto mantiene Q-Tr activo separado del Bloque Q-5.
 
-- tr_activo
-- estacion_idf
-- metodo_idf
-- distribucion_temporal
-- area_km2
-- cn_efectivo
-- s_mm
-- ia_mm
-- porcentaje_impermeable
-- tc_min
-- lluvia_efectiva_total_mm
-
-## 4. Salida esperada
-
-El adaptador retorna:
-
-- fuente
-- tipo
-- estado
-- disponible
-- campos_faltantes
-- q_tr_activo
-
-## 5. Restricciones preservadas
+## 4. Restricciones preservadas
 
 No se modifica:
 
+- Q-5
 - hidroEngine
 - tcSelector
-- Q-5
 - fórmulas de caudal
 - fórmulas de hidrogramas
-- Comparador
+- UI del Comparador
 - Índice Hidrológico
 
-## 6. Validación
+## 5. Validación
 
 Build aprobado con Vite.
 
-El adaptador compila como archivo nuevo independiente.
+Código de salida build: 0.
 
-## 7. Decisión Senior
+## 6. Decisión Senior
 
-Q-Tr activo inicia como estado derivado y auditable, no como cálculo hidráulico/hidrológico activo.
+Q-Tr activo queda publicado como estado derivado y auditable, todavía sin cálculo ni visualización dedicada.
 
-El siguiente paso podrá publicar este estado al contexto o renderizar un bloque visual incompleto/controlado, sin tocar Q-5.
+El siguiente paso podrá renderizar un bloque visual Q-Tr activo incompleto/controlado, sin tocar Q-5.
 
-## 8. Estado Git al cierre
+## 7. Estado Git al cierre
 
-?? 01_APP/HIDROFLOW/src/services/qtr/
+ M 01_APP/HIDROFLOW/src/HidroFlow.jsx
