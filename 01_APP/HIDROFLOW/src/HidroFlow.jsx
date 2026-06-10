@@ -2202,6 +2202,17 @@ const leerT = (punto, indice) => {
             ? derivarEstadoQTrActivo({
                 ...qTrActivoPrevio,
                 ...siguienteContexto,
+                // OT-0056F preserva estacion IDF en Q-Tr activo cuando Hidrogramas refresca el contexto.
+                estacion_idf:
+                  siguienteContexto.estacion_idf ??
+                  qTrActivoPrevio.estacion_idf ??
+                  previo?.estacion_idf ??
+                  previo?.estacionIDF ??
+                  previo?.estacion ??
+                  previo?.nombre_estacion ??
+                  previo?.idf?.nombre ??
+                  previo?.idf?.estacion ??
+                  null,
                 tr_diseno_activo: qTrActivoPrevio.tr_activo ?? previo?.tr_diseno_activo ?? 25,
                 metodo_idf: qTrActivoPrevio.metodo_idf ?? previo?.metodo_idf ?? null,
                 distribucion_temporal: qTrActivoPrevio.distribucion_temporal ?? previo?.distribucion_temporal ?? null,
@@ -3805,7 +3816,7 @@ useEffect(() => {
           setParams={setParams}
         />
       )}
-      {tab==="hidro"      &&<ModHidrogramas params={params} est={est} name={name} onContextoComparador={onContextoComparador} />}
+      {tab==="hidro"      &&<ModHidrogramas params={params} est={est} name={stn} onContextoComparador={onContextoComparador} />}
       {tab==="racional"   &&<ModRacional   params={params} est={est} name={stn} onContextoComparador={onContextoComparador}/>}
       {tab==="sar"        &&<ModSAR        params={params} est={est} name={stn}/>}
       {tab === "Influencia" && (
