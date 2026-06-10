@@ -1648,6 +1648,15 @@ const obtenerResultadoQMetodo = (metodo) => {
             "- No se recalculan hidrogramas en este expediente.",
             "- No se alteran Qp, Tp, Volumen ni Q(t).",
             "",
+            "## Validación interna del expediente exportado",
+            "Estado de validación estructural: control previo al portapapeles aplicado.",
+            "Control de tokens inválidos: activo mediante validador interno del expediente copiado.",
+            "Secciones obligatorias controladas: Q-Tr activo, Q-5 auditado, Método Racional, contraste, restricciones y sello técnico.",
+            "Q-Tr activo: trazado desde q_tr_activo_estado y verificado como sección exportable.",
+            "Q-5 auditado: presente como bloque de hidrogramas no adoptivo.",
+            "Método Racional: presente como contraste global independiente.",
+            "Alcance: validación estructural/exportable; no reemplaza revisión hidrológica profesional.",
+            "",
             "## 9. Sello técnico de generación",
             "Herramienta: HidroFlow.",
             "Tipo de salida: Expediente hidrológico mínimo.",
@@ -1673,6 +1682,7 @@ const obtenerResultadoQMetodo = (metodo) => {
                 "## 6. Método Racional — contraste global independiente",
                 "## 7. Contraste Q-5 vs Método Racional",
                 "## 8. Restricciones técnicas",
+                "## Validación interna del expediente exportado",
                 "## 9. Sello técnico de generación"
               ];
               const seccionesFaltantesExpediente = seccionesObligatoriasExpediente.filter((seccion) =>
