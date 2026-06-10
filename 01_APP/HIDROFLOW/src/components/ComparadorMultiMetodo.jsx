@@ -1800,6 +1800,102 @@ const obtenerResultadoQMetodo = (metodo) => {
       })()}
 
       <div style={{ ...estilos.muted, marginBottom: "10px" }}>
+          {(() => {
+            const areaKm2 = Number(contextoBase?.area_km2);
+            const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
+            const volumenEsperadoM3 =
+              Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
+                ? areaKm2 * peTotalMm * 1000
+                : null;
+
+            const metodosQ5Panel = metodos.filter((metodo) =>
+              metodo.tipo === "q" &&
+              !String(metodo.nombre ?? "").toLowerCase().includes("racional")
+            );
+
+            const metodoQ5PrincipalPanel =
+              metodosQ5Panel.find((metodo) =>
+                String(metodo?.nombre ?? "").toLowerCase().includes("scs unit")
+              ) ??
+              metodosQ5Panel[0] ??
+              null;
+
+            const resultadoQ5PrincipalPanel = metodoQ5PrincipalPanel
+              ? obtenerResultadoQMetodo(metodoQ5PrincipalPanel)
+              : null;
+
+            const volumenQ5PrincipalM3 = Number(resultadoQ5PrincipalPanel?.volumen);
+            const relacionVolumenQ5Esperado =
+              Number.isFinite(volumenQ5PrincipalM3) &&
+              Number.isFinite(volumenEsperadoM3) &&
+              volumenEsperadoM3 > 0
+                ? volumenQ5PrincipalM3 / volumenEsperadoM3
+                : null;
+
+            const estadoConsistenciaVolumen =
+              relacionVolumenQ5Esperado === null
+                ? "no evaluada"
+                : relacionVolumenQ5Esperado >= 0.95 && relacionVolumenQ5Esperado <= 1.05
+                ? "superada"
+                : relacionVolumenQ5Esperado >= 0.80 && relacionVolumenQ5Esperado <= 1.20
+                ? "requiere revisión menor"
+                : "requiere revisión técnica";
+
+            const estadoQTrActivo =
+              contextoBase?.q_tr_activo_estado?.estado ?? "no_publicado";
+
+            const colorBorde =
+              estadoConsistenciaVolumen === "superada"
+                ? "#16a34a"
+                : estadoConsistenciaVolumen === "requiere revisión menor"
+                ? "#a16207"
+                : "#991b1b";
+
+            const formato = (valor, decimales = 2) => {
+              const numero = Number(valor);
+              return Number.isFinite(numero)
+                ? numero.toLocaleString("es-CO", { maximumFractionDigits: decimales })
+                : "—";
+            };
+
+            return (
+              <section
+                style={{
+                  border: `1px solid ${colorBorde}`,
+                  borderRadius: 12,
+                  padding: 12,
+                  margin: "12px 0",
+                  background: "rgba(15, 23, 42, 0.70)"
+                }}
+              >
+                <h3 style={{ margin: "0 0 8px 0" }}>
+                  Panel visual de consistencia cruzada OT-0058
+                </h3>
+
+                <div style={{ ...estilos.muted, marginBottom: 10 }}>
+                  Control Pe–Área–Volumen/Q-5 visible antes de copiar el expediente. No recalcula hidrogramas, no modifica Q-5 y no adopta resultados.
+                </div>
+
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
+                    gap: 8
+                  }}
+                >
+                  <div><strong>Pe total:</strong> {formato(peTotalMm, 4)} mm</div>
+                  <div><strong>Área:</strong> {formato(areaKm2, 4)} km²</div>
+                  <div><strong>Volumen esperado:</strong> {formato(volumenEsperadoM3, 0)} m³</div>
+                  <div><strong>Método Q-5 principal:</strong> {metodoQ5PrincipalPanel?.nombre ?? "—"}</div>
+                  <div><strong>Volumen Q-5 principal:</strong> {formato(volumenQ5PrincipalM3, 2)} m³</div>
+                  <div><strong>Relación Q-5/esperado:</strong> {relacionVolumenQ5Esperado !== null ? relacionVolumenQ5Esperado.toFixed(3) + "x" : "—"}</div>
+                  <div><strong>Resultado:</strong> {estadoConsistenciaVolumen}</div>
+                  <div><strong>Q-Tr activo:</strong> {estadoQTrActivo}</div>
+                </div>
+              </section>
+            );
+          })()}
+
         Lectura metodológica post-conservación de masa: SCS se toma como método principal de referencia para hidrograma; SCS Mod. queda como variante ajustable; Snyder, Williams & Hann y Clark IUH se mantienen como métodos comparativos/referenciales hasta justificación técnica.
       </div>
 
