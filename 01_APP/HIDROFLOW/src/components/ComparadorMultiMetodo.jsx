@@ -1547,6 +1547,31 @@ const obtenerResultadoQMetodo = (metodo) => {
                 }
                 return String(valor);
               };
+              const metodoQ5PrincipalConsistencia =
+                metodosQ5Expediente.find((metodo) =>
+                  String(metodo?.nombre ?? "").toLowerCase().includes("scs unit")
+                ) ??
+                metodosQ5Expediente[0] ??
+                null;
+              const resultadoQ5PrincipalConsistencia = metodoQ5PrincipalConsistencia
+                ? obtenerResultadoQMetodo(metodoQ5PrincipalConsistencia)
+                : null;
+              const volumenQ5PrincipalM3 = Number(resultadoQ5PrincipalConsistencia?.volumen);
+              const relacionVolumenQ5Esperado =
+                Number.isFinite(volumenQ5PrincipalM3) &&
+                Number.isFinite(volumenEsperadoM3) &&
+                volumenEsperadoM3 > 0
+                  ? volumenQ5PrincipalM3 / volumenEsperadoM3
+                  : null;
+              const estadoConsistenciaVolumen =
+                relacionVolumenQ5Esperado === null
+                  ? "no evaluada"
+                  : relacionVolumenQ5Esperado >= 0.95 && relacionVolumenQ5Esperado <= 1.05
+                  ? "superada"
+                  : relacionVolumenQ5Esperado >= 0.80 && relacionVolumenQ5Esperado <= 1.20
+                  ? "requiere revisión menor"
+                  : "requiere revisión técnica";
+
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
             "",
@@ -1648,6 +1673,19 @@ const obtenerResultadoQMetodo = (metodo) => {
             "- No se recalculan hidrogramas en este expediente.",
             "- No se alteran Qp, Tp, Volumen ni Q(t).",
             "",
+            "## Control de consistencia cruzada Pe–Área–Volumen/Q-5",
+            `Pe total: ${Number.isFinite(peTotalMm) ? peTotalMm.toLocaleString("es-CO", { maximumFractionDigits: 4 }) + " mm" : "—"}`,
+            `Área: ${Number.isFinite(areaKm2) ? areaKm2.toLocaleString("es-CO", { maximumFractionDigits: 4 }) + " km²" : "—"}`,
+            `Volumen esperado: ${Number.isFinite(volumenEsperadoM3) ? volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 }) + " m³" : "—"}`,
+            `Método Q-5 principal: ${metodoQ5PrincipalConsistencia?.nombre ?? "—"}`,
+            `Volumen Q-5 principal: ${Number.isFinite(volumenQ5PrincipalM3) ? volumenQ5PrincipalM3.toLocaleString("es-CO", { maximumFractionDigits: 2 }) + " m³" : "—"}`,
+            `Relación volumen Q-5 / volumen esperado: ${relacionVolumenQ5Esperado !== null ? relacionVolumenQ5Esperado.toFixed(3) + "x" : "—"}`,
+            `Resultado de consistencia volumétrica: ${estadoConsistenciaVolumen}`,
+            `Q-Tr activo: ${estadoQTrActivoExpediente?.estado ?? "no_publicado"}`,
+            "Q-5 auditado: presente como bloque no adoptivo.",
+            "Método Racional: presente como contraste global independiente.",
+            "Lectura técnica: control interno preliminar; no reemplaza revisión hidrológica profesional.",
+            "",
             "## Validación interna del expediente exportado",
             "Estado de validación estructural: control previo al portapapeles aplicado.",
             "Control de tokens inválidos: activo mediante validador interno del expediente copiado.",
@@ -1682,6 +1720,7 @@ const obtenerResultadoQMetodo = (metodo) => {
                 "## 6. Método Racional — contraste global independiente",
                 "## 7. Contraste Q-5 vs Método Racional",
                 "## 8. Restricciones técnicas",
+                "## Control de consistencia cruzada Pe–Área–Volumen/Q-5",
                 "## Validación interna del expediente exportado",
                 "## 9. Sello técnico de generación"
               ];
