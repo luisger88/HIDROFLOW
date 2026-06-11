@@ -1605,7 +1605,7 @@ const obtenerResultadoQMetodo = (metodo) => {
             `Volumen esperado: ${volumenEsperadoM3 ? volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 }) + " m³" : "—"}`,
             "Fórmula: Pe(mm) × Área(km²) × 1000.",
             "",
-                "## Escenario Q-Tr activo — control de trazabilidad",
+                "## 5. Escenario Q-Tr activo — control de trazabilidad",
                 `Estado: ${estadoQTrActivoExpediente?.estado ?? "no_publicado"}`,
                 `Tr activo: ${formatearValorQTrExpediente(qTrActivoExpediente.tr_activo, " años", 2)}`,
                 `Estación IDF: ${formatearValorQTrExpediente(qTrActivoExpediente.estacion_idf)}`,
@@ -1622,7 +1622,7 @@ const obtenerResultadoQMetodo = (metodo) => {
                 `Fuente: ${estadoQTrActivoExpediente?.fuente ?? "—"}`,
                 "Lectura técnica: bloque no adoptivo; no recalcula caudales, no modifica Q-5 y queda subordinado a validación hidrológica del expediente.",
                 "",
-            "## 5. Resumen Q-5 auditado",
+            "## 6. Resumen Q-5 auditado",
             "Estado general: diagnóstico no adoptivo.",
             "SCS Unit Hydrograph: candidato principal de referencia.",
             "SCS Mod.: variante ajustable.",
@@ -1634,7 +1634,7 @@ const obtenerResultadoQMetodo = (metodo) => {
             ...tablaQ5Markdown,
             "",
             "",
-            "## 6. Método Racional — contraste global independiente",
+            "## 7. Método Racional — contraste global independiente",
             "Uso: contraste global independiente de caudal pico.",
             "Relación con Q-5: no pertenece al bloque Q-5 de hidrogramas.",
             "Criterio técnico: no adoptivo principal para esta cuenca sin revisión de competencia, duración Tc y alcance normativo.",
@@ -1660,20 +1660,13 @@ const obtenerResultadoQMetodo = (metodo) => {
                 ]),
             "",
             "",
-            "## 7. Contraste Q-5 vs Método Racional",
+            "## 8. Contraste Q-5 vs Método Racional",
             "Q-5: bloque de hidrogramas auditados. Evalúa Q(t), Qp, Tp, Volumen, estado temporal y dictamen por método.",
             "Método Racional: contraste global independiente de caudal pico basado en intensidad, coeficiente C, área y Tc.",
             "Lectura técnica: Q-5 y Método Racional son complementarios, pero no equivalentes.",
             "Criterio de adopción: ningún resultado debe adoptarse automáticamente sin revisión de competencia metodológica, escala de cuenca, duración Tc y alcance normativo.",
             "",
-            "## 8. Restricciones técnicas",
-            "- No se usaron caudales externos como fundamento.",
-            "- No se usó SIATA para justificar caudales.",
-            "- No se modifica el motor hidrológico.",
-            "- No se recalculan hidrogramas en este expediente.",
-            "- No se alteran Qp, Tp, Volumen ni Q(t).",
-            "",
-            "## Control de consistencia cruzada Pe–Área–Volumen/Q-5",
+            "## 9. Control de consistencia cruzada Pe–Área–Volumen/Q-5",
             `Pe total: ${Number.isFinite(peTotalMm) ? peTotalMm.toLocaleString("es-CO", { maximumFractionDigits: 4 }) + " mm" : "—"}`,
             `Área: ${Number.isFinite(areaKm2) ? areaKm2.toLocaleString("es-CO", { maximumFractionDigits: 4 }) + " km²" : "—"}`,
             `Volumen esperado: ${Number.isFinite(volumenEsperadoM3) ? volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 }) + " m³" : "—"}`,
@@ -1686,7 +1679,7 @@ const obtenerResultadoQMetodo = (metodo) => {
             "Método Racional: presente como contraste global independiente.",
             "Lectura técnica: control interno preliminar; no reemplaza revisión hidrológica profesional.",
             "",
-            "## Validación interna del expediente exportado",
+            "## 10. Validación interna del expediente exportado",
             "Estado de validación estructural: control previo al portapapeles aplicado.",
             "Control de tokens inválidos: activo mediante validador interno del expediente copiado.",
             "Secciones obligatorias controladas: Q-Tr activo, Q-5 auditado, Método Racional, contraste, restricciones y sello técnico.",
@@ -1695,7 +1688,7 @@ const obtenerResultadoQMetodo = (metodo) => {
             "Método Racional: presente como contraste global independiente.",
             "Alcance: validación estructural/exportable; no reemplaza revisión hidrológica profesional.",
             "",
-            "## 9. Sello técnico de generación",
+            "## 11. Sello técnico de generación",
             "Herramienta: HidroFlow.",
             "Tipo de salida: Expediente hidrológico mínimo.",
             `Cuenca activa: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}.`,
@@ -1704,7 +1697,15 @@ const obtenerResultadoQMetodo = (metodo) => {
             "Validaciones superadas: estructura, coherencia entre salidas, completitud numérica y plausibilidad hidrológica preliminar.",
             `Tr global activo al generar expediente: ${trDisenoActivoExpediente} años.`,
             "Alcance: diagnóstico técnico reproducible no adoptivo hasta revisión hidrológica responsable.",
-            "Restricción principal: no usar como valor adoptivo final sin revisión de competencia metodológica, escala de cuenca, duración Tc, alcance normativo y criterio profesional."
+            "Restricción principal: no usar como valor adoptivo final sin revisión de competencia metodológica, escala de cuenca, duración Tc, alcance normativo y criterio profesional.",
+            "",
+            "## 12. Restricciones y advertencias técnicas",
+            "- No se usaron caudales externos como fundamento.",
+            "- No se usó SIATA para justificar caudales.",
+            "- No se modifica el motor hidrológico.",
+            "- No se recalculan hidrogramas en este expediente.",
+            "- No se alteran Qp, Tp, Volumen ni Q(t).",
+            "",
           ].join("\n");
 
               // OT-0056E valida expediente copiado antes de enviarlo al portapapeles.
@@ -1715,14 +1716,14 @@ const obtenerResultadoQMetodo = (metodo) => {
 
               const seccionesObligatoriasExpediente = [
                 "# Expediente hidrológico mínimo — Cuenca activa",
-                "## Escenario Q-Tr activo — control de trazabilidad",
-                "## 5. Resumen Q-5 auditado",
-                "## 6. Método Racional — contraste global independiente",
-                "## 7. Contraste Q-5 vs Método Racional",
-                "## 8. Restricciones técnicas",
-                "## Control de consistencia cruzada Pe–Área–Volumen/Q-5",
-                "## Validación interna del expediente exportado",
-                "## 9. Sello técnico de generación"
+                "## 5. Escenario Q-Tr activo — control de trazabilidad",
+                "## 6. Resumen Q-5 auditado",
+                "## 7. Método Racional — contraste global independiente",
+                "## 8. Contraste Q-5 vs Método Racional",
+                "## 9. Control de consistencia cruzada Pe–Área–Volumen/Q-5",
+                "## 10. Validación interna del expediente exportado",
+                "## 11. Sello técnico de generación",
+                "## 12. Restricciones y advertencias técnicas"
               ];
               const seccionesFaltantesExpediente = seccionesObligatoriasExpediente.filter((seccion) =>
                 !textoExpediente.includes(seccion)
@@ -1985,6 +1986,8 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
+
 
 
 
