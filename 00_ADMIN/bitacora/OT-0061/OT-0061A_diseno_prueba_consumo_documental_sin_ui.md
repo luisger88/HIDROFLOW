@@ -19,6 +19,17 @@ Definir una prueba de consumo documental controlada para el servicio puro adapta
 
 OT-0060 dejó en main:
 
+- Diseño de salida documental formal.
+- Plantilla textual formal del expediente.
+- Diseño de adaptador documental mínimo.
+- Contrato de datos del adaptador.
+- Servicio puro adaptarExpedienteDocumental.js.
+- Validación contractual del adaptador.
+- Cierre integral sin integración UI.
+
+## Alcance de OT-0061A
+
+Esta etapa solo diseña la prueba de consumo documental. No implementa integración visual ni exportadores.
 
 ## Prueba objetivo
 
