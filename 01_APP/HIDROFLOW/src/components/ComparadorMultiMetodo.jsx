@@ -4,6 +4,7 @@ import { setTcState } from "../agents/tcAgent";
 import { calcTc, mapTcResultados } from "../services/hidroEngine";
 import { seleccionarTc } from "../services/tcSelector";
 import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteTc";
+import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedienteDocumental";
 
 import {
   resumenComparadorCatalogo,
@@ -1710,6 +1711,19 @@ const obtenerResultadoQMetodo = (metodo) => {
             "- No se alteran Qp, Tp, Volumen ni Q(t).",
             "",
           ].join("\n");
+          try {
+            const diagnosticoDocumentalExpediente = adaptarExpedienteDocumental(textoExpediente, {
+              fuenteExpediente: "ComparadorMultiMetodo.textoExpediente",
+              origenPlantilla: "OT-0064",
+              cuencaActiva: contextoBase?.cuencaNombre ?? "Cuenca activa"
+            });
+
+            if (!diagnosticoDocumentalExpediente.ok) {
+              console.warn("Diagnóstico documental no invasivo:", diagnosticoDocumentalExpediente);
+            }
+          } catch (errorDiagnosticoDocumental) {
+            console.warn("Diagnóstico documental no invasivo no ejecutado:", errorDiagnosticoDocumental);
+          }
 
               // OT-0056E valida expediente copiado antes de enviarlo al portapapeles.
               const tokensInvalidosExpediente = ["undefined", "null", "NaN", "[object Object]"];
