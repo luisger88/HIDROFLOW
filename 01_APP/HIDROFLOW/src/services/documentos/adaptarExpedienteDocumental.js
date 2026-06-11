@@ -16,15 +16,17 @@ const SECCIONES_OBLIGATORIAS_EXPEDIENTE = [
 ];
 
 const MAPA_TIPOS_SECCION = [
-  ["contraste", "contraste"],
   ["método racional", "metodo_racional"],
+  ["control de consistencia", "consistencia"],
+  ["consistencia cruzada", "consistencia"],
+  ["contraste q-5", "contraste"],
+  ["contraste", "contraste"],
   ["identificación", "identificacion"],
   ["parámetros", "parametros"],
   ["contexto tc", "contexto_tc_tr"],
-  ["volumen", "volumen"],
   ["q-tr", "trazabilidad_qtr"],
   ["q-5", "tabla_q5"],
-  ["consistencia", "consistencia"],
+  ["volumen", "volumen"],
   ["validación", "validacion"],
   ["sello", "sello"],
   ["restricciones", "restricciones"]
