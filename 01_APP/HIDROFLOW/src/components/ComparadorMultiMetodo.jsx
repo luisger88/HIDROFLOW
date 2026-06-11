@@ -1816,6 +1816,47 @@ const obtenerResultadoQMetodo = (metodo) => {
           </div>
         ) : null;
       })()}
+      {(() => {
+  try {
+    const diagnostico = adaptarExpedienteDocumental(
+      "Expediente hidrológico mínimo",
+      {
+        fuenteExpediente: "ComparadorMultiMetodo.render",
+        origenPlantilla: "OT-0066",
+        cuencaActiva: contextoBase?.cuencaNombre ?? "Cuenca activa"
+      }
+    );
+
+    return (
+      <section
+        style={{
+          border: "1px solid #334155",
+          borderRadius: 12,
+          padding: 12,
+          margin: "12px 0",
+          background: "rgba(15, 23, 42, 0.6)"
+        }}
+      >
+        <h3 style={{ margin: "0 0 8px 0" }}>
+          Diagnóstico documental (lectura auxiliar)
+        </h3>
+
+        <div style={{ fontSize: "13px", marginBottom: 6 }}>
+          <strong>Estado:</strong>{" "}
+          {diagnostico?.ok ? "OK" : "Con advertencias"}
+        </div>
+
+        <div style={{ fontSize: "12px", opacity: 0.7 }}>
+          No controla el copiado. No modifica el expediente.
+        </div>
+      </section>
+    );
+
+  } catch {
+    return null;
+  }
+})()}
+
 
       <div style={{ ...estilos.muted, marginBottom: "10px" }}>
           {(() => {
