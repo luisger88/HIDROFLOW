@@ -1574,6 +1574,9 @@ const obtenerResultadoQMetodo = (metodo) => {
 
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
+            "Estado técnico del expediente: CONSISTENTE CON ADVERTENCIAS.",
+            "Lectura técnica: expediente exportable completo, con controles internos presentes, no adoptivo y sujeto a revisión hidrológica profesional.",
+            "Alcance: estado textual/exportable; no recalcula resultados ni reemplaza criterio profesional.",
             "",
             "## 1. Identificación",
             `Cuenca: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}`,
@@ -1986,38 +1989,3 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
