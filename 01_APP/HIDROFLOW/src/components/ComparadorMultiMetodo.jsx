@@ -638,6 +638,40 @@ const obtenerResultadoQMetodo = (metodo) => {
   };
 
   const renderTabla = (titulo, tipo) => {
+
+  // OT-0067 — Adaptador de coherencia hidrológica (encapsulado)
+  // OT-0067 — Adaptador de coherencia hidrológica (encapsulado)
+const clasificarCoherencia = (metodo) => {
+  const tp = Number(metodo?.tPico ?? metodo?.tp);
+  const tc = Number(contextoBase?.tc_global ?? 0);
+
+  if (!Number.isFinite(tp) || !Number.isFinite(tc) || tc === 0) {
+    return null;
+  }
+
+  const relacion = tp / tc;
+
+  if (relacion < 0.15) {
+    return { etiqueta: "No coherente", color: "#dc2626" };
+  }
+
+  const nombre = String(metodo?.nombre ?? "").toLowerCase();
+
+  if (nombre.includes("scs")) {
+    return { etiqueta: "Principal", color: "#16a34a" };
+  }
+
+  if (nombre.includes("snyder")) {
+    return { etiqueta: "Coherente", color: "#22c55e" };
+  }
+
+  if (nombre.includes("clark")) {
+    return { etiqueta: "Referencial", color: "#f59e0b" };
+  }
+
+  return { etiqueta: "Evaluar", color: "#64748b" };
+};
+
     const datos = metodos.filter((metodo) => metodo.tipo === tipo);
 
     return (
@@ -2044,3 +2078,4 @@ const obtenerResultadoQMetodo = (metodo) => {
     </main>
   );
 }
+
