@@ -639,7 +639,7 @@ const obtenerResultadoQMetodo = (metodo) => {
 
   const renderTabla = (titulo, tipo) => {
 
-  // OT-0067 — Adaptador de coherencia hidrológica (encapsulado)
+  
   // OT-0067 — Adaptador de coherencia hidrológica (encapsulado)
 const clasificarCoherencia = (metodo) => {
   const tp = Number(metodo?.tPico ?? metodo?.tp);
@@ -673,9 +673,68 @@ const clasificarCoherencia = (metodo) => {
 };
 
     const datos = metodos.filter((metodo) => metodo.tipo === tipo);
+    // OT-0067C — Evaluación global de coherencia
+const resumenCoherencia = metodos.map((m) => {
+  const r = clasificarCoherencia(m);
+  return r?.etiqueta;
+});
+
+let estadoGlobal = {
+  etiqueta: "Evaluar",
+  color: "#64748b"
+};
+
+if (resumenCoherencia.includes("No coherente")) {
+  estadoGlobal = {
+    etiqueta: "No coherente",
+    color: "#dc2626"
+  };
+} else if (resumenCoherencia.includes("Referencial")) {
+  estadoGlobal = {
+    etiqueta: "Con advertencias",
+    color: "#f59e0b"
+  };
+} else if (
+  resumenCoherencia.length > 0 &&
+  resumenCoherencia.every(
+    (x) => x === "Principal" || x === "Coherente"
+  )
+) {
+  estadoGlobal = {
+    etiqueta: "Coherente",
+    color: "#16a34a"
+  };
+}
 
     return (
       <section style={estilos.bloque}>
+        <section
+  style={{
+    border: `1px solid ${estadoGlobal.color}`,
+    borderRadius: 12,
+    padding: 10,
+    margin: "10px 0",
+    background: "rgba(15,23,42,0.5)"
+  }}
+>
+  <strong>Estado global del modelo:</strong>{" "}
+  <span
+    style={{
+      padding: "2px 8px",
+      borderRadius: 6,
+      background: estadoGlobal.color,
+      color: "#fff",
+      marginLeft: 6,
+      fontSize: "12px"
+    }}
+  >
+    {estadoGlobal.etiqueta}
+  </span>
+
+  <div style={{ fontSize: "12px", opacity: 0.7, marginTop: 4 }}>
+    Evaluación basada en coherencia Tc–Tp–Qp–Volumen.
+  </div>
+</section>
         <h2 style={estilos.bloqueTitulo}>{titulo}</h2>
 
         <div style={estilos.tablaWrap}>
