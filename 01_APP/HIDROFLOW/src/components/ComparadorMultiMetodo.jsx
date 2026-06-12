@@ -646,20 +646,34 @@ const obtenerResultadoQMetodo = (metodo) => {
   
   // OT-0067 — Adaptador de coherencia hidrológica (encapsulado)
 const clasificarCoherencia = (metodo) => {
-  const tp = Number(metodo?.tPico ?? metodo?.tp);
-  const tc = Number(contextoBase?.tc_global ?? 0);
+  // OT-0067 — Adaptador de coherencia hidrológica
+  const tpRaw = metodo?.tPico ?? metodo?.tp ?? metodo?.Tp;
+  const tp = Number(String(tpRaw ?? "").replace(/[^\d.]/g, ""));
+
+  const tcRaw = contextoBase?.tc_global ?? contextoBase?.tc ?? contextoBase?.tcMin ?? 0;
+  const tc = Number(String(tcRaw ?? "").replace(/[^\d.]/g, ""));
+
+  const nombre = String(
+    metodo?.nombre ??
+    metodo?.metodo ??
+    metodo?.label ??
+    ""
+  ).toLowerCase();
+
+  // Regla explícita de seguridad por método crítico identificado en OT-0067
+  if (nombre.includes("williams") || nombre.includes("hann")) {
+    return { etiqueta: "No coherente", color: "#dc2626" };
+  }
 
   if (!Number.isFinite(tp) || !Number.isFinite(tc) || tc === 0) {
-    return null;
+    return { etiqueta: "No evaluado", color: "#64748b" };
   }
 
   const relacion = tp / tc;
 
-  if (relacion < 0.15) {
+  if (relacion < 0.20) {
     return { etiqueta: "No coherente", color: "#dc2626" };
   }
-
-  const nombre = String(metodo?.nombre ?? "").toLowerCase();
 
   if (nombre.includes("scs")) {
     return { etiqueta: "Principal", color: "#16a34a" };
@@ -676,19 +690,18 @@ const clasificarCoherencia = (metodo) => {
   return { etiqueta: "Evaluar", color: "#64748b" };
 };
 
-    const datos = metodos.filter((metodo) => metodo.tipo === tipo);
-    // OT-0067C — Evaluación global de coherencia
+const datos = metodos.filter((metodo) => metodo.tipo === tipo);
+
+// OT-0067C — Evaluación global de coherencia
 const resumenCoherencia = metodos.map((m) => {
   const r = clasificarCoherencia(m);
-  return r?.etiqueta;
+  return r?.etiqueta ?? "No evaluado";
 });
 
 let estadoGlobal = {
-  etiqueta: "No coherente",
-  color: "#dc2626"
+  etiqueta: "Evaluar",
+  color: "#64748b"
 };
-
-
 
 if (resumenCoherencia.includes("No coherente")) {
   estadoGlobal = {
@@ -702,9 +715,7 @@ if (resumenCoherencia.includes("No coherente")) {
   };
 } else if (
   resumenCoherencia.length > 0 &&
-  resumenCoherencia.every(
-    (x) => x === "Principal" || x === "Coherente"
-  )
+  resumenCoherencia.every((x) => x === "Principal" || x === "Coherente")
 ) {
   estadoGlobal = {
     etiqueta: "Coherente",
