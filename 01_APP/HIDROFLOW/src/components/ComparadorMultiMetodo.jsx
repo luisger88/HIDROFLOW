@@ -22,6 +22,10 @@ import {
 } from "../data/auditoriaPendientesTc";
 
 export default function ComparadorMultiMetodo({ contexto = null }) {
+  let bloqueoAdopcion = false;
+  // ✅ OT-0067E — utilidades de bloqueo (GLOBAL COMPONENTE)
+
+
 
   const [filtroEstado, setFiltroEstado] = useState("todos");
   const [filtroTipo, setFiltroTipo] = useState("todos");
@@ -680,9 +684,11 @@ const resumenCoherencia = metodos.map((m) => {
 });
 
 let estadoGlobal = {
-  etiqueta: "Evaluar",
-  color: "#64748b"
+  etiqueta: "No coherente",
+  color: "#dc2626"
 };
+
+
 
 if (resumenCoherencia.includes("No coherente")) {
   estadoGlobal = {
@@ -705,6 +711,21 @@ if (resumenCoherencia.includes("No coherente")) {
     color: "#16a34a"
   };
 }
+
+const bloqueoAdopcionLocal = estadoGlobal.etiqueta === "No coherente";
+bloqueoAdopcion = bloqueoAdopcionLocal;
+
+
+// ✅ OT-0067E — utilidades de bloqueo seguras
+const aplicarBloqueo = (baseStyle = {}) => ({
+  ...baseStyle,
+  opacity: bloqueoAdopcion ? 0.5 : 1,
+  cursor: bloqueoAdopcion ? "not-allowed" : "pointer"
+});
+
+const handleClickSeguro = (accion) => () => {
+  if (!bloqueoAdopcion) accion();
+};
 
     return (
       <section style={estilos.bloque}>
@@ -1253,54 +1274,104 @@ if (resumenCoherencia.includes("No coherente")) {
       </section>
 
       <section style={estilos.controles}>
-        <button
-          type="button"
-          style={estiloBotonFiltro(filtroEstado === "todos")}
-          onClick={() => setFiltroEstado("todos")}
-        >
-          Todos
-        </button>
 
-        <button
-          type="button"
-          style={estiloBotonFiltro(filtroEstado === "activo")}
-          onClick={() => setFiltroEstado("activo")}
-        >
-          Activos
-        </button>
+  <button
+    type="button"
+    style={{
+      ...estiloBotonFiltro(filtroEstado === "todos"),
+      opacity: bloqueoAdopcion ? 0.5 : 1,
+      cursor: bloqueoAdopcion ? "not-allowed" : "pointer"
+    }}
+    onClick={() => {
+      if (!bloqueoAdopcion) setFiltroEstado("todos");
+    }}
+    disabled={bloqueoAdopcion}
+    title={bloqueoAdopcion ? "Bloqueado por incoherencia hidrológica" : ""}
+  >
+    Todos
+  </button>
 
-        <button
-          type="button"
-          style={estiloBotonFiltro(filtroEstado === "pendiente")}
-          onClick={() => setFiltroEstado("pendiente")}
-        >
-          Pendientes
-        </button>
+  <button
+    type="button"
+    style={{
+      ...estiloBotonFiltro(filtroEstado === "activo"),
+      opacity: bloqueoAdopcion ? 0.5 : 1,
+      cursor: bloqueoAdopcion ? "not-allowed" : "pointer"
+    }}
+    onClick={() => {
+      if (!bloqueoAdopcion) setFiltroEstado("activo");
+    }}
+    disabled={bloqueoAdopcion}
+    title={bloqueoAdopcion ? "Bloqueado por incoherencia hidrológica" : ""}
+  >
+    Activos
+  </button>
 
-        <button
-          type="button"
-          style={estiloBotonFiltro(filtroTipo === "todos")}
-          onClick={() => setFiltroTipo("todos")}
-        >
-          Tc + Q
-        </button>
+  <button
+    type="button"
+    style={{
+      ...estiloBotonFiltro(filtroEstado === "pendiente"),
+      opacity: bloqueoAdopcion ? 0.5 : 1,
+      cursor: bloqueoAdopcion ? "not-allowed" : "pointer"
+    }}
+    onClick={() => {
+      if (!bloqueoAdopcion) setFiltroEstado("pendiente");
+    }}
+    disabled={bloqueoAdopcion}
+    title={bloqueoAdopcion ? "Bloqueado por incoherencia hidrológica" : ""}
+  >
+    Pendientes
+  </button>
 
-        <button
-          type="button"
-          style={estiloBotonFiltro(filtroTipo === "tc")}
-          onClick={() => setFiltroTipo("tc")}
-        >
-          Solo Tc
-        </button>
+  <button
+    type="button"
+    style={{
+      ...estiloBotonFiltro(filtroTipo === "todos"),
+      opacity: bloqueoAdopcion ? 0.5 : 1,
+      cursor: bloqueoAdopcion ? "not-allowed" : "pointer"
+    }}
+    onClick={() => {
+      if (!bloqueoAdopcion) setFiltroTipo("todos");
+    }}
+    disabled={bloqueoAdopcion}
+    title={bloqueoAdopcion ? "Bloqueado por incoherencia hidrológica" : ""}
+  >
+    Tc + Q
+  </button>
 
-        <button
-          type="button"
-          style={estiloBotonFiltro(filtroTipo === "q")}
-          onClick={() => setFiltroTipo("q")}
-        >
-          Solo Q
-        </button>
-      </section>
+  <button
+    type="button"
+    style={{
+      ...estiloBotonFiltro(filtroTipo === "tc"),
+      opacity: bloqueoAdopcion ? 0.5 : 1,
+      cursor: bloqueoAdopcion ? "not-allowed" : "pointer"
+    }}
+    onClick={() => {
+      if (!bloqueoAdopcion) setFiltroTipo("tc");
+    }}
+    disabled={bloqueoAdopcion}
+    title={bloqueoAdopcion ? "Bloqueado por incoherencia hidrológica" : ""}
+  >
+    Solo Tc
+  </button>
+
+  <button
+    type="button"
+    style={{
+      ...estiloBotonFiltro(filtroTipo === "q"),
+      opacity: bloqueoAdopcion ? 0.5 : 1,
+      cursor: bloqueoAdopcion ? "not-allowed" : "pointer"
+    }}
+    onClick={() => {
+      if (!bloqueoAdopcion) setFiltroTipo("q");
+    }}
+    disabled={bloqueoAdopcion}
+    title={bloqueoAdopcion ? "Bloqueado por incoherencia hidrológica" : ""}
+  >
+    Solo Q
+  </button>
+
+</section>
 
       <section style={estilos.matriz}>
         <article style={estilos.matrizCard}>
