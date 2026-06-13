@@ -6,6 +6,7 @@ import { seleccionarTc } from "../services/tcSelector";
 import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteTc";
 import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedienteDocumental";
 import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
+import resumirEstructuraHidrogramas from "../services/hidrogramas/resumirEstructuraHidrogramas";
 
 import {
   resumenComparadorCatalogo,
@@ -162,6 +163,30 @@ const diagnosticoQSeries = useMemo(() => {
     };
   }
 }, [contextoBase?.hidrogramas]);
+
+// OT-0074F — Resumen estructural interno y silencioso de hidrogramas
+const resumenEstructuraHidrogramas = useMemo(() => {
+  try {
+    return resumirEstructuraHidrogramas(contextoBase?.hidrogramas);
+  } catch (errorResumenHidrogramas) {
+    return {
+      ok: false,
+      resumen: {
+        tipoEntrada: "error",
+        contenedor: null,
+        totalCandidatos: 0,
+        conSerieTemporal: 0,
+        sinSerieTemporal: 0,
+        conQpico: 0,
+        conTPico: 0,
+        conVolTotal: 0
+      },
+      candidatos: [],
+      error: String(errorResumenHidrogramas?.message ?? errorResumenHidrogramas)
+    };
+  }
+}, [contextoBase?.hidrogramas]);
+
 
 
 
@@ -2313,6 +2338,7 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
 
 
