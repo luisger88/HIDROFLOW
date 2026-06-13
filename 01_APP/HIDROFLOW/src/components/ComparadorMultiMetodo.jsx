@@ -2326,7 +2326,10 @@ const handleClickSeguro = (accion) => () => {
                 background: "rgba(15, 23, 42, 0.45)"
               }}
             >
-              <strong>Dictamen operativo:</strong> las series Q(t) no están publicadas para los métodos evaluados. No procede calcular métricas morfológicas de forma hasta publicar qSeries reales o normalizadas por método.
+              <strong>Dictamen operativo:</strong>{" "}
+{(resumenEstructuraHidrogramas?.resumen?.conSerieTemporal ?? 0) > 0
+  ? "las series Q(t) están publicadas y reconocidas por el diagnóstico estructural. Las métricas morfológicas permanecen bloqueadas hasta una OT posterior de análisis de forma."
+  : "las series Q(t) no están publicadas para los métodos evaluados. No procede calcular métricas morfológicas de forma hasta publicar qSeries reales o normalizadas por método."}
             </div>
             {(() => {
               const resumenEstructural = resumenEstructuraHidrogramas?.resumen ?? {
@@ -2380,7 +2383,10 @@ const handleClickSeguro = (accion) => () => {
                       background: "rgba(15, 23, 42, 0.35)"
                     }}
                   >
-                    <strong>Dictamen de serie temporal:</strong> el objeto hidrogramas contiene resultados resumen para los 5 métodos evaluados, incluyendo Qpico, tPico y volTotal, pero no publica una serie temporal Q(t) reconocible. No procede calcular métricas morfológicas de forma hasta disponer de qSeries reales o normalizadas por método.
+                    <strong>Dictamen de serie temporal:</strong>{" "}
+{(resumenEstructural?.conSerieTemporal ?? 0) > 0
+  ? "el objeto hidrogramas contiene resultados resumen y series temporales Q(t) reconocibles para los métodos evaluados. La publicación de qSeries está activa y validada estructuralmente; las métricas morfológicas permanecen bloqueadas hasta una OT posterior."
+  : "el objeto hidrogramas contiene resultados resumen para los 5 métodos evaluados, incluyendo Qpico, tPico y volTotal, pero no publica una serie temporal Q(t) reconocible. No procede calcular métricas morfológicas de forma hasta disponer de qSeries reales o normalizadas por método."}
                   </div>
                   <div style={{ ...estilos.muted, marginTop: 8 }}>
                     Este bloque no muestra series crudas, no lista arrays completos y no calcula métricas morfológicas.
