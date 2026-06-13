@@ -228,7 +228,54 @@ const diagnosticoMorfologiaQt = useMemo(() => {
   }
 }, [contextoBase?.hidrogramas]);
 
+// OT-0083B — Filas tabulares controladas de métricas morfológicas Q(t).
+// Prepara datos para exposición diagnóstica, sin adoptar métodos ni levantar bloqueos.
+const filasMorfologiaQt = useMemo(() => {
+  try {
+    const bruto = contextoBase?.hidrogramas;
 
+    const candidatos = Array.isArray(bruto)
+      ? bruto
+      : Array.isArray(bruto?.resultados)
+      ? bruto.resultados
+      : Array.isArray(bruto?.metodos)
+      ? bruto.metodos
+      : [];
+
+    const evaluaciones = Array.isArray(diagnosticoMorfologiaQt?.evaluaciones)
+      ? diagnosticoMorfologiaQt.evaluaciones
+      : [];
+
+    return candidatos.map((candidato, indice) => {
+      const evaluacion = evaluaciones[indice] ?? {};
+
+      return {
+        metodo: candidato?.metodo ?? candidato?.nombre ?? `Método ${indice + 1}`,
+        estado: evaluacion?.ok ? "Apta" : "No apta",
+        motivo: evaluacion?.motivo ?? null,
+        Qp: Number.isFinite(Number(evaluacion?.Qp)) ? Number(evaluacion.Qp) : null,
+        tPico: Number.isFinite(Number(evaluacion?.tPico)) ? Number(evaluacion.tPico) : null,
+        duracionEfectivaMin: Number.isFinite(Number(evaluacion?.duracionEfectivaMin))
+          ? Number(evaluacion.duracionEfectivaMin)
+          : null,
+        tiempoAscensoMin: Number.isFinite(Number(evaluacion?.tiempoAscensoMin))
+          ? Number(evaluacion.tiempoAscensoMin)
+          : null,
+        tiempoRecesoMin: Number.isFinite(Number(evaluacion?.tiempoRecesoMin))
+          ? Number(evaluacion.tiempoRecesoMin)
+          : null,
+        W50Min: Number.isFinite(Number(evaluacion?.W50Min)) ? Number(evaluacion.W50Min) : null,
+        W25Min: Number.isFinite(Number(evaluacion?.W25Min)) ? Number(evaluacion.W25Min) : null,
+        asimetriaAscensoReceso: Number.isFinite(Number(evaluacion?.asimetriaAscensoReceso))
+          ? Number(evaluacion.asimetriaAscensoReceso)
+          : null
+      };
+    });
+  } catch (errorFilasMorfologiaQt) {
+    console.warn("Filas morfológicas Q(t) no generadas:", errorFilasMorfologiaQt);
+    return [];
+  }
+}, [contextoBase?.hidrogramas, diagnosticoMorfologiaQt]);
 
 
   
@@ -2372,6 +2419,135 @@ const handleClickSeguro = (accion) => () => {
               <div><strong>No disponibles:</strong> {resumenQSeries.noDisponibles}</div>
               <div><strong>Inconsistentes:</strong> {resumenQSeries.inconsistentes}</div>
             </div>
+
+            {/* OT-0083C — Tabla compacta no adoptiva de métricas morfológicas Q(t). */}
+            {Array.isArray(filasMorfologiaQt) && filasMorfologiaQt.length > 0 && (
+              <div
+                style={{
+                  marginTop: 10,
+                  padding: 10,
+                  borderRadius: 8,
+                  border: "1px solid rgba(34, 197, 94, 0.35)",
+                  background: "rgba(15, 23, 42, 0.35)",
+                  overflowX: "auto"
+                }}
+              >
+                <strong>Tabla diagnóstica morfológica Q(t):</strong>{" "}
+                exposición compacta no adoptiva basada exclusivamente en qSeries validadas.
+
+                <table
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    marginTop: 10,
+                    fontSize: 12
+                  }}
+                >
+                  <thead>
+                    <tr>
+                      {[
+                        "Método",
+                        "Estado",
+                        "Qp",
+                        "tPico",
+                        "De",
+                        "Ascenso",
+                        "Receso",
+                        "W50",
+                        "W25",
+                        "Asim."
+                      ].map((encabezado) => (
+                        <th
+                          key={encabezado}
+                          style={{
+                            textAlign: "left",
+                            padding: "6px 8px",
+                            borderBottom: "1px solid rgba(148, 163, 184, 0.35)",
+                            color: "#bae6fd",
+                            whiteSpace: "nowrap"
+                          }}
+                        >
+                          {encabezado}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {filasMorfologiaQt.map((fila, indice) => {
+                      const formatear = (valor, decimales = 2, unidad = "") =>
+                        Number.isFinite(Number(valor))
+                          ? `${Number(valor).toLocaleString("es-CO", {
+                              maximumFractionDigits: decimales
+                            })}${unidad}`
+                          : "—";
+
+                      return (
+                        <tr key={`${fila.metodo}-${indice}`}>
+                          <td
+                            style={{
+                              padding: "6px 8px",
+                              borderBottom: "1px solid rgba(51, 65, 85, 0.55)",
+                              whiteSpace: "nowrap"
+                            }}
+                          >
+                            {fila.metodo}
+                          </td>
+
+                          <td
+                            style={{
+                              padding: "6px 8px",
+                              borderBottom: "1px solid rgba(51, 65, 85, 0.55)",
+                              color: fila.estado === "Apta" ? "#86efac" : "#fca5a5",
+                              fontWeight: 700,
+                              whiteSpace: "nowrap"
+                            }}
+                          >
+                            {fila.estado}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.Qp, 2, " m³/s")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.tPico, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.duracionEfectivaMin, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.tiempoAscensoMin, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.tiempoRecesoMin, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.W50Min, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.W25Min, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.asimetriaAscensoReceso, 3, "")}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+
+                <div style={{ ...estilos.muted, marginTop: 8 }}>
+                  Lectura diagnóstica: las métricas se calculan desde qSeries reales validadas. No implican adopción hidrológica, no levantan el estado global No coherente y no reemplazan el dictamen técnico del expediente.
+                </div>
+              </div>
+            )}
 
             <div
               style={{
