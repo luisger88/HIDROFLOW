@@ -8,6 +8,7 @@ import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedient
 import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
 import resumirEstructuraHidrogramas from "../services/hidrogramas/resumirEstructuraHidrogramas";
 import calcularMetricasMorfologiaQt from "../services/hidrogramas/calcularMetricasMorfologiaQt";
+import clasificarFormaQt from "../services/hidrogramas/clasificarFormaQt";
 
 import {
   resumenComparadorCatalogo,
@@ -277,7 +278,34 @@ const filasMorfologiaQt = useMemo(() => {
   }
 }, [contextoBase?.hidrogramas, diagnosticoMorfologiaQt]);
 
+// OT-0084C — Filas de dictamen diagnóstico de forma Q(t).
+// Clasificación no adoptiva basada únicamente en métricas morfológicas ya calculadas.
+const filasDictamenFormaQt = useMemo(() => {
+  if (!Array.isArray(filasMorfologiaQt)) return [];
 
+  return filasMorfologiaQt.map((fila) => {
+    const dictamen = clasificarFormaQt({
+      duracionEfectivaMin: fila?.duracionEfectivaMin,
+      tiempoAscensoMin: fila?.tiempoAscensoMin,
+      tiempoRecesoMin: fila?.tiempoRecesoMin,
+      W50Min: fila?.W50Min,
+      W25Min: fila?.W25Min,
+      asimetriaAscensoReceso: fila?.asimetriaAscensoReceso,
+      Qp: fila?.Qp,
+      tPico: fila?.tPico
+    });
+
+    return {
+      metodo: fila?.metodo ?? "Método Q(t)",
+      estadoMetrico: fila?.estado ?? "No apta",
+      forma: dictamen?.forma ?? "No clasificable",
+      alerta: dictamen?.alerta ?? "Sin dictamen",
+      severidad: dictamen?.severidad ?? "No determinada",
+      comentario: dictamen?.comentario ?? "Diagnóstico no adoptivo.",
+      banderas: Array.isArray(dictamen?.banderas) ? dictamen.banderas : []
+    };
+  });
+}, [filasMorfologiaQt]);
   
   const estilos = {
     pagina: {
@@ -2546,6 +2574,107 @@ const handleClickSeguro = (accion) => () => {
                 <div style={{ ...estilos.muted, marginTop: 8 }}>
                   Lectura diagnóstica: las métricas se calculan desde qSeries reales validadas. No implican adopción hidrológica, no levantan el estado global No coherente y no reemplazan el dictamen técnico del expediente.
                 </div>
+                {Array.isArray(filasDictamenFormaQt) && filasDictamenFormaQt.length > 0 && (
+                  <div
+                    style={{
+                      marginTop: 10,
+                      padding: 10,
+                      borderRadius: 8,
+                      border: "1px solid rgba(251, 191, 36, 0.35)",
+                      background: "rgba(15, 23, 42, 0.35)",
+                      overflowX: "auto"
+                    }}
+                  >
+                    <strong>Dictamen diagnóstico de forma Q(t):</strong>{" "}
+                    clasificación preliminar no adoptiva basada en métricas morfológicas.
+
+                    <table
+                      style={{
+                        width: "100%",
+                        borderCollapse: "collapse",
+                        marginTop: 10,
+                        fontSize: 12
+                      }}
+                    >
+                      <thead>
+                        <tr>
+                          {["Método", "Forma", "Alerta", "Severidad"].map((encabezado) => (
+                            <th
+                              key={encabezado}
+                              style={{
+                                textAlign: "left",
+                                padding: "6px 8px",
+                                borderBottom: "1px solid rgba(148, 163, 184, 0.35)",
+                                color: "#fde68a",
+                                whiteSpace: "nowrap"
+                              }}
+                            >
+                              {encabezado}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {filasDictamenFormaQt.map((fila, indice) => (
+                          <tr key={`${fila.metodo}-dictamen-${indice}`}>
+                            <td
+                              style={{
+                                padding: "6px 8px",
+                                borderBottom: "1px solid rgba(51, 65, 85, 0.55)",
+                                whiteSpace: "nowrap"
+                              }}
+                            >
+                              {fila.metodo}
+                            </td>
+
+                            <td
+                              style={{
+                                padding: "6px 8px",
+                                borderBottom: "1px solid rgba(51, 65, 85, 0.55)"
+                              }}
+                            >
+                              {fila.forma}
+                            </td>
+
+                            <td
+                              style={{
+                                padding: "6px 8px",
+                                borderBottom: "1px solid rgba(51, 65, 85, 0.55)"
+                              }}
+                            >
+                              {fila.alerta}
+                            </td>
+
+                            <td
+                              style={{
+                                padding: "6px 8px",
+                                borderBottom: "1px solid rgba(51, 65, 85, 0.55)",
+                                color:
+                                  fila.severidad === "Alta"
+                                    ? "#fca5a5"
+                                    : fila.severidad === "Media"
+                                    ? "#fde68a"
+                                    : fila.severidad === "Baja"
+                                    ? "#86efac"
+                                    : "#cbd5e1",
+                                fontWeight: 700,
+                                whiteSpace: "nowrap"
+                              }}
+                            >
+                              {fila.severidad}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <div style={{ ...estilos.muted, marginTop: 8 }}>
+                      Este dictamen clasifica la forma temporal Q(t) como diagnóstico preliminar. No adopta métodos, no modifica caudales, no levanta el estado global No coherente y no reemplaza revisión hidrológica profesional.
+                    </div>
+                  </div>
+                )}
+                
               </div>
             )}
 
