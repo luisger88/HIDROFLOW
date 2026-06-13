@@ -2328,6 +2328,55 @@ const handleClickSeguro = (accion) => () => {
             >
               <strong>Dictamen operativo:</strong> las series Q(t) no están publicadas para los métodos evaluados. No procede calcular métricas morfológicas de forma hasta publicar qSeries reales o normalizadas por método.
             </div>
+            {(() => {
+              const resumenEstructural = resumenEstructuraHidrogramas?.resumen ?? {
+                tipoEntrada: "no_disponible",
+                contenedor: null,
+                totalCandidatos: 0,
+                conSerieTemporal: 0,
+                sinSerieTemporal: 0,
+                conQpico: 0,
+                conTPico: 0,
+                conVolTotal: 0
+              };
+
+              return (
+                <div
+                  style={{
+                    marginTop: 10,
+                    padding: 10,
+                    borderRadius: 8,
+                    border: "1px solid rgba(148, 163, 184, 0.35)",
+                    background: "rgba(15, 23, 42, 0.35)"
+                  }}
+                >
+                  <strong>Resumen estructural de hidrogramas:</strong>{" "}
+                  lectura agregada del objeto hidrogramas disponible en contexto.
+
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+                      gap: 8,
+                      marginTop: 8
+                    }}
+                  >
+                    <div><strong>Tipo entrada:</strong> {String(resumenEstructural.tipoEntrada ?? "—")}</div>
+                    <div><strong>Contenedor:</strong> {String(resumenEstructural.contenedor ?? "—")}</div>
+                    <div><strong>Candidatos:</strong> {resumenEstructural.totalCandidatos ?? 0}</div>
+                    <div><strong>Con serie:</strong> {resumenEstructural.conSerieTemporal ?? 0}</div>
+                    <div><strong>Sin serie:</strong> {resumenEstructural.sinSerieTemporal ?? 0}</div>
+                    <div><strong>Con Qpico:</strong> {resumenEstructural.conQpico ?? 0}</div>
+                    <div><strong>Con tPico:</strong> {resumenEstructural.conTPico ?? 0}</div>
+                    <div><strong>Con volTotal:</strong> {resumenEstructural.conVolTotal ?? 0}</div>
+                  </div>
+
+                  <div style={{ ...estilos.muted, marginTop: 8 }}>
+                    Este bloque no muestra series crudas, no lista arrays completos y no calcula métricas morfológicas.
+                  </div>
+                </div>
+              );
+            })()}
             <div style={{ ...estilos.muted, marginTop: 10 }}>
               Este panel no muestra qSeries cruda y no modifica Qp, Tp, Volumen ni Q(t).
             </div>
@@ -2338,6 +2387,7 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
 
 
