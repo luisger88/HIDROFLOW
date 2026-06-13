@@ -228,7 +228,54 @@ const diagnosticoMorfologiaQt = useMemo(() => {
   }
 }, [contextoBase?.hidrogramas]);
 
+// OT-0083B — Filas tabulares controladas de métricas morfológicas Q(t).
+// Prepara datos para exposición diagnóstica, sin adoptar métodos ni levantar bloqueos.
+const filasMorfologiaQt = useMemo(() => {
+  try {
+    const bruto = contextoBase?.hidrogramas;
 
+    const candidatos = Array.isArray(bruto)
+      ? bruto
+      : Array.isArray(bruto?.resultados)
+      ? bruto.resultados
+      : Array.isArray(bruto?.metodos)
+      ? bruto.metodos
+      : [];
+
+    const evaluaciones = Array.isArray(diagnosticoMorfologiaQt?.evaluaciones)
+      ? diagnosticoMorfologiaQt.evaluaciones
+      : [];
+
+    return candidatos.map((candidato, indice) => {
+      const evaluacion = evaluaciones[indice] ?? {};
+
+      return {
+        metodo: candidato?.metodo ?? candidato?.nombre ?? `Método ${indice + 1}`,
+        estado: evaluacion?.ok ? "Apta" : "No apta",
+        motivo: evaluacion?.motivo ?? null,
+        Qp: Number.isFinite(Number(evaluacion?.Qp)) ? Number(evaluacion.Qp) : null,
+        tPico: Number.isFinite(Number(evaluacion?.tPico)) ? Number(evaluacion.tPico) : null,
+        duracionEfectivaMin: Number.isFinite(Number(evaluacion?.duracionEfectivaMin))
+          ? Number(evaluacion.duracionEfectivaMin)
+          : null,
+        tiempoAscensoMin: Number.isFinite(Number(evaluacion?.tiempoAscensoMin))
+          ? Number(evaluacion.tiempoAscensoMin)
+          : null,
+        tiempoRecesoMin: Number.isFinite(Number(evaluacion?.tiempoRecesoMin))
+          ? Number(evaluacion.tiempoRecesoMin)
+          : null,
+        W50Min: Number.isFinite(Number(evaluacion?.W50Min)) ? Number(evaluacion.W50Min) : null,
+        W25Min: Number.isFinite(Number(evaluacion?.W25Min)) ? Number(evaluacion.W25Min) : null,
+        asimetriaAscensoReceso: Number.isFinite(Number(evaluacion?.asimetriaAscensoReceso))
+          ? Number(evaluacion.asimetriaAscensoReceso)
+          : null
+      };
+    });
+  } catch (errorFilasMorfologiaQt) {
+    console.warn("Filas morfológicas Q(t) no generadas:", errorFilasMorfologiaQt);
+    return [];
+  }
+}, [contextoBase?.hidrogramas, diagnosticoMorfologiaQt]);
 
 
   
