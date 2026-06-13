@@ -2420,6 +2420,135 @@ const handleClickSeguro = (accion) => () => {
               <div><strong>Inconsistentes:</strong> {resumenQSeries.inconsistentes}</div>
             </div>
 
+            {/* OT-0083C — Tabla compacta no adoptiva de métricas morfológicas Q(t). */}
+            {Array.isArray(filasMorfologiaQt) && filasMorfologiaQt.length > 0 && (
+              <div
+                style={{
+                  marginTop: 10,
+                  padding: 10,
+                  borderRadius: 8,
+                  border: "1px solid rgba(34, 197, 94, 0.35)",
+                  background: "rgba(15, 23, 42, 0.35)",
+                  overflowX: "auto"
+                }}
+              >
+                <strong>Tabla diagnóstica morfológica Q(t):</strong>{" "}
+                exposición compacta no adoptiva basada exclusivamente en qSeries validadas.
+
+                <table
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    marginTop: 10,
+                    fontSize: 12
+                  }}
+                >
+                  <thead>
+                    <tr>
+                      {[
+                        "Método",
+                        "Estado",
+                        "Qp",
+                        "tPico",
+                        "De",
+                        "Ascenso",
+                        "Receso",
+                        "W50",
+                        "W25",
+                        "Asim."
+                      ].map((encabezado) => (
+                        <th
+                          key={encabezado}
+                          style={{
+                            textAlign: "left",
+                            padding: "6px 8px",
+                            borderBottom: "1px solid rgba(148, 163, 184, 0.35)",
+                            color: "#bae6fd",
+                            whiteSpace: "nowrap"
+                          }}
+                        >
+                          {encabezado}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {filasMorfologiaQt.map((fila, indice) => {
+                      const formatear = (valor, decimales = 2, unidad = "") =>
+                        Number.isFinite(Number(valor))
+                          ? `${Number(valor).toLocaleString("es-CO", {
+                              maximumFractionDigits: decimales
+                            })}${unidad}`
+                          : "—";
+
+                      return (
+                        <tr key={`${fila.metodo}-${indice}`}>
+                          <td
+                            style={{
+                              padding: "6px 8px",
+                              borderBottom: "1px solid rgba(51, 65, 85, 0.55)",
+                              whiteSpace: "nowrap"
+                            }}
+                          >
+                            {fila.metodo}
+                          </td>
+
+                          <td
+                            style={{
+                              padding: "6px 8px",
+                              borderBottom: "1px solid rgba(51, 65, 85, 0.55)",
+                              color: fila.estado === "Apta" ? "#86efac" : "#fca5a5",
+                              fontWeight: 700,
+                              whiteSpace: "nowrap"
+                            }}
+                          >
+                            {fila.estado}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.Qp, 2, " m³/s")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.tPico, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.duracionEfectivaMin, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.tiempoAscensoMin, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.tiempoRecesoMin, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.W50Min, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.W25Min, 2, " min")}
+                          </td>
+
+                          <td style={{ padding: "6px 8px", borderBottom: "1px solid rgba(51, 65, 85, 0.55)" }}>
+                            {formatear(fila.asimetriaAscensoReceso, 3, "")}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+
+                <div style={{ ...estilos.muted, marginTop: 8 }}>
+                  Lectura diagnóstica: las métricas se calculan desde qSeries reales validadas. No implican adopción hidrológica, no levantan el estado global No coherente y no reemplazan el dictamen técnico del expediente.
+                </div>
+              </div>
+            )}
+
             <div
               style={{
                 marginTop: 10,
