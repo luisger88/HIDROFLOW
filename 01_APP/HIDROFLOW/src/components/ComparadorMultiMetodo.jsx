@@ -5,6 +5,7 @@ import { calcTc, mapTcResultados } from "../services/hidroEngine";
 import { seleccionarTc } from "../services/tcSelector";
 import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteTc";
 import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedienteDocumental";
+import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
 
 import {
   resumenComparadorCatalogo,
@@ -137,6 +138,31 @@ const conteo = useMemo(() => ({
   activos: metodos.filter(m => m.estadoImplementacion === "activo").length,
   pendientes: metodos.filter(m => m.estadoImplementacion === "pendiente").length
 }), [metodos]);
+
+// OT-0070D — Diagnóstico qSeries interno y silencioso
+const diagnosticoQSeries = useMemo(() => {
+  try {
+    return adaptarQSeriesHidrogramas(contextoBase?.hidrogramas, {
+      fuente: "ComparadorMultiMetodo.contextoBase.hidrogramas"
+    });
+  } catch (errorQSeries) {
+    console.warn("Diagnóstico qSeries no invasivo no ejecutado:", errorQSeries);
+
+    return {
+      ok: false,
+      resumen: {
+        total: 0,
+        publicados: 0,
+        parciales: 0,
+        noDisponibles: 0,
+        inconsistentes: 0
+      },
+      metodos: [],
+      error: String(errorQSeries?.message ?? errorQSeries)
+    };
+  }
+}, [contextoBase?.hidrogramas]);
+
 
 
   
@@ -2219,4 +2245,5 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
