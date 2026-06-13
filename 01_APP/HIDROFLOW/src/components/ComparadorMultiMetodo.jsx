@@ -2241,9 +2241,67 @@ const handleClickSeguro = (accion) => () => {
             );
           })()}
 
+            {(() => {
+        const resumenQSeries = diagnosticoQSeries?.resumen ?? {
+          total: 0,
+          publicados: 0,
+          parciales: 0,
+          noDisponibles: 0,
+          inconsistentes: 0
+        };
+
+        const estadoQSeries =
+          resumenQSeries.inconsistentes > 0
+            ? { etiqueta: "Inconsistente", color: "#dc2626" }
+            : resumenQSeries.publicados > 0 && (resumenQSeries.parciales > 0 || resumenQSeries.noDisponibles > 0)
+            ? { etiqueta: "Parcial", color: "#f59e0b" }
+            : resumenQSeries.publicados > 0
+            ? { etiqueta: "Disponible", color: "#16a34a" }
+            : { etiqueta: "No disponible", color: "#64748b" };
+
+        return (
+          <section
+            style={{
+              border: `1px solid ${estadoQSeries.color}`,
+              borderRadius: 12,
+              padding: 12,
+              margin: "12px 0",
+              background: "rgba(15, 23, 42, 0.55)"
+            }}
+          >
+            <h3 style={{ margin: "0 0 8px 0" }}>
+              Panel diagnóstico qSeries
+            </h3>
+
+            <div style={{ ...estilos.muted, marginBottom: 10 }}>
+              Lectura no invasiva de disponibilidad de series Q(t). No calcula De, W50, W25, pendientes ni asimetría.
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+                gap: 8
+              }}
+            >
+              <div><strong>Estado:</strong> <span style={{ color: estadoQSeries.color }}>{estadoQSeries.etiqueta}</span></div>
+              <div><strong>Total:</strong> {resumenQSeries.total}</div>
+              <div><strong>Publicados:</strong> {resumenQSeries.publicados}</div>
+              <div><strong>Parciales:</strong> {resumenQSeries.parciales}</div>
+              <div><strong>No disponibles:</strong> {resumenQSeries.noDisponibles}</div>
+              <div><strong>Inconsistentes:</strong> {resumenQSeries.inconsistentes}</div>
+            </div>
+
+            <div style={{ ...estilos.muted, marginTop: 10 }}>
+              Este panel no muestra qSeries cruda y no modifica Qp, Tp, Volumen ni Q(t).
+            </div>
+          </section>
+        );
+      })()}
       {renderTabla("Bloque Q-5 · Caudal pico / hidrograma", "q")}
     </main>
   );
 }
+
 
 
