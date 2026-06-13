@@ -2169,7 +2169,7 @@ const leerT = (punto, indice) => {
       : sumaLluviaEfectivaMm || null;
   // OT-0080B — Publicación controlada de qSeries reales.
   // Por defecto permanece desactivada para conservar el comportamiento actual.
-  const publicarQSeries = false;
+  const publicarQSeries = true;
 
   const hidrogramasQ5Exportables = (hidros || []).map((h) => ({
     metodo: h?.metodo ?? "Método Q-5",
