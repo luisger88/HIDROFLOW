@@ -2292,6 +2292,17 @@ const handleClickSeguro = (accion) => () => {
               <div><strong>Inconsistentes:</strong> {resumenQSeries.inconsistentes}</div>
             </div>
 
+            <div
+              style={{
+                marginTop: 10,
+                padding: 10,
+                borderRadius: 8,
+                border: "1px solid rgba(148, 163, 184, 0.35)",
+                background: "rgba(15, 23, 42, 0.45)"
+              }}
+            >
+              <strong>Dictamen operativo:</strong> las series Q(t) no están publicadas para los métodos evaluados. No procede calcular métricas morfológicas de forma hasta publicar qSeries reales o normalizadas por método.
+            </div>
             <div style={{ ...estilos.muted, marginTop: 10 }}>
               Este panel no muestra qSeries cruda y no modifica Qp, Tp, Volumen ni Q(t).
             </div>
@@ -2302,6 +2313,7 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
 
 
