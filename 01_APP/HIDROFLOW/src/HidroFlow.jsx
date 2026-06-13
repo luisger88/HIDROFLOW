@@ -2167,6 +2167,10 @@ const leerT = (punto, indice) => {
     sumaLluviaEfectivaMm / maxLluviaEfectivaMm > 3
       ? maxLluviaEfectivaMm
       : sumaLluviaEfectivaMm || null;
+  // OT-0080B — Publicación controlada de qSeries reales.
+  // Por defecto permanece desactivada para conservar el comportamiento actual.
+  const publicarQSeries = false;
+
   const hidrogramasQ5Exportables = (hidros || []).map((h) => ({
     metodo: h?.metodo ?? "Método Q-5",
     Qpico: h?.Qpico,
@@ -2174,7 +2178,8 @@ const leerT = (punto, indice) => {
     volTotal: h?.volTotal,
     Qp: h?.Qpico,
     Tp: h?.tPico,
-    volumen: h?.volTotal
+    volumen: h?.volTotal,
+    ...(publicarQSeries && Array.isArray(h?.qSeries) ? { qSeries: h.qSeries } : {})
   }));
 
       onContextoComparador((previo) => {
