@@ -7,6 +7,7 @@ import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteT
 import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedienteDocumental";
 import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
 import resumirEstructuraHidrogramas from "../services/hidrogramas/resumirEstructuraHidrogramas";
+import calcularMetricasMorfologiaQt from "../services/hidrogramas/calcularMetricasMorfologiaQt";
 
 import {
   resumenComparadorCatalogo,
@@ -183,6 +184,46 @@ const resumenEstructuraHidrogramas = useMemo(() => {
       },
       candidatos: [],
       error: String(errorResumenHidrogramas?.message ?? errorResumenHidrogramas)
+    };
+  }
+}, [contextoBase?.hidrogramas]);
+
+// OT-0082D — Diagnóstico interno controlado de métricas morfológicas Q(t).
+// Calcula elegibilidad agregada sobre qSeries publicadas, sin mostrar métricas detalladas.
+const diagnosticoMorfologiaQt = useMemo(() => {
+  try {
+    const bruto = contextoBase?.hidrogramas;
+
+    const candidatos = Array.isArray(bruto)
+      ? bruto
+      : Array.isArray(bruto?.resultados)
+      ? bruto.resultados
+      : Array.isArray(bruto?.metodos)
+      ? bruto.metodos
+      : [];
+
+    const evaluaciones = candidatos.map((candidato) =>
+      calcularMetricasMorfologiaQt(candidato?.qSeries)
+    );
+
+    const aptas = evaluaciones.filter((evaluacion) => evaluacion?.ok).length;
+    const noAptas = evaluaciones.length - aptas;
+
+    return {
+      ok: true,
+      total: evaluaciones.length,
+      aptas,
+      noAptas,
+      evaluaciones
+    };
+  } catch (errorMorfologiaQt) {
+    return {
+      ok: false,
+      total: 0,
+      aptas: 0,
+      noAptas: 0,
+      evaluaciones: [],
+      error: String(errorMorfologiaQt?.message ?? errorMorfologiaQt)
     };
   }
 }, [contextoBase?.hidrogramas]);
@@ -2158,8 +2199,8 @@ const handleClickSeguro = (accion) => () => {
                 </h3>
 
                 <div style={{ ...estilos.muted, marginBottom: 10 }}>
-                  Control Pe–Área–Volumen/Q-5 visible antes de copiar el expediente. No recalcula hidrogramas, no modifica Q-5 y no adopta resultados.
-                </div>
+  Control Pe–Área–Volumen/Q-5 visible antes de copiar el expediente. No recalcula hidrogramas, no modifica Q-5 y no adopta resultados.
+</div>
 
                 <div
                   style={{
@@ -2299,8 +2340,23 @@ const handleClickSeguro = (accion) => () => {
             </h3>
 
             <div style={{ ...estilos.muted, marginBottom: 10 }}>
-              Lectura no invasiva de disponibilidad de series Q(t). No calcula De, W50, W25, pendientes ni asimetría.
-            </div>
+  Lectura no invasiva de disponibilidad de series Q(t). Las métricas morfológicas se evalúan solo como diagnóstico agregado y no se exponen en detalle.
+</div>
+
+<div
+  style={{
+    marginBottom: 10,
+    padding: "8px 10px",
+    borderRadius: 8,
+    border: "1px solid rgba(34, 197, 94, 0.35)",
+    background: "rgba(15, 23, 42, 0.35)"
+  }}
+>
+  <strong>Diagnóstico morfológico Q(t):</strong>{" "}
+  {diagnosticoMorfologiaQt?.ok
+    ? `series aptas ${diagnosticoMorfologiaQt.aptas}/${diagnosticoMorfologiaQt.total}; no aptas ${diagnosticoMorfologiaQt.noAptas}. No se muestran métricas detalladas ni se adopta ningún método.`
+    : "no disponible. No se calculan métricas morfológicas."}
+</div>
 
             <div
               style={{
