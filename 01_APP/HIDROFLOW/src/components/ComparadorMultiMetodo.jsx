@@ -2371,6 +2371,17 @@ const handleClickSeguro = (accion) => () => {
                     <div><strong>Con volTotal:</strong> {resumenEstructural.conVolTotal ?? 0}</div>
                   </div>
 
+                  <div
+                    style={{
+                      marginTop: 8,
+                      padding: 10,
+                      borderRadius: 8,
+                      border: "1px solid rgba(148, 163, 184, 0.35)",
+                      background: "rgba(15, 23, 42, 0.35)"
+                    }}
+                  >
+                    <strong>Dictamen de serie temporal:</strong> el objeto hidrogramas contiene resultados resumen para los 5 métodos evaluados, incluyendo Qpico, tPico y volTotal, pero no publica una serie temporal Q(t) reconocible. No procede calcular métricas morfológicas de forma hasta disponer de qSeries reales o normalizadas por método.
+                  </div>
                   <div style={{ ...estilos.muted, marginTop: 8 }}>
                     Este bloque no muestra series crudas, no lista arrays completos y no calcula métricas morfológicas.
                   </div>
@@ -2387,6 +2398,7 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
 
 
