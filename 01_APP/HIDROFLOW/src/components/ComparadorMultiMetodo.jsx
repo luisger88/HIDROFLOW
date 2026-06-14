@@ -15,6 +15,7 @@ import construirSeccionDiagnosticoTemporalQt from "../services/hidrogramas/const
 import validarSeccionDiagnosticoTemporalQt from "../services/hidrogramas/validarSeccionDiagnosticoTemporalQt";
 import prepararGraficaQpTPicoMatrizPatron from "../services/hidrogramas/prepararGraficaQpTPicoMatrizPatron";
 import prepararGraficaVelocidadEfectivaMatrizPatron from "../services/hidrogramas/prepararGraficaVelocidadEfectivaMatrizPatron";
+import sintetizarLecturaComparativaMatrizPatron from "../services/hidrogramas/sintetizarLecturaComparativaMatrizPatron";
 
 import {
   resumenComparadorCatalogo,
@@ -388,6 +389,7 @@ const sintesisMatrizPatron = matrizPatronVisual?.sintesisTemporal ?? {};
 const salidaHidraulicaMatrizPatron = matrizPatronVisual?.salidaHidraulicaFutura ?? {};
 const graficaQpTPicoMatrizPatron = prepararGraficaQpTPicoMatrizPatron(matrizPatronVisual);
 const graficaVelocidadEfectivaMatrizPatron = prepararGraficaVelocidadEfectivaMatrizPatron(matrizPatronVisual);
+const lecturaComparativaMatrizPatron = sintetizarLecturaComparativaMatrizPatron(matrizPatronVisual);
   
   const estilos = {
     pagina: {
@@ -3327,6 +3329,36 @@ const handleClickSeguro = (accion) => () => {
                           </div>
                         );
                       })()}
+                      {lecturaComparativaMatrizPatron?.ok && Array.isArray(lecturaComparativaMatrizPatron.frases) && (
+                        <div
+                          style={{
+                            marginTop: 12,
+                            padding: 10,
+                            borderRadius: 8,
+                            border: "1px solid rgba(251, 191, 36, 0.35)",
+                            background: "rgba(2, 6, 23, 0.28)"
+                          }}
+                        >
+                          <strong>Lectura comparativa automática:</strong>{" "}
+                          síntesis textual no adoptiva desde matriz patrón.
+
+                          <ul style={{ margin: "8px 0 0 18px", padding: 0 }}>
+                            {lecturaComparativaMatrizPatron.frases.map((frase, indice) => (
+                              <li
+                                key={`lectura-comparativa-matriz-${indice}`}
+                                style={{ marginBottom: 4 }}
+                              >
+                                {frase}
+                              </li>
+                            ))}
+                          </ul>
+
+                          <div style={{ ...estilos.muted, marginTop: 8 }}>
+                            {lecturaComparativaMatrizPatron.advertencia ??
+                              "Lectura comparativa no adoptiva; no selecciona ni descarta métodos."}
+                          </div>
+                        </div>
+                      )}
                       <div style={{ ...estilos.muted, marginTop: 8 }}>
                         Riesgo alto: {(sintesisMatrizPatron.riesgoAlto ?? []).join(", ") || "—"}.{" "}
                         Riesgo medio: {(sintesisMatrizPatron.riesgoMedio ?? []).join(", ") || "—"}.
@@ -3397,6 +3429,7 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
 
 
