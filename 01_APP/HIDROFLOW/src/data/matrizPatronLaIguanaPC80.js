@@ -179,6 +179,7 @@ export const matrizPatronLaIguanaPC80 = Object.freeze({
 
   restricciones: [
     "No adopta automáticamente ningún método.",
+    "No descarta automáticamente ningún método.",
     "No levanta el estado global No coherente.",
     "No reemplaza revisión hidrológica profesional.",
     "No recalcula Q(t).",
