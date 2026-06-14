@@ -23,6 +23,7 @@ import {
 } from "../data/matrizCompetenciaComparador";
 
 import { conceptuarCuenca } from "../data/clasificacionCuenca";
+import matrizPatronLaIguanaPC80 from "../data/matrizPatronLaIguanaPC80";
 
 import {
   obtenerAuditoriaPendienteTc,
@@ -374,6 +375,15 @@ const sintesisRiesgoTemporalQt = useMemo(() => {
     };
   }
 }, [filasRiesgoTemporalQt]);
+
+// OT-0092B — Lectura visual controlada de matriz patrón La Iguaná PC_80.
+// Solo lectura: no recalcula, no adopta método y no modifica Q(t).
+const matrizPatronVisual = matrizPatronLaIguanaPC80;
+const diagnosticoMatrizPatronQt = Array.isArray(matrizPatronVisual?.diagnosticoQt)
+  ? matrizPatronVisual.diagnosticoQt
+  : [];
+const sintesisMatrizPatron = matrizPatronVisual?.sintesisTemporal ?? {};
+const salidaHidraulicaMatrizPatron = matrizPatronVisual?.salidaHidraulicaFutura ?? {};
   
   const estilos = {
     pagina: {
@@ -2986,6 +2996,83 @@ const handleClickSeguro = (accion) => () => {
                     background: "rgba(15, 23, 42, 0.35)"
                   }}
                 >
+                  {matrizPatronVisual && (
+                    <div
+                      style={{
+                        marginTop: 10,
+                        marginBottom: 10,
+                        padding: 10,
+                        borderRadius: 8,
+                        border: "1px solid rgba(168, 85, 247, 0.35)",
+                        background: "rgba(15, 23, 42, 0.35)",
+                        overflowX: "auto"
+                      }}
+                    >
+                      <strong>Matriz patrón La Iguaná PC_80:</strong>{" "}
+                      lectura estructurada de cuenca patrón para comparación futura. Diagnóstico no adoptivo.
+
+                      <div
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                          gap: 8,
+                          marginTop: 10
+                        }}
+                      >
+                        <div>
+                          <strong>Cuenca:</strong>{" "}
+                          {matrizPatronVisual?.cuenca?.nombre ?? "La Iguaná PC_80"}
+                        </div>
+
+                        <div>
+                          <strong>Área:</strong>{" "}
+                          {Number(matrizPatronVisual?.morfometria?.areaKm2).toLocaleString("es-CO", {
+                            maximumFractionDigits: 4
+                          })}{" "}
+                          km²
+                        </div>
+
+                        <div>
+                          <strong>Longitud hidráulica:</strong>{" "}
+                          {Number(matrizPatronVisual?.morfometria?.longitudHidraulicaKm).toLocaleString("es-CO", {
+                            maximumFractionDigits: 3
+                          })}{" "}
+                          km
+                        </div>
+
+                        <div>
+                          <strong>Tc sugerido:</strong>{" "}
+                          {Number(matrizPatronVisual?.tiemposConcentracion?.tcSugeridoMin).toLocaleString("es-CO", {
+                            maximumFractionDigits: 1
+                          })}{" "}
+                          min
+                        </div>
+
+                        <div>
+                          <strong>Métodos patrón:</strong>{" "}
+                          {diagnosticoMatrizPatronQt.length}
+                        </div>
+                      </div>
+
+                      <div style={{ ...estilos.muted, marginTop: 8 }}>
+                        Riesgo alto: {(sintesisMatrizPatron.riesgoAlto ?? []).join(", ") || "—"}.{" "}
+                        Riesgo medio: {(sintesisMatrizPatron.riesgoMedio ?? []).join(", ") || "—"}.
+                      </div>
+
+                      <div style={{ ...estilos.muted, marginTop: 8 }}>
+                        Salida hidráulica futura:{" "}
+                        {salidaHidraulicaMatrizPatron?.requiereHidrogramaCompleto
+                          ? "requiere hidrograma completo; no usar solo Qp."
+                          : "sin criterio hidráulico definido."}
+                      </div>
+
+                      <div style={{ ...estilos.muted, marginTop: 8 }}>
+                        Esta matriz patrón es una lectura estática de referencia. No recalcula hidrogramas,
+                        no selecciona método, no modifica Q(t), no levanta el estado global No coherente y
+                        no reemplaza revisión hidrológica profesional.
+                      </div>
+                    </div>
+                  )}
                   <strong>Resumen estructural de hidrogramas:</strong>{" "}
                   lectura agregada del objeto hidrogramas disponible en contexto.
 
@@ -3037,6 +3124,7 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
 
 
