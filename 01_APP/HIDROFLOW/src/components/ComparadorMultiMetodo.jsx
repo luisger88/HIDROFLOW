@@ -10,6 +10,7 @@ import resumirEstructuraHidrogramas from "../services/hidrogramas/resumirEstruct
 import calcularMetricasMorfologiaQt from "../services/hidrogramas/calcularMetricasMorfologiaQt";
 import clasificarFormaQt from "../services/hidrogramas/clasificarFormaQt";
 import evaluarRiesgoTemporalQt from "../services/hidrogramas/evaluarRiesgoTemporalQt";
+import sintetizarRiesgoTemporalQt from "../services/hidrogramas/sintetizarRiesgoTemporalQt";
 
 import {
   resumenComparadorCatalogo,
@@ -346,6 +347,31 @@ const filasRiesgoTemporalQt = useMemo(() => {
     };
   });
 }, [filasDictamenFormaQt, filasMorfologiaQt]);
+
+// OT-0086C — Síntesis ejecutiva temporal Q(t) no adoptiva.
+// Resume riesgos temporales ya evaluados, sin seleccionar método ni levantar bloqueos.
+const sintesisRiesgoTemporalQt = useMemo(() => {
+  try {
+    return sintetizarRiesgoTemporalQt(filasRiesgoTemporalQt);
+  } catch (errorSintesisRiesgoTemporalQt) {
+    return {
+      ok: false,
+      resumen: [
+        "No fue posible generar la síntesis ejecutiva temporal Q(t)."
+      ],
+      niveles: {
+        alto: 0,
+        medio: 0,
+        bajo: 0,
+        noDeterminado: 0
+      },
+      riesgos: {},
+      advertencia:
+        "Síntesis diagnóstica no adoptiva; no selecciona método ni levanta No coherente.",
+      error: String(errorSintesisRiesgoTemporalQt?.message ?? errorSintesisRiesgoTemporalQt)
+    };
+  }
+}, [filasRiesgoTemporalQt]);
   
   const estilos = {
     pagina: {
@@ -2810,6 +2836,60 @@ const handleClickSeguro = (accion) => () => {
                         <div style={{ ...estilos.muted, marginTop: 8 }}>
                           Esta lectura compara riesgos temporales derivados de la forma Q(t). No selecciona método, no modifica caudales, no levanta el estado global No coherente y no reemplaza revisión hidrológica profesional.
                         </div>
+                        {sintesisRiesgoTemporalQt?.ok && Array.isArray(sintesisRiesgoTemporalQt.resumen) && (
+                          <div
+                            style={{
+                              marginTop: 10,
+                              padding: 10,
+                              borderRadius: 8,
+                              border: "1px solid rgba(56, 189, 248, 0.35)",
+                              background: "rgba(15, 23, 42, 0.35)"
+                            }}
+                          >
+                            <strong>Síntesis ejecutiva temporal Q(t):</strong>{" "}
+                            lectura agrupada de riesgos temporales. Diagnóstico no adoptivo.
+
+                            <div
+                              style={{
+                                display: "grid",
+                                gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+                                gap: 8,
+                                marginTop: 10,
+                                marginBottom: 10
+                              }}
+                            >
+                              <div>
+                                <strong>Riesgo alto:</strong>{" "}
+                                {sintesisRiesgoTemporalQt.niveles?.alto ?? 0}
+                              </div>
+                              <div>
+                                <strong>Riesgo medio:</strong>{" "}
+                                {sintesisRiesgoTemporalQt.niveles?.medio ?? 0}
+                              </div>
+                              <div>
+                                <strong>Riesgo bajo:</strong>{" "}
+                                {sintesisRiesgoTemporalQt.niveles?.bajo ?? 0}
+                              </div>
+                              <div>
+                                <strong>No determinado:</strong>{" "}
+                                {sintesisRiesgoTemporalQt.niveles?.noDeterminado ?? 0}
+                              </div>
+                            </div>
+
+                            <ul style={{ margin: "8px 0 0 18px", padding: 0 }}>
+                              {sintesisRiesgoTemporalQt.resumen.map((item, indice) => (
+                                <li key={`sintesis-riesgo-temporal-${indice}`} style={{ marginBottom: 4 }}>
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+
+                            <div style={{ ...estilos.muted, marginTop: 8 }}>
+                              {sintesisRiesgoTemporalQt.advertencia ??
+                                "Síntesis diagnóstica no adoptiva; no selecciona método ni levanta No coherente."}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
