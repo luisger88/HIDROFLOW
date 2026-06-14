@@ -9,6 +9,7 @@ import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHid
 import resumirEstructuraHidrogramas from "../services/hidrogramas/resumirEstructuraHidrogramas";
 import calcularMetricasMorfologiaQt from "../services/hidrogramas/calcularMetricasMorfologiaQt";
 import clasificarFormaQt from "../services/hidrogramas/clasificarFormaQt";
+import evaluarRiesgoTemporalQt from "../services/hidrogramas/evaluarRiesgoTemporalQt";
 
 import {
   resumenComparadorCatalogo,
@@ -306,6 +307,45 @@ const filasDictamenFormaQt = useMemo(() => {
     };
   });
 }, [filasMorfologiaQt]);
+
+// OT-0085C — Filas de riesgo temporal Q(t) no adoptivo.
+// Lectura comparativa basada en el dictamen de forma y métricas morfológicas ya calculadas.
+const filasRiesgoTemporalQt = useMemo(() => {
+  if (!Array.isArray(filasDictamenFormaQt)) return [];
+
+  return filasDictamenFormaQt.map((filaDictamen) => {
+    const filaMorfologia =
+      Array.isArray(filasMorfologiaQt)
+        ? filasMorfologiaQt.find((fila) => fila?.metodo === filaDictamen?.metodo)
+        : null;
+
+    const riesgoTemporal = evaluarRiesgoTemporalQt({
+      forma: filaDictamen?.forma,
+      alerta: filaDictamen?.alerta,
+      severidad: filaDictamen?.severidad,
+      banderas: filaDictamen?.banderas,
+      duracionEfectivaMin: filaMorfologia?.duracionEfectivaMin,
+      tiempoAscensoMin: filaMorfologia?.tiempoAscensoMin,
+      tiempoRecesoMin: filaMorfologia?.tiempoRecesoMin,
+      W50Min: filaMorfologia?.W50Min,
+      W25Min: filaMorfologia?.W25Min,
+      asimetriaAscensoReceso: filaMorfologia?.asimetriaAscensoReceso,
+      Qp: filaMorfologia?.Qp,
+      tPico: filaMorfologia?.tPico
+    });
+
+    return {
+      metodo: filaDictamen?.metodo ?? "Método Q(t)",
+      riesgo: riesgoTemporal?.riesgo ?? "No determinado",
+      nivel: riesgoTemporal?.nivel ?? "No determinado",
+      factorDominante: riesgoTemporal?.factorDominante ?? "Sin factor dominante",
+      comentario: riesgoTemporal?.comentario ?? "Diagnóstico comparativo no adoptivo.",
+      banderasRiesgo: Array.isArray(riesgoTemporal?.banderasRiesgo)
+        ? riesgoTemporal.banderasRiesgo
+        : []
+    };
+  });
+}, [filasDictamenFormaQt, filasMorfologiaQt]);
   
   const estilos = {
     pagina: {
@@ -2672,6 +2712,106 @@ const handleClickSeguro = (accion) => () => {
                     <div style={{ ...estilos.muted, marginTop: 8 }}>
                       Este dictamen clasifica la forma temporal Q(t) como diagnóstico preliminar. No adopta métodos, no modifica caudales, no levanta el estado global No coherente y no reemplaza revisión hidrológica profesional.
                     </div>
+                    {Array.isArray(filasRiesgoTemporalQt) && filasRiesgoTemporalQt.length > 0 && (
+                      <div
+                        style={{
+                          marginTop: 10,
+                          padding: 10,
+                          borderRadius: 8,
+                          border: "1px solid rgba(248, 113, 113, 0.35)",
+                          background: "rgba(15, 23, 42, 0.35)",
+                          overflowX: "auto"
+                        }}
+                      >
+                        <strong>Riesgo temporal Q(t):</strong>{" "}
+                        lectura comparativa no adoptiva de factores temporales dominantes.
+
+                        <table
+                          style={{
+                            width: "100%",
+                            borderCollapse: "collapse",
+                            marginTop: 10,
+                            fontSize: 12
+                          }}
+                        >
+                          <thead>
+                            <tr>
+                              {["Método", "Riesgo", "Nivel", "Factor dominante"].map((encabezado) => (
+                                <th
+                                  key={encabezado}
+                                  style={{
+                                    textAlign: "left",
+                                    padding: "6px 8px",
+                                    borderBottom: "1px solid rgba(148, 163, 184, 0.35)",
+                                    color: "#fecaca",
+                                    whiteSpace: "nowrap"
+                                  }}
+                                >
+                                  {encabezado}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            {filasRiesgoTemporalQt.map((fila, indice) => (
+                              <tr key={`${fila.metodo}-riesgo-${indice}`}>
+                                <td
+                                  style={{
+                                    padding: "6px 8px",
+                                    borderBottom: "1px solid rgba(51, 65, 85, 0.55)",
+                                    whiteSpace: "nowrap"
+                                  }}
+                                >
+                                  {fila.metodo}
+                                </td>
+
+                                <td
+                                  style={{
+                                    padding: "6px 8px",
+                                    borderBottom: "1px solid rgba(51, 65, 85, 0.55)"
+                                  }}
+                                >
+                                  {fila.riesgo}
+                                </td>
+
+                                <td
+                                  style={{
+                                    padding: "6px 8px",
+                                    borderBottom: "1px solid rgba(51, 65, 85, 0.55)",
+                                    color:
+                                      fila.nivel === "Alto"
+                                        ? "#fca5a5"
+                                        : fila.nivel === "Medio"
+                                        ? "#fde68a"
+                                        : fila.nivel === "Bajo"
+                                        ? "#86efac"
+                                        : "#cbd5e1",
+                                    fontWeight: 700,
+                                    whiteSpace: "nowrap"
+                                  }}
+                                >
+                                  {fila.nivel}
+                                </td>
+
+                                <td
+                                  style={{
+                                    padding: "6px 8px",
+                                    borderBottom: "1px solid rgba(51, 65, 85, 0.55)"
+                                  }}
+                                >
+                                  {fila.factorDominante}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+
+                        <div style={{ ...estilos.muted, marginTop: 8 }}>
+                          Esta lectura compara riesgos temporales derivados de la forma Q(t). No selecciona método, no modifica caudales, no levanta el estado global No coherente y no reemplaza revisión hidrológica profesional.
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
                 
