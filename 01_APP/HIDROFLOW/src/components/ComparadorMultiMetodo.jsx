@@ -13,6 +13,7 @@ import evaluarRiesgoTemporalQt from "../services/hidrogramas/evaluarRiesgoTempor
 import sintetizarRiesgoTemporalQt from "../services/hidrogramas/sintetizarRiesgoTemporalQt";
 import construirSeccionDiagnosticoTemporalQt from "../services/hidrogramas/construirSeccionDiagnosticoTemporalQt";
 import validarSeccionDiagnosticoTemporalQt from "../services/hidrogramas/validarSeccionDiagnosticoTemporalQt";
+import prepararGraficaQpTPicoMatrizPatron from "../services/hidrogramas/prepararGraficaQpTPicoMatrizPatron";
 
 import {
   resumenComparadorCatalogo,
@@ -384,6 +385,7 @@ const diagnosticoMatrizPatronQt = Array.isArray(matrizPatronVisual?.diagnosticoQ
   : [];
 const sintesisMatrizPatron = matrizPatronVisual?.sintesisTemporal ?? {};
 const salidaHidraulicaMatrizPatron = matrizPatronVisual?.salidaHidraulicaFutura ?? {};
+const graficaQpTPicoMatrizPatron = prepararGraficaQpTPicoMatrizPatron(matrizPatronVisual);
   
   const estilos = {
     pagina: {
@@ -3053,6 +3055,126 @@ const handleClickSeguro = (accion) => () => {
                           {diagnosticoMatrizPatronQt.length}
                         </div>
                       </div>
+                      {graficaQpTPicoMatrizPatron?.ok && (() => {
+                        const anchoSvg = 560;
+                        const altoSvg = 260;
+                        const margen = { izquierda: 54, derecha: 24, arriba: 24, abajo: 46 };
+                        const anchoPlot = anchoSvg - margen.izquierda - margen.derecha;
+                        const altoPlot = altoSvg - margen.arriba - margen.abajo;
+                        const maxX = graficaQpTPicoMatrizPatron.dominio?.maxXGrafico || 1;
+                        const maxY = graficaQpTPicoMatrizPatron.dominio?.maxYGrafico || 1;
+
+                        const escalarX = (valor) =>
+                          margen.izquierda + (Number(valor) / maxX) * anchoPlot;
+
+                        const escalarY = (valor) =>
+                          margen.arriba + altoPlot - (Number(valor) / maxY) * altoPlot;
+
+                        return (
+                          <div
+                            style={{
+                              marginTop: 12,
+                              padding: 10,
+                              borderRadius: 8,
+                              border: "1px solid rgba(99, 102, 241, 0.35)",
+                              background: "rgba(2, 6, 23, 0.28)"
+                            }}
+                          >
+                            <strong>Gráfica Qp–tPico:</strong>{" "}
+                            comparación visual no adoptiva desde matriz patrón.
+
+                            <div style={{ overflowX: "auto", marginTop: 8 }}>
+                              <svg
+                                width={anchoSvg}
+                                height={altoSvg}
+                                role="img"
+                                aria-label="Gráfica Qp contra tPico desde matriz patrón La Iguaná PC_80"
+                              >
+                                <line
+                                  x1={margen.izquierda}
+                                  y1={margen.arriba}
+                                  x2={margen.izquierda}
+                                  y2={margen.arriba + altoPlot}
+                                  stroke="rgba(226, 232, 240, 0.55)"
+                                  strokeWidth="1"
+                                />
+                                <line
+                                  x1={margen.izquierda}
+                                  y1={margen.arriba + altoPlot}
+                                  x2={margen.izquierda + anchoPlot}
+                                  y2={margen.arriba + altoPlot}
+                                  stroke="rgba(226, 232, 240, 0.55)"
+                                  strokeWidth="1"
+                                />
+
+                                <text
+                                  x={margen.izquierda + anchoPlot / 2}
+                                  y={altoSvg - 10}
+                                  textAnchor="middle"
+                                  fill="#cbd5e1"
+                                  fontSize="11"
+                                >
+                                  tPico (min)
+                                </text>
+
+                                <text
+                                  x="14"
+                                  y={margen.arriba + altoPlot / 2}
+                                  transform={`rotate(-90 14 ${margen.arriba + altoPlot / 2})`}
+                                  textAnchor="middle"
+                                  fill="#cbd5e1"
+                                  fontSize="11"
+                                >
+                                  Qp (m³/s)
+                                </text>
+
+                                {graficaQpTPicoMatrizPatron.puntos.map((punto) => {
+                                  const x = escalarX(punto.xTPicoMin);
+                                  const y = escalarY(punto.yQpM3s);
+
+                                  return (
+                                    <g key={`qp-tpico-${punto.metodo}`}>
+                                      <circle
+                                        cx={x}
+                                        cy={y}
+                                        r="6"
+                                        fill={punto.color}
+                                        stroke="rgba(255, 255, 255, 0.75)"
+                                        strokeWidth="1"
+                                      />
+                                      <text
+                                        x={x + 8}
+                                        y={y - 8}
+                                        fill="#e5e7eb"
+                                        fontSize="11"
+                                      >
+                                        {punto.metodo}
+                                      </text>
+                                      <text
+                                        x={x + 8}
+                                        y={y + 7}
+                                        fill="#94a3b8"
+                                        fontSize="10"
+                                      >
+                                        {`${punto.yQpM3s.toLocaleString("es-CO", {
+                                          maximumFractionDigits: 0
+                                        })} m³/s · ${punto.xTPicoMin.toLocaleString("es-CO", {
+                                          maximumFractionDigits: 0
+                                        })} min`}
+                                      </text>
+                                    </g>
+                                  );
+                                })}
+                              </svg>
+                            </div>
+
+                            <div style={{ ...estilos.muted, marginTop: 8 }}>
+                              Lectura: puntos hacia arriba indican mayor Qp; puntos hacia la izquierda
+                              indican pico más temprano. Diagnóstico visual no adoptivo.
+                            </div>
+                          </div>
+                        );
+                      })()}
 
                       <div style={{ ...estilos.muted, marginTop: 8 }}>
                         Riesgo alto: {(sintesisMatrizPatron.riesgoAlto ?? []).join(", ") || "—"}.{" "}
