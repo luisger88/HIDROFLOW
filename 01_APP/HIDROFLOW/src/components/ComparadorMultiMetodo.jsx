@@ -12,6 +12,7 @@ import clasificarFormaQt from "../services/hidrogramas/clasificarFormaQt";
 import evaluarRiesgoTemporalQt from "../services/hidrogramas/evaluarRiesgoTemporalQt";
 import sintetizarRiesgoTemporalQt from "../services/hidrogramas/sintetizarRiesgoTemporalQt";
 import construirSeccionDiagnosticoTemporalQt from "../services/hidrogramas/construirSeccionDiagnosticoTemporalQt";
+import validarSeccionDiagnosticoTemporalQt from "../services/hidrogramas/validarSeccionDiagnosticoTemporalQt";
 
 import {
   resumenComparadorCatalogo,
@@ -2172,12 +2173,20 @@ const handleClickSeguro = (accion) => () => {
                 !textoExpediente.includes(seccion)
               );
 
-              if (tokensDetectadosExpediente.length > 0 || seccionesFaltantesExpediente.length > 0) {
+              // OT-0088C — Validación textual estricta de diagnóstico temporal Q(t).
+              const validacionDiagnosticoTemporalQt =
+                validarSeccionDiagnosticoTemporalQt(textoExpediente);
+
+              if (
+                tokensDetectadosExpediente.length > 0 ||
+                seccionesFaltantesExpediente.length > 0 ||
+                !validacionDiagnosticoTemporalQt.ok
+              ) {
                 window.alert(
                   [
                     "Validación del expediente copiado fallida.",
                     "",
-                    "No se copió el expediente porque contiene tokens inválidos o perdió secciones obligatorias.",
+                    "No se copió el expediente porque contiene tokens inválidos, perdió secciones obligatorias o falló la validación del diagnóstico temporal Q(t).",
                     "",
                     ...(tokensDetectadosExpediente.length > 0
                       ? [
@@ -2189,7 +2198,31 @@ const handleClickSeguro = (accion) => () => {
                     ...(seccionesFaltantesExpediente.length > 0
                       ? [
                           "Secciones obligatorias faltantes:",
-                          ...seccionesFaltantesExpediente.map((seccion) => `- ${seccion}`)
+                          ...seccionesFaltantesExpediente.map((seccion) => `- ${seccion}`),
+                          ""
+                        ]
+                      : []),
+                    ...(!validacionDiagnosticoTemporalQt.ok
+                      ? [
+                          "Diagnóstico temporal Q(t) inválido:",
+                          ...(validacionDiagnosticoTemporalQt.faltantes.length > 0
+                            ? [
+                                "Subsecciones temporales faltantes:",
+                                ...validacionDiagnosticoTemporalQt.faltantes.map((item) => `- ${item}`)
+                              ]
+                            : []),
+                          ...(validacionDiagnosticoTemporalQt.advertenciasFaltantes.length > 0
+                            ? [
+                                "Advertencias temporales faltantes:",
+                                ...validacionDiagnosticoTemporalQt.advertenciasFaltantes.map((item) => `- ${item}`)
+                              ]
+                            : []),
+                          ...(validacionDiagnosticoTemporalQt.tokensInvalidos.length > 0
+                            ? [
+                                "Tokens inválidos en diagnóstico temporal:",
+                                ...validacionDiagnosticoTemporalQt.tokensInvalidos.map((item) => `- ${item}`)
+                              ]
+                            : [])
                         ]
                       : [])
                   ].join("\n")
@@ -2198,6 +2231,7 @@ const handleClickSeguro = (accion) => () => {
                 return;
               }
 
+               
           const areaTexto = document.createElement("textarea");
           areaTexto.value = textoExpediente;
           areaTexto.setAttribute("readonly", "");
