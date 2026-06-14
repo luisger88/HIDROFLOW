@@ -11,6 +11,7 @@ import calcularMetricasMorfologiaQt from "../services/hidrogramas/calcularMetric
 import clasificarFormaQt from "../services/hidrogramas/clasificarFormaQt";
 import evaluarRiesgoTemporalQt from "../services/hidrogramas/evaluarRiesgoTemporalQt";
 import sintetizarRiesgoTemporalQt from "../services/hidrogramas/sintetizarRiesgoTemporalQt";
+import construirSeccionDiagnosticoTemporalQt from "../services/hidrogramas/construirSeccionDiagnosticoTemporalQt";
 
 import {
   resumenComparadorCatalogo,
@@ -1981,6 +1982,14 @@ const handleClickSeguro = (accion) => () => {
                   ? "requiere revisión menor"
                   : "requiere revisión técnica";
 
+          // OT-0087C — Sección exportable de diagnóstico temporal Q(t) no adoptivo.
+          const seccionDiagnosticoTemporalQt = construirSeccionDiagnosticoTemporalQt({
+            filasMorfologiaQt,
+            filasDictamenFormaQt,
+            filasRiesgoTemporalQt,
+            sintesisRiesgoTemporalQt
+          });
+
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
             "Estado técnico del expediente: CONSISTENTE CON ADVERTENCIAS.",
@@ -2091,10 +2100,18 @@ const handleClickSeguro = (accion) => () => {
             "Método Racional: presente como contraste global independiente.",
             "Lectura técnica: control interno preliminar; no reemplaza revisión hidrológica profesional.",
             "",
+            seccionDiagnosticoTemporalQt?.texto ?? [
+              "## Diagnóstico temporal Q(t) no adoptivo",
+              "",
+              "No fue posible construir la sección de diagnóstico temporal Q(t).",
+              "",
+              "Restricción: diagnóstico no adoptivo; no selecciona método ni levanta No coherente."
+            ].join("\n"),
+            "",
             "## 10. Validación interna del expediente exportado",
             "Estado de validación estructural: control previo al portapapeles aplicado.",
             "Control de tokens inválidos: activo mediante validador interno del expediente copiado.",
-            "Secciones obligatorias controladas: Q-Tr activo, Q-5 auditado, Método Racional, contraste, restricciones y sello técnico.",
+            "Secciones obligatorias controladas: Q-Tr activo, Q-5 auditado, Método Racional, contraste, diagnóstico temporal Q(t), restricciones y sello técnico.",
             "Q-Tr activo: trazado desde q_tr_activo_estado y verificado como sección exportable.",
             "Q-5 auditado: presente como bloque de hidrogramas no adoptivo.",
             "Método Racional: presente como contraste global independiente.",
@@ -2146,6 +2163,7 @@ const handleClickSeguro = (accion) => () => {
                 "## 7. Método Racional — contraste global independiente",
                 "## 8. Contraste Q-5 vs Método Racional",
                 "## 9. Control de consistencia cruzada Pe–Área–Volumen/Q-5",
+                "## Diagnóstico temporal Q(t) no adoptivo",
                 "## 10. Validación interna del expediente exportado",
                 "## 11. Sello técnico de generación",
                 "## 12. Restricciones y advertencias técnicas"
