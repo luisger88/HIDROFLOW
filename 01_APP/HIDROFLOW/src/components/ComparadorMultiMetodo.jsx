@@ -14,6 +14,7 @@ import sintetizarRiesgoTemporalQt from "../services/hidrogramas/sintetizarRiesgo
 import construirSeccionDiagnosticoTemporalQt from "../services/hidrogramas/construirSeccionDiagnosticoTemporalQt";
 import validarSeccionDiagnosticoTemporalQt from "../services/hidrogramas/validarSeccionDiagnosticoTemporalQt";
 import prepararGraficaQpTPicoMatrizPatron from "../services/hidrogramas/prepararGraficaQpTPicoMatrizPatron";
+import prepararGraficaVelocidadEfectivaMatrizPatron from "../services/hidrogramas/prepararGraficaVelocidadEfectivaMatrizPatron";
 
 import {
   resumenComparadorCatalogo,
@@ -386,6 +387,7 @@ const diagnosticoMatrizPatronQt = Array.isArray(matrizPatronVisual?.diagnosticoQ
 const sintesisMatrizPatron = matrizPatronVisual?.sintesisTemporal ?? {};
 const salidaHidraulicaMatrizPatron = matrizPatronVisual?.salidaHidraulicaFutura ?? {};
 const graficaQpTPicoMatrizPatron = prepararGraficaQpTPicoMatrizPatron(matrizPatronVisual);
+const graficaVelocidadEfectivaMatrizPatron = prepararGraficaVelocidadEfectivaMatrizPatron(matrizPatronVisual);
   
   const estilos = {
     pagina: {
@@ -3176,6 +3178,155 @@ const handleClickSeguro = (accion) => () => {
                         );
                       })()}
 
+                      {graficaVelocidadEfectivaMatrizPatron?.ok && (() => {
+                        const anchoSvg = 560;
+                        const altoSvg = 260;
+                        const margen = { izquierda: 128, derecha: 28, arriba: 24, abajo: 34 };
+                        const anchoPlot = anchoSvg - margen.izquierda - margen.derecha;
+                        const altoFila = 32;
+                        const maxVelocidad =
+                          graficaVelocidadEfectivaMatrizPatron.dominio?.maxVelocidadGrafico || 1;
+
+                        const escalarAncho = (valor) =>
+                          (Number(valor) / maxVelocidad) * anchoPlot;
+
+                        const yFila = (indice) => margen.arriba + indice * altoFila;
+
+                        return (
+                          <div
+                            style={{
+                              marginTop: 12,
+                              padding: 10,
+                              borderRadius: 8,
+                              border: "1px solid rgba(34, 197, 94, 0.35)",
+                              background: "rgba(2, 6, 23, 0.28)"
+                            }}
+                          >
+                            <strong>Velocidad efectiva y plausibilidad temporal:</strong>{" "}
+                            lectura visual no adoptiva desde matriz patrón.
+
+                            <div style={{ overflowX: "auto", marginTop: 8 }}>
+                              <svg
+                                width={anchoSvg}
+                                height={altoSvg}
+                                role="img"
+                                aria-label="Gráfica de velocidad efectiva desde matriz patrón La Iguaná PC_80"
+                              >
+                                <line
+                                  x1={margen.izquierda}
+                                  y1={margen.arriba - 8}
+                                  x2={margen.izquierda}
+                                  y2={altoSvg - margen.abajo}
+                                  stroke="rgba(226, 232, 240, 0.45)"
+                                  strokeWidth="1"
+                                />
+
+                                <line
+                                  x1={margen.izquierda}
+                                  y1={altoSvg - margen.abajo}
+                                  x2={margen.izquierda + anchoPlot}
+                                  y2={altoSvg - margen.abajo}
+                                  stroke="rgba(226, 232, 240, 0.45)"
+                                  strokeWidth="1"
+                                />
+
+                                <line
+                                  x1={margen.izquierda + escalarAncho(graficaVelocidadEfectivaMatrizPatron.referencia?.velocidadCaminataKmh ?? 5)}
+                                  y1={margen.arriba - 8}
+                                  x2={margen.izquierda + escalarAncho(graficaVelocidadEfectivaMatrizPatron.referencia?.velocidadCaminataKmh ?? 5)}
+                                  y2={altoSvg - margen.abajo}
+                                  stroke="rgba(125, 211, 252, 0.75)"
+                                  strokeWidth="1"
+                                  strokeDasharray="4 4"
+                                />
+
+                                <text
+                                  x={margen.izquierda + escalarAncho(graficaVelocidadEfectivaMatrizPatron.referencia?.velocidadCaminataKmh ?? 5) + 6}
+                                  y={margen.arriba + 4}
+                                  fill="#7dd3fc"
+                                  fontSize="10"
+                                >
+                                  ref. 5 km/h
+                                </text>
+
+                                {graficaVelocidadEfectivaMatrizPatron.barras.map((barra, indice) => {
+                                  const y = yFila(indice);
+                                  const anchoTPico = escalarAncho(barra.velocidadTPicoKmh ?? 0);
+                                  const anchoAscenso = escalarAncho(barra.velocidadAscensoKmh ?? 0);
+
+                                  return (
+                                    <g key={`velocidad-efectiva-${barra.metodo}`}>
+                                      <text
+                                        x={8}
+                                        y={y + 15}
+                                        fill="#e5e7eb"
+                                        fontSize="11"
+                                      >
+                                        {barra.metodo}
+                                      </text>
+
+                                      <rect
+                                        x={margen.izquierda}
+                                        y={y}
+                                        width={anchoTPico}
+                                        height="10"
+                                        rx="3"
+                                        fill={barra.color}
+                                      />
+
+                                      <rect
+                                        x={margen.izquierda}
+                                        y={y + 14}
+                                        width={anchoAscenso}
+                                        height="8"
+                                        rx="3"
+                                        fill="rgba(148, 163, 184, 0.75)"
+                                      />
+
+                                      <text
+                                        x={margen.izquierda + Math.max(anchoTPico, anchoAscenso) + 8}
+                                        y={y + 10}
+                                        fill="#cbd5e1"
+                                        fontSize="10"
+                                      >
+                                        {`${Number(barra.velocidadTPicoKmh ?? 0).toLocaleString("es-CO", {
+                                          maximumFractionDigits: 1
+                                        })} / ${Number(barra.velocidadAscensoKmh ?? 0).toLocaleString("es-CO", {
+                                          maximumFractionDigits: 1
+                                        })} km/h`}
+                                      </text>
+
+                                      <text
+                                        x={margen.izquierda + Math.max(anchoTPico, anchoAscenso) + 8}
+                                        y={y + 23}
+                                        fill="#94a3b8"
+                                        fontSize="9"
+                                      >
+                                        {barra.plausibilidadTemporal}
+                                      </text>
+                                    </g>
+                                  );
+                                })}
+
+                                <text
+                                  x={margen.izquierda + anchoPlot / 2}
+                                  y={altoSvg - 8}
+                                  textAnchor="middle"
+                                  fill="#cbd5e1"
+                                  fontSize="11"
+                                >
+                                  Velocidad efectiva (km/h): tPico / ascenso
+                                </text>
+                              </svg>
+                            </div>
+
+                            <div style={{ ...estilos.muted, marginTop: 8 }}>
+                              Lectura: velocidades altas indican respuesta temporal muy concentrada.
+                              La referencia de 5 km/h es pedagógica y no representa una fórmula hidrológica.
+                            </div>
+                          </div>
+                        );
+                      })()}
                       <div style={{ ...estilos.muted, marginTop: 8 }}>
                         Riesgo alto: {(sintesisMatrizPatron.riesgoAlto ?? []).join(", ") || "—"}.{" "}
                         Riesgo medio: {(sintesisMatrizPatron.riesgoMedio ?? []).join(", ") || "—"}.
@@ -3246,6 +3397,7 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
 
 
