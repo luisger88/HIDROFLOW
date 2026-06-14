@@ -5,6 +5,7 @@ import { calcTc, mapTcResultados } from "../services/hidroEngine";
 import { seleccionarTc } from "../services/tcSelector";
 import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteTc";
 import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedienteDocumental";
+import construirExpedienteHidrologicoMinimo from "../services/documentos/construirExpedienteHidrologicoMinimo";
 import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
 import resumirEstructuraHidrogramas from "../services/hidrogramas/resumirEstructuraHidrogramas";
 import calcularMetricasMorfologiaQt from "../services/hidrogramas/calcularMetricasMorfologiaQt";
@@ -2007,6 +2008,33 @@ const handleClickSeguro = (accion) => () => {
             sintesisRiesgoTemporalQt
           });
 
+          // OT-0113B — Diagnóstico no invasivo del helper puro del expediente.
+          // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
+          try {
+            const diagnosticoHelperExpediente = construirExpedienteHidrologicoMinimo({
+              contextoBase,
+              Tc_final,
+              metodos,
+              filasMorfologiaQt,
+              filasDictamenFormaQt,
+              filasRiesgoTemporalQt,
+              sintesisRiesgoTemporalQt,
+              fechaGeneracion: new Date().toLocaleString("es-CO"),
+              versionExpediente: "expediente_hidrologico_minimo_v0_1"
+            });
+
+            if (!diagnosticoHelperExpediente?.ok) {
+              console.warn(
+                "Diagnóstico helper expediente no invasivo:",
+                diagnosticoHelperExpediente
+              );
+            }
+          } catch (errorDiagnosticoHelperExpediente) {
+            console.warn(
+              "Diagnóstico helper expediente no invasivo no ejecutado:",
+              errorDiagnosticoHelperExpediente
+            );
+          }
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
             "Estado técnico del expediente: CONSISTENTE CON ADVERTENCIAS.",
@@ -3429,6 +3457,8 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
+
 
 
 
