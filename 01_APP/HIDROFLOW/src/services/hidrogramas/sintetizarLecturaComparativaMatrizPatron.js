@@ -39,7 +39,17 @@ function esProlongadaOAtenuada(fila = {}) {
 }
 
 function listarMetodos(filas = []) {
-  return filas.map((fila) => textoSeguro(fila?.metodo)).join(", ");
+  const nombres = filas.map((fila) => textoSeguro(fila?.metodo)).filter(Boolean);
+
+  if (nombres.length === 0) return "—";
+  if (nombres.length === 1) return nombres[0];
+  if (nombres.length === 2) return nombres.join(" y ");
+
+  return `${nombres.slice(0, -1).join(", ")} y ${nombres.at(-1)}`;
+}
+
+function verboPorCantidad(filas = [], singular = "", plural = "") {
+  return filas.length === 1 ? singular : plural;
 }
 
 export default function sintetizarLecturaComparativaMatrizPatron(matriz = {}) {
@@ -66,19 +76,19 @@ export default function sintetizarLecturaComparativaMatrizPatron(matriz = {}) {
 
   if (alertasFuertes.length > 0) {
     frases.push(
-      `${listarMetodos(alertasFuertes)} presenta(n) la mayor alerta temporal por concentración abrupta o asimetría extrema.`
+      `${listarMetodos(alertasFuertes)} ${verboPorCantidad(alertasFuertes, "presenta", "presentan")} la mayor alerta temporal por concentración abrupta o asimetría extrema.`
     );
   }
 
   if (plausibles.length > 0) {
     frases.push(
-      `${listarMetodos(plausibles)} se mantiene(n) como respuesta temporalmente plausible preliminar.`
+      `${listarMetodos(plausibles)} ${verboPorCantidad(plausibles, "se mantiene", "se mantienen")} como respuesta temporalmente plausible preliminar.`
     );
   }
 
   if (prolongadas.length > 0) {
     frases.push(
-      `${listarMetodos(prolongadas)} muestra(n) comportamiento prolongado, atenuado o con recesión dominante.`
+      `${listarMetodos(prolongadas)} ${verboPorCantidad(prolongadas, "muestra", "muestran")} comportamiento prolongado, atenuado o con recesión dominante.`
     );
   }
 
@@ -99,3 +109,4 @@ export default function sintetizarLecturaComparativaMatrizPatron(matriz = {}) {
       "Lectura comparativa no adoptiva; no recalcula hidrogramas, no modifica Q(t), no selecciona método y no levanta No coherente."
   };
 }
+
