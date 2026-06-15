@@ -2058,16 +2058,10 @@ const handleClickSeguro = (accion) => () => {
               contextoBase
             }),
             "",
-            "## 3. Tiempo de concentración y roles Tc",
-            `Tc comparador: ${Tc_final !== null && Tc_final !== undefined ? Number(Tc_final).toFixed(1) + " min" : "—"}`,
-            `Tr global activo: ${trDisenoActivoExpediente} años`,
-            "Nota Tr: estado global visual/exportable; no implica recálculo automático hasta propagación hidrológica controlada.",
-            "Roles Tc:",
-            "- Tc global Índice: referencia hidrológica general.",
-            "- Tc operativo Q(t): ruta interna del hidrograma.",
-            "- Duración evento: 3 h para almacenamiento/regulación.",
-            "- Lag / forma SCS: parámetro derivado para forma temporal.",
-            "- Tc comparador: referencia especializada para coherencia Q-5.",
+            ...construirLineasTiempoConcentracionRolesTcExpediente({
+              Tc_final,
+              trDisenoActivoExpediente
+            }),
             "",
             "## 4. Volumen de referencia",
             `Lluvia efectiva total: ${Number.isFinite(peTotalMm) ? peTotalMm.toFixed(2) + " mm" : "—"}`,
@@ -3681,3 +3675,4 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
