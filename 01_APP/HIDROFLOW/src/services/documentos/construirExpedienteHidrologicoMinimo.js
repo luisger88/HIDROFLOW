@@ -309,3 +309,36 @@ export default function construirExpedienteHidrologicoMinimo({
   };
 }
 
+export function construirLineasParametrosHidrologicosBaseExpediente(entrada = {}) {
+  const contextoBase =
+    entrada?.contextoBase && typeof entrada.contextoBase === "object"
+      ? entrada.contextoBase
+      : entrada;
+
+  const valorDocumental = (valor) => {
+    if (valor === undefined || valor === null) {
+      return "—";
+    }
+
+    if (typeof valor === "number" && !Number.isFinite(valor)) {
+      return "—";
+    }
+
+    if (typeof valor === "object") {
+      return "—";
+    }
+
+    const textoValor = String(valor).trim();
+
+    return textoValor.length > 0 ? textoValor : "—";
+  };
+
+  return [
+    "## 2. Parámetros hidrológicos base",
+    `CN: ${valorDocumental(contextoBase?.CN)}`,
+    `CN base: ${valorDocumental(contextoBase?.CN_base)}`,
+    `CN efectivo: ${valorDocumental(contextoBase?.CN_efectivo)}`,
+    `AMC: ${valorDocumental(contextoBase?.AMC)}`
+  ];
+}
+
