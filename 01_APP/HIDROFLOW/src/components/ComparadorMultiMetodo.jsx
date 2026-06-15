@@ -2221,7 +2221,23 @@ const handleClickSeguro = (accion) => () => {
             };
 
             if (
-              diagnosticoVolumenReferenciaDelegado.lineasDelsole.warn(
+              diagnosticoVolumenReferenciaDelegado.lineasDelegadas !== 4 ||
+              !diagnosticoVolumenReferenciaDelegado.contieneEncabezadoDelegado ||
+              !diagnosticoVolumenReferenciaDelegado.operativoContieneEncabezado ||
+              !diagnosticoVolumenReferenciaDelegado.delegadoContieneLluvia ||
+              !diagnosticoVolumenReferenciaDelegado.operativoContieneLluvia ||
+              !diagnosticoVolumenReferenciaDelegado.delegadoContieneVolumen ||
+              !diagnosticoVolumenReferenciaDelegado.operativoContieneVolumen ||
+              !diagnosticoVolumenReferenciaDelegado.delegadoContieneFormula ||
+              !diagnosticoVolumenReferenciaDelegado.operativoContieneFormula
+            ) {
+              console.warn(
+                "Diagnóstico Volumen de referencia delegado no invasivo:",
+                diagnosticoVolumenReferenciaDelegado
+              );
+            }
+          } catch (errorDiagnosticoVolumenReferenciaDelegado) {
+            console.warn(
               "Diagnóstico Volumen de referencia delegado no invasivo no ejecutado:",
               errorDiagnosticoVolumenReferenciaDelegado
             );

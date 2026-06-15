@@ -21,6 +21,18 @@ assert.equal(
 );
 
 assert.equal(
+  texto.includes("diagnosticoVolumenReferenciaDelegado.lineasDelegadas !== 4"),
+  true,
+  "El diagnóstico debe validar 4 líneas delegadas"
+);
+
+assert.equal(
+  texto.includes("lineasDelsole.warn"),
+  false,
+  "No debe existir residuo corrupto lineasDelsole.warn"
+);
+
+assert.equal(
   texto.includes("const textoExpediente = ["),
   true,
   "Debe mantenerse textoExpediente"
