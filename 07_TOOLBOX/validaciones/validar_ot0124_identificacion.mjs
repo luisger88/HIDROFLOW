@@ -32,7 +32,8 @@ function assertLineaContiene(nombreCaso, texto, fragmento) {
 
 function validarCaso(nombreCaso, contexto, expectativas) {
   const lineas = construirLineasIdentificacionExpediente(contexto);
-  const texto = unirLineas(lineas);
+const texto = unirLineas(lineas);
+
 
   assert.equal(
     Array.isArray(lineas),

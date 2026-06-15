@@ -91,34 +91,90 @@ export function validarTextoExpedienteMinimo(
   };
 }
 
-export function construirLineasIdentificacionExpediente({
-  contextoBase = {},
-  fuenteFallback = "HidroFlow",
-  estacionIdfFallback = "SAN CRISTOBAL"
-} = {}) {
-  const areaKm2 = Number(contextoBase?.area_km2);
-  const pendienteMediaPct = Number(contextoBase?.pendiente_media_pct);
-  const longitudCauceKm = Number(contextoBase?.longitud_cauce_km);
+export function construirLineasIdentificacionExpediente(entrada = {}) {
+  const contextoBase =
+    entrada?.contextoBase && typeof entrada.contextoBase === "object"
+      ? entrada.contextoBase
+      : entrada;
+
+  const fuenteFallback =
+    textoSeguro(entrada?.fuenteFallback, "") || "HidroFlow";
+
+  const estacionIdfFallback =
+    textoSeguro(entrada?.estacionIdfFallback, "") || "SAN CRISTOBAL";
+
+  const nombreCuenca =
+    textoSeguro(contextoBase?.cuencaNombre, "") ||
+    textoSeguro(contextoBase?.nombreCuenca, "") ||
+    textoSeguro(contextoBase?.cuenca, "") ||
+    textoSeguro(contextoBase?.cuencaActiva?.nombre, "") ||
+    "Cuenca activa";
+
+  const areaKm2 =
+    Number.isFinite(Number(contextoBase?.area_km2))
+      ? Number(contextoBase.area_km2)
+      : Number.isFinite(Number(contextoBase?.areaKm2))
+      ? Number(contextoBase.areaKm2)
+      : Number.isFinite(Number(contextoBase?.cuencaActiva?.areaKm2))
+      ? Number(contextoBase.cuencaActiva.areaKm2)
+      : null;
+
+  const pendienteMediaPct =
+    Number.isFinite(Number(contextoBase?.pendiente_media_pct))
+      ? Number(contextoBase.pendiente_media_pct)
+      : Number.isFinite(Number(contextoBase?.pendienteMediaPct))
+      ? Number(contextoBase.pendienteMediaPct)
+      : Number.isFinite(Number(contextoBase?.cuencaActiva?.pendienteMediaPct))
+      ? Number(contextoBase.cuencaActiva.pendienteMediaPct)
+      : null;
+
+  const longitudCauceKm =
+    Number.isFinite(Number(contextoBase?.longitud_cauce_km))
+      ? Number(contextoBase.longitud_cauce_km)
+      : Number.isFinite(Number(contextoBase?.longitudCaucePrincipalKm))
+      ? Number(contextoBase.longitudCaucePrincipalKm)
+      : Number.isFinite(Number(contextoBase?.cuencaActiva?.longitudCaucePrincipalKm))
+      ? Number(contextoBase.cuencaActiva.longitudCaucePrincipalKm)
+      : null;
 
   const estacionIdf =
     textoSeguro(contextoBase?.estacion_idf, "") ||
     textoSeguro(contextoBase?.estacionIDF, "") ||
+    textoSeguro(contextoBase?.estacionIdf, "") ||
     textoSeguro(contextoBase?.estacion, "") ||
     textoSeguro(contextoBase?.nombre_estacion, "") ||
     textoSeguro(contextoBase?.idf?.nombre, "") ||
     textoSeguro(contextoBase?.idf?.estacion, "") ||
     estacionIdfFallback;
 
+  const fuenteContexto =
+    textoSeguro(contextoBase?.fuente, "") ||
+    textoSeguro(contextoBase?.fuenteContexto, "") ||
+    fuenteFallback;
+
   return [
     "## 1. Identificación",
-    `Cuenca: ${textoSeguro(contextoBase?.cuencaNombre, "Cuenca activa")}`,
-    `Área: ${Number.isFinite(areaKm2) ? `${areaKm2.toFixed(4)} km²` : "—"}`,
-    `Fuente de contexto: ${textoSeguro(contextoBase?.fuente, fuenteFallback)}`,
+    `Cuenca: ${textoSeguro(nombreCuenca, "Cuenca activa")}`,
+    `Área: ${
+      Number.isFinite(areaKm2)
+        ? areaKm2.toFixed(4)
+        : "—"
+    }`,
+    `Fuente de contexto: ${textoSeguro(fuenteContexto, fuenteFallback)}`,
     `Estación IDF: ${textoSeguro(estacionIdf, estacionIdfFallback)}`,
-    `Pendiente media: ${Number.isFinite(pendienteMediaPct) ? `${pendienteMediaPct.toFixed(2)} %` : "—"}`,
-    `Longitud cauce principal: ${Number.isFinite(longitudCauceKm) ? `${longitudCauceKm.toFixed(3)} km` : "—"}`
+    `Pendiente media: ${
+      Number.isFinite(pendienteMediaPct)
+        ? pendienteMediaPct.toFixed(2)
+        : "—"
+    }`,
+    `Longitud cauce principal: ${
+      Number.isFinite(longitudCauceKm)
+        ? longitudCauceKm.toFixed(3)
+        : "—"
+    }`
   ];
 }
+
 export function construirLineasSelloTecnicoAuxiliarExpediente({
   metadata = {},
   versionExpediente = metadata?.versionExpediente ?? VERSION_EXPEDIENTE_HIDROLOGICO_MINIMO,
