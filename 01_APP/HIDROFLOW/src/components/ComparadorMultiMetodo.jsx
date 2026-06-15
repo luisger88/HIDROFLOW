@@ -6,6 +6,7 @@ import { seleccionarTc } from "../services/tcSelector";
 import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteTc";
 import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedienteDocumental";
 import construirExpedienteHidrologicoMinimo, {
+  construirLineasIdentificacionExpediente,
   construirLineasSelloTecnicoAuxiliarExpediente
 } from "../services/documentos/construirExpedienteHidrologicoMinimo";
 import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
@@ -2190,7 +2191,54 @@ const handleClickSeguro = (accion) => () => {
             "- No se alteran Qp, Tp, Volumen ni Q(t).",
             "",
           ].join("\n");
-          // OT-0114B — Comparación runtime no invasiva helper vs textoExpediente.
+          // OT-0125D — Diagnóstico no invasivo del bloque Identificación delegado.
+          // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
+          try {
+            const lineasIdentificacionDelegadaDiagnostico =
+              construirLineasIdentificacionExpediente({
+                contextoBase,
+                fuenteFallback: "HidroFlow",
+                estacionIdfFallback: estacionIdfExpediente
+              });
+
+            const textoIdentificacionDelegadaDiagnostico =
+              Array.isArray(lineasIdentificacionDelegadaDiagnostico)
+                ? lineasIdentificacionDelegadaDiagnostico.join("\n")
+                : "";
+
+            const diagnosticoIdentificacionDelegada = {
+              lineasDelegadas: Array.isArray(lineasIdentificacionDelegadaDiagnostico)
+                ? lineasIdentificacionDelegadaDiagnostico.length
+                : 0,
+              contieneEncabezadoDelegado:
+                textoIdentificacionDelegadaDiagnostico.includes("## 1. Identificación"),
+              operativoContieneEncabezado:
+                textoExpediente.includes("## 1. Identificación"),
+              delegadoContieneCuenca:
+                textoIdentificacionDelegadaDiagnostico.includes("Cuenca:"),
+              operativoContieneCuenca:
+                textoExpediente.includes("Cuenca:")
+            };
+
+            if (
+              diagnosticoIdentificacionDelegada.lineasDelegadas !== 7 ||
+              !diagnosticoIdentificacionDelegada.contieneEncabezadoDelegado ||
+              !diagnosticoIdentificacionDelegada.operativoContieneEncabezado ||
+              !diagnosticoIdentificacionDelegada.delegadoContieneCuenca ||
+              !diagnosticoIdentificacionDelegada.operativoContieneCuenca
+            ) {
+              console.warn(
+                "Diagnóstico Identificación delegada no invasivo:",
+                diagnosticoIdentificacionDelegada
+              );
+            }
+          } catch (errorDiagnosticoIdentificacionDelegada) {
+            console.warn(
+              "Diagnóstico Identificación delegada no invasivo no ejecutado:",
+              errorDiagnosticoIdentificacionDelegada
+            );
+          }
+  // OT-0114B — Comparación runtime no invasiva helper vs textoExpediente.
           // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
           try {
             const textoHelperExpediente = diagnosticoHelperExpediente?.texto ?? "";
@@ -3531,19 +3579,4 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
