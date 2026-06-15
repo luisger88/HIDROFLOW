@@ -5,7 +5,9 @@ import { calcTc, mapTcResultados } from "../services/hidroEngine";
 import { seleccionarTc } from "../services/tcSelector";
 import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteTc";
 import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedienteDocumental";
-import construirExpedienteHidrologicoMinimo from "../services/documentos/construirExpedienteHidrologicoMinimo";
+import construirExpedienteHidrologicoMinimo, {
+  construirLineasSelloTecnicoAuxiliarExpediente
+} from "../services/documentos/construirExpedienteHidrologicoMinimo";
 import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
 import resumirEstructuraHidrogramas from "../services/hidrogramas/resumirEstructuraHidrogramas";
 import calcularMetricasMorfologiaQt from "../services/hidrogramas/calcularMetricasMorfologiaQt";
@@ -2167,7 +2169,11 @@ const handleClickSeguro = (accion) => () => {
             "## 11. Sello técnico de generación",
             "Herramienta: HidroFlow.",
             "Tipo de salida: Expediente hidrológico mínimo.",
-            `Versión auxiliar helper expediente: ${diagnosticoHelperExpediente?.metadata?.versionExpediente ?? "no integrada"}.`,
+            ...(diagnosticoHelperExpediente?.metadata
+              ? construirLineasSelloTecnicoAuxiliarExpediente({
+                  metadata: diagnosticoHelperExpediente.metadata
+                })
+              : ["Versión auxiliar helper expediente: no integrada."]),
             `Cuenca activa: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}.`,
             `Fecha de generación: ${new Date().toLocaleString("es-CO")}.`,
             "Estado técnico: completo, limpio, numéricamente útil y con plausibilidad hidrológica interna preliminar.",
@@ -3525,6 +3531,8 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
+
 
 
 
