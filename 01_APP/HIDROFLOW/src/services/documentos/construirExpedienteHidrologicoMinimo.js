@@ -91,6 +91,34 @@ export function validarTextoExpedienteMinimo(
   };
 }
 
+export function construirLineasIdentificacionExpediente({
+  contextoBase = {},
+  fuenteFallback = "HidroFlow",
+  estacionIdfFallback = "SAN CRISTOBAL"
+} = {}) {
+  const areaKm2 = Number(contextoBase?.area_km2);
+  const pendienteMediaPct = Number(contextoBase?.pendiente_media_pct);
+  const longitudCauceKm = Number(contextoBase?.longitud_cauce_km);
+
+  const estacionIdf =
+    textoSeguro(contextoBase?.estacion_idf, "") ||
+    textoSeguro(contextoBase?.estacionIDF, "") ||
+    textoSeguro(contextoBase?.estacion, "") ||
+    textoSeguro(contextoBase?.nombre_estacion, "") ||
+    textoSeguro(contextoBase?.idf?.nombre, "") ||
+    textoSeguro(contextoBase?.idf?.estacion, "") ||
+    estacionIdfFallback;
+
+  return [
+    "## 1. Identificación",
+    `Cuenca: ${textoSeguro(contextoBase?.cuencaNombre, "Cuenca activa")}`,
+    `Área: ${Number.isFinite(areaKm2) ? `${areaKm2.toFixed(4)} km²` : "—"}`,
+    `Fuente de contexto: ${textoSeguro(contextoBase?.fuente, fuenteFallback)}`,
+    `Estación IDF: ${textoSeguro(estacionIdf, estacionIdfFallback)}`,
+    `Pendiente media: ${Number.isFinite(pendienteMediaPct) ? `${pendienteMediaPct.toFixed(2)} %` : "—"}`,
+    `Longitud cauce principal: ${Number.isFinite(longitudCauceKm) ? `${longitudCauceKm.toFixed(3)} km` : "—"}`
+  ];
+}
 export function construirLineasSelloTecnicoAuxiliarExpediente({
   metadata = {},
   versionExpediente = metadata?.versionExpediente ?? VERSION_EXPEDIENTE_HIDROLOGICO_MINIMO,
@@ -224,3 +252,4 @@ export default function construirExpedienteHidrologicoMinimo({
     metadata
   };
 }
+
