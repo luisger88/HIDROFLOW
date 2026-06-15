@@ -343,6 +343,14 @@ export function construirLineasParametrosHidrologicosBaseExpediente(entrada = {}
 }
 export function construirLineasTiempoConcentracionRolesTcExpediente(entrada = {}) {
   const formatearTc = (valor) => {
+    if (valor === undefined || valor === null) {
+      return "—";
+    }
+
+    if (typeof valor === "string" && valor.trim().length === 0) {
+      return "—";
+    }
+
     const numero = Number(valor);
 
     if (!Number.isFinite(numero)) {
@@ -385,4 +393,5 @@ export function construirLineasTiempoConcentracionRolesTcExpediente(entrada = {}
     "- Tc comparador: referencia especializada para coherencia Q-5."
   ];
 }
+
 
