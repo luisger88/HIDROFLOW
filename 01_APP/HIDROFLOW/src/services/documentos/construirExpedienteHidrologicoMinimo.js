@@ -91,6 +91,18 @@ export function validarTextoExpedienteMinimo(
   };
 }
 
+export function construirLineasSelloTecnicoAuxiliarExpediente({
+  metadata = {},
+  versionExpediente = metadata?.versionExpediente ?? VERSION_EXPEDIENTE_HIDROLOGICO_MINIMO,
+  estadoIntegracion = metadata?.estadoIntegracion ?? "helper_no_integrado",
+  tipoSalida = metadata?.tipoSalida ?? "expediente_hidrologico_minimo"
+} = {}) {
+  return [
+    `Versión auxiliar helper expediente: ${textoSeguro(versionExpediente, "no integrada")}.`,
+    `Estado auxiliar helper expediente: ${textoSeguro(estadoIntegracion, "no informado")}.`,
+    `Tipo auxiliar helper expediente: ${textoSeguro(tipoSalida, "expediente_hidrologico_minimo")}.`
+  ];
+}
 export default function construirExpedienteHidrologicoMinimo({
   contextoBase = {},
   Tc_final = null,
