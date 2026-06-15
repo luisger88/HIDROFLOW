@@ -393,5 +393,52 @@ export function construirLineasTiempoConcentracionRolesTcExpediente(entrada = {}
     "- Tc comparador: referencia especializada para coherencia Q-5."
   ];
 }
+export function construirLineasVolumenReferenciaExpediente(entrada = {}) {
+  const formatearLluviaEfectiva = (valor) => {
+    if (valor === undefined || valor === null) {
+      return "—";
+    }
 
+    if (typeof valor === "string" && valor.trim().length === 0) {
+      return "—";
+    }
+
+    const numero = Number(valor);
+
+    if (!Number.isFinite(numero)) {
+      return "—";
+    }
+
+    return `${numero.toFixed(2)} mm`;
+  };
+
+  const formatearVolumenEsperado = (valor) => {
+    if (valor === undefined || valor === null) {
+      return "—";
+    }
+
+    if (typeof valor === "string" && valor.trim().length === 0) {
+      return "—";
+    }
+
+    if (typeof valor === "object") {
+      return "—";
+    }
+
+    const numero = Number(valor);
+
+    if (!Number.isFinite(numero)) {
+      return "—";
+    }
+
+    return `${numero.toLocaleString("es-CO", { maximumFractionDigits: 0 })} m³`;
+  };
+
+  return [
+    "## 4. Volumen de referencia",
+    `Lluvia efectiva total: ${formatearLluviaEfectiva(entrada?.peTotalMm)}`,
+    `Volumen esperado: ${formatearVolumenEsperado(entrada?.volumenEsperadoM3)}`,
+    "Fórmula: Pe(mm) × Área(km²) × 1000."
+  ];
+}
 
