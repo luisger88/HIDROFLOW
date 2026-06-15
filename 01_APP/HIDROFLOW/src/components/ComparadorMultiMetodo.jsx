@@ -8,6 +8,7 @@ import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedient
 import construirExpedienteHidrologicoMinimo, {
   construirLineasIdentificacionExpediente,
   construirLineasParametrosHidrologicosBaseExpediente,
+  construirLineasTiempoConcentracionRolesTcExpediente,
   construirLineasSelloTecnicoAuxiliarExpediente
 } from "../services/documentos/construirExpedienteHidrologicoMinimo";
 import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
@@ -2188,6 +2189,65 @@ const handleClickSeguro = (accion) => () => {
             "- No se alteran Qp, Tp, Volumen ni Q(t).",
             "",
           ].join("\n");
+          // OT-0146 — Diagnóstico no invasivo del bloque Tiempo de concentración y roles Tc delegado.
+          // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
+          try {
+            const lineasTiempoConcentracionDelegadasDiagnostico =
+              construirLineasTiempoConcentracionRolesTcExpediente({
+                Tc_final,
+                trDisenoActivoExpediente
+              });
+
+            const textoTiempoConcentracionDelegadoDiagnostico =
+              Array.isArray(lineasTiempoConcentracionDelegadasDiagnostico)
+                ? lineasTiempoConcentracionDelegadasDiagnostico.join("\n")
+                : "";
+
+            const diagnosticoTiempoConcentracionDelegado = {
+              lineasDelegadas: Array.isArray(lineasTiempoConcentracionDelegadasDiagnostico)
+                ? lineasTiempoConcentracionDelegadasDiagnostico.length
+                : 0,
+              contieneEncabezadoDelegado:
+                textoTiempoConcentracionDelegadoDiagnostico.includes("## 3. Tiempo de concentración y roles Tc"),
+              operativoContieneEncabezado:
+                textoExpediente.includes("## 3. Tiempo de concentración y roles Tc"),
+              delegadoContieneTcComparador:
+                textoTiempoConcentracionDelegadoDiagnostico.includes("Tc comparador:"),
+              operativoContieneTcComparador:
+                textoExpediente.includes("Tc comparador:"),
+              delegadoContieneTrGlobal:
+                textoTiempoConcentracionDelegadoDiagnostico.includes("Tr global activo:"),
+              operativoContieneTrGlobal:
+                textoExpediente.includes("Tr global activo:"),
+              delegadoContieneRoles:
+                textoTiempoConcentracionDelegadoDiagnostico.includes("Roles Tc:"),
+              operativoContieneRoles:
+                textoExpediente.includes("Roles Tc:")
+            };
+
+            if (
+              diagnosticoTiempoConcentracionDelegado.lineasDelegadas !== 10 ||
+              !diagnosticoTiempoConcentracionDelegado.contieneEncabezadoDelegado ||
+              !diagnosticoTiempoConcentracionDelegado.operativoContieneEncabezado ||
+              !diagnosticoTiempoConcentracionDelegado.delegadoContieneTcComparador ||
+              !diagnosticoTiempoConcentracionDelegado.operativoContieneTcComparador ||
+              !diagnosticoTiempoConcentracionDelegado.delegadoContieneTrGlobal ||
+              !diagnosticoTiempoConcentracionDelegado.operativoContieneTrGlobal ||
+              !diagnosticoTiempoConcentracionDelegado.delegadoContieneRoles ||
+              !diagnosticoTiempoConcentracionDelegado.operativoContieneRoles
+            ) {
+              console.warn(
+                "Diagnóstico Tiempo de concentración delegado no invasivo:",
+                diagnosticoTiempoConcentracionDelegado
+              );
+            }
+          } catch (errorDiagnosticoTiempoConcentracionDelegado) {
+            console.warn(
+              "Diagnóstico Tiempo de concentración delegado no invasivo no ejecutado:",
+              errorDiagnosticoTiempoConcentracionDelegado
+            );
+          }
+
           // OT-0135 — Diagnóstico no invasivo del bloque Parámetros hidrológicos base delegado.
           // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
           try {
@@ -3621,4 +3681,3 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
-
