@@ -106,13 +106,13 @@ verificar(
 );
 
 verificar(
-  textoFallback.includes("no integrada"),
-  "El fallback de versión no integrada no aparece."
+  textoFallback.includes(VERSION_EXPEDIENTE_HIDROLOGICO_MINIMO),
+  "El fallback de versión contractual no aparece."
 );
 
 verificar(
-  textoFallback.includes("no informado"),
-  "El fallback de estado no informado no aparece."
+  textoFallback.includes("helper_no_integrado"),
+  "El fallback de estado helper_no_integrado no aparece."
 );
 
 verificar(
@@ -191,3 +191,4 @@ console.log(
   "VALIDACIÓN CONTRACTUAL APROBADA: sello técnico delegado cumple contrato estable."
 );
 ``
+
