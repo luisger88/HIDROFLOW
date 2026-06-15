@@ -2010,8 +2010,10 @@ const handleClickSeguro = (accion) => () => {
 
           // OT-0113B — Diagnóstico no invasivo del helper puro del expediente.
           // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
+          let diagnosticoHelperExpediente = null;
+
           try {
-            const diagnosticoHelperExpediente = construirExpedienteHidrologicoMinimo({
+            diagnosticoHelperExpediente = construirExpedienteHidrologicoMinimo({
               contextoBase,
               Tc_final,
               metodos,
@@ -2181,6 +2183,71 @@ const handleClickSeguro = (accion) => () => {
             "- No se alteran Qp, Tp, Volumen ni Q(t).",
             "",
           ].join("\n");
+          // OT-0114B — Comparación runtime no invasiva helper vs textoExpediente.
+          // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
+          try {
+            const textoHelperExpediente = diagnosticoHelperExpediente?.texto ?? "";
+
+            const marcadoresRuntimeExpediente = [
+              "# Expediente hidrológico mínimo — Cuenca activa",
+              "## 5. Escenario Q-Tr activo — control de trazabilidad",
+              "## 6. Resumen Q-5 auditado",
+              "## 7. Método Racional — contraste global independiente",
+              "## 8. Contraste Q-5 vs Método Racional",
+              "## 9. Control de consistencia cruzada Pe–Área–Volumen/Q-5",
+              "## Diagnóstico temporal Q(t) no adoptivo",
+              "## 10. Validación interna del expediente exportado",
+              "## 11. Sello técnico de generación",
+              "## 12. Restricciones y advertencias técnicas"
+            ];
+
+            const tokensInvalidosRuntimeExpediente = [
+              "undefined",
+              "null",
+              "NaN",
+              "[object Object]"
+            ];
+
+            const marcadoresFaltantesEnHelper = marcadoresRuntimeExpediente.filter(
+              (marcador) => !textoHelperExpediente.includes(marcador)
+            );
+
+            const marcadoresFaltantesEnOperativo = marcadoresRuntimeExpediente.filter(
+              (marcador) => !textoExpediente.includes(marcador)
+            );
+
+            const tokensHelper = tokensInvalidosRuntimeExpediente.filter((token) =>
+              textoHelperExpediente.includes(token)
+            );
+
+            const tokensOperativo = tokensInvalidosRuntimeExpediente.filter((token) =>
+              textoExpediente.includes(token)
+            );
+
+            const brechasRuntimeExpediente = [
+              ...marcadoresFaltantesEnHelper.map(
+                (marcador) => `Helper sin marcador: ${marcador}`
+              ),
+              ...marcadoresFaltantesEnOperativo.map(
+                (marcador) => `Operativo sin marcador: ${marcador}`
+              ),
+              ...tokensHelper.map((token) => `Helper con token inválido: ${token}`),
+              ...tokensOperativo.map((token) => `Operativo con token inválido: ${token}`)
+            ];
+
+            if (brechasRuntimeExpediente.length > 0) {
+              console.warn("Comparación runtime helper vs expediente operativo:", {
+                brechas: brechasRuntimeExpediente,
+                longitudHelper: textoHelperExpediente.length,
+                longitudOperativo: textoExpediente.length
+              });
+            }
+          } catch (errorComparacionRuntimeExpediente) {
+            console.warn(
+              "Comparación runtime helper vs expediente operativo no ejecutada:",
+              errorComparacionRuntimeExpediente
+            );
+          }
           try {
             const diagnosticoDocumentalExpediente = adaptarExpedienteDocumental(textoExpediente, {
               fuenteExpediente: "ComparadorMultiMetodo.textoExpediente",
@@ -3457,6 +3524,7 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
 
 
