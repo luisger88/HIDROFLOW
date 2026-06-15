@@ -6,62 +6,36 @@ const rutaHelper = path.resolve(
   "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js"
 );
 
-const textoOriginal = fs.readFileSync(rutaHelper, "utf8");
+let texto = fs.readFileSync(rutaHelper, "utf8");
 
 const reemplazos = [
   {
     nombre: "Área con unidad km²",
-    antes: `    \`Área: ${
-      Number.isFinite(areaKm2)
-        ? areaKm2.toFixed(4)
-        : "—"
-    }\`,`,
-    despues: `    \`Área: ${
-      Number.isFinite(areaKm2)
-        ? areaKm2.toFixed(4) + " km²"
-        : "—"
-    }\`,`
+    patron: /`Área: \$\{\s*Number\.isFinite\(areaKm2\)\s*\?\s*areaKm2\.toFixed\(4\)\s*:\s*"—"\s*\}`/,
+    reemplazo: '`Área: ${\n      Number.isFinite(areaKm2)\n        ? areaKm2.toFixed(4) + " km²"\n        : "—"\n    }`'
   },
   {
     nombre: "Pendiente media con unidad %",
-    antes: `    \`Pendiente media: ${
-      Number.isFinite(pendienteMediaPct)
-        ? pendienteMediaPct.toFixed(2)
-        : "—"
-    }\`,`,
-    despues: `    \`Pendiente media: ${
-      Number.isFinite(pendienteMediaPct)
-        ? pendienteMediaPct.toFixed(2) + " %"
-        : "—"
-    }\`,`
+    patron: /`Pendiente media: \$\{\s*Number\.isFinite\(pendienteMediaPct\)\s*\?\s*pendienteMediaPct\.toFixed\(2\)\s*:\s*"—"\s*\}`/,
+    reemplazo: '`Pendiente media: ${\n      Number.isFinite(pendienteMediaPct)\n        ? pendienteMediaPct.toFixed(2) + " %"\n        : "—"\n    }`'
   },
   {
     nombre: "Longitud cauce principal con unidad km",
-    antes: `    \`Longitud cauce principal: ${
-      Number.isFinite(longitudCauceKm)
-        ? longitudCauceKm.toFixed(3)
-        : "—"
-    }\``,
-    despues: `    \`Longitud cauce principal: ${
-      Number.isFinite(longitudCauceKm)
-        ? longitudCauceKm.toFixed(3) + " km"
-        : "—"
-    }\``
+    patron: /`Longitud cauce principal: \$\{\s*Number\.isFinite\(longitudCauceKm\)\s*\?\s*longitudCauceKm\.toFixed\(3\)\s*:\s*"—"\s*\}`/,
+    reemplazo: '`Longitud cauce principal: ${\n      Number.isFinite(longitudCauceKm)\n        ? longitudCauceKm.toFixed(3) + " km"\n        : "—"\n    }`'
   }
 ];
 
-let textoActualizado = textoOriginal;
-
 for (const reemplazo of reemplazos) {
   assert.equal(
-    textoActualizado.includes(reemplazo.antes),
+    reemplazo.patron.test(texto),
     true,
-    `No se encontró el bloque esperado para reemplazar: ${reemplazo.nombre}`
+    `No se encontró patrón esperado para: ${reemplazo.nombre}`
   );
 
-  textoActualizado = textoActualizado.replace(reemplazo.antes, reemplazo.despues);
+  texto = texto.replace(reemplazo.patron, reemplazo.reemplazo);
 }
 
-fs.writeFileSync(rutaHelper, textoActualizado, "utf8");
+fs.writeFileSync(rutaHelper, texto, "utf8");
 
 console.log("APLICACION_OT_0127_UNIDADES_IDENTIFICACION_OK");
