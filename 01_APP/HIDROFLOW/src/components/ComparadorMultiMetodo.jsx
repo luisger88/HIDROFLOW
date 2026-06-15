@@ -2046,13 +2046,11 @@ const handleClickSeguro = (accion) => () => {
             "Lectura técnica: expediente exportable completo, con controles internos presentes, no adoptivo y sujeto a revisión hidrológica profesional.",
             "Alcance: estado textual/exportable; no recalcula resultados ni reemplaza criterio profesional.",
             "",
-            "## 1. Identificación",
-            `Cuenca: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}`,
-            `Área: ${Number.isFinite(areaKm2) ? areaKm2.toFixed(4) + " km²" : "—"}`,
-            `Fuente de contexto: ${contextoBase?.fuente ?? "HidroFlow"}`,
-            `Estación IDF: ${estacionIdfExpediente}`,
-            `Pendiente media: ${Number.isFinite(Number(contextoBase?.pendiente_media_pct)) ? Number(contextoBase.pendiente_media_pct).toFixed(2) + " %" : "—"}`,
-            `Longitud cauce principal: ${Number.isFinite(Number(contextoBase?.longitud_cauce_km)) ? Number(contextoBase.longitud_cauce_km).toFixed(3) + " km" : "—"}`,
+            ...construirLineasIdentificacionExpediente({
+              contextoBase,
+              fuenteFallback: "HidroFlow",
+              estacionIdfFallback: estacionIdfExpediente
+            }),
             "",
             "## 2. Parámetros hidrológicos base",
             `CN: ${contextoBase?.CN ?? "—"}`,
