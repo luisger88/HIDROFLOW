@@ -21,21 +21,19 @@ La función debe aceptar un objeto de entrada con valores ya calculados o textos
 ```javascript
 {
   Tc_final,
-  trDisenoActivoExpediente,
-  notaTr,
-  rolesTc
+  trDisenoActivoExpediente
 }
 ```
 
 ## Salida esperada
 
-Debe retornar un arreglo de líneas equivalente al bloque operativo actual:
+Debe retornar un arreglo equivalente al bloque operativo actual:
 
 ```text
 ## 3. Tiempo de concentración y roles Tc
 Tc comparador: <valor | —>
 Tr global activo: <valor | —> años
-Nota Tr: <texto operativo>
+Nota Tr: estado global visual/exportable; no implica recálculo automático hasta propagación hidrológica controlada.
 Roles Tc:
 - Tc global Índice: referencia hidrológica general.
 - Tc operativo Q(t): ruta interna del hidrograma.
@@ -77,7 +75,52 @@ Roles Tc:
 - No debe recalcular `Tc_final`.
 - No debe inferir `Tc_final`.
 - No debe recalcular `trDisenoActivoExpediente`.
-- No debe reinnto/regulación.
+- No debe reinterpretar roles Tc.
+- No debe generar advertencias nuevas.
+- Solo debe representar valores presentes o fallback documental.
+
+## Regla de formato Tc
+
+Si `Tc_final` es finito, se representa como:
+
+```text
+Number(Tc_final).toFixed(1) + " min"
+```
+
+Si no existe o no es finito, se representa:
+
+```text
+—
+```
+
+## Regla de formato Tr
+
+Si `trDisenoActivoExpediente` existe, se representa literalmente seguido de `años`.
+
+Si no existe, se representa:
+
+```text
+Tr global activo: — años
+```
+
+## Residuos prohibidos
+
+- `undefined`;
+- `null`;
+- `NaN`;
+- `[object Object]`.
+
+## Ejemplo con contexto completo
+
+```text
+## 3. Tiempo de concentración y roles Tc
+Tc comparador: 114.2 min
+Tr global activo: 100 años
+Nota Tr: estado global visual/exportable; no implica recálculo automático hasta propagación hidrológica controlada.
+Roles Tc:
+- Tc global Índice: referencia hidrológica general.
+- Tc operativo Q(t): ruta interna del hidrograma.
+- Duración evento: 3 h para almacenamiento/regulación.
 - Lag / forma SCS: parámetro derivado para forma temporal.
 - Tc comparador: referencia especializada para coherencia Q-5.
 ```
@@ -105,7 +148,7 @@ Roles Tc:
 - Tc finito formateado con una cifra decimal y `min`;
 - fallback `—` para Tc no finito;
 - Tr representado sin recalcular;
-- roles operativos conservados literal;
+- roles operativos conservados literalmente;
 - ausencia de residuos técnicos;
 - ausencia de recálculo, inferencia, derivación o reinterpretación.
 
