@@ -157,19 +157,19 @@ export function construirLineasIdentificacionExpediente(entrada = {}) {
     `Cuenca: ${textoSeguro(nombreCuenca, "Cuenca activa")}`,
     `Área: ${
       Number.isFinite(areaKm2)
-        ? areaKm2.toFixed(4)
+        ? areaKm2.toFixed(4) + " km²"
         : "—"
     }`,
     `Fuente de contexto: ${textoSeguro(fuenteContexto, fuenteFallback)}`,
     `Estación IDF: ${textoSeguro(estacionIdf, estacionIdfFallback)}`,
     `Pendiente media: ${
       Number.isFinite(pendienteMediaPct)
-        ? pendienteMediaPct.toFixed(2)
+        ? pendienteMediaPct.toFixed(2) + " %"
         : "—"
     }`,
     `Longitud cauce principal: ${
       Number.isFinite(longitudCauceKm)
-        ? longitudCauceKm.toFixed(3)
+        ? longitudCauceKm.toFixed(3) + " km"
         : "—"
     }`
   ];
