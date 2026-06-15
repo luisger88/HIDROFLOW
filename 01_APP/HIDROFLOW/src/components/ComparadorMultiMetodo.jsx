@@ -2167,6 +2167,7 @@ const handleClickSeguro = (accion) => () => {
             "## 11. Sello técnico de generación",
             "Herramienta: HidroFlow.",
             "Tipo de salida: Expediente hidrológico mínimo.",
+            `Versión auxiliar helper expediente: ${diagnosticoHelperExpediente?.metadata?.versionExpediente ?? "no integrada"}.`,
             `Cuenca activa: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}.`,
             `Fecha de generación: ${new Date().toLocaleString("es-CO")}.`,
             "Estado técnico: completo, limpio, numéricamente útil y con plausibilidad hidrológica interna preliminar.",
@@ -3524,6 +3525,7 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
 
 
