@@ -2053,11 +2053,9 @@ const handleClickSeguro = (accion) => () => {
               estacionIdfFallback: estacionIdfExpediente
             }),
             "",
-            "## 2. Parámetros hidrológicos base",
-            `CN: ${contextoBase?.CN ?? "—"}`,
-            `CN base: ${contextoBase?.CN_base ?? "—"}`,
-            `CN efectivo: ${contextoBase?.CN_efectivo ?? "—"}`,
-            `AMC: ${contextoBase?.AMC ?? "—"}`,
+            ...construirLineasParametrosHidrologicosBaseExpediente({
+              contextoBase
+            }),
             "",
             "## 3. Tiempo de concentración y roles Tc",
             `Tc comparador: ${Tc_final !== null && Tc_final !== undefined ? Number(Tc_final).toFixed(1) + " min" : "—"}`,
