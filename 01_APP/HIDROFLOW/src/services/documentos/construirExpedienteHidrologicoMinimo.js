@@ -341,4 +341,48 @@ export function construirLineasParametrosHidrologicosBaseExpediente(entrada = {}
     `AMC: ${valorDocumental(contextoBase?.AMC)}`
   ];
 }
+export function construirLineasTiempoConcentracionRolesTcExpediente(entrada = {}) {
+  const formatearTc = (valor) => {
+    const numero = Number(valor);
+
+    if (!Number.isFinite(numero)) {
+      return "—";
+    }
+
+    return `${numero.toFixed(1)} min`;
+  };
+
+  const valorDocumental = (valor) => {
+    if (valor === undefined || valor === null) {
+      return "—";
+    }
+
+    if (typeof valor === "number" && !Number.isFinite(valor)) {
+      return "—";
+    }
+
+    if (typeof valor === "object") {
+      return "—";
+    }
+
+    const textoValor = String(valor).trim();
+
+    return textoValor.length > 0 ? textoValor : "—";
+  };
+
+  const trGlobalActivo = valorDocumental(entrada?.trDisenoActivoExpediente);
+
+  return [
+    "## 3. Tiempo de concentración y roles Tc",
+    `Tc comparador: ${formatearTc(entrada?.Tc_final)}`,
+    `Tr global activo: ${trGlobalActivo} años`,
+    "Nota Tr: estado global visual/exportable; no implica recálculo automático hasta propagación hidrológica controlada.",
+    "Roles Tc:",
+    "- Tc global Índice: referencia hidrológica general.",
+    "- Tc operativo Q(t): ruta interna del hidrograma.",
+    "- Duración evento: 3 h para almacenamiento/regulación.",
+    "- Lag / forma SCS: parámetro derivado para forma temporal.",
+    "- Tc comparador: referencia especializada para coherencia Q-5."
+  ];
+}
 
