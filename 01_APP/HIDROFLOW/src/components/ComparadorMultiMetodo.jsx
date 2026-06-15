@@ -7,6 +7,7 @@ import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteT
 import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedienteDocumental";
 import construirExpedienteHidrologicoMinimo, {
   construirLineasIdentificacionExpediente,
+  construirLineasParametrosHidrologicosBaseExpediente,
   construirLineasSelloTecnicoAuxiliarExpediente
 } from "../services/documentos/construirExpedienteHidrologicoMinimo";
 import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
@@ -2189,6 +2190,51 @@ const handleClickSeguro = (accion) => () => {
             "- No se alteran Qp, Tp, Volumen ni Q(t).",
             "",
           ].join("\n");
+          // OT-0135 — Diagnóstico no invasivo del bloque Parámetros hidrológicos base delegado.
+          // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
+          try {
+            const lineasParametrosBaseDelegadasDiagnostico =
+              construirLineasParametrosHidrologicosBaseExpediente({
+                contextoBase
+              });
+
+            const textoParametrosBaseDelegadoDiagnostico =
+              Array.isArray(lineasParametrosBaseDelegadasDiagnostico)
+                ? lineasParametrosBaseDelegadasDiagnostico.join("\n")
+                : "";
+
+            const diagnosticoParametrosBaseDelegado = {
+              lineasDelegadas: Array.isArray(lineasParametrosBaseDelegadasDiagnostico)
+                ? lineasParametrosBaseDelegadasDiagnostico.length
+                : 0,
+              contieneEncabezadoDelegado:
+                textoParametrosBaseDelegadoDiagnostico.includes("## 2. Parámetros hidrológicos base"),
+              operativoContieneEncabezado:
+                textoExpediente.includes("## 2. Parámetros hidrológicos base"),
+              delegadoContieneCN:
+                textoParametrosBaseDelegadoDiagnostico.includes("CN:"),
+              operativoContieneCN:
+                textoExpediente.includes("CN:")
+            };
+
+            if (
+              diagnosticoParametrosBaseDelegado.lineasDelegadas !== 5 ||
+              !diagnosticoParametrosBaseDelegado.contieneEncabezadoDelegado ||
+              !diagnosticoParametrosBaseDelegado.operativoContieneEncabezado ||
+              !diagnosticoParametrosBaseDelegado.delegadoContieneCN ||
+              !diagnosticoParametrosBaseDelegado.operativoContieneCN
+            ) {
+              console.warn(
+                "Diagnóstico Parámetros hidrológicos base delegado no invasivo:",
+                diagnosticoParametrosBaseDelegado
+              );
+            }
+          } catch (errorDiagnosticoParametrosBaseDelegado) {
+            console.warn(
+              "Diagnóstico Parámetros hidrológicos base delegado no invasivo no ejecutado:",
+              errorDiagnosticoParametrosBaseDelegado
+            );
+          }
           // OT-0125D — Diagnóstico no invasivo del bloque Identificación delegado.
           // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
           try {
