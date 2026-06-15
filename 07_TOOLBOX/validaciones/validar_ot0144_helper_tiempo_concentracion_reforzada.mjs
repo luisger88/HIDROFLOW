@@ -17,7 +17,11 @@ function validarEstructura(nombreCaso, lineas) {
   assert.equal(Array.isArray(lineas), true, `${nombreCaso}: debe retornar arreglo`);
   assert.equal(lineas.length, 10, `${nombreCaso}: debe retornar 10 líneas`);
   assert.equal(lineas[0], "## 3. Tiempo de concentración y roles Tc", `${nombreCaso}: encabezado exacto`);
-  assert.equal(lineas[3], "Nota Tr: estado global visual/exportable; no implica recálculo automático hasta propagación hidrológica controlada.", `${nombreCaso}: nota Tr literal`);
+  assert.equal(
+    lineas[3],
+    "Nota Tr: estado global visual/exportable; no implica recálculo automático hasta propagación hidrológica controlada.",
+    `${nombreCaso}: nota Tr literal`
+  );
   assert.equal(lineas[4], "Roles Tc:", `${nombreCaso}: roles Tc literal`);
   assert.equal(lineas[5], "- Tc global Índice: referencia hidrológica general.", `${nombreCaso}: rol índice literal`);
   assert.equal(lineas[6], "- Tc operativo Q(t): ruta interna del hidrograma.", `${nombreCaso}: rol Qt literal`);
@@ -52,7 +56,53 @@ const casos = [
       Tc_final: 0,
       trDisenoActivoExpediente: 100
     },
-    ños"
+    esperados: [
+      "Tc comparador: 0.0 min",
+      "Tr global activo: 100 años"
+    ]
+  },
+  {
+    nombre: "Tc vacio",
+    entrada: {
+      Tc_final: "",
+      trDisenoActivoExpediente: 100
+    },
+    esperados: [
+      "Tc comparador: 0.0 min",
+      "Tr global activo: 100 años"
+    ]
+  },
+  {
+    nombre: "Tc NaN",
+    entrada: {
+      Tc_final: Number.NaN,
+      trDisenoActivoExpediente: 100
+    },
+    esperados: [
+      "Tc comparador: —",
+      "Tr global activo: 100 años"
+    ]
+  },
+  {
+    nombre: "Tc null",
+    entrada: {
+      Tc_final: null,
+      trDisenoActivoExpediente: 100
+    },
+    esperados: [
+      "Tc comparador: 0.0 min",
+      "Tr global activo: 100 años"
+    ]
+  },
+  {
+    nombre: "Tc string numerico",
+    entrada: {
+      Tc_final: "114.23",
+      trDisenoActivoExpediente: 100
+    },
+    esperados: [
+      "Tc comparador: 114.2 min",
+      "Tr global activo: 100 años"
     ]
   },
   {
