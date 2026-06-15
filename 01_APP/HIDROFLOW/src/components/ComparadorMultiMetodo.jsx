@@ -2064,10 +2064,10 @@ const handleClickSeguro = (accion) => () => {
               trDisenoActivoExpediente
             }),
             "",
-            "## 4. Volumen de referencia",
-            `Lluvia efectiva total: ${Number.isFinite(peTotalMm) ? peTotalMm.toFixed(2) + " mm" : "—"}`,
-            `Volumen esperado: ${volumenEsperadoM3 ? volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 }) + " m³" : "—"}`,
-            "Fórmula: Pe(mm) × Área(km²) × 1000.",
+            ...construirLineasVolumenReferenciaExpediente({
+              peTotalMm,
+              volumenEsperadoM3
+            }),
             "",
                 "## 5. Escenario Q-Tr activo — control de trazabilidad",
                 `Estado: ${estadoQTrActivoExpediente?.estado ?? "no_publicado"}`,
