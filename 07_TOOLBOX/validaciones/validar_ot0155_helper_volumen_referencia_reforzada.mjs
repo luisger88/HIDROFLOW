@@ -87,7 +87,53 @@ const casos = [
   {
     nombre: "pe objeto",
     entrada: {
-      peTotalMm: { 
+      peTotalMm: { valor: 56.65 },
+      volumenEsperadoM3: 2654251
+    },
+    esperados: [
+      "Lluvia efectiva total: —",
+      "Volumen esperado: 2.654.251 m³"
+    ]
+  },
+  {
+    nombre: "volumen cero",
+    entrada: {
+      peTotalMm: 56.65,
+      volumenEsperadoM3: 0
+    },
+    esperados: [
+      "Lluvia efectiva total: 56.65 mm",
+      "Volumen esperado: 0 m³"
+    ]
+  },
+  {
+    nombre: "volumen string numerico",
+    entrada: {
+      peTotalMm: 56.65,
+      volumenEsperadoM3: "2654251"
+    },
+    esperados: [
+      "Lluvia efectiva total: 56.65 mm",
+      "Volumen esperado: 2.654.251 m³"
+    ]
+  },
+  {
+    nombre: "volumen NaN",
+    entrada: {
+      peTotalMm: 56.65,
+      volumenEsperadoM3: Number.NaN
+    },
+    esperados: [
+      "Lluvia efectiva total: 56.65 mm",
+      "Volumen esperado: —"
+    ]
+  },
+  {
+    nombre: "volumen null",
+    entrada: {
+      peTotalMm: 56.65,
+      volumenEsperadoM3: null
+    },
     esperados: [
       "Lluvia efectiva total: 56.65 mm",
       "Volumen esperado: —"
