@@ -9,6 +9,7 @@ import construirExpedienteHidrologicoMinimo, {
   construirLineasIdentificacionExpediente,
   construirLineasParametrosHidrologicosBaseExpediente,
   construirLineasTiempoConcentracionRolesTcExpediente,
+  construirLineasVolumenReferenciaExpediente,
   construirLineasSelloTecnicoAuxiliarExpediente
 } from "../services/documentos/construirExpedienteHidrologicoMinimo";
 import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
@@ -2183,6 +2184,49 @@ const handleClickSeguro = (accion) => () => {
             "- No se alteran Qp, Tp, Volumen ni Q(t).",
             "",
           ].join("\n");
+          // OT-0156 — Diagnóstico no invasivo del bloque Volumen de referencia delegado.
+          // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
+          try {
+            const lineasVolumenReferenciaDelegadasDiagnostico =
+              construirLineasVolumenReferenciaExpediente({
+                peTotalMm,
+                volumenEsperadoM3
+              });
+
+            const textoVolumenReferenciaDelegadoDiagnostico =
+              Array.isArray(lineasVolumenReferenciaDelegadasDiagnostico)
+                ? lineasVolumenReferenciaDelegadasDiagnostico.join("\n")
+                : "";
+
+            const diagnosticoVolumenReferenciaDelegado = {
+              lineasDelegadas: Array.isArray(lineasVolumenReferenciaDelegadasDiagnostico)
+                ? lineasVolumenReferenciaDelegadasDiagnostico.length
+                : 0,
+              contieneEncabezadoDelegado:
+                textoVolumenReferenciaDelegadoDiagnostico.includes("## 4. Volumen de referencia"),
+              operativoContieneEncabezado:
+                textoExpediente.includes("## 4. Volumen de referencia"),
+              delegadoContieneLluvia:
+                textoVolumenReferenciaDelegadoDiagnostico.includes("Lluvia efectiva total:"),
+              operativoContieneLluvia:
+                textoExpediente.includes("Lluvia efectiva total:"),
+              delegadoContieneVolumen:
+                textoVolumenReferenciaDelegadoDiagnostico.includes("Volumen esperado:"),
+              operativoContieneVolumen:
+                textoExpediente.includes("Volumen esperado:"),
+              delegadoContieneFormula:
+                textoVolumenReferenciaDelegadoDiagnostico.includes("Fórmula: Pe(mm) × Área(km²) × 1000."),
+              operativoContieneFormula:
+                textoExpediente.includes("Fórmula: Pe(mm) × Área(km²) × 1000.")
+            };
+
+            if (
+              diagnosticoVolumenReferenciaDelegado.lineasDelsole.warn(
+              "Diagnóstico Volumen de referencia delegado no invasivo no ejecutado:",
+              errorDiagnosticoVolumenReferenciaDelegado
+            );
+          }
+
           // OT-0146 — Diagnóstico no invasivo del bloque Tiempo de concentración y roles Tc delegado.
           // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
           try {
@@ -3675,4 +3719,3 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
-
