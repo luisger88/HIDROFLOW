@@ -2,7 +2,7 @@
 
 ## Resumen
 
-`json
+```json
 {
   "bloqueEncontrado": true,
   "lineaInicio": 2066,
@@ -15,19 +15,19 @@
   "comparadorModificado": false,
   "decisionPreliminar": "No delegar completo todavía. Conviene definir contrato documental y separar magnitudes hidrológicas sensibles antes de implementar helper."
 }
-`",
-  ",
-  
+```
 
-`jsx
+## Bloque auditado
+
+```jsx
  2066 |             "## 4. Volumen de referencia",
  2067 |             `Lluvia efectiva total: ${Number.isFinite(peTotalMm) ? peTotalMm.toFixed(2) + " mm" : "—"}`,
  2068 |             `Volumen esperado: ${volumenEsperadoM3 ? volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 }) + " m³" : "—"}`,
  2069 |             "Fórmula: Pe(mm) × Área(km²) × 1000.",
  2070 |             "",
-`",
-  ",
-  
+```
+
+## Clasificación general
 
 | Tipo | Cantidad |
 |---|---:|
@@ -36,9 +36,19 @@
 | Líneas técnicamente sensibles | 3 |
 | Separadores | 0 |
 
+## Clasificación línea a línea
+
+| Línea | Clasificación | Contenido |
+|---:|---|---|
+| 2066 | encabezado documental | `"## 4. Volumen de referencia",` |
+| 2067 | técnicamente sensible | `` `Lluvia efectiva total: ${Number.isFinite(peTotalMm) ? peTotalMm.toFixed(2) + " mm" : "—"}`, `` |
+| 2068 | técnicamente sensible | `` `Volumen esperado: ${volumenEsperadoM3 ? volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 }) + " m³" : "—"}`, `` |
+| 2069 | técnicamente sensible | `"Fórmula: Pe(mm) × Área(km²) × 1000.",` |
+| 2070 | documental / contextual | `"",` |
+
 ## Lectura técnica
 
-- El bloque contiene magnitudes hidrológicas sensibles asociadas a volumen, lluvia efectiva, área, Q-5 o consistencia de masa.
+- El bloque contiene magnitudes hidrológicas sensibles asociadas a volumen, lluvia efectiva, área y consistencia Pe–Área–Volumen.
 - No conviene delegar el bloque completo sin contrato documental previo.
 
 ## Decisión preliminar
@@ -47,8 +57,8 @@ No delegar completo todavía. Conviene definir contrato documental y separar mag
 
 ## Restricciones mantenidas
 
-- No se modificó ComparadorMultiMetodo.jsx.
-- No se sustituyó 	extoExpediente.
+- No se modificó `ComparadorMultiMetodo.jsx`.
+- No se sustituyó `textoExpediente`.
 - No se modificó botón.
 - No se modificó portapapeles.
 - No se tocó Q-5.
@@ -59,4 +69,4 @@ No delegar completo todavía. Conviene definir contrato documental y separar mag
 
 ## Siguiente paso recomendado
 
-Abrir una OT posterior para definir el contrato documental del bloque ## 4. Volumen de referencia, separando líneas puramente documentales de magnitudes hidrológicas sensibles.
+Abrir una OT posterior para definir el contrato documental del bloque `## 4. Volumen de referencia`, separando líneas puramente documentales de magnitudes hidrológicas sensibles.
