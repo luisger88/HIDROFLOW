@@ -2,7 +2,7 @@
 
 ## Resumen
 
-`json
+```json
 {
   "bloqueEncontrado": true,
   "lineaInicio": 2080,
@@ -15,11 +15,11 @@
   "comparadorModificado": false,
   "decisionPreliminar": "No delegar todavía. Conviene definir contrato documental separando texto fijo, resultados Q-5, Qp/Tp/Volumen, restricciones y lectura técnica."
 }
-`",
-  ",
-  
+```
 
-`jsx
+## Bloque auditado
+
+```jsx
  2080 |             "## 6. Resumen Q-5 auditado",
  2081 |             "Estado general: diagnóstico no adoptivo.",
  2082 |             "SCS Unit Hydrograph: candidato principal de referencia.",
@@ -32,9 +32,9 @@
  2089 |             ...tablaQ5Markdown,
  2090 |             "",
  2091 |             "",
-`",
-  ",
-  
+```
+
+## Clasificación general
 
 | Tipo | Cantidad |
 |---|---:|
@@ -55,8 +55,8 @@ No delegar todavía. Conviene definir contrato documental separando texto fijo, 
 
 ## Restricciones mantenidas
 
-- No se modificó ComparadorMultiMetodo.jsx.
-- No se sustituyó 	extoExpediente.
+- No se modificó `ComparadorMultiMetodo.jsx`.
+- No se sustituyó `textoExpediente`.
 - No se modificó botón.
 - No se modificó portapapeles.
 - No se tocó Q-5 operativo.
@@ -67,4 +67,4 @@ No delegar todavía. Conviene definir contrato documental separando texto fijo, 
 
 ## Siguiente paso recomendado
 
-Abrir una OT posterior para definir el contrato documental del bloque ## 6. Resumen Q-5 auditado.
+Abrir una OT posterior para definir el contrato documental del bloque `## 6. Resumen Q-5 auditado`.
