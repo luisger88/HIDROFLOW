@@ -16,7 +16,11 @@ function validarSinResiduos(nombreCaso, texto) {
 function validarEstructura(nombreCaso, lineas) {
   assert.equal(Array.isArray(lineas), true, `${nombreCaso}: debe retornar arreglo`);
   assert.equal(lineas.length, 16, `${nombreCaso}: debe retornar 16 líneas`);
-  assert.equal(lineas[0], "## 5. Escenario Q-Tr activo — control de trazabilidad", `${nombreCaso}: encabezado exacto`);
+  assert.equal(
+    lineas[0],
+    "## 5. Escenario Q-Tr activo — control de trazabilidad",
+    `${nombreCaso}: encabezado exacto`
+  );
   assert.equal(
     lineas[15],
     "Lectura técnica: bloque no adoptivo; no recalcula caudales, no modifica Q-5 y queda subordinado a validación hidrológica del expediente.",
@@ -32,7 +36,11 @@ function validarCaso(nombreCaso, entrada, esperados) {
   validarSinResiduos(nombreCaso, texto);
 
   for (const esperado of esperados) {
-    assert.equal(texto.includes(esperado), true, `${nombreCaso}: debe incluir ${esperado}`);
+    assert.equal(
+      texto.includes(esperado),
+      true,
+      `${nombreCaso}: debe incluir ${esperado}`
+    );
   }
 
   console.log(`OK ${nombreCaso}`);
@@ -40,18 +48,85 @@ function validarCaso(nombreCaso, entrada, esperados) {
 }
 
 const formateadorIdentidad = (valor, unidad = "", decimales) => {
-  if (valor === undefined || valor === null) return "—";
-  if (typeof valor === "number" && Number.isFinite(valor) && typeof decimales === "number") {
-    return `${valor.toFixed(decimales)}${unidad}`;
+  if (valor === undefined || valor === null) {
+    return "—";
   }
-  if (typeof valor === "number" && Number.isFinite(valor)) {
-    return `${valor}${unidad}`;
+
+  if (typeof valor === "object") {
+    return "—";
   }
-  if (typeof valor === "string" && valor.trim().length > 0) return valor;
+
+  if (typeof valor === "string" && valor.trim().length === 0) {
+    return "—";
+  }
+
+  const numero = Number(valor);
+
+  if (Number.isFinite(numero) && typeof decimales === "number") {
+    return `${numero.toFixed(decimales)}${unidad}`;
+  }
+
+  if (Number.isFinite(numero) && typeof valor === "number") {
+    return `${numero}${unidad}`;
+  }
+
+  if (typeof valor === "string") {
+    return valor;
+  }
+
   return "—";
 };
 
-co {
+const casos = [
+  {
+    nombre: "entrada null",
+    entrada: null,
+    esperados: [
+      "Estado: no_publicado",
+      "Tr activo: —",
+      "Campos mínimos: completos",
+      "Fuente: —"
+    ]
+  },
+  {
+    nombre: "entrada string",
+    entrada: "no valido",
+    esperados: [
+      "Estado: no_publicado",
+      "Tr activo: —",
+      "Campos mínimos: completos",
+      "Fuente: —"
+    ]
+  },
+  {
+    nombre: "entrada array",
+    entrada: [],
+    esperados: [
+      "Estado: no_publicado",
+      "Tr activo: —",
+      "Campos mínimos: completos",
+      "Fuente: —"
+    ]
+  },
+  {
+    nombre: "formateador no funcion",
+    entrada: {
+      formatearValorQTrExpediente: "no-funcion",
+      qTrActivoExpediente: {
+        tr_activo: 100,
+        area_km2: 46.8516,
+        tc_min: 114.2345
+      }
+    },
+    esperados: [
+      "Tr activo: 100.00 años",
+      "Área: 46.8516 km²",
+      "Tc: 114.2345 min"
+    ]
+  },
+  {
+    nombre: "formateador devuelve null",
+    entrada: {
       formatearValorQTrExpediente: () => null,
       qTrActivoExpediente: {
         tr_activo: 100
