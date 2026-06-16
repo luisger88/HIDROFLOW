@@ -2113,18 +2113,9 @@ const handleClickSeguro = (accion) => () => {
                   formatearValorQTrExpediente
                 }),
                 "",
-            "## 6. Resumen Q-5 auditado",
-            "Estado general: diagnóstico no adoptivo.",
-            "SCS Unit Hydrograph: candidato principal de referencia.",
-            "SCS Mod.: variante ajustable.",
-            "Snyder, Williams & Hann y Clark IUH: métodos comparativos/referenciales.",
-            "Masa y volumen: controlados frente a referencia física.",
-            "Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
-            "",
-            "Tabla Q-5 auditada:",
-            ...tablaQ5Markdown,
-            "",
-            "",
+            ...construirLineasResumenQ5AuditadoExpediente({
+              tablaQ5Markdown
+            }),
             "## 7. Método Racional — contraste global independiente",
             "Uso: contraste global independiente de caudal pico.",
             "Relación con Q-5: no pertenece al bloque Q-5 de hidrogramas.",
