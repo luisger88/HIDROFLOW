@@ -33,7 +33,54 @@ function validarCaso(nombreCaso, entrada, esperados) {
   const texto = lineas.join("\n");
 
   validarEstructura(nombreCaso, lineas);
-  validarSinResiduos(nombreC "tabla con booleanos",
+  validarSinResiduos(nombreCaso, texto);
+
+  for (const esperado of esperados) {
+    assert.equal(
+      texto.includes(esperado),
+      true,
+      `${nombreCaso}: debe incluir ${esperado}`
+    );
+  }
+
+  console.log(`OK ${nombreCaso}`);
+  console.log(texto);
+}
+
+const casos = [
+  {
+    nombre: "entrada string",
+    entrada: "no valido",
+    esperados: ["sin tabla Q-5 disponible"]
+  },
+  {
+    nombre: "entrada array",
+    entrada: [],
+    esperados: ["sin tabla Q-5 disponible"]
+  },
+  {
+    nombre: "tabla como string",
+    entrada: {
+      tablaQ5Markdown: "| Método | Qp |"
+    },
+    esperados: ["sin tabla Q-5 disponible"]
+  },
+  {
+    nombre: "tabla como objeto",
+    entrada: {
+      tablaQ5Markdown: { fila: "| SCS | 184.03 |" }
+    },
+    esperados: ["sin tabla Q-5 disponible"]
+  },
+  {
+    nombre: "tabla con numeros",
+    entrada: {
+      tablaQ5Markdown: [1, 2, 3]
+    },
+    esperados: ["1", "2", "3"]
+  },
+  {
+    nombre: "tabla con booleanos",
     entrada: {
       tablaQ5Markdown: [true, false, "fila válida"]
     },
