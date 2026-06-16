@@ -34,7 +34,19 @@ const resumen = {
   usaHelperEscenarioQTrActivo: texto.includes("...construirLineasEscenarioQTrActivoExpediente({"),
   pasaEstadoQTrActivo: texto.includes("estadoQTrActivoExpediente"),
   pasaQTrActivo: texto.includes("qTrActivoExpediente"),
-  pasaFaltantesQTrActivo: texto.includes("faltantesQ
+  pasaFaltantesQTrActivo: texto.includes("faltantesQTrActivoExpediente"),
+  pasaFormateadorQTr: texto.includes("formatearValorQTrExpediente"),
+  bloqueManualAntiguoDetectado: texto.includes(bloqueManual),
+  bloqueIdentificacionPresente: texto.includes("## 1. Identificación"),
+  bloqueParametrosBasePresente: texto.includes("## 2. Parámetros hidrológicos base"),
+  bloqueTiempoConcentracionPresente: texto.includes("## 3. Tiempo de concentración y roles Tc"),
+  bloqueVolumenReferenciaPresente: texto.includes("## 4. Volumen de referencia"),
+  bloqueSiguientePresente: texto.includes("## 6."),
+  portapapelesIntacto: texto.includes("areaTexto.value = textoExpediente"),
+  fallbackManualIntacto: texto.includes("window.prompt(\"No fue posible copiar automáticamente. Copie manualmente el expediente hidrológico mínimo:\", textoExpediente)"),
+  sinNavigatorClipboard: !texto.includes("navigator.clipboard"),
+  sinWriteText: !texto.includes("writeText")
+};
 
 assert.equal(resumen.tieneTextoExpediente, true, "Debe existir textoExpediente");
 assert.equal(resumen.usaHelperEscenarioQTrActivo, true, "Debe usarse helper delegado de Escenario Q-Tr activo");
