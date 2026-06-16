@@ -102,9 +102,9 @@ No se introdujo `writeText`.
 
 El bloque `## 6. Resumen Q-5 auditado` queda adoptado mediante helper puro representacional, validado y documentado.
 
-No se recomienda seguir sustituyendo otros bloques inmediatamente sin un nuevo ciclo equivalente de auditoría, contrato, extracción, diseño, helper, validación, comparac
-ión, diagnóstico, sustitución y post-adopción.
+No se recomienda seguir sustituyendo otros bloques inmediatamente sin un nuevo ciclo equivalente de auditoría, contrato, extracción, diseño, helper, validación, comparación, diagnóstico, sustitución y post-adopción.
 
 ## Próximo frente recomendado
 
 `OT-0181 — Selección prudente del siguiente bloque candidato del expediente`
+
