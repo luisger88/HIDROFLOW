@@ -9,7 +9,8 @@ const rutaComparador = path.resolve(
 let texto = fs.readFileSync(rutaComparador, "utf8");
 
 const nombreHelper = "construirLineasResumenQ5AuditadoExpediente";
-const importStandalone = `import { construirLineasResumenQ5AuditadoExpediente } from "../services/documentos/construirExpedienteHidrologicoMinimo.js";\n`;
+const importStandalone =
+  'import { construirLineasResumenQ5AuditadoExpediente } from "../services/documentos/construirExpedienteHidrologicoMinimo.js";\n';
 
 assert.equal(
   texto.includes("const textoExpediente = ["),
@@ -41,56 +42,62 @@ if (!texto.includes(nombreHelper)) {
   texto = importStandalone + texto;
 }
 
-const patronTextoExpediente = "            const textoExpediente = [";
+const patronTextoExpediente = /^(\s*)const textoExpediente = \[/m;
+const coincidenciaTextoExpediente = texto.match(patronTextoExpediente);
 
-assert.equal(
-  texto.includes(patronTextoExpediente),
-  true,
-  "Debe encontrarse el punto de inserción antes de textoExpediente."
+assert.notEqual(
+  coincidenciaTextoExpediente,
+  null,
+  "Debe encontrarse la línea const textoExpediente = [ con indentación flexible."
 );
 
-const bloqueDiagnostico = `            const lineasResumenQ5AuditadoDelegadoDiagnostico =
-              construirLineasResumenQ5AuditadoExpediente({
-                tablaQ5Markdown
-              });
+const indent = coincidenciaTextoExpediente[1];
+const lineaTextoExpediente = `${indent}const textoExpediente = [`;
 
-            const lineasResumenQ5AuditadoOperativoDiagnostico = [
-              "## 6. Resumen Q-5 auditado",
-              "Estado general: diagnóstico no adoptivo.",
-              "SCS Unit Hydrograph: candidato principal de referencia.",
-              "SCS Mod.: variante ajustable.",
-              "Snyder, Williams &amp; Hann y Clark IUH: métodos comparativos/referenciales.",
-              "Masa y volumen: controlados frente a referencia física.",
-              "Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
-              "",
-              "Tabla Q-5 auditada:",
-              ...tablaQ5Markdown,
-              "",
-              ""
-            ];
+const bloqueDiagnostico = `${indent}const lineasResumenQ5AuditadoDelegadoDiagnostico =
+${indent}  construirLineasResumenQ5AuditadoExpediente({
+${indent}    tablaQ5Markdown
+${indent}  });
 
-            const hayBrechaResumenQ5AuditadoDiagnostico =
-              lineasResumenQ5AuditadoDelegadoDiagnostico.length !==
-                lineasResumenQ5AuditadoOperativoDiagnostico.length ||
-              lineasResumenQ5AuditadoDelegadoDiagnostico.some(
-                (linea, indice) =>
-                  linea !== lineasResumenQ5AuditadoOperativoDiagnostico[indice]
-              );
+${indent}const lineasResumenQ5AuditadoOperativoDiagnostico = [
+${indent}  "## 6. Resumen Q-5 auditado",
+${indent}  "Estado general: diagnóstico no adoptivo.",
+${indent}  "SCS Unit Hydrograph: candidato principal de referencia.",
+${indent}  "SCS Mod.: variante ajustable.",
+${indent}  "Snyder, Williams &amp; Hann y Clark IUH: métodos comparativos/referenciales.",
+${indent}  "Masa y volumen: controlados frente a referencia física.",
+${indent}  "Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
+${indent}  "",
+${indent}  "Tabla Q-5 auditada:",
+${indent}  ...tablaQ5Markdown,
+${indent}  "",
+${indent}  ""
+${indent}];
 
-            if (hayBrechaResumenQ5AuditadoDiagnostico) {
-              console.warn("[expediente] Brecha diagnóstico Resumen Q-5 auditado delegado vs operativo", {
-                delegado: lineasResumenQ5AuditadoDelegadoDiagnostico,
-                operativo: lineasResumenQ5AuditadoOperativoDiagnostico
-              });
-            }
+${indent}const hayBrechaResumenQ5AuditadoDiagnostico =
+${indent}  lineasResumenQ5AuditadoDelegadoDiagnostico.length !==
+${indent}    lineasResumenQ5AuditadoOperativoDiagnostico.length ||
+${indent}  lineasResumenQ5AuditadoDelegadoDiagnostico.some(
+${indent}    (linea, indice) =>
+${indent}      linea !== lineasResumenQ5AuditadoOperativoDiagnostico[indice]
+${indent}  );
+
+${indent}if (hayBrechaResumenQ5AuditadoDiagnostico) {
+${indent}  console.warn("[expediente] Brecha diagnóstico Resumen Q-5 auditado delegado vs operativo", {
+${indent}    delegado: lineasResumenQ5AuditadoDelegadoDiagnostico,
+${indent}    operativo: lineasResumenQ5AuditadoOperativoDiagnostico
+${indent}  });
+${indent}}
 
 `;
 
-texto = texto.replace(
-  patronTextoExpediente,
-  bloqueDiagnostico + patronTextoExpediente
-);
+texto = texto.replace(lineaTextoExpediente, bloqueDiagnostico + lineaTextoExpediente);
 
 fs.writeFileSync(rutaComparador, texto.trimEnd() + "\n", "utf8");
 
 console.log("APLICACION_OT_0177_DIAGNOSTICA_RESUMEN_Q5_AUDITADO_OK");
+console.log(JSON.stringify({
+  importHelperPresente: texto.includes(nombreHelper),
+  diagnosticoPresente: texto.includes(marcadorDiagnostico),
+  textoExpedientePresente: texto.includes("const textoExpediente = [")
+}, null, 2));

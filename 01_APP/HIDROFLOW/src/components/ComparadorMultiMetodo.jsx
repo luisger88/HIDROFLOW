@@ -1,3 +1,4 @@
+import { construirLineasResumenQ5AuditadoExpediente } from "../services/documentos/construirExpedienteHidrologicoMinimo.js";
 import React, { useEffect, useMemo, useState } from "react";
 
 import { setTcState } from "../agents/tcAgent";
@@ -2044,6 +2045,41 @@ const handleClickSeguro = (accion) => () => {
               errorDiagnosticoHelperExpediente
             );
           }
+          const lineasResumenQ5AuditadoDelegadoDiagnostico =
+            construirLineasResumenQ5AuditadoExpediente({
+              tablaQ5Markdown
+            });
+
+          const lineasResumenQ5AuditadoOperativoDiagnostico = [
+            "## 6. Resumen Q-5 auditado",
+            "Estado general: diagnóstico no adoptivo.",
+            "SCS Unit Hydrograph: candidato principal de referencia.",
+            "SCS Mod.: variante ajustable.",
+            "Snyder, Williams &amp; Hann y Clark IUH: métodos comparativos/referenciales.",
+            "Masa y volumen: controlados frente a referencia física.",
+            "Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
+            "",
+            "Tabla Q-5 auditada:",
+            ...tablaQ5Markdown,
+            "",
+            ""
+          ];
+
+          const hayBrechaResumenQ5AuditadoDiagnostico =
+            lineasResumenQ5AuditadoDelegadoDiagnostico.length !==
+              lineasResumenQ5AuditadoOperativoDiagnostico.length ||
+            lineasResumenQ5AuditadoDelegadoDiagnostico.some(
+              (linea, indice) =>
+                linea !== lineasResumenQ5AuditadoOperativoDiagnostico[indice]
+            );
+
+          if (hayBrechaResumenQ5AuditadoDiagnostico) {
+            console.warn("[expediente] Brecha diagnóstico Resumen Q-5 auditado delegado vs operativo", {
+              delegado: lineasResumenQ5AuditadoDelegadoDiagnostico,
+              operativo: lineasResumenQ5AuditadoOperativoDiagnostico
+            });
+          }
+
           const textoExpediente = [
             "# Expediente hidrológico mínimo — Cuenca activa",
             "Estado técnico del expediente: CONSISTENTE CON ADVERTENCIAS.",
