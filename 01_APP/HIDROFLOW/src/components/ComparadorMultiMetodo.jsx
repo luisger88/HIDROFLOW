@@ -10,6 +10,7 @@ import construirExpedienteHidrologicoMinimo, {
   construirLineasParametrosHidrologicosBaseExpediente,
   construirLineasTiempoConcentracionRolesTcExpediente,
   construirLineasVolumenReferenciaExpediente,
+  construirLineasEscenarioQTrActivoExpediente,
   construirLineasSelloTecnicoAuxiliarExpediente
 } from "../services/documentos/construirExpedienteHidrologicoMinimo";
 import adaptarQSeriesHidrogramas from "../services/hidrogramas/adaptarQSeriesHidrogramas";
@@ -2184,6 +2185,79 @@ const handleClickSeguro = (accion) => () => {
             "- No se alteran Qp, Tp, Volumen ni Q(t).",
             "",
           ].join("\n");
+          // OT-0166 — Diagnóstico no invasivo del bloque Escenario Q-Tr activo delegado.
+          // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
+          try {
+            const lineasEscenarioQTrActivoDelegadasDiagnostico =
+              construirLineasEscenarioQTrActivoExpediente({
+                estadoQTrActivoExpediente,
+                qTrActivoExpediente,
+                faltantesQTrActivoExpediente,
+                formatearValorQTrExpediente
+              });
+
+            const textoEscenarioQTrActivoDelegadoDiagnostico =
+              Array.isArray(lineasEscenarioQTrActivoDelegadasDiagnostico)
+                ? lineasEscenarioQTrActivoDelegadasDiagnostico.join("\n")
+                : "";
+
+            const diagnosticoEscenarioQTrActivoDelegado = {
+              lineasDelegadas: Array.isArray(lineasEscenarioQTrActivoDelegadasDiagnostico)
+                ? lineasEscenarioQTrActivoDelegadasDiagnostico.length
+                : 0,
+              contieneEncabezadoDelegado:
+                textoEscenarioQTrActivoDelegadoDiagnostico.includes("## 5. Escenario Q-Tr activo — control de trazabilidad"),
+              operativoContieneEncabezado:
+                textoExpediente.includes("## 5. Escenario Q-Tr activo — control de trazabilidad"),
+              delegadoContieneEstado:
+                textoEscenarioQTrActivoDelegadoDiagnostico.includes("Estado:"),
+              operativoContieneEstado:
+                textoExpediente.includes("Estado:"),
+              delegadoContieneTrActivo:
+                textoEscenarioQTrActivoDelegadoDiagnostico.includes("Tr activo:"),
+              operativoContieneTrActivo:
+                textoExpediente.includes("Tr activo:"),
+              delegadoContieneCamposMinimos:
+                textoEscenarioQTrActivoDelegadoDiagnostico.includes("Campos mínimos:"),
+              operativoContieneCamposMinimos:
+                textoExpediente.includes("Campos mínimos:"),
+              delegadoContieneFuente:
+                textoEscenarioQTrActivoDelegadoDiagnostico.includes("Fuente:"),
+              operativoContieneFuente:
+                textoExpediente.includes("Fuente:"),
+              delegadoContieneLecturaTecnica:
+                textoEscenarioQTrActivoDelegadoDiagnostico.includes("Lectura técnica: bloque no adoptivo; no recalcula caudales, no modifica Q-5 y queda subordinado a validación hidrológica del expediente."),
+              operativoContieneLecturaTecnica:
+                textoExpediente.includes("Lectura técnica: bloque no adoptivo; no recalcula caudales, no modifica Q-5 y queda subordinado a validación hidrológica del expediente.")
+            };
+
+            if (
+              diagnosticoEscenarioQTrActivoDelegado.lineasDelegadas !== 16 ||
+              !diagnosticoEscenarioQTrActivoDelegado.contieneEncabezadoDelegado ||
+              !diagnosticoEscenarioQTrActivoDelegado.operativoContieneEncabezado ||
+              !diagnosticoEscenarioQTrActivoDelegado.delegadoContieneEstado ||
+              !diagnosticoEscenarioQTrActivoDelegado.operativoContieneEstado ||
+              !diagnosticoEscenarioQTrActivoDelegado.delegadoContieneTrActivo ||
+              !diagnosticoEscenarioQTrActivoDelegado.operativoContieneTrActivo ||
+              !diagnosticoEscenarioQTrActivoDelegado.delegadoContieneCamposMinimos ||
+              !diagnosticoEscenarioQTrActivoDelegado.operativoContieneCamposMinimos ||
+              !diagnosticoEscenarioQTrActivoDelegado.delegadoContieneFuente ||
+              !diagnosticoEscenarioQTrActivoDelegado.operativoContieneFuente ||
+              !diagnosticoEscenarioQTrActivoDelegado.delegadoContieneLecturaTecnica ||
+              !diagnosticoEscenarioQTrActivoDelegado.operativoContieneLecturaTecnica
+            ) {
+              console.warn(
+                "Diagnóstico Escenario Q-Tr activo delegado no invasivo:",
+                diagnosticoEscenarioQTrActivoDelegado
+              );
+            }
+          } catch (errorDiagnosticoEscenarioQTrActivoDelegado) {
+            console.warn(
+              "Diagnóstico Escenario Q-Tr activo delegado no invasivo no ejecutado:",
+              errorDiagnosticoEscenarioQTrActivoDelegado
+            );
+          }
+
           // OT-0156 — Diagnóstico no invasivo del bloque Volumen de referencia delegado.
           // No reemplaza textoExpediente, no modifica el botón y no cambia portapapeles.
           try {
