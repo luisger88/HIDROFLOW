@@ -2,7 +2,7 @@
 
 ## Resumen
 
-`json
+```json
 {
   "bloqueEncontrado": true,
   "lineaInicio": 2072,
@@ -15,11 +15,11 @@
   "comparadorModificado": false,
   "decisionPreliminar": "No delegar todavía. Conviene definir contrato documental separando texto fijo, estado publicado/no publicado, Tr activo, fuente y valores dependientes de estado."
 }
-`",
-  ",
-  
+```
 
-`jsx
+## Bloque auditado
+
+```jsx
  2072 |                 "## 5. Escenario Q-Tr activo — control de trazabilidad",
  2073 |                 `Estado: ${estadoQTrActivoExpediente?.estado ?? "no_publicado"}`,
  2074 |                 `Tr activo: ${formatearValorQTrExpediente(qTrActivoExpediente.tr_activo, " años", 2)}`,
@@ -37,9 +37,9 @@
  2086 |                 `Fuente: ${estadoQTrActivoExpediente?.fuente ?? "—"}`,
  2087 |                 "Lectura técnica: bloque no adoptivo; no recalcula caudales, no modifica Q-5 y queda subordinado a validación hidrológica del expediente.",
  2088 |                 "",
-`",
-  ",
-  
+```
+
+## Clasificación general
 
 | Tipo | Cantidad |
 |---|---:|
@@ -60,8 +60,8 @@ No delegar todavía. Conviene definir contrato documental separando texto fijo, 
 
 ## Restricciones mantenidas
 
-- No se modificó ComparadorMultiMetodo.jsx.
-- No se sustituyó 	extoExpediente.
+- No se modificó `ComparadorMultiMetodo.jsx`.
+- No se sustituyó `textoExpediente`.
 - No se modificó botón.
 - No se modificó portapapeles.
 - No se tocó Q-5.
@@ -72,4 +72,4 @@ No delegar todavía. Conviene definir contrato documental separando texto fijo, 
 
 ## Siguiente paso recomendado
 
-Abrir una OT posterior para definir el contrato documental del bloque ## 5. Escenario Q-Tr activo — control de trazabilidad.
+Abrir una OT posterior para definir el contrato documental del bloque `## 5. Escenario Q-Tr activo — control de trazabilidad`.
