@@ -9,7 +9,7 @@ const rutaComparador = path.resolve(
 let texto = fs.readFileSync(rutaComparador, "utf8");
 
 const nombreHelper = "construirLineasResumenQ5AuditadoExpediente";
-const rutaImport = "../services/documentos/construirExpedienteHidrologicoMinimo.js";
+const importStandalone = `import { construirLineasResumenQ5AuditadoExpediente } from "../services/documentos/construirExpedienteHidrologicoMinimo.js";\n`;
 
 assert.equal(
   texto.includes("const textoExpediente = ["),
@@ -37,39 +37,8 @@ assert.equal(
   "La integración diagnóstica Resumen Q-5 auditado ya existe. No duplicar."
 );
 
-const patronImport =
-  /import\s*\{([\s\S]*?)\}\s*from\s*["']\.\.\/services\/documentos\/construirExpedienteHidrologicoMinimo\.js["'];/u;
-
-const coincidenciaImport = texto.match(patronImport);
-
-assert.notEqual(
-  coincidenciaImport,
-  null,
-  "Debe existir import desde construirExpedienteHidrologicoMinimo.js."
-);
-
 if (!texto.includes(nombreHelper)) {
-  const importActual = coincidenciaImport[0];
-  const cuerpoImport = coincidenciaImport[1];
-
-  const nombresImportados = cuerpoImport
-    .split(",")
-    .map((item) => item.trim())
-    .filter((item) => item.length > 0);
-
-  assert.equal(
-    nombresImportados.includes(nombreHelper),
-    false,
-    "El helper no debe estar duplicado en el import."
-  );
-
-  nombresImportados.push(nombreHelper);
-
-  const importActualizado = `import {
-  ${nombresImportados.join(",\n  ")}
-} from "${rutaImport}";`;
-
-  texto = texto.replace(importActual, importActualizado);
+  texto = importStandalone + texto;
 }
 
 const patronTextoExpediente = "            const textoExpediente = [";
