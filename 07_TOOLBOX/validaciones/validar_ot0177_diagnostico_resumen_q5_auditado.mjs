@@ -39,6 +39,18 @@ assert.equal(
 );
 
 assert.equal(
+  texto.includes("Snyder, Williams &amp;amp; Hann y Clark IUH: métodos comparativos/referenciales."),
+  false,
+  "No debe quedar &amp;amp; en Resumen Q-5 auditado."
+);
+
+assert.equal(
+  texto.includes("Snyder, Williams &amp; Hann y Clark IUH: métodos comparativos/referenciales."),
+  true,
+  "Debe conservarse la entidad correcta &amp;."
+);
+
+assert.equal(
   texto.includes("const textoExpediente = ["),
   true,
   "Debe mantenerse textoExpediente."
