@@ -508,7 +508,21 @@ export function construirLineasEscenarioQTrActivoExpediente(entrada = {}) {
   };
 
   const faltantes = Array.isArray(faltantesQTrActivoExpediente)
-    ? faltantesQTrActivoExpediente.filter((item) => normalizarTexto(item, "")eable, " %", 2)}`,
+    ? faltantesQTrActivoExpediente.filter((item) => normalizarTexto(item, "").length > 0)
+    : [];
+
+  return [
+    "## 5. Escenario Q-Tr activo — control de trazabilidad",
+    `Estado: ${normalizarTexto(estadoQTrActivoExpediente?.estado, "no_publicado")}`,
+    `Tr activo: ${formatear(qTrActivoExpediente?.tr_activo, " años", 2)}`,
+    `Estación IDF: ${formatear(qTrActivoExpediente?.estacion_idf)}`,
+    `Método IDF: ${formatear(qTrActivoExpediente?.metodo_idf)}`,
+    `Distribución temporal: ${formatear(qTrActivoExpediente?.distribucion_temporal)}`,
+    `Área: ${formatear(qTrActivoExpediente?.area_km2, " km²", 4)}`,
+    `CN efectivo: ${formatear(qTrActivoExpediente?.cn_efectivo, "", 2)}`,
+    `S: ${formatear(qTrActivoExpediente?.s_mm, " mm", 2)}`,
+    `Ia: ${formatear(qTrActivoExpediente?.ia_mm, " mm", 2)}`,
+    `Impermeabilidad: ${formatear(qTrActivoExpediente?.porcentaje_impermeable, " %", 2)}`,
     `Tc: ${formatear(qTrActivoExpediente?.tc_min, " min", 4)}`,
     `Pe total: ${formatear(qTrActivoExpediente?.lluvia_efectiva_total_mm, " mm", 4)}`,
     `Campos mínimos: ${faltantes.length > 0 ? "faltantes — " + faltantes.join(", ") : "completos"}`,
@@ -516,4 +530,3 @@ export function construirLineasEscenarioQTrActivoExpediente(entrada = {}) {
     "Lectura técnica: bloque no adoptivo; no recalcula caudales, no modifica Q-5 y queda subordinado a validación hidrológica del expediente."
   ];
 }
-\n
