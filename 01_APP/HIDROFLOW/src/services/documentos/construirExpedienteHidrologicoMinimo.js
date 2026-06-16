@@ -530,3 +530,50 @@ export function construirLineasEscenarioQTrActivoExpediente(entrada = {}) {
     "Lectura técnica: bloque no adoptivo; no recalcula caudales, no modifica Q-5 y queda subordinado a validación hidrológica del expediente."
   ];
 }
+
+export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
+  const entradaSegura = entrada && typeof entrada === "object" ? entrada : {};
+
+  const { tablaQ5Markdown = [] } = entradaSegura;
+
+  const normalizarLinea = (valor) => {
+    if (valor === undefined || valor === null) {
+      return "—";
+    }
+
+    if (typeof valor === "string") {
+      return valor;
+    }
+
+    if (typeof valor === "number" && Number.isFinite(valor)) {
+      return String(valor);
+    }
+
+    return "—";
+  };
+
+  const tabla = Array.isArray(tablaQ5Markdown)
+    ? tablaQ5Markdown
+        .map((linea) => normalizarLinea(linea))
+        .filter((linea) => linea.trim().length > 0)
+    : [];
+
+  const lineasTabla = tabla.length > 0
+    ? tabla
+    : ["sin tabla Q-5 disponible"];
+
+  return [
+    "## 6. Resumen Q-5 auditado",
+    "Estado general: diagnóstico no adoptivo.",
+    "SCS Unit Hydrograph: candidato principal de referencia.",
+    "SCS Mod.: variante ajustable.",
+    "Snyder, Williams & Hann y Clark IUH: métodos comparativos/referenciales.",
+    "Masa y volumen: controlados frente a referencia física.",
+    "Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
+    "",
+    "Tabla Q-5 auditada:",
+    ...lineasTabla,
+    "",
+    ""
+  ];
+}
