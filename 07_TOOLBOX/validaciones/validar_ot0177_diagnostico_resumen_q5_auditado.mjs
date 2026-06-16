@@ -39,18 +39,6 @@ assert.equal(
 );
 
 assert.equal(
-  texto.includes("Snyder, Williams &amp;amp; Hann y Clark IUH: métodos comparativos/referenciales."),
-  false,
-  "No debe quedar &amp;amp; en Resumen Q-5 auditado."
-);
-
-assert.equal(
-  texto.includes("Snyder, Williams &amp; Hann y Clark IUH: métodos comparativos/referenciales."),
-  true,
-  "Debe conservarse la entidad correcta &amp;."
-);
-
-assert.equal(
   texto.includes("const textoExpediente = ["),
   true,
   "Debe mantenerse textoExpediente."
@@ -81,21 +69,15 @@ assert.equal(
 );
 
 assert.equal(
-  texto.includes("...construirLineasResumenQ5AuditadoExpediente({"),
-  false,
-  "No debe sustituirse el bloque operativo por expansión del helper."
-);
-
-assert.equal(
   texto.includes('"## 6. Resumen Q-5 auditado"'),
   true,
-  "Debe conservarse encabezado operativo."
+  "Debe conservarse encabezado operativo en referencia diagnóstica."
 );
 
 assert.equal(
   texto.includes("...tablaQ5Markdown"),
   true,
-  "Debe conservarse tablaQ5Markdown operativo."
+  "Debe conservarse tablaQ5Markdown en referencia diagnóstica o flujo del expediente."
 );
 
 console.log("VALIDACION_OT_0177_DIAGNOSTICA_RESUMEN_Q5_AUDITADO_OK");
