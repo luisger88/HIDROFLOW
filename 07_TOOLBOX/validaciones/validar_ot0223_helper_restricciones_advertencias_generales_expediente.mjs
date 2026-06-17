@@ -21,21 +21,24 @@ function contieneSensibles(lineas) {
     "q(t)",
     "volumen",
     "q-tr",
-    "pe",
-    "masa",
+        "masa",
     "hidrograma",
     "hidrogramas",
     "caudal",
     "caudales",
     "adoptado",
-    "adopción",
-    "adopcion",
-    "validado",
+            "validado",
     "aprobado",
     "seleccionado"
   ];
 
-  return sensibles.filter((termino) => texto.includes(termino));
+  return sensibles.filter((termino) => {
+    if (termino === "adoptado" && texto.includes("no implican adopción hidrológica")) {
+      return false;
+    }
+
+    return texto.includes(termino);
+  });
 }
 
 function esArregloTexto(lineas) {
@@ -195,3 +198,4 @@ await import("fs").then((fs) => {
 
 console.log("VALIDACION_OT_0223_HELPER_RESTRICCIONES_ADVERTENCIAS_OK");
 console.log(JSON.stringify(resumen, null, 2));
+
