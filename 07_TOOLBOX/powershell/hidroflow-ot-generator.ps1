@@ -90,9 +90,9 @@ function Nueva-OTDocumentalHidroFlow {
     "",
     "Documento de apertura:",
     "",
-    "```text",
+    '```text',
     $rutaA,
-    "```",
+    '```',
     "",
     "## Alcance mantenido",
     "",
@@ -114,3 +114,4 @@ function Nueva-OTDocumentalHidroFlow {
   Write-Output "git add `"$rutaA`" `"$rutaC`""
   Write-Output "git commit -m `"docs(tools): documenta $slugSeguro`""
 }
+
