@@ -91,6 +91,38 @@ export function validarTextoExpedienteMinimo(
   };
 }
 
+function normalizarTextoIdentificacionExpediente(valor, fallback = "—") {
+  if (typeof valor === "string" && valor.trim().length > 0) {
+    return valor;
+  }
+
+  if (typeof valor === "number" && Number.isFinite(valor)) {
+    return String(valor);
+  }
+
+  if (valor && typeof valor === "object") {
+    const candidato =
+      valor.nombre ??
+      valor.nombreCuenca ??
+      valor.id ??
+      valor.codigo ??
+      valor.label ??
+      valor.descripcion;
+
+    if (typeof candidato === "string" && candidato.trim().length > 0) {
+      return candidato;
+    }
+
+    if (typeof candidato === "number" && Number.isFinite(candidato)) {
+      return String(candidato);
+    }
+
+    return fallback;
+  }
+
+  return fallback;
+}
+
 export function construirLineasIdentificacionExpediente(entrada = {}) {
   const contextoBase =
     entrada?.contextoBase && typeof entrada.contextoBase === "object"
@@ -103,12 +135,11 @@ export function construirLineasIdentificacionExpediente(entrada = {}) {
   const estacionIdfFallback =
     textoSeguro(entrada?.estacionIdfFallback, "") || "SAN CRISTOBAL";
 
-  const nombreCuenca =
-    textoSeguro(contextoBase?.cuencaNombre, "") ||
-    textoSeguro(contextoBase?.nombreCuenca, "") ||
-    textoSeguro(contextoBase?.cuenca, "") ||
-    textoSeguro(contextoBase?.cuencaActiva?.nombre, "") ||
-    "Cuenca activa";
+  const nombreCuenca = normalizarTextoIdentificacionExpediente(
+    contextoBase?.nombreCuenca ??
+      contextoBase?.cuenca,
+    "Cuenca activa"
+  );
 
   const areaKm2 =
     Number.isFinite(Number(contextoBase?.area_km2))
