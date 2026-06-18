@@ -169,7 +169,8 @@ export function construirLineasSelloTecnicoAuxiliarExpediente({
   ];
 }
 export default function construirExpedienteHidrologicoMinimo({
-  contextoBase = {},
+  peTotalMm: peTotalMmEntradaDocumental = null,
+  volumenEsperadoM3: volumenEsperadoM3EntradaDocumental = null,  contextoBase = {},
   Tc_final = null,
   trDisenoActivoExpediente = null,
   metodos = [],
@@ -205,6 +206,15 @@ export default function construirExpedienteHidrologicoMinimo({
     contextoBase?.periodoRetornoAnios ??
     null;
 
+  const peTotalMmBloqueVolumenReferenciaDocumental =
+    Number.isFinite(Number(peTotalMmEntradaDocumental))
+      ? Number(peTotalMmEntradaDocumental)
+      : peTotalMm;
+
+  const volumenEsperadoM3BloqueVolumenReferenciaDocumental =
+    Number.isFinite(Number(volumenEsperadoM3EntradaDocumental))
+      ? Number(volumenEsperadoM3EntradaDocumental)
+      : volumenEsperadoM3;
   const texto = [
     "# Expediente hidrológico mínimo — Cuenca activa",
     "Estado técnico del expediente: BORRADOR GENERADO POR HELPER PURO INICIAL.",
@@ -226,8 +236,8 @@ export default function construirExpedienteHidrologicoMinimo({
     }),
     "",
     ...construirLineasVolumenReferenciaExpediente({
-      peTotalMm,
-      volumenEsperadoM3
+      peTotalMm: peTotalMmBloqueVolumenReferenciaDocumental,
+      volumenEsperadoM3: volumenEsperadoM3BloqueVolumenReferenciaDocumental
     }),
     "",
     "## 5. Escenario Q-Tr activo — control de trazabilidad",
@@ -470,6 +480,7 @@ export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
     ""
   ];
 }
+
 
 
 
