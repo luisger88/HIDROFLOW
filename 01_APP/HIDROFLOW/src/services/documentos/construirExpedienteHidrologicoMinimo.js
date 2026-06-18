@@ -1,5 +1,6 @@
 import { construirBloqueRestriccionesAdvertenciasGeneralesExpediente } from "./construirBloqueRestriccionesAdvertenciasGeneralesExpediente";
 import { construirBloqueIdentificacionExpedienteMinimo } from "./construirBloqueIdentificacionExpedienteMinimo";
+import { construirBloqueParametrosHidrologicosBaseExpediente } from "./construirBloqueParametrosHidrologicosBaseExpediente";
 // OT-0110B — Helper puro inicial del expediente hidrológico mínimo.
 // Este helper NO está integrado todavía al botón de copiado.
 // No modifica UI, no copia al portapapeles, no recalcula hidrogramas y no toca motor.
@@ -307,31 +308,13 @@ export function construirLineasParametrosHidrologicosBaseExpediente(entrada = {}
       ? entrada.contextoBase
       : entrada;
 
-  const valorDocumental = (valor) => {
-    if (valor === undefined || valor === null) {
-      return "—";
-    }
-
-    if (typeof valor === "number" && !Number.isFinite(valor)) {
-      return "—";
-    }
-
-    if (typeof valor === "object") {
-      return "—";
-    }
-
-    const textoValor = String(valor).trim();
-
-    return textoValor.length > 0 ? textoValor : "—";
-  };
-
-  return [
-    "## 2. Parámetros hidrológicos base",
-    `CN: ${valorDocumental(contextoBase?.CN)}`,
-    `CN base: ${valorDocumental(contextoBase?.CN_base)}`,
-    `CN efectivo: ${valorDocumental(contextoBase?.CN_efectivo)}`,
-    `AMC: ${valorDocumental(contextoBase?.AMC)}`
-  ];
+  return construirBloqueParametrosHidrologicosBaseExpediente({
+    CN: contextoBase?.CN,
+    CN_base: contextoBase?.CN_base,
+    CN_efectivo: contextoBase?.CN_efectivo,
+    AMC: contextoBase?.AMC,
+    incluirTitulo: true
+  });
 }
 export function construirLineasTiempoConcentracionRolesTcExpediente(entrada = {}) {
   const formatearTc = (valor) => {
@@ -569,6 +552,7 @@ export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
     ""
   ];
 }
+
 
 
 
