@@ -207,13 +207,10 @@ export default function construirExpedienteHidrologicoMinimo({
       contextoBase
     }),
     "",
-    "## 3. Tiempo de concentración y roles Tc",
-    `Tc comparador: ${
-      Tc_final !== null && Tc_final !== undefined
-        ? formatearNumeroExpediente(Tc_final, 1) + " min"
-        : "—"
-    }`,
-    "Nota: este helper no selecciona ni recalcula Tc.",
+    ...construirLineasTiempoConcentracionRolesTcExpediente({
+      Tc_final,
+      trDisenoActivoExpediente
+    }),
     "",
     "## 4. Volumen de referencia",
     `Lluvia efectiva total: ${
@@ -507,5 +504,6 @@ export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
     ""
   ];
 }
+
 
 
