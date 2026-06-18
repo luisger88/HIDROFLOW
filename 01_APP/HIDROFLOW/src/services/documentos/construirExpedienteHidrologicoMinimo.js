@@ -1,4 +1,5 @@
 import { construirBloqueRestriccionesAdvertenciasGeneralesExpediente } from "./construirBloqueRestriccionesAdvertenciasGeneralesExpediente";
+import { construirBloqueIdentificacionExpedienteMinimo } from "./construirBloqueIdentificacionExpedienteMinimo";
 // OT-0110B — Helper puro inicial del expediente hidrológico mínimo.
 // Este helper NO está integrado todavía al botón de copiado.
 // No modifica UI, no copia al portapapeles, no recalcula hidrogramas y no toca motor.
@@ -130,83 +131,28 @@ export function construirLineasIdentificacionExpediente(entrada = {}) {
       ? entrada.contextoBase
       : entrada;
 
-  const fuenteFallback =
-    textoSeguro(entrada?.fuenteFallback, "") || "HidroFlow";
+  const fechaGeneracion = entrada?.fechaGeneracion ?? "—";
 
-  const estacionIdfFallback =
-    textoSeguro(entrada?.estacionIdfFallback, "") || "SAN CRISTOBAL";
-
-  const nombreCuenca = normalizarTextoIdentificacionExpediente(
-    contextoBase?.nombreCuenca ??
-      contextoBase?.cuenca,
-    "Cuenca activa"
-  );
-
-  const areaKm2 =
-    Number.isFinite(Number(contextoBase?.area_km2))
-      ? Number(contextoBase.area_km2)
-      : Number.isFinite(Number(contextoBase?.areaKm2))
-      ? Number(contextoBase.areaKm2)
-      : Number.isFinite(Number(contextoBase?.cuencaActiva?.areaKm2))
-      ? Number(contextoBase.cuencaActiva.areaKm2)
-      : null;
-
-  const pendienteMediaPct =
-    Number.isFinite(Number(contextoBase?.pendiente_media_pct))
-      ? Number(contextoBase.pendiente_media_pct)
-      : Number.isFinite(Number(contextoBase?.pendienteMediaPct))
-      ? Number(contextoBase.pendienteMediaPct)
-      : Number.isFinite(Number(contextoBase?.cuencaActiva?.pendienteMediaPct))
-      ? Number(contextoBase.cuencaActiva.pendienteMediaPct)
-      : null;
-
-  const longitudCauceKm =
-    Number.isFinite(Number(contextoBase?.longitud_cauce_km))
-      ? Number(contextoBase.longitud_cauce_km)
-      : Number.isFinite(Number(contextoBase?.longitudCaucePrincipalKm))
-      ? Number(contextoBase.longitudCaucePrincipalKm)
-      : Number.isFinite(Number(contextoBase?.cuencaActiva?.longitudCaucePrincipalKm))
-      ? Number(contextoBase.cuencaActiva.longitudCaucePrincipalKm)
-      : null;
-
-  const estacionIdf =
-    textoSeguro(contextoBase?.estacion_idf, "") ||
-    textoSeguro(contextoBase?.estacionIDF, "") ||
-    textoSeguro(contextoBase?.estacionIdf, "") ||
-    textoSeguro(contextoBase?.estacion, "") ||
-    textoSeguro(contextoBase?.nombre_estacion, "") ||
-    textoSeguro(contextoBase?.idf?.nombre, "") ||
-    textoSeguro(contextoBase?.idf?.estacion, "") ||
-    estacionIdfFallback;
-
-  const fuenteContexto =
-    textoSeguro(contextoBase?.fuente, "") ||
-    textoSeguro(contextoBase?.fuenteContexto, "") ||
-    fuenteFallback;
-
-  return [
-    "## 1. Identificación",
-    `Cuenca: ${textoSeguro(nombreCuenca, "Cuenca activa")}`,
-    `Área: ${
-      Number.isFinite(areaKm2)
-        ? areaKm2.toFixed(4) + " km²"
-        : "—"
-    }`,
-    `Fuente de contexto: ${textoSeguro(fuenteContexto, fuenteFallback)}`,
-    `Estación IDF: ${textoSeguro(estacionIdf, estacionIdfFallback)}`,
-    `Pendiente media: ${
-      Number.isFinite(pendienteMediaPct)
-        ? pendienteMediaPct.toFixed(2) + " %"
-        : "—"
-    }`,
-    `Longitud cauce principal: ${
-      Number.isFinite(longitudCauceKm)
-        ? longitudCauceKm.toFixed(3) + " km"
-        : "—"
-    }`
-  ];
+  return construirBloqueIdentificacionExpedienteMinimo({
+    cuenca:
+      contextoBase?.cuenca?.nombre ??
+      contextoBase?.cuencaActiva?.nombre ??
+      contextoBase?.nombreCuenca ??
+      "Cuenca activa",
+    identificadorCuenca:
+      contextoBase?.cuenca?.id ??
+      contextoBase?.cuencaActiva?.id ??
+      contextoBase?.identificadorCuenca ??
+      "—",
+    versionExpediente: VERSION_EXPEDIENTE_HIDROLOGICO_MINIMO,
+    tipoSalida: "expediente_hidrologico_minimo",
+    fechaGeneracion,
+    fuente: "construirExpedienteHidrologicoMinimo",
+    estadoDocumental: "Borrador documental controlado",
+    alcanceDocumental: "Bloque documental de identificación del expediente.",
+    incluirTitulo: true
+  });
 }
-
 export function construirLineasSelloTecnicoAuxiliarExpediente({
   metadata = {},
   versionExpediente = metadata?.versionExpediente ?? VERSION_EXPEDIENTE_HIDROLOGICO_MINIMO,
@@ -624,4 +570,5 @@ export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
     ""
   ];
 }
+
 
