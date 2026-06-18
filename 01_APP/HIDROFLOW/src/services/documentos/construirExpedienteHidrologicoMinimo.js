@@ -170,6 +170,7 @@ export function construirLineasSelloTecnicoAuxiliarExpediente({
 export default function construirExpedienteHidrologicoMinimo({
   contextoBase = {},
   Tc_final = null,
+  trDisenoActivoExpediente = null,
   metodos = [],
   filasMorfologiaQt = [],
   filasDictamenFormaQt = [],
@@ -191,6 +192,17 @@ export default function construirExpedienteHidrologicoMinimo({
     Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
       ? areaKm2 * peTotalMm * 1000
       : null;
+  const trDisenoActivoExpedienteDocumental =
+    trDisenoActivoExpediente ??
+    contextoBase?.trDisenoActivoExpediente ??
+    contextoBase?.trDisenoActivo ??
+    contextoBase?.Tr ??
+    contextoBase?.TR ??
+    contextoBase?.periodoRetorno ??
+    contextoBase?.periodo_retorno ??
+    contextoBase?.periodoRetornoAnos ??
+    contextoBase?.periodoRetornoAnios ??
+    null;
 
   const texto = [
     "# Expediente hidrológico mínimo — Cuenca activa",
@@ -209,7 +221,7 @@ export default function construirExpedienteHidrologicoMinimo({
     "",
     ...construirLineasTiempoConcentracionRolesTcExpediente({
       Tc_final,
-      trDisenoActivoExpediente
+      trDisenoActivoExpediente: trDisenoActivoExpedienteDocumental
     }),
     "",
     "## 4. Volumen de referencia",
@@ -504,6 +516,7 @@ export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
     ""
   ];
 }
+
 
 
 
