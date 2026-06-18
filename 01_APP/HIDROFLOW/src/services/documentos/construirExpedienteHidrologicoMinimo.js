@@ -196,12 +196,11 @@ export default function construirExpedienteHidrologicoMinimo({
     "Lectura técnica: este helper aún no reemplaza el expediente operativo construido en ComparadorMultiMetodo.jsx.",
     "Alcance: contrato inicial de construcción documental; no copia al portapapeles, no modifica UI y no recalcula resultados.",
     "",
-    "## 1. Identificación",
-    `Cuenca: ${metadata.cuenca}`,
-    `Área: ${Number.isFinite(areaKm2) ? formatearNumeroExpediente(areaKm2, 4) + " km²" : "—"}`,
-    `Fuente de contexto: ${contextoBase?.fuente ?? "HidroFlow"}`,
-    "",
-    "## 2. Parámetros hidrológicos base",
+    ...construirLineasIdentificacionExpediente({
+      contextoBase,
+      fechaGeneracion
+    }),
+    "",    "## 2. Parámetros hidrológicos base",
     `CN: ${textoSeguro(contextoBase?.CN)}`,
     `CN base: ${textoSeguro(contextoBase?.CN_base)}`,
     `CN efectivo: ${textoSeguro(contextoBase?.CN_efectivo)}`,
@@ -570,5 +569,6 @@ export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
     ""
   ];
 }
+
 
 
