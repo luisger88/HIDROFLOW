@@ -4,6 +4,7 @@ import { construirBloqueParametrosHidrologicosBaseExpediente } from "./construir
 import { construirBloqueTiempoConcentracionRolesTcExpediente } from "./construirBloqueTiempoConcentracionRolesTcExpediente";
 import { construirBloqueVolumenReferenciaExpediente } from "./construirBloqueVolumenReferenciaExpediente";
 import { construirBloqueEscenarioQTrActivoExpediente } from "./construirBloqueEscenarioQTrActivoExpediente";
+import { construirBloqueResumenQ5AuditadoExpediente } from "./construirBloqueResumenQ5AuditadoExpediente";
 // OT-0110B — Helper puro inicial del expediente hidrológico mínimo.
 // Este helper NO está integrado todavía al botón de copiado.
 // No modifica UI, no copia al portapapeles, no recalcula hidrogramas y no toca motor.
@@ -248,9 +249,10 @@ export default function construirExpedienteHidrologicoMinimo({
       trDisenoActivoExpediente: trDisenoActivoExpedienteDocumental
     }),
     "",
-    "## 6. Resumen Q-5 auditado",
-    `Métodos recibidos: ${Array.isArray(metodos) ? metodos.length : 0}`,
-    "Estado: sección contractual inicial del helper puro.",
+    ...construirLineasResumenQ5AuditadoExpediente({
+      metodosQ5: metodos,
+      estadoResumenQ5AuditadoExpediente: "sección contractual inicial del helper puro"
+    }),
     "",
     "## 7. Método Racional — contraste global independiente",
     "Uso: contraste global independiente de caudal pico.",
@@ -359,55 +361,10 @@ export function construirLineasEscenarioQTrActivoExpediente(entrada = {}) {
   });
 }
 export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
-  const entradaSegura = entrada && typeof entrada === "object" ? entrada : {};
-
-  const { tablaQ5Markdown = [] } = entradaSegura;
-
-  const normalizarLinea = (valor) => {
-    if (valor === undefined || valor === null) {
-      return "—";
-    }
-
-    if (typeof valor === "string") {
-      return valor;
-    }
-
-    if (typeof valor === "number" && Number.isFinite(valor)) {
-      return String(valor);
-    }
-
-    return "—";
-  };
-
-  const tabla = Array.isArray(tablaQ5Markdown)
-    ? tablaQ5Markdown
-        .map((linea) => normalizarLinea(linea))
-        .filter((linea) => linea.trim().length > 0)
-    : [];
-
-  const lineasTabla = tabla.length > 0
-    ? tabla
-    : ["sin tabla Q-5 disponible"];
-
-  return [
-    "## 6. Resumen Q-5 auditado",
-    "Estado general: diagnóstico no adoptivo.",
-    "SCS Unit Hydrograph: candidato principal de referencia.",
-    "SCS Mod.: variante ajustable.",
-    "Snyder, Williams & Hann y Clark IUH: métodos comparativos/referenciales.",
-    "Masa y volumen: controlados frente a referencia física.",
-    "Qp y Tp: sujetos a revisión temporal antes de adopción técnica.",
-    "",
-    "Tabla Q-5 auditada:",
-    ...lineasTabla,
-    "",
-    ""
-  ];
+  return construirBloqueResumenQ5AuditadoExpediente({
+    metodosQ5: entrada?.metodosQ5 ?? entrada?.metodos,
+    estadoResumenQ5AuditadoExpediente: entrada?.estadoResumenQ5AuditadoExpediente,
+    faltantesResumenQ5AuditadoExpediente: entrada?.faltantesResumenQ5AuditadoExpediente,
+    incluirTitulo: true
+  });
 }
-
-
-
-
-
-
-
