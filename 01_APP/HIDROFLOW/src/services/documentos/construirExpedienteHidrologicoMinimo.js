@@ -2,6 +2,7 @@ import { construirBloqueRestriccionesAdvertenciasGeneralesExpediente } from "./c
 import { construirBloqueIdentificacionExpedienteMinimo } from "./construirBloqueIdentificacionExpedienteMinimo";
 import { construirBloqueParametrosHidrologicosBaseExpediente } from "./construirBloqueParametrosHidrologicosBaseExpediente";
 import { construirBloqueTiempoConcentracionRolesTcExpediente } from "./construirBloqueTiempoConcentracionRolesTcExpediente";
+import { construirBloqueVolumenReferenciaExpediente } from "./construirBloqueVolumenReferenciaExpediente";
 // OT-0110B — Helper puro inicial del expediente hidrológico mínimo.
 // Este helper NO está integrado todavía al botón de copiado.
 // No modifica UI, no copia al portapapeles, no recalcula hidrogramas y no toca motor.
