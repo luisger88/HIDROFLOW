@@ -170,6 +170,39 @@ export function construirLineasSelloTecnicoAuxiliarExpediente({
     `Tipo auxiliar helper expediente: ${textoSeguro(tipoSalida, "expediente_hidrologico_minimo")}.`
   ];
 }
+
+function formatearValorRacionalExpediente(valor, unidad = "", decimales = 2) {
+  if (valor === undefined || valor === null || valor === "") {
+    return "—";
+  }
+
+  const numero = Number(valor);
+
+  if (Number.isFinite(numero) && String(valor).trim() !== "") {
+    return `${numero.toLocaleString("es-CO", {
+      maximumFractionDigits: decimales
+    })}${unidad}`;
+  }
+
+  const texto = String(valor).replaceAll("|", "/").trim();
+  return texto.length > 0 ? texto : "—";
+}
+
+function construirLineasTablaMetodoRacionalExpediente(resultados = []) {
+  if (!Array.isArray(resultados) || resultados.length === 0) {
+    return ["Tabla Método Racional: no disponible en contexto."];
+  }
+
+  return [
+    "Tabla Método Racional:",
+    "| Tr | I | P | C | Q |",
+    "|---:|---:|---:|---:|---:|",
+    ...resultados.map((fila) => {
+      return `| ${formatearValorRacionalExpediente(fila?.Tr)} | ${formatearValorRacionalExpediente(fila?.I, " mm/h")} | ${formatearValorRacionalExpediente(fila?.P, " mm")} | ${formatearValorRacionalExpediente(fila?.C, "", 4)} | ${formatearValorRacionalExpediente(fila?.Q, " m³/s")} |`;
+    })
+  ];
+}
+
 export default function construirExpedienteHidrologicoMinimo({
   peTotalMm: peTotalMmEntradaDocumental = null,
   volumenEsperadoM3: volumenEsperadoM3EntradaDocumental = null,  contextoBase = {},
@@ -259,7 +292,12 @@ export default function construirExpedienteHidrologicoMinimo({
     "",
     "## 7. Método Racional — contraste global independiente",
     "Uso: contraste global independiente de caudal pico.",
-    "Estado: sección contractual inicial del helper puro.",
+    "Carácter: no adoptivo principal; requiere revisión técnica antes de adopción.",
+    "Relación con Q-5: no pertenece al bloque Q-5 de hidrogramas.",
+    "",
+    ...construirLineasTablaMetodoRacionalExpediente(
+      contextoBase?.metodo_racional?.resultados
+    ),
     "",
     "## 8. Contraste Q-5 vs Método Racional",
     "Lectura técnica: Q-5 y Método Racional son complementarios, pero no equivalentes.",
