@@ -49,6 +49,40 @@ export function formatearValorQTrActivoDocumental(valor) {
     return valor ? "sí" : "no";
   }
 
+  if (typeof valor === "object") {
+    const candidatos = [
+      valor.q,
+      valor.Q,
+      valor.q_m3s,
+      valor.Q_m3s,
+      valor.qTr,
+      valor.QTr,
+      valor.q_tr,
+      valor.Q_Tr,
+      valor.caudal,
+      valor.caudal_m3s,
+      valor.caudalPico,
+      valor.valor,
+      valor.etiqueta,
+      valor.label,
+      valor.tr_activo,
+      valor.Tr,
+      valor.TR,
+      valor.periodoRetorno,
+      valor.periodo_retorno,
+      valor.periodoRetornoActivo
+    ];
+
+    const candidato = candidatos.find(
+      (item) =>
+        typeof item === "string" ||
+        typeof item === "number" ||
+        typeof item === "boolean"
+    );
+
+    return formatearValorQTrActivoDocumental(candidato);
+  }
+
   return FALLBACK_TEXTO_QTR_ACTIVO;
 }
 
@@ -75,7 +109,15 @@ function normalizarEntradaQTrActivo(entrada = {}) {
   const trDisenoActivoExpediente =
     entradaSegura.trDisenoActivoExpediente ??
     entradaSegura.trDisenoActivo ??
+    entradaSegura.tr_diseno_activo ??
+    entradaSegura.periodo_retorno_activo ??
     entradaSegura.periodoRetornoActivo ??
+    qTrActivoExpediente?.tr_activo ??
+    qTrActivoExpediente?.Tr ??
+    qTrActivoExpediente?.TR ??
+    qTrActivoExpediente?.periodoRetorno ??
+    qTrActivoExpediente?.periodo_retorno ??
+    qTrActivoExpediente?.periodoRetornoActivo ??
     null;
 
   return {
@@ -144,3 +186,4 @@ export function construirBloqueEscenarioQTrActivoExpediente(entrada = {}) {
 
   return lineas;
 }
+
