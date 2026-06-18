@@ -2,6 +2,7 @@ import { construirBloqueRestriccionesAdvertenciasGeneralesExpediente } from "./c
 import { construirBloqueIdentificacionExpedienteMinimo } from "./construirBloqueIdentificacionExpedienteMinimo";
 import { construirBloqueParametrosHidrologicosBaseExpediente } from "./construirBloqueParametrosHidrologicosBaseExpediente";
 import { construirBloqueTiempoConcentracionRolesTcExpediente } from "./construirBloqueTiempoConcentracionRolesTcExpediente";
+import { construirBloqueVolumenReferenciaExpediente } from "./construirBloqueVolumenReferenciaExpediente";
 // OT-0110B — Helper puro inicial del expediente hidrológico mínimo.
 // Este helper NO está integrado todavía al botón de copiado.
 // No modifica UI, no copia al portapapeles, no recalcula hidrogramas y no toca motor.
@@ -224,16 +225,10 @@ export default function construirExpedienteHidrologicoMinimo({
       trDisenoActivoExpediente: trDisenoActivoExpedienteDocumental
     }),
     "",
-    "## 4. Volumen de referencia",
-    `Lluvia efectiva total: ${
-      Number.isFinite(peTotalMm) ? formatearNumeroExpediente(peTotalMm, 2) + " mm" : "—"
-    }`,
-    `Volumen esperado: ${
-      Number.isFinite(volumenEsperadoM3)
-        ? formatearNumeroExpediente(volumenEsperadoM3, 0) + " m³"
-        : "—"
-    }`,
-    "Fórmula: Pe(mm) × Área(km²) × 1000.",
+    ...construirLineasVolumenReferenciaExpediente({
+      peTotalMm,
+      volumenEsperadoM3
+    }),
     "",
     "## 5. Escenario Q-Tr activo — control de trazabilidad",
     `Estado: ${contextoBase?.q_tr_activo_estado?.estado ?? "no_publicado"}`,
@@ -333,52 +328,11 @@ export function construirLineasTiempoConcentracionRolesTcExpediente(entrada = {}
   });
 }
 export function construirLineasVolumenReferenciaExpediente(entrada = {}) {
-  const formatearLluviaEfectiva = (valor) => {
-    if (valor === undefined || valor === null) {
-      return "—";
-    }
-
-    if (typeof valor === "string" && valor.trim().length === 0) {
-      return "—";
-    }
-
-    const numero = Number(valor);
-
-    if (!Number.isFinite(numero)) {
-      return "—";
-    }
-
-    return `${numero.toFixed(2)} mm`;
-  };
-
-  const formatearVolumenEsperado = (valor) => {
-    if (valor === undefined || valor === null) {
-      return "—";
-    }
-
-    if (typeof valor === "string" && valor.trim().length === 0) {
-      return "—";
-    }
-
-    if (typeof valor === "object") {
-      return "—";
-    }
-
-    const numero = Number(valor);
-
-    if (!Number.isFinite(numero)) {
-      return "—";
-    }
-
-    return `${numero.toLocaleString("es-CO", { maximumFractionDigits: 0 })} m³`;
-  };
-
-  return [
-    "## 4. Volumen de referencia",
-    `Lluvia efectiva total: ${formatearLluviaEfectiva(entrada?.peTotalMm)}`,
-    `Volumen esperado: ${formatearVolumenEsperado(entrada?.volumenEsperadoM3)}`,
-    "Fórmula: Pe(mm) × Área(km²) × 1000."
-  ];
+  return construirBloqueVolumenReferenciaExpediente({
+    peTotalMm: entrada?.peTotalMm,
+    volumenEsperadoM3: entrada?.volumenEsperadoM3,
+    incluirTitulo: true
+  });
 }
 
 export function construirLineasEscenarioQTrActivoExpediente(entrada = {}) {
@@ -516,6 +470,7 @@ export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
     ""
   ];
 }
+
 
 
 
