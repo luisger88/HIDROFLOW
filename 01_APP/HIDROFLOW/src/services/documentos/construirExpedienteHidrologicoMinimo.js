@@ -200,6 +200,9 @@ export default function construirExpedienteHidrologicoMinimo({
     trDisenoActivoExpediente ??
     contextoBase?.trDisenoActivoExpediente ??
     contextoBase?.trDisenoActivo ??
+    contextoBase?.tr_diseno_activo ??
+    contextoBase?.periodo_retorno_activo ??
+    contextoBase?.periodoRetornoActivo ??
     contextoBase?.Tr ??
     contextoBase?.TR ??
     contextoBase?.periodoRetorno ??
@@ -368,3 +371,4 @@ export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
     incluirTitulo: true
   });
 }
+
