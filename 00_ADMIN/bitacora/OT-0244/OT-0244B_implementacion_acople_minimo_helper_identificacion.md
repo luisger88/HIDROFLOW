@@ -4,6 +4,14 @@
 
 Implementar el acople mínimo del helper `construirBloqueIdentificacionExpedienteMinimo` dentro del expediente hidrológico mínimo.
 
+## Corrección aplicada
+
+Se corrigió el acople para evitar intervenir `SECCIONES_OBLIGATORIAS_EXPEDIENTE_MINIMO`.
+
+El arreglo de secciones obligatorias conserva únicamente títulos de sección.
+
+El acople funcional se aplica únicamente dentro de `construirLineasIdentificacionExpediente`.
+
 ## Archivo funcional modificado
 
 ```text
@@ -26,9 +34,9 @@ construirBloqueIdentificacionExpedienteMinimo
 
 Se agregó el import del helper de Identificación.
 
-Se sustituyó el bloque textual de la sección `## 1. Identificación` por una llamada explícita al helper.
+Se sustituyó el cuerpo de `construirLineasIdentificacionExpediente` por una llamada explícita al helper.
 
-El acople se ubicó antes de la sección `## 2. Parámetros hidrológicos base`.
+No se modificó la constante `SECCIONES_OBLIGATORIAS_EXPEDIENTE_MINIMO`.
 
 ## Entradas usadas
 
