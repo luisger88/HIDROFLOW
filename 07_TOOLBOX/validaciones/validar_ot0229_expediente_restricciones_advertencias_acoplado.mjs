@@ -64,15 +64,41 @@ function contarOcurrencias(texto, patron) {
 }
 
 function normalizarSalidaExpediente(salida) {
-  if (Array.isArray(salida)) {
-    return salida.join("\n");
-  }
-
   if (typeof salida === "string") {
     return salida;
   }
 
-  return String(salida ?? "");
+  if (Array.isArray(salida)) {
+    return salida.join("\n");
+  }
+
+  if (salida && typeof salida === "object") {
+    if (typeof salida.texto === "string") {
+      return salida.texto;
+    }
+
+    if (Array.isArray(salida.lineas)) {
+      return salida.lineas.join("\n");
+    }
+
+    if (typeof salida.textoExpediente === "string") {
+      return salida.textoExpediente;
+    }
+
+    if (typeof salida.markdown === "string") {
+      return salida.markdown;
+    }
+
+    if (typeof salida.contenido === "string") {
+      return salida.contenido;
+    }
+
+    if (Array.isArray(salida.secciones)) {
+      return salida.secciones.join("\n");
+    }
+  }
+
+  return "";
 }
 
 const expedienteFuente = leerArchivo(rutaExpediente);
@@ -263,3 +289,4 @@ fs.writeFileSync(rutaSalida, salida.join("\n"), "utf8");
 
 console.log("VALIDACION_OT_0229_EXPEDIENTE_RESTRICCIONES_ADVERTENCIAS_CRITERIO_AJUSTADO_OK");
 console.log(JSON.stringify(resumen, null, 2));
+
