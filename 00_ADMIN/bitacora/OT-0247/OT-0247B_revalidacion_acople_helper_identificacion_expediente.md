@@ -202,4 +202,5 @@ El acople del helper de Identificación queda validado.
 
 ## Próximo frente recomendado
 
-`OT-0246 — Decisión estabilización acople helper Identificación del expediente`
+`OT-0248 — Decisión estabilización bloque Identificación del expediente`
+
