@@ -12,6 +12,10 @@ El arreglo de secciones obligatorias conserva únicamente títulos de sección.
 
 El acople funcional se aplica únicamente dentro de `construirLineasIdentificacionExpediente`.
 
+La corrección conserva el `export default` de `construirExpedienteHidrologicoMinimo`.
+
+La sustitución usa como frontera segura `construirLineasSelloTecnicoAuxiliarExpediente`, evitando cortes sobre el constructor principal.
+
 ## Archivo funcional modificado
 
 ```text
@@ -34,9 +38,13 @@ construirBloqueIdentificacionExpedienteMinimo
 
 Se agregó el import del helper de Identificación.
 
-Se sustituyó el cuerpo de `construirLineasIdentificacionExpediente` por una llamada explícita al helper.
+Se sustituyó exclusivamente el cuerpo de `construirLineasIdentificacionExpediente` por una llamada explícita al helper.
 
 No se modificó la constante `SECCIONES_OBLIGATORIAS_EXPEDIENTE_MINIMO`.
+
+No se modificó la función `construirLineasParametrosHidrologicosBaseExpediente`.
+
+No se eliminó el `export default` del constructor principal.
 
 ## Entradas usadas
 
