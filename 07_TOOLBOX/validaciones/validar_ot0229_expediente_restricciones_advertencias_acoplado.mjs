@@ -1,11 +1,12 @@
 import fs from "fs";
 import { execSync } from "child_process";
+import construirExpedienteHidrologicoMinimo from "../../01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js";
 
 const rutaExpediente = "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js";
 const rutaHelper = "01_APP/HIDROFLOW/src/services/documentos/construirBloqueRestriccionesAdvertenciasGeneralesExpediente.js";
 const rutaComparador = "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx";
 
-const requerido = [
+const requeridoFuente = [
   {
     id: "import_helper",
     texto: "import { construirBloqueRestriccionesAdvertenciasGeneralesExpediente }",
@@ -62,13 +63,25 @@ function contarOcurrencias(texto, patron) {
   return texto.split(patron).length - 1;
 }
 
-const expediente = leerArchivo(rutaExpediente);
+function normalizarSalidaExpediente(salida) {
+  if (Array.isArray(salida)) {
+    return salida.join("\n");
+  }
+
+  if (typeof salida === "string") {
+    return salida;
+  }
+
+  return String(salida ?? "");
+}
+
+const expedienteFuente = leerArchivo(rutaExpediente);
 const helper = leerArchivo(rutaHelper);
 const comparador = leerArchivo(rutaComparador);
 
 const resultados = [];
 
-if (!expediente) {
+if (!expedienteFuente) {
   resultados.push({
     id: "archivo_expediente",
     aprobado: false,
@@ -81,8 +94,8 @@ if (!expediente) {
     detalle: "Archivo de expediente existe"
   });
 
-  for (const item of requerido) {
-    const ocurrencias = contarOcurrencias(expediente, item.texto);
+  for (const item of requeridoFuente) {
+    const ocurrencias = contarOcurrencias(expedienteFuente, item.texto);
 
     resultados.push({
       id: item.id,
@@ -92,24 +105,54 @@ if (!expediente) {
     });
   }
 
-  for (const token of tokensInvalidos) {
-    const ocurrencias = contarOcurrencias(expediente, token);
-
-    resultados.push({
-      id: `token_${token}`,
-      descripcion: `Token inválido ${token}`,
-      ocurrencias,
-      aprobado: ocurrencias === 1 && token === "undefined" || ocurrencias === 1 && token === "null" || ocurrencias === 1 && token === "NaN" || ocurrencias === 1 && token === "[object Object]"
-    });
-  }
-
-  const ocurrenciasBloque = contarOcurrencias(expediente, "OT-0228 — Acople mínimo helper restricciones y advertencias generales");
+  const ocurrenciasBloque = contarOcurrencias(
+    expedienteFuente,
+    "OT-0228 — Acople mínimo helper restricciones y advertencias generales"
+  );
 
   resultados.push({
     id: "bloque_unico_ot0228",
-    descripcion: "Bloque OT-0228 aparece una sola vez",
+    descripcion: "Bloque OT-0228 aparece una sola vez en fuente",
     ocurrencias: ocurrenciasBloque,
     aprobado: ocurrenciasBloque === 1
+  });
+}
+
+let salidaDocumental = "";
+let salidaGeneradaOk = false;
+let errorSalida = "";
+
+try {
+  salidaDocumental = normalizarSalidaExpediente(
+    construirExpedienteHidrologicoMinimo({
+      contextoBase: {},
+      fechaGeneracion: "VALIDACION_OT_0230"
+    })
+  );
+
+  salidaGeneradaOk = salidaDocumental.length > 0;
+} catch (error) {
+  salidaDocumental = "";
+  salidaGeneradaOk = false;
+  errorSalida = error?.message ?? String(error);
+}
+
+resultados.push({
+  id: "salida_documental_generada",
+  descripcion: "Salida documental generada desde construirExpedienteHidrologicoMinimo",
+  aprobado: salidaGeneradaOk,
+  longitud: salidaDocumental.length,
+  error: errorSalida
+});
+
+for (const token of tokensInvalidos) {
+  const ocurrencias = contarOcurrencias(salidaDocumental, token);
+
+  resultados.push({
+    id: `token_salida_${token}`,
+    descripcion: `Token inválido ${token} en salida documental generada`,
+    ocurrencias,
+    aprobado: ocurrencias === 0
   });
 }
 
@@ -149,6 +192,7 @@ resultados.push({
 
 const resumen = {
   validacion: "OT-0229",
+  criterioAjustadoEn: "OT-0230",
   archivoExpediente: rutaExpediente,
   archivoHelper: rutaHelper,
   archivoComparador: rutaComparador,
@@ -156,6 +200,7 @@ const resumen = {
   controlesAprobados: resultados.filter((r) => r.aprobado).length,
   controlesFallidos: resultados.filter((r) => !r.aprobado).length,
   validacionExpedienteAprobada: resultados.every((r) => r.aprobado),
+  tokensEvaluadosSobre: "salida_documental_generada",
   modificaCodigoAplicacion: false,
   modificaMotor: false,
   modificaTextoExpediente: false
@@ -169,6 +214,10 @@ const salida = [
   "```json",
   JSON.stringify(resumen, null, 2),
   "```",
+  "",
+  "## Criterio ajustado en OT-0230",
+  "",
+  "La detección de tokens inválidos se aplica sobre la salida documental generada por `construirExpedienteHidrologicoMinimo`, no sobre el código fuente completo.",
   "",
   "## Controles evaluados",
   ""
@@ -189,7 +238,8 @@ salida.push(buildOk ? "Build aprobado." : "Build fallido.");
 salida.push("");
 salida.push("## Lectura técnica");
 salida.push("");
-salida.push("- La validación se ejecutó después del acople mínimo de OT-0228.");
+salida.push("- La validación usa el criterio ajustado de OT-0230.");
+salida.push("- Los tokens inválidos se revisan sobre la salida documental generada, no sobre todo el código fuente.");
 salida.push("- No se modificó el helper.");
 salida.push("- No se modificó `ComparadorMultiMetodo.jsx`.");
 salida.push("- No se modificó `construirExpedienteHidrologicoMinimo.js` durante esta validación.");
@@ -198,18 +248,18 @@ salida.push("## Decisión");
 salida.push("");
 salida.push(
   resumen.validacionExpedienteAprobada
-    ? "El expediente queda validado con el bloque general de restricciones y advertencias acoplado."
+    ? "El expediente queda validado con el bloque general de restricciones y advertencias acoplado bajo el criterio ajustado."
     : "El expediente no debe considerarse estabilizado hasta corregir los hallazgos detectados."
 );
 salida.push("");
 salida.push("## Próximo frente recomendado");
 salida.push("");
-salida.push("`OT-0230 — Decisión sobre estabilización del bloque restricciones y advertencias generales`");
+salida.push("`OT-0231 — Revalidación expediente con criterio ajustado de tokens inválidos`");
 
 const rutaSalida = "00_ADMIN/bitacora/OT-0229/OT-0229B_validacion_expediente_bloque_restricciones_advertencias_acoplado.md";
 
 fs.mkdirSync("00_ADMIN/bitacora/OT-0229", { recursive: true });
 fs.writeFileSync(rutaSalida, salida.join("\n"), "utf8");
 
-console.log("VALIDACION_OT_0229_EXPEDIENTE_RESTRICCIONES_ADVERTENCIAS_OK");
+console.log("VALIDACION_OT_0229_EXPEDIENTE_RESTRICCIONES_ADVERTENCIAS_CRITERIO_AJUSTADO_OK");
 console.log(JSON.stringify(resumen, null, 2));
