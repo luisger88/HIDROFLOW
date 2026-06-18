@@ -201,11 +201,10 @@ export default function construirExpedienteHidrologicoMinimo({
       contextoBase,
       fechaGeneracion
     }),
-    "",    "## 2. Parámetros hidrológicos base",
-    `CN: ${textoSeguro(contextoBase?.CN)}`,
-    `CN base: ${textoSeguro(contextoBase?.CN_base)}`,
-    `CN efectivo: ${textoSeguro(contextoBase?.CN_efectivo)}`,
-    `AMC: ${textoSeguro(contextoBase?.AMC)}`,
+    "",
+    ...construirLineasParametrosHidrologicosBaseExpediente({
+      contextoBase
+    }),
     "",
     "## 3. Tiempo de concentración y roles Tc",
     `Tc comparador: ${
@@ -552,7 +551,4 @@ export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
     ""
   ];
 }
-
-
-
 
