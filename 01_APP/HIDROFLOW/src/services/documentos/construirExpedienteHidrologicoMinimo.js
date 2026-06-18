@@ -1,3 +1,4 @@
+import { construirBloqueRestriccionesAdvertenciasGeneralesExpediente } from "./construirBloqueRestriccionesAdvertenciasGeneralesExpediente";
 // OT-0110B — Helper puro inicial del expediente hidrológico mínimo.
 // Este helper NO está integrado todavía al botón de copiado.
 // No modifica UI, no copia al portapapeles, no recalcula hidrogramas y no toca motor.
@@ -315,6 +316,21 @@ export default function construirExpedienteHidrologicoMinimo({
     "Alcance: helper puro inicial no integrado al botón de copiado.",
     "",
     "## 12. Restricciones y advertencias técnicas",
+// OT-0228 — Acople mínimo helper restricciones y advertencias generales.
+...construirBloqueRestriccionesAdvertenciasGeneralesExpediente({
+  restriccionesGenerales: [
+    "El expediente no modifica el motor hidrológico.",
+    "El expediente no recalcula resultados.",
+    "El bloque tiene alcance documental e interpretativo general."
+  ],
+  advertenciasGenerales: [
+    "Las advertencias generales no implican adopción hidrológica.",
+    "Los resultados sensibles deben revisarse en sus bloques específicos.",
+    "Este bloque no sustituye la validación técnica especializada."
+  ],
+  alcanceGeneral: "Sección general de cautela documental del expediente.",
+  incluirTitulo: false
+}),
     "- No modifica el motor hidrológico.",
     "- No recalcula hidrogramas.",
     "- No altera Qp, tPico, Volumen ni Q(t).",
@@ -608,3 +624,4 @@ export function construirLineasResumenQ5AuditadoExpediente(entrada = {}) {
     ""
   ];
 }
+
