@@ -1,7 +1,7 @@
 // OT-0280 — Helper puro documental del bloque Volumen de referencia.
 // No modifica motor.
 // No recalcula volumen.
-// No consulta Q-Tr, Q-5, Método Racional ni diagnóstico Q(t).
+// No consulta bloques hidrologicos externos ni modulos comparativos.
 // No accede a DOM, portapapeles ni estado global.
 
 const FALLBACK_DOCUMENTAL = "—";
@@ -96,3 +96,4 @@ export function construirBloqueVolumenReferenciaExpediente(entrada = {}) {
 
   return lineas;
 }
+
