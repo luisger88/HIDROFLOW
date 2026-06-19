@@ -214,13 +214,27 @@ export default function construirExpedienteHidrologicoMinimo({
   filasRiesgoTemporalQt = [],
   sintesisRiesgoTemporalQt = null,
   fechaGeneracion = null,
-  versionExpediente = VERSION_EXPEDIENTE_HIDROLOGICO_MINIMO
+  versionExpediente = VERSION_EXPEDIENTE_HIDROLOGICO_MINIMO,
+  autorTecnico = null,
+  tipoAuxiliar = "expediente_hidrologico_minimo"
 } = {}) {
   const metadata = construirMetadataExpediente({
     contextoBase,
     fechaGeneracion,
     versionExpediente
   });
+
+  const autorTecnicoSelloDocumental =
+    autorTecnico ??
+    contextoBase?.autorTecnico ??
+    contextoBase?.responsableTecnico ??
+    contextoBase?.profesionalResponsable ??
+    "—";
+
+  const tipoAuxiliarSelloDocumental =
+    tipoAuxiliar ??
+    metadata?.tipoSalida ??
+    "expediente_hidrologico_minimo";
 
   const areaKm2 = Number(contextoBase?.area_km2);
   const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
@@ -365,7 +379,9 @@ export default function construirExpedienteHidrologicoMinimo({
     "",
     "## 11. Sello técnico de generación",
     "Herramienta: HidroFlow.",
+    `Autor técnico: ${textoSeguro(autorTecnicoSelloDocumental, "—")}.`,
     "Tipo de salida: Expediente hidrológico mínimo.",
+    `Tipo auxiliar: ${textoSeguro(tipoAuxiliarSelloDocumental, "expediente_hidrologico_minimo")}.`,
     `Versión del expediente: ${versionExpediente}`,
     `Fecha de generación: ${fechaGeneracion ?? "—"}`,
     "Alcance: helper puro inicial no integrado al botón de copiado.",
