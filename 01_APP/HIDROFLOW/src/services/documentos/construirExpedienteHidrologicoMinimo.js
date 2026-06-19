@@ -253,6 +253,46 @@ export default function construirExpedienteHidrologicoMinimo({
     Number.isFinite(Number(volumenEsperadoM3EntradaDocumental))
       ? Number(volumenEsperadoM3EntradaDocumental)
       : volumenEsperadoM3;
+
+  const metodoQ5PrincipalControlDocumental = Array.isArray(metodos)
+    ? metodos.find((metodo) =>
+        Number.isFinite(Number(metodo?.volumen)) ||
+        Number.isFinite(Number(metodo?.volTotal)) ||
+        Number.isFinite(Number(metodo?.volumenTotal)) ||
+        Number.isFinite(Number(metodo?.volTotalM3))
+      )
+    : null;
+
+  const volumenQ5PrincipalControlDocumental =
+    Number(metodoQ5PrincipalControlDocumental?.volumen) ||
+    Number(metodoQ5PrincipalControlDocumental?.volTotal) ||
+    Number(metodoQ5PrincipalControlDocumental?.volumenTotal) ||
+    Number(metodoQ5PrincipalControlDocumental?.volTotalM3);
+
+  const relacionVolumenQ5EsperadoControlDocumental =
+    Number.isFinite(Number(volumenQ5PrincipalControlDocumental)) &&
+    Number.isFinite(Number(volumenEsperadoM3BloqueVolumenReferenciaDocumental)) &&
+    Number(volumenEsperadoM3BloqueVolumenReferenciaDocumental) !== 0
+      ? Number(volumenQ5PrincipalControlDocumental) /
+        Number(volumenEsperadoM3BloqueVolumenReferenciaDocumental)
+      : null;
+
+  const resultadoConsistenciaVolumetricaControlDocumental =
+    Number.isFinite(Number(relacionVolumenQ5EsperadoControlDocumental))
+      ? "relación volumétrica documentada para control interno preliminar"
+      : "relación volumétrica no disponible en contexto";
+
+  const qTrActivoControlDocumental =
+    contextoBase?.q_tr_activo?.etiqueta ??
+    contextoBase?.q_tr_activo?.label ??
+    contextoBase?.q_tr_activo?.tr_activo ??
+    contextoBase?.q_tr_activo?.Tr ??
+    contextoBase?.q_tr_activo?.TR ??
+    contextoBase?.q_tr_activo?.periodoRetorno ??
+    contextoBase?.q_tr_activo?.periodo_retorno ??
+    trDisenoActivoExpedienteDocumental ??
+    null;
+
   const texto = [
     "# Expediente hidrológico mínimo — Cuenca activa",
     "Estado técnico del expediente: BORRADOR GENERADO POR HELPER PURO INICIAL.",
@@ -303,7 +343,15 @@ export default function construirExpedienteHidrologicoMinimo({
     "Lectura técnica: Q-5 y Método Racional son complementarios, pero no equivalentes.",
     "",
     "## 9. Control de consistencia cruzada Pe–Área–Volumen/Q-5",
-    "Estado: pendiente de integración completa con datos derivados del expediente operativo.",
+    "Lectura técnica: control interno preliminar de consistencia volumétrica; no recalcula volumen, no recalcula Q-5 y no selecciona método adoptado.",
+    `Pe total: ${formatearValorRacionalExpediente(peTotalMmBloqueVolumenReferenciaDocumental, " mm")}`,
+    `Área: ${formatearValorRacionalExpediente(areaKm2, " km²", 4)}`,
+    `Volumen esperado: ${formatearValorRacionalExpediente(volumenEsperadoM3BloqueVolumenReferenciaDocumental, " m³")}`,
+    `Método Q-5 principal: ${metodoQ5PrincipalControlDocumental?.metodo ?? metodoQ5PrincipalControlDocumental?.nombre ?? "—"}`,
+    `Volumen Q-5 principal: ${formatearValorRacionalExpediente(volumenQ5PrincipalControlDocumental, " m³")}`,
+    `Relación volumen Q-5 / volumen esperado: ${formatearValorRacionalExpediente(relacionVolumenQ5EsperadoControlDocumental, "", 4)}`,
+    `Resultado de consistencia volumétrica: ${resultadoConsistenciaVolumetricaControlDocumental}`,
+    `Q-Tr activo: ${formatearValorRacionalExpediente(qTrActivoControlDocumental)}`,
     "",
     "## Diagnóstico temporal Q(t) no adoptivo",
     `Filas morfológicas recibidas: ${Array.isArray(filasMorfologiaQt) ? filasMorfologiaQt.length : 0}`,
