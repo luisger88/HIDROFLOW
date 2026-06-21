@@ -22,6 +22,9 @@ import evaluarRiesgoTemporalQt from "../services/hidrogramas/evaluarRiesgoTempor
 import sintetizarRiesgoTemporalQt from "../services/hidrogramas/sintetizarRiesgoTemporalQt";
 import construirSeccionDiagnosticoTemporalQt from "../services/hidrogramas/construirSeccionDiagnosticoTemporalQt";
 import validarSeccionDiagnosticoTemporalQt from "../services/hidrogramas/validarSeccionDiagnosticoTemporalQt";
+import construirPayloadExpedienteDesdeEstado from "../services/documentos/construirPayloadExpedienteDesdeEstado.js";
+import construirDescargaMarkdownExpedienteDesdePayload from "../services/documentos/construirDescargaMarkdownExpedienteDesdePayload.js";
+import descargarArchivoMarkdownEnNavegador from "../services/documentos/descargarArchivoMarkdownEnNavegador.js";
 import prepararGraficaQpTPicoMatrizPatron from "../services/hidrogramas/prepararGraficaQpTPicoMatrizPatron";
 import prepararGraficaVelocidadEfectivaMatrizPatron from "../services/hidrogramas/prepararGraficaVelocidadEfectivaMatrizPatron";
 import sintetizarLecturaComparativaMatrizPatron from "../services/hidrogramas/sintetizarLecturaComparativaMatrizPatron";
@@ -2645,6 +2648,36 @@ const handleClickSeguro = (accion) => () => {
               }
 
                
+          const payloadExpedienteMarkdown = construirPayloadExpedienteDesdeEstado({
+            contextoBase,
+            metodos,
+            filasMorfologiaQt,
+            filasDictamenFormaQt,
+            filasRiesgoTemporalQt,
+            sintesisRiesgoTemporalQt,
+            tcState: {
+              Tc_final,
+              metodosTc
+            },
+            fechaGeneracion: new Date().toLocaleString("es-CO"),
+            idSimulacion:
+              contextoBase?.cuenca?.id ??
+              contextoBase?.cuencaActiva?.id ??
+              contextoBase?.identificadorCuenca ??
+              "expediente_hidrologico_minimo"
+          });
+
+          const descargaMarkdownExpediente =
+            construirDescargaMarkdownExpedienteDesdePayload(payloadExpedienteMarkdown);
+
+          const resultadoDescargaMarkdown = descargarArchivoMarkdownEnNavegador(
+            descargaMarkdownExpediente
+          );
+
+          if (resultadoDescargaMarkdown?.ejecutado) {
+            window.alert("Expediente hidrológico mínimo descargado en Markdown.");
+            return;
+          }
           const areaTexto = document.createElement("textarea");
           areaTexto.value = textoExpediente;
           areaTexto.setAttribute("readonly", "");
@@ -3826,3 +3859,4 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
