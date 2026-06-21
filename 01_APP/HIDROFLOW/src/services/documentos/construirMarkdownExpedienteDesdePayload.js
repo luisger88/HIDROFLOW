@@ -8,6 +8,83 @@ const numero = (valor, decimales = 2) => {
     : "NO DETECTADO";
 };
 
+function renderizarTablaEscenarios(metodosComparados = []) {
+  const TR_OBJETIVO = [2.33, 5, 10, 25, 50, 100];
+  const TOLERANCIA = 0.01;
+
+  const obtenerNumero = (objeto, claves = []) => {
+    for (const clave of claves) {
+      const valor = Number(objeto?.[clave]);
+
+      if (Number.isFinite(valor)) {
+        return valor;
+      }
+    }
+
+    return null;
+  };
+
+  const filas = TR_OBJETIVO.map((tr) => {
+    const escenario =
+      metodosComparados.find(
+        (m) => Number(m?.Tr ?? m?.TR ?? m?.tr) === tr
+      ) ?? null;
+
+    if (!escenario) {
+      return {
+        tr,
+        estado: "No calculado",
+        qDiseno: "—",
+        ratio: "Pendiente"
+      };
+    }
+
+    const qDiseno = obtenerNumero(escenario, [
+      "Q",
+      "q",
+      "Qp",
+      "qp",
+      "Qpico",
+      "caudalPico"
+    ]);
+
+    const ratio = obtenerNumero(escenario, [
+      "ratioVolumen",
+      "ratio",
+      "ratioVolumetrico"
+    ]);
+
+    const estadoRatio =
+      ratio !== null &&
+      Math.abs(ratio - 1) <= TOLERANCIA
+        ? "Consistente"
+        : "Pendiente";
+
+    return {
+      tr,
+      estado: escenario?.estado ?? "disponible",
+      qDiseno:
+        qDiseno !== null
+          ? `${numero(qDiseno, 2)} m³/s`
+          : "—",
+      ratio: estadoRatio
+    };
+  });
+
+  return [
+    "",
+    "## 11. Tabla resumen multi-escenario Tr",
+    "",
+    "| Tr | Estado | Q diseño | Ratio volumen |",
+    "|----|--------|----------|---------------|",
+    ...filas.map(
+      (fila) =>
+        `| ${fila.tr} | ${fila.estado} | ${fila.qDiseno} | ${fila.ratio} |`
+    ),
+    ""
+  ];
+}
+
 export default function construirMarkdownExpedienteDesdePayload(payload = {}) {
   const ratio = payload?.controlConsistencia?.ratioVolumetrico;
 
@@ -81,10 +158,17 @@ export default function construirMarkdownExpedienteDesdePayload(payload = {}) {
     `Síntesis riesgo: ${texto(payload?.diagnosticoQt?.sintesisRiesgo)}`,
     `Adoptivo: ${payload?.diagnosticoQt?.esAdoptivo === true ? "sí" : "no"}`,
     "",
-    "## 10. Lectura de cierre",
-    "",
-    "Este expediente exportable permite revisar la trazabilidad mínima del caso, incluyendo el balance Pe × Área frente al volumen integrado Q-5.",
-    ""
+   "## 10. Lectura de cierre",
+
+"",
+
+"Este expediente exportable permite revisar la trazabilidad mínima del caso, incluyendo el balance Pe × Área frente al volumen integrado Q-5.",
+
+...renderizarTablaEscenarios(
+  payload?.hidrografiaQ5?.metodosComparados ?? []
+),
+
+""
   ].join("\n");
 }
 
