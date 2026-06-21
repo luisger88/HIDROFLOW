@@ -36,6 +36,7 @@ import {
 import {
   evaluarCompetenciaComparador,
 } from "../data/matrizCompetenciaComparador";
+import { CUENCAS_CATALOGO } from "../data/cuencasCatalogo";
 
 import { conceptuarCuenca } from "../data/clasificacionCuenca";
 import matrizPatronLaIguanaPC80 from "../data/matrizPatronLaIguanaPC80";
@@ -2674,6 +2675,11 @@ const handleClickSeguro = (accion) => () => {
               : sintesisRiesgoTemporalQt?.advertencia ??
                 "Síntesis diagnóstica no adoptiva.";
 
+          const cuencaCatalogoPayload = CUENCAS_CATALOGO?.iguana_pc80 ?? {};
+          const salidaCatalogoPayload = cuencaCatalogoPayload?.salida ?? {};
+          const relieveCatalogoPayload = cuencaCatalogoPayload?.relieve ?? {};
+          const geometriaCatalogoPayload = cuencaCatalogoPayload?.geometria ?? {};
+
           const contextoBasePayload = {
             ...contextoBase,
             cuenca: {
@@ -2681,26 +2687,54 @@ const handleClickSeguro = (accion) => () => {
               nombre:
                 contextoBase?.cuenca?.nombre ??
                 contextoBase?.cuencaNombre ??
-                contextoBase?.nombreCuenca,
+                contextoBase?.nombreCuenca ??
+                cuencaCatalogoPayload?.nombre_cuenca ??
+                cuencaCatalogoPayload?.nombre_completo,
               id:
                 contextoBase?.cuenca?.id ??
                 contextoBase?.cuencaId ??
-                contextoBase?.identificadorCuenca,
-              lat: contextoBase?.cuenca?.lat ?? contextoBase?.lat,
-              lon: contextoBase?.cuenca?.lon ?? contextoBase?.lon,
+                contextoBase?.identificadorCuenca ??
+                cuencaCatalogoPayload?.punto_control ??
+                cuencaCatalogoPayload?.hidrologia?.punto_calculo ??
+                cuencaCatalogoPayload?.id,
+              lat:
+                contextoBase?.cuenca?.lat ??
+                contextoBase?.lat ??
+                contextoBase?.lat_salida ??
+                salidaCatalogoPayload?.lat ??
+                cuencaCatalogoPayload?.lat_salida,
+              lon:
+                contextoBase?.cuenca?.lon ??
+                contextoBase?.lon ??
+                contextoBase?.lon_salida ??
+                salidaCatalogoPayload?.lon ??
+                cuencaCatalogoPayload?.lon_salida,
               cota_salida:
                 contextoBase?.cuenca?.cota_salida ??
                 contextoBase?.cota_salida_msnm ??
-                contextoBase?.cota_menor_cauce,
+                contextoBase?.cota_menor_cauce ??
+                contextoBase?.cota_min ??
+                salidaCatalogoPayload?.cota_msnm ??
+                relieveCatalogoPayload?.cota_menor_cauce_msnm ??
+                cuencaCatalogoPayload?.cota_menor_cauce,
               cota_alta:
                 contextoBase?.cuenca?.cota_alta ??
                 contextoBase?.cota_alta_msnm ??
-                contextoBase?.cota_mayor_cauce
+                contextoBase?.cota_mayor_cauce ??
+                contextoBase?.cota_max ??
+                relieveCatalogoPayload?.cota_mayor_cauce_msnm ??
+                relieveCatalogoPayload?.cota_max_msnm ??
+                cuencaCatalogoPayload?.cota_mayor_cauce ??
+                cuencaCatalogoPayload?.cota_max
             },
             longitud_cauce_km:
-              contextoBase?.longitud_cauce_km ?? contextoBase?.longitud_cauce,
+              contextoBase?.longitud_cauce_km ??
+              contextoBase?.longitud_cauce ??
+              geometriaCatalogoPayload?.longitud_cauce_km ??
+              cuencaCatalogoPayload?.longitud_cauce,
             desnivel_m:
               contextoBase?.desnivel_m ??
+              relieveCatalogoPayload?.desnivel_m ??
               (Number.isFinite(Number(contextoBase?.cota_mayor_cauce)) &&
               Number.isFinite(Number(contextoBase?.cota_menor_cauce))
                 ? Number(contextoBase.cota_mayor_cauce) -
@@ -3923,5 +3957,6 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
 
