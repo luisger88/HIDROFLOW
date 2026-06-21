@@ -2648,22 +2648,86 @@ const handleClickSeguro = (accion) => () => {
               }
 
                
+          const metodosQ5Payload = metodosQ5Expediente
+            .map((metodo) => {
+              const resultadoQ = obtenerResultadoQMetodo(metodo);
+
+              return {
+                metodo: metodo?.nombre ?? metodo?.metodo ?? "Método Q-5",
+                Qp: resultadoQ?.Qp,
+                Tp: resultadoQ?.Tp,
+                volumen: resultadoQ?.volumen
+              };
+            })
+            .filter(
+              (metodo) =>
+                Number.isFinite(Number(metodo.Qp)) &&
+                Number.isFinite(Number(metodo.Tp)) &&
+                Number.isFinite(Number(metodo.volumen))
+            );
+
+          const sintesisRiesgoTemporalQtPayload =
+            Array.isArray(sintesisRiesgoTemporalQt?.resumen)
+              ? sintesisRiesgoTemporalQt.resumen.join(" ")
+              : typeof sintesisRiesgoTemporalQt === "string"
+              ? sintesisRiesgoTemporalQt
+              : sintesisRiesgoTemporalQt?.advertencia ??
+                "Síntesis diagnóstica no adoptiva.";
+
+          const contextoBasePayload = {
+            ...contextoBase,
+            cuenca: {
+              ...(contextoBase?.cuenca ?? {}),
+              nombre:
+                contextoBase?.cuenca?.nombre ??
+                contextoBase?.cuencaNombre ??
+                contextoBase?.nombreCuenca,
+              id:
+                contextoBase?.cuenca?.id ??
+                contextoBase?.cuencaId ??
+                contextoBase?.identificadorCuenca,
+              lat: contextoBase?.cuenca?.lat ?? contextoBase?.lat,
+              lon: contextoBase?.cuenca?.lon ?? contextoBase?.lon,
+              cota_salida:
+                contextoBase?.cuenca?.cota_salida ??
+                contextoBase?.cota_salida_msnm ??
+                contextoBase?.cota_menor_cauce,
+              cota_alta:
+                contextoBase?.cuenca?.cota_alta ??
+                contextoBase?.cota_alta_msnm ??
+                contextoBase?.cota_mayor_cauce
+            },
+            longitud_cauce_km:
+              contextoBase?.longitud_cauce_km ?? contextoBase?.longitud_cauce,
+            desnivel_m:
+              contextoBase?.desnivel_m ??
+              (Number.isFinite(Number(contextoBase?.cota_mayor_cauce)) &&
+              Number.isFinite(Number(contextoBase?.cota_menor_cauce))
+                ? Number(contextoBase.cota_mayor_cauce) -
+                  Number(contextoBase.cota_menor_cauce)
+                : undefined),
+            cnBase: contextoBase?.cnBase ?? contextoBase?.CN_base ?? contextoBase?.CN,
+            cnEfectivo: contextoBase?.cnEfectivo ?? contextoBase?.CN_efectivo,
+            amcActual: contextoBase?.amcActual ?? contextoBase?.AMC,
+            tr_diseno_activo: trDisenoActivoExpediente,
+            q_tr_activo_estado: estadoQTrActivoExpediente
+          };
+
           const payloadExpedienteMarkdown = construirPayloadExpedienteDesdeEstado({
-            contextoBase,
-            metodos,
+            contextoBase: contextoBasePayload,
+            metodos: metodosQ5Payload,
             filasMorfologiaQt,
             filasDictamenFormaQt,
             filasRiesgoTemporalQt,
-            sintesisRiesgoTemporalQt,
+            sintesisRiesgoTemporalQt: sintesisRiesgoTemporalQtPayload,
             tcState: {
               Tc_final,
               metodosTc
             },
             fechaGeneracion: new Date().toLocaleString("es-CO"),
             idSimulacion:
-              contextoBase?.cuenca?.id ??
-              contextoBase?.cuencaActiva?.id ??
-              contextoBase?.identificadorCuenca ??
+              contextoBasePayload?.cuenca?.id ??
+              contextoBasePayload?.identificadorCuenca ??
               "expediente_hidrologico_minimo"
           });
 
@@ -3859,4 +3923,5 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
 
