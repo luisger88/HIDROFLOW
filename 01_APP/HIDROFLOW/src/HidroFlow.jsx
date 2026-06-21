@@ -26,6 +26,7 @@ import {
 import HidrogramaResultado from "./components/HidrogramaResultado";
 import { getTcState, setTcState } from "./agents/tcAgent";
 import { derivarEstadoQTrActivo } from "./services/qtr/derivarEstadoQTrActivo";
+import { construirQTrMultiEscenario } from "./services/qtr/construirQTrMultiEscenario";
 
 import {
   calcCNdinamico,
@@ -1972,6 +1973,51 @@ function ModHidrogramas({ params, est, name, onContextoComparador }) {
     [hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark].map(hu => calcHidroCompleto(lluvEfect, hu, dtMin))
   ), [lluvEfect, hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark, dtMin]);
 
+
+const qTrMultiEscenario = useMemo(() => {
+
+  return construirQTrMultiEscenario({
+
+    TR_LIST,
+
+    est,
+
+    CNact,
+
+    dtMin,
+
+    tcSugeridoMinutos: tc_min,
+
+    unidadesHidrologicas: [
+      hu_scs,
+      hu_scsMod,
+      hu_snyder,
+      hu_wh,
+      hu_clark
+    ],
+
+    calcHietograma,
+    calcLluviaEfectiva,
+    calcHidroCompleto
+
+  });
+
+}, [
+
+  est,
+  CNact,
+  dtMin,
+
+  tc_min,
+
+  hu_scs,
+  hu_scsMod,
+  hu_snyder,
+  hu_wh,
+  hu_clark
+
+]);
+
   // Hidrograma activo (SCS por defecto)
   const h0 = hidros?.[0] ?? null;
 
@@ -2198,6 +2244,7 @@ const leerT = (punto, indice) => {
           lluvia_efectiva_total_mm: lluviaEfectivaTotalMm,
           hidrogramas_resumen: hidrogramasResumen,
           hidrograma_principal: h0 ?? null,
+	  q_tr_multiescenario: qTrMultiEscenario,
         };
 
         // OT-0056C4 refresca Q-Tr activo con Pe total sin recalcular caudales.
