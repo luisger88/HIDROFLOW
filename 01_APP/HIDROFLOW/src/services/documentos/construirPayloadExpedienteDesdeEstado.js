@@ -1,4 +1,4 @@
-import { crearPayloadExpedienteVacio } from "../../types/expediente";
+import { crearPayloadExpedienteVacio } from "../../types/expediente.js";
 
 const numeroSeguro = (valor) => {
   const numero = Number(valor);
@@ -189,3 +189,4 @@ export default function construirPayloadExpedienteDesdeEstado({
 
   return payload;
 }
+
