@@ -57,11 +57,11 @@ export default function ComparadorMultiMetodo({ contexto = null }) {
 
   // ✅ CONTEXTO BASE
 const contextoBase = contexto || {
-  cuencaNombre: "Quebrada La Iguaná - PC_80",
-  area_km2: 46.8516,
-  pendiente_media_pct: 8.43,
-  CN: 88,
-  lluvia_efectiva: true
+  cuencaNombre: "Sin caso activo",
+  area_km2: null,
+  pendiente_media_pct: null,
+  CN: null,
+  lluvia_efectiva: false
 };
 
 const fuenteContexto = contexto ? "motor HidroFlow" : "contexto base";
@@ -1353,7 +1353,11 @@ const handleClickSeguro = (accion) => () => {
   >
     <div>
       <strong>Cuenca:</strong>{" "}
-      {contextoBase?.cuencaNombre ?? "—"}
+      {
+  contextoBase?.casoActivo?.cuenca?.nombre ??
+  contextoBase?.cuencaNombre ??
+  "—"
+}
     </div>
 
     <div>
@@ -1733,7 +1737,11 @@ const handleClickSeguro = (accion) => () => {
             "## 9. Sello técnico de generación",
             "Herramienta: HidroFlow.",
             "Tipo de salida: Expediente hidrológico mínimo.",
-            `Cuenca activa: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}.`,
+            `Cuenca activa: ${
+  contextoBase?.casoActivo?.cuenca?.nombre ??
+  contextoBase?.cuencaNombre ??
+  "Cuenca activa"
+}.`,
             `Fecha de generación: ${new Date().toLocaleString("es-CO")}.`,
             "Estado técnico: completo, limpio, numéricamente útil y con plausibilidad hidrológica interna preliminar.",
             "Validaciones superadas: estructura, coherencia entre salidas, completitud numérica y plausibilidad hidrológica preliminar.",
@@ -2558,7 +2566,9 @@ const handleClickSeguro = (accion) => () => {
             const diagnosticoDocumentalExpediente = adaptarExpedienteDocumental(textoExpediente, {
               fuenteExpediente: "ComparadorMultiMetodo.textoExpediente",
               origenPlantilla: "OT-0064",
-              cuencaActiva: contextoBase?.cuencaNombre ?? "Cuenca activa"
+              cuencaActiva: contextoBase?.casoActivo?.cuenca?.nombre ??
+contextoBase?.cuencaNombre ??
+"Cuenca activa"
             });
 
             if (!diagnosticoDocumentalExpediente.ok) {

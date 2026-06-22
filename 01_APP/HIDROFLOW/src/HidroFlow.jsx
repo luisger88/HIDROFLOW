@@ -3639,6 +3639,21 @@ useEffect(() => {
       : [];
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
+	
+	casoActivo:{
+  idCaso: previo?.casoActivo?.idCaso ?? "CASO-0001",
+  tipo:"CASO_HIDROLOGICO",
+  version:"1.0",
+
+  cuenca:{
+    nombre:
+      params?.nombreCuenca ??
+      params?.cuencaNombre ??
+      params?.nombre ??
+      null
+  }
+}, 
+
     fuente: "motor HidroFlow",
     estacion_idf: stn,
     metodoIDF: "EPM",

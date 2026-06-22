@@ -21,6 +21,65 @@ function renderizarTablaEscenarios(metodosComparados = []) {
       }
     }
 
+function renderizarMatrizQpMultiescenario(qTrMultiEscenario) {
+
+  const escenarios =
+    qTrMultiEscenario?.escenarios ?? [];
+
+  if (!escenarios.length) {
+    return [];
+  }
+
+  const TRS = [2.33, 5, 10, 25, 50, 100];
+
+  const metodos = [
+    ...new Set(
+      escenarios.flatMap(
+        (e) =>
+          (e?.hidrogramas ?? [])
+            .map((h) => h?.metodo)
+            .filter(Boolean)
+      )
+    )
+  ];
+
+  const encabezado = [
+    "",
+    "## 12. Matriz multiescenario Qp",
+    "",
+    "| Método | 2.33 | 5 | 10 | 25 | 50 | 100 |",
+    "|---------|---------|---------|---------|---------|---------|---------|"
+  ];
+
+  const filas = metodos.map((metodo) => {
+
+    const celdas = TRS.map((tr) => {
+
+      const escenario =
+        escenarios.find(
+          (e) => Number(e?.Tr) === tr
+        );
+
+      const hidro =
+        escenario?.hidrogramas?.find(
+          (h) => h?.metodo === metodo
+        );
+
+      return hidro?.Qp != null
+        ? numero(hidro.Qp, 2)
+        : "—";
+    });
+
+    return `| ${metodo} | ${celdas.join(" | ")} |`;
+  });
+
+  return [
+    ...encabezado,
+    ...filas,
+    ""
+  ];
+}
+
     return null;
   };
 
@@ -158,14 +217,17 @@ export default function construirMarkdownExpedienteDesdePayload(payload = {}) {
     `Síntesis riesgo: ${texto(payload?.diagnosticoQt?.sintesisRiesgo)}`,
     `Adoptivo: ${payload?.diagnosticoQt?.esAdoptivo === true ? "sí" : "no"}`,
     "",
-   "## 10. Lectura de cierre",
+    "## 10. Lectura de cierre",
 
-"",
+    "",
 
-"Este expediente exportable permite revisar la trazabilidad mínima del caso, incluyendo el balance Pe × Área frente al volumen integrado Q-5.",
+   "Este expediente exportable permite revisar la trazabilidad mínima del caso, incluyendo el balance Pe × Área frente al volumen integrado Q-5.",
 
-...renderizarTablaEscenarios(
+  ...renderizarTablaEscenarios(
   payload?.hidrografiaQ5?.metodosComparados ?? []
+),
+...renderizarMatrizQpMultiescenario(
+  payload?.hidrografiaQ5?.qTrMultiEscenario
 ),
 
 ""

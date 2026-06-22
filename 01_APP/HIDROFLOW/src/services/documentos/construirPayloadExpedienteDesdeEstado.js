@@ -161,7 +161,11 @@ export default function construirPayloadExpedienteDesdeEstado({
       ? extraerNumeroMetodo(q5, ["Tp", "tp", "tPico", "TPico", "tiempoPico"])
       : null,
     volumenIntegradoM3: volumenQ5,
-    metodosComparados: Array.isArray(metodos) ? metodos : []
+    metodosComparados: Array.isArray(metodos) ? metodos : [],
+   
+    qTrMultiEscenario:
+      contextoBase?.q_tr_multiescenario ?? null
+
   };
 
   payload.contrasteRacional = {
