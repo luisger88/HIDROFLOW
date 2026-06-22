@@ -3650,6 +3650,22 @@ useEffect(() => {
       params?.nombreCuenca ??
       params?.cuencaNombre ??
       params?.nombre ??
+      null,
+
+    area_km2:
+      params?.area_km2 ??
+      params?.areaKm2 ??
+      params?.area ??
+      params?.A ??
+      null,
+
+    longitud_cauce_km:
+      params?.longitud_cauce_km ??
+      params?.longitudCauceKm ??
+      params?.longitud_km ??
+      params?.L ??
+      params?.longitudCauce ??
+      params?.longitud_cauce ??
       null
   }
 }, 
