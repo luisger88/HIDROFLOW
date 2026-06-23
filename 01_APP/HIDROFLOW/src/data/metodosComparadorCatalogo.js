@@ -287,7 +287,7 @@ export const metodosQCatalogo = [
     requiere: ["coeficiente_c", "intensidad_idf", "area_km2", "tr"],
     variablesSalida: ["Qp"],
     observacion:
-      "Para La Iguaná PC_80 debe mantenerse como contraste referencial, no como método principal.",
+      "Debe mantenerse como contraste referencial, no como método principal.",
   },
 ];
 
