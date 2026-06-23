@@ -82,6 +82,53 @@ const cuencaActiva = {
     contextoBase?.casoActivo?.cuenca?.pendiente_media_pct ??
     contextoBase?.pendiente_media_pct
 };
+const hidrologiaActiva = {
+  CN:
+    contextoBase?.casoActivo?.hidrologia?.CN ??
+    contextoBase?.CN,
+
+  CN_base:
+    contextoBase?.casoActivo?.hidrologia?.CN_base ??
+    contextoBase?.CN_base ??
+    contextoBase?.CN,
+
+  CN_efectivo:
+    contextoBase?.casoActivo?.hidrologia?.CN_efectivo ??
+    contextoBase?.CN_efectivo ??
+    contextoBase?.cn_efectivo ??
+    contextoBase?.CN,
+
+  AMC:
+    contextoBase?.casoActivo?.hidrologia?.AMC ??
+    contextoBase?.AMC ??
+    contextoBase?.amcActual ??
+    contextoBase?.amc,
+
+  S_mm:
+    contextoBase?.casoActivo?.hidrologia?.S_mm ??
+    contextoBase?.S_mm ??
+    contextoBase?.s_mm,
+
+  Ia_mm:
+    contextoBase?.casoActivo?.hidrologia?.Ia_mm ??
+    contextoBase?.Ia_mm ??
+    contextoBase?.ia_mm,
+
+  porcentaje_impermeable:
+    contextoBase?.casoActivo?.hidrologia?.porcentaje_impermeable ??
+    contextoBase?.porcentaje_impermeable,
+
+  tc_min:
+    contextoBase?.casoActivo?.hidrologia?.tc_min ??
+    contextoBase?.q_tr_activo_estado?.q_tr_activo?.tc_min ??
+    contextoBase?.q_tr_activo_estado?.tc_min ??
+    contextoBase?.tc_min,
+
+  tc_metodos:
+    contextoBase?.casoActivo?.hidrologia?.tc_metodos ??
+    contextoBase?.tc_metodos ??
+    []
+};
 
 // ✅ DEFINICIÓN REAL DE p
 const p = {
@@ -4000,6 +4047,7 @@ contextoBase?.longitud_cauce_km ??
     </main>
   );
 }
+
 
 
 
