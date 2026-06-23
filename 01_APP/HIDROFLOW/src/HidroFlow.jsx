@@ -3668,6 +3668,57 @@ useEffect(() => {
       params?.longitudCauce ??
       params?.longitud_cauce ??
       null
+  },
+  hidrologia:{
+    CN: cnBase,
+
+    CN_base:
+      params?.cnBase ??
+      params?.CN ??
+      cnBase,
+
+    CN_efectivo:
+      params?.CN_efectivo ??
+      params?.cnEfectivo ??
+      cnBase,
+
+    AMC:
+      params?.AMC ??
+      params?.amcActual ??
+      params?.amc ??
+      "II",
+
+    S_mm:
+      Number(
+        (
+          25400 /
+            Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) -
+          254
+        ).toFixed(2)
+      ),
+
+    Ia_mm:
+      Number(
+        (
+          0.2 *
+          (
+            25400 /
+              Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) -
+            254
+          )
+        ).toFixed(2)
+      ),
+
+    porcentaje_impermeable:
+      Number.isFinite(Number(params?.porcentajeImpermeable))
+        ? Number(params.porcentajeImpermeable)
+        : 60,
+
+    tc_min:
+      getTcState()?.Tc_final ?? null,
+
+    tc_metodos:
+      calcTc(params)
   }
 }, 
 
@@ -3930,6 +3981,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 
