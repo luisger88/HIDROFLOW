@@ -50,7 +50,7 @@ export default function prepararGraficaQpTPicoMatrizPatron(matriz = {}) {
 
   return {
     ok: puntos.length > 0,
-    titulo: "Qp vs tPico — Matriz patrón La Iguaná PC_80",
+    titulo: "Qp vs tPico — Matriz patrón de referencia",
     ejes: {
       x: "tPico (min)",
       y: "Qp (m³/s)"
