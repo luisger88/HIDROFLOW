@@ -3632,7 +3632,7 @@ contextoBase?.longitud_cauce_km ??
                         overflowX: "auto"
                       }}
                     >
-                      <strong>Matriz patrón La Iguaná PC_80:</strong>{" "}
+                      <strong>Matriz patrón de referencia:</strong>{" "}
                       lectura estructurada de cuenca patrón para comparación futura. Diagnóstico no adoptivo.
 
                       <div
@@ -3645,7 +3645,7 @@ contextoBase?.longitud_cauce_km ??
                       >
                         <div>
                           <strong>Cuenca:</strong>{" "}
-                          {matrizPatronVisual?.cuenca?.nombre ?? "La Iguaná PC_80"}
+                          {matrizPatronVisual?.cuenca?.nombre ?? "Cuenca patrón de referencia"}
                         </div>
 
                         <div>
@@ -3710,7 +3710,7 @@ contextoBase?.longitud_cauce_km ??
                                 width={anchoSvg}
                                 height={altoSvg}
                                 role="img"
-                                aria-label="Gráfica Qp contra tPico desde matriz patrón La Iguaná PC_80"
+                                aria-label="Gráfica Qp contra tPico desde matriz patrón de referencia"
                               >
                                 <line
                                   x1={margen.izquierda}
@@ -3830,7 +3830,7 @@ contextoBase?.longitud_cauce_km ??
                                 width={anchoSvg}
                                 height={altoSvg}
                                 role="img"
-                                aria-label="Gráfica de velocidad efectiva desde matriz patrón La Iguaná PC_80"
+                                aria-label="Gráfica de velocidad efectiva desde matriz patrón de referencia"
                               >
                                 <line
                                   x1={margen.izquierda}
@@ -4047,6 +4047,7 @@ contextoBase?.longitud_cauce_km ??
     </main>
   );
 }
+
 
 
 
