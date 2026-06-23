@@ -65,12 +65,29 @@ const contextoBase = contexto || {
 };
 
 const fuenteContexto = contexto ? "motor HidroFlow" : "contexto base";
+const cuencaActiva = {
+  nombre:
+    contextoBase?.casoActivo?.cuenca?.nombre ??
+    contextoBase?.cuencaNombre,
+
+  area_km2:
+    contextoBase?.casoActivo?.cuenca?.area_km2 ??
+    contextoBase?.area_km2,
+
+  longitud_cauce_km:
+    contextoBase?.casoActivo?.cuenca?.longitud_cauce_km ??
+    contextoBase?.longitud_cauce_km,
+
+  pendiente_media_pct:
+    contextoBase?.casoActivo?.cuenca?.pendiente_media_pct ??
+    contextoBase?.pendiente_media_pct
+};
 
 // ✅ DEFINICIÓN REAL DE p
 const p = {
   longitud_cauce: 15.524,
-  area: contextoBase.area_km2,
-  pendiente_cuenca: contextoBase.pendiente_media_pct,
+  area: cuencaActiva.area_km2,
+  pendiente_cuenca: cuencaActiva.pendiente_media_pct,
   cota_mayor_cauce: 2819.27,
   cota_menor_cauce: 1511.36,
   cota_max: 2819.27,
@@ -86,8 +103,8 @@ const metodosTc = mapTcResultados(tcArray);
 
 // ✅ CONTEXTO HIDROLÓGICO
 const contextoTc = {
-  pendiente: contextoBase.pendiente_media_pct,
-  area: contextoBase.area_km2,
+  pendiente: cuencaActiva.pendiente_media_pct,
+  area: cuencaActiva.area_km2,
   CN: contextoBase.CN,
   urbanizacion: 0.5
 };
@@ -394,7 +411,7 @@ const sintesisRiesgoTemporalQt = useMemo(() => {
 
 // OT-0092B — Lectura visual controlada de matriz patrón La Iguaná PC_80.
 // Solo lectura: no recalcula, no adopta método y no modifica Q(t).
-const matrizPatronVisual = matrizPatronLaIguanaPC80;
+const matrizPatronVisual = null;
 const diagnosticoMatrizPatronQt = Array.isArray(matrizPatronVisual?.diagnosticoQt)
   ? matrizPatronVisual.diagnosticoQt
   : [];
@@ -1226,7 +1243,10 @@ const handleClickSeguro = (accion) => () => {
       return <span style={estilos.chip}>—</span>;
     }
 
-    const areaKm2 = Number(contextoBase?.area_km2);
+    const areaKm2 = Number(
+  contextoBase?.casoActivo?.cuenca?.area_km2 ??
+  contextoBase?.area_km2
+);
     const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
     const volumenEsperadoM3 =
       Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
@@ -1363,21 +1383,24 @@ const handleClickSeguro = (accion) => () => {
     <div>
       <strong>Área:</strong>{" "}
       {Number.isFinite(contextoBase?.area_km2)
-        ? `${contextoBase.area_km2.toFixed(4)} km²`
+        ? `${cuencaActiva.area_km2.toFixed(4)} km²`
         : "—"}
     </div>
 
     <div>
       <strong>Scp cauce principal:</strong>{" "}
       {Number.isFinite(contextoBase?.pendiente_media_pct)
-        ? `${contextoBase.pendiente_media_pct} %`
+        ? `${cuencaActiva.pendiente_media_pct} %`
         : "—"}
     </div>
 
     <div>
       <strong>Longitud cauce:</strong>{" "}
-      {Number.isFinite(contextoBase?.longitud_cauce_km)
-        ? `${contextoBase.longitud_cauce_km} km`
+      {Number.isFinite(
+  contextoBase?.casoActivo?.cuenca?.longitud_cauce_km ??
+  contextoBase?.longitud_cauce_km
+)
+        ? `${cuencaActiva.longitud_cauce_km} km`
         : "—"}
     </div>
 
@@ -1783,7 +1806,10 @@ const handleClickSeguro = (accion) => () => {
       <button
         type="button"
         onClick={() => {
-          const areaKm2 = Number(contextoBase?.area_km2);
+          const areaKm2 = Number(
+  contextoBase?.casoActivo?.cuenca?.area_km2 ??
+  contextoBase?.area_km2
+);
           const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
           const volumenEsperadoM3 =
             Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
@@ -2738,7 +2764,8 @@ contextoBase?.cuencaNombre ??
                 cuencaCatalogoPayload?.cota_max
             },
             longitud_cauce_km:
-              contextoBase?.longitud_cauce_km ??
+              contextoBase?.casoActivo?.cuenca?.longitud_cauce_km ??
+contextoBase?.longitud_cauce_km ??
               contextoBase?.longitud_cauce ??
               geometriaCatalogoPayload?.longitud_cauce_km ??
               cuencaCatalogoPayload?.longitud_cauce,
@@ -2816,7 +2843,10 @@ contextoBase?.cuencaNombre ??
         Copiar expediente hidrológico mínimo
       </button>
       {(() => {
-        const areaKm2 = Number(contextoBase?.area_km2);
+        const areaKm2 = Number(
+  contextoBase?.casoActivo?.cuenca?.area_km2 ??
+  contextoBase?.area_km2
+);
         const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
         const volumenEsperadoM3 =
           Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
@@ -2874,7 +2904,10 @@ contextoBase?.cuencaNombre ??
 
       <div style={{ ...estilos.muted, marginBottom: "10px" }}>
           {(() => {
-            const areaKm2 = Number(contextoBase?.area_km2);
+            const areaKm2 = Number(
+  contextoBase?.casoActivo?.cuenca?.area_km2 ??
+  contextoBase?.area_km2
+);
             const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
             const volumenEsperadoM3 =
               Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
@@ -3967,6 +4000,7 @@ contextoBase?.cuencaNombre ??
     </main>
   );
 }
+
 
 
 

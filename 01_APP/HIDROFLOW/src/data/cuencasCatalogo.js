@@ -402,7 +402,7 @@ export const CUENCAS_CATALOGO = {
   }
 };
 
-export const CUENCA_DEFAULT_ID = "iguana_pc80";
+export const CUENCA_DEFAULT_ID = "san_antonio_prado";
 
 export function getCuencaById(id) {
   return CUENCAS_CATALOGO[id] || CUENCAS_CATALOGO[CUENCA_DEFAULT_ID];

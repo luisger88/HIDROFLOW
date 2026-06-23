@@ -3647,10 +3647,11 @@ useEffect(() => {
 
   cuenca:{
     nombre:
-      params?.nombreCuenca ??
-      params?.cuencaNombre ??
-      params?.nombre ??
-      null,
+  params?.nombreCuenca ??
+  params?.cuencaNombre ??
+  params?.nombre_cuenca ??
+  params?.nombre ??
+  null,
 
     area_km2:
       params?.area_km2 ??
@@ -3688,10 +3689,11 @@ useEffect(() => {
     },
 
     cuencaNombre:
-      params?.nombreCuenca ??
-      params?.cuencaNombre ??
-      params?.nombre ??
-      "Quebrada La Iguaná - PC_80",
+  params?.nombreCuenca ??
+  params?.cuencaNombre ??
+  params?.nombre_cuenca ??
+  params?.nombre ??
+  "Sin caso activo",
 
     area_km2:
       params?.area_km2 ??
