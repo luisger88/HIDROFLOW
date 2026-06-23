@@ -139,7 +139,7 @@ const p = {
   cota_menor_cauce: 1511.36,
   cota_max: 2819.27,
   cota_min: 1511.36,
-  CN: contextoBase.CN
+  CN: hidrologiaActiva.CN
 };
 
 // ✅ EJECUTAR MOTOR
@@ -152,7 +152,7 @@ const metodosTc = mapTcResultados(tcArray);
 const contextoTc = {
   pendiente: cuencaActiva.pendiente_media_pct,
   area: cuencaActiva.area_km2,
-  CN: contextoBase.CN,
+  CN: hidrologiaActiva.CN,
   urbanizacion: 0.5
 };
 
@@ -833,7 +833,7 @@ const lecturaComparativaMatrizPatron = sintetizarLecturaComparativaMatrizPatron(
     return null;
   };
 
-  const bruto = contextoBase?.tc_metodos;
+  const bruto = hidrologiaActiva.tc_metodos;
 
   if (!bruto) return null;
 
@@ -1453,28 +1453,28 @@ const handleClickSeguro = (accion) => () => {
 
     <div>
       <strong>CN:</strong>{" "}
-      {Number.isFinite(contextoBase?.CN)
-        ? contextoBase.CN
+      {Number.isFinite(hidrologiaActiva.CN)
+        ? hidrologiaActiva.CN
         : "—"}
     </div>
 
     <div>
       <strong>CN base:</strong>{" "}
-      {Number.isFinite(contextoBase?.CN_base)
-        ? contextoBase.CN_base
+      {Number.isFinite(hidrologiaActiva.CN_base)
+        ? hidrologiaActiva.CN_base
         : "—"}
     </div>
 
     <div>
       <strong>CN efectivo:</strong>{" "}
-      {Number.isFinite(contextoBase?.CN_efectivo)
-        ? contextoBase.CN_efectivo
+      {Number.isFinite(hidrologiaActiva.CN_efectivo)
+        ? hidrologiaActiva.CN_efectivo
         : "—"}
     </div>
 
     <div>
       <strong>AMC:</strong>{" "}
-      {contextoBase?.AMC ?? "—"}
+      {hidrologiaActiva.AMC ?? "—"}
     </div>
 
     <div>
@@ -2824,9 +2824,9 @@ contextoBase?.longitud_cauce_km ??
                 ? Number(contextoBase.cota_mayor_cauce) -
                   Number(contextoBase.cota_menor_cauce)
                 : undefined),
-            cnBase: contextoBase?.cnBase ?? contextoBase?.CN_base ?? contextoBase?.CN,
-            cnEfectivo: contextoBase?.cnEfectivo ?? contextoBase?.CN_efectivo,
-            amcActual: contextoBase?.amcActual ?? contextoBase?.AMC,
+            cnBase: contextoBase?.cnBase ?? hidrologiaActiva.CN_base ?? hidrologiaActiva.CN,
+            cnEfectivo: contextoBase?.cnEfectivo ?? hidrologiaActiva.CN_efectivo,
+            amcActual: hidrologiaActiva.AMC ?? hidrologiaActiva.AMC,
             tr_diseno_activo: trDisenoActivoExpediente,
             q_tr_activo_estado: estadoQTrActivoExpediente
           };
@@ -4047,6 +4047,7 @@ contextoBase?.longitud_cauce_km ??
     </main>
   );
 }
+
 
 
 
