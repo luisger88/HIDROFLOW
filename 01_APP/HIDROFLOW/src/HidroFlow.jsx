@@ -26,6 +26,7 @@ import {
 import HidrogramaResultado from "./components/HidrogramaResultado";
 import { getTcState, setTcState } from "./agents/tcAgent";
 import { derivarEstadoQTrActivo } from "./services/qtr/derivarEstadoQTrActivo";
+import { construirQTrMultiEscenario } from "./services/qtr/construirQTrMultiEscenario";
 
 import {
   calcCNdinamico,
@@ -642,12 +643,12 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
 
   // ------------------------------------------------------------
   // 3. Dominio del mini-mapa
-  // Incluye PC_80, estaciones cercanas y estación IDF adoptada.
+  // Incluye el punto de salida, estaciones cercanas y estación IDF adoptada.
   // Esto evita que todo quede apeñuscado.
   // ------------------------------------------------------------
   const puntosMapa = [
     {
-      n: "PC_80",
+      n: "SALIDA",
       lat,
       lon,
       alt,
@@ -693,7 +694,7 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
   const yMap = (la) =>
     `${100 - ((la - lat0) / (lat1 - lat0)) * 100}%`;
 
-  // Línea conceptual PC_80 ↔ IDF adoptada
+  // Línea conceptual salida ↔ IDF adoptada
   const lineaIDF = puntoIDF
     ? {
         x1: xMap(lon),
@@ -751,7 +752,7 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
                 border: "1px solid rgba(120,160,210,0.18)"
               }}
             >
-              Distancia IDF–PC_80: {puntoIDF.dist.toFixed(1)} km
+              Distancia IDF–Salida: {puntoIDF.dist.toFixed(1)} km
             </span>
           )}
         </div>
@@ -844,7 +845,7 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
         ))}
 
         {/* Río Medellín — referencia oriental del valle.
-    La subcuenca La Iguaná PC_80 se representa al occidente del río.
+    La cuenca activa se representa en el contexto occidental del valle.
     Este trazo es conceptual: no representa conectividad hidráulica ni cruce del cauce. */}
 <div
   style={{
@@ -881,8 +882,8 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
   Río Medellín
 </div>
 
-{/* Banda occidental conceptual de la subcuenca La Iguaná PC_80.
-    Ayuda a leer que PC_80 y la subcuenca quedan al occidente del Río Medellín. */}
+{/* Banda occidental conceptual de la cuenca activa.
+    Ayuda a interpretar la ubicación relativa de la cuenca activa respecto al Río Medellín. */}
 <div
   style={{
     position: "absolute",
@@ -914,10 +915,10 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
     whiteSpace: "nowrap"
   }}
 >
-  Occidente del Río Medellín · Subcuenca La Iguaná PC_80
+  Occidente del Río Medellín · Cuenca activa
 </div>
 
-        {/* Línea IDF–PC_80 desactivada.
+        {/* Línea IDF–Salida desactivada.
     La relación IDF es pluviométrica, no una conexión hidráulica.
     Se evita sugerir cruce físico del Río Medellín. */}
 
@@ -994,10 +995,10 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
           </>
         )}
 
-        {/* Punto de control / salida PC_80 */}
+        {/* Punto de salida activo */}
         <>
           <div
-            title={`PC_80 · salida · ${lat.toFixed(6)}, ${lon.toFixed(6)}`}
+            title={`Salida activa · ${lat.toFixed(6)}, ${lon.toFixed(6)}`}
             style={{
               position: "absolute",
               left: "58%",
@@ -1028,7 +1029,7 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
               fontFamily: "monospace"
             }}
           >
-            PC_80 · SALIDA
+            SALIDA ACTIVA
           </div>
         </>
 
@@ -1089,7 +1090,7 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
       >
         <span>
           <span style={{ color: "#00e6b8", fontWeight: 900 }}>●</span>{" "}
-          PC_80 / salida
+          Salida activa
         </span>
 
         <span>
@@ -1972,6 +1973,51 @@ function ModHidrogramas({ params, est, name, onContextoComparador }) {
     [hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark].map(hu => calcHidroCompleto(lluvEfect, hu, dtMin))
   ), [lluvEfect, hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark, dtMin]);
 
+
+const qTrMultiEscenario = useMemo(() => {
+
+  return construirQTrMultiEscenario({
+
+    TR_LIST,
+
+    est,
+
+    CNact,
+
+    dtMin,
+
+    tcSugeridoMinutos: tc_min,
+
+    unidadesHidrologicas: [
+      hu_scs,
+      hu_scsMod,
+      hu_snyder,
+      hu_wh,
+      hu_clark
+    ],
+
+    calcHietograma,
+    calcLluviaEfectiva,
+    calcHidroCompleto
+
+  });
+
+}, [
+
+  est,
+  CNact,
+  dtMin,
+
+  tc_min,
+
+  hu_scs,
+  hu_scsMod,
+  hu_snyder,
+  hu_wh,
+  hu_clark
+
+]);
+
   // Hidrograma activo (SCS por defecto)
   const h0 = hidros?.[0] ?? null;
 
@@ -2198,6 +2244,7 @@ const leerT = (punto, indice) => {
           lluvia_efectiva_total_mm: lluviaEfectivaTotalMm,
           hidrogramas_resumen: hidrogramasResumen,
           hidrograma_principal: h0 ?? null,
+	  q_tr_multiescenario: qTrMultiEscenario,
         };
 
         // OT-0056C4 refresca Q-Tr activo con Pe total sin recalcular caudales.
@@ -3592,6 +3639,89 @@ useEffect(() => {
       : [];
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
+	
+	casoActivo:{
+  idCaso: previo?.casoActivo?.idCaso ?? "CASO-0001",
+  tipo:"CASO_HIDROLOGICO",
+  version:"1.0",
+
+  cuenca:{
+    nombre:
+  params?.nombreCuenca ??
+  params?.cuencaNombre ??
+  params?.nombre_cuenca ??
+  params?.nombre ??
+  null,
+
+    area_km2:
+      params?.area_km2 ??
+      params?.areaKm2 ??
+      params?.area ??
+      params?.A ??
+      null,
+
+    longitud_cauce_km:
+      params?.longitud_cauce_km ??
+      params?.longitudCauceKm ??
+      params?.longitud_km ??
+      params?.L ??
+      params?.longitudCauce ??
+      params?.longitud_cauce ??
+      null
+  },
+  hidrologia:{
+    CN: cnBase,
+
+    CN_base:
+      params?.cnBase ??
+      params?.CN ??
+      cnBase,
+
+    CN_efectivo:
+      params?.CN_efectivo ??
+      params?.cnEfectivo ??
+      cnBase,
+
+    AMC:
+      params?.AMC ??
+      params?.amcActual ??
+      params?.amc ??
+      "II",
+
+    S_mm:
+      Number(
+        (
+          25400 /
+            Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) -
+          254
+        ).toFixed(2)
+      ),
+
+    Ia_mm:
+      Number(
+        (
+          0.2 *
+          (
+            25400 /
+              Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) -
+            254
+          )
+        ).toFixed(2)
+      ),
+
+    porcentaje_impermeable:
+      Number.isFinite(Number(params?.porcentajeImpermeable))
+        ? Number(params.porcentajeImpermeable)
+        : 60,
+
+    tc_min:
+      getTcState()?.Tc_final ?? null,
+
+    tc_metodos:
+      calcTc(params)
+  }
+}, 
+
     fuente: "motor HidroFlow",
     estacion_idf: stn,
     metodoIDF: "EPM",
@@ -3610,10 +3740,11 @@ useEffect(() => {
     },
 
     cuencaNombre:
-      params?.nombreCuenca ??
-      params?.cuencaNombre ??
-      params?.nombre ??
-      "Quebrada La Iguaná - PC_80",
+  params?.nombreCuenca ??
+  params?.cuencaNombre ??
+  params?.nombre_cuenca ??
+  params?.nombre ??
+  "Sin caso activo",
 
     area_km2:
       params?.area_km2 ??
@@ -3850,6 +3981,12 @@ useEffect(() => {
     </div>
   </div>);
 }
+
+
+
+
+
+
 
 
 

@@ -150,6 +150,8 @@ export default function construirPayloadExpedienteDesdeEstado({
     )
   };
 
+
+
   payload.hidrografiaQ5 = {
     metodoPrincipal: textoSeguro(q5?.metodo ?? q5?.nombre) || "SCS Unit Hydrograph",
     caudalPicoM3s: q5
@@ -159,7 +161,11 @@ export default function construirPayloadExpedienteDesdeEstado({
       ? extraerNumeroMetodo(q5, ["Tp", "tp", "tPico", "TPico", "tiempoPico"])
       : null,
     volumenIntegradoM3: volumenQ5,
-    metodosComparados: Array.isArray(metodos) ? metodos : []
+    metodosComparados: Array.isArray(metodos) ? metodos : [],
+   
+    qTrMultiEscenario:
+      contextoBase?.q_tr_multiescenario ?? null
+
   };
 
   payload.contrasteRacional = {

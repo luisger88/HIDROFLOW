@@ -38,6 +38,7 @@ export const CUENCAS_CATALOGO = {
     alt_salida: 1702,
 
     CN: 88,
+    dt: 5,
     dt_min: 5,
 
     fuente: "Parametros originales app HidroFlow",
@@ -402,7 +403,7 @@ export const CUENCAS_CATALOGO = {
   }
 };
 
-export const CUENCA_DEFAULT_ID = "iguana_pc80";
+export const CUENCA_DEFAULT_ID = "san_antonio_prado";
 
 export function getCuencaById(id) {
   return CUENCAS_CATALOGO[id] || CUENCAS_CATALOGO[CUENCA_DEFAULT_ID];

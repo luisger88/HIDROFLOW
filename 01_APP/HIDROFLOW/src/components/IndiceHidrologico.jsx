@@ -54,7 +54,10 @@ const rangoTcAgente =
     racional = null,
 
     // Cuenca
-    cuencaNombre = "Cuenca activa",
+    cuencaNombre =
+  contexto?.casoActivo?.cuenca?.nombre ??
+  contexto?.cuencaNombre ??
+  "Cuenca activa",
     puntoControl = "PC",
     pendiente_media_pct = null,
     estadoTecnico = "En validación",
@@ -500,7 +503,7 @@ const rangoTcAgente =
       <h2 style={estilos.titulo}>Índice Hidrológico de la Cuenca</h2>
 
       <p style={estilos.subtitulo}>
-        Panel lector · La Iguaná PC_80 · Motor HidroFlow
+        Panel lector · {cuencaNombre} · Motor HidroFlow
       </p>
 
       {/* 0. Cuenca activa */}

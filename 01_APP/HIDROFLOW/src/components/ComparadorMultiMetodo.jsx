@@ -57,25 +57,89 @@ export default function ComparadorMultiMetodo({ contexto = null }) {
 
   // ✅ CONTEXTO BASE
 const contextoBase = contexto || {
-  cuencaNombre: "Quebrada La Iguaná - PC_80",
-  area_km2: 46.8516,
-  pendiente_media_pct: 8.43,
-  CN: 88,
-  lluvia_efectiva: true
+  cuencaNombre: "Sin caso activo",
+  area_km2: null,
+  pendiente_media_pct: null,
+  CN: null,
+  lluvia_efectiva: false
 };
 
 const fuenteContexto = contexto ? "motor HidroFlow" : "contexto base";
+const cuencaActiva = {
+  nombre:
+    contextoBase?.casoActivo?.cuenca?.nombre ??
+    contextoBase?.cuencaNombre,
+
+  area_km2:
+    contextoBase?.casoActivo?.cuenca?.area_km2 ??
+    contextoBase?.area_km2,
+
+  longitud_cauce_km:
+    contextoBase?.casoActivo?.cuenca?.longitud_cauce_km ??
+    contextoBase?.longitud_cauce_km,
+
+  pendiente_media_pct:
+    contextoBase?.casoActivo?.cuenca?.pendiente_media_pct ??
+    contextoBase?.pendiente_media_pct
+};
+const hidrologiaActiva = {
+  CN:
+    contextoBase?.casoActivo?.hidrologia?.CN ??
+    contextoBase?.CN,
+
+  CN_base:
+    contextoBase?.casoActivo?.hidrologia?.CN_base ??
+    contextoBase?.CN_base ??
+    contextoBase?.CN,
+
+  CN_efectivo:
+    contextoBase?.casoActivo?.hidrologia?.CN_efectivo ??
+    contextoBase?.CN_efectivo ??
+    contextoBase?.cn_efectivo ??
+    contextoBase?.CN,
+
+  AMC:
+    contextoBase?.casoActivo?.hidrologia?.AMC ??
+    contextoBase?.AMC ??
+    contextoBase?.amcActual ??
+    contextoBase?.amc,
+
+  S_mm:
+    contextoBase?.casoActivo?.hidrologia?.S_mm ??
+    contextoBase?.S_mm ??
+    contextoBase?.s_mm,
+
+  Ia_mm:
+    contextoBase?.casoActivo?.hidrologia?.Ia_mm ??
+    contextoBase?.Ia_mm ??
+    contextoBase?.ia_mm,
+
+  porcentaje_impermeable:
+    contextoBase?.casoActivo?.hidrologia?.porcentaje_impermeable ??
+    contextoBase?.porcentaje_impermeable,
+
+  tc_min:
+    contextoBase?.casoActivo?.hidrologia?.tc_min ??
+    contextoBase?.q_tr_activo_estado?.q_tr_activo?.tc_min ??
+    contextoBase?.q_tr_activo_estado?.tc_min ??
+    contextoBase?.tc_min,
+
+  tc_metodos:
+    contextoBase?.casoActivo?.hidrologia?.tc_metodos ??
+    contextoBase?.tc_metodos ??
+    []
+};
 
 // ✅ DEFINICIÓN REAL DE p
 const p = {
   longitud_cauce: 15.524,
-  area: contextoBase.area_km2,
-  pendiente_cuenca: contextoBase.pendiente_media_pct,
+  area: cuencaActiva.area_km2,
+  pendiente_cuenca: cuencaActiva.pendiente_media_pct,
   cota_mayor_cauce: 2819.27,
   cota_menor_cauce: 1511.36,
   cota_max: 2819.27,
   cota_min: 1511.36,
-  CN: contextoBase.CN
+  CN: hidrologiaActiva.CN
 };
 
 // ✅ EJECUTAR MOTOR
@@ -86,9 +150,9 @@ const metodosTc = mapTcResultados(tcArray);
 
 // ✅ CONTEXTO HIDROLÓGICO
 const contextoTc = {
-  pendiente: contextoBase.pendiente_media_pct,
-  area: contextoBase.area_km2,
-  CN: contextoBase.CN,
+  pendiente: cuencaActiva.pendiente_media_pct,
+  area: cuencaActiva.area_km2,
+  CN: hidrologiaActiva.CN,
   urbanizacion: 0.5
 };
 
@@ -394,7 +458,7 @@ const sintesisRiesgoTemporalQt = useMemo(() => {
 
 // OT-0092B — Lectura visual controlada de matriz patrón La Iguaná PC_80.
 // Solo lectura: no recalcula, no adopta método y no modifica Q(t).
-const matrizPatronVisual = matrizPatronLaIguanaPC80;
+const matrizPatronVisual = null;
 const diagnosticoMatrizPatronQt = Array.isArray(matrizPatronVisual?.diagnosticoQt)
   ? matrizPatronVisual.diagnosticoQt
   : [];
@@ -769,7 +833,7 @@ const lecturaComparativaMatrizPatron = sintetizarLecturaComparativaMatrizPatron(
     return null;
   };
 
-  const bruto = contextoBase?.tc_metodos;
+  const bruto = hidrologiaActiva.tc_metodos;
 
   if (!bruto) return null;
 
@@ -1226,7 +1290,10 @@ const handleClickSeguro = (accion) => () => {
       return <span style={estilos.chip}>—</span>;
     }
 
-    const areaKm2 = Number(contextoBase?.area_km2);
+    const areaKm2 = Number(
+  contextoBase?.casoActivo?.cuenca?.area_km2 ??
+  contextoBase?.area_km2
+);
     const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
     const volumenEsperadoM3 =
       Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
@@ -1353,54 +1420,61 @@ const handleClickSeguro = (accion) => () => {
   >
     <div>
       <strong>Cuenca:</strong>{" "}
-      {contextoBase?.cuencaNombre ?? "—"}
+      {
+  contextoBase?.casoActivo?.cuenca?.nombre ??
+  contextoBase?.cuencaNombre ??
+  "—"
+}
     </div>
 
     <div>
       <strong>Área:</strong>{" "}
       {Number.isFinite(contextoBase?.area_km2)
-        ? `${contextoBase.area_km2.toFixed(4)} km²`
+        ? `${cuencaActiva.area_km2.toFixed(4)} km²`
         : "—"}
     </div>
 
     <div>
       <strong>Scp cauce principal:</strong>{" "}
       {Number.isFinite(contextoBase?.pendiente_media_pct)
-        ? `${contextoBase.pendiente_media_pct} %`
+        ? `${cuencaActiva.pendiente_media_pct} %`
         : "—"}
     </div>
 
     <div>
       <strong>Longitud cauce:</strong>{" "}
-      {Number.isFinite(contextoBase?.longitud_cauce_km)
-        ? `${contextoBase.longitud_cauce_km} km`
+      {Number.isFinite(
+  contextoBase?.casoActivo?.cuenca?.longitud_cauce_km ??
+  contextoBase?.longitud_cauce_km
+)
+        ? `${cuencaActiva.longitud_cauce_km} km`
         : "—"}
     </div>
 
     <div>
       <strong>CN:</strong>{" "}
-      {Number.isFinite(contextoBase?.CN)
-        ? contextoBase.CN
+      {Number.isFinite(hidrologiaActiva.CN)
+        ? hidrologiaActiva.CN
         : "—"}
     </div>
 
     <div>
       <strong>CN base:</strong>{" "}
-      {Number.isFinite(contextoBase?.CN_base)
-        ? contextoBase.CN_base
+      {Number.isFinite(hidrologiaActiva.CN_base)
+        ? hidrologiaActiva.CN_base
         : "—"}
     </div>
 
     <div>
       <strong>CN efectivo:</strong>{" "}
-      {Number.isFinite(contextoBase?.CN_efectivo)
-        ? contextoBase.CN_efectivo
+      {Number.isFinite(hidrologiaActiva.CN_efectivo)
+        ? hidrologiaActiva.CN_efectivo
         : "—"}
     </div>
 
     <div>
       <strong>AMC:</strong>{" "}
-      {contextoBase?.AMC ?? "—"}
+      {hidrologiaActiva.AMC ?? "—"}
     </div>
 
     <div>
@@ -1733,7 +1807,11 @@ const handleClickSeguro = (accion) => () => {
             "## 9. Sello técnico de generación",
             "Herramienta: HidroFlow.",
             "Tipo de salida: Expediente hidrológico mínimo.",
-            `Cuenca activa: ${contextoBase?.cuencaNombre ?? "Cuenca activa"}.`,
+            `Cuenca activa: ${
+  contextoBase?.casoActivo?.cuenca?.nombre ??
+  contextoBase?.cuencaNombre ??
+  "Cuenca activa"
+}.`,
             `Fecha de generación: ${new Date().toLocaleString("es-CO")}.`,
             "Estado técnico: completo, limpio, numéricamente útil y con plausibilidad hidrológica interna preliminar.",
             "Validaciones superadas: estructura, coherencia entre salidas, completitud numérica y plausibilidad hidrológica preliminar.",
@@ -1775,7 +1853,10 @@ const handleClickSeguro = (accion) => () => {
       <button
         type="button"
         onClick={() => {
-          const areaKm2 = Number(contextoBase?.area_km2);
+          const areaKm2 = Number(
+  contextoBase?.casoActivo?.cuenca?.area_km2 ??
+  contextoBase?.area_km2
+);
           const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
           const volumenEsperadoM3 =
             Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
@@ -2558,7 +2639,9 @@ const handleClickSeguro = (accion) => () => {
             const diagnosticoDocumentalExpediente = adaptarExpedienteDocumental(textoExpediente, {
               fuenteExpediente: "ComparadorMultiMetodo.textoExpediente",
               origenPlantilla: "OT-0064",
-              cuencaActiva: contextoBase?.cuencaNombre ?? "Cuenca activa"
+              cuencaActiva: contextoBase?.casoActivo?.cuenca?.nombre ??
+contextoBase?.cuencaNombre ??
+"Cuenca activa"
             });
 
             if (!diagnosticoDocumentalExpediente.ok) {
@@ -2728,7 +2811,8 @@ const handleClickSeguro = (accion) => () => {
                 cuencaCatalogoPayload?.cota_max
             },
             longitud_cauce_km:
-              contextoBase?.longitud_cauce_km ??
+              contextoBase?.casoActivo?.cuenca?.longitud_cauce_km ??
+contextoBase?.longitud_cauce_km ??
               contextoBase?.longitud_cauce ??
               geometriaCatalogoPayload?.longitud_cauce_km ??
               cuencaCatalogoPayload?.longitud_cauce,
@@ -2740,9 +2824,9 @@ const handleClickSeguro = (accion) => () => {
                 ? Number(contextoBase.cota_mayor_cauce) -
                   Number(contextoBase.cota_menor_cauce)
                 : undefined),
-            cnBase: contextoBase?.cnBase ?? contextoBase?.CN_base ?? contextoBase?.CN,
-            cnEfectivo: contextoBase?.cnEfectivo ?? contextoBase?.CN_efectivo,
-            amcActual: contextoBase?.amcActual ?? contextoBase?.AMC,
+            cnBase: contextoBase?.cnBase ?? hidrologiaActiva.CN_base ?? hidrologiaActiva.CN,
+            cnEfectivo: contextoBase?.cnEfectivo ?? hidrologiaActiva.CN_efectivo,
+            amcActual: hidrologiaActiva.AMC ?? hidrologiaActiva.AMC,
             tr_diseno_activo: trDisenoActivoExpediente,
             q_tr_activo_estado: estadoQTrActivoExpediente
           };
@@ -2806,7 +2890,10 @@ const handleClickSeguro = (accion) => () => {
         Copiar expediente hidrológico mínimo
       </button>
       {(() => {
-        const areaKm2 = Number(contextoBase?.area_km2);
+        const areaKm2 = Number(
+  contextoBase?.casoActivo?.cuenca?.area_km2 ??
+  contextoBase?.area_km2
+);
         const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
         const volumenEsperadoM3 =
           Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
@@ -2864,7 +2951,10 @@ const handleClickSeguro = (accion) => () => {
 
       <div style={{ ...estilos.muted, marginBottom: "10px" }}>
           {(() => {
-            const areaKm2 = Number(contextoBase?.area_km2);
+            const areaKm2 = Number(
+  contextoBase?.casoActivo?.cuenca?.area_km2 ??
+  contextoBase?.area_km2
+);
             const peTotalMm = Number(contextoBase?.lluvia_efectiva_total_mm);
             const volumenEsperadoM3 =
               Number.isFinite(areaKm2) && Number.isFinite(peTotalMm)
@@ -3957,6 +4047,9 @@ const handleClickSeguro = (accion) => () => {
     </main>
   );
 }
+
+
+
 
 
 

@@ -1,0 +1,33 @@
+# HidroFlow — Reglas para el agente de IA
+
+## Contexto del proyecto
+Proyecto de ingeniería hidrológica y análisis geoespacial. Todo el código debe ejecutarse de forma local y privada.
+
+## Librerías prioritarias (orden de preferencia)
+1. **rasterio** — Lectura/escritura de ráster por ventanas (chunks), análisis multitemporal, índices de cambio. Usar siempre procesamiento por bloques en archivos grandes para no saturar RAM.
+2. **arcpy** — Operaciones en entorno ArcGIS (geodatabases, toolboxes, spatial analyst). Usar solo cuando el flujo requiera el ecosistema Esri; documentar dependencia de licencia local.
+3. Complementos permitidos: **numpy**, **pandas**, **geopandas**, **pathlib**, **multiprocessing** (para CPU/GDAL), **asyncio** solo si el cuello de botella es I/O concurrente no bloqueante.
+
+No sustituir rasterio/arcpy por SDKs en la nube (AWS, GCP, Azure) salvo orden explícita del usuario.
+
+## Rutas y archivos
+- **Prohibido** usar rutas absolutas hardcodeadas (`C:\...`, `/home/...`, `D:\...`).
+- Usar rutas **relativas al directorio raíz del proyecto** o `pathlib.Path(__file__).resolve().parent`.
+- Centralizar rutas en constantes o variables de entorno (`HIDROFLOW_ROOT`, `DATOS_DIR`, etc.).
+- Estructura esperada:
+  - `scripts/` — pipelines y análisis ejecutables
+  - `datos/raw/` — insumos sin modificar
+  - `datos/processed/` — intermedios
+  - `outputs/` — resultados finales (ráster, tablas, mapas)
+  - `tools/` — utilidades reutilizables
+  - `docs/` — documentación y metadatos
+
+## Estilo de código
+- Código modular con `try/except` en operaciones de I/O y GDAL.
+- Evitar bucles fila a fila (`iterrows`, bucles Python sobre píxeles); preferir operaciones vectorizadas o por ventanas.
+- No commitear datos pesados ni credenciales; usar `.gitignore` para `datos/` y `outputs/` si contienen archivos grandes.
+
+## Respuestas del agente
+- Entregar código listo para ejecutar en local.
+- Indicar dependencias (`requirements.txt` o entorno ArcGIS Pro) cuando se use arcpy.
+- Explicar brevemente el índice o método hidrológico aplicado cuando se proponga un script nuevo.
