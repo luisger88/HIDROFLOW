@@ -65,7 +65,7 @@ export default function prepararGraficaVelocidadEfectivaMatrizPatron(matriz = {}
 
   return {
     ok: barras.length > 0,
-    titulo: "Velocidad efectiva — Matriz patrón La Iguaná PC_80",
+    titulo: "Velocidad efectiva — Matriz patrón de referencia",
     ejes: {
       x: "Velocidad efectiva (km/h)",
       y: "Método"
