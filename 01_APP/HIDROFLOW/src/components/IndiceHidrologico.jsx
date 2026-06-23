@@ -947,7 +947,7 @@ const rangoTcAgente =
         </div>
 
         <p style={estilos.muted}>
-          Para La Iguaná PC_80, el Método Racional se conserva como contraste
+          El Método Racional se conserva como contraste
           referencial. El cálculo de C en función del CN queda en radar para el
           motor hidrológico.
         </p>
@@ -1005,6 +1005,8 @@ const rangoTcAgente =
     </aside>
   );
 }
+
+
 
 
 
