@@ -38,6 +38,7 @@ export const CUENCAS_CATALOGO = {
     alt_salida: 1702,
 
     CN: 88,
+    dt: 5,
     dt_min: 5,
 
     fuente: "Parametros originales app HidroFlow",

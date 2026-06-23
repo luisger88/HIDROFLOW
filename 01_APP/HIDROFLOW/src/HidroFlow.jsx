@@ -643,12 +643,12 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
 
   // ------------------------------------------------------------
   // 3. Dominio del mini-mapa
-  // Incluye PC_80, estaciones cercanas y estación IDF adoptada.
+  // Incluye el punto de salida, estaciones cercanas y estación IDF adoptada.
   // Esto evita que todo quede apeñuscado.
   // ------------------------------------------------------------
   const puntosMapa = [
     {
-      n: "PC_80",
+      n: "SALIDA",
       lat,
       lon,
       alt,
@@ -694,7 +694,7 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
   const yMap = (la) =>
     `${100 - ((la - lat0) / (lat1 - lat0)) * 100}%`;
 
-  // Línea conceptual PC_80 ↔ IDF adoptada
+  // Línea conceptual salida ↔ IDF adoptada
   const lineaIDF = puntoIDF
     ? {
         x1: xMap(lon),
@@ -752,7 +752,7 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
                 border: "1px solid rgba(120,160,210,0.18)"
               }}
             >
-              Distancia IDF–PC_80: {puntoIDF.dist.toFixed(1)} km
+              Distancia IDF–Salida: {puntoIDF.dist.toFixed(1)} km
             </span>
           )}
         </div>
@@ -845,7 +845,7 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
         ))}
 
         {/* Río Medellín — referencia oriental del valle.
-    La subcuenca La Iguaná PC_80 se representa al occidente del río.
+    La cuenca activa se representa en el contexto occidental del valle.
     Este trazo es conceptual: no representa conectividad hidráulica ni cruce del cauce. */}
 <div
   style={{
@@ -882,8 +882,8 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
   Río Medellín
 </div>
 
-{/* Banda occidental conceptual de la subcuenca La Iguaná PC_80.
-    Ayuda a leer que PC_80 y la subcuenca quedan al occidente del Río Medellín. */}
+{/* Banda occidental conceptual de la cuenca activa.
+    Ayuda a interpretar la ubicación relativa de la cuenca activa respecto al Río Medellín. */}
 <div
   style={{
     position: "absolute",
@@ -915,10 +915,10 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
     whiteSpace: "nowrap"
   }}
 >
-  Occidente del Río Medellín · Subcuenca La Iguaná PC_80
+  Occidente del Río Medellín · Cuenca activa
 </div>
 
-        {/* Línea IDF–PC_80 desactivada.
+        {/* Línea IDF–Salida desactivada.
     La relación IDF es pluviométrica, no una conexión hidráulica.
     Se evita sugerir cruce físico del Río Medellín. */}
 
@@ -995,10 +995,10 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
           </>
         )}
 
-        {/* Punto de control / salida PC_80 */}
+        {/* Punto de salida activo */}
         <>
           <div
-            title={`PC_80 · salida · ${lat.toFixed(6)}, ${lon.toFixed(6)}`}
+            title={`Salida activa · ${lat.toFixed(6)}, ${lon.toFixed(6)}`}
             style={{
               position: "absolute",
               left: "58%",
@@ -1029,7 +1029,7 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
               fontFamily: "monospace"
             }}
           >
-            PC_80 · SALIDA
+            SALIDA ACTIVA
           </div>
         </>
 
@@ -1090,7 +1090,7 @@ function OutletMiniMap({ lat, lon, alt, idf }) {
       >
         <span>
           <span style={{ color: "#00e6b8", fontWeight: 900 }}>●</span>{" "}
-          PC_80 / salida
+          Salida activa
         </span>
 
         <span>
@@ -3981,6 +3981,11 @@ useEffect(() => {
     </div>
   </div>);
 }
+
+
+
+
+
 
 
 
