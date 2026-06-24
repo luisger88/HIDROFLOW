@@ -50,29 +50,31 @@ EXPEDIENTE.cuenca
 
 |----------|----------|----------|----------|----------|
 
-| area\_km2 | Pendiente | Pendiente | Pendiente | |
+| area\_km2 | Sí | cuencasCatalogo.js | area\_km2 | Alimenta EXPEDIENTE.cuenca |
 
-| perimetro\_km | Pendiente | Pendiente | Pendiente | |
+| perimetro\_km | Sí | cuencasCatalogo.js | perimetro\_km | Alimenta EXPEDIENTE.cuenca |
 
-| longitudCauce\_km | Pendiente | Pendiente | Pendiente | |
+| longitudCauce\_km | Sí | cuencasCatalogo.js | longitudCauce\_km | Alimenta EXPEDIENTE.caucePrincipal |
 
-| cotaMaxCuenca\_msnm | Pendiente | Pendiente | Pendiente | |
+| cotaMaxCuenca\_msnm | Pendiente | Pendiente | Pendiente | Revisar origen real |
 
-| cotaMinCuenca\_msnm | Pendiente | Pendiente | Pendiente | |
+| cotaMinCuenca\_msnm | Pendiente | Pendiente | Pendiente | Revisar origen real |
 
-| desnivelCuenca\_m | Pendiente | Pendiente | Pendiente | |
+| desnivelCuenca\_m | Pendiente | Pendiente | Pendiente | Derivado de cotas de cuenca |
 
-| pendienteCuenca\_pct | Pendiente | Pendiente | Pendiente | |
+| pendienteCuenca\_pct | Pendiente | Pendiente | Pendiente | Revisar origen real |
 
-| cotaCabeceraCauce\_msnm | Pendiente | Pendiente | Pendiente | |
+| cotaCabeceraCauce\_msnm | Sí | cuencasCatalogo.js | cotaCabeceraCauce\_msnm | Alimenta EXPEDIENTE.caucePrincipal |
 
-| cotaSalidaCauce\_msnm | Pendiente | Pendiente | Pendiente | |
+| cotaSalidaCauce\_msnm | Sí | cuencasCatalogo.js | cotaSalidaCauce\_msnm | Alimenta EXPEDIENTE.caucePrincipal |
 
-| desnivelCauce\_m | Pendiente | Pendiente | Pendiente | |
+| desnivelCauce\_m | Pendiente | Derivado | cotaCabecera - cotaSalida | Debe calcularse desde cotas del cauce |
 
-| pendienteCauce\_pct | Pendiente | Pendiente | Pendiente | |
+| pendienteCauce\_pct | Pendiente | Derivado | desnivel / longitudCauce | Debe conservar trazabilidad |
 
-| longitudHidraulica\_km | Pendiente | Pendiente | Pendiente | |
+| longitudHidraulica\_km | Pendiente | Revisar | Revisar | Confirmar longitud hidráulica publicada |
+
+```
 
 
 
