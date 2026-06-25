@@ -2,12 +2,12 @@
 
 Fecha:
 
-2026-06-24 19:22:15
+2026-06-24 19:31:32
 
 | Archivo | Vacíos detectados |
 |----------|----------|
 | OT-0123B_mapa_trazabilidad_expediente.md | 21 |
-| OT-0123BA_auditoria_trazabilidad_cuenca.md | 17 |
+| OT-0123BA_auditoria_trazabilidad_cuenca.md | 2 |
 | OT-0123BCN.md | 0 |
 | OT-0123BCUENCA.md | 0 |
 | OT-0123BHIDROGRAMAS.md | 0 |
@@ -18,4 +18,4 @@ Fecha:
 
 ## Resumen
 
-Vacíos totales detectados: 38
+Vacíos totales detectados: 23
