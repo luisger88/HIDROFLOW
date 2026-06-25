@@ -56,23 +56,23 @@ EXPEDIENTE.cuenca
 
 | longitudCauce\_km | Sí | cuencasCatalogo.js | longitudCauce\_km | Alimenta EXPEDIENTE.caucePrincipal |
 
-| cotaMaxCuenca\_msnm | Pendiente | Pendiente | Pendiente | Revisar origen real |
+| cotaMaxCuenca\_msnm | Sí | cuencasCatalogo.js | cotaMaxCuenca_msnm | Alimenta EXPEDIENTE.cuenca |
 
-| cotaMinCuenca\_msnm | Pendiente | Pendiente | Pendiente | Revisar origen real |
+| cotaMinCuenca\_msnm | Sí | cuencasCatalogo.js | cotaMinCuenca_msnm | Alimenta EXPEDIENTE.cuenca |
 
-| desnivelCuenca\_m | Pendiente | Pendiente | Pendiente | Derivado de cotas de cuenca |
+| desnivelCuenca\_m | Sí | Derivado | cotaMaxCuenca - cotaMinCuenca | Alimenta EXPEDIENTE.cuenca |
 
-| pendienteCuenca\_pct | Pendiente | Pendiente | Pendiente | Revisar origen real |
+| pendienteCuenca\_pct | Sí | Derivado | desnivelCuenca / longitudCaracteristica | Alimenta EXPEDIENTE.cuenca |
 
 | cotaCabeceraCauce\_msnm | Sí | cuencasCatalogo.js | cotaCabeceraCauce\_msnm | Alimenta EXPEDIENTE.caucePrincipal |
 
 | cotaSalidaCauce\_msnm | Sí | cuencasCatalogo.js | cotaSalidaCauce\_msnm | Alimenta EXPEDIENTE.caucePrincipal |
 
-| desnivelCauce\_m | Pendiente | Derivado | cotaCabecera - cotaSalida | Debe calcularse desde cotas del cauce |
+| desnivelCauce\_m | Sí | Derivado | cotaCabeceraCauce - cotaSalidaCauce | Alimenta EXPEDIENTE.caucePrincipal |
 
-| pendienteCauce\_pct | Pendiente | Derivado | desnivel / longitudCauce | Debe conservar trazabilidad |
+| pendienteCauce\_pct | Sí | Derivado | desnivelCauce / longitudCauce | Alimenta EXPEDIENTE.caucePrincipal |
 
-| longitudHidraulica\_km | Pendiente | Revisar | Revisar | Confirmar longitud hidráulica publicada |
+| longitudHidraulica\_km | Sí | cuencasCatalogo.js | longitudCauce_km | Alimenta EXPEDIENTE.caucePrincipal |
 
 ```
 
@@ -119,4 +119,5 @@ Para cada variable identificar:
 
 
 La auditoría se considera cerrada cuando todas las variables de la sección CUENCA tengan origen documentado.
+
 
