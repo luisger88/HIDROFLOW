@@ -1,12 +1,5 @@
 $ErrorActionPreference = "Stop"
 
-try {
-
-$ruta = "07_TOOLBOX\powershell\Run-HidroFlowMaster.ps1"
-
-@'
-$ErrorActionPreference = "Stop"
-
 Clear-Host
 
 Write-Host ""
@@ -68,28 +61,3 @@ Write-Host "--------------------"
 Write-Host "COORDENADAS -> EXPEDIENTE"
 Write-Host ""
 
-'@ | Set-Content `
--Path $ruta `
--Encoding UTF8
-
-git add $ruta
-
-git commit `
--m "tools(master): agrega run hidroflow master"
-
-git status --short
-
-Write-Host ""
-Write-Host "RUN_HIDROFLOW_MASTER CREADO"
-Write-Host $ruta
-Write-Host ""
-
-}
-catch {
-
-Write-Host ""
-Write-Host "ERROR:"
-Write-Host $_.Exception.Message
-Write-Host ""
-
-}
