@@ -132,3 +132,50 @@ foreach($archivo in $fuentes){
         }
     }
 }
+
+Write-Host ""
+Write-Host "TRAZA CUENCA ACTIVA"
+Write-Host "-------------------"
+
+$archivosTrazabilidad = @(
+"01_APP\HIDROFLOW\src\HidroFlow.jsx",
+"01_APP\HIDROFLOW\src\data\cuencasCatalogo.js",
+"01_APP\HIDROFLOW\src\components\IndiceHidrologico.jsx",
+"01_APP\HIDROFLOW\src\components\ComparadorMultiMetodo.jsx"
+)
+
+$patronesTrazabilidad = @(
+"CUENCAS_CATALOGO",
+"cuencaActiva",
+"casoActivo",
+"contextoBase",
+"contextoBasePayload",
+"Tc_final"
+)
+
+foreach($archivo in $archivosTrazabilidad){
+
+    Write-Host ""
+    Write-Host $archivo
+
+    foreach($patron in $patronesTrazabilidad){
+
+        $cantidad = (
+            Select-String `
+                -Path $archivo `
+                -SimpleMatch `
+                -Pattern $patron `
+                -ErrorAction SilentlyContinue
+        ).Count
+
+        if($cantidad -gt 0){
+            Write-Host ("  [OK] {0} ({1})" -f $patron,$cantidad)
+        }
+    }
+}
+
+Write-Host ""
+Write-Host "ESTADO MASTER"
+Write-Host "-------------"
+Write-Host "CUENCAS_CATALOGO -> cuencaActiva -> casoActivo -> contextoBase -> Expediente"
+Write-Host ""
