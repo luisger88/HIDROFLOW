@@ -54,12 +54,13 @@ Write-Host "ComparadorMultiMetodo  : OPERATIVO"
 Write-Host "Payload Expediente     : OPERATIVO"
 Write-Host "Markdown Expediente    : OPERATIVO"
 Write-Host "Descarga Expediente    : OPERATIVO"
+
 Write-Host ""
 
 Write-Host "OBJETIVO ESTRATEGICO"
 Write-Host "--------------------"
+
 Write-Host "COORDENADAS -> EXPEDIENTE"
-Write-Host ""
 
 Write-Host ""
 Write-Host "VERIFICACION CADENA EXPEDIENTE"
@@ -77,10 +78,10 @@ $tokens = @(
 
 foreach($token in $tokens){
 
-    $encontrado =
-        Select-String `
+    $encontrado = Select-String `
         -Path $comparador `
-        -Pattern [regex]::Escape($token) `
+        -SimpleMatch `
+        -Pattern $token `
         -Quiet
 
     if($encontrado){
@@ -88,5 +89,46 @@ foreach($token in $tokens){
     }
     else{
         Write-Host "[FALTA] $token"
+    }
+}
+
+Write-Host ""
+Write-Host "MASTER STATUS: COMPLETADO"
+Write-Host ""
+
+Write-Host ""
+Write-Host "ORIGEN CONTEXTOBASE"
+Write-Host "-------------------"
+
+$fuentes = @(
+"01_APP\HIDROFLOW\src\HidroFlow.jsx",
+"01_APP\HIDROFLOW\src\data\cuencasCatalogo.js",
+"01_APP\HIDROFLOW\src\components\ComparadorMultiMetodo.jsx"
+)
+
+$patrones = @(
+"CUENCAS_CATALOGO",
+"cuencaActiva",
+"casoActivo",
+"contextoBase",
+"contextoBasePayload"
+)
+
+foreach($archivo in $fuentes){
+
+    Write-Host ""
+    Write-Host $archivo
+
+    foreach($patron in $patrones){
+
+        $ok = Select-String `
+            -Path $archivo `
+            -SimpleMatch `
+            -Pattern $patron `
+            -Quiet
+
+        if($ok){
+            Write-Host "  [OK] $patron"
+        }
     }
 }
