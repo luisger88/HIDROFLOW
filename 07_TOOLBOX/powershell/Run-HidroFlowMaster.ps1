@@ -179,3 +179,32 @@ Write-Host "ESTADO MASTER"
 Write-Host "-------------"
 Write-Host "CUENCAS_CATALOGO -> cuencaActiva -> casoActivo -> contextoBase -> Expediente"
 Write-Host ""
+
+Write-Host ""
+Write-Host "PUNTO DE ENTRADA"
+Write-Host "----------------"
+
+$hidroflow =
+"01_APP\HIDROFLOW\src\HidroFlow.jsx"
+
+$tokensEntrada = @(
+"params?.nombreCuenca",
+"params?.cuencaNombre",
+"params?.nombre_cuenca",
+"params?.area_km2",
+"params?.areaKm2",
+"casoActivo"
+)
+
+foreach($token in $tokensEntrada){
+
+    $ok = Select-String `
+        -Path $hidroflow `
+        -SimpleMatch `
+        -Pattern $token `
+        -Quiet
+
+    if($ok){
+        Write-Host "[OK] $token"
+    }
+}
