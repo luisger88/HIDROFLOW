@@ -82,19 +82,19 @@ EXPEDIENTE
 
 |----------|----------|----------|----------|
 
-| Cuenca | Pendiente | Pendiente | Pendiente |
+| Cuenca | Sí | cuencasCatalogo.js | EXPEDIENTE.cuenca |
 
-| IDF | Pendiente | Pendiente | Pendiente |
+| IDF | Sí | calcIDFPond / IDF EPM | EXPEDIENTE.lluvia |
 
-| Lluvia | Pendiente | Pendiente | Pendiente |
+| Lluvia | Sí | Hietograma / lluvia diseño | EXPEDIENTE.lluvia |
 
-| CN | Pendiente | Pendiente | Pendiente |
+| CN | Sí | SCS-CN | EXPEDIENTE.abstraccion |
 
-| Tc | Pendiente | Pendiente | Pendiente |
+| Tc | Sí | tcSelector / tcAgent | EXPEDIENTE.tiempoConcentracion |
 
-| Hidrogramas | Pendiente | Pendiente | Pendiente |
+| Hidrogramas | Sí | Hidrogramas Q(t) | EXPEDIENTE.hidrogramas |
 
-| Q-Tr | Pendiente | Pendiente | Pendiente |
+| Q-Tr | Sí | Comparador hidrológico | EXPEDIENTE.caudalesTr |
 
 
 
@@ -131,4 +131,5 @@ Quién lo consume.
 En qué sección del expediente termina.
 
 ```
+
 
