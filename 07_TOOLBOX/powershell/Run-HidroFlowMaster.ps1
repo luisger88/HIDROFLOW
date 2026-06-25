@@ -61,3 +61,32 @@ Write-Host "--------------------"
 Write-Host "COORDENADAS -> EXPEDIENTE"
 Write-Host ""
 
+Write-Host ""
+Write-Host "VERIFICACION CADENA EXPEDIENTE"
+Write-Host "------------------------------"
+
+$comparador =
+"01_APP\HIDROFLOW\src\components\ComparadorMultiMetodo.jsx"
+
+$tokens = @(
+"const Tc_final",
+"const contextoBasePayload",
+"const payloadExpedienteMarkdown",
+"construirDescargaMarkdownExpedienteDesdePayload"
+)
+
+foreach($token in $tokens){
+
+    $encontrado =
+        Select-String `
+        -Path $comparador `
+        -Pattern [regex]::Escape($token) `
+        -Quiet
+
+    if($encontrado){
+        Write-Host "[OK] $token"
+    }
+    else{
+        Write-Host "[FALTA] $token"
+    }
+}
