@@ -46,3 +46,8 @@ function HF-TestExpediente {
         -Tr $Tr
     }
 }
+
+function HF-TestExpedienteReporte {
+    powershell -ExecutionPolicy Bypass `
+    -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-TestExpedienteReporte.ps1"
+}
