@@ -21,3 +21,10 @@ function HF-Patch {
     -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-PATCH.ps1" `
     -Problema $Problema
 }
+function HF-TestExpediente {
+    param([string]$Caso = "TrActivoVsQp")
+
+    powershell -ExecutionPolicy Bypass `
+    -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-TestExpediente.ps1" `
+    -Caso $Caso
+}
