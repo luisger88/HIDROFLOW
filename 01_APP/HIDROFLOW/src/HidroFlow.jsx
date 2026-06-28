@@ -38,6 +38,10 @@ import {
   cnII_to_III
 } from "./services/hidroEngine";
 
+import resolverCuencaDesdeCoordenadas
+from "./services/master/resolverCuencaDesdeCoordenadas";
+
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // HIDROFLOW v3.1 — Arquitectura Senior · GT-AS-004 · EPM 2025 · SIATA
 // Motor: Clark IUH · W&H · Snyder · SCS Mod. · Huff · Convolución completa
@@ -1242,6 +1246,101 @@ function ModParams({ params, setParams }) {
    }));
  }, [tcMed, params.tcMedMin, setParams]);
  ``
+// OT-MASTER-005
+// Coordenadas -> Cuenca -> Params
+
+useEffect(() => {
+
+  const lat = Number(params?.lat_salida);
+  const lon = Number(params?.lon_salida);
+
+  if (
+    !Number.isFinite(lat) ||
+    !Number.isFinite(lon)
+  ) return;
+
+  const cuenca = resolverCuencaDesdeCoordenadas(lat, lon);
+
+  if (!cuenca) return;
+
+  setParams(prev => {
+
+    const nuevoNombre =
+      cuenca?.nombre_cuenca ??
+      cuenca?.nombre ??
+      prev.nombre_cuenca;
+
+    if (
+      prev.nombre_cuenca === nuevoNombre
+    ) {
+      return prev;
+    }
+
+    return {
+  ...prev,
+
+  // CUENCA
+
+  nombre_cuenca: nuevoNombre,
+
+  area:
+    cuenca?.area_km2 ??
+    cuenca?.area ??
+    prev.area,
+
+  area_km2:
+    cuenca?.area_km2 ??
+    cuenca?.area ??
+    prev.area_km2,
+
+  perimetro:
+    cuenca?.perimetro ??
+    prev.perimetro,
+
+  longitud_cauce:
+    cuenca?.longitud_cauce_km ??
+    cuenca?.longitud_cauce ??
+    prev.longitud_cauce,
+
+  longitud_cuenca:
+    cuenca?.longitud_cuenca ??
+    prev.longitud_cuenca,
+
+  cota_max:
+    cuenca?.cota_max ??
+    prev.cota_max,
+
+  cota_min:
+    cuenca?.cota_min ??
+    prev.cota_min,
+
+  // ====================================================
+  // OT-MASTER-006
+  // INVALIDA CONTEXTO HIDROLÓGICO HEREDADO
+  // ====================================================
+
+  lluvia_efectiva_total_mm: null,
+
+  hidrogramas: [],
+
+  hidrogramas_resumen: null,
+
+  hidrograma_principal: null,
+
+  q_tr_activo_estado: null,
+
+  q_tr_multiescenario: null,
+
+  contextoHidrologicoPublicado: false,
+
+  expedienteListo: false
+};
+  });
+
+}, [
+  params?.lat_salida,
+  params?.lon_salida
+]);
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
@@ -2232,20 +2331,48 @@ const leerT = (punto, indice) => {
         const qTrActivoPrevio = previo?.q_tr_activo_estado?.q_tr_activo ?? {};
 
         const siguienteContexto = {
-          ...(previo ?? {}),
-          fuente: "motor HidroFlow",
-          area_km2: Number.isFinite(Number(params?.area)) ? Number(params.area) : null,
-          estacion_idf: name ?? null,
-          lluvia_efectiva: Boolean(lluvEfect),
-          hidrogramas: {
-            fuente: "ModHidrogramas",
-            resultados: hidrogramasQ5Exportables
-          },
-          lluvia_efectiva_total_mm: lluviaEfectivaTotalMm,
-          hidrogramas_resumen: hidrogramasResumen,
-          hidrograma_principal: h0 ?? null,
-	  q_tr_multiescenario: qTrMultiEscenario,
-        };
+
+  // NO HEREDAR CONTEXTO HIDROLÓGICO ENTRE CUENCAS
+
+  casoActivo: previo?.casoActivo,
+
+  fuente: "motor HidroFlow",
+
+  area_km2:
+    Number.isFinite(Number(params?.area))
+      ? Number(params.area)
+      : null,
+
+  estacion_idf: name ?? null,
+
+  lluvia_efectiva:
+    Boolean(lluvEfect),
+
+  hidrogramas: {
+    fuente: "ModHidrogramas",
+    resultados: hidrogramasQ5Exportables
+  },
+
+  lluvia_efectiva_total_mm:
+    lluviaEfectivaTotalMm,
+
+  hidrogramas_resumen:
+    hidrogramasResumen,
+
+  hidrograma_principal:
+    h0 ?? null,
+
+  q_tr_multiescenario:
+    qTrMultiEscenario,
+
+  contextoHidrologicoPublicado: true,
+
+  expedienteListo:
+    Number.isFinite(lluviaEfectivaTotalMm) &&
+    lluviaEfectivaTotalMm > 0 &&
+    Array.isArray(hidrogramasQ5Exportables) &&
+    hidrogramasQ5Exportables.length > 0
+};
 
         // OT-0056C4 refresca Q-Tr activo con Pe total sin recalcular caudales.
         return {
@@ -3624,6 +3751,8 @@ useEffect(() => {
 
   const estacionRacional = ESTACIONES_EPM[stn];
 
+
+
   const resultadosRacionalExportable =
     estacionRacional &&
     Number.isFinite(Number(params?.area)) &&
@@ -3723,8 +3852,17 @@ useEffect(() => {
 }, 
 
     fuente: "motor HidroFlow",
-    estacion_idf: stn,
-    metodoIDF: "EPM",
+
+estacion_idf: stn,
+
+idf: {
+  nombre: stn,
+  k: estacionRacional?.params?.["25"]?.k ?? null,
+  n: estacionRacional?.params?.["25"]?.n ?? null,
+  c: estacionRacional?.params?.["25"]?.c ?? null
+},
+
+metodoIDF: "EPM",
     estacionesAdoptadas: stn ? [{ nombre: stn, peso: 1 }] : [],
     distribucionTemporal: "EPM Q1",
     tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
@@ -3790,8 +3928,19 @@ useEffect(() => {
       ...(previo ?? {}),
       tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
       estacion_idf: stn,
-      metodoIDF: "EPM",
-      distribucionTemporal: "EPM Q1",
+
+idf: {
+  nombre: stn,
+  k: estacionRacional?.params?.["25"]?.k ?? null,
+  n: estacionRacional?.params?.["25"]?.n ?? null,
+  c: estacionRacional?.params?.["25"]?.c ?? null
+},
+
+metodoIDF: "EPM",
+
+estacionesAdoptadas: stn ? [{ nombre: stn, peso: 1 }] : [],
+
+distribucionTemporal: "EPM Q1",
       area_km2: params?.area_km2 ?? params?.areaKm2 ?? params?.area ?? params?.A ?? null,
       CN_efectivo: params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase,
       S_mm: Number((25400 / Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) - 254).toFixed(2)),
@@ -3889,7 +4038,9 @@ useEffect(() => {
     return { ...prev, amcActual: amc, porcentajeImpermeable: pct, cnBase: base };
   });
 }, []); // Solo al montar
-``
+
+
+
   const est=ESTACIONES_EPM[stn];
   const aa=TABS.find(t=>t.id===tab)?.acc||C.accent;
   const pdfN=Object.values(ESTACIONES_EPM).filter(s=>s.fuente==="PDF").length;
@@ -3952,7 +4103,21 @@ useEffect(() => {
           setParams={setParams}
         />
       )}
-      {tab==="hidro"      &&<ModHidrogramas params={params} est={est} name={stn} onContextoComparador={onContextoComparador} />}
+      {/* ===================================================== */
+/* OT-MASTER-007A                                          */
+/* Motor hidrológico siempre activo                        */
+/* ===================================================== */}
+
+<ModHidrogramas
+  params={params}
+  est={est}
+  name={stn}
+  onContextoComparador={onContextoComparador}
+/>
+
+{tab==="hidro" && (
+  <></>
+)}
       {tab==="racional"   &&<ModRacional   params={params} est={est} name={stn} onContextoComparador={onContextoComparador}/>}
       {tab==="sar"        &&<ModSAR        params={params} est={est} name={stn}/>}
       {tab === "Influencia" && (

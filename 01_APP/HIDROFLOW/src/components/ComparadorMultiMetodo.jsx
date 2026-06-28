@@ -2027,16 +2027,34 @@ const handleClickSeguro = (accion) => () => {
             faltantesExpediente.push("Volumen esperado");
           }
 
-          if (!Array.isArray(filasQ5Markdown) || filasQ5Markdown.length === 0) {
-            faltantesExpediente.push("Tabla Q-5 auditada con filas reales");
-          }
+          const tieneQ5Publicado =
+  Array.isArray(filasQ5Markdown) &&
+  filasQ5Markdown.length > 0;
 
-          if (
-            !Array.isArray(contextoBase?.metodo_racional?.resultados) ||
-            contextoBase.metodo_racional.resultados.length === 0
-          ) {
-            faltantesExpediente.push("Tabla Método Racional");
-          }
+const tieneHidrogramasPublicados =
+  Array.isArray(contextoBase?.hidrogramas?.resultados) &&
+  contextoBase.hidrogramas.resultados.length > 0;
+
+if (!tieneQ5Publicado && !tieneHidrogramasPublicados) {
+  faltantesExpediente.push(
+    "Tabla Q-5 auditada con filas reales"
+  );
+}
+
+          const tieneRacionalPublicado =
+  Array.isArray(contextoBase?.metodo_racional?.resultados) &&
+  contextoBase.metodo_racional.resultados.length > 0;
+
+// OT-MASTER-008
+// No bloquear expediente por ausencia de publicación
+// automática del módulo racional.
+
+if (!tieneRacionalPublicado) {
+  console.warn(
+    "[OT-MASTER-008]",
+    "Método Racional no publicado. Se mantiene expediente operativo."
+  );
+}
 
           if (faltantesExpediente.length > 0) {
             window.alert(
@@ -2763,6 +2781,7 @@ contextoBase?.cuencaNombre ??
           const relieveCatalogoPayload = cuencaCatalogoPayload?.relieve ?? {};
           const geometriaCatalogoPayload = cuencaCatalogoPayload?.geometria ?? {};
 
+
           const contextoBasePayload = {
             ...contextoBase,
             cuenca: {
@@ -2826,6 +2845,12 @@ contextoBase?.longitud_cauce_km ??
                 : undefined),
             cnBase: contextoBase?.cnBase ?? hidrologiaActiva.CN_base ?? hidrologiaActiva.CN,
             cnEfectivo: contextoBase?.cnEfectivo ?? hidrologiaActiva.CN_efectivo,
+            idf: contextoBase?.idf ?? {
+  k: null,
+  n: null,
+  c: null
+},
+
             amcActual: hidrologiaActiva.AMC ?? hidrologiaActiva.AMC,
             tr_diseno_activo: trDisenoActivoExpediente,
             q_tr_activo_estado: estadoQTrActivoExpediente

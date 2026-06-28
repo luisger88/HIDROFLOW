@@ -1,5 +1,7 @@
 import { crearPayloadExpedienteVacio } from "../../types/expediente.js";
 
+import { obtenerTrazabilidadCN } from "../cn/obtenerTrazabilidadCN";
+
 const numeroSeguro = (valor) => {
   const numero = Number(valor);
   return Number.isFinite(numero) ? numero : null;
@@ -34,16 +36,212 @@ const extraerQTrActivo = (contextoBase = {}) =>
   contextoBase?.tr_diseno_activo ??
   null;
 
-const extraerQRacionalActivo = (contextoBase = {}) => {
-  const resultados = contextoBase?.metodo_racional?.resultados;
-  if (!Array.isArray(resultados) || resultados.length === 0) return null;
+const extraerQTrActivoDesdeEscenarios = (
+  contextoBase = {}
+) => {
 
-  const trActivo = Number(extraerQTrActivo(contextoBase));
+  const fuente =
+    contextoBase?.q_tr_multiescenario;
+
+  const escenarios =
+    Array.isArray(fuente)
+      ? fuente
+      : Array.isArray(fuente?.escenarios)
+      ? fuente.escenarios
+      : [];
+
+  if (!Array.isArray(escenarios) || escenarios.length === 0) {
+    return null;
+  }
+
+  const trActivo =
+    Number(
+      extraerQTrActivo(
+        contextoBase
+      )
+    );
+
+  if (!Number.isFinite(trActivo)) {
+    return null;
+  }
+
   const fila =
-    resultados.find((item) => Number(item?.Tr ?? item?.TR) === trActivo) ??
-    resultados[0];
+    escenarios.find(
+      (e) =>
+        Number(
+          e?.Tr ??
+          e?.TR ??
+          e?.tr ??
+          e?.periodoRetorno ??
+          e?.periodo_retorno
+        ) === trActivo
+    ) ?? null;
 
-  return numeroSeguro(fila?.Q ?? fila?.q ?? fila?.caudal);
+  if (!fila) {
+    return null;
+  }
+
+  const hidrogramaSCS =
+    Array.isArray(fila?.hidrogramas)
+      ? fila.hidrogramas.find(
+          (h) =>
+            String(
+              h?.metodo ??
+              h?.nombre ??
+              ""
+            )
+              .toLowerCase()
+              .includes("scs")
+        ) ?? null
+      : null;
+
+  return numeroSeguro(
+    fila?.Q ??
+    fila?.q ??
+    fila?.QDiseno ??
+    fila?.qDiseno ??
+    fila?.caudal ??
+    hidrogramaSCS?.Qp ??
+    hidrogramaSCS?.Qpico ??
+    hidrogramaSCS?.caudalPico
+  );
+
+};
+
+const extraerHidrogramaQ5DesdeEscenarioActivo = (
+  contextoBase = {}
+) => {
+
+  const fuente =
+    contextoBase?.q_tr_multiescenario;
+
+  const escenarios =
+    Array.isArray(fuente)
+      ? fuente
+      : Array.isArray(fuente?.escenarios)
+      ? fuente.escenarios
+      : [];
+
+  if (!Array.isArray(escenarios) || escenarios.length === 0) {
+    return null;
+  }
+
+  const trActivo =
+    Number(
+      extraerQTrActivo(
+        contextoBase
+      )
+    );
+
+  if (!Number.isFinite(trActivo)) {
+    return null;
+  }
+
+  const escenario =
+    escenarios.find(
+      (e) =>
+        Number(
+          e?.Tr ??
+          e?.TR ??
+          e?.tr ??
+          e?.periodoRetorno ??
+          e?.periodo_retorno
+        ) === trActivo
+    ) ?? null;
+
+  if (!escenario || !Array.isArray(escenario?.hidrogramas)) {
+    return null;
+  }
+
+  const hidrogramaSCS =
+    escenario.hidrogramas.find(
+      (h) =>
+        String(
+          h?.metodo ??
+          h?.nombre ??
+          ""
+        )
+          .toLowerCase()
+          .includes("scs")
+    ) ?? null;
+
+  if (!hidrogramaSCS) {
+    return null;
+  }
+
+  return {
+  metodo:
+    hidrogramaSCS?.metodo ??
+    hidrogramaSCS?.nombre ??
+    "SCS Unit Hydrograph",
+
+  Qp:
+    hidrogramaSCS?.Qp ??
+    hidrogramaSCS?.Qpico ??
+    hidrogramaSCS?.caudalPico ??
+    null,
+
+  Tp:
+    hidrogramaSCS?.Tp ??
+    hidrogramaSCS?.tPico ??
+    hidrogramaSCS?.tiempoPico ??
+    null,
+
+  volumen:
+    hidrogramaSCS?.volumen ??
+    hidrogramaSCS?.volTotal ??
+    hidrogramaSCS?.volumenTotal ??
+    null,
+
+  lluviaEfectivaTotalMm:
+    escenario?.lluviaEfectivaTotalMm ??
+    escenario?.PeTotalMm ??
+    escenario?.peTotalMm ??
+    null,
+
+  Tr:
+    escenario?.Tr ??
+    escenario?.TR ??
+    escenario?.tr ??
+    null
+};
+
+};
+
+const extraerQRacionalActivo = (contextoBase = {}) => {
+
+  const resultados =
+    contextoBase?.metodo_racional?.resultados;
+
+  if (
+    !Array.isArray(resultados) ||
+    resultados.length === 0
+  ) {
+    return null;
+  }
+
+  const trActivo =
+    Number(
+      extraerQTrActivo(
+        contextoBase
+      )
+    );
+
+  const fila =
+    resultados.find(
+      (item) =>
+        Number(
+          item?.Tr ??
+          item?.TR
+        ) === trActivo
+    ) ?? resultados[0];
+
+  return numeroSeguro(
+    fila?.Q ??
+    fila?.q ??
+    fila?.caudal
+  );
+
 };
 
 export default function construirPayloadExpedienteDesdeEstado({
@@ -60,12 +258,31 @@ export default function construirPayloadExpedienteDesdeEstado({
 } = {}) {
   const payload = crearPayloadExpedienteVacio();
 
-  const q5 = primerResultadoQ5(metodos);
+  const q5DesdeEscenarioActivo =
+  extraerHidrogramaQ5DesdeEscenarioActivo(
+    contextoBase
+  );
+
+const q5 =
+  q5DesdeEscenarioActivo ??
+  primerResultadoQ5(
+    metodos
+  );
 
   const areaKm2 = numeroSeguro(contextoBase?.area_km2);
-  const peTotalMm = numeroSeguro(contextoBase?.lluvia_efectiva_total_mm);
-  const volumenEsperado =
-    areaKm2 !== null && peTotalMm !== null ? areaKm2 * peTotalMm * 1000 : null;
+
+const peTotalMm =
+  numeroSeguro(
+    q5DesdeEscenarioActivo?.lluviaEfectivaTotalMm
+  ) ??
+  numeroSeguro(
+    contextoBase?.lluvia_efectiva_total_mm
+  );
+
+const volumenEsperado =
+  areaKm2 !== null && peTotalMm !== null
+    ? areaKm2 * peTotalMm * 1000
+    : null;
 
   const volumenQ5 = q5
     ? extraerNumeroMetodo(q5, [
@@ -117,6 +334,24 @@ export default function construirPayloadExpedienteDesdeEstado({
     )
   };
 
+  const trazabilidadCN =
+  obtenerTrazabilidadCN({
+    amcActual:
+      contextoBase?.amcActual ??
+      contextoBase?.amc ??
+      "II",
+
+    porcentajeImpermeable:
+      contextoBase?.porcentajeImpermeable ??
+      contextoBase?.porcentaje_impermeable ??
+      0,
+
+    cnBase:
+      contextoBase?.cnBase ??
+      contextoBase?.CN ??
+      null
+  });
+
   payload.lluviaYAbstraccion = {
     estacionActiva: textoSeguro(
       contextoBase?.estacion_idf ?? contextoBase?.estacionActiva
@@ -126,11 +361,24 @@ export default function construirPayloadExpedienteDesdeEstado({
       n: numeroSeguro(contextoBase?.idf?.n),
       c: numeroSeguro(contextoBase?.idf?.c)
     },
-    condicionAMC: textoSeguro(contextoBase?.amcActual ?? contextoBase?.amc),
-    cnBase: numeroSeguro(contextoBase?.cnBase),
-    cnAjustado: numeroSeguro(contextoBase?.cnAjustado),
-    cnEfectivo: numeroSeguro(contextoBase?.cnEfectivo),
-    peTotalMm
+    condicionAMC: textoSeguro(
+  contextoBase?.amcActual ??
+  contextoBase?.amc
+),
+
+cnBase: numeroSeguro(
+  trazabilidadCN?.cnBase
+),
+
+cnAjustado: numeroSeguro(
+  trazabilidadCN?.cnAjustado
+),
+
+cnEfectivo: numeroSeguro(
+  trazabilidadCN?.cnEfectivo
+),
+
+peTotalMm
   };
 
   payload.tiempoConcentracion = {
@@ -143,11 +391,19 @@ export default function construirPayloadExpedienteDesdeEstado({
   payload.escenarioQTrActivo = {
     periodoRetornoTrAnios: numeroSeguro(extraerQTrActivo(contextoBase)),
     estado: textoSeguro(contextoBase?.q_tr_activo_estado?.estado),
-    caudalDisenoM3s: numeroSeguro(
-      contextoBase?.q_tr_activo?.Q ??
-        contextoBase?.q_tr_activo?.q ??
-        contextoBase?.q_tr_activo?.caudal
-    )
+    caudalDisenoM3s:
+
+  numeroSeguro(
+    contextoBase?.q_tr_activo?.Q ??
+    contextoBase?.q_tr_activo?.q ??
+    contextoBase?.q_tr_activo?.caudal
+  )
+
+  ??
+
+  extraerQTrActivoDesdeEscenarios(
+    contextoBase
+  )
   };
 
 
@@ -193,6 +449,31 @@ export default function construirPayloadExpedienteDesdeEstado({
     esAdoptivo: false
   };
 
-  return payload;
+  console.log(
+  "AUDITORIA_TR_ACTIVO",
+  extraerQTrActivo(contextoBase)
+);
+
+console.log(
+  "AUDITORIA_QTR_MULTIESCENARIO",
+  contextoBase?.q_tr_multiescenario
+);
+
+console.log(
+  "AUDITORIA_ESCENARIO_QTR",
+  payload?.escenarioQTrActivo
+);
+
+console.log(
+  "AUDITORIA_PRIMER_Q5",
+  q5
+);
+
+console.log(
+  "AUDITORIA_METODOS_Q5",
+  metodos
+);
+
+return payload;
 }
 
