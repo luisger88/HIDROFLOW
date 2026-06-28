@@ -208,3 +208,32 @@ foreach($token in $tokensEntrada){
         Write-Host "[OK] $token"
     }
 }
+
+Write-Host ""
+Write-Host "AUTOMATIZACION FINAL"
+Write-Host "--------------------"
+
+$adaptador =
+"01_APP\HIDROFLOW\src\services\master\resolverCuencaDesdeCoordenadas.js"
+
+if(Test-Path $adaptador){
+
+    Write-Host "[OK] resolverCuencaDesdeCoordenadas"
+
+    Write-Host ""
+    Write-Host "CADENA OBJETIVO"
+
+    Write-Host "Coordenadas"
+    Write-Host " -> resolverCuencaDesdeCoordenadas"
+    Write-Host " -> params"
+    Write-Host " -> casoActivo"
+    Write-Host " -> contextoBase"
+    Write-Host " -> Expediente"
+
+}
+else{
+
+    Write-Host "[PENDIENTE] resolverCuencaDesdeCoordenadas"
+
+}
+
