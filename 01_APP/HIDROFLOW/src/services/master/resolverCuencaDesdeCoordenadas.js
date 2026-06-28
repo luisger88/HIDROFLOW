@@ -1,16 +1,19 @@
 import { CUENCAS_CATALOGO } from "../../data/cuencasCatalogo";
 
 function distancia2(lat1, lon1, lat2, lon2) {
+
   return (
     Math.pow(Number(lat1) - Number(lat2), 2) +
     Math.pow(Number(lon1) - Number(lon2), 2)
   );
+
 }
 
 export default function resolverCuencaDesdeCoordenadas(
   latitud,
   longitud
 ) {
+
   if (
     !Number.isFinite(Number(latitud)) ||
     !Number.isFinite(Number(longitud))
@@ -21,17 +24,17 @@ export default function resolverCuencaDesdeCoordenadas(
   let mejor = null;
   let mejorDistancia = Number.POSITIVE_INFINITY;
 
-  for (const cuenca of CUENCAS_CATALOGO) {
+  for (const cuenca of Object.values(CUENCAS_CATALOGO)) {
 
     const lat =
+      cuenca?.lat_salida ??
       cuenca?.lat ??
-      cuenca?.latitud ??
-      cuenca?.coordenadas?.lat;
+      cuenca?.latitud;
 
     const lon =
+      cuenca?.lon_salida ??
       cuenca?.lon ??
-      cuenca?.longitud ??
-      cuenca?.coordenadas?.lon;
+      cuenca?.longitud;
 
     if (
       !Number.isFinite(Number(lat)) ||
@@ -40,16 +43,18 @@ export default function resolverCuencaDesdeCoordenadas(
       continue;
     }
 
-    const distancia = distancia2(
+    const d = distancia2(
       latitud,
       longitud,
       lat,
       lon
     );
 
-    if (distancia < mejorDistancia) {
-      mejorDistancia = distancia;
+    if (d < mejorDistancia) {
+
+      mejorDistancia = d;
       mejor = cuenca;
+
     }
   }
 
