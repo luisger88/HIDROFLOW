@@ -51,3 +51,8 @@ function HF-TestExpedienteReporte {
     powershell -ExecutionPolicy Bypass `
     -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-TestExpedienteReporte.ps1"
 }
+
+function HF-ValidarExpediente {
+    powershell -ExecutionPolicy Bypass `
+    -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-ValidarExpediente.ps1"
+}
