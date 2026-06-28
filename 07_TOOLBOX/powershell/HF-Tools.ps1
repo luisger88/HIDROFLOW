@@ -1,5 +1,7 @@
 function HF-Trace {
-    param([string]$Simbolo)
+    param(
+        [string]$Simbolo
+    )
 
     powershell -ExecutionPolicy Bypass `
     -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-Trace.ps1" `
@@ -7,7 +9,9 @@ function HF-Trace {
 }
 
 function HF-Impact {
-    param([string]$Simbolo)
+    param(
+        [string]$Simbolo
+    )
 
     powershell -ExecutionPolicy Bypass `
     -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-Impact.ps1" `
@@ -15,16 +19,30 @@ function HF-Impact {
 }
 
 function HF-Patch {
-    param([string]$Problema)
+    param(
+        [string]$Problema
+    )
 
     powershell -ExecutionPolicy Bypass `
     -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-PATCH.ps1" `
     -Problema $Problema
 }
-function HF-TestExpediente {
-    param([string]$Caso = "TrActivoVsQp")
 
-    powershell -ExecutionPolicy Bypass `
-    -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-TestExpediente.ps1" `
-    -Caso $Caso
+function HF-TestExpediente {
+    param(
+        [string]$Caso = "TrActivoVsQp",
+        [string]$Tr = ""
+    )
+
+    if ([string]::IsNullOrWhiteSpace($Tr)) {
+        powershell -ExecutionPolicy Bypass `
+        -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-TestExpediente.ps1" `
+        -Caso $Caso
+    }
+    else {
+        powershell -ExecutionPolicy Bypass `
+        -File "D:\HidroFlow\07_TOOLBOX\powershell\HF-TestExpediente.ps1" `
+        -Caso $Caso `
+        -Tr $Tr
+    }
 }
