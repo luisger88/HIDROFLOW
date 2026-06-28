@@ -1,3 +1,7 @@
+import derivarTablaResumenTrDesdeQTrMultiEscenario from "./derivarTablaResumenTrDesdeQTrMultiEscenario";
+import derivarQDisenoDesdeEscenarioActivo from "./derivarQDisenoDesdeEscenarioActivo";
+import { generarNarrativasExpediente } from "./narrativas/generarNarrativasExpediente";
+
 const texto = (valor, defecto = "NO DETECTADO") =>
   valor === undefined || valor === null || valor === "" ? defecto : String(valor);
 
@@ -20,65 +24,6 @@ function renderizarTablaEscenarios(metodosComparados = []) {
         return valor;
       }
     }
-
-function renderizarMatrizQpMultiescenario(qTrMultiEscenario) {
-
-  const escenarios =
-    qTrMultiEscenario?.escenarios ?? [];
-
-  if (!escenarios.length) {
-    return [];
-  }
-
-  const TRS = [2.33, 5, 10, 25, 50, 100];
-
-  const metodos = [
-    ...new Set(
-      escenarios.flatMap(
-        (e) =>
-          (e?.hidrogramas ?? [])
-            .map((h) => h?.metodo)
-            .filter(Boolean)
-      )
-    )
-  ];
-
-  const encabezado = [
-    "",
-    "## 12. Matriz multiescenario Qp",
-    "",
-    "| Método | 2.33 | 5 | 10 | 25 | 50 | 100 |",
-    "|---------|---------|---------|---------|---------|---------|---------|"
-  ];
-
-  const filas = metodos.map((metodo) => {
-
-    const celdas = TRS.map((tr) => {
-
-      const escenario =
-        escenarios.find(
-          (e) => Number(e?.Tr) === tr
-        );
-
-      const hidro =
-        escenario?.hidrogramas?.find(
-          (h) => h?.metodo === metodo
-        );
-
-      return hidro?.Qp != null
-        ? numero(hidro.Qp, 2)
-        : "—";
-    });
-
-    return `| ${metodo} | ${celdas.join(" | ")} |`;
-  });
-
-  return [
-    ...encabezado,
-    ...filas,
-    ""
-  ];
-}
 
     return null;
   };
@@ -144,12 +89,89 @@ function renderizarMatrizQpMultiescenario(qTrMultiEscenario) {
   ];
 }
 
+function renderizarMatrizQpMultiescenario(qTrMultiEscenario) {
+
+  const escenarios =
+    qTrMultiEscenario?.escenarios ?? [];
+
+  if (!escenarios.length) {
+    return [];
+  }
+
+  const TRS = [2.33, 5, 10, 25, 50, 100];
+
+  const metodos = [
+    ...new Set(
+      escenarios.flatMap(
+        (e) =>
+          (e?.hidrogramas ?? [])
+            .map((h) => h?.metodo)
+            .filter(Boolean)
+      )
+    )
+  ];
+
+  const encabezado = [
+    "",
+    "## 12. Matriz multiescenario Qp",
+    "",
+    "| Método | 2.33 | 5 | 10 | 25 | 50 | 100 |",
+    "|---------|---------|---------|---------|---------|---------|---------|"
+  ];
+
+  const filas = metodos.map((metodo) => {
+
+    const celdas = TRS.map((tr) => {
+
+      const escenario =
+        escenarios.find(
+          (e) => Number(e?.Tr) === tr
+        );
+
+      const hidro =
+        escenario?.hidrogramas?.find(
+          (h) => h?.metodo === metodo
+        );
+
+      return hidro?.Qp != null
+        ? numero(hidro.Qp, 2)
+        : "—";
+    });
+
+    return `| ${metodo} | ${celdas.join(" | ")} |`;
+  });
+
+  return [
+    ...encabezado,
+    ...filas,
+    ""
+  ];
+}
+
 export default function construirMarkdownExpedienteDesdePayload(payload = {}) {
   const ratio = payload?.controlConsistencia?.ratioVolumetrico;
 
+ const narrativas =
+  generarNarrativasExpediente(
+    payload
+  );
+
+const qDiseno =
+  derivarQDisenoDesdeEscenarioActivo(
+    payload?.escenarioQTrActivo,
+    payload?.hidrografiaQ5?.qTrMultiEscenario
+  );
+
+
   return [
-    "# Expediente Hidrológico Mínimo — Corte Funcional Exportable",
-    "",
+
+  "# Expediente Hidrológico Mínimo — Corte Funcional Exportable",
+
+  "",
+
+  narrativas.resumenEjecutivo,
+
+  "",
     "## 1. Cuenca",
     "",
     `Nombre: ${texto(payload?.cuenca?.nombre)}`,
@@ -174,11 +196,21 @@ export default function construirMarkdownExpedienteDesdePayload(payload = {}) {
     `IDF c: ${texto(payload?.lluviaYAbstraccion?.parametrosIDF?.c)}`,
     `Condición AMC/SIATA: ${texto(payload?.lluviaYAbstraccion?.condicionAMC)}`,
     `CN base: ${texto(payload?.lluviaYAbstraccion?.cnBase)}`,
-    `CN ajustado: ${texto(payload?.lluviaYAbstraccion?.cnAjustado)}`,
-    `CN efectivo: ${texto(payload?.lluviaYAbstraccion?.cnEfectivo)}`,
-    `Pe total: ${numero(payload?.lluviaYAbstraccion?.peTotalMm, 2)} mm`,
-    "",
-    "## 4. Tiempo de concentración",
+`CN ajustado: ${texto(payload?.lluviaYAbstraccion?.cnAjustado)}`,
+`CN efectivo: ${texto(payload?.lluviaYAbstraccion?.cnEfectivo)}`,
+`Pe total: ${numero(payload?.lluviaYAbstraccion?.peTotalMm, 2)} mm`,
+
+"",
+
+narrativas.cn,
+
+"",
+
+narrativas.idf,
+
+"",
+
+"## 4. Tiempo de concentración",
     "",
     `Tc sugerido: ${numero(payload?.tiempoConcentracion?.tcSugeridoMinutos, 2)} min`,
     `Método de ponderación: ${texto(payload?.tiempoConcentracion?.metodoPonderacion)}`,
@@ -189,6 +221,12 @@ export default function construirMarkdownExpedienteDesdePayload(payload = {}) {
     `Tr activo: ${numero(payload?.escenarioQTrActivo?.periodoRetornoTrAnios, 0)} años`,
     `Estado: ${texto(payload?.escenarioQTrActivo?.estado)}`,
     `Caudal de diseño Q-Tr: ${numero(payload?.escenarioQTrActivo?.caudalDisenoM3s, 2)} m³/s`,
+
+"",
+
+narrativas.qtr,
+
+"",
     "",
     "## 6. Hidrografía principal Q-5",
     "",
@@ -196,7 +234,12 @@ export default function construirMarkdownExpedienteDesdePayload(payload = {}) {
     `Qp: ${numero(payload?.hidrografiaQ5?.caudalPicoM3s, 2)} m³/s`,
     `Tp: ${numero(payload?.hidrografiaQ5?.tiempoPicoMinutos, 0)} min`,
     `Volumen integrado: ${numero(payload?.hidrografiaQ5?.volumenIntegradoM3, 2)} m³`,
-    "",
+
+"",
+
+narrativas.q5,
+
+"",
     "## 7. Método Racional — contraste no adoptivo",
     "",
     `Q racional: ${numero(payload?.contrasteRacional?.caudalPicoM3s, 2)} m³/s`,
@@ -208,8 +251,14 @@ export default function construirMarkdownExpedienteDesdePayload(payload = {}) {
     `Volumen integrado Q-5: ${numero(payload?.controlConsistencia?.volumenIntegradoQ5M3, 2)} m³`,
     `Ratio Vol Q-5 / Vol esperado: ${Number.isFinite(Number(ratio)) ? Number(ratio).toFixed(6) : "NO DETECTADO"}`,
     `Estado: ${texto(payload?.controlConsistencia?.estadoConsistencia)}`,
-    "",
-    "## 9. Diagnóstico Q(t) no adoptivo",
+
+"",
+
+narrativas.consistencia,
+
+"",
+
+"## 9. Diagnóstico Q(t) no adoptivo",
     "",
     `Filas morfológicas: ${(payload?.diagnosticoQt?.filasMorfologicas ?? []).length}`,
     `Filas forma: ${(payload?.diagnosticoQt?.filasForma ?? []).length}`,
@@ -223,8 +272,11 @@ export default function construirMarkdownExpedienteDesdePayload(payload = {}) {
 
    "Este expediente exportable permite revisar la trazabilidad mínima del caso, incluyendo el balance Pe × Área frente al volumen integrado Q-5.",
 
+
   ...renderizarTablaEscenarios(
-  payload?.hidrografiaQ5?.metodosComparados ?? []
+  derivarTablaResumenTrDesdeQTrMultiEscenario(
+    payload?.hidrografiaQ5?.qTrMultiEscenario
+  )
 ),
 ...renderizarMatrizQpMultiescenario(
   payload?.hidrografiaQ5?.qTrMultiEscenario
@@ -233,4 +285,6 @@ export default function construirMarkdownExpedienteDesdePayload(payload = {}) {
 ""
   ].join("\n");
 }
+
+
 
