@@ -1,47 +1,15 @@
-const texto = (v) =>
-  v === undefined || v === null || v === ""
-    ? "NO DETECTADO"
-    : String(v);
+import { texto, numero } from "./_utilsNarrativas";
 
-export function generarResumenEjecutivo(
-  payload = {}
-) {
-
-  const cuenca =
-    payload?.cuenca ?? {};
-
-  const lluvia =
-    payload?.lluviaYAbstraccion ?? {};
-
-  const qtr =
-    payload?.escenarioQTrActivo ?? {};
-
-  const consistencia =
-    payload?.controlConsistencia ?? {};
-
-  const ratio =
-    Number.isFinite(
-      Number(
-        consistencia?.ratioVolumetrico
-      )
-    )
-      ? Number(
-          consistencia?.ratioVolumetrico
-        ).toFixed(6)
-      : "NO DETECTADO";
-
+export function generarResumenEjecutivo(payload = {}) {
   return `
-RESUMEN EJECUTIVO
+Resumen ejecutivo:
 
-La cuenca ${texto(cuenca?.nombre).replace(/^Cuenca\s+/i, "")} fue evaluada utilizando la estación IDF ${texto(lluvia?.estacionActiva)}.
+El expediente consolida la información hidrológica exportable del escenario evaluado, incluyendo identificación, lluvia y abstracción, tiempo de concentración, escenario Q-Tr activo, hidrografía Q-5, contraste racional, consistencia volumétrica y lectura de cierre.
 
-La condición AMC adoptada corresponde a ${texto(lluvia?.condicionAMC)} y el CN efectivo utilizado por el motor hidrológico corresponde a ${texto(lluvia?.cnEfectivo)}.
-
-El escenario activo evaluado corresponde a Tr=${texto(qtr?.periodoRetornoTrAnios)} años.
-
-La relación volumétrica obtenida es ${ratio}, indicando coherencia entre el volumen esperado de escorrentía y el volumen integrado por el hidrograma.
-
-Estado general: ${texto(consistencia?.estadoConsistencia)}.
-  `.trim();
-
+Cuenca: ${texto(payload?.identificacion?.nombreCuenca)}
+Área: ${numero(payload?.identificacion?.areaKm2, 4)} km²
+Tr activo: ${numero(payload?.escenarioQTrActivo?.periodoRetornoTrAnios, 0)} años
+Q-Tr: ${numero(payload?.escenarioQTrActivo?.caudalDisenoM3s, 2)} m³/s
+Tc sugerido: ${numero(payload?.tiempoConcentracion?.tcSugeridoMinutos, 2)} min
+`.trim();
 }

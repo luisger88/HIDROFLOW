@@ -1,40 +1,13 @@
-const texto = (v) =>
-  v === undefined || v === null || v === ""
-    ? "NO DETECTADO"
-    : String(v);
+import { texto, numero } from "./_utilsNarrativas";
 
-const numero = (v, decimales = 2) => {
-  const n = Number(v);
-
-  return Number.isFinite(n)
-    ? n.toLocaleString(
-        "es-CO",
-        {
-          maximumFractionDigits: decimales
-        }
-      )
-    : "NO DETECTADO";
-};
-
-export function generarNarrativaQTr(
-  payload = {}
-) {
-
-  const qtr =
-    payload?.escenarioQTrActivo ?? {};
-
+export function generarNarrativaQTr(payload = {}) {
   return `
-Trazabilidad Q-Tr:
+Narrativa Q-Tr:
 
-El periodo de retorno (Tr) representa la frecuencia estadística asociada al evento hidrológico evaluado.
+El escenario Q-Tr activo documenta el periodo de retorno y el caudal de diseño adoptado para la lectura del expediente.
 
-El escenario actualmente activo corresponde a Tr=${texto(qtr?.periodoRetornoTrAnios)} años.
-
-Para este escenario se adopta un caudal de diseño de ${numero(qtr?.caudalDisenoM3s, 2)} m³/s.
-
-Este caudal constituye la referencia hidrológica utilizada para el dimensionamiento y evaluación del escenario analizado.
-
-El estado reportado para el escenario corresponde a ${texto(qtr?.estado)}.
-  `.trim();
-
+Tr activo: ${numero(payload?.escenarioQTrActivo?.periodoRetornoTrAnios, 0)} años
+Estado: ${texto(payload?.escenarioQTrActivo?.estado)}
+Q-Tr: ${numero(payload?.escenarioQTrActivo?.caudalDisenoM3s, 2)} m³/s
+`.trim();
 }

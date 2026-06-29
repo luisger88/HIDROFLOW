@@ -57,8 +57,12 @@ export function construirBloqueTiempoConcentracionRolesTcExpediente({
     "- Tc operativo Q(t): ruta interna del hidrograma.",
     "- Duración evento: 3 h para almacenamiento/regulación.",
     "- Lag / forma SCS: parámetro derivado para forma temporal.",
-    "- Tc comparador: referencia especializada para coherencia Q-5."
-  );
+    "- Tc comparador: referencia especializada para coherencia Q-5.",
+"",
+"¿Qué valida?: la velocidad de respuesta hidrológica de la cuenca.",
+"¿Qué concluye?: el Tc adoptado como referencia temporal del escenario.",
+"Salida del bloque: el Tc establecido permite interpretar la respuesta temporal de la cuenca y constituye la referencia para evaluar el volumen esperado y los resultados hidrológicos posteriores."
+);
 
   return lineas;
 }

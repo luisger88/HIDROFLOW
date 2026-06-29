@@ -1,53 +1,13 @@
-const numero = (valor, dec = 2) => {
-  const n = Number(valor);
+import { texto, numero } from "./_utilsNarrativas";
 
-  return Number.isFinite(n)
-    ? n.toLocaleString(
-        "es-CO",
-        {
-          minimumFractionDigits: dec,
-          maximumFractionDigits: dec
-        }
-      )
-    : "NO DETECTADO";
-};
-
-export function generarNarrativaConsistencia(
-  payload = {}
-) {
-
-  const control =
-    payload?.controlConsistencia ?? {};
-
-  const volumenEsperado =
-    control?.volumenEsperadoTeoricoM3;
-
-  const volumenIntegrado =
-    control?.volumenIntegradoQ5M3;
-
-  const ratio =
-    control?.ratioVolumetrico;
-
-  const estado =
-    control?.estadoConsistencia ??
-    "NO EVALUADO";
-
+export function generarNarrativaConsistencia(payload = {}) {
   return `
-Control de consistencia:
+Narrativa de consistencia:
 
-El volumen esperado (${numero(volumenEsperado)} m³) representa la cantidad total de agua que la cuenca debería transformar en escorrentía a partir de la lluvia efectiva aplicada sobre el área de drenaje.
+El control de consistencia compara el volumen esperado Pe × Área con el volumen integrado del hidrograma Q-5.
 
-El volumen integrado (${numero(volumenIntegrado)} m³) representa la cantidad de agua realmente movilizada por el hidrograma principal Q-5 mediante integración temporal del caudal.
-
-La relación entre ambos resultados es ${numero(ratio,6)}.
-
-Un valor cercano a la unidad indica que el volumen calculado por el hidrograma coincide con el volumen generado por la lluvia efectiva.
-
-Esto evidencia conservación de masa, es decir, que el agua transformada por el modelo hidrológico no aparece ni desaparece artificialmente durante el proceso lluvia–escorrentía.
-
-Desde el punto de vista hidrológico, la coherencia entre lluvia efectiva, área de drenaje y volumen integrado demuestra que el escenario evaluado mantiene consistencia física interna.
-
-Estado final del control: ${estado}.
-  `.trim();
-
+Volumen esperado: ${numero(payload?.controlConsistencia?.volumenEsperadoTeoricoM3, 2)} m³
+Volumen integrado Q-5: ${numero(payload?.controlConsistencia?.volumenIntegradoQ5M3, 2)} m³
+Estado: ${texto(payload?.controlConsistencia?.estadoConsistencia)}
+`.trim();
 }

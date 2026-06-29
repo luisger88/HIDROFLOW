@@ -92,7 +92,13 @@ export function construirBloqueVolumenReferenciaExpediente(entrada = {}) {
 
   lineas.push(`Lluvia efectiva total: ${formatearLluviaEfectivaDocumental(peTotalMm)}`);
   lineas.push(`Volumen esperado: ${formatearVolumenEsperadoDocumental(volumenEsperadoM3)}`);
-  lineas.push("Fórmula: Pe(mm) × Área(km²) × 1000.");
+  lineas.push(
+  "Fórmula: Pe(mm) × Área(km²) × 1000.",
+  "",
+  "¿Qué valida?: la masa física generada por la lluvia efectiva.",
+  "¿Qué concluye?: el volumen de referencia esperado para el evento evaluado.",
+  "Salida del bloque: el volumen esperado constituye la referencia física utilizada para evaluar el escenario Q‑Tr activo y verificar posteriormente la consistencia del hidrograma Q‑5."
+);
 
   return lineas;
 }

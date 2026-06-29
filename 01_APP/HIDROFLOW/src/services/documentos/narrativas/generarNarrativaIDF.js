@@ -1,37 +1,15 @@
-const texto = (v) =>
-  v === undefined || v === null || v === ""
-    ? "NO DETECTADO"
-    : String(v);
+import { texto } from "./_utilsNarrativas";
 
-export function generarNarrativaIDF(
-  payload = {}
-) {
-
-  const lluvia =
-    payload?.lluviaYAbstraccion ?? {};
-
-  const estacion =
-    lluvia?.estacionActiva;
-
-  const k =
-    lluvia?.parametrosIDF?.k;
-
-  const n =
-    lluvia?.parametrosIDF?.n;
-
-  const c =
-    lluvia?.parametrosIDF?.c;
-
+export function generarNarrativaIDF(payload = {}) {
   return `
-Trazabilidad IDF:
+Narrativa IDF:
 
-La estación IDF adoptada para el análisis corresponde a ${texto(estacion)}.
+La lluvia de diseño se documenta mediante la estación IDF, el método adoptado y los parámetros disponibles.
 
-Los parámetros k=${texto(k)}, n=${texto(n)} y c=${texto(c)} describen la relación intensidad-duración-frecuencia utilizada por el motor hidrológico.
-
-Estos parámetros permiten estimar las intensidades de precipitación asociadas a los distintos periodos de retorno evaluados.
-
-Las intensidades calculadas se utilizan para construir el hietograma de diseño, obtener la lluvia efectiva (Pe) y generar la respuesta hidrológica Q(t) de la cuenca.
-  `.trim();
-
+Estación IDF: ${texto(payload?.lluviaYAbstraccion?.estacionIDF)}
+Método IDF: ${texto(payload?.lluviaYAbstraccion?.metodoIDF)}
+Parámetro k: ${texto(payload?.lluviaYAbstraccion?.parametrosIDF?.k)}
+Parámetro n: ${texto(payload?.lluviaYAbstraccion?.parametrosIDF?.n)}
+Parámetro c: ${texto(payload?.lluviaYAbstraccion?.parametrosIDF?.c)}
+`.trim();
 }

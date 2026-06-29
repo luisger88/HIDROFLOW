@@ -1,42 +1,14 @@
-const texto = (v) =>
-  v === undefined || v === null || v === ""
-    ? "NO DETECTADO"
-    : String(v);
+import { texto, numero } from "./_utilsNarrativas";
 
-const numero = (v, decimales = 2) => {
-  const n = Number(v);
-
-  return Number.isFinite(n)
-    ? n.toLocaleString(
-        "es-CO",
-        {
-          maximumFractionDigits: decimales
-        }
-      )
-    : "NO DETECTADO";
-};
-
-export function generarNarrativaQ5(
-  payload = {}
-) {
-
-  const q5 =
-    payload?.hidrografiaQ5 ?? {};
-
+export function generarNarrativaQ5(payload = {}) {
   return `
-Trazabilidad Q-5:
+Narrativa Q-5:
 
-El hidrograma principal resume la respuesta temporal de la cuenca frente al evento de diseño evaluado.
+La hidrografía principal Q-5 resume magnitud, temporalidad y volumen integrado del hidrograma principal.
 
-El método principal adoptado corresponde a ${texto(q5?.metodoPrincipal)}.
-
-El caudal pico (Qp) obtenido corresponde a ${numero(q5?.caudalPicoM3s, 2)} m³/s.
-
-El tiempo al pico (Tp) corresponde a ${numero(q5?.tiempoPicoMinutos, 0)} minutos.
-
-El volumen integrado asociado al hidrograma corresponde a ${numero(q5?.volumenIntegradoM3, 2)} m³.
-
-Estos resultados permiten caracterizar la magnitud, duración y volumen de la creciente simulada para el escenario analizado.
-  `.trim();
-
+Método principal: ${texto(payload?.hidrografiaQ5?.metodoPrincipal)}
+Qp: ${numero(payload?.hidrografiaQ5?.caudalPicoM3s, 2)} m³/s
+Tp: ${numero(payload?.hidrografiaQ5?.tiempoPicoMinutos, 0)} min
+Volumen integrado: ${numero(payload?.hidrografiaQ5?.volumenIntegradoM3, 2)} m³
+`.trim();
 }

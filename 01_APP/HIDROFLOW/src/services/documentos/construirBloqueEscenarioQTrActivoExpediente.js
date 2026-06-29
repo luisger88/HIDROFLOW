@@ -176,13 +176,20 @@ export function construirBloqueEscenarioQTrActivoExpediente(entrada = {}) {
     lineas.push(`Q-Tr activo: ${qTrActivoDocumental}`);
   }
 
-  if (faltantesQTrActivoExpediente.length > 0) {
+    if (faltantesQTrActivoExpediente.length > 0) {
     lineas.push(
       `Faltantes documentales: ${faltantesQTrActivoExpediente
         .map((faltante) => formatearValorQTrActivoDocumental(faltante))
         .join(", ")}`
     );
   }
+
+  lineas.push("");
+  lineas.push(
+    "¿Qué valida?: la trazabilidad del escenario hidrológico rector.",
+    "¿Qué concluye?: el periodo de retorno y el Q‑Tr adoptados para el análisis.",
+    "Salida del bloque: el escenario activo define las condiciones hidrológicas que alimentan la evaluación del hidrograma principal y el resto de controles del expediente."
+  );
 
   return lineas;
 }
