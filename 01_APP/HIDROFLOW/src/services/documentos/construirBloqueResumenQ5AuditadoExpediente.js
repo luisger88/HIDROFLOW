@@ -98,13 +98,20 @@ export function construirBloqueResumenQ5AuditadoExpediente(entrada = {}) {
   lineas.push(`Métodos recibidos: ${cantidadMetodosQ5}`);
   lineas.push(`Estado: ${estadoResumenQ5AuditadoExpediente}`);
 
-  if (faltantesResumenQ5AuditadoExpediente.length > 0) {
+    if (faltantesResumenQ5AuditadoExpediente.length > 0) {
     lineas.push(
       `Faltantes documentales: ${faltantesResumenQ5AuditadoExpediente
         .map((faltante) => formatearValorResumenQ5Documental(faltante))
         .join(", ")}`
     );
   }
+
+  lineas.push("");
+  lineas.push(
+    "¿Qué valida?: la respuesta hidrológica obtenida para el evento de diseño.",
+    "¿Qué concluye?: la magnitud, temporalidad y volumen asociados al hidrograma principal.",
+    "Salida del bloque: la respuesta hidrológica obtenida será contrastada mediante métodos independientes y controles de consistencia física para verificar la defendibilidad técnica del resultado."
+  );
 
   return lineas;
 }
