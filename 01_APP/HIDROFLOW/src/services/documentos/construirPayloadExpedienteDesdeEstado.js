@@ -356,6 +356,12 @@ const volumenEsperado =
     estacionActiva: textoSeguro(
       contextoBase?.estacion_idf ?? contextoBase?.estacionActiva
     ),
+    estacionIDF: textoSeguro(
+      contextoBase?.estacion_idf ?? contextoBase?.estacionActiva
+    ),
+    metodoIDF: textoSeguro(
+  contextoBase?.metodoIDF
+),
     parametrosIDF: {
       k: numeroSeguro(contextoBase?.idf?.k),
       n: numeroSeguro(contextoBase?.idf?.n),

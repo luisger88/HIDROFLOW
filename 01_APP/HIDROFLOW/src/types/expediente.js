@@ -18,7 +18,9 @@ export const crearPayloadExpedienteVacio = () => ({
   },
 
   lluviaYAbstraccion: {
+    // @deprecated Usar estacionIDF
     estacionActiva: "",
+    estacionIDF: "",
     parametrosIDF: { k: null, n: null, c: null },
     condicionAMC: "",
     cnBase: null,

@@ -198,7 +198,10 @@ const qDiseno =
 "",
     "## 3. Lluvia y abstracción",
     "",
-    `Estación IDF/EPM: ${texto(payload?.lluviaYAbstraccion?.estacionActiva)}`,
+    `Estación IDF/EPM: ${texto(
+  payload?.lluviaYAbstraccion?.estacionIDF ??
+  payload?.lluviaYAbstraccion?.estacionActiva
+)}`,    
     `IDF k: ${texto(payload?.lluviaYAbstraccion?.parametrosIDF?.k)}`,
     `IDF n: ${texto(payload?.lluviaYAbstraccion?.parametrosIDF?.n)}`,
     `IDF c: ${texto(payload?.lluviaYAbstraccion?.parametrosIDF?.c)}`,
