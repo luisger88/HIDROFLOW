@@ -20,10 +20,11 @@ export function construirQTrMultiEscenario({
       "EPM_Q1"
     );
 
-    const lluviaEfectiva = calcLluviaEfectiva(
-      hiet,
-      CNact
-    );
+    const lluviaEfectiva =
+      calcLluviaEfectiva(
+        hiet,
+        CNact
+      );
 
     const lluviaEfectivaTotalMm =
       lluviaEfectiva.reduce(
@@ -46,6 +47,7 @@ export function construirQTrMultiEscenario({
           Tp: H.tPico,
           volumen: H.volTotal
         };
+
       });
 
     return {
@@ -55,6 +57,7 @@ export function construirQTrMultiEscenario({
         +lluviaEfectivaTotalMm.toFixed(4),
       hidrogramas
     };
+
   });
 
   return {
@@ -62,4 +65,5 @@ export function construirQTrMultiEscenario({
     tcSugeridoMinutos,
     escenarios
   };
+
 }

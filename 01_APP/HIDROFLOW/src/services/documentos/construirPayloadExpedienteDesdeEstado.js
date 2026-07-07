@@ -10,6 +10,38 @@ const numeroSeguro = (valor) => {
 const textoSeguro = (valor) =>
   valor === undefined || valor === null ? "" : String(valor);
 
+const validarK = (valor) => {
+  const numero = Number(valor);
+
+  return Number.isFinite(numero) && numero > 0
+    ? numero
+    : null;
+};
+
+const validarN = (valor) => {
+  const numero = Number(valor);
+
+  return Number.isFinite(numero) && numero > 0
+    ? numero
+    : null;
+};
+
+const validarC = (valor) => {
+  const numero = Number(valor);
+
+  return Number.isFinite(numero) && numero >= 0
+    ? numero
+    : null;
+};
+
+const validarAMC = (valor) => {
+  const catalogo = ["I", "II", "III"];
+
+  return catalogo.includes(valor)
+    ? valor
+    : "II";
+};
+
 const primerResultadoQ5 = (metodos = []) =>
   Array.isArray(metodos)
     ? metodos.find((metodo) =>
@@ -352,16 +384,69 @@ const volumenEsperado =
       null
   });
 
-  payload.lluviaYAbstraccion = {
-    estacionActiva: textoSeguro(
-      contextoBase?.estacion_idf ?? contextoBase?.estacionActiva
-    ),
+  const advertencias = [];
+
+const cnAjustadoAudit =
+  Number(trazabilidadCN?.cnAjustado);
+
+const cnEfectivoAudit =
+  Number(trazabilidadCN?.cnEfectivo);
+
+if (
+  Number.isFinite(cnEfectivoAudit) &&
+  Number.isFinite(cnAjustadoAudit) &&
+  cnEfectivoAudit < cnAjustadoAudit
+) {
+  advertencias.push({
+    codigo: "CN-001",
+    mensaje:
+      "CN efectivo es menor que CN ajustado (incoherencia hidrológica detectada).",
+    nivel: "CRITICO"
+  });
+}
+
+const metodoIDFAudit =
+  textoSeguro(contextoBase?.metodoIDF);
+
+const kAudit =
+  validarK(contextoBase?.idf?.k);
+
+const nAudit =
+  validarN(contextoBase?.idf?.n);
+
+const cAudit =
+  validarC(contextoBase?.idf?.c);
+
+if (
+  metodoIDFAudit === "EPM" &&
+  (
+    kAudit === null ||
+    nAudit === null ||
+    cAudit === null
+  )
+) {
+  advertencias.push({
+    codigo: "IDF-001",
+    mensaje:
+      "Parámetros de subcontrato IDF incompletos para método EPM.",
+    nivel: "CRITICO"
+  });
+}
+
+  payload.lluviaYAbstraccion = {   
+    estacionIDF: textoSeguro(
+  contextoBase?.estacion_idf
+),
+    metodoIDF: textoSeguro(
+  contextoBase?.metodoIDF
+),
     parametrosIDF: {
-      k: numeroSeguro(contextoBase?.idf?.k),
-      n: numeroSeguro(contextoBase?.idf?.n),
-      c: numeroSeguro(contextoBase?.idf?.c)
-    },
-    condicionAMC: textoSeguro(
+  k: validarK(contextoBase?.idf?.k),
+  n: validarN(contextoBase?.idf?.n),
+  c: validarC(contextoBase?.idf?.c)
+},
+
+condicionAMC: validarAMC(
   contextoBase?.amcActual ??
   contextoBase?.amc
 ),
@@ -473,6 +558,20 @@ console.log(
   "AUDITORIA_METODOS_Q5",
   metodos
 );
+
+console.table([
+  {
+    escenario: "MCVD-0007A",
+    k: payload?.lluviaYAbstraccion?.parametrosIDF?.k,
+    intensidad: payload?.lluviaYAbstraccion?.intensidadMmH,
+    pe: payload?.lluviaYAbstraccion?.peTotalMm,
+    qTr: payload?.escenarioQTrActivo?.caudalDisenoM3s,
+    qp: payload?.hidrografiaQ5?.caudalPicoM3s,
+    volumen: payload?.hidrografiaQ5?.volumenIntegradoM3
+  }
+]);
+
+payload.advertencias = advertencias;
 
 return payload;
 }

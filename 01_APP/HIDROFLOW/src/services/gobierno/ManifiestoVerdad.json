@@ -1,0 +1,16 @@
+{
+  "cuencas": {
+    "La Iguaná": {
+      "estado": "CERTIFICADA_MCVD",
+      "areaKm2": 46.8516,
+      "longitudCauceKm": 15.524,
+      "pendientePrincipal": 8.43,
+      "tcSugeridoMinutos": 114.2,
+      "origenCN": {
+        "fuente": "Cobertura y uso del suelo",
+        "estado": "VALIDADO",
+        "metodo": "SCS-CN"
+      }
+    }
+  }
+}

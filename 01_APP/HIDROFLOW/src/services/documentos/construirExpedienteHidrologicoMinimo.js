@@ -5,6 +5,9 @@ import { construirBloqueTiempoConcentracionRolesTcExpediente } from "./construir
 import { construirBloqueVolumenReferenciaExpediente } from "./construirBloqueVolumenReferenciaExpediente";
 import { construirBloqueEscenarioQTrActivoExpediente } from "./construirBloqueEscenarioQTrActivoExpediente";
 import { construirBloqueResumenQ5AuditadoExpediente } from "./construirBloqueResumenQ5AuditadoExpediente";
+import { generarNarrativaIDF }
+  from "./narrativas/generarNarrativaIDF";
+
 // OT-0110B — Helper puro inicial del expediente hidrológico mínimo.
 // Este helper NO está integrado todavía al botón de copiado.
 // No modifica UI, no copia al portapapeles, no recalcula hidrogramas y no toca motor.
@@ -16,6 +19,7 @@ export const SECCIONES_OBLIGATORIAS_EXPEDIENTE_MINIMO = Object.freeze([
   "# Expediente hidrológico mínimo — Cuenca activa",
   "## 1. Identificación",
   "## 2. Parámetros hidrológicos base",
+  "## 2A. Lluvia de diseño IDF",
   "## 3. Tiempo de concentración y roles Tc",
   "## 4. Volumen de referencia",
   "## 5. Escenario Q-Tr activo — control de trazabilidad",
@@ -322,6 +326,42 @@ export default function construirExpedienteHidrologicoMinimo({
       contextoBase
     }),
     "",
+    "",
+"## 2A. Lluvia de diseño IDF",
+generarNarrativaIDF({
+  lluviaYAbstraccion: {
+    estacionIDF:
+      contextoBase?.estacion_idf ??
+      contextoBase?.q_tr_activo?.estacion_idf ??
+      contextoBase?.idf?.nombre ??
+      contextoBase?.idf?.estacion ??
+      contextoBase?.idf?.estacion_idf ??
+      contextoBase?.idf?.epm_key ??
+      "NO_ENCONTRADO",
+
+    metodoIDF:
+      contextoBase?.metodoIDF ??
+      contextoBase?.q_tr_activo?.metodo_idf ??
+      contextoBase?.idf?.metodo ??
+      contextoBase?.idf?.metodoIDF ??
+      "NO_ENCONTRADO",
+
+    parametrosIDF: {
+      k:
+        contextoBase?.idf?.k ??
+        null,
+
+      n:
+        contextoBase?.idf?.n ??
+        null,
+
+      c:
+        contextoBase?.idf?.c ??
+        null
+    }
+  }
+}),
+"",
     ...construirLineasTiempoConcentracionRolesTcExpediente({
       Tc_final,
       trDisenoActivoExpediente: trDisenoActivoExpedienteDocumental
@@ -410,7 +450,39 @@ export default function construirExpedienteHidrologicoMinimo({
     ""
   ].join("\n");
 
+  console.table({
+  estacion_idf: contextoBase?.estacion_idf,
+  metodoIDF: contextoBase?.metodoIDF,
+
+  qtr_estacion:
+    contextoBase?.q_tr_activo?.estacion_idf,
+
+  qtr_metodo:
+    contextoBase?.q_tr_activo?.metodo_idf,
+
+  idf_nombre:
+    contextoBase?.idf?.nombre,
+
+  idf_estacion:
+    contextoBase?.idf?.estacion,
+
+  idf_estacion_idf:
+    contextoBase?.idf?.estacion_idf,
+
+  idf_epm_key:
+    contextoBase?.idf?.epm_key,
+
+  idf_metodo:
+    contextoBase?.idf?.metodo,
+
+  idf_metodoIDF:
+    contextoBase?.idf?.metodoIDF
+});
+
   const validacion = validarTextoExpedienteMinimo(texto);
+  if (!validacion.ok) {
+  console.error(validacion);
+}
 
   const advertencias = [
     "Helper puro inicial no integrado al botón.",

@@ -17,8 +17,8 @@ export const crearPayloadExpedienteVacio = () => ({
     pendienteCaucePorcentaje: null
   },
 
-  lluviaYAbstraccion: {
-    estacionActiva: "",
+  lluviaYAbstraccion: {    
+    estacionIDF: "",
     parametrosIDF: { k: null, n: null, c: null },
     condicionAMC: "",
     cnBase: null,
