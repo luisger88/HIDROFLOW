@@ -46,32 +46,6 @@ function formatearNumeroDocumental(valor, opciones = {}) {
   });
 }
 
-export function formatearLluviaEfectivaDocumental(valor) {
-  const numero = normalizarNumeroDocumental(valor);
-
-  if (numero === null) {
-    return FALLBACK_DOCUMENTAL;
-  }
-
-  return `${formatearNumeroDocumental(numero, {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2
-  })} mm`;
-}
-
-export function formatearVolumenEsperadoDocumental(valor) {
-  const numero = normalizarNumeroDocumental(valor);
-
-  if (numero === null) {
-    return FALLBACK_DOCUMENTAL;
-  }
-
-  return `${formatearNumeroDocumental(numero, {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  })} m³`;
-}
-
 export function construirBloqueVolumenReferenciaExpediente(entrada = {}) {
   const entradaSegura =
     entrada && typeof entrada === "object"
@@ -90,8 +64,25 @@ export function construirBloqueVolumenReferenciaExpediente(entrada = {}) {
     lineas.push("## 4. Volumen de referencia");
   }
 
-  lineas.push(`Lluvia efectiva total: ${formatearLluviaEfectivaDocumental(peTotalMm)}`);
-  lineas.push(`Volumen esperado: ${formatearVolumenEsperadoDocumental(volumenEsperadoM3)}`);
+  lineas.push(
+  `Lluvia efectiva total: ${
+  formatearNumeroDocumental(peTotalMm, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })
+} mm`
+);
+  lineas.push(
+  `Volumen esperado: ${
+    formatearNumeroDocumental(
+      volumenEsperadoM3,
+      {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      }
+    )
+  } m³`
+);
   lineas.push(
   "Fórmula: Pe(mm) × Área(km²) × 1000.",
   "",

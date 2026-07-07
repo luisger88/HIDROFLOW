@@ -1,0 +1,41 @@
+{
+  "auditorias": [
+    {
+      "id": "MCVD-0007A",
+      "estado": "CERRADO"
+    },
+    {
+      "id": "MCVD-0008A",
+      "estado": "CERRADO"
+    },
+    {
+      "id": "MCVD-0009A",
+      "estado": "CERRADO"
+    },
+    {
+      "id": "MCVD-0009B",
+      "estado": "CERRADO"
+    },
+    {
+      "id": "MCVD-0009C",
+      "estado": "CERRADO"
+    },
+    {
+      "id": "MCVD-0010",
+      "estado": "CERRADO",
+      "robustez": "ALTA"
+    },
+    {
+      "id": "MCVD-0011A",
+      "estado": "CERRADO"
+    },
+    {
+      "id": "MCVD-0011B",
+      "estado": "CERRADO"
+    },
+    {
+      "id": "MCVD-0011C",
+      "estado": "ACTIVO"
+    }
+  ]
+}

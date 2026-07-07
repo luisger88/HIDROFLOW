@@ -38,6 +38,8 @@ import {
   cnII_to_III
 } from "./services/hidroEngine";
 
+import { obtenerTrazabilidadCN } from "./services/cn/obtenerTrazabilidadCN";
+
 import resolverCuencaDesdeCoordenadas
 from "./services/master/resolverCuencaDesdeCoordenadas";
 
@@ -3766,6 +3768,22 @@ useEffect(() => {
           Number(params.CN)
         )
       : [];
+
+      const trazabilidadCN = obtenerTrazabilidadCN({
+  amcActual:
+    params?.amcActual ??
+    params?.AMC ??
+    params?.amc ??
+    "II",
+
+  porcentajeImpermeable:
+    Number.isFinite(Number(params?.porcentajeImpermeable))
+      ? Number(params.porcentajeImpermeable)
+      : 60,
+
+  cnBase
+});
+
   onContextoComparador((previo) => ({
     ...(previo ?? {}),
 	
@@ -3802,42 +3820,36 @@ useEffect(() => {
     CN: cnBase,
 
     CN_base:
-      params?.cnBase ??
-      params?.CN ??
-      cnBase,
+  trazabilidadCN.cnBase,
 
-    CN_efectivo:
-      params?.CN_efectivo ??
-      params?.cnEfectivo ??
-      cnBase,
+CN_ajustado:
+  trazabilidadCN.cnAjustado,
 
-    AMC:
-      params?.AMC ??
-      params?.amcActual ??
-      params?.amc ??
-      "II",
+CN_efectivo:
+  trazabilidadCN.cnEfectivo,
 
-    S_mm:
-      Number(
-        (
-          25400 /
-            Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) -
-          254
-        ).toFixed(2)
-      ),
+S_mm:
+  Number(
+    (
+      25400 /
+      trazabilidadCN.cnEfectivo -
+      254
+    ).toFixed(2)
+  ),
 
-    Ia_mm:
-      Number(
-        (
-          0.2 *
-          (
-            25400 /
-              Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) -
-            254
-          )
-        ).toFixed(2)
-      ),
+Ia_mm:
+  Number(
+    (
+      0.2 *
+      (
+        25400 /
+        trazabilidadCN.cnEfectivo -
+        254
+      )
+    ).toFixed(2)
+  ),
 
+   
     porcentaje_impermeable:
       Number.isFinite(Number(params?.porcentajeImpermeable))
         ? Number(params.porcentajeImpermeable)
@@ -3913,42 +3925,112 @@ metodoIDF: "EPM",
   15.524,
 
     CN: cnBase,
-    CN_base: params?.cnBase ?? params?.CN ?? cnBase,
-    CN_efectivo: params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase,
-    AMC: params?.AMC ?? params?.amcActual ?? params?.amc ?? "II",
-    S_mm: Number((25400 / Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) - 254).toFixed(2)),
-    Ia_mm: Number((0.2 * (25400 / Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) - 254)).toFixed(2)),
-    porcentaje_impermeable: Number.isFinite(Number(params?.porcentajeImpermeable)) ? Number(params.porcentajeImpermeable) : 60,
 
-    tc_metodos: calcTc(params),
-    
-    lluvia_efectiva: previo?.lluvia_efectiva ?? false,
-    lluvia_efectiva_total_mm: previo?.lluvia_efectiva_total_mm ?? null,
-    q_tr_activo_estado: derivarEstadoQTrActivo({
-      ...(previo ?? {}),
-      tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
-      estacion_idf: stn,
+CN_base:
+  trazabilidadCN.cnBase,
 
-idf: {
-  nombre: stn,
-  k: estacionRacional?.params?.["25"]?.k ?? null,
-  n: estacionRacional?.params?.["25"]?.n ?? null,
-  c: estacionRacional?.params?.["25"]?.c ?? null
-},
+CN_ajustado:
+  trazabilidadCN.cnAjustado,
 
-metodoIDF: "EPM",
+CN_efectivo:
+  trazabilidadCN.cnEfectivo,
 
-estacionesAdoptadas: stn ? [{ nombre: stn, peso: 1 }] : [],
+S_mm:
+  Number(
+    (
+      25400 /
+      trazabilidadCN.cnEfectivo -
+      254
+    ).toFixed(2)
+  ),
 
-distribucionTemporal: "EPM Q1",
-      area_km2: params?.area_km2 ?? params?.areaKm2 ?? params?.area ?? params?.A ?? null,
-      CN_efectivo: params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase,
-      S_mm: Number((25400 / Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) - 254).toFixed(2)),
-      Ia_mm: Number((0.2 * (25400 / Number(params?.CN_efectivo ?? params?.cnEfectivo ?? cnBase) - 254)).toFixed(2)),
-      porcentaje_impermeable: Number.isFinite(Number(params?.porcentajeImpermeable)) ? Number(params.porcentajeImpermeable) : 60,
-      tc_min: getTcState()?.Tc_final ?? null,
-      lluvia_efectiva_total_mm: previo?.lluvia_efectiva_total_mm ?? null
-    }),
+Ia_mm:
+  Number(
+    (
+      0.2 *
+      (
+        25400 /
+        trazabilidadCN.cnEfectivo -
+        254
+      )
+    ).toFixed(2)
+  ),
+
+porcentaje_impermeable:
+  Number.isFinite(Number(params?.porcentajeImpermeable))
+    ? Number(params.porcentajeImpermeable)
+    : 60,
+
+tc_metodos:
+  calcTc(params),
+
+lluvia_efectiva:
+  previo?.lluvia_efectiva ?? false,
+
+lluvia_efectiva_total_mm:
+  previo?.lluvia_efectiva_total_mm ?? null,
+
+q_tr_activo_estado: derivarEstadoQTrActivo({
+  ...(previo ?? {}),
+  tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
+  estacion_idf: stn,
+
+  idf: {
+    nombre: stn,
+    k: estacionRacional?.params?.["25"]?.k ?? null,
+    n: estacionRacional?.params?.["25"]?.n ?? null,
+    c: estacionRacional?.params?.["25"]?.c ?? null
+  },
+
+  metodoIDF: "EPM",
+
+  estacionesAdoptadas:
+    stn ? [{ nombre: stn, peso: 1 }] : [],
+
+  distribucionTemporal: "EPM Q1",
+
+  area_km2:
+    params?.area_km2 ??
+    params?.areaKm2 ??
+    params?.area ??
+    params?.A ??
+    null,
+
+  CN_efectivo:
+    trazabilidadCN.cnEfectivo,
+
+  S_mm:
+    Number(
+      (
+        25400 /
+        trazabilidadCN.cnEfectivo -
+        254
+      ).toFixed(2)
+    ),
+
+  Ia_mm:
+    Number(
+      (
+        0.2 *
+        (
+          25400 /
+          trazabilidadCN.cnEfectivo -
+          254
+        )
+      ).toFixed(2)
+    ),
+
+  porcentaje_impermeable:
+    Number.isFinite(Number(params?.porcentajeImpermeable))
+      ? Number(params.porcentajeImpermeable)
+      : 60,
+
+  tc_min:
+    getTcState()?.Tc_final ?? null,
+
+  lluvia_efectiva_total_mm:
+    previo?.lluvia_efectiva_total_mm ?? null
+}),
 
     hidrogramas: previo?.hidrogramas ?? {
       fuente: "pendiente",

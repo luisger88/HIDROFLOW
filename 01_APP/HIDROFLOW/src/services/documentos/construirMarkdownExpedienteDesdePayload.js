@@ -162,16 +162,32 @@ const qDiseno =
     payload?.hidrografiaQ5?.qTrMultiEscenario
   );
 
+const advertenciasCriticas =
+  (payload?.advertencias ?? [])
+    .filter(
+      a => a?.nivel === "CRITICO"
+    );
 
   return [
 
   "# Expediente Hidrológico Mínimo — Corte Funcional Exportable",
 
-  "",
+"",
 
-  narrativas.resumenEjecutivo,
+...(advertenciasCriticas.length
+  ? [
+      "## ADVERTENCIAS CRÍTICAS",
+      "",
+      ...advertenciasCriticas.map(
+        a => `- [${a.codigo}] ${a.mensaje}`
+      ),
+      ""
+    ]
+  : []),
 
-  "",
+narrativas.resumenEjecutivo,
+
+"",
     "## 1. Cuenca",
     "",
     `Nombre: ${texto(payload?.cuenca?.nombre)}`,
@@ -199,8 +215,7 @@ const qDiseno =
     "## 3. Lluvia y abstracción",
     "",
     `Estación IDF/EPM: ${texto(
-  payload?.lluviaYAbstraccion?.estacionIDF ??
-  payload?.lluviaYAbstraccion?.estacionActiva
+  payload?.lluviaYAbstraccion?.estacionIDF
 )}`,    
     `IDF k: ${texto(payload?.lluviaYAbstraccion?.parametrosIDF?.k)}`,
     `IDF n: ${texto(payload?.lluviaYAbstraccion?.parametrosIDF?.n)}`,

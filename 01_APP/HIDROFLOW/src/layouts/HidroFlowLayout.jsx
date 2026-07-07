@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import IndiceHidrologico from "../components/IndiceHidrologico";
 import HidroFlow from "../HidroFlow";
 import ComparadorMultiMetodo from "../components/ComparadorMultiMetodo";
+import OrquestadorInstitucional from "../components/orquestador/OrquestadorInstitucional";
 
 export default function HidroFlowLayout() {
   const [tabActiva, setTabActiva] = useState("params");
@@ -56,6 +57,8 @@ export default function HidroFlowLayout() {
   return (
     <div style={estilos.contenedor}>
       <aside style={estilos.lateral}>
+        <OrquestadorInstitucional />
+
         <IndiceHidrologico contexto={contextoComparador}
           tabActiva={tabActiva}
           tab={tabActiva}
@@ -71,3 +74,4 @@ export default function HidroFlowLayout() {
     </div>
   );
 }
+

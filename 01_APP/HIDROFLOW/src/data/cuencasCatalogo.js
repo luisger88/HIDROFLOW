@@ -403,7 +403,14 @@ export const CUENCAS_CATALOGO = {
   }
 };
 
-export const CUENCA_DEFAULT_ID = "san_antonio_prado";
+export function getEstudioActivo() {
+  return Object.values(CUENCAS_CATALOGO).find(
+    (cuenca) => cuenca?.estado_tecnico?.cuencaActiva === true
+  );
+}
+
+export const CUENCA_DEFAULT_ID =
+  getEstudioActivo()?.id ?? "san_antonio_prado";
 
 export function getCuencaById(id) {
   return CUENCAS_CATALOGO[id] || CUENCAS_CATALOGO[CUENCA_DEFAULT_ID];
