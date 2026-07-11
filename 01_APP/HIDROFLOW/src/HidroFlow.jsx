@@ -3731,6 +3731,26 @@ const setTab = setTabExterno ?? setTabInterno;
   const [trStateGlobal, setTrStateGlobal] = useState(getTrState());
 
   useEffect(() => {
+
+  fetch("http://localhost:4000/api/proyecto/activo")
+    .then(r => r.json())
+    .then(proyecto => {
+
+      if (
+        proyecto?.estado_operativo?.params
+      ) {
+
+        setParams(
+          proyecto.estado_operativo.params
+        );
+
+      }
+
+    })
+    .catch(console.error);
+
+}, []);
+  useEffect(() => {
     const cancelarSuscripcionTr = subscribeTr(setTrStateGlobal);
     return cancelarSuscripcionTr;
   }, []);

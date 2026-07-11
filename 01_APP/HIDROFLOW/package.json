@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "demo:dia3": "tsx src/dominio/_demoDia3.ts"
+    "demo:dia3": "tsx src/dominio/_demoDia3.ts",
+    "governance:init": "node scripts/gov-init.js"
   },
   "dependencies": {
     "cors": "^2.8.6",

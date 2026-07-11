@@ -20,9 +20,9 @@ export default function HidroFlowLayout() {
     },
 
     lateral: {
-      width: "280px",
-      minWidth: "280px",
-      maxWidth: "280px",
+      width: "320px",
+minWidth: "320px",
+maxWidth: "320px",
       height: "100vh",
       overflowY: "auto",
       overflowX: "hidden",
