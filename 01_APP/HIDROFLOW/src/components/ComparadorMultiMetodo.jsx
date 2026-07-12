@@ -46,6 +46,15 @@ import {
   obtenerCriterioPendientesAuditoria,
 } from "../data/auditoriaPendientesTc";
 
+import {
+  formatTc,
+  formatQ,
+  formatArea,
+  formatVolumen,
+  formatPendiente,
+  formatCN
+} from "../utils/formatters";
+
 export default function ComparadorMultiMetodo({ contexto = null }) {
   let bloqueoAdopcion = false;
   // ✅ OT-0067E — utilidades de bloqueo (GLOBAL COMPONENTE)
@@ -1159,7 +1168,7 @@ const handleClickSeguro = (accion) => () => {
 
                       return (
                         <span style={estilos.chip}>
-                          {tcValor.toFixed(2)} min
+                          {formatTc(tcValor)} min
                         </span>
                       );
                     })()}
@@ -1208,7 +1217,7 @@ const handleClickSeguro = (accion) => () => {
 
     return (
       <span style={estilos.chip}>
-        {resultadoQ.Qp.toFixed(2)} m³/s
+        {formatQ(resultadoQ.Qp)} m³/s
       </span>
     );
   })()}
@@ -1247,10 +1256,10 @@ const handleClickSeguro = (accion) => () => {
     return (
       <div>
         <span style={estilos.chip}>
-          {resultadoQ.Tp.toFixed(2)} min
+          {formatTc(resultadoQ.Tp)} min
         </span>
         <div style={{ ...estilos.muted, marginTop: "4px" }}>
-          Tp/Tc: {tpRel !== null ? tpRel.toFixed(2) + "x" : "—"} · Dur. eq.: {Number.isFinite(resultadoQ.volumen) && Number.isFinite(resultadoQ.Qp) && resultadoQ.Qp > 0 ? (resultadoQ.volumen / resultadoQ.Qp / 60).toFixed(0) + " min" : "—"}
+          Tp/Tc: {tpRel !== null ? formatTc(tpRel) + "x" : "—"} · Dur. eq.: {Number.isFinite(resultadoQ.volumen) && Number.isFinite(resultadoQ.Qp) && resultadoQ.Qp > 0 ? formatTc(resultadoQ.volumen / resultadoQ.Qp / 60) + " min" : "—"}
         </div>
         <div style={{ ...estilos.muted, marginTop: "4px" }}>
           Estado temporal: {estadoTemporal}
@@ -1317,11 +1326,11 @@ const handleClickSeguro = (accion) => () => {
     return (
       <div>
         <span style={estilos.chip}>
-          {resultadoQ.volumen.toFixed(2)}
+          {formatVolumen(resultadoQ.volumen)}
         </span>
         {estadoEscalaVolumen ? (
           <div style={{ ...estilos.muted, marginTop: "4px" }}>
-            {estadoEscalaVolumen} · {relacionVolumen.toFixed(1)}x
+            {estadoEscalaVolumen} · {formatTc(relacionVolumen)}x
           </div>
         ) : null}
       </div>
@@ -1430,14 +1439,14 @@ const handleClickSeguro = (accion) => () => {
     <div>
       <strong>Área:</strong>{" "}
       {Number.isFinite(contextoBase?.area_km2)
-        ? `${cuencaActiva.area_km2.toFixed(4)} km²`
+        ? `${formatArea(cuencaActiva.area_km2)} km²`
         : "—"}
     </div>
 
     <div>
       <strong>Scp cauce principal:</strong>{" "}
       {Number.isFinite(contextoBase?.pendiente_media_pct)
-        ? `${cuencaActiva.pendiente_media_pct} %`
+        ? `${formatPendiente(cuencaActiva.pendiente_media_pct)} %`
         : "—"}
     </div>
 
@@ -1454,21 +1463,21 @@ const handleClickSeguro = (accion) => () => {
     <div>
       <strong>CN:</strong>{" "}
       {Number.isFinite(hidrologiaActiva.CN)
-        ? hidrologiaActiva.CN
+        ? formatCN(hidrologiaActiva.CN)
         : "—"}
     </div>
 
     <div>
       <strong>CN base:</strong>{" "}
       {Number.isFinite(hidrologiaActiva.CN_base)
-        ? hidrologiaActiva.CN_base
+        ? formatCN(hidrologiaActiva.CN_base)
         : "—"}
     </div>
 
     <div>
       <strong>CN efectivo:</strong>{" "}
       {Number.isFinite(hidrologiaActiva.CN_efectivo)
-        ? hidrologiaActiva.CN_efectivo
+        ? formatCN(hidrologiaActiva.CN_efectivo)
         : "—"}
     </div>
 
@@ -1852,7 +1861,7 @@ const handleClickSeguro = (accion) => () => {
       </button>
       <button
         type="button"
-        onClick={() => {
+        onClick={async () => {
           const areaKm2 = Number(
   contextoBase?.casoActivo?.cuenca?.area_km2 ??
   contextoBase?.area_km2
@@ -2228,7 +2237,7 @@ if (!tieneRacionalPublicado) {
               ? [
                   `Tc racional exportado: ${
                     Number.isFinite(Number(contextoBase?.metodo_racional?.tc_min))
-                      ? Number(contextoBase.metodo_racional.tc_min).toFixed(2) + " min"
+                      ? formatTc(contextoBase.metodo_racional.tc_min) + " min"
                       : "—"
                   }`,
                   "",
@@ -2257,7 +2266,7 @@ if (!tieneRacionalPublicado) {
             `Volumen esperado: ${Number.isFinite(volumenEsperadoM3) ? volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 }) + " m³" : "—"}`,
             `Método Q-5 principal: ${metodoQ5PrincipalConsistencia?.nombre ?? "—"}`,
             `Volumen Q-5 principal: ${Number.isFinite(volumenQ5PrincipalM3) ? volumenQ5PrincipalM3.toLocaleString("es-CO", { maximumFractionDigits: 2 }) + " m³" : "—"}`,
-            `Relación volumen Q-5 / volumen esperado: ${relacionVolumenQ5Esperado !== null ? relacionVolumenQ5Esperado.toFixed(3) + "x" : "—"}`,
+            `Relación volumen Q-5 / volumen esperado: ${relacionVolumenQ5Esperado !== null ? formatTc(relacionVolumenQ5Esperado) + "x" : "—"}`,
             `Resultado de consistencia volumétrica: ${estadoConsistenciaVolumen}`,
             `Q-Tr activo: ${estadoQTrActivoExpediente?.estado ?? "no_publicado"}`,
             "Q-5 auditado: presente como bloque no adoptivo.",
@@ -2858,25 +2867,68 @@ contextoBase?.longitud_cauce_km ??
 
           
           const payloadExpedienteMarkdown = construirPayloadExpedienteDesdeEstado({
-            contextoBase: contextoBasePayload,
-            metodos: metodosQ5Payload,
-            filasMorfologiaQt,
-            filasDictamenFormaQt,
-            filasRiesgoTemporalQt,
-            sintesisRiesgoTemporalQt: sintesisRiesgoTemporalQtPayload,
-            tcState: {
-              Tc_final,
-              metodosTc
-            },
-            fechaGeneracion: new Date().toLocaleString("es-CO"),
-            idSimulacion:
-              contextoBasePayload?.cuenca?.id ??
-              contextoBasePayload?.identificadorCuenca ??
-              "expediente_hidrologico_minimo"
-          });
+  contextoBase: contextoBasePayload,
+  metodos: metodosQ5Payload,
+  filasMorfologiaQt,
+  filasDictamenFormaQt,
+  filasRiesgoTemporalQt,
+  sintesisRiesgoTemporalQt: sintesisRiesgoTemporalQtPayload,
+  tcState: {
+    Tc_final,
+    metodosTc
+  },
+  fechaGeneracion: new Date().toLocaleString("es-CO"),
+  idSimulacion:
+    contextoBasePayload?.cuenca?.id ??
+    contextoBasePayload?.identificadorCuenca ??
+    "expediente_hidrologico_minimo"
+});
 
-          const descargaMarkdownExpediente =
-            construirDescargaMarkdownExpedienteDesdePayload(payloadExpedienteMarkdown);
+try {
+  console.log(
+    "HF-PROD-003C POST EJECUTANDOSE",
+    payloadExpedienteMarkdown
+  );
+
+  const respuestaPersistencia = await fetch(
+    "http://localhost:4000/api/proyecto/activo",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        expediente: payloadExpedienteMarkdown
+      })
+    }
+  );
+
+  console.log(
+    "HF-PROD-003C STATUS",
+    respuestaPersistencia.status
+  );
+
+  const resultadoPersistencia =
+    await respuestaPersistencia.json();
+
+  console.log(
+    "HF-PROD-003C RESPUESTA",
+    resultadoPersistencia
+  );
+
+} catch (error) {
+
+  console.error(
+    "HF-PROD-003C - Error persistiendo expediente:",
+    error
+  );
+
+}
+
+const descargaMarkdownExpediente =
+  construirDescargaMarkdownExpedienteDesdePayload(
+    payloadExpedienteMarkdown
+  );
 
           const resultadoDescargaMarkdown = descargarArchivoMarkdownEnNavegador(
             descargaMarkdownExpediente
@@ -2929,7 +2981,7 @@ contextoBase?.longitud_cauce_km ??
         return volumenEsperadoM3 ? (
           <div style={{ ...estilos.muted, marginBottom: "10px" }}>
             Referencia de escala: Volumen esperado ≈ {volumenEsperadoM3.toLocaleString("es-CO", { maximumFractionDigits: 0 })} m³
-            {" "}({peTotalMm.toFixed(2)} mm × {areaKm2.toFixed(4)} km² × 1000).
+            {" "}({formatVolumen(peTotalMm)} mm × {formatArea(areaKm2)} km² × 1000).
           </div>
         ) : null;
       })()}
@@ -3062,12 +3114,21 @@ contextoBase?.longitud_cauce_km ??
                     gap: 8
                   }}
                 >
-                  <div><strong>Pe total:</strong> {formato(peTotalMm, 4)} mm</div>
-                  <div><strong>Área:</strong> {formato(areaKm2, 4)} km²</div>
-                  <div><strong>Volumen esperado:</strong> {formato(volumenEsperadoM3, 0)} m³</div>
-                  <div><strong>Método Q-5 principal:</strong> {metodoQ5PrincipalPanel?.nombre ?? "—"}</div>
-                  <div><strong>Volumen Q-5 principal:</strong> {formato(volumenQ5PrincipalM3, 2)} m³</div>
-                  <div><strong>Relación Q-5/esperado:</strong> {relacionVolumenQ5Esperado !== null ? relacionVolumenQ5Esperado.toFixed(3) + "x" : "—"}</div>
+                  <div><strong>Pe total:</strong> {formatVolumen(peTotalMm)} mm</div>
+
+<div><strong>Área:</strong> {formatArea(areaKm2)} km²</div>
+
+<div><strong>Volumen esperado:</strong> {formatVolumen(volumenEsperadoM3)} m³</div>
+
+<div><strong>Volumen Q-5 principal:</strong> {formatVolumen(volumenQ5PrincipalM3)} m³</div>
+                  <div>
+<strong>Relación Q-5/esperado:</strong>
+{
+  relacionVolumenQ5Esperado !== null
+    ? formatTc(relacionVolumenQ5Esperado) + "x"
+    : "—"
+}
+</div>
                   <div><strong>Resultado:</strong> {estadoConsistenciaVolumen}</div>
                   <div><strong>Q-Tr activo:</strong> {estadoQTrActivo}</div>
                 </div>
