@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import {
+  formatTc,
+  formatCN,
+  formatPendiente
+} from "../utils/formatters";
 import { getTcState, subscribeTc } from "../agents/tcAgent";
 import { getTrState, setTrState, subscribeTr } from "../agents/trAgent";
 
@@ -194,7 +199,7 @@ const rangoTcAgente =
 
     // Acepta peso en escala 0-1 o 0-100.
     const pct = n <= 1 ? n * 100 : n;
-    return `${Math.round(pct)} %`;
+    return `${formatCN(pct)} %`;
   };
 
   const formatTR = (p) => {
@@ -505,6 +510,27 @@ const rangoTcAgente =
       <p style={estilos.subtitulo}>
         Panel lector · {cuencaNombre} · Motor HidroFlow
       </p>
+
+      {contexto?.expediente && (
+  <section
+    style={{
+      marginBottom: 12,
+      padding: 8,
+      border: "1px solid #00d4ff",
+      borderRadius: 6
+    }}
+  >
+    <div><strong>Contrato:</strong> {contexto.expediente.versionContrato}</div>
+    <div><strong>Cuenca:</strong> {contexto.expediente.cuenca?.nombre}</div>
+    <div>
+  <strong>Tc:</strong>{" "}
+  {formatTc(
+    contexto.expediente.tiempoConcentracion?.tcSugeridoMinutos
+  )}
+</div>
+    <div><strong>CN:</strong> {contexto.expediente.lluviaYAbstraccion?.cnEfectivo}</div>
+  </section>
+)}
 
       {/* 0. Cuenca activa */}
       <section style={estiloTarjeta("params")}>

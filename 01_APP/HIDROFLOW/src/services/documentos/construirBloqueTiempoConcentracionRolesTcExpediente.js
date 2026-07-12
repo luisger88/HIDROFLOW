@@ -1,3 +1,5 @@
+import { formatTc } from "../../utils/formatters";
+
 function formatearTcDocumental(valor) {
   if (valor === undefined || valor === null) {
     return "—";
@@ -17,7 +19,7 @@ function formatearTcDocumental(valor) {
     return "—";
   }
 
-  return `${numero.toFixed(1)} min`;
+  return `${formatTc(numero)} min`;
 }
 
 function normalizarTrDocumental(valor) {

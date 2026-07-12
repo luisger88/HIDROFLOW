@@ -58,7 +58,7 @@ export default function TablaTcMetodos({ tiempoConcentracion }) {
               >
                 <td>{f.metodo}</td>
                 <td style={{ textAlign: "right" }}>
-                  {f.tc.toFixed(1)}
+                  {formatTc(f.tc)}
                 </td>
                 <td>{obs}</td>
               </tr>
@@ -68,7 +68,7 @@ export default function TablaTcMetodos({ tiempoConcentracion }) {
       </table>
 
       <p style={{ fontSize: 12, opacity: 0.7 }}>
-        Tc adoptado = <b>{tc_adoptado_min.toFixed(1)} min</b>
+        Tc adoptado = <b>{formatTc(tc_adoptado_min)} min</b>
       </p>
     </div>
   );

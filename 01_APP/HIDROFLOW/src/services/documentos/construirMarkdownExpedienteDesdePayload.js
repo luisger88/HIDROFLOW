@@ -1,6 +1,7 @@
 import derivarTablaResumenTrDesdeQTrMultiEscenario from "./derivarTablaResumenTrDesdeQTrMultiEscenario";
 import derivarQDisenoDesdeEscenarioActivo from "./derivarQDisenoDesdeEscenarioActivo";
 import { generarNarrativasExpediente } from "./narrativas/generarNarrativasExpediente";
+import { formatTc } from "../../utils/formatters";
 
 const texto = (valor, defecto = "NO DETECTADO") =>
   valor === undefined || valor === null || valor === "" ? defecto : String(valor);
@@ -297,7 +298,7 @@ narrativas.q5,
 "",
 `Volumen esperado Pe × Área: ${numero(payload?.controlConsistencia?.volumenEsperadoTeoricoM3, 2)} m³`,
 `Volumen integrado Q-5: ${numero(payload?.controlConsistencia?.volumenIntegradoQ5M3, 2)} m³`,
-`Ratio Vol Q-5 / Vol esperado: ${Number.isFinite(Number(ratio)) ? Number(ratio).toFixed(6) : "NO DETECTADO"}`,
+`Ratio Vol Q-5 / Vol esperado: ${Number.isFinite(Number(ratio)) ? formatTc(ratio) : "NO DETECTADO"}`,
 `Estado: ${texto(payload?.controlConsistencia?.estadoConsistencia)}`,
 
 "",
