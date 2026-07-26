@@ -488,8 +488,11 @@ peTotalMm
 
   numeroSeguro(
     contextoBase?.q_tr_activo?.Q ??
+    contextoBase?.q_tr_activo_estado?.q_tr_activo?.Q ??
     contextoBase?.q_tr_activo?.q ??
-    contextoBase?.q_tr_activo?.caudal
+    contextoBase?.q_tr_activo_estado?.q_tr_activo?.q ??
+    contextoBase?.q_tr_activo?.caudal ??
+    contextoBase?.q_tr_activo_estado?.q_tr_activo?.caudal
   )
 
   ??
