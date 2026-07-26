@@ -366,6 +366,14 @@ const volumenEsperado =
     )
   };
 
+  payload.identificacion = {
+    nombreCuenca:
+      payload.cuenca?.nombre ??
+      textoSeguro(contextoBase?.cuencaActiva?.nombre),
+    areaKm2:
+      payload.geomorfometria?.areaKm2
+  };
+
   const trazabilidadCN =
   obtenerTrazabilidadCN({
     amcActual:
@@ -433,7 +441,7 @@ if (
   });
 }
 
-  payload.lluviaYAbstraccion = {   
+  payload.lluviaYAbstraccion = {
     estacionIDF: textoSeguro(
   contextoBase?.estacion_idf
 ),
@@ -503,12 +511,11 @@ peTotalMm
       : null,
     volumenIntegradoM3: volumenQ5,
     metodosComparados: Array.isArray(metodos) ? metodos : [],
-   
+
     qTrMultiEscenario:
       contextoBase?.q_tr_multiescenario ?? null
 
   };
-
   payload.contrasteRacional = {
     caudalPicoM3s: extraerQRacionalActivo(contextoBase),
     esAdoptivo: false
@@ -575,4 +582,3 @@ payload.advertencias = advertencias;
 
 return payload;
 }
-
