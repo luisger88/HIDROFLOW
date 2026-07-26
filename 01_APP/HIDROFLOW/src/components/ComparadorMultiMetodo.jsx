@@ -194,7 +194,7 @@ useEffect(() => {
   }
 }, [Tc_final]);
 
-  
+
 
   // ✅ Y SOLO AQUÍ VA EL RETURN
  // ✅ BLOQUE CONSISTENTE DE MÉTODOS
@@ -924,6 +924,14 @@ const obtenerResultadoQMetodo = (metodo) => {
     ? bruto.metodos
     : Array.isArray(bruto?.resultados)
     ? bruto.resultados
+    : bruto && typeof bruto === "object"
+    ? Object.entries(bruto)
+        .filter(([, v]) => v && typeof v === "object")
+        .map(([clave, valor]) => ({
+          ...valor,
+          metodo: valor?.metodo ?? valor?.nombre ?? clave,
+          nombre: valor?.nombre ?? valor?.metodo ?? clave,
+        }))
     : [];
 
   const nombreCatalogo = normalizarTexto(metodo.nombre);
@@ -980,7 +988,7 @@ const obtenerResultadoQMetodo = (metodo) => {
 
   const renderTabla = (titulo, tipo) => {
 
-  
+
   // OT-0067 — Adaptador de coherencia hidrológica (encapsulado)
 const clasificarCoherencia = (metodo) => {
   // OT-0067 — Adaptador de coherencia hidrológica
@@ -1924,6 +1932,73 @@ const handleClickSeguro = (accion) => () => {
               !String(metodo.nombre ?? "").toLowerCase().includes("racional")
           );
 
+          const obtenerMetodosQ5Validos = () => {
+            const filtroNumericoQ5 = (m) =>
+              Number.isFinite(Number(m.Qp)) &&
+              Number.isFinite(Number(m.Tp)) &&
+              Number.isFinite(Number(m.volumen));
+
+            const desdeCatalogo = metodosQ5Expediente
+              .map((metodo) => {
+                const resultadoQ = obtenerResultadoQMetodo(metodo);
+                return {
+                  metodo: metodo?.nombre ?? metodo?.metodo ?? "Método Q-5",
+                  Qp: resultadoQ?.Qp,
+                  Tp: resultadoQ?.Tp,
+                  volumen: resultadoQ?.volumen,
+                  _catalogo: metodo
+                };
+              })
+              .filter(filtroNumericoQ5);
+
+            if (desdeCatalogo.length > 0) {
+              return desdeCatalogo;
+            }
+
+            const fuentes = [
+              contextoBase?.hidrogramas_resumen,
+              contextoBase?.hidrogramas?.resultados,
+              contextoBase?.hidrogramas
+            ];
+
+            for (const fuente of fuentes) {
+              const candidatos = Array.isArray(fuente)
+                ? fuente
+                : fuente && typeof fuente === "object"
+                ? Object.entries(fuente)
+                    .filter(([, v]) => v && typeof v === "object")
+                    .map(([clave, valor]) => ({
+                      ...valor,
+                      metodo: valor?.metodo ?? valor?.nombre ?? clave,
+                    }))
+                : [];
+
+              const resultados = candidatos
+                .map((h) => ({
+                  metodo:
+                    h?.metodo ??
+                    h?.nombre ??
+                    h?.label ??
+                    h?.name ??
+                    h?.clave ??
+                    "Método Q-5",
+                  Qp:
+                    h?.Qp ?? h?.qp ?? h?.Qpico ?? h?.qPico ?? h?.q_pico ?? h?.caudalPico ?? h?.caudal_pico,
+                  Tp:
+                    h?.Tp ?? h?.tp ?? h?.tPico ?? h?.TPico ?? h?.t_pico ?? h?.tiempoPico ?? h?.tiempo_pico,
+                  volumen:
+                    h?.volumen ?? h?.V ?? h?.vol ?? h?.volume ?? h?.volTotal ?? h?.vol_total ?? h?.volumenTotal
+                }))
+                .filter(filtroNumericoQ5);
+
+              if (resultados.length > 0) {
+                return resultados;
+              }
+            }
+
+            return [];
+          };
+
           const obtenerCandidatosQ5Contexto = () => {
             const bruto = contextoBase?.hidrogramas;
 
@@ -1931,9 +2006,17 @@ const handleClickSeguro = (accion) => () => {
               ? bruto
               : Array.isArray(bruto?.metodos)
               ? bruto.metodos
-              : Array.isArray(bruto?.resultados)
-              ? bruto.resultados
-              : [];
+    : Array.isArray(bruto?.resultados)
+      ? bruto.resultados
+      : bruto && typeof bruto === "object"
+      ? Object.entries(bruto)
+          .filter(([, v]) => v && typeof v === "object")
+          .map(([clave, valor]) => ({
+            ...valor,
+            metodo: valor?.metodo ?? valor?.nombre ?? clave,
+            nombre: valor?.nombre ?? valor?.metodo ?? clave,
+          }))
+      : [];
           };
 
           const construirFilaQ5Expediente = (nombreMetodo, resultadoQ, dictamenMetodo = null) => {
@@ -1945,63 +2028,18 @@ const handleClickSeguro = (accion) => () => {
             return `| ${String(nombreMetodo ?? "Método Q-5").replaceAll("|", "/")} | ${formatearNumeroExpediente(resultadoQ?.Qp)} m³/s | ${formatearNumeroExpediente(resultadoQ?.Tp)} min | ${formatearNumeroExpediente(resultadoQ?.volumen)} m³ | ${estadoTemporal} | ${dictamen} |`;
           };
 
-          const filasQ5DesdeCatalogo = metodosQ5Expediente
-            .map((metodo) => {
-              const resultadoQ = obtenerResultadoQMetodo(metodo);
-              const estadoTemporal = obtenerEstadoTemporalExpediente(resultadoQ);
-              const dictamen = obtenerDictamenQ5Expediente(metodo, estadoTemporal);
-              const nombreMetodo = String(metodo.nombre ?? "Método Q-5").replaceAll("|", "/");
+          const metodosQ5ValidosParaExpediente = obtenerMetodosQ5Validos();
 
-              return construirFilaQ5Expediente(nombreMetodo, resultadoQ, dictamen);
-            })
-            .filter((fila) => !fila.includes("| — m³/s |"));
-
-          const filasQ5DesdeContexto = obtenerCandidatosQ5Contexto()
-            .filter((h) => !String(h?.metodo ?? h?.nombre ?? h?.label ?? h?.name ?? "").toLowerCase().includes("racional"))
-            .map((h) => {
-              const nombreMetodo =
-                h?.metodo ??
-                h?.nombre ??
-                h?.label ??
-                h?.name ??
-                h?.id ??
-                "Método Q-5";
-
-              const resultadoQ = {
-                Qp:
-                  h?.Qp ??
-                  h?.qp ??
-                  h?.Qpico ??
-                  h?.qPico ??
-                  h?.q_pico ??
-                  h?.caudalPico ??
-                  h?.caudal_pico,
-                Tp:
-                  h?.Tp ??
-                  h?.tp ??
-                  h?.tPico ??
-                  h?.TPico ??
-                  h?.t_pico ??
-                  h?.tiempoPico ??
-                  h?.tiempo_pico,
-                volumen:
-                  h?.volumen ??
-                  h?.V ??
-                  h?.vol ??
-                  h?.volume ??
-                  h?.volTotal ??
-                  h?.vol_total ??
-                  h?.volumenTotal
-              };
-
-              return construirFilaQ5Expediente(nombreMetodo, resultadoQ);
-            })
-            .filter((fila) => !fila.includes("| — m³/s |"));
-
-          const filasQ5Markdown =
-            filasQ5DesdeCatalogo.length > 0
-              ? filasQ5DesdeCatalogo
-              : filasQ5DesdeContexto;
+          const filasQ5Markdown = metodosQ5ValidosParaExpediente
+            .map((m) =>
+              construirFilaQ5Expediente(
+                String(m.metodo ?? "Método Q-5").replaceAll("|", "/"),
+                { Qp: m.Qp, Tp: m.Tp, volumen: m.volumen },
+                m._catalogo
+                  ? obtenerDictamenQ5Expediente(m._catalogo, obtenerEstadoTemporalExpediente({ Qp: m.Qp, Tp: m.Tp, volumen: m.volumen }))
+                  : null
+              )
+            );
 
           const tablaQ5Markdown = [
             "| Método | Qp | Tp | Volumen | Estado temporal | Dictamen |",
@@ -2758,25 +2796,13 @@ contextoBase?.cuencaNombre ??
                 return;
               }
 
-               
-          const metodosQ5Payload = metodosQ5Expediente
-            .map((metodo) => {
-              const resultadoQ = obtenerResultadoQMetodo(metodo);
 
-              return {
-                metodo: metodo?.nombre ?? metodo?.metodo ?? "Método Q-5",
-                Qp: resultadoQ?.Qp,
-                Tp: resultadoQ?.Tp,
-                volumen: resultadoQ?.volumen
-              };
-            })
-            .filter(
-              (metodo) =>
-                Number.isFinite(Number(metodo.Qp)) &&
-                Number.isFinite(Number(metodo.Tp)) &&
-                Number.isFinite(Number(metodo.volumen))
-            );
-
+          const metodosQ5Payload = obtenerMetodosQ5Validos().map(({ metodo, Qp, Tp, volumen }) => ({
+            metodo,
+            Qp,
+            Tp,
+            volumen
+          }));
           const sintesisRiesgoTemporalQtPayload =
             Array.isArray(sintesisRiesgoTemporalQt?.resumen)
               ? sintesisRiesgoTemporalQt.resumen.join(" ")
@@ -2860,12 +2886,16 @@ contextoBase?.longitud_cauce_km ??
   c: null
 },
 
+hidrogramas: {
+  resultados: metodosQ5Payload
+},
+
             amcActual: hidrologiaActiva.AMC ?? hidrologiaActiva.AMC,
             tr_diseno_activo: trDisenoActivoExpediente,
             q_tr_activo_estado: estadoQTrActivoExpediente
           };
 
-          
+
           const payloadExpedienteMarkdown = construirPayloadExpedienteDesdeEstado({
   contextoBase: contextoBasePayload,
   metodos: metodosQ5Payload,
@@ -3667,7 +3697,7 @@ const descargaMarkdownExpediente =
                     )}
                   </div>
                 )}
-                
+
               </div>
             )}
 
@@ -4134,10 +4164,3 @@ const descargaMarkdownExpediente =
     </main>
   );
 }
-
-
-
-
-
-
-
