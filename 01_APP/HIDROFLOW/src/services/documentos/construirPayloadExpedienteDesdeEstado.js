@@ -3,6 +3,7 @@ import { crearPayloadExpedienteVacio } from "../../types/expediente.js";
 import { obtenerTrazabilidadCN } from "../cn/obtenerTrazabilidadCN";
 
 const numeroSeguro = (valor) => {
+  if (valor === null || valor === undefined) return null;
   const numero = Number(valor);
   return Number.isFinite(numero) ? numero : null;
 };

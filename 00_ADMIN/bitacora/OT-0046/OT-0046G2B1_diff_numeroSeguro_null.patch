@@ -1,0 +1,12 @@
+diff --git a/01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js b/01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js
+index 32e66d1..273d362 100644
+--- a/01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js
++++ b/01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js
+@@ -3,6 +3,7 @@ import { crearPayloadExpedienteVacio } from "../../types/expediente.js";
+ import { obtenerTrazabilidadCN } from "../cn/obtenerTrazabilidadCN";
+
+ const numeroSeguro = (valor) => {
++  if (valor === null || valor === undefined) return null;
+   const numero = Number(valor);
+   return Number.isFinite(numero) ? numero : null;
+ };
