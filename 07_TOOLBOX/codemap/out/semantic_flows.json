@@ -399,14 +399,16 @@
       {
         "order": 12,
         "role": "guard",
-        "label": "hidrogramas_published: tienehidrogramaspublicados",
-        "symbol": "hidrogramas_published",
+        "label": "Q5_table: tieneQ5Publicado",
+        "symbol": "Q5_table",
         "component": "",
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
-        "evidence": "if (lower.includes(\"tienehidrogramaspublicados\")) return \"hidrogramas_published\";",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "evidence": "const guardTerms = [\"tieneQ5Publicado\", \"tieneHidrogramasPublicados\", \"faltantesExpediente\", \"Tabla Q-5\"];",
         "domains": [
           "Q5",
+          "CN",
+          "Expediente",
           "Contexto"
         ],
         "semanticScore": 40
@@ -414,14 +416,32 @@
       {
         "order": 13,
         "role": "guard",
-        "label": "Q5_table: !tieneq5publicado",
+        "label": "Q5_table",
         "symbol": "Q5_table",
         "component": "",
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 50,
-        "evidence": "if (lower.includes(\"!tieneq5publicado\") || lower.includes(\"!tienehidrogramaspublicados\")) return \"Q5_negated_guard\";",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
+        "evidence": "push(li(\"tieneQ5Publicado y tieneHidrogramasPublicados en ComparadorMultiMetodo.jsx:2093-2101.\"));",
         "domains": [
           "Q5",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 14,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
           "Contexto"
         ],
         "semanticScore": 40
@@ -441,21 +461,27 @@
         "message": null
       },
       {
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
-        "type": "hidrogramas_published",
-        "message": "tienehidrogramaspublicados"
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "type": "Q5_table",
+        "message": "tieneQ5Publicado"
       },
       {
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 50,
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
         "type": "Q5_table",
-        "message": "!tieneq5publicado"
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
       }
     ],
     "documentOutputs": [],
     "confidence": 0.9,
-    "semanticScore": 1180,
+    "semanticScore": 1220,
     "gaps": []
   },
   {
@@ -1384,14 +1410,16 @@
       {
         "order": 8,
         "role": "guard",
-        "label": "hidrogramas_published: tienehidrogramaspublicados",
-        "symbol": "hidrogramas_published",
+        "label": "Q5_table: tieneQ5Publicado",
+        "symbol": "Q5_table",
         "component": "",
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
-        "evidence": "if (lower.includes(\"tienehidrogramaspublicados\")) return \"hidrogramas_published\";",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "evidence": "const guardTerms = [\"tieneQ5Publicado\", \"tieneHidrogramasPublicados\", \"faltantesExpediente\", \"Tabla Q-5\"];",
         "domains": [
           "Q5",
+          "CN",
+          "Expediente",
           "Contexto"
         ],
         "semanticScore": 40
@@ -1399,14 +1427,32 @@
       {
         "order": 9,
         "role": "guard",
-        "label": "Q5_table: !tieneq5publicado",
+        "label": "Q5_table",
         "symbol": "Q5_table",
         "component": "",
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 50,
-        "evidence": "if (lower.includes(\"!tieneq5publicado\") || lower.includes(\"!tienehidrogramaspublicados\")) return \"Q5_negated_guard\";",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
+        "evidence": "push(li(\"tieneQ5Publicado y tieneHidrogramasPublicados en ComparadorMultiMetodo.jsx:2093-2101.\"));",
         "domains": [
           "Q5",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 10,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
           "Contexto"
         ],
         "semanticScore": 40
@@ -1426,21 +1472,27 @@
         "message": null
       },
       {
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
-        "type": "hidrogramas_published",
-        "message": "tienehidrogramaspublicados"
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "type": "Q5_table",
+        "message": "tieneQ5Publicado"
       },
       {
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 50,
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
         "type": "Q5_table",
-        "message": "!tieneq5publicado"
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
       }
     ],
     "documentOutputs": [],
     "confidence": 0.9,
-    "semanticScore": 580,
+    "semanticScore": 620,
     "gaps": []
   },
   {
@@ -1840,6 +1892,295 @@
     "gaps": []
   },
   {
+    "id": 96,
+    "query": "Contexto",
+    "domain": "Contexto",
+    "routeName": "Contexto_domain_flow",
+    "steps": [
+      {
+        "order": 1,
+        "role": "producer",
+        "label": "contextoBase",
+        "symbol": "contextoBase",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 28,
+        "evidence": "const contextoBase = contexto || {",
+        "domains": [
+          "Contexto"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 2,
+        "role": "producer",
+        "label": "bruto",
+        "symbol": "bruto",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 500,
+        "evidence": "const bruto = contextoBase?.tc_metodos;",
+        "domains": [
+          "Tc",
+          "Contexto"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 3,
+        "role": "producer",
+        "label": "bruto",
+        "symbol": "bruto",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 565,
+        "evidence": "const bruto = contextoBase?.hidrogramas;",
+        "domains": [
+          "Q5",
+          "Contexto"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 4,
+        "role": "producer",
+        "label": "contextoBase",
+        "symbol": "contextoBase",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 68,
+        "evidence": "const contextoBase = contexto || {",
+        "domains": [
+          "Contexto"
+        ],
+        "semanticScore": 100
+      },
+      {
+        "order": 5,
+        "role": "producer",
+        "label": "resumenEstructuraHidrogramas",
+        "symbol": "resumenEstructuraHidrogramas",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 264,
+        "evidence": "const resumenEstructuraHidrogramas = useMemo(() => {",
+        "domains": [
+          "Q5",
+          "QTr",
+          "Contexto"
+        ],
+        "semanticScore": 100
+      },
+      {
+        "order": 6,
+        "role": "consumer",
+        "label": "volTotal",
+        "symbol": "volTotal",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 33,
+        "evidence": "- Comparación contra volTotal de hidrogramas.",
+        "domains": [
+          "Q5",
+          "QTr",
+          "Contexto"
+        ],
+        "semanticScore": 70
+      },
+      {
+        "order": 7,
+        "role": "consumer",
+        "label": "hidrogramas",
+        "symbol": "hidrogramas",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 33,
+        "evidence": "- Comparación contra volTotal de hidrogramas.",
+        "domains": [
+          "Q5",
+          "QTr",
+          "Contexto"
+        ],
+        "semanticScore": 70
+      },
+      {
+        "order": 8,
+        "role": "consumer",
+        "label": "hidrogramas",
+        "symbol": "hidrogramas",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 5,
+        "evidence": "Auditor auxiliar especializado en hidrogramas, caudal pico, tiempo al pico y volumen.",
+        "domains": [
+          "Q5",
+          "CN",
+          "Contexto"
+        ],
+        "semanticScore": 70
+      },
+      {
+        "order": 9,
+        "role": "consumer",
+        "label": "pico",
+        "symbol": "pico",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 5,
+        "evidence": "Auditor auxiliar especializado en hidrogramas, caudal pico, tiempo al pico y volumen.",
+        "domains": [
+          "Q5",
+          "CN",
+          "Contexto"
+        ],
+        "semanticScore": 70
+      },
+      {
+        "order": 10,
+        "role": "consumer",
+        "label": "hidrogramas",
+        "symbol": "hidrogramas",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 16,
+        "evidence": "- hidrogramas",
+        "domains": [
+          "Q5",
+          "Contexto"
+        ],
+        "semanticScore": 70
+      },
+      {
+        "order": 11,
+        "role": "guard",
+        "label": "hidrogramas_published",
+        "symbol": "hidrogramas_published",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2097,
+        "evidence": "const tieneHidrogramasPublicados =",
+        "domains": [
+          "Q5",
+          "Contexto"
+        ],
+        "semanticScore": 100
+      },
+      {
+        "order": 12,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2101,
+        "evidence": "if (!tieneQ5Publicado && !tieneHidrogramasPublicados) {",
+        "domains": [
+          "Q5",
+          "Contexto"
+        ],
+        "semanticScore": 100
+      },
+      {
+        "order": 13,
+        "role": "guard",
+        "label": "Q5_table: tieneQ5Publicado",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "evidence": "const guardTerms = [\"tieneQ5Publicado\", \"tieneHidrogramasPublicados\", \"faltantesExpediente\", \"Tabla ",
+        "domains": [
+          "Q5",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 14,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
+        "evidence": "push(li(\"tieneQ5Publicado y tieneHidrogramasPublicados en ComparadorMultiMetodo.jsx:2093-2101.\"));",
+        "domains": [
+          "Q5",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 15,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoCompara",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      }
+    ],
+    "guards": [
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2097,
+        "type": "hidrogramas_published",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2101,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "type": "Q5_table",
+        "message": "tieneQ5Publicado"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 46,
+        "type": "hidrogramas_published",
+        "message": "tienehidrogramaspublicados"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 50,
+        "type": "Q5_table",
+        "message": "!tieneq5publicado"
+      }
+    ],
+    "documentOutputs": [],
+    "confidence": 0.8,
+    "semanticScore": 570,
+    "gaps": []
+  },
+  {
     "id": 91,
     "query": "CN",
     "domain": "CN",
@@ -2133,166 +2474,265 @@
     "gaps": []
   },
   {
-    "id": 96,
-    "query": "Contexto",
-    "domain": "Contexto",
-    "routeName": "Contexto_domain_flow",
+    "id": 90,
+    "query": "QTr",
+    "domain": "QTr",
+    "routeName": "QTr_domain_flow",
     "steps": [
       {
         "order": 1,
         "role": "producer",
-        "label": "contextoBase",
-        "symbol": "contextoBase",
+        "label": "contratoCuencaState",
+        "symbol": "contratoCuencaState",
         "component": "",
-        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
-        "line": 28,
-        "evidence": "const contextoBase = contexto || {",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 1,
+        "evidence": "let contratoCuencaState = null;",
         "domains": [
-          "Contexto"
+          "QTr"
         ],
-        "semanticScore": -100
+        "semanticScore": 70
       },
       {
         "order": 2,
         "role": "producer",
-        "label": "bruto",
-        "symbol": "bruto",
+        "label": "getContratoCuencaState",
+        "symbol": "getContratoCuencaState",
         "component": "",
-        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
-        "line": 500,
-        "evidence": "const bruto = contextoBase?.tc_metodos;",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 5,
+        "evidence": "export function getContratoCuencaState() {",
         "domains": [
-          "Tc",
-          "Contexto"
+          "QTr",
+          "Tc"
         ],
-        "semanticScore": -100
+        "semanticScore": 70
       },
       {
         "order": 3,
         "role": "producer",
-        "label": "bruto",
-        "symbol": "bruto",
+        "label": "setContratoCuencaState",
+        "symbol": "setContratoCuencaState",
         "component": "",
-        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
-        "line": 565,
-        "evidence": "const bruto = contextoBase?.hidrogramas;",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 9,
+        "evidence": "export function setContratoCuencaState(parcial) {",
         "domains": [
-          "Q5",
-          "Contexto"
+          "QTr",
+          "Tc"
         ],
-        "semanticScore": -100
+        "semanticScore": 70
       },
       {
         "order": 4,
         "role": "producer",
-        "label": "contextoBase",
-        "symbol": "contextoBase",
+        "label": "subscribeContratoCuenca",
+        "symbol": "subscribeContratoCuenca",
         "component": "",
-        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
-        "line": 68,
-        "evidence": "const contextoBase = contexto || {",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 16,
+        "evidence": "export function subscribeContratoCuenca(fn) {",
         "domains": [
-          "Contexto"
+          "QTr"
         ],
-        "semanticScore": 100
+        "semanticScore": 70
       },
       {
         "order": 5,
         "role": "producer",
-        "label": "resumenEstructuraHidrogramas",
-        "symbol": "resumenEstructuraHidrogramas",
+        "label": "trState",
+        "symbol": "trState",
         "component": "",
-        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
-        "line": 264,
-        "evidence": "const resumenEstructuraHidrogramas = useMemo(() => {",
+        "file": "01_APP/HIDROFLOW/src/agents/trAgent.js",
+        "line": 1,
+        "evidence": "let trState = {",
         "domains": [
-          "Q5",
-          "QTr",
-          "Contexto"
+          "QTr"
         ],
-        "semanticScore": 100
+        "semanticScore": 70
       },
       {
         "order": 6,
         "role": "consumer",
-        "label": "volTotal",
-        "symbol": "volTotal",
+        "label": "con",
+        "symbol": "con",
         "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
-        "line": 33,
-        "evidence": "- Comparación contra volTotal de hidrogramas.",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoOrdenTrabajo.md",
+        "line": 49,
+        "evidence": "- Relación con otros módulos:",
         "domains": [
-          "Q5",
-          "QTr",
-          "Contexto"
+          "QTr"
         ],
         "semanticScore": 70
       },
       {
         "order": 7,
         "role": "consumer",
-        "label": "hidrogramas",
-        "symbol": "hidrogramas",
+        "label": "el",
+        "symbol": "el",
         "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
-        "line": 33,
-        "evidence": "- Comparación contra volTotal de hidrogramas.",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoOrdenTrabajo.md",
+        "line": 53,
+        "evidence": "La orden se cierra cuando el auditor entrega evidencia suficiente al Auditor Jefe.",
         "domains": [
-          "Q5",
-          "QTr",
-          "Contexto"
+          "QTr"
         ],
         "semanticScore": 70
       },
       {
         "order": 8,
         "role": "consumer",
-        "label": "hidrogramas",
-        "symbol": "hidrogramas",
+        "label": "trazabilidad",
+        "symbol": "trazabilidad",
         "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
-        "line": 5,
-        "evidence": "Auditor auxiliar especializado en hidrogramas, caudal pico, tiempo al pico y volumen.",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 7,
+        "evidence": "Su función es coordinar auditorías técnicas, hidrológicas, geomorfológicas, hidráulicas y de trazabi",
         "domains": [
-          "Q5",
-          "CN",
-          "Contexto"
+          "QTr",
+          "CN"
         ],
         "semanticScore": 70
       },
       {
         "order": 9,
         "role": "consumer",
-        "label": "pico",
-        "symbol": "pico",
+        "label": "sin",
+        "symbol": "sin",
         "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
-        "line": 5,
-        "evidence": "Auditor auxiliar especializado en hidrogramas, caudal pico, tiempo al pico y volumen.",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 7,
+        "evidence": "Su función es coordinar auditorías técnicas, hidrológicas, geomorfológicas, hidráulicas y de trazabi",
         "domains": [
-          "Q5",
-          "CN",
-          "Contexto"
+          "QTr",
+          "CN"
         ],
         "semanticScore": 70
       },
       {
         "order": 10,
         "role": "consumer",
-        "label": "hidrogramas",
-        "symbol": "hidrogramas",
+        "label": "sin",
+        "symbol": "sin",
         "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
-        "line": 16,
-        "evidence": "- hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 84,
+        "evidence": "- No alterar fórmulas hidrológicas sin trazabilidad.",
         "domains": [
-          "Q5",
-          "Contexto"
+          "QTr"
         ],
         "semanticScore": 70
       },
       {
         "order": 11,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoCompara",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 12,
+        "role": "guard",
+        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 13,
+        "role": "guard",
+        "label": "Q5_table: Tabla Q-5 auditada",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      }
+    ],
+    "guards": [
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "type": "Q5_table",
+        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada"
+      }
+    ],
+    "documentOutputs": [],
+    "confidence": 0.8,
+    "semanticScore": 540,
+    "gaps": []
+  },
+  {
+    "id": 81,
+    "query": "contextoComparador",
+    "domain": "Contexto",
+    "routeName": "contextoComparador_flow",
+    "steps": [
+      {
+        "order": 1,
+        "role": "prop_pass",
+        "label": "contextoComparador={contextoComparador}",
+        "symbol": "contextoComparador",
+        "component": "Field -> ModHidrogramas",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 4321,
+        "evidence": "contextoComparador={contextoComparador}",
+        "domains": [
+          "Contexto"
+        ],
+        "semanticScore": 100
+      },
+      {
+        "order": 2,
+        "role": "callback_receive",
+        "label": "contextoComparador recibido por ModHidrogramas",
+        "symbol": "contextoComparador",
+        "component": "ModHidrogramas",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 2019,
+        "evidence": "prop declaration",
+        "domains": [
+          "Contexto"
+        ],
+        "semanticScore": 100
+      },
+      {
+        "order": 3,
         "role": "guard",
         "label": "hidrogramas_published",
         "symbol": "hidrogramas_published",
@@ -2307,7 +2747,7 @@
         "semanticScore": 100
       },
       {
-        "order": 12,
+        "order": 4,
         "role": "guard",
         "label": "Q5_table",
         "symbol": "Q5_table",
@@ -2322,14 +2762,31 @@
         "semanticScore": 100
       },
       {
-        "order": 13,
+        "order": 5,
         "role": "guard",
-        "label": "hidrogramas_published: tienehidrogramaspublicados",
-        "symbol": "hidrogramas_published",
+        "label": "Q5_table: tieneQ5Publicado",
+        "symbol": "Q5_table",
         "component": "",
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
-        "evidence": "if (lower.includes(\"tienehidrogramaspublicados\")) return \"hidrogramas_published\";",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "evidence": "const guardTerms = [\"tieneQ5Publicado\", \"tieneHidrogramasPublicados\", \"faltantesExpediente\", \"Tabla Q-5\"];",
+        "domains": [
+          "Q5",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 6,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
+        "evidence": "push(li(\"tieneQ5Publicado y tieneHidrogramasPublicados en ComparadorMultiMetodo.jsx:2093-2101.\"));",
         "domains": [
           "Q5",
           "Contexto"
@@ -2337,16 +2794,19 @@
         "semanticScore": 40
       },
       {
-        "order": 14,
+        "order": 7,
         "role": "guard",
-        "label": "Q5_table: !tieneq5publicado",
+        "label": "Q5_table",
         "symbol": "Q5_table",
         "component": "",
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 50,
-        "evidence": "if (lower.includes(\"!tieneq5publicado\") || lower.includes(\"!tienehidrogramaspublicados\")) return \"Q5",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
         "domains": [
           "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
           "Contexto"
         ],
         "semanticScore": 40
@@ -2366,21 +2826,27 @@
         "message": null
       },
       {
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
-        "type": "hidrogramas_published",
-        "message": "tienehidrogramaspublicados"
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "type": "Q5_table",
+        "message": "tieneQ5Publicado"
       },
       {
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 50,
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
         "type": "Q5_table",
-        "message": "!tieneq5publicado"
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
       }
     ],
     "documentOutputs": [],
-    "confidence": 0.8,
-    "semanticScore": 530,
+    "confidence": 0.9,
+    "semanticScore": 520,
     "gaps": []
   },
   {
@@ -2835,332 +3301,6 @@
     "gaps": [
       "no_consumer_found"
     ]
-  },
-  {
-    "id": 90,
-    "query": "QTr",
-    "domain": "QTr",
-    "routeName": "QTr_domain_flow",
-    "steps": [
-      {
-        "order": 1,
-        "role": "producer",
-        "label": "contratoCuencaState",
-        "symbol": "contratoCuencaState",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
-        "line": 1,
-        "evidence": "let contratoCuencaState = null;",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 2,
-        "role": "producer",
-        "label": "getContratoCuencaState",
-        "symbol": "getContratoCuencaState",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
-        "line": 5,
-        "evidence": "export function getContratoCuencaState() {",
-        "domains": [
-          "QTr",
-          "Tc"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 3,
-        "role": "producer",
-        "label": "setContratoCuencaState",
-        "symbol": "setContratoCuencaState",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
-        "line": 9,
-        "evidence": "export function setContratoCuencaState(parcial) {",
-        "domains": [
-          "QTr",
-          "Tc"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 4,
-        "role": "producer",
-        "label": "subscribeContratoCuenca",
-        "symbol": "subscribeContratoCuenca",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
-        "line": 16,
-        "evidence": "export function subscribeContratoCuenca(fn) {",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 5,
-        "role": "producer",
-        "label": "trState",
-        "symbol": "trState",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/trAgent.js",
-        "line": 1,
-        "evidence": "let trState = {",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 6,
-        "role": "consumer",
-        "label": "con",
-        "symbol": "con",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoOrdenTrabajo.md",
-        "line": 49,
-        "evidence": "- Relación con otros módulos:",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 7,
-        "role": "consumer",
-        "label": "el",
-        "symbol": "el",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoOrdenTrabajo.md",
-        "line": 53,
-        "evidence": "La orden se cierra cuando el auditor entrega evidencia suficiente al Auditor Jefe.",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 8,
-        "role": "consumer",
-        "label": "trazabilidad",
-        "symbol": "trazabilidad",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
-        "line": 7,
-        "evidence": "Su función es coordinar auditorías técnicas, hidrológicas, geomorfológicas, hidráulicas y de trazabi",
-        "domains": [
-          "QTr",
-          "CN"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 9,
-        "role": "consumer",
-        "label": "sin",
-        "symbol": "sin",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
-        "line": 7,
-        "evidence": "Su función es coordinar auditorías técnicas, hidrológicas, geomorfológicas, hidráulicas y de trazabi",
-        "domains": [
-          "QTr",
-          "CN"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 10,
-        "role": "consumer",
-        "label": "sin",
-        "symbol": "sin",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
-        "line": 84,
-        "evidence": "- No alterar fórmulas hidrológicas sin trazabilidad.",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 11,
-        "role": "guard",
-        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 12,
-        "role": "guard",
-        "label": "Q5_table: Tabla Q-5 auditada",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      }
-    ],
-    "guards": [
-      {
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "type": "Q5_table",
-        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
-      },
-      {
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "type": "Q5_table",
-        "message": "Tabla Q-5 auditada"
-      }
-    ],
-    "documentOutputs": [],
-    "confidence": 0.8,
-    "semanticScore": 500,
-    "gaps": []
-  },
-  {
-    "id": 81,
-    "query": "contextoComparador",
-    "domain": "Contexto",
-    "routeName": "contextoComparador_flow",
-    "steps": [
-      {
-        "order": 1,
-        "role": "prop_pass",
-        "label": "contextoComparador={contextoComparador}",
-        "symbol": "contextoComparador",
-        "component": "Field -> ModHidrogramas",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
-        "line": 4321,
-        "evidence": "contextoComparador={contextoComparador}",
-        "domains": [
-          "Contexto"
-        ],
-        "semanticScore": 100
-      },
-      {
-        "order": 2,
-        "role": "callback_receive",
-        "label": "contextoComparador recibido por ModHidrogramas",
-        "symbol": "contextoComparador",
-        "component": "ModHidrogramas",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
-        "line": 2019,
-        "evidence": "prop declaration",
-        "domains": [
-          "Contexto"
-        ],
-        "semanticScore": 100
-      },
-      {
-        "order": 3,
-        "role": "guard",
-        "label": "hidrogramas_published",
-        "symbol": "hidrogramas_published",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
-        "line": 2097,
-        "evidence": "const tieneHidrogramasPublicados =",
-        "domains": [
-          "Q5",
-          "Contexto"
-        ],
-        "semanticScore": 100
-      },
-      {
-        "order": 4,
-        "role": "guard",
-        "label": "Q5_table",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
-        "line": 2101,
-        "evidence": "if (!tieneQ5Publicado && !tieneHidrogramasPublicados) {",
-        "domains": [
-          "Q5",
-          "Contexto"
-        ],
-        "semanticScore": 100
-      },
-      {
-        "order": 5,
-        "role": "guard",
-        "label": "hidrogramas_published: tienehidrogramaspublicados",
-        "symbol": "hidrogramas_published",
-        "component": "",
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
-        "evidence": "if (lower.includes(\"tienehidrogramaspublicados\")) return \"hidrogramas_published\";",
-        "domains": [
-          "Q5",
-          "Contexto"
-        ],
-        "semanticScore": 40
-      },
-      {
-        "order": 6,
-        "role": "guard",
-        "label": "Q5_table: !tieneq5publicado",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 50,
-        "evidence": "if (lower.includes(\"!tieneq5publicado\") || lower.includes(\"!tienehidrogramaspublicados\")) return \"Q5_negated_guard\";",
-        "domains": [
-          "Q5",
-          "Contexto"
-        ],
-        "semanticScore": 40
-      }
-    ],
-    "guards": [
-      {
-        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
-        "line": 2097,
-        "type": "hidrogramas_published",
-        "message": null
-      },
-      {
-        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
-        "line": 2101,
-        "type": "Q5_table",
-        "message": null
-      },
-      {
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
-        "type": "hidrogramas_published",
-        "message": "tienehidrogramaspublicados"
-      },
-      {
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 50,
-        "type": "Q5_table",
-        "message": "!tieneq5publicado"
-      }
-    ],
-    "documentOutputs": [],
-    "confidence": 0.9,
-    "semanticScore": 480,
-    "gaps": []
   },
   {
     "id": 4,
@@ -3722,16 +3862,16 @@
         "message": "Tabla Q-5 auditada:"
       },
       {
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 45,
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
         "type": "Q5_table",
-        "message": "tieneq5publicado"
+        "message": "tieneQ5Publicado"
       },
       {
-        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
-        "type": "hidrogramas_published",
-        "message": "tienehidrogramaspublicados"
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
+        "type": "Q5_table",
+        "message": null
       }
     ],
     "documentOutputs": [],
@@ -5335,6 +5475,24 @@
       {
         "order": 2,
         "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 3,
+        "role": "guard",
         "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
         "symbol": "Q5_table",
         "component": "",
@@ -5348,7 +5506,7 @@
         "semanticScore": -100
       },
       {
-        "order": 3,
+        "order": 4,
         "role": "guard",
         "label": "Q5_table: Tabla Q-5 auditada",
         "symbol": "Q5_table",
@@ -5365,6 +5523,12 @@
     ],
     "guards": [
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
         "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
         "line": 79,
         "type": "Q5_table",
@@ -5379,7 +5543,103 @@
     ],
     "documentOutputs": [],
     "confidence": 1,
-    "semanticScore": -100,
+    "semanticScore": -60,
+    "gaps": []
+  },
+  {
+    "id": 83,
+    "query": "faltantesQTrActivoExpediente",
+    "domain": "QTr",
+    "routeName": "faltantesQTrActivoExpediente_flow",
+    "steps": [
+      {
+        "order": 1,
+        "role": "callback_receive",
+        "label": "faltantesQTrActivoExpediente recibido por construirLecturaTecnicaQTrActivo",
+        "symbol": "faltantesQTrActivoExpediente",
+        "component": "construirLecturaTecnicaQTrActivo",
+        "file": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueEscenarioQTrActivoExpediente.js",
+        "line": 133,
+        "evidence": "prop declaration",
+        "domains": [
+          "QTr",
+          "CN",
+          "Expediente"
+        ],
+        "semanticScore": 70
+      },
+      {
+        "order": 2,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 3,
+        "role": "guard",
+        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 4,
+        "role": "guard",
+        "label": "Q5_table: Tabla Q-5 auditada",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      }
+    ],
+    "guards": [
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "type": "Q5_table",
+        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada"
+      }
+    ],
+    "documentOutputs": [],
+    "confidence": 1,
+    "semanticScore": -90,
     "gaps": []
   },
   {
@@ -6936,78 +7196,6 @@
     ]
   },
   {
-    "id": 83,
-    "query": "faltantesQTrActivoExpediente",
-    "domain": "QTr",
-    "routeName": "faltantesQTrActivoExpediente_flow",
-    "steps": [
-      {
-        "order": 1,
-        "role": "callback_receive",
-        "label": "faltantesQTrActivoExpediente recibido por construirLecturaTecnicaQTrActivo",
-        "symbol": "faltantesQTrActivoExpediente",
-        "component": "construirLecturaTecnicaQTrActivo",
-        "file": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueEscenarioQTrActivoExpediente.js",
-        "line": 133,
-        "evidence": "prop declaration",
-        "domains": [
-          "QTr",
-          "CN",
-          "Expediente"
-        ],
-        "semanticScore": 70
-      },
-      {
-        "order": 2,
-        "role": "guard",
-        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 3,
-        "role": "guard",
-        "label": "Q5_table: Tabla Q-5 auditada",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      }
-    ],
-    "guards": [
-      {
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "type": "Q5_table",
-        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
-      },
-      {
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "type": "Q5_table",
-        "message": "Tabla Q-5 auditada"
-      }
-    ],
-    "documentOutputs": [],
-    "confidence": 1,
-    "semanticScore": -130,
-    "gaps": []
-  },
-  {
     "id": 37,
     "query": "cLat",
     "domain": "unknown",
@@ -7346,6 +7534,128 @@
     "confidence": 0.9,
     "semanticScore": -200,
     "gaps": []
+  },
+  {
+    "id": 77,
+    "query": "ref",
+    "domain": "QTr",
+    "routeName": "ref_flow",
+    "steps": [
+      {
+        "order": 1,
+        "role": "prop_pass",
+        "label": "ref={refContenedorDistribuciones}",
+        "symbol": "ref",
+        "component": "calcCNdinamico -> Card",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+        "line": 1312,
+        "evidence": "<div ref={refContenedorDistribuciones} style={{ width: \"100%\", height: 260 }}>",
+        "domains": [
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 2,
+        "role": "prop_pass",
+        "label": "ref={refContenedorIntensidades}",
+        "symbol": "ref",
+        "component": "calcCNdinamico -> Card",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+        "line": 1344,
+        "evidence": "<div ref={refContenedorIntensidades} style={{ width: \"100%\", height: 220 }}>",
+        "domains": [],
+        "semanticScore": -100
+      },
+      {
+        "order": 3,
+        "role": "prop_pass",
+        "label": "ref={refContenedorDistribuciones}",
+        "symbol": "ref",
+        "component": "Field -> Card",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 1938,
+        "evidence": "<div ref={refContenedorDistribuciones} style={{ width: \"100%\", height: 260 }}>",
+        "domains": [
+          "QTr"
+        ],
+        "semanticScore": 100
+      },
+      {
+        "order": 4,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 5,
+        "role": "guard",
+        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 6,
+        "role": "guard",
+        "label": "Q5_table: Tabla Q-5 auditada",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      }
+    ],
+    "guards": [
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "type": "Q5_table",
+        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada"
+      }
+    ],
+    "documentOutputs": [],
+    "confidence": 0.4,
+    "semanticScore": -260,
+    "gaps": [
+      "no_consumer_found"
+    ]
   },
   {
     "id": 41,
@@ -8268,104 +8578,6 @@
     ]
   },
   {
-    "id": 77,
-    "query": "ref",
-    "domain": "QTr",
-    "routeName": "ref_flow",
-    "steps": [
-      {
-        "order": 1,
-        "role": "prop_pass",
-        "label": "ref={refContenedorDistribuciones}",
-        "symbol": "ref",
-        "component": "calcCNdinamico -> Card",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
-        "line": 1312,
-        "evidence": "<div ref={refContenedorDistribuciones} style={{ width: \"100%\", height: 260 }}>",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 2,
-        "role": "prop_pass",
-        "label": "ref={refContenedorIntensidades}",
-        "symbol": "ref",
-        "component": "calcCNdinamico -> Card",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
-        "line": 1344,
-        "evidence": "<div ref={refContenedorIntensidades} style={{ width: \"100%\", height: 220 }}>",
-        "domains": [],
-        "semanticScore": -100
-      },
-      {
-        "order": 3,
-        "role": "prop_pass",
-        "label": "ref={refContenedorDistribuciones}",
-        "symbol": "ref",
-        "component": "Field -> Card",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
-        "line": 1938,
-        "evidence": "<div ref={refContenedorDistribuciones} style={{ width: \"100%\", height: 260 }}>",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": 100
-      },
-      {
-        "order": 4,
-        "role": "guard",
-        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 5,
-        "role": "guard",
-        "label": "Q5_table: Tabla Q-5 auditada",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      }
-    ],
-    "guards": [
-      {
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "type": "Q5_table",
-        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
-      },
-      {
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "type": "Q5_table",
-        "message": "Tabla Q-5 auditada"
-      }
-    ],
-    "documentOutputs": [],
-    "confidence": 0.4,
-    "semanticScore": -300,
-    "gaps": [
-      "no_consumer_found"
-    ]
-  },
-  {
     "id": 23,
     "query": "hiCols",
     "domain": "unknown",
@@ -8501,6 +8713,24 @@
       {
         "order": 4,
         "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 5,
+        "role": "guard",
         "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
         "symbol": "Q5_table",
         "component": "",
@@ -8514,7 +8744,7 @@
         "semanticScore": -100
       },
       {
-        "order": 5,
+        "order": 6,
         "role": "guard",
         "label": "Q5_table: Tabla Q-5 auditada",
         "symbol": "Q5_table",
@@ -8531,6 +8761,12 @@
     ],
     "guards": [
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
         "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
         "line": 79,
         "type": "Q5_table",
@@ -8545,7 +8781,7 @@
     ],
     "documentOutputs": [],
     "confidence": 0.4,
-    "semanticScore": -500,
+    "semanticScore": -460,
     "gaps": [
       "no_consumer_found"
     ]
@@ -8597,6 +8833,24 @@
       {
         "order": 4,
         "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 5,
+        "role": "guard",
         "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
         "symbol": "Q5_table",
         "component": "",
@@ -8610,7 +8864,7 @@
         "semanticScore": -100
       },
       {
-        "order": 5,
+        "order": 6,
         "role": "guard",
         "label": "Q5_table: Tabla Q-5 auditada",
         "symbol": "Q5_table",
@@ -8627,6 +8881,12 @@
     ],
     "guards": [
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
         "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
         "line": 79,
         "type": "Q5_table",
@@ -8641,7 +8901,7 @@
     ],
     "documentOutputs": [],
     "confidence": 0.4,
-    "semanticScore": -500,
+    "semanticScore": -460,
     "gaps": [
       "no_consumer_found"
     ]
@@ -8697,6 +8957,24 @@
       {
         "order": 4,
         "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 5,
+        "role": "guard",
         "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
         "symbol": "Q5_table",
         "component": "",
@@ -8710,7 +8988,7 @@
         "semanticScore": -100
       },
       {
-        "order": 5,
+        "order": 6,
         "role": "guard",
         "label": "Q5_table: Tabla Q-5 auditada",
         "symbol": "Q5_table",
@@ -8727,6 +9005,12 @@
     ],
     "guards": [
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
         "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
         "line": 79,
         "type": "Q5_table",
@@ -8741,7 +9025,7 @@
     ],
     "documentOutputs": [],
     "confidence": 0.4,
-    "semanticScore": -500,
+    "semanticScore": -460,
     "gaps": [
       "no_consumer_found"
     ]
@@ -8797,6 +9081,24 @@
       {
         "order": 4,
         "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 5,
+        "role": "guard",
         "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
         "symbol": "Q5_table",
         "component": "",
@@ -8810,7 +9112,7 @@
         "semanticScore": -100
       },
       {
-        "order": 5,
+        "order": 6,
         "role": "guard",
         "label": "Q5_table: Tabla Q-5 auditada",
         "symbol": "Q5_table",
@@ -8827,6 +9129,12 @@
     ],
     "guards": [
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
         "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
         "line": 79,
         "type": "Q5_table",
@@ -8841,10 +9149,479 @@
     ],
     "documentOutputs": [],
     "confidence": 0.4,
-    "semanticScore": -500,
+    "semanticScore": -460,
     "gaps": [
       "no_consumer_found"
     ]
+  },
+  {
+    "id": 21,
+    "query": "headers",
+    "domain": "Tc",
+    "routeName": "headers_flow",
+    "steps": [
+      {
+        "order": 1,
+        "role": "prop_pass",
+        "label": "headers={[\"Método\",\"Tc (h)\",\"Tc (min)\",\"Δ vs. media (%)\"]}",
+        "symbol": "headers",
+        "component": "calcCNdinamico -> Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 737,
+        "evidence": "headers={[\"Método\",\"Tc (h)\",\"Tc (min)\",\"Δ vs. media (%)\"]}",
+        "domains": [
+          "Tc"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 2,
+        "role": "prop_pass",
+        "label": "headers={[\"d(min)\",...TR_LIST.map(T=>`Tr=${T}",
+        "symbol": "headers",
+        "component": "calcCNdinamico -> Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 871,
+        "evidence": "<Tbl headers={[\"d(min)\",...TR_LIST.map(T=>`Tr=${T}a`)]} rows={idfData.map(r=>({d:r.d,...Object.fromEntries(TR_LIST.map(T=>[T,r[`Tr${T}`]]))}))} hiCols",
+        "domains": [
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 3,
+        "role": "prop_pass",
+        "label": "headers={[\"Tr (años)\",\"k\",\"n\",\"c\",\"I(10min)\",\"I(30min)\",\"I(60min)\",\"I(120min)\"]}",
+        "symbol": "headers",
+        "component": "calcCNdinamico -> Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 889,
+        "evidence": "<Tbl headers={[\"Tr (años)\",\"k\",\"n\",\"c\",\"I(10min)\",\"I(30min)\",\"I(60min)\",\"I(120min)\"]}",
+        "domains": [
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 4,
+        "role": "callback_receive",
+        "label": "headers recibido por Tbl",
+        "symbol": "headers",
+        "component": "Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 480,
+        "evidence": "prop declaration",
+        "domains": [],
+        "semanticScore": -100
+      },
+      {
+        "order": 5,
+        "role": "callback_receive",
+        "label": "headers recibido por Tbl",
+        "symbol": "headers",
+        "component": "Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+        "line": 481,
+        "evidence": "prop declaration",
+        "domains": [],
+        "semanticScore": -100
+      },
+      {
+        "order": 6,
+        "role": "callback_receive",
+        "label": "headers recibido por Tbl",
+        "symbol": "headers",
+        "component": "Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 510,
+        "evidence": "prop declaration",
+        "domains": [],
+        "semanticScore": 100
+      },
+      {
+        "order": 7,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 8,
+        "role": "guard",
+        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 9,
+        "role": "guard",
+        "label": "Q5_table: Tabla Q-5 auditada",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      }
+    ],
+    "guards": [
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "type": "Q5_table",
+        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada"
+      }
+    ],
+    "documentOutputs": [],
+    "confidence": 0.9,
+    "semanticScore": -560,
+    "gaps": []
+  },
+  {
+    "id": 22,
+    "query": "rows",
+    "domain": "QTr",
+    "routeName": "rows_flow",
+    "steps": [
+      {
+        "order": 1,
+        "role": "prop_pass",
+        "label": "rows={idfData.map(r=>({d:r.d,...Object.fromEntries(TR_LIST.map(T=>[T,r[`Tr${T}",
+        "symbol": "rows",
+        "component": "calcCNdinamico -> Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 871,
+        "evidence": "<Tbl headers={[\"d(min)\",...TR_LIST.map(T=>`Tr=${T}a`)]} rows={idfData.map(r=>({d:r.d,...Object.fromEntries(TR_LIST.map(T=>[T,r[`Tr${T}`]]))}))} hiCols",
+        "domains": [
+          "QTr",
+          "IDF"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 2,
+        "role": "prop_pass",
+        "label": "rows={TR_LIST.map(T=>{const{k,n,c}",
+        "symbol": "rows",
+        "component": "calcCNdinamico -> Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 890,
+        "evidence": "rows={TR_LIST.map(T=>{const{k,n,c}=est.params[String(T)]||{k:0,n:1,c:0.4};return{T,k:+k.toFixed(4),n:+n.toFixed(4),c,I10:+idfI(est,10,T).toFixed(2),I3",
+        "domains": [
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 3,
+        "role": "prop_pass",
+        "label": "rows={res}",
+        "symbol": "rows",
+        "component": "calcCNdinamico -> Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1485,
+        "evidence": "<Tbl headers={[\"Tr (a)\",\"I (mm/h)\",\"P (mm)\",\"Coef. C\",\"Q (m³/s)\"]} rows={res} hiCols={[4]} accent={C.gold}/>",
+        "domains": [],
+        "semanticScore": -100
+      },
+      {
+        "order": 4,
+        "role": "callback_receive",
+        "label": "rows recibido por Tbl",
+        "symbol": "rows",
+        "component": "Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 480,
+        "evidence": "prop declaration",
+        "domains": [],
+        "semanticScore": -100
+      },
+      {
+        "order": 5,
+        "role": "callback_receive",
+        "label": "rows recibido por Tbl",
+        "symbol": "rows",
+        "component": "Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+        "line": 481,
+        "evidence": "prop declaration",
+        "domains": [],
+        "semanticScore": -100
+      },
+      {
+        "order": 6,
+        "role": "callback_receive",
+        "label": "rows recibido por Tbl",
+        "symbol": "rows",
+        "component": "Tbl",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 510,
+        "evidence": "prop declaration",
+        "domains": [],
+        "semanticScore": 100
+      },
+      {
+        "order": 7,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 8,
+        "role": "guard",
+        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 9,
+        "role": "guard",
+        "label": "Q5_table: Tabla Q-5 auditada",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      }
+    ],
+    "guards": [
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "type": "Q5_table",
+        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada"
+      }
+    ],
+    "documentOutputs": [],
+    "confidence": 0.9,
+    "semanticScore": -560,
+    "gaps": []
+  },
+  {
+    "id": 24,
+    "query": "options",
+    "domain": "QTr",
+    "routeName": "options_flow",
+    "steps": [
+      {
+        "order": 1,
+        "role": "prop_pass",
+        "label": "options={TR_LIST.map(t=>({v:t,l:`${t}",
+        "symbol": "options",
+        "component": "calcCNdinamico -> BtnGroup",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 950,
+        "evidence": "<BtnGroup options={TR_LIST.map(t=>({v:t,l:`${t}a`}))} value={Tr} onChange={setTr} accent={C.gold}/>",
+        "domains": [
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 2,
+        "role": "prop_pass",
+        "label": "options={[1,2,3,6,12].map(h=>({v:h,l:`${h}",
+        "symbol": "options",
+        "component": "calcCNdinamico -> BtnGroup",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 953,
+        "evidence": "<BtnGroup options={[1,2,3,6,12].map(h=>({v:h,l:`${h}h`}))} value={durH} onChange={setDurH} accent={C.accent3}/>",
+        "domains": [],
+        "semanticScore": -100
+      },
+      {
+        "order": 3,
+        "role": "prop_pass",
+        "label": "options={[5,10,15,30].map(d=>({v:d,l:`${d}",
+        "symbol": "options",
+        "component": "calcCNdinamico -> BtnGroup",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 956,
+        "evidence": "<BtnGroup options={[5,10,15,30].map(d=>({v:d,l:`${d}'`}))} value={dtMin} onChange={setDtMin} accent={C.accent}/>",
+        "domains": [],
+        "semanticScore": -100
+      },
+      {
+        "order": 4,
+        "role": "callback_receive",
+        "label": "options recibido por BtnGroup",
+        "symbol": "options",
+        "component": "BtnGroup",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 502,
+        "evidence": "prop declaration",
+        "domains": [],
+        "semanticScore": -100
+      },
+      {
+        "order": 5,
+        "role": "callback_receive",
+        "label": "options recibido por BtnGroup",
+        "symbol": "options",
+        "component": "BtnGroup",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+        "line": 503,
+        "evidence": "prop declaration",
+        "domains": [],
+        "semanticScore": -100
+      },
+      {
+        "order": 6,
+        "role": "callback_receive",
+        "label": "options recibido por BtnGroup",
+        "symbol": "options",
+        "component": "BtnGroup",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 532,
+        "evidence": "prop declaration",
+        "domains": [],
+        "semanticScore": 100
+      },
+      {
+        "order": 7,
+        "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 8,
+        "role": "guard",
+        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      },
+      {
+        "order": 9,
+        "role": "guard",
+        "label": "Q5_table: Tabla Q-5 auditada",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
+        "domains": [
+          "Q5",
+          "QTr"
+        ],
+        "semanticScore": -100
+      }
+    ],
+    "guards": [
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "type": "Q5_table",
+        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada"
+      }
+    ],
+    "documentOutputs": [],
+    "confidence": 0.9,
+    "semanticScore": -560,
+    "gaps": []
   },
   {
     "id": 13,
@@ -9011,403 +9788,6 @@
       }
     ],
     "guards": [],
-    "documentOutputs": [],
-    "confidence": 0.9,
-    "semanticScore": -600,
-    "gaps": []
-  },
-  {
-    "id": 21,
-    "query": "headers",
-    "domain": "Tc",
-    "routeName": "headers_flow",
-    "steps": [
-      {
-        "order": 1,
-        "role": "prop_pass",
-        "label": "headers={[\"Método\",\"Tc (h)\",\"Tc (min)\",\"Δ vs. media (%)\"]}",
-        "symbol": "headers",
-        "component": "calcCNdinamico -> Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 737,
-        "evidence": "headers={[\"Método\",\"Tc (h)\",\"Tc (min)\",\"Δ vs. media (%)\"]}",
-        "domains": [
-          "Tc"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 2,
-        "role": "prop_pass",
-        "label": "headers={[\"d(min)\",...TR_LIST.map(T=>`Tr=${T}",
-        "symbol": "headers",
-        "component": "calcCNdinamico -> Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 871,
-        "evidence": "<Tbl headers={[\"d(min)\",...TR_LIST.map(T=>`Tr=${T}a`)]} rows={idfData.map(r=>({d:r.d,...Object.fromEntries(TR_LIST.map(T=>[T,r[`Tr${T}`]]))}))} hiCols",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 3,
-        "role": "prop_pass",
-        "label": "headers={[\"Tr (años)\",\"k\",\"n\",\"c\",\"I(10min)\",\"I(30min)\",\"I(60min)\",\"I(120min)\"]}",
-        "symbol": "headers",
-        "component": "calcCNdinamico -> Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 889,
-        "evidence": "<Tbl headers={[\"Tr (años)\",\"k\",\"n\",\"c\",\"I(10min)\",\"I(30min)\",\"I(60min)\",\"I(120min)\"]}",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 4,
-        "role": "callback_receive",
-        "label": "headers recibido por Tbl",
-        "symbol": "headers",
-        "component": "Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 480,
-        "evidence": "prop declaration",
-        "domains": [],
-        "semanticScore": -100
-      },
-      {
-        "order": 5,
-        "role": "callback_receive",
-        "label": "headers recibido por Tbl",
-        "symbol": "headers",
-        "component": "Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
-        "line": 481,
-        "evidence": "prop declaration",
-        "domains": [],
-        "semanticScore": -100
-      },
-      {
-        "order": 6,
-        "role": "callback_receive",
-        "label": "headers recibido por Tbl",
-        "symbol": "headers",
-        "component": "Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
-        "line": 510,
-        "evidence": "prop declaration",
-        "domains": [],
-        "semanticScore": 100
-      },
-      {
-        "order": 7,
-        "role": "guard",
-        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 8,
-        "role": "guard",
-        "label": "Q5_table: Tabla Q-5 auditada",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      }
-    ],
-    "guards": [
-      {
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "type": "Q5_table",
-        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
-      },
-      {
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "type": "Q5_table",
-        "message": "Tabla Q-5 auditada"
-      }
-    ],
-    "documentOutputs": [],
-    "confidence": 0.9,
-    "semanticScore": -600,
-    "gaps": []
-  },
-  {
-    "id": 22,
-    "query": "rows",
-    "domain": "QTr",
-    "routeName": "rows_flow",
-    "steps": [
-      {
-        "order": 1,
-        "role": "prop_pass",
-        "label": "rows={idfData.map(r=>({d:r.d,...Object.fromEntries(TR_LIST.map(T=>[T,r[`Tr${T}",
-        "symbol": "rows",
-        "component": "calcCNdinamico -> Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 871,
-        "evidence": "<Tbl headers={[\"d(min)\",...TR_LIST.map(T=>`Tr=${T}a`)]} rows={idfData.map(r=>({d:r.d,...Object.fromEntries(TR_LIST.map(T=>[T,r[`Tr${T}`]]))}))} hiCols",
-        "domains": [
-          "QTr",
-          "IDF"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 2,
-        "role": "prop_pass",
-        "label": "rows={TR_LIST.map(T=>{const{k,n,c}",
-        "symbol": "rows",
-        "component": "calcCNdinamico -> Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 890,
-        "evidence": "rows={TR_LIST.map(T=>{const{k,n,c}=est.params[String(T)]||{k:0,n:1,c:0.4};return{T,k:+k.toFixed(4),n:+n.toFixed(4),c,I10:+idfI(est,10,T).toFixed(2),I3",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 3,
-        "role": "prop_pass",
-        "label": "rows={res}",
-        "symbol": "rows",
-        "component": "calcCNdinamico -> Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 1485,
-        "evidence": "<Tbl headers={[\"Tr (a)\",\"I (mm/h)\",\"P (mm)\",\"Coef. C\",\"Q (m³/s)\"]} rows={res} hiCols={[4]} accent={C.gold}/>",
-        "domains": [],
-        "semanticScore": -100
-      },
-      {
-        "order": 4,
-        "role": "callback_receive",
-        "label": "rows recibido por Tbl",
-        "symbol": "rows",
-        "component": "Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 480,
-        "evidence": "prop declaration",
-        "domains": [],
-        "semanticScore": -100
-      },
-      {
-        "order": 5,
-        "role": "callback_receive",
-        "label": "rows recibido por Tbl",
-        "symbol": "rows",
-        "component": "Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
-        "line": 481,
-        "evidence": "prop declaration",
-        "domains": [],
-        "semanticScore": -100
-      },
-      {
-        "order": 6,
-        "role": "callback_receive",
-        "label": "rows recibido por Tbl",
-        "symbol": "rows",
-        "component": "Tbl",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
-        "line": 510,
-        "evidence": "prop declaration",
-        "domains": [],
-        "semanticScore": 100
-      },
-      {
-        "order": 7,
-        "role": "guard",
-        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 8,
-        "role": "guard",
-        "label": "Q5_table: Tabla Q-5 auditada",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      }
-    ],
-    "guards": [
-      {
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "type": "Q5_table",
-        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
-      },
-      {
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "type": "Q5_table",
-        "message": "Tabla Q-5 auditada"
-      }
-    ],
-    "documentOutputs": [],
-    "confidence": 0.9,
-    "semanticScore": -600,
-    "gaps": []
-  },
-  {
-    "id": 24,
-    "query": "options",
-    "domain": "QTr",
-    "routeName": "options_flow",
-    "steps": [
-      {
-        "order": 1,
-        "role": "prop_pass",
-        "label": "options={TR_LIST.map(t=>({v:t,l:`${t}",
-        "symbol": "options",
-        "component": "calcCNdinamico -> BtnGroup",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 950,
-        "evidence": "<BtnGroup options={TR_LIST.map(t=>({v:t,l:`${t}a`}))} value={Tr} onChange={setTr} accent={C.gold}/>",
-        "domains": [
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 2,
-        "role": "prop_pass",
-        "label": "options={[1,2,3,6,12].map(h=>({v:h,l:`${h}",
-        "symbol": "options",
-        "component": "calcCNdinamico -> BtnGroup",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 953,
-        "evidence": "<BtnGroup options={[1,2,3,6,12].map(h=>({v:h,l:`${h}h`}))} value={durH} onChange={setDurH} accent={C.accent3}/>",
-        "domains": [],
-        "semanticScore": -100
-      },
-      {
-        "order": 3,
-        "role": "prop_pass",
-        "label": "options={[5,10,15,30].map(d=>({v:d,l:`${d}",
-        "symbol": "options",
-        "component": "calcCNdinamico -> BtnGroup",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 956,
-        "evidence": "<BtnGroup options={[5,10,15,30].map(d=>({v:d,l:`${d}'`}))} value={dtMin} onChange={setDtMin} accent={C.accent}/>",
-        "domains": [],
-        "semanticScore": -100
-      },
-      {
-        "order": 4,
-        "role": "callback_receive",
-        "label": "options recibido por BtnGroup",
-        "symbol": "options",
-        "component": "BtnGroup",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
-        "line": 502,
-        "evidence": "prop declaration",
-        "domains": [],
-        "semanticScore": -100
-      },
-      {
-        "order": 5,
-        "role": "callback_receive",
-        "label": "options recibido por BtnGroup",
-        "symbol": "options",
-        "component": "BtnGroup",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
-        "line": 503,
-        "evidence": "prop declaration",
-        "domains": [],
-        "semanticScore": -100
-      },
-      {
-        "order": 6,
-        "role": "callback_receive",
-        "label": "options recibido por BtnGroup",
-        "symbol": "options",
-        "component": "BtnGroup",
-        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
-        "line": 532,
-        "evidence": "prop declaration",
-        "domains": [],
-        "semanticScore": 100
-      },
-      {
-        "order": 7,
-        "role": "guard",
-        "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "evidence": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      },
-      {
-        "order": 8,
-        "role": "guard",
-        "label": "Q5_table: Tabla Q-5 auditada",
-        "symbol": "Q5_table",
-        "component": "",
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "evidence": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
-        "domains": [
-          "Q5",
-          "QTr"
-        ],
-        "semanticScore": -100
-      }
-    ],
-    "guards": [
-      {
-        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
-        "line": 79,
-        "type": "Q5_table",
-        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
-      },
-      {
-        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
-        "line": 217,
-        "type": "Q5_table",
-        "message": "Tabla Q-5 auditada"
-      }
-    ],
     "documentOutputs": [],
     "confidence": 0.9,
     "semanticScore": -600,
@@ -9751,6 +10131,24 @@
       {
         "order": 7,
         "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 8,
+        "role": "guard",
         "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
         "symbol": "Q5_table",
         "component": "",
@@ -9764,7 +10162,7 @@
         "semanticScore": -100
       },
       {
-        "order": 8,
+        "order": 9,
         "role": "guard",
         "label": "Q5_table: Tabla Q-5 auditada",
         "symbol": "Q5_table",
@@ -9781,6 +10179,12 @@
     ],
     "guards": [
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
         "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
         "line": 79,
         "type": "Q5_table",
@@ -9795,7 +10199,7 @@
     ],
     "documentOutputs": [],
     "confidence": 0.9,
-    "semanticScore": -800,
+    "semanticScore": -760,
     "gaps": []
   },
   {
@@ -9889,6 +10293,24 @@
       {
         "order": 7,
         "role": "guard",
+        "label": "Q5_table",
+        "symbol": "Q5_table",
+        "component": "",
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "evidence": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo ante",
+        "domains": [
+          "Q5",
+          "QTr",
+          "CN",
+          "Expediente",
+          "Contexto"
+        ],
+        "semanticScore": 40
+      },
+      {
+        "order": 8,
+        "role": "guard",
         "label": "Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.",
         "symbol": "Q5_table",
         "component": "",
@@ -9902,7 +10324,7 @@
         "semanticScore": -100
       },
       {
-        "order": 8,
+        "order": 9,
         "role": "guard",
         "label": "Q5_table: Tabla Q-5 auditada",
         "symbol": "Q5_table",
@@ -9919,6 +10341,12 @@
     ],
     "guards": [
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
         "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
         "line": 79,
         "type": "Q5_table",
@@ -9933,7 +10361,7 @@
     ],
     "documentOutputs": [],
     "confidence": 0.9,
-    "semanticScore": -800,
+    "semanticScore": -760,
     "gaps": []
   }
 ]

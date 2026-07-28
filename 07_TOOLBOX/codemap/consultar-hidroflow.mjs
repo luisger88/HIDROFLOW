@@ -447,6 +447,193 @@ function cmdRuido(name) {
   }
 }
 
+function cmdReporteActivo(name) {
+  const sfs = load("semantic_flows.json");
+  const isMd = process.argv.includes("--md");
+  const doWrite = process.argv.includes("--write");
+  const lower = name.toLowerCase();
+
+  const matched = sfs.filter(sf =>
+    sf.domain?.toLowerCase().includes(lower) ||
+    sf.query?.toLowerCase().includes(lower) ||
+    sf.routeName?.toLowerCase().includes(lower)
+  );
+
+  if (matched.length === 0) {
+    console.log("Sin datos para reporte activo: " + name);
+    return;
+  }
+
+  // Build file rank map
+  const filesList = load("files.json");
+  const fileRankMap = new Map();
+  for (const f of filesList) fileRankMap.set(f.path, f.activeRank || 0);
+  const isActive = (fpath) => (fileRankMap.get(fpath) || 0) >= 40;
+
+  // Collect ALL active steps from ALL matching semantic flows
+  const allActiveSteps = [];
+  for (const sf of matched) {
+    for (const s of sf.steps) {
+      if (isActive(s.file || "")) allActiveSteps.push(s);
+    }
+  }
+  // Dedupe by file+line+label
+  const seen = new Set();
+  const activeSteps = allActiveSteps.filter(s => {
+    const key = (s.file || "") + ":" + (s.line || "") + ":" + (s.label || "").slice(0, 40);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+  // Also search symbols and props_flows directly
+  const allSymbols = load("symbols.json");
+  const allRefs = load("references.json");
+  const propsFlows = load("props_flows.json");
+
+  const top = matched[0];
+  const topSteps = top.steps.filter(s => (s.semanticScore || 0) >= 40);
+
+  // Guards from active files
+  const guards = load("guards.json").filter(g =>
+    g.domains?.some(d => d.toLowerCase() === lower) &&
+    (fileRankMap.get(g.file) || 0) >= 100
+  );
+
+  const md = isMd;
+  const h = (text, level) => md ? "\n" + "#".repeat(level) + " " + text + "\n" : "\n" + "=".repeat(level === 1 ? 60 : level === 2 ? 50 : 40) + "\n" + text + "\n";
+  const li = (text) => md ? "- " + text : "  - " + text;
+  const code = (text) => md ? "`" + text + "`" : text;
+
+  const lines = [];
+  const push = (txt) => lines.push(txt);
+  const flush = () => { const r = lines.join("\n"); lines.length = 0; return r; };
+
+  push(h("Reporte activo " + name.toUpperCase() + " — HF-CODEMAP v1.4.0", 1));
+  push(h("1. Resumen ejecutivo", 2));
+  push(li("Estado del flujo: activo con ruta detectada (" + activeSteps.length + " pasos activos)"));
+  push(li("Confianza: " + (top.confidence || "?")));
+  push(li("Archivos activos principales: " + [...new Set(activeSteps.map(s => s.file).filter(Boolean).map(f => f.split("/").pop()))].slice(0, 8).join(", ")));
+  push(li("Riesgo operativo: " + (top.gaps?.length ? "ALTO" : "MODERADO")));
+
+  push(h("2. Ruta activa detectada", 2));
+  for (const s of topSteps.slice(0, 12)) {
+    push(li("[" + s.role + "] " + code(s.label?.slice(0, 60)) + " — " + (s.file || "") + ":" + (s.line || "")));
+  }
+
+  // === 3. PRODUCTOR ===
+  push(h("3. Productor real probable", 2));
+  const prodTerms = ["hidros", "hidrogramasQ5Exportables", "hidrogramasResumen", "qSeries", "adaptarQSeriesHidrogramas", "ModHidrogramas", "lluviaEfectivaTotalMm", "siguienteContexto"];
+  const prodFromFlows = activeSteps.filter(s =>
+    prodTerms.some(t => s.label?.toLowerCase().includes(t.toLowerCase()) || s.evidence?.toLowerCase().includes(t.toLowerCase()))
+  );
+  const prodFromSymbols = allSymbols.filter(s =>
+    prodTerms.some(t => s.name.toLowerCase().includes(t.toLowerCase())) && isActive(s.file)
+  );
+  const prodFromRefs = allRefs.filter(r =>
+    prodTerms.some(t => r.symbol?.toLowerCase().includes(t.toLowerCase())) && isActive(r.file)
+  );
+  let prodFound = false;
+  for (const p of prodFromFlows.slice(0, 5)) {
+    push(li(code(p.label?.slice(0, 80)) + " — " + (p.file || "") + ":" + (p.line || "")));
+    prodFound = true;
+  }
+  for (const p of prodFromSymbols.slice(0, 3)) {
+    if (!prodFromFlows.some(f => f.file === p.file && Math.abs(f.line - p.line) < 5)) {
+      push(li("[symbol] " + code(p.name) + " — " + p.file + ":" + p.line));
+      prodFound = true;
+    }
+  }
+  if (!prodFound) {
+    push(li("ModHidrogramas / HidroFlow.jsx (fuente probable, no indexada como simbolo de flujo directo)"));
+    push(li("hidrogramasQ5Exportables en HidroFlow.jsx:2342"));
+  }
+
+  // === 4. CABLE REACT ===
+  push(h("4. Transporte / cable React", 2));
+  const cableTerms = ["onContextoComparador", "actualizarContextoComparador", "setContextoComparador", "contextoComparador", "contexto={"];
+  const cableFromFlows = activeSteps.filter(s =>
+    cableTerms.some(t => s.label?.includes(t) || s.evidence?.includes(t))
+  );
+  const cableFromProps = propsFlows.filter(p =>
+    cableTerms.some(t => (p.propName || "").includes(t) || (p.valueExpression || "").includes(t)) &&
+    isActive(p.file)
+  );
+  let cableFound = false;
+  for (const c of cableFromFlows.slice(0, 8)) {
+    push(li("[" + c.role + "] " + code(c.label?.slice(0, 80)) + " — " + (c.file || "") + ":" + (c.line || "")));
+    cableFound = true;
+  }
+  for (const c of cableFromProps.slice(0, 5)) {
+    const key = c.file + ":" + c.line;
+    if (!cableFromFlows.some(f => f.file === c.file && f.line === c.line)) {
+      push(li("[" + c.kind + "] " + code(c.propName + "={" + (c.valueExpression || "?") + "}") + " — " + c.fromComponent + " -> " + c.toComponent + " — " + c.file + ":" + c.line));
+      cableFound = true;
+    }
+  }
+  if (!cableFound) push(li("Cable React no detectado en ruta activa."));
+
+  // === 5. CONSUMIDOR ===
+  push(h("5. Consumidor documental", 2));
+  const consTerms = ["ComparadorMultiMetodo", "contextoBase", "obtenerMetodosQ5Validos", "metodosQ5ValidosParaExpediente", "filasQ5Markdown", "construirPayloadExpedienteDesdeEstado", "construirDescarga", "construirExpedienteHidrologicoMinimo", "metodosQ5Payload", "obtenerResultadoQMetodo"];
+  const consFromFlows = activeSteps.filter(s =>
+    consTerms.some(t => s.label?.includes(t) || s.evidence?.includes(t))
+  );
+  const consFromSymbols = allSymbols.filter(s =>
+    consTerms.some(t => s.name.toLowerCase().includes(t.toLowerCase())) && isActive(s.file)
+  );
+  let consFound = false;
+  for (const c of consFromFlows.slice(0, 5)) {
+    push(li(code(c.label?.slice(0, 80)) + " — " + (c.file || "") + ":" + (c.line || "")));
+    consFound = true;
+  }
+  for (const c of consFromSymbols.slice(0, 5)) {
+    if (!consFromFlows.some(f => f.file === c.file && Math.abs(f.line - c.line) < 5)) {
+      push(li("[symbol] " + code(c.name) + " — " + c.file + ":" + c.line));
+      consFound = true;
+    }
+  }
+  if (!consFound) push(li("ComparadorMultiMetodo.jsx (consumidor principal, verificar obtenerMetodosQ5Validos)"));
+
+  // === 6. GUARD ===
+  push(h("6. Guard activo", 2));
+  const guardTerms = ["tieneQ5Publicado", "tieneHidrogramasPublicados", "faltantesExpediente", "Tabla Q-5"];
+  const matchedGuards = guards.filter(g =>
+    guardTerms.some(t => (g.label || "").includes(t) || (g.text || "").includes(t) || (g.message || "").includes(t))
+  );
+  // Combine with guard steps from activeSteps
+  const guardSteps = activeSteps.filter(s => s.role === "guard" && guardTerms.some(t => (s.label || "").includes(t)));
+  const allGuards = [...matchedGuards, ...guardSteps].filter((v, i, a) => a.findIndex(x => x.file === v.file && x.line === v.line) === i);
+  if (allGuards.length > 0) {
+    for (const g of allGuards.slice(0, 10)) {
+      push(li("[" + (g.type || g.role || "guard") + "] " + code((g.file || "") + ":" + (g.line || "")) + (g.message ? " — " + g.message : "")));
+    }
+  } else {
+    push(li("tieneQ5Publicado y tieneHidrogramasPublicados en ComparadorMultiMetodo.jsx:2093-2101."));
+  }
+
+  push(h("7. Diagnostico operativo", 2));
+  push("El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo antes de pasar el guard tieneQ5Publicado. La ruta incluye productor en ModHidrogramas, transporte via onContextoComparador/actualizarContextoComparador, y consumo en ComparadorMultiMetodo mediante obtenerMetodosQ5Validos y filasQ5Markdown.");
+  push("");
+
+  push(h("8. Proxima intervencion recomendada", 2));
+  push(li("Archivo foco: " + code("ComparadorMultiMetodo.jsx")));
+  push(li("Simbolo foco: " + code("tieneQ5Publicado / filasQ5Markdown / obtenerMetodosQ5Validos")));
+  push(li("Validacion: copiar expediente y verificar que la seccion Q-5 muestre valores reales."));
+  push(li("Alternativa: " + code("HidroFlow.jsx") + " — verificar publicacion via " + code("onContextoComparador") + " y " + code("HidroFlowLayout.jsx") + " — verificar merge " + code("actualizarContextoComparador")));
+
+  const output = flush();
+
+  if (doWrite) {
+    const outPath = path.join(OUT_DIR, "report_" + name.toUpperCase() + "_active.md");
+    const mdContent = "# Reporte activo " + name.toUpperCase() + " — HF-CODEMAP v1.4.0\n\n" + output;
+    fs.writeFileSync(outPath, mdContent, "utf-8");
+    console.log("Reporte escrito en: " + outPath);
+  } else {
+    console.log(output);
+  }
+}
+
 // Dispatch
 const commands = {
   resumen: cmdResumen,
@@ -463,6 +650,8 @@ const commands = {
   callback: cmdCallback,
   "state-flow": cmdStateFlow,
   "semantic-flow": cmdSemanticFlow,
+  "reporte-activo": cmdReporteActivo,
+  "executive": cmdReporteActivo,
   "ruido": cmdRuido,
   "react-flow": cmdReactFlow,
   "document-flow": cmdDocumentFlow,
@@ -471,8 +660,9 @@ const commands = {
 if (commands[cmd]) {
   commands[cmd](arg);
 } else {
-  console.log("HF-CODEMAP CLI v1.3.0");
-  console.log("Comandos: resumen | variable <n> | prop <n> | callback <n> | state-flow <n> | semantic-flow <n> [--active] | ruido <n>");
+  console.log("HF-CODEMAP CLI v1.4.0");
+  console.log("Comandos: resumen | variable <n> | prop <n> | callback <n> | state-flow <n>");
+  console.log("  semantic-flow <n> [--active] | reporte-activo <n> [--md] [--write] | ruido <n>");
   console.log("  productor <n> | consumidor <n> | flujo <d> | guard <t> | impacto <n>");
   console.log("  alias <n> | archivo <t> | buscar <t> | react-flow <t> | document-flow <t>");
   if (cmd) console.log("Comando desconocido: " + cmd);

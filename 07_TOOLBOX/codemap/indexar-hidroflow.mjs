@@ -661,7 +661,7 @@ function buildSemanticFlows(docFlows, refs) {
 }
 
 // --- MAIN ---
-console.log("HF-CODEMAP indexer v1.3.0");
+console.log("HF-CODEMAP indexer v1.4.0");
 console.time("Total");
 
 let scanned = 0;

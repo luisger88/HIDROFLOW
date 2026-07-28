@@ -357,6 +357,30 @@
         "message": "Tabla Q-5 auditada:"
       },
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "type": "Q5_table",
+        "message": "tieneQ5Publicado"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 621,
+        "type": "Q5_table",
+        "message": "Simbolo foco: "
+      },
+      {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
         "line": 45,
         "type": "Q5_table",
@@ -800,6 +824,12 @@
     ],
     "guards": [
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
         "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
         "line": 79,
         "type": "Q5_table",
@@ -1207,6 +1237,18 @@
         "message": null
       },
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "type": "Q5_table",
+        "message": "tieneQ5Publicado"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
         "line": 48,
         "type": "expediente_faltantes",
@@ -1484,6 +1526,11 @@
         "line": 2078
       },
       {
+        "name": "push",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2078
+      },
+      {
         "name": "estacionIdfFallback",
         "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
         "line": 2258
@@ -1555,11 +1602,6 @@
       },
       {
         "name": "estiloTarjeta",
-        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
-        "line": 571
-      },
-      {
-        "name": "idf",
         "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
         "line": 571
       }
@@ -2606,6 +2648,24 @@
         "message": null
       },
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "type": "Q5_table",
+        "message": "tieneQ5Publicado"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 621,
+        "type": "Q5_table",
+        "message": "Simbolo foco: "
+      },
+      {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
         "line": 48,
         "type": "expediente_faltantes",
@@ -2894,6 +2954,11 @@
         "line": 141
       },
       {
+        "name": "md",
+        "file": "01_APP/HIDROFLOW/src/agents/README.md",
+        "line": 13
+      },
+      {
         "name": "contextoBase",
         "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
         "line": 28
@@ -2932,11 +2997,6 @@
         "name": "pendiente",
         "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
         "line": 56
-      },
-      {
-        "name": "contextoBase",
-        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
-        "line": 56
       }
     ],
     "guards": [
@@ -2949,6 +3009,24 @@
       {
         "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
         "line": 2101,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "type": "Q5_table",
+        "message": "tieneQ5Publicado"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
         "type": "Q5_table",
         "message": null
       },

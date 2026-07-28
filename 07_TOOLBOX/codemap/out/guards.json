@@ -295,6 +295,63 @@
   },
   {
     "id": 24,
+    "fileId": 152,
+    "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+    "line": 600,
+    "text": "const guardTerms = [\"tieneQ5Publicado\", \"tieneHidrogramasPublicados\", \"faltantesExpediente\", \"Tabla Q-5\"];",
+    "domains": [
+      "Q5",
+      "CN",
+      "Expediente",
+      "Contexto"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "tieneQ5Publicado"
+  },
+  {
+    "id": 25,
+    "fileId": 152,
+    "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+    "line": 612,
+    "text": "push(li(\"tieneQ5Publicado y tieneHidrogramasPublicados en ComparadorMultiMetodo.jsx:2093-2101.\"));",
+    "domains": [
+      "Q5",
+      "Contexto"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": null
+  },
+  {
+    "id": 26,
+    "fileId": 152,
+    "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+    "line": 616,
+    "text": "push(\"El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo por ComparadorMultiMetodo antes de pasar el guard tieneQ5Publicado. La ruta incl",
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente",
+      "Contexto"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": null
+  },
+  {
+    "id": 27,
+    "fileId": 152,
+    "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+    "line": 621,
+    "text": "push(li(\"Simbolo foco: \" + code(\"tieneQ5Publicado / filasQ5Markdown / obtenerMetodosQ5Validos\")));",
+    "domains": [
+      "Q5",
+      "Expediente"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Simbolo foco: "
+  },
+  {
+    "id": 28,
     "fileId": 154,
     "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
     "line": 45,
@@ -306,7 +363,7 @@
     "probableMessage": "tieneq5publicado"
   },
   {
-    "id": 25,
+    "id": 29,
     "fileId": 154,
     "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
     "line": 46,
@@ -319,7 +376,7 @@
     "probableMessage": "tienehidrogramaspublicados"
   },
   {
-    "id": 26,
+    "id": 30,
     "fileId": 154,
     "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
     "line": 47,
@@ -331,7 +388,7 @@
     "probableMessage": "tieneracionalpublicado"
   },
   {
-    "id": 27,
+    "id": 31,
     "fileId": 154,
     "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
     "line": 48,
@@ -344,7 +401,7 @@
     "probableMessage": "faltantesexpediente"
   },
   {
-    "id": 28,
+    "id": 32,
     "fileId": 154,
     "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
     "line": 49,
@@ -357,7 +414,7 @@
     "probableMessage": "expedientelisto"
   },
   {
-    "id": 29,
+    "id": 33,
     "fileId": 154,
     "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
     "line": 50,
@@ -370,7 +427,7 @@
     "probableMessage": "!tieneq5publicado"
   },
   {
-    "id": 30,
+    "id": 34,
     "fileId": 164,
     "file": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
     "line": 50,
@@ -382,7 +439,7 @@
     "probableMessage": "sin tabla Q-5 disponible"
   },
   {
-    "id": 31,
+    "id": 35,
     "fileId": 164,
     "file": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
     "line": 61,
@@ -394,7 +451,7 @@
     "probableMessage": "Tabla Q-5 auditada:"
   },
   {
-    "id": 32,
+    "id": 36,
     "fileId": 165,
     "file": "07_TOOLBOX/validaciones/aplicar_ot0177_diagnostico_resumen_q5_auditado.mjs",
     "line": 71,
@@ -406,7 +463,7 @@
     "probableMessage": "Tabla Q-5 auditada:"
   },
   {
-    "id": 33,
+    "id": 37,
     "fileId": 166,
     "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
     "line": 73,
@@ -418,7 +475,7 @@
     "probableMessage": "Tabla Q-5 auditada:"
   },
   {
-    "id": 34,
+    "id": 38,
     "fileId": 166,
     "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
     "line": 79,
@@ -431,7 +488,7 @@
     "probableMessage": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
   },
   {
-    "id": 35,
+    "id": 39,
     "fileId": 166,
     "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
     "line": 136,
@@ -443,7 +500,7 @@
     "probableMessage": "Tabla Q-5 auditada:"
   },
   {
-    "id": 36,
+    "id": 40,
     "fileId": 182,
     "file": "07_TOOLBOX/validaciones/comparar_ot0176_resumen_q5_auditado_helper_operativo.mjs",
     "line": 35,
@@ -455,7 +512,7 @@
     "probableMessage": "Tabla Q-5 auditada:"
   },
   {
-    "id": 37,
+    "id": 41,
     "fileId": 223,
     "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
     "line": 26,
@@ -467,7 +524,7 @@
     "probableMessage": "Tabla Q-5 auditada:"
   },
   {
-    "id": 38,
+    "id": 42,
     "fileId": 223,
     "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
     "line": 65,
@@ -479,7 +536,7 @@
     "probableMessage": "sin tabla Q-5 disponible"
   },
   {
-    "id": 39,
+    "id": 43,
     "fileId": 223,
     "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
     "line": 73,
@@ -491,7 +548,7 @@
     "probableMessage": "sin tabla Q-5 disponible"
   },
   {
-    "id": 40,
+    "id": 44,
     "fileId": 223,
     "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
     "line": 83,
@@ -503,7 +560,7 @@
     "probableMessage": "sin tabla Q-5 disponible"
   },
   {
-    "id": 41,
+    "id": 45,
     "fileId": 224,
     "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
     "line": 26,
@@ -515,7 +572,7 @@
     "probableMessage": "Tabla Q-5 auditada:"
   },
   {
-    "id": 42,
+    "id": 46,
     "fileId": 224,
     "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
     "line": 54,
@@ -528,7 +585,7 @@
     "probableMessage": "sin tabla Q-5 disponible"
   },
   {
-    "id": 43,
+    "id": 47,
     "fileId": 224,
     "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
     "line": 59,
@@ -541,7 +598,7 @@
     "probableMessage": "sin tabla Q-5 disponible"
   },
   {
-    "id": 44,
+    "id": 48,
     "fileId": 224,
     "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
     "line": 66,
@@ -554,7 +611,7 @@
     "probableMessage": "sin tabla Q-5 disponible"
   },
   {
-    "id": 45,
+    "id": 49,
     "fileId": 224,
     "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
     "line": 73,
@@ -567,7 +624,7 @@
     "probableMessage": "sin tabla Q-5 disponible"
   },
   {
-    "id": 46,
+    "id": 50,
     "fileId": 226,
     "file": "07_TOOLBOX/validaciones/validar_ot0178_sustitucion_resumen_q5_auditado.mjs",
     "line": 37,
@@ -581,7 +638,7 @@
     "probableMessage": "Tabla Q-5 auditada:"
   },
   {
-    "id": 47,
+    "id": 51,
     "fileId": 227,
     "file": "07_TOOLBOX/validaciones/validar_ot0179_post_adopcion_resumen_q5_auditado.mjs",
     "line": 43,
@@ -595,7 +652,7 @@
     "probableMessage": "Tabla Q-5 auditada:"
   },
   {
-    "id": 48,
+    "id": 52,
     "fileId": 259,
     "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
     "line": 217,

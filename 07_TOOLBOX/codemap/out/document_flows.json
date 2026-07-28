@@ -146,6 +146,30 @@
         "message": "Tabla Q-5 auditada:"
       },
       {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "type": "Q5_table",
+        "message": "tieneQ5Publicado"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 621,
+        "type": "Q5_table",
+        "message": "Simbolo foco: "
+      },
+      {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
         "line": 45,
         "type": "Q5_table",

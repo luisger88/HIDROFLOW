@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "tool": "HF-CODEMAP",
   "scanRoots": [
     "01_APP/HIDROFLOW/src",
