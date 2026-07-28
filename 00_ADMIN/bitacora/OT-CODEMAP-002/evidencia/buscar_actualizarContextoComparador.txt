@@ -1,0 +1,12 @@
+Busqueda: 'actualizarContextoComparador'
+--- Simbolos (1) ---
+  actualizarContextoCompara01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:11 [variable]
+--- Referencias (5) ---
+  01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:88 -> actualizarContextoComparador
+  07_TOOLBOX/codemap/hf-codemap.config.json:51 -> contextoBase
+  07_TOOLBOX/codemap/hf-codemap.config.json:51 -> hidrogramas
+  07_TOOLBOX/codemap/hf-codemap.config.json:51 -> actualizarContextoComparador
+  07_TOOLBOX/codemap/hf-codemap.config.json:51 -> contextoBasePayload
+--- Props flows (2) ---
+  [component_edge] actualizarContextoComparador HidroFlowLayout->HidroFlowLayout 01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:11
+  [callback_prop] onContextoComparador HidroFlowLayout->HidroFlow 01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:88

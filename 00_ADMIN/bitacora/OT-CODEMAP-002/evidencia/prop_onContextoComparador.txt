@@ -1,0 +1,28 @@
+Props que coinciden con 'onContextoComparador' (5):
+  [callback_prop] onContextoComparador
+    parent -> ModHidrogramas
+    01_APP/HIDROFLOW/src/HidroFlow.jsx:2019
+    dominios: Contexto
+
+  [callback_prop] onContextoComparador
+    parent -> HidroFlow
+    01_APP/HIDROFLOW/src/HidroFlow.jsx:3742
+    dominios: Contexto
+
+  [callback_prop] onContextoComparador
+    Field -> ModHidrogramas
+    01_APP/HIDROFLOW/src/HidroFlow.jsx:4320
+    valor: setContextoComparador
+    dominios: Tc, Contexto
+
+  [callback_prop] onContextoComparador
+    Field -> ModRacional
+    01_APP/HIDROFLOW/src/HidroFlow.jsx:4332
+    valor: setContextoComparador
+    dominios: Tc, Contexto
+
+  [callback_prop] onContextoComparador
+    HidroFlowLayout -> HidroFlow
+    01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:88
+    valor: actualizarContextoComparador
+    dominios: Contexto

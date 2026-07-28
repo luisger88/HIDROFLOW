@@ -968,6 +968,23 @@
   },
   {
     "id": 62,
+    "path": "01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "271cd14cee96",
+    "lineCount": 114,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 1
+  },
+  {
+    "id": 63,
     "path": "01_APP/HIDROFLOW/src/main.jsx",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".jsx",
@@ -980,7 +997,7 @@
     "exportsCount": 0
   },
   {
-    "id": 63,
+    "id": 64,
     "path": "01_APP/HIDROFLOW/src/services/apiClient.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -994,7 +1011,7 @@
     "exportsCount": 1
   },
   {
-    "id": 64,
+    "id": 65,
     "path": "01_APP/HIDROFLOW/src/services/cn/ejecutarPruebaCN.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1008,7 +1025,7 @@
     "exportsCount": 0
   },
   {
-    "id": 65,
+    "id": 66,
     "path": "01_APP/HIDROFLOW/src/services/cn/obtenerTrazabilidadCN.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1022,7 +1039,7 @@
     "exportsCount": 1
   },
   {
-    "id": 66,
+    "id": 67,
     "path": "01_APP/HIDROFLOW/src/services/cn/probarTrazabilidadCN.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1036,7 +1053,7 @@
     "exportsCount": 0
   },
   {
-    "id": 67,
+    "id": 68,
     "path": "01_APP/HIDROFLOW/src/services/cn/validarTrazabilidadCN.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1050,7 +1067,7 @@
     "exportsCount": 1
   },
   {
-    "id": 68,
+    "id": 69,
     "path": "01_APP/HIDROFLOW/src/services/documentos/adaptarExpedienteDocumental.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1068,7 +1085,7 @@
     "exportsCount": 2
   },
   {
-    "id": 69,
+    "id": 70,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueEscenarioQTrActivoExpediente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1084,7 +1101,7 @@
     "exportsCount": 3
   },
   {
-    "id": 70,
+    "id": 71,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueIdentificacionExpedienteMinimo.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1099,7 +1116,7 @@
     "exportsCount": 2
   },
   {
-    "id": 71,
+    "id": 72,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueParametrosHidrologicosBaseExpediente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1114,7 +1131,7 @@
     "exportsCount": 2
   },
   {
-    "id": 72,
+    "id": 73,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueRestriccionesAdvertenciasGeneralesExpediente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1132,7 +1149,7 @@
     "exportsCount": 1
   },
   {
-    "id": 73,
+    "id": 74,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueResumenQ5AuditadoExpediente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1148,7 +1165,7 @@
     "exportsCount": 4
   },
   {
-    "id": 74,
+    "id": 75,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueTiempoConcentracionRolesTcExpediente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1165,7 +1182,7 @@
     "exportsCount": 2
   },
   {
-    "id": 75,
+    "id": 76,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueVolumenReferenciaExpediente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1181,7 +1198,7 @@
     "exportsCount": 1
   },
   {
-    "id": 76,
+    "id": 77,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirDescargaMarkdownExpedienteDesdePayload.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1197,7 +1214,7 @@
     "exportsCount": 1
   },
   {
-    "id": 77,
+    "id": 78,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1217,7 +1234,7 @@
     "exportsCount": 14
   },
   {
-    "id": 78,
+    "id": 79,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirMarkdownExpedienteDesdePayload.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1237,7 +1254,7 @@
     "exportsCount": 1
   },
   {
-    "id": 79,
+    "id": 80,
     "path": "01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1257,7 +1274,7 @@
     "exportsCount": 1
   },
   {
-    "id": 80,
+    "id": 81,
     "path": "01_APP/HIDROFLOW/src/services/documentos/derivarParametrosIDF.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1272,7 +1289,7 @@
     "exportsCount": 1
   },
   {
-    "id": 81,
+    "id": 82,
     "path": "01_APP/HIDROFLOW/src/services/documentos/derivarQDisenoDesdeEscenarioActivo.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1286,7 +1303,7 @@
     "exportsCount": 2
   },
   {
-    "id": 82,
+    "id": 83,
     "path": "01_APP/HIDROFLOW/src/services/documentos/derivarTablaResumenTrDesdeQTrMultiEscenario.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1302,7 +1319,7 @@
     "exportsCount": 2
   },
   {
-    "id": 83,
+    "id": 84,
     "path": "01_APP/HIDROFLOW/src/services/documentos/descargarArchivoMarkdownEnNavegador.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1317,7 +1334,7 @@
     "exportsCount": 1
   },
   {
-    "id": 84,
+    "id": 85,
     "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaCN.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1332,7 +1349,7 @@
     "exportsCount": 1
   },
   {
-    "id": 85,
+    "id": 86,
     "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaConsistencia.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1348,7 +1365,7 @@
     "exportsCount": 1
   },
   {
-    "id": 86,
+    "id": 87,
     "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaIDF.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1363,7 +1380,7 @@
     "exportsCount": 1
   },
   {
-    "id": 87,
+    "id": 88,
     "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaQ5.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1378,7 +1395,7 @@
     "exportsCount": 1
   },
   {
-    "id": 88,
+    "id": 89,
     "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaQTr.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1393,7 +1410,7 @@
     "exportsCount": 1
   },
   {
-    "id": 89,
+    "id": 90,
     "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativasExpediente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1411,7 +1428,7 @@
     "exportsCount": 2
   },
   {
-    "id": 90,
+    "id": 91,
     "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaTc.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1426,7 +1443,7 @@
     "exportsCount": 1
   },
   {
-    "id": 91,
+    "id": 92,
     "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarResumenEjecutivo.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1444,7 +1461,7 @@
     "exportsCount": 1
   },
   {
-    "id": 92,
+    "id": 93,
     "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/_utilsNarrativas.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1457,7 +1474,7 @@
     "exportsCount": 2
   },
   {
-    "id": 93,
+    "id": 94,
     "path": "01_APP/HIDROFLOW/src/services/documentos/prepararDescargaMarkdownExpediente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1472,7 +1489,7 @@
     "exportsCount": 1
   },
   {
-    "id": 94,
+    "id": 95,
     "path": "01_APP/HIDROFLOW/src/services/expediente/CertificacionMCVD.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1486,7 +1503,7 @@
     "exportsCount": 2
   },
   {
-    "id": 95,
+    "id": 96,
     "path": "01_APP/HIDROFLOW/src/services/expediente/DictamenInteligente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1500,7 +1517,7 @@
     "exportsCount": 1
   },
   {
-    "id": 96,
+    "id": 97,
     "path": "01_APP/HIDROFLOW/src/services/expediente/GeneradorExpediente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1516,7 +1533,7 @@
     "exportsCount": 1
   },
   {
-    "id": 97,
+    "id": 98,
     "path": "01_APP/HIDROFLOW/src/services/expediente/index.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1530,7 +1547,7 @@
     "exportsCount": 4
   },
   {
-    "id": 98,
+    "id": 99,
     "path": "01_APP/HIDROFLOW/src/services/expediente/IndicadoresRobustez.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1544,7 +1561,7 @@
     "exportsCount": 1
   },
   {
-    "id": 99,
+    "id": 100,
     "path": "01_APP/HIDROFLOW/src/services/gobierno/derivarContratoCuenca.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1560,7 +1577,7 @@
     "exportsCount": 1
   },
   {
-    "id": 100,
+    "id": 101,
     "path": "01_APP/HIDROFLOW/src/services/gobierno/derivarContratoCuenca.pre005gc.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1576,7 +1593,7 @@
     "exportsCount": 1
   },
   {
-    "id": 101,
+    "id": 102,
     "path": "01_APP/HIDROFLOW/src/services/gobierno/index.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1589,7 +1606,7 @@
     "exportsCount": 3
   },
   {
-    "id": 102,
+    "id": 103,
     "path": "01_APP/HIDROFLOW/src/services/gobierno/ManifiestoVerdad.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1600,7 +1617,7 @@
     "exportsCount": 1
   },
   {
-    "id": 103,
+    "id": 104,
     "path": "01_APP/HIDROFLOW/src/services/gobierno/ManifiestoVerdad.json",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".json",
@@ -1614,7 +1631,7 @@
     "exportsCount": 0
   },
   {
-    "id": 104,
+    "id": 105,
     "path": "01_APP/HIDROFLOW/src/services/gobierno/RegistroAuditorias.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1627,7 +1644,7 @@
     "exportsCount": 2
   },
   {
-    "id": 105,
+    "id": 106,
     "path": "01_APP/HIDROFLOW/src/services/gobierno/RegistroAuditorias.json",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".json",
@@ -1638,7 +1655,7 @@
     "exportsCount": 0
   },
   {
-    "id": 106,
+    "id": 107,
     "path": "01_APP/HIDROFLOW/src/services/gobierno/ValidadorIngenieria.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1651,7 +1668,7 @@
     "exportsCount": 1
   },
   {
-    "id": 107,
+    "id": 108,
     "path": "01_APP/HIDROFLOW/src/services/hidroEngine.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1668,7 +1685,7 @@
     "exportsCount": 18
   },
   {
-    "id": 108,
+    "id": 109,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/adaptarQSeriesHidrogramas.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1684,7 +1701,7 @@
     "exportsCount": 2
   },
   {
-    "id": 109,
+    "id": 110,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/calcularMetricasMorfologiaQt.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1699,7 +1716,7 @@
     "exportsCount": 1
   },
   {
-    "id": 110,
+    "id": 111,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/clasificarFormaQt.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1714,7 +1731,7 @@
     "exportsCount": 1
   },
   {
-    "id": 111,
+    "id": 112,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/construirSeccionDiagnosticoTemporalQt.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1729,7 +1746,7 @@
     "exportsCount": 1
   },
   {
-    "id": 112,
+    "id": 113,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/evaluarRiesgoTemporalQt.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1744,7 +1761,7 @@
     "exportsCount": 1
   },
   {
-    "id": 113,
+    "id": 114,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/prepararGraficaQpTPicoMatrizPatron.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1760,7 +1777,7 @@
     "exportsCount": 1
   },
   {
-    "id": 114,
+    "id": 115,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/prepararGraficaVelocidadEfectivaMatrizPatron.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1776,7 +1793,7 @@
     "exportsCount": 1
   },
   {
-    "id": 115,
+    "id": 116,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/resumirEstructuraHidrogramas.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1792,7 +1809,7 @@
     "exportsCount": 2
   },
   {
-    "id": 116,
+    "id": 117,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/sintetizarLecturaComparativaMatrizPatron.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1808,7 +1825,7 @@
     "exportsCount": 1
   },
   {
-    "id": 117,
+    "id": 118,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/sintetizarRiesgoTemporalQt.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1823,7 +1840,7 @@
     "exportsCount": 1
   },
   {
-    "id": 118,
+    "id": 119,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/validarCompletitudMatrizCuencaPatron.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1840,7 +1857,7 @@
     "exportsCount": 1
   },
   {
-    "id": 119,
+    "id": 120,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/validarMatrizPatronCuenca.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1856,7 +1873,7 @@
     "exportsCount": 1
   },
   {
-    "id": 120,
+    "id": 121,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/validarQSeriesMorfologia.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1871,7 +1888,7 @@
     "exportsCount": 1
   },
   {
-    "id": 121,
+    "id": 122,
     "path": "01_APP/HIDROFLOW/src/services/hidrogramas/validarSeccionDiagnosticoTemporalQt.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1887,7 +1904,7 @@
     "exportsCount": 1
   },
   {
-    "id": 122,
+    "id": 123,
     "path": "01_APP/HIDROFLOW/src/services/master/resolverCuencaDesdeCoordenadas.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1898,7 +1915,7 @@
     "exportsCount": 1
   },
   {
-    "id": 123,
+    "id": 124,
     "path": "01_APP/HIDROFLOW/src/services/orquestador/getEstudioActivo.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1909,7 +1926,7 @@
     "exportsCount": 1
   },
   {
-    "id": 124,
+    "id": 125,
     "path": "01_APP/HIDROFLOW/src/services/pendientesAdapter.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1923,7 +1940,7 @@
     "exportsCount": 1
   },
   {
-    "id": 125,
+    "id": 126,
     "path": "01_APP/HIDROFLOW/src/services/qtr/construirQTrMultiEscenario.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1941,7 +1958,7 @@
     "exportsCount": 1
   },
   {
-    "id": 126,
+    "id": 127,
     "path": "01_APP/HIDROFLOW/src/services/qtr/derivarEstadoQTrActivo.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1958,7 +1975,7 @@
     "exportsCount": 2
   },
   {
-    "id": 127,
+    "id": 128,
     "path": "01_APP/HIDROFLOW/src/services/siata.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1971,7 +1988,7 @@
     "exportsCount": 1
   },
   {
-    "id": 128,
+    "id": 129,
     "path": "01_APP/HIDROFLOW/src/services/tc/derivarRangoCompetenteTc.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -1986,7 +2003,7 @@
     "exportsCount": 2
   },
   {
-    "id": 129,
+    "id": 130,
     "path": "01_APP/HIDROFLOW/src/services/tcSelector.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -2003,7 +2020,7 @@
     "exportsCount": 1
   },
   {
-    "id": 130,
+    "id": 131,
     "path": "01_APP/HIDROFLOW/src/types/expediente.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -2022,7 +2039,7 @@
     "exportsCount": 2
   },
   {
-    "id": 131,
+    "id": 132,
     "path": "01_APP/HIDROFLOW/src/utils/focusSection.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -2035,7 +2052,7 @@
     "exportsCount": 1
   },
   {
-    "id": 132,
+    "id": 133,
     "path": "01_APP/HIDROFLOW/src/utils/formatters.js",
     "module": "01_APP/HIDROFLOW/src",
     "ext": ".js",
@@ -2050,7 +2067,7 @@
     "exportsCount": 6
   },
   {
-    "id": 133,
+    "id": 134,
     "path": "01_APP/HIDROFLOW/scripts/build-expediente.js",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".js",
@@ -2065,7 +2082,7 @@
     "exportsCount": 0
   },
   {
-    "id": 134,
+    "id": 135,
     "path": "01_APP/HIDROFLOW/scripts/compararHelperVsExpedienteOperativo.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2085,7 +2102,7 @@
     "exportsCount": 0
   },
   {
-    "id": 135,
+    "id": 136,
     "path": "01_APP/HIDROFLOW/scripts/consumirAdaptadorDocumentalOt0061b.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2104,7 +2121,7 @@
     "exportsCount": 0
   },
   {
-    "id": 136,
+    "id": 137,
     "path": "01_APP/HIDROFLOW/scripts/export-project.js",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".js",
@@ -2119,7 +2136,7 @@
     "exportsCount": 0
   },
   {
-    "id": 137,
+    "id": 138,
     "path": "01_APP/HIDROFLOW/scripts/gov-init.js",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".js",
@@ -2134,7 +2151,7 @@
     "exportsCount": 0
   },
   {
-    "id": 138,
+    "id": 139,
     "path": "01_APP/HIDROFLOW/scripts/project-init.js",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".js",
@@ -2150,7 +2167,7 @@
     "exportsCount": 0
   },
   {
-    "id": 139,
+    "id": 140,
     "path": "01_APP/HIDROFLOW/scripts/project-open.js",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".js",
@@ -2164,7 +2181,7 @@
     "exportsCount": 0
   },
   {
-    "id": 140,
+    "id": 141,
     "path": "01_APP/HIDROFLOW/scripts/project-update.js",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".js",
@@ -2177,7 +2194,7 @@
     "exportsCount": 0
   },
   {
-    "id": 141,
+    "id": 142,
     "path": "01_APP/HIDROFLOW/scripts/validarAdaptadorDocumentalOt0060f.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2196,7 +2213,7 @@
     "exportsCount": 0
   },
   {
-    "id": 142,
+    "id": 143,
     "path": "01_APP/HIDROFLOW/scripts/validarAdaptadorQSeriesOt0069c.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2211,7 +2228,7 @@
     "exportsCount": 0
   },
   {
-    "id": 143,
+    "id": 144,
     "path": "01_APP/HIDROFLOW/scripts/validarAdaptadorQSeriesOt0069d.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2227,7 +2244,7 @@
     "exportsCount": 0
   },
   {
-    "id": 144,
+    "id": 145,
     "path": "01_APP/HIDROFLOW/scripts/validarContratoBloqueIdentificacionDelegado.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2246,7 +2263,7 @@
     "exportsCount": 0
   },
   {
-    "id": 145,
+    "id": 146,
     "path": "01_APP/HIDROFLOW/scripts/validarContratoSelloTecnicoDelegado.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2261,7 +2278,7 @@
     "exportsCount": 0
   },
   {
-    "id": 146,
+    "id": 147,
     "path": "01_APP/HIDROFLOW/scripts/validarHelperExpedienteHidrologicoMinimo.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2281,7 +2298,7 @@
     "exportsCount": 0
   },
   {
-    "id": 147,
+    "id": 148,
     "path": "01_APP/HIDROFLOW/scripts/validarLaIguanaMatrizCuencaPatron.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2296,7 +2313,7 @@
     "exportsCount": 0
   },
   {
-    "id": 148,
+    "id": 149,
     "path": "01_APP/HIDROFLOW/scripts/validarPlantillaMatrizCuencaPatron.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2312,7 +2329,7 @@
     "exportsCount": 0
   },
   {
-    "id": 149,
+    "id": 150,
     "path": "01_APP/HIDROFLOW/scripts/validarResumenEstructuraHidrogramasOt0074d.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2328,7 +2345,7 @@
     "exportsCount": 0
   },
   {
-    "id": 150,
+    "id": 151,
     "path": "01_APP/HIDROFLOW/scripts/validarSelloTecnicoAuxiliarExpediente.mjs",
     "module": "01_APP/HIDROFLOW/scripts",
     "ext": ".mjs",
@@ -2343,12 +2360,12 @@
     "exportsCount": 0
   },
   {
-    "id": 151,
+    "id": 152,
     "path": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
     "module": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
     "ext": ".mjs",
-    "sha1": "3e05909da84b",
-    "lineCount": 295,
+    "sha1": "bbad34d34445",
+    "lineCount": 390,
     "domains": [
       "Q5",
       "QTr",
@@ -2360,11 +2377,11 @@
     "exportsCount": 0
   },
   {
-    "id": 152,
+    "id": 153,
     "path": "07_TOOLBOX/codemap/hf-codemap.config.json",
     "module": "07_TOOLBOX/codemap/hf-codemap.config.json",
     "ext": ".json",
-    "sha1": "5baeaa7cff52",
+    "sha1": "f8db5627b8fd",
     "lineCount": 62,
     "domains": [
       "Q5",
@@ -2380,12 +2397,12 @@
     "exportsCount": 0
   },
   {
-    "id": 153,
+    "id": 154,
     "path": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
     "module": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
     "ext": ".mjs",
-    "sha1": "731550df1f04",
-    "lineCount": 364,
+    "sha1": "490995e07410",
+    "lineCount": 489,
     "domains": [
       "Q5",
       "QTr",
@@ -2399,7 +2416,7 @@
     "exportsCount": 0
   },
   {
-    "id": 154,
+    "id": 155,
     "path": "07_TOOLBOX/validaciones/acoplar_ot0311_helper_resumen_q5.cjs",
     "module": "07_TOOLBOX/validaciones/acoplar_ot0311_helper_resumen_q5.cjs",
     "ext": ".cjs",
@@ -2415,7 +2432,7 @@
     "exportsCount": 0
   },
   {
-    "id": 155,
+    "id": 156,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0127_formato_unidades_identificacion.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0127_formato_unidades_identificacion.mjs",
     "ext": ".mjs",
@@ -2430,7 +2447,7 @@
     "exportsCount": 0
   },
   {
-    "id": 156,
+    "id": 157,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0133_helper_parametros_base.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0133_helper_parametros_base.mjs",
     "ext": ".mjs",
@@ -2446,7 +2463,7 @@
     "exportsCount": 1
   },
   {
-    "id": 157,
+    "id": 158,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0146_diagnostico_tiempo_concentracion.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0146_diagnostico_tiempo_concentracion.mjs",
     "ext": ".mjs",
@@ -2462,7 +2479,7 @@
     "exportsCount": 0
   },
   {
-    "id": 158,
+    "id": 159,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0156_diagnostico_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0156_diagnostico_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -2479,7 +2496,7 @@
     "exportsCount": 0
   },
   {
-    "id": 159,
+    "id": 160,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0158_sustitucion_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0158_sustitucion_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -2496,7 +2513,7 @@
     "exportsCount": 0
   },
   {
-    "id": 160,
+    "id": 161,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0164_helper_escenario_qtr_activo.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0164_helper_escenario_qtr_activo.mjs",
     "ext": ".mjs",
@@ -2513,7 +2530,7 @@
     "exportsCount": 1
   },
   {
-    "id": 161,
+    "id": 162,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0166_diagnostico_escenario_qtr_activo.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0166_diagnostico_escenario_qtr_activo.mjs",
     "ext": ".mjs",
@@ -2530,7 +2547,7 @@
     "exportsCount": 0
   },
   {
-    "id": 162,
+    "id": 163,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0168_sustitucion_escenario_qtr_activo.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0168_sustitucion_escenario_qtr_activo.mjs",
     "ext": ".mjs",
@@ -2548,7 +2565,7 @@
     "exportsCount": 0
   },
   {
-    "id": 163,
+    "id": 164,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
     "ext": ".mjs",
@@ -2564,7 +2581,7 @@
     "exportsCount": 1
   },
   {
-    "id": 164,
+    "id": 165,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0177_diagnostico_resumen_q5_auditado.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0177_diagnostico_resumen_q5_auditado.mjs",
     "ext": ".mjs",
@@ -2581,7 +2598,7 @@
     "exportsCount": 0
   },
   {
-    "id": 165,
+    "id": 166,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
     "ext": ".mjs",
@@ -2598,7 +2615,7 @@
     "exportsCount": 0
   },
   {
-    "id": 166,
+    "id": 167,
     "path": "07_TOOLBOX/validaciones/aplicar_ot0187_saneamiento_helper_identificacion.mjs",
     "module": "07_TOOLBOX/validaciones/aplicar_ot0187_saneamiento_helper_identificacion.mjs",
     "ext": ".mjs",
@@ -2615,7 +2632,7 @@
     "exportsCount": 0
   },
   {
-    "id": 167,
+    "id": 168,
     "path": "07_TOOLBOX/validaciones/auditar_ot0125_anclajes_identificacion.mjs",
     "module": "07_TOOLBOX/validaciones/auditar_ot0125_anclajes_identificacion.mjs",
     "ext": ".mjs",
@@ -2632,7 +2649,7 @@
     "exportsCount": 0
   },
   {
-    "id": 168,
+    "id": 169,
     "path": "07_TOOLBOX/validaciones/auditar_ot0182_bloque_identificacion_contexto.mjs",
     "module": "07_TOOLBOX/validaciones/auditar_ot0182_bloque_identificacion_contexto.mjs",
     "ext": ".mjs",
@@ -2650,7 +2667,7 @@
     "exportsCount": 0
   },
   {
-    "id": 169,
+    "id": 170,
     "path": "07_TOOLBOX/validaciones/auditar_ot0191_trazabilidad_parametros_base.mjs",
     "module": "07_TOOLBOX/validaciones/auditar_ot0191_trazabilidad_parametros_base.mjs",
     "ext": ".mjs",
@@ -2669,7 +2686,7 @@
     "exportsCount": 0
   },
   {
-    "id": 170,
+    "id": 171,
     "path": "07_TOOLBOX/validaciones/auditar_ot0196_trazabilidad_sello_tecnico_auxiliar.mjs",
     "module": "07_TOOLBOX/validaciones/auditar_ot0196_trazabilidad_sello_tecnico_auxiliar.mjs",
     "ext": ".mjs",
@@ -2688,7 +2705,7 @@
     "exportsCount": 0
   },
   {
-    "id": 171,
+    "id": 172,
     "path": "07_TOOLBOX/validaciones/auditar_ot0199_trazabilidad_restricciones_advertencias.mjs",
     "module": "07_TOOLBOX/validaciones/auditar_ot0199_trazabilidad_restricciones_advertencias.mjs",
     "ext": ".mjs",
@@ -2707,7 +2724,7 @@
     "exportsCount": 0
   },
   {
-    "id": 172,
+    "id": 173,
     "path": "07_TOOLBOX/validaciones/auditar_ot0201_trazabilidad_tiempo_concentracion_roles_tc.mjs",
     "module": "07_TOOLBOX/validaciones/auditar_ot0201_trazabilidad_tiempo_concentracion_roles_tc.mjs",
     "ext": ".mjs",
@@ -2725,7 +2742,7 @@
     "exportsCount": 0
   },
   {
-    "id": 173,
+    "id": 174,
     "path": "07_TOOLBOX/validaciones/auditar_ot0216_restricciones_advertencias_expediente.mjs",
     "module": "07_TOOLBOX/validaciones/auditar_ot0216_restricciones_advertencias_expediente.mjs",
     "ext": ".mjs",
@@ -2742,7 +2759,7 @@
     "exportsCount": 0
   },
   {
-    "id": 174,
+    "id": 175,
     "path": "07_TOOLBOX/validaciones/auditar_ot0232_forma_real_salida_expediente_minimo.mjs",
     "module": "07_TOOLBOX/validaciones/auditar_ot0232_forma_real_salida_expediente_minimo.mjs",
     "ext": ".mjs",
@@ -2758,7 +2775,7 @@
     "exportsCount": 0
   },
   {
-    "id": 175,
+    "id": 176,
     "path": "07_TOOLBOX/validaciones/clasificar_ot0218_restricciones_advertencias_expediente.mjs",
     "module": "07_TOOLBOX/validaciones/clasificar_ot0218_restricciones_advertencias_expediente.mjs",
     "ext": ".mjs",
@@ -2775,7 +2792,7 @@
     "exportsCount": 0
   },
   {
-    "id": 176,
+    "id": 177,
     "path": "07_TOOLBOX/validaciones/comparar_ot0126_identificacion_delegada_operativa.mjs",
     "module": "07_TOOLBOX/validaciones/comparar_ot0126_identificacion_delegada_operativa.mjs",
     "ext": ".mjs",
@@ -2794,7 +2811,7 @@
     "exportsCount": 0
   },
   {
-    "id": 177,
+    "id": 178,
     "path": "07_TOOLBOX/validaciones/comparar_ot0136_parametros_base_delegado_operativo.mjs",
     "module": "07_TOOLBOX/validaciones/comparar_ot0136_parametros_base_delegado_operativo.mjs",
     "ext": ".mjs",
@@ -2812,7 +2829,7 @@
     "exportsCount": 0
   },
   {
-    "id": 178,
+    "id": 179,
     "path": "07_TOOLBOX/validaciones/comparar_ot0147_tiempo_concentracion_delegado_operativo.mjs",
     "module": "07_TOOLBOX/validaciones/comparar_ot0147_tiempo_concentracion_delegado_operativo.mjs",
     "ext": ".mjs",
@@ -2830,7 +2847,7 @@
     "exportsCount": 0
   },
   {
-    "id": 179,
+    "id": 180,
     "path": "07_TOOLBOX/validaciones/comparar_ot0157_volumen_referencia_delegado_operativo.mjs",
     "module": "07_TOOLBOX/validaciones/comparar_ot0157_volumen_referencia_delegado_operativo.mjs",
     "ext": ".mjs",
@@ -2847,7 +2864,7 @@
     "exportsCount": 0
   },
   {
-    "id": 180,
+    "id": 181,
     "path": "07_TOOLBOX/validaciones/comparar_ot0167_escenario_qtr_activo_delegado_operativo.mjs",
     "module": "07_TOOLBOX/validaciones/comparar_ot0167_escenario_qtr_activo_delegado_operativo.mjs",
     "ext": ".mjs",
@@ -2866,7 +2883,7 @@
     "exportsCount": 0
   },
   {
-    "id": 181,
+    "id": 182,
     "path": "07_TOOLBOX/validaciones/comparar_ot0176_resumen_q5_auditado_helper_operativo.mjs",
     "module": "07_TOOLBOX/validaciones/comparar_ot0176_resumen_q5_auditado_helper_operativo.mjs",
     "ext": ".mjs",
@@ -2883,7 +2900,7 @@
     "exportsCount": 0
   },
   {
-    "id": 182,
+    "id": 183,
     "path": "07_TOOLBOX/validaciones/comparar_ot0188_helper_identificacion_ruta_operativa.mjs",
     "module": "07_TOOLBOX/validaciones/comparar_ot0188_helper_identificacion_ruta_operativa.mjs",
     "ext": ".mjs",
@@ -2902,7 +2919,7 @@
     "exportsCount": 0
   },
   {
-    "id": 183,
+    "id": 184,
     "path": "07_TOOLBOX/validaciones/comparar_ot0193_helper_parametros_base_ruta_operativa.mjs",
     "module": "07_TOOLBOX/validaciones/comparar_ot0193_helper_parametros_base_ruta_operativa.mjs",
     "ext": ".mjs",
@@ -2920,7 +2937,7 @@
     "exportsCount": 0
   },
   {
-    "id": 184,
+    "id": 185,
     "path": "07_TOOLBOX/validaciones/comparar_ot0203_helper_roles_tc_ruta_operativa.mjs",
     "module": "07_TOOLBOX/validaciones/comparar_ot0203_helper_roles_tc_ruta_operativa.mjs",
     "ext": ".mjs",
@@ -2938,7 +2955,7 @@
     "exportsCount": 0
   },
   {
-    "id": 185,
+    "id": 186,
     "path": "07_TOOLBOX/validaciones/corregir_ot0156_diagnostico_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/corregir_ot0156_diagnostico_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -2955,7 +2972,7 @@
     "exportsCount": 0
   },
   {
-    "id": 186,
+    "id": 187,
     "path": "07_TOOLBOX/validaciones/corregir_ot0164_helper_escenario_qtr_activo.mjs",
     "module": "07_TOOLBOX/validaciones/corregir_ot0164_helper_escenario_qtr_activo.mjs",
     "ext": ".mjs",
@@ -2973,7 +2990,7 @@
     "exportsCount": 1
   },
   {
-    "id": 187,
+    "id": 188,
     "path": "07_TOOLBOX/validaciones/corregir_ot0174_helper_resumen_q5_auditado.mjs",
     "module": "07_TOOLBOX/validaciones/corregir_ot0174_helper_resumen_q5_auditado.mjs",
     "ext": ".mjs",
@@ -2989,7 +3006,7 @@
     "exportsCount": 0
   },
   {
-    "id": 188,
+    "id": 189,
     "path": "07_TOOLBOX/validaciones/corregir_ot0177_entidad_html_resumen_q5_auditado.mjs",
     "module": "07_TOOLBOX/validaciones/corregir_ot0177_entidad_html_resumen_q5_auditado.mjs",
     "ext": ".mjs",
@@ -3003,7 +3020,7 @@
     "exportsCount": 0
   },
   {
-    "id": 189,
+    "id": 190,
     "path": "07_TOOLBOX/validaciones/extraer_ot0125_contexto_parche_identificacion.mjs",
     "module": "07_TOOLBOX/validaciones/extraer_ot0125_contexto_parche_identificacion.mjs",
     "ext": ".mjs",
@@ -3020,7 +3037,7 @@
     "exportsCount": 0
   },
   {
-    "id": 190,
+    "id": 191,
     "path": "07_TOOLBOX/validaciones/extraer_ot0183_identificacion_operativo_diagnostico.mjs",
     "module": "07_TOOLBOX/validaciones/extraer_ot0183_identificacion_operativo_diagnostico.mjs",
     "ext": ".mjs",
@@ -3039,7 +3056,7 @@
     "exportsCount": 0
   },
   {
-    "id": 191,
+    "id": 192,
     "path": "07_TOOLBOX/validaciones/revalidar_ot0225_helper_restricciones_advertencias_generales.mjs",
     "module": "07_TOOLBOX/validaciones/revalidar_ot0225_helper_restricciones_advertencias_generales.mjs",
     "ext": ".mjs",
@@ -3057,7 +3074,7 @@
     "exportsCount": 0
   },
   {
-    "id": 192,
+    "id": 193,
     "path": "07_TOOLBOX/validaciones/revalidar_ot0231_expediente_criterio_ajustado_tokens.mjs",
     "module": "07_TOOLBOX/validaciones/revalidar_ot0231_expediente_criterio_ajustado_tokens.mjs",
     "ext": ".mjs",
@@ -3076,7 +3093,7 @@
     "exportsCount": 0
   },
   {
-    "id": 193,
+    "id": 194,
     "path": "07_TOOLBOX/validaciones/revalidar_ot0234_expediente_normalizador_corregido.mjs",
     "module": "07_TOOLBOX/validaciones/revalidar_ot0234_expediente_normalizador_corregido.mjs",
     "ext": ".mjs",
@@ -3095,7 +3112,7 @@
     "exportsCount": 0
   },
   {
-    "id": 194,
+    "id": 195,
     "path": "07_TOOLBOX/validaciones/revisar_ot0200_bloques_reales_texto_expediente.mjs",
     "module": "07_TOOLBOX/validaciones/revisar_ot0200_bloques_reales_texto_expediente.mjs",
     "ext": ".mjs",
@@ -3114,7 +3131,7 @@
     "exportsCount": 0
   },
   {
-    "id": 195,
+    "id": 196,
     "path": "07_TOOLBOX/validaciones/trazar_ot0184_composicion_identificacion.mjs",
     "module": "07_TOOLBOX/validaciones/trazar_ot0184_composicion_identificacion.mjs",
     "ext": ".mjs",
@@ -3131,7 +3148,7 @@
     "exportsCount": 0
   },
   {
-    "id": 196,
+    "id": 197,
     "path": "07_TOOLBOX/validaciones/validar_ot0124_identificacion.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0124_identificacion.mjs",
     "ext": ".mjs",
@@ -3147,7 +3164,7 @@
     "exportsCount": 0
   },
   {
-    "id": 197,
+    "id": 198,
     "path": "07_TOOLBOX/validaciones/validar_ot0125d_identificacion_diagnostica.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0125d_identificacion_diagnostica.mjs",
     "ext": ".mjs",
@@ -3162,7 +3179,7 @@
     "exportsCount": 0
   },
   {
-    "id": 198,
+    "id": 199,
     "path": "07_TOOLBOX/validaciones/validar_ot0127_unidades_identificacion.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0127_unidades_identificacion.mjs",
     "ext": ".mjs",
@@ -3179,7 +3196,7 @@
     "exportsCount": 0
   },
   {
-    "id": 199,
+    "id": 200,
     "path": "07_TOOLBOX/validaciones/validar_ot0128_sustitucion_identificacion.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0128_sustitucion_identificacion.mjs",
     "ext": ".mjs",
@@ -3196,7 +3213,7 @@
     "exportsCount": 0
   },
   {
-    "id": 200,
+    "id": 201,
     "path": "07_TOOLBOX/validaciones/validar_ot0129_post_adopcion_identificacion.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0129_post_adopcion_identificacion.mjs",
     "ext": ".mjs",
@@ -3213,7 +3230,7 @@
     "exportsCount": 0
   },
   {
-    "id": 201,
+    "id": 202,
     "path": "07_TOOLBOX/validaciones/validar_ot0133_helper_parametros_base.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0133_helper_parametros_base.mjs",
     "ext": ".mjs",
@@ -3229,7 +3246,7 @@
     "exportsCount": 0
   },
   {
-    "id": 202,
+    "id": 203,
     "path": "07_TOOLBOX/validaciones/validar_ot0134_helper_parametros_base_reforzada.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0134_helper_parametros_base_reforzada.mjs",
     "ext": ".mjs",
@@ -3245,7 +3262,7 @@
     "exportsCount": 0
   },
   {
-    "id": 203,
+    "id": 204,
     "path": "07_TOOLBOX/validaciones/validar_ot0135_diagnostica_parametros_base.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0135_diagnostica_parametros_base.mjs",
     "ext": ".mjs",
@@ -3260,7 +3277,7 @@
     "exportsCount": 0
   },
   {
-    "id": 204,
+    "id": 205,
     "path": "07_TOOLBOX/validaciones/validar_ot0137_sustitucion_parametros_base.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0137_sustitucion_parametros_base.mjs",
     "ext": ".mjs",
@@ -3276,7 +3293,7 @@
     "exportsCount": 0
   },
   {
-    "id": 205,
+    "id": 206,
     "path": "07_TOOLBOX/validaciones/validar_ot0138_post_adopcion_parametros_base.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0138_post_adopcion_parametros_base.mjs",
     "ext": ".mjs",
@@ -3293,7 +3310,7 @@
     "exportsCount": 0
   },
   {
-    "id": 206,
+    "id": 207,
     "path": "07_TOOLBOX/validaciones/validar_ot0143_helper_tiempo_concentracion_roles_tc.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0143_helper_tiempo_concentracion_roles_tc.mjs",
     "ext": ".mjs",
@@ -3310,7 +3327,7 @@
     "exportsCount": 0
   },
   {
-    "id": 207,
+    "id": 208,
     "path": "07_TOOLBOX/validaciones/validar_ot0144_helper_tiempo_concentracion_reforzada.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0144_helper_tiempo_concentracion_reforzada.mjs",
     "ext": ".mjs",
@@ -3327,7 +3344,7 @@
     "exportsCount": 0
   },
   {
-    "id": 208,
+    "id": 209,
     "path": "07_TOOLBOX/validaciones/validar_ot0145_fallback_tc_vacio_null.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0145_fallback_tc_vacio_null.mjs",
     "ext": ".mjs",
@@ -3343,7 +3360,7 @@
     "exportsCount": 0
   },
   {
-    "id": 209,
+    "id": 210,
     "path": "07_TOOLBOX/validaciones/validar_ot0146_diagnostica_tiempo_concentracion.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0146_diagnostica_tiempo_concentracion.mjs",
     "ext": ".mjs",
@@ -3359,7 +3376,7 @@
     "exportsCount": 0
   },
   {
-    "id": 210,
+    "id": 211,
     "path": "07_TOOLBOX/validaciones/validar_ot0148_sustitucion_tiempo_concentracion.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0148_sustitucion_tiempo_concentracion.mjs",
     "ext": ".mjs",
@@ -3376,7 +3393,7 @@
     "exportsCount": 0
   },
   {
-    "id": 211,
+    "id": 212,
     "path": "07_TOOLBOX/validaciones/validar_ot0149_post_adopcion_tiempo_concentracion.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0149_post_adopcion_tiempo_concentracion.mjs",
     "ext": ".mjs",
@@ -3393,7 +3410,7 @@
     "exportsCount": 0
   },
   {
-    "id": 212,
+    "id": 213,
     "path": "07_TOOLBOX/validaciones/validar_ot0154_helper_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0154_helper_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -3409,7 +3426,7 @@
     "exportsCount": 0
   },
   {
-    "id": 213,
+    "id": 214,
     "path": "07_TOOLBOX/validaciones/validar_ot0155_helper_volumen_referencia_reforzada.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0155_helper_volumen_referencia_reforzada.mjs",
     "ext": ".mjs",
@@ -3425,7 +3442,7 @@
     "exportsCount": 0
   },
   {
-    "id": 214,
+    "id": 215,
     "path": "07_TOOLBOX/validaciones/validar_ot0156_diagnostica_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0156_diagnostica_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -3441,7 +3458,7 @@
     "exportsCount": 0
   },
   {
-    "id": 215,
+    "id": 216,
     "path": "07_TOOLBOX/validaciones/validar_ot0158_sustitucion_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0158_sustitucion_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -3458,7 +3475,7 @@
     "exportsCount": 0
   },
   {
-    "id": 216,
+    "id": 217,
     "path": "07_TOOLBOX/validaciones/validar_ot0159_post_adopcion_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0159_post_adopcion_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -3475,7 +3492,7 @@
     "exportsCount": 0
   },
   {
-    "id": 217,
+    "id": 218,
     "path": "07_TOOLBOX/validaciones/validar_ot0164_helper_escenario_qtr_activo.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0164_helper_escenario_qtr_activo.mjs",
     "ext": ".mjs",
@@ -3493,7 +3510,7 @@
     "exportsCount": 0
   },
   {
-    "id": 218,
+    "id": 219,
     "path": "07_TOOLBOX/validaciones/validar_ot0165_helper_escenario_qtr_activo_reforzada.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0165_helper_escenario_qtr_activo_reforzada.mjs",
     "ext": ".mjs",
@@ -3511,7 +3528,7 @@
     "exportsCount": 0
   },
   {
-    "id": 219,
+    "id": 220,
     "path": "07_TOOLBOX/validaciones/validar_ot0166_diagnostica_escenario_qtr_activo.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0166_diagnostica_escenario_qtr_activo.mjs",
     "ext": ".mjs",
@@ -3526,7 +3543,7 @@
     "exportsCount": 0
   },
   {
-    "id": 220,
+    "id": 221,
     "path": "07_TOOLBOX/validaciones/validar_ot0168_sustitucion_escenario_qtr_activo.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0168_sustitucion_escenario_qtr_activo.mjs",
     "ext": ".mjs",
@@ -3543,7 +3560,7 @@
     "exportsCount": 0
   },
   {
-    "id": 221,
+    "id": 222,
     "path": "07_TOOLBOX/validaciones/validar_ot0169_post_adopcion_escenario_qtr_activo.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0169_post_adopcion_escenario_qtr_activo.mjs",
     "ext": ".mjs",
@@ -3561,7 +3578,7 @@
     "exportsCount": 0
   },
   {
-    "id": 222,
+    "id": 223,
     "path": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
     "ext": ".mjs",
@@ -3577,7 +3594,7 @@
     "exportsCount": 0
   },
   {
-    "id": 223,
+    "id": 224,
     "path": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
     "ext": ".mjs",
@@ -3593,7 +3610,7 @@
     "exportsCount": 0
   },
   {
-    "id": 224,
+    "id": 225,
     "path": "07_TOOLBOX/validaciones/validar_ot0177_diagnostico_resumen_q5_auditado.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0177_diagnostico_resumen_q5_auditado.mjs",
     "ext": ".mjs",
@@ -3609,7 +3626,7 @@
     "exportsCount": 0
   },
   {
-    "id": 225,
+    "id": 226,
     "path": "07_TOOLBOX/validaciones/validar_ot0178_sustitucion_resumen_q5_auditado.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0178_sustitucion_resumen_q5_auditado.mjs",
     "ext": ".mjs",
@@ -3626,7 +3643,7 @@
     "exportsCount": 0
   },
   {
-    "id": 226,
+    "id": 227,
     "path": "07_TOOLBOX/validaciones/validar_ot0179_post_adopcion_resumen_q5_auditado.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0179_post_adopcion_resumen_q5_auditado.mjs",
     "ext": ".mjs",
@@ -3643,7 +3660,7 @@
     "exportsCount": 0
   },
   {
-    "id": 227,
+    "id": 228,
     "path": "07_TOOLBOX/validaciones/validar_ot0186_helper_identificacion_aislada.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0186_helper_identificacion_aislada.mjs",
     "ext": ".mjs",
@@ -3662,7 +3679,7 @@
     "exportsCount": 0
   },
   {
-    "id": 228,
+    "id": 229,
     "path": "07_TOOLBOX/validaciones/validar_ot0192_helper_parametros_base_aislada.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0192_helper_parametros_base_aislada.mjs",
     "ext": ".mjs",
@@ -3680,7 +3697,7 @@
     "exportsCount": 0
   },
   {
-    "id": 229,
+    "id": 230,
     "path": "07_TOOLBOX/validaciones/validar_ot0202_helper_roles_tc_aislada.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0202_helper_roles_tc_aislada.mjs",
     "ext": ".mjs",
@@ -3698,7 +3715,7 @@
     "exportsCount": 0
   },
   {
-    "id": 230,
+    "id": 231,
     "path": "07_TOOLBOX/validaciones/validar_ot0223_helper_restricciones_advertencias_generales_expediente.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0223_helper_restricciones_advertencias_generales_expediente.mjs",
     "ext": ".mjs",
@@ -3716,7 +3733,7 @@
     "exportsCount": 0
   },
   {
-    "id": 231,
+    "id": 232,
     "path": "07_TOOLBOX/validaciones/validar_ot0229_expediente_restricciones_advertencias_acoplado.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0229_expediente_restricciones_advertencias_acoplado.mjs",
     "ext": ".mjs",
@@ -3733,7 +3750,7 @@
     "exportsCount": 0
   },
   {
-    "id": 232,
+    "id": 233,
     "path": "07_TOOLBOX/validaciones/validar_ot0241_helper_identificacion_expediente.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0241_helper_identificacion_expediente.mjs",
     "ext": ".mjs",
@@ -3752,7 +3769,7 @@
     "exportsCount": 0
   },
   {
-    "id": 233,
+    "id": 234,
     "path": "07_TOOLBOX/validaciones/validar_ot0245_acople_helper_identificacion_expediente.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0245_acople_helper_identificacion_expediente.mjs",
     "ext": ".mjs",
@@ -3772,7 +3789,7 @@
     "exportsCount": 0
   },
   {
-    "id": 234,
+    "id": 235,
     "path": "07_TOOLBOX/validaciones/validar_ot0254_helper_parametros_hidrologicos_base.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0254_helper_parametros_hidrologicos_base.mjs",
     "ext": ".mjs",
@@ -3792,7 +3809,7 @@
     "exportsCount": 0
   },
   {
-    "id": 235,
+    "id": 236,
     "path": "07_TOOLBOX/validaciones/validar_ot0258_acople_helper_parametros_hidrologicos_base.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0258_acople_helper_parametros_hidrologicos_base.mjs",
     "ext": ".mjs",
@@ -3811,7 +3828,7 @@
     "exportsCount": 0
   },
   {
-    "id": 236,
+    "id": 237,
     "path": "07_TOOLBOX/validaciones/validar_ot0260_revalidacion_acople_helper_parametros_hidrologicos_base.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0260_revalidacion_acople_helper_parametros_hidrologicos_base.mjs",
     "ext": ".mjs",
@@ -3830,7 +3847,7 @@
     "exportsCount": 0
   },
   {
-    "id": 237,
+    "id": 238,
     "path": "07_TOOLBOX/validaciones/validar_ot0267_helper_tc_roles.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0267_helper_tc_roles.mjs",
     "ext": ".mjs",
@@ -3849,7 +3866,7 @@
     "exportsCount": 0
   },
   {
-    "id": 238,
+    "id": 239,
     "path": "07_TOOLBOX/validaciones/validar_ot0271_acople_helper_tc_roles.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0271_acople_helper_tc_roles.mjs",
     "ext": ".mjs",
@@ -3867,7 +3884,7 @@
     "exportsCount": 0
   },
   {
-    "id": 239,
+    "id": 240,
     "path": "07_TOOLBOX/validaciones/validar_ot0273_revalidacion_acople_helper_tc_roles.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0273_revalidacion_acople_helper_tc_roles.mjs",
     "ext": ".mjs",
@@ -3885,7 +3902,7 @@
     "exportsCount": 0
   },
   {
-    "id": 240,
+    "id": 241,
     "path": "07_TOOLBOX/validaciones/validar_ot0275_runtime_tc_roles.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0275_runtime_tc_roles.mjs",
     "ext": ".mjs",
@@ -3903,7 +3920,7 @@
     "exportsCount": 0
   },
   {
-    "id": 241,
+    "id": 242,
     "path": "07_TOOLBOX/validaciones/validar_ot0281_helper_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0281_helper_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -3921,7 +3938,7 @@
     "exportsCount": 0
   },
   {
-    "id": 242,
+    "id": 243,
     "path": "07_TOOLBOX/validaciones/validar_ot0283_helper_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0283_helper_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -3939,7 +3956,7 @@
     "exportsCount": 0
   },
   {
-    "id": 243,
+    "id": 244,
     "path": "07_TOOLBOX/validaciones/validar_ot0287_acople_helper_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0287_acople_helper_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -3957,7 +3974,7 @@
     "exportsCount": 0
   },
   {
-    "id": 244,
+    "id": 245,
     "path": "07_TOOLBOX/validaciones/validar_ot0289_acople_helper_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0289_acople_helper_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -3975,7 +3992,7 @@
     "exportsCount": 0
   },
   {
-    "id": 245,
+    "id": 246,
     "path": "07_TOOLBOX/validaciones/validar_ot0290_salida_real_helper_volumen_referencia.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0290_salida_real_helper_volumen_referencia.mjs",
     "ext": ".mjs",
@@ -3993,7 +4010,7 @@
     "exportsCount": 0
   },
   {
-    "id": 246,
+    "id": 247,
     "path": "07_TOOLBOX/validaciones/validar_ot0296_helper_escenario_qtr.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0296_helper_escenario_qtr.mjs",
     "ext": ".mjs",
@@ -4011,7 +4028,7 @@
     "exportsCount": 0
   },
   {
-    "id": 247,
+    "id": 248,
     "path": "07_TOOLBOX/validaciones/validar_ot0300_acople_helper_escenario_qtr.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0300_acople_helper_escenario_qtr.mjs",
     "ext": ".mjs",
@@ -4029,7 +4046,7 @@
     "exportsCount": 0
   },
   {
-    "id": 248,
+    "id": 249,
     "path": "07_TOOLBOX/validaciones/validar_ot0301_salida_real_helper_escenario_qtr.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0301_salida_real_helper_escenario_qtr.mjs",
     "ext": ".mjs",
@@ -4048,7 +4065,7 @@
     "exportsCount": 0
   },
   {
-    "id": 249,
+    "id": 250,
     "path": "07_TOOLBOX/validaciones/validar_ot0307_helper_resumen_q5.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0307_helper_resumen_q5.mjs",
     "ext": ".mjs",
@@ -4066,7 +4083,7 @@
     "exportsCount": 0
   },
   {
-    "id": 250,
+    "id": 251,
     "path": "07_TOOLBOX/validaciones/validar_ot0308_ajuste_criterio_helper_resumen_q5.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0308_ajuste_criterio_helper_resumen_q5.mjs",
     "ext": ".mjs",
@@ -4084,7 +4101,7 @@
     "exportsCount": 0
   },
   {
-    "id": 251,
+    "id": 252,
     "path": "07_TOOLBOX/validaciones/validar_ot0312_acople_resumen_q5.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0312_acople_resumen_q5.mjs",
     "ext": ".mjs",
@@ -4102,7 +4119,7 @@
     "exportsCount": 0
   },
   {
-    "id": 252,
+    "id": 253,
     "path": "07_TOOLBOX/validaciones/validar_ot0313_salida_real_resumen_q5.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0313_salida_real_resumen_q5.mjs",
     "ext": ".mjs",
@@ -4121,7 +4138,7 @@
     "exportsCount": 0
   },
   {
-    "id": 253,
+    "id": 254,
     "path": "07_TOOLBOX/validaciones/validar_ot0316_salida_real_qtr_activo.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0316_salida_real_qtr_activo.mjs",
     "ext": ".mjs",
@@ -4140,7 +4157,7 @@
     "exportsCount": 0
   },
   {
-    "id": 254,
+    "id": 255,
     "path": "07_TOOLBOX/validaciones/validar_ot0317_correccion_qtr_activo.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0317_correccion_qtr_activo.mjs",
     "ext": ".mjs",
@@ -4158,7 +4175,7 @@
     "exportsCount": 0
   },
   {
-    "id": 255,
+    "id": 256,
     "path": "07_TOOLBOX/validaciones/validar_ot0319_metodo_racional_contraste.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0319_metodo_racional_contraste.mjs",
     "ext": ".mjs",
@@ -4177,7 +4194,7 @@
     "exportsCount": 0
   },
   {
-    "id": 256,
+    "id": 257,
     "path": "07_TOOLBOX/validaciones/validar_ot0320_metodo_racional_corregido.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0320_metodo_racional_corregido.mjs",
     "ext": ".mjs",
@@ -4196,7 +4213,7 @@
     "exportsCount": 0
   },
   {
-    "id": 257,
+    "id": 258,
     "path": "07_TOOLBOX/validaciones/validar_ot0321_metodo_racional_revalidado.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0321_metodo_racional_revalidado.mjs",
     "ext": ".mjs",
@@ -4215,7 +4232,7 @@
     "exportsCount": 0
   },
   {
-    "id": 258,
+    "id": 259,
     "path": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
     "ext": ".mjs",
@@ -4234,7 +4251,7 @@
     "exportsCount": 0
   },
   {
-    "id": 259,
+    "id": 260,
     "path": "07_TOOLBOX/validaciones/validar_ot0323_control_pe_area_volumen_q5.mjs",
     "module": "07_TOOLBOX/validaciones/validar_ot0323_control_pe_area_volumen_q5.mjs",
     "ext": ".mjs",

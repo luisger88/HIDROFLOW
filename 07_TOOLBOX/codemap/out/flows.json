@@ -358,19 +358,19 @@
       },
       {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 43,
+        "line": 45,
         "type": "Q5_table",
         "message": "tieneq5publicado"
       },
       {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 44,
+        "line": 46,
         "type": "hidrogramas_published",
         "message": "tienehidrogramaspublicados"
       },
       {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 48,
+        "line": 50,
         "type": "Q5_table",
         "message": "!tieneq5publicado"
       },
@@ -1208,13 +1208,13 @@
       },
       {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
+        "line": 48,
         "type": "expediente_faltantes",
         "message": "faltantesexpediente"
       },
       {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 47,
+        "line": 49,
         "type": "expediente_listo",
         "message": "expedientelisto"
       },
@@ -2206,7 +2206,7 @@
       },
       {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 45,
+        "line": 47,
         "type": "racional_published",
         "message": "tieneracionalpublicado"
       }
@@ -2607,13 +2607,13 @@
       },
       {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 46,
+        "line": 48,
         "type": "expediente_faltantes",
         "message": "faltantesexpediente"
       },
       {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 47,
+        "line": 49,
         "type": "expediente_listo",
         "message": "expedientelisto"
       },
@@ -2766,24 +2766,24 @@
         "line": 2342
       },
       {
+        "name": "actualizarContextoComparador",
+        "file": "01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx",
+        "line": 11
+      },
+      {
+        "name": "hidrogramasNuevoTieneDatos",
+        "file": "01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx",
+        "line": 18
+      },
+      {
+        "name": "hidrogramasPrevioTieneDatos",
+        "file": "01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx",
+        "line": 24
+      },
+      {
         "name": "contextoBase",
         "file": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
         "line": 138
-      },
-      {
-        "name": "areaKm2",
-        "file": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
-        "line": 243
-      },
-      {
-        "name": "peTotalMm",
-        "file": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
-        "line": 244
-      },
-      {
-        "name": "contextoBase",
-        "file": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
-        "line": 503
       }
     ],
     "transports": [],
@@ -2954,13 +2954,13 @@
       },
       {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 44,
+        "line": 46,
         "type": "hidrogramas_published",
         "message": "tienehidrogramaspublicados"
       },
       {
         "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
-        "line": 48,
+        "line": 50,
         "type": "Q5_table",
         "message": "!tieneq5publicado"
       }

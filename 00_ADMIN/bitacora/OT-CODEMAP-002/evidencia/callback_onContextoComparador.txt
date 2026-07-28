@@ -1,0 +1,36 @@
+Callbacks que coinciden con 'onContextoComparador' (5):
+  onContextoComparador
+    Recibido por: ModHidrogramas en 01_APP/HIDROFLOW/src/HidroFlow.jsx
+    dominios: Contexto
+    Tambien pasado en:
+      HidroFlowLayout -> HidroFlow en 01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:88
+
+  onContextoComparador
+    Recibido por: HidroFlow en 01_APP/HIDROFLOW/src/HidroFlow.jsx
+    dominios: Contexto
+    Tambien pasado en:
+      HidroFlowLayout -> HidroFlow en 01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:88
+
+  onContextoComparador
+    Recibido por: ModHidrogramas en 01_APP/HIDROFLOW/src/HidroFlow.jsx
+    valor: setContextoComparador
+    dominios: Tc, Contexto
+    Tambien pasado en:
+      HidroFlowLayout -> HidroFlow en 01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:88
+
+  onContextoComparador
+    Recibido por: ModRacional en 01_APP/HIDROFLOW/src/HidroFlow.jsx
+    valor: setContextoComparador
+    dominios: Tc, Contexto
+    Tambien pasado en:
+      HidroFlowLayout -> HidroFlow en 01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:88
+
+  onContextoComparador
+    Recibido por: HidroFlow en 01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx
+    valor: actualizarContextoComparador
+    dominios: Contexto
+    Tambien pasado en:
+      parent -> ModHidrogramas en 01_APP/HIDROFLOW/src/HidroFlow.jsx:2019
+      parent -> HidroFlow en 01_APP/HIDROFLOW/src/HidroFlow.jsx:3742
+      Field -> ModHidrogramas en 01_APP/HIDROFLOW/src/HidroFlow.jsx:4320
+      Field -> ModRacional en 01_APP/HIDROFLOW/src/HidroFlow.jsx:4332
