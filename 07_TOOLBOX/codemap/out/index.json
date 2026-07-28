@@ -1,19 +1,27 @@
 {
-  "version": "1.2.0",
-  "generated": "2026-07-28T03:35:28.114Z",
+  "version": "1.3.0",
+  "generated": "2026-07-28T04:03:39.413Z",
   "totals": {
     "files": 260,
-    "symbols": 5146,
-    "references": 41190,
+    "symbols": 5172,
+    "references": 41406,
     "guards": 48,
     "flows": 8,
     "reactFlows": 284,
     "documentFlows": 1,
     "aliases": 3,
-    "impactEntries": 3781,
+    "impactEntries": 3799,
     "propsFlows": 2618,
     "stateLinks": 88,
     "semanticFlows": 96
+  },
+  "classes": {
+    "activeFiles": 145,
+    "runtimeActive": 6,
+    "runtimeSupport": 132,
+    "historicalFiles": 1,
+    "backupFiles": 114,
+    "generatedFiles": 0
   },
   "topDomains": [
     "Q5",
@@ -25,5 +33,5 @@
     "Expediente",
     "Contexto"
   ],
-  "queryHelp": "Usa consultar-hidroflow.mjs resumen | variable <n> | flujo <d> | guard <t> | impacto <n> | prop <n> | callback <n> | state-flow <n>"
+  "queryHelp": "Usa consultar-hidroflow.mjs resumen | variable <n> | flujo <d> | semantic-flow <n> [--active]"
 }

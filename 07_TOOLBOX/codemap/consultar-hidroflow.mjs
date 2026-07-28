@@ -46,6 +46,13 @@ function cmdResumen() {
   }
   console.log("");
   console.log("Dominios:", index.topDomains?.join(", ") || "N/A");
+  if (index.classes) {
+    console.log("");
+    console.log("--- Clases de archivos ---");
+    for (const [k, v] of Object.entries(index.classes)) {
+      console.log(pad(k, 22) + v);
+    }
+  }
 }
 
 function cmdVariable(name) {
@@ -361,8 +368,9 @@ function cmdDocumentFlow(text) {
 
 function cmdSemanticFlow(name) {
   const sfs = load("semantic_flows.json");
+  const activeOnly = process.argv.includes("--active");
   const lower = name.toLowerCase();
-  const results = sfs.filter(sf =>
+  let results = sfs.filter(sf =>
     sf.query?.toLowerCase().includes(lower) ||
     sf.domain?.toLowerCase().includes(lower) ||
     sf.routeName?.toLowerCase().includes(lower) ||
@@ -373,13 +381,19 @@ function cmdSemanticFlow(name) {
     console.log("Disponibles (" + sfs.length + "): " + sfs.slice(0, 10).map(s => s.query).join(", "));
     return;
   }
+  const mode = activeOnly ? "active" : "default";
   for (const sf of results.slice(0, 3)) {
-    console.log("=== " + sf.routeName + " (" + sf.domain + ") confianza=" + sf.confidence + " ===");
+    let displaySteps = sf.steps;
+    if (activeOnly) {
+      displaySteps = sf.steps.filter(s => (s.semanticScore || 0) >= 40);
+    }
+    console.log("=== Ruta semantica priorizada: " + sf.query + " (" + sf.domain + ") ===");
+    console.log("Modo: " + mode + " | Score total: " + (sf.semanticScore || 0) + " | Confianza: " + sf.confidence);
     if (sf.gaps?.length) console.log("Gaps: " + sf.gaps.join(", "));
     console.log("");
-    for (const step of sf.steps) {
+    for (const step of displaySteps) {
       const prefix = "[" + step.role + "]";
-      console.log(pad(prefix, 22) + step.label);
+      console.log(pad(prefix, 22) + step.label + (step.semanticScore ? " [" + step.semanticScore + "]" : ""));
       if (step.component) console.log("                       " + step.component);
       if (step.file) console.log("                       " + step.file + ":" + step.line);
       if (step.evidence) console.log("                       -> " + step.evidence.slice(0, 120));
@@ -402,6 +416,37 @@ function cmdSemanticFlow(name) {
   }
 }
 
+function cmdRuido(name) {
+  const sfs = load("semantic_flows.json");
+  const lower = name.toLowerCase();
+  const results = sfs.filter(sf =>
+    sf.query?.toLowerCase().includes(lower) ||
+    sf.domain?.toLowerCase().includes(lower)
+  );
+  console.log("=== Ruido para '" + name + "' ===");
+  console.log("");
+  for (const sf of results.slice(0, 3)) {
+    const degraded = sf.steps.filter(s => (s.semanticScore || 0) < 0);
+    const excluded = sf.steps.filter(s => (s.semanticScore || 0) <= -50);
+    if (degraded.length > 0) {
+      console.log("--- Degradados (" + degraded.length + ") ---");
+      for (const s of degraded) {
+        console.log("  [" + (s.semanticScore || 0) + "] " + s.file + ":" + s.line + " " + s.label.slice(0, 60));
+      }
+    }
+    if (excluded.length > 0) {
+      console.log("--- Excluidos (" + excluded.length + ") ---");
+      for (const s of excluded) {
+        console.log("  [" + (s.semanticScore || 0) + "] " + s.file + ":" + s.line + " " + s.label.slice(0, 60));
+      }
+    }
+    if (degraded.length === 0 && excluded.length === 0) {
+      console.log("  Sin ruido significativo en este flujo.");
+    }
+    console.log("");
+  }
+}
+
 // Dispatch
 const commands = {
   resumen: cmdResumen,
@@ -418,6 +463,7 @@ const commands = {
   callback: cmdCallback,
   "state-flow": cmdStateFlow,
   "semantic-flow": cmdSemanticFlow,
+  "ruido": cmdRuido,
   "react-flow": cmdReactFlow,
   "document-flow": cmdDocumentFlow,
 };
@@ -425,8 +471,8 @@ const commands = {
 if (commands[cmd]) {
   commands[cmd](arg);
 } else {
-  console.log("HF-CODEMAP CLI v1.2.0");
-  console.log("Comandos: resumen | variable <n> | prop <n> | callback <n> | state-flow <n> | semantic-flow <n>");
+  console.log("HF-CODEMAP CLI v1.3.0");
+  console.log("Comandos: resumen | variable <n> | prop <n> | callback <n> | state-flow <n> | semantic-flow <n> [--active] | ruido <n>");
   console.log("  productor <n> | consumidor <n> | flujo <d> | guard <t> | impacto <n>");
   console.log("  alias <n> | archivo <t> | buscar <t> | react-flow <t> | document-flow <t>");
   if (cmd) console.log("Comando desconocido: " + cmd);

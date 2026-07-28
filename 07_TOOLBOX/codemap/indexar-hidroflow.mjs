@@ -57,6 +57,30 @@ function extractProbableMessage(text) {
   return null;
 }
 
+function classifyFile(relative) {
+  const lower = relative.toLowerCase();
+  for (const pat of (config.excludePathPatterns || [])) {
+    if (lower.includes(pat.toLowerCase())) return "backup";
+  }
+  if (lower.includes("00_admin") || lower.includes("bitacora")) return "historical";
+  if (lower.includes("07_toolbox/validaciones")) return "historical";
+  if (lower.includes("07_toolbox/codemap/out")) return "generated";
+  if (lower.includes("07_toolbox/codemap/indexar") || lower.includes("07_toolbox/codemap/consultar")) return "tool_active";
+  if (lower.startsWith("01_app/hidroflow/src/hidroflow.jsx")) return "runtime_active";
+  if (lower.startsWith("01_app/hidroflow/src/layouts/")) return "runtime_active";
+  if (lower.startsWith("01_app/hidroflow/src/components/")) return "runtime_active";
+  if (lower.startsWith("01_app/hidroflow/src/services/")) return "runtime_support";
+  if (lower.startsWith("01_app/hidroflow/src/agents/")) return "runtime_support";
+  if (lower.startsWith("01_app/hidroflow/src/data/")) return "runtime_support";
+  if (lower.startsWith("01_app/hidroflow/scripts")) return "runtime_support";
+  return "tool_active";
+}
+
+function rankByClass(activeClass) {
+  const ranks = { runtime_active: 100, runtime_support: 70, tool_active: 40, documentation: 20, historical: -50, backup: -100, generated: -200 };
+  return ranks[activeClass] || 0;
+}
+
 const KEYWORDS = new Set([
   "if","for","while","return","switch","case","break","continue","throw","typeof",
   "new","delete","void","in","of","else","try","catch","finally","import","export",
@@ -110,12 +134,15 @@ function scanFile(filePath) {
   const isJS = [".js", ".jsx", ".mjs", ".cjs"].includes(ext);
 
   let importCount = 0, exportCount = 0;
+  const activeClass = classifyFile(relative);
+  const activeRank = rankByClass(activeClass);
 
   const fileEntry = {
     id: fileId, path: relative,
     module: relative.split("/").slice(0, 3).join("/"),
     ext, sha1: hash, lineCount: lines.length, domains,
-    importsCount: 0, exportsCount: 0
+    importsCount: 0, exportsCount: 0,
+    activeClass, activeRank
   };
 
   if (!isJS) { allFiles.push(fileEntry); return; }
@@ -418,6 +445,23 @@ function buildSemanticFlows(docFlows, refs) {
   const flows = [];
   let idCounter = 1;
 
+  const fileRankMap = new Map();
+  for (const f of allFiles) {
+    fileRankMap.set(f.path, f.activeRank || 0);
+  }
+  function fileRank(fpath) {
+    return fileRankMap.get(fpath) || 100;
+  }
+  function scoreSteps(stepsArr) {
+    let total = 0;
+    for (const s of stepsArr) {
+      const rank = fileRank(s.file);
+      s.semanticScore = rank;
+      total += rank;
+    }
+    return total;
+  }
+
   // For each callback_prop, find the full chain
   const callbackProps = allPropsFlows.filter(p => p.kind === "callback_prop" || p.kind === "prop_passed" || p.kind === "prop_received");
 
@@ -553,6 +597,7 @@ function buildSemanticFlows(docFlows, refs) {
         guards: relatedGuards.slice(0, 5).map(g => ({ file: g.file, line: g.line, type: g.guardType, message: g.probableMessage })),
         documentOutputs: docOuts,
         confidence: Math.round(confidence * 100) / 100,
+        semanticScore: scoreSteps(steps),
         gaps: [...new Set(gaps)]
       });
     }
@@ -607,15 +652,16 @@ function buildSemanticFlows(docFlows, refs) {
       guards: domainGuards.slice(0, 10).map(g => ({ file: g.file, line: g.line, type: g.guardType, message: g.probableMessage })),
       documentOutputs: docOuts,
       confidence: producers.length > 0 ? 0.8 : 0.5,
+      semanticScore: scoreSteps(steps),
       gaps: producers.length === 0 ? ["no_producers"] : []
     });
   }
 
-  return flows;
+  return flows.sort((a, b) => (b.semanticScore || 0) - (a.semanticScore || 0));
 }
 
 // --- MAIN ---
-console.log("HF-CODEMAP indexer v1.2.0");
+console.log("HF-CODEMAP indexer v1.3.0");
 console.time("Total");
 
 let scanned = 0;
@@ -688,8 +734,16 @@ writeJSON("index.json", {
     stateLinks: allStateLinks.length,
     semanticFlows: semanticFlows.length
   },
+  classes: {
+    activeFiles: allFiles.filter(f => f.activeRank > 0).length,
+    runtimeActive: allFiles.filter(f => f.activeClass === "runtime_active").length,
+    runtimeSupport: allFiles.filter(f => f.activeClass === "runtime_support").length,
+    historicalFiles: allFiles.filter(f => f.activeClass === "historical").length,
+    backupFiles: allFiles.filter(f => f.activeClass === "backup").length,
+    generatedFiles: allFiles.filter(f => f.activeClass === "generated").length
+  },
   topDomains: Object.keys(config.domains),
-  queryHelp: "Usa consultar-hidroflow.mjs resumen | variable <n> | flujo <d> | guard <t> | impacto <n> | prop <n> | callback <n> | state-flow <n>"
+  queryHelp: "Usa consultar-hidroflow.mjs resumen | variable <n> | flujo <d> | semantic-flow <n> [--active]"
 });
 
 console.log("Index written to " + OUT_DIR);

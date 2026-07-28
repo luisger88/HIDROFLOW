@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "tool": "HF-CODEMAP",
   "scanRoots": [
     "01_APP/HIDROFLOW/src",
@@ -19,6 +19,16 @@
     "node_modules",
     "venv",
     "__pycache__"
+  ],
+  "excludePathPatterns": [
+    "BACKUP", "backup", "Backup",
+    "copia", "Copia",
+    ".bak", ".old", "OLD", "LEGACY",
+    ".pre", "pre005",
+    "00_ADMIN/HF-ARQ", "00_ADMIN/HF-PROD", "00_ADMIN/bitacora",
+    "07_TOOLBOX/validaciones",
+    "07_TOOLBOX/codemap/out",
+    "dist", "build", "node_modules"
   ],
   "domains": {
     "Q5": {
