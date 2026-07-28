@@ -1,0 +1,11 @@
+Guards que coinciden con 'tieneQ5Publicado' (4):
+  [Q5_table] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2093
+    Dominios: Q5
+  [Q5_table] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+    Dominios: Q5, Contexto
+  [Q5_table] 07_TOOLBOX/codemap/indexar-hidroflow.mjs:45
+    Mensaje: tieneq5publicado
+    Dominios: Q5
+  [Q5_table] 07_TOOLBOX/codemap/indexar-hidroflow.mjs:50
+    Mensaje: !tieneq5publicado
+    Dominios: Q5, Contexto

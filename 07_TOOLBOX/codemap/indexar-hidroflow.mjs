@@ -413,8 +413,209 @@ function buildImpact(refs) {
   return entries;
 }
 
+// v1.2.0: Semantic flow reconstruction
+function buildSemanticFlows(docFlows, refs) {
+  const flows = [];
+  let idCounter = 1;
+
+  // For each callback_prop, find the full chain
+  const callbackProps = allPropsFlows.filter(p => p.kind === "callback_prop" || p.kind === "prop_passed" || p.kind === "prop_received");
+
+  // Group by propName
+  const byProp = new Map();
+  for (const p of callbackProps) {
+    const arr = byProp.get(p.propName) || [];
+    arr.push(p);
+    byProp.set(p.propName, arr);
+  }
+
+  for (const [propName, entries] of byProp) {
+    const steps = [];
+    const gaps = [];
+    let confidence = 1;
+    const allDomains = new Set();
+
+    // Step 1: Find the producer component
+    const received = entries.filter(e => e.kind === "callback_prop" || e.kind === "prop_received");
+    const passed = entries.filter(e => e.kind === "callback_prop" || e.kind === "prop_passed");
+
+    // Find the callback value (what's passed)
+    const passers = passed.filter(p => p.valueExpression);
+    for (const p of passers.slice(0, 3)) {
+      const valExpr = p.valueExpression;
+      allDomains.add(...(p.domains || []));
+
+      // Find the wrapper (useCallback) for this value
+      const wrapper = allPropsFlows.find(w =>
+        w.kind === "component_edge" && w.propName === valExpr
+      );
+      if (wrapper) {
+        steps.push({
+          order: steps.length + 1, role: "wrapper",
+          label: valExpr + " (useCallback)",
+          symbol: valExpr,
+          component: wrapper.fromComponent,
+          file: wrapper.file, line: wrapper.line,
+          evidence: wrapper.valueExpression || wrapper.text,
+          domains: wrapper.domains || []
+        });
+        allDomains.add(...(wrapper.domains || []));
+
+        // Find setter called by wrapper
+        const setterName = wrapper.target;
+        if (setterName) {
+          const stateLink = allStateLinks.find(sl => sl.setter === setterName);
+          if (stateLink) {
+            steps.push({
+              order: steps.length + 1, role: "state_setter",
+              label: setterName,
+              symbol: setterName,
+              component: stateLink.component,
+              file: stateLink.file, line: stateLink.line,
+              evidence: "setter for " + stateLink.state,
+              domains: detectDomains(stateLink.state)
+            });
+            steps.push({
+              order: steps.length + 1, role: "state",
+              label: stateLink.state + " (useState)",
+              symbol: stateLink.state,
+              component: stateLink.component,
+              file: stateLink.file, line: stateLink.line,
+              evidence: "state variable",
+              domains: detectDomains(stateLink.state)
+            });
+            allDomains.add(...detectDomains(stateLink.state));
+          }
+        }
+      }
+
+      // The prop passing itself
+      steps.push({
+        order: steps.length + 1, role: "prop_pass",
+        label: p.propName + "={" + (valExpr || "?") + "}",
+        symbol: p.propName,
+        component: p.fromComponent + " -> " + p.toComponent,
+        file: p.file, line: p.line,
+        evidence: p.text?.slice(0, 150) || "",
+        domains: p.domains || []
+      });
+      allDomains.add(...(p.domains || []));
+    }
+
+    // Find receivers
+    for (const r of received.slice(0, 3)) {
+      if (r.toComponent !== "parent" && r.toComponent !== "unknown") {
+        steps.push({
+          order: steps.length + 1, role: "callback_receive",
+          label: r.propName + " recibido por " + r.toComponent,
+          symbol: r.propName,
+          component: r.toComponent,
+          file: r.file, line: r.line,
+          evidence: "prop declaration",
+          domains: r.domains || []
+        });
+        allDomains.add(...(r.domains || []));
+      }
+    }
+
+    // Find guards related to the domains
+    const relatedGuards = allGuards.filter(g => g.domains.some(d => allDomains.has(d)));
+    for (const g of relatedGuards.slice(0, 5)) {
+      steps.push({
+        order: steps.length + 1, role: "guard",
+        label: g.guardType + (g.probableMessage ? ": " + g.probableMessage : ""),
+        symbol: g.guardType,
+        component: "",
+        file: g.file, line: g.line,
+        evidence: g.text?.slice(0, 150) || "",
+        domains: g.domains || []
+      });
+    }
+
+    // Find document outputs
+    const docOuts = [];
+    for (const d of docFlows) {
+      if (d.domain && allDomains.has(d.domain)) {
+        docOuts.push({ section: d.outputSection, source: d.source });
+      }
+    }
+
+    if (steps.length > 1) {
+      // Only include flows with meaningful chains
+      if (passed.length > 0 && received.length > 0) confidence = 0.9;
+      if (passed.length > 0 && !received.length) { confidence = 0.4; gaps.push("no_consumer_found"); }
+      if (!allStateLinks.length) gaps.push("no_state_link");
+
+      flows.push({
+        id: idCounter++, query: propName, domain: [...allDomains][0] || "unknown",
+        routeName: propName + "_flow",
+        steps: steps.sort((a, b) => a.order - b.order),
+        guards: relatedGuards.slice(0, 5).map(g => ({ file: g.file, line: g.line, type: g.guardType, message: g.probableMessage })),
+        documentOutputs: docOuts,
+        confidence: Math.round(confidence * 100) / 100,
+        gaps: [...new Set(gaps)]
+      });
+    }
+  }
+
+  // Also build domain-level flows (Q5, Expediente, etc.)
+  for (const [domain] of Object.entries(config.domains)) {
+    const domainSymbols = allSymbols.filter(s => s.domains.includes(domain));
+    const domainRefs = refs.filter(r => r.domains.includes(domain));
+    const domainGuards = allGuards.filter(g => g.domains.includes(domain));
+    const domainProps = allPropsFlows.filter(p => p.domains?.includes(domain));
+
+    if (domainSymbols.length === 0 && domainProps.length === 0) continue;
+
+    const steps = [];
+    const producers = domainSymbols.filter(s => s.kind === "variable" || s.kind === "function").slice(0, 5);
+    for (const p of producers) {
+      steps.push({
+        order: steps.length + 1, role: "producer",
+        label: p.name, symbol: p.name,
+        component: "", file: p.file, line: p.line,
+        evidence: p.text?.slice(0, 100) || "", domains: p.domains || []
+      });
+    }
+
+    const consumers = domainRefs.slice(0, 5);
+    for (const c of consumers) {
+      steps.push({
+        order: steps.length + 1, role: "consumer",
+        label: c.symbol, symbol: c.symbol,
+        component: "", file: c.file, line: c.line,
+        evidence: c.text?.slice(0, 100) || "", domains: c.domains || []
+      });
+    }
+
+    for (const g of domainGuards.slice(0, 5)) {
+      steps.push({
+        order: steps.length + 1, role: "guard",
+        label: g.guardType + (g.probableMessage ? ": " + g.probableMessage : ""),
+        symbol: g.guardType,
+        component: "", file: g.file, line: g.line,
+        evidence: g.text?.slice(0, 100) || "", domains: g.domains || []
+      });
+    }
+
+    const docOuts = (docFlows || []).filter(d => d.domain === domain).map(d => ({ section: d.outputSection, source: d.source }));
+
+    flows.push({
+      id: idCounter++, query: domain, domain,
+      routeName: domain + "_domain_flow",
+      steps: steps.sort((a, b) => a.order - b.order),
+      guards: domainGuards.slice(0, 10).map(g => ({ file: g.file, line: g.line, type: g.guardType, message: g.probableMessage })),
+      documentOutputs: docOuts,
+      confidence: producers.length > 0 ? 0.8 : 0.5,
+      gaps: producers.length === 0 ? ["no_producers"] : []
+    });
+  }
+
+  return flows;
+}
+
 // --- MAIN ---
-console.log("HF-CODEMAP indexer v1.1.0");
+console.log("HF-CODEMAP indexer v1.2.0");
 console.time("Total");
 
 let scanned = 0;
@@ -456,6 +657,11 @@ const aliasList = buildAliases();
 const impactList = buildImpact(refs);
 console.timeEnd("Derived");
 
+console.time("Semantic flows");
+const semanticFlows = buildSemanticFlows(docFlows, refs);
+console.timeEnd("Semantic flows");
+console.log("Semantic flows:", semanticFlows.length);
+
 const writeJSON = (name, data) => fs.writeFileSync(path.join(OUT_DIR, name), JSON.stringify(data, null, 2), "utf-8");
 
 writeJSON("files.json", allFiles);
@@ -468,6 +674,7 @@ writeJSON("impact.json", impactList);
 writeJSON("react_flows.json", allReactFlows);
 writeJSON("document_flows.json", docFlows);
 writeJSON("props_flows.json", allPropsFlows);
+writeJSON("semantic_flows.json", semanticFlows);
 
 writeJSON("index.json", {
   version: config.version,
@@ -478,7 +685,8 @@ writeJSON("index.json", {
     flows: flows.length, reactFlows: allReactFlows.length,
     documentFlows: docFlows.length, aliases: aliasList.length,
     impactEntries: impactList.length, propsFlows: allPropsFlows.length,
-    stateLinks: allStateLinks.length
+    stateLinks: allStateLinks.length,
+    semanticFlows: semanticFlows.length
   },
   topDomains: Object.keys(config.domains),
   queryHelp: "Usa consultar-hidroflow.mjs resumen | variable <n> | flujo <d> | guard <t> | impacto <n> | prop <n> | callback <n> | state-flow <n>"

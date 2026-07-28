@@ -359,6 +359,49 @@ function cmdDocumentFlow(text) {
   }
 }
 
+function cmdSemanticFlow(name) {
+  const sfs = load("semantic_flows.json");
+  const lower = name.toLowerCase();
+  const results = sfs.filter(sf =>
+    sf.query?.toLowerCase().includes(lower) ||
+    sf.domain?.toLowerCase().includes(lower) ||
+    sf.routeName?.toLowerCase().includes(lower) ||
+    sf.steps?.some(s => s.label?.toLowerCase().includes(lower))
+  );
+  if (results.length === 0) {
+    console.log("Flujo semantico '" + name + "' no encontrado.");
+    console.log("Disponibles (" + sfs.length + "): " + sfs.slice(0, 10).map(s => s.query).join(", "));
+    return;
+  }
+  for (const sf of results.slice(0, 3)) {
+    console.log("=== " + sf.routeName + " (" + sf.domain + ") confianza=" + sf.confidence + " ===");
+    if (sf.gaps?.length) console.log("Gaps: " + sf.gaps.join(", "));
+    console.log("");
+    for (const step of sf.steps) {
+      const prefix = "[" + step.role + "]";
+      console.log(pad(prefix, 22) + step.label);
+      if (step.component) console.log("                       " + step.component);
+      if (step.file) console.log("                       " + step.file + ":" + step.line);
+      if (step.evidence) console.log("                       -> " + step.evidence.slice(0, 120));
+      console.log("");
+    }
+    if (sf.guards?.length > 0) {
+      console.log("--- Guards (" + sf.guards.length + ") ---");
+      for (const g of sf.guards.slice(0, 5)) {
+        console.log("  [" + g.type + "] " + g.file + ":" + g.line + (g.message ? " -> " + g.message : ""));
+      }
+      console.log("");
+    }
+    if (sf.documentOutputs?.length > 0) {
+      console.log("--- Salida documental ---");
+      for (const d of sf.documentOutputs) {
+        console.log("  " + d.section + " (source: " + d.source + ")");
+      }
+      console.log("");
+    }
+  }
+}
+
 // Dispatch
 const commands = {
   resumen: cmdResumen,
@@ -374,6 +417,7 @@ const commands = {
   prop: cmdProp,
   callback: cmdCallback,
   "state-flow": cmdStateFlow,
+  "semantic-flow": cmdSemanticFlow,
   "react-flow": cmdReactFlow,
   "document-flow": cmdDocumentFlow,
 };
@@ -381,8 +425,8 @@ const commands = {
 if (commands[cmd]) {
   commands[cmd](arg);
 } else {
-  console.log("HF-CODEMAP CLI v1.1.0");
-  console.log("Comandos: resumen | variable <n> | prop <n> | callback <n> | state-flow <n>");
+  console.log("HF-CODEMAP CLI v1.2.0");
+  console.log("Comandos: resumen | variable <n> | prop <n> | callback <n> | state-flow <n> | semantic-flow <n>");
   console.log("  productor <n> | consumidor <n> | flujo <d> | guard <t> | impacto <n>");
   console.log("  alias <n> | archivo <t> | buscar <t> | react-flow <t> | document-flow <t>");
   if (cmd) console.log("Comando desconocido: " + cmd);

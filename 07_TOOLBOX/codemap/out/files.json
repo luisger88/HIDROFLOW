@@ -2364,8 +2364,8 @@
     "path": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
     "module": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
     "ext": ".mjs",
-    "sha1": "bbad34d34445",
-    "lineCount": 390,
+    "sha1": "0ca5e1d6811d",
+    "lineCount": 434,
     "domains": [
       "Q5",
       "QTr",
@@ -2381,7 +2381,7 @@
     "path": "07_TOOLBOX/codemap/hf-codemap.config.json",
     "module": "07_TOOLBOX/codemap/hf-codemap.config.json",
     "ext": ".json",
-    "sha1": "f8db5627b8fd",
+    "sha1": "e8a0ac0f26a5",
     "lineCount": 62,
     "domains": [
       "Q5",
@@ -2401,8 +2401,8 @@
     "path": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
     "module": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
     "ext": ".mjs",
-    "sha1": "490995e07410",
-    "lineCount": 489,
+    "sha1": "84ff127bdcdd",
+    "lineCount": 697,
     "domains": [
       "Q5",
       "QTr",

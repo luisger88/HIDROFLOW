@@ -1,0 +1,126 @@
+=== contexto_flow (Contexto) confianza=0.9 ===
+
+[prop_pass]           contexto={contextoComparador}
+                       HidroFlowLayout -> ComparadorMultiMetodo
+                       01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:81
+                       -> return <ComparadorMultiMetodo contexto={contextoComparador} />;
+
+[prop_pass]           contexto={contextoComparador}
+                       HidroFlowLayout -> IndiceHidrologico
+                       01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:98
+                       -> <IndiceHidrologico contexto={contextoComparador}
+
+[callback_receive]    contexto recibido por ComparadorMultiMetodo
+                       ComparadorMultiMetodo
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx:20
+                       -> prop declaration
+
+[callback_receive]    contexto recibido por ComparadorMultiMetodo
+                       ComparadorMultiMetodo
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:56
+                       -> prop declaration
+
+[callback_receive]    contexto recibido por IndiceHidrologico
+                       IndiceHidrologico
+                       01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx:8
+                       -> prop declaration
+
+[guard]               hidrogramas_published
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+                       -> const tieneHidrogramasPublicados =
+
+[guard]               Q5_table
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+                       -> if (!tieneQ5Publicado && !tieneHidrogramasPublicados) {
+
+[guard]               hidrogramas_published: tienehidrogramaspublicados
+                       07_TOOLBOX/codemap/indexar-hidroflow.mjs:46
+                       -> if (lower.includes("tienehidrogramaspublicados")) return "hidrogramas_published";
+
+[guard]               Q5_table: !tieneq5publicado
+                       07_TOOLBOX/codemap/indexar-hidroflow.mjs:50
+                       -> if (lower.includes("!tieneq5publicado") || lower.includes("!tienehidrogramaspublicados")) return "Q5_negated_guard";
+
+--- Guards (4) ---
+  [hidrogramas_published] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+  [Q5_table] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+  [hidrogramas_published] 07_TOOLBOX/codemap/indexar-hidroflow.mjs:46 -> tienehidrogramaspublicados
+  [Q5_table] 07_TOOLBOX/codemap/indexar-hidroflow.mjs:50 -> !tieneq5publicado
+
+=== tiempoConcentracion_flow (QTr) confianza=1 ===
+
+[callback_receive]    tiempoConcentracion recibido por TablaTcMetodos
+                       TablaTcMetodos
+                       01_APP/HIDROFLOW/src/components/TablaTcMetodos.jsx:6
+                       -> prop declaration
+
+[guard]               Q5_table: Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.
+                       07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs:79
+                       -> "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+
+[guard]               Q5_table: Tabla Q-5 auditada
+                       07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs:217
+                       -> !bloqueContraste.includes("Tabla Q-5 auditada")
+
+--- Guards (2) ---
+  [Q5_table] 07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs:79 -> Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.
+  [Q5_table] 07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs:217 -> Tabla Q-5 auditada
+
+=== sub_flow (unknown) confianza=0.9 ===
+
+[prop_pass]           sub={`I = k/(c+d)ⁿ · d en horas · c = 0.4 · Gumbel · 2000–2023`}
+                       calcCNdinamico -> SectionHeader
+                       01_APP/HIDROFLOW/src/HidroFlow - copia.jsx:843
+                       -> <SectionHeader icon="⌁" title="Curvas IDF — 20 Estaciones EPM 2025" sub={`I = k/(c+d)ⁿ · d en horas · c = 0.4 · Gumbel ·
+
+[prop_pass]           sub={`Tr=${Tr}
+                       calcCNdinamico -> Kpi
+                       01_APP/HIDROFLOW/src/HidroFlow - copia.jsx:968
+                       -> <Kpi value={hiet.Ptotal+" mm"} label="P total" accent={C.accent} sub={`Tr=${Tr}a`}/>
+
+[prop_pass]           sub={`tp=${h.tPico}
+                       calcCNdinamico -> Kpi
+                       01_APP/HIDROFLOW/src/HidroFlow - copia.jsx:1159
+                       -> {hidros.map((h,i)=><Kpi key={h.metodo} value={h.Qpico.toFixed(4)+" m³/s"} label={h.metodo} accent={CC[i]} sub={`tp=${h.t
+
+[callback_receive]    sub recibido por Kpi
+                       Kpi
+                       01_APP/HIDROFLOW/src/HidroFlow - copia.jsx:472
+                       -> prop declaration
+
+[callback_receive]    sub recibido por SectionHeader
+                       SectionHeader
+                       01_APP/HIDROFLOW/src/HidroFlow - copia.jsx:517
+                       -> prop declaration
+
+[callback_receive]    sub recibido por Kpi
+                       Kpi
+                       01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx:473
+                       -> prop declaration
+
+[guard]               expediente_faltantes: Volumen esperado
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2090
+                       -> faltantesExpediente.push("Volumen esperado");
+
+[guard]               Q5_table
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2093
+                       -> const tieneQ5Publicado =
+
+[guard]               hidrogramas_published
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+                       -> const tieneHidrogramasPublicados =
+
+[guard]               Q5_table
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+                       -> if (!tieneQ5Publicado && !tieneHidrogramasPublicados) {
+
+[guard]               Q5_table: Tabla Q-5 auditada con filas reales
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2103
+                       -> "Tabla Q-5 auditada con filas reales"
+
+--- Guards (5) ---
+  [expediente_faltantes] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2090 -> Volumen esperado
+  [Q5_table] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2093
+  [hidrogramas_published] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+  [Q5_table] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+  [Q5_table] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2103 -> Tabla Q-5 auditada con filas reales

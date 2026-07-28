@@ -1,0 +1,68 @@
+=== onContextoComparador_flow (Tc) confianza=0.9 ===
+
+[prop_pass]           onContextoComparador={setContextoComparador}
+                       Field -> ModHidrogramas
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:4320
+                       -> onContextoComparador={setContextoComparador}
+
+[prop_pass]           onContextoComparador={setContextoComparador}
+                       Field -> ModRacional
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:4332
+                       -> onContextoComparador={setContextoComparador}
+
+[wrapper]             actualizarContextoComparador (useCallback)
+                       HidroFlowLayout
+                       01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:11
+                       -> useCallback wrapping setContextoComparador
+
+[state_setter]        setContextoComparador
+                       Field
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:3769
+                       -> setter for contextoComparador
+
+[state]               contextoComparador (useState)
+                       Field
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:3769
+                       -> state variable
+
+[prop_pass]           onContextoComparador={actualizarContextoComparador}
+                       HidroFlowLayout -> HidroFlow
+                       01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:88
+                       -> onContextoComparador={actualizarContextoComparador}
+
+[callback_receive]    onContextoComparador recibido por ModHidrogramas
+                       ModHidrogramas
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:2019
+                       -> prop declaration
+
+[callback_receive]    onContextoComparador recibido por HidroFlow
+                       HidroFlow
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:3742
+                       -> prop declaration
+
+[callback_receive]    onContextoComparador recibido por ModHidrogramas
+                       ModHidrogramas
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:4320
+                       -> prop declaration
+
+[guard]               hidrogramas_published
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+                       -> const tieneHidrogramasPublicados =
+
+[guard]               Q5_table
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+                       -> if (!tieneQ5Publicado && !tieneHidrogramasPublicados) {
+
+[guard]               hidrogramas_published: tienehidrogramaspublicados
+                       07_TOOLBOX/codemap/indexar-hidroflow.mjs:46
+                       -> if (lower.includes("tienehidrogramaspublicados")) return "hidrogramas_published";
+
+[guard]               Q5_table: !tieneq5publicado
+                       07_TOOLBOX/codemap/indexar-hidroflow.mjs:50
+                       -> if (lower.includes("!tieneq5publicado") || lower.includes("!tienehidrogramaspublicados")) return "Q5_negated_guard";
+
+--- Guards (4) ---
+  [hidrogramas_published] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+  [Q5_table] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+  [hidrogramas_published] 07_TOOLBOX/codemap/indexar-hidroflow.mjs:46 -> tienehidrogramaspublicados
+  [Q5_table] 07_TOOLBOX/codemap/indexar-hidroflow.mjs:50 -> !tieneq5publicado
