@@ -1,0 +1,2969 @@
+[
+  {
+    "id": 1,
+    "domain": "Q5",
+    "producers": [
+      {
+        "name": "Tc_final",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 68
+      },
+      {
+        "name": "obtenerResultadoQMetodo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 545
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 565
+      },
+      {
+        "name": "resultadoQ",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 746
+      },
+      {
+        "name": "resultadoQ",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 766
+      },
+      {
+        "name": "resultadoQ",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 786
+      },
+      {
+        "name": "Tc_final",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 178
+      },
+      {
+        "name": "diagnosticoQSeries",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 240
+      },
+      {
+        "name": "resumenEstructuraHidrogramas",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 264
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 290
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 330
+      },
+      {
+        "name": "graficaQpTPicoMatrizPatron",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 476
+      },
+      {
+        "name": "obtenerResultadoQMetodo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 890
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 910
+      },
+      {
+        "name": "tpRaw",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 995
+      },
+      {
+        "name": "tp",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 996
+      },
+      {
+        "name": "relacion",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1017
+      },
+      {
+        "name": "resultadoQ",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1220
+      },
+      {
+        "name": "resultadoQ",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1240
+      },
+      {
+        "name": "tpRel",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1247
+      },
+      {
+        "name": "alertaTcTp",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1252
+      },
+      {
+        "name": "resultadoQ",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1304
+      },
+      {
+        "name": "volumenEsperadoM3",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1315
+      },
+      {
+        "name": "relacionVolumen",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1320
+      },
+      {
+        "name": "estadoEscalaVolumen",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1325
+      },
+      {
+        "name": "textoResumenQ5",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1804
+      },
+      {
+        "name": "volumenEsperadoM3",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1878
+      },
+      {
+        "name": "tpRel",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1900
+      },
+      {
+        "name": "obtenerDictamenQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1916
+      },
+      {
+        "name": "metodosQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1929
+      }
+    ],
+    "transports": [],
+    "consumers": [
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoInformeHallazgos.md",
+        "line": 34
+      },
+      {
+        "name": "sin",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 27
+      },
+      {
+        "name": "verificar",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 27
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 28
+      },
+      {
+        "name": "sin",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 28
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 43
+      },
+      {
+        "name": "esperado",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 99
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 69
+      },
+      {
+        "name": "esperado",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 17
+      },
+      {
+        "name": "esperado",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 32
+      },
+      {
+        "name": "Pe",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 32
+      },
+      {
+        "name": "volTotal",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 33
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 33
+      },
+      {
+        "name": "con",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 49
+      },
+      {
+        "name": "Pe",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 49
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 5
+      },
+      {
+        "name": "pico",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 5
+      },
+      {
+        "name": "qSeries",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 12
+      },
+      {
+        "name": "Qpico",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 13
+      },
+      {
+        "name": "tPico",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 14
+      },
+      {
+        "name": "volTotal",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 15
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 16
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 30
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 41
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 44
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 49
+      },
+      {
+        "name": "con",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 50
+      },
+      {
+        "name": "Pe",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 51
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorIntegrador.md",
+        "line": 13
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 16
+      }
+    ],
+    "guards": [
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2090,
+        "type": "expediente_faltantes",
+        "message": "Volumen esperado"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2093,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2097,
+        "type": "hidrogramas_published",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2101,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2103,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada con filas reales"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2228,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/scripts/consumirAdaptadorDocumentalOt0061b.mjs",
+        "line": 30,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/scripts/validarAdaptadorDocumentalOt0060f.mjs",
+        "line": 25,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 43,
+        "type": "Q5_table",
+        "message": "tieneq5publicado"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 44,
+        "type": "hidrogramas_published",
+        "message": "tienehidrogramaspublicados"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 48,
+        "type": "Q5_table",
+        "message": "!tieneq5publicado"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 50,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 61,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0177_diagnostico_resumen_q5_auditado.mjs",
+        "line": 71,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 73,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "type": "Q5_table",
+        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 136,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/comparar_ot0176_resumen_q5_auditado_helper_operativo.mjs",
+        "line": 35,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 26,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 65,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 73,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 83,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 26,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 54,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 59,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 66,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 73,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 37,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0179_post_adopcion_resumen_q5_auditado.mjs",
+        "line": 43,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "domain": "QTr",
+    "producers": [
+      {
+        "name": "contratoCuencaState",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 1
+      },
+      {
+        "name": "getContratoCuencaState",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 5
+      },
+      {
+        "name": "setContratoCuencaState",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 9
+      },
+      {
+        "name": "subscribeContratoCuenca",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 16
+      },
+      {
+        "name": "trState",
+        "file": "01_APP/HIDROFLOW/src/agents/trAgent.js",
+        "line": 1
+      },
+      {
+        "name": "getTrState",
+        "file": "01_APP/HIDROFLOW/src/agents/trAgent.js",
+        "line": 9
+      },
+      {
+        "name": "setTrState",
+        "file": "01_APP/HIDROFLOW/src/agents/trAgent.js",
+        "line": 13
+      },
+      {
+        "name": "subscribeTr",
+        "file": "01_APP/HIDROFLOW/src/agents/trAgent.js",
+        "line": 23
+      },
+      {
+        "name": "estiloBotonFiltro",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 405
+      },
+      {
+        "name": "extraerNumero",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 479
+      },
+      {
+        "name": "extraerNumero",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 553
+      },
+      {
+        "name": "resumenEstructuraHidrogramas",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 264
+      },
+      {
+        "name": "matrizPatronVisual",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 470
+      },
+      {
+        "name": "diagnosticoMatrizPatronQt",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 471
+      },
+      {
+        "name": "sintesisMatrizPatron",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 474
+      },
+      {
+        "name": "salidaHidraulicaMatrizPatron",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 475
+      },
+      {
+        "name": "graficaQpTPicoMatrizPatron",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 476
+      },
+      {
+        "name": "graficaVelocidadEfectivaMatrizPatron",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 477
+      },
+      {
+        "name": "lecturaComparativaMatrizPatron",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 478
+      },
+      {
+        "name": "estiloBotonFiltro",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 750
+      },
+      {
+        "name": "extraerNumero",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 824
+      },
+      {
+        "name": "extraerNumero",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 898
+      },
+      {
+        "name": "tp",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 996
+      },
+      {
+        "name": "tc",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 999
+      },
+      {
+        "name": "nombre",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1001
+      },
+      {
+        "name": "filtroNumericoQ5",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1942
+      },
+      {
+        "name": "construirDesdeFuentes",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1950
+      },
+      {
+        "name": "desdeMotor",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1992
+      },
+      {
+        "name": "construirFilaQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2038
+      },
+      {
+        "name": "trDisenoActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2136
+      }
+    ],
+    "transports": [],
+    "consumers": [
+      {
+        "name": "con",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoOrdenTrabajo.md",
+        "line": 49
+      },
+      {
+        "name": "el",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoOrdenTrabajo.md",
+        "line": 53
+      },
+      {
+        "name": "trazabilidad",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 7
+      },
+      {
+        "name": "sin",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 7
+      },
+      {
+        "name": "sin",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 84
+      },
+      {
+        "name": "trazabilidad",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 84
+      },
+      {
+        "name": "insumos",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 100
+      },
+      {
+        "name": "la",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 105
+      },
+      {
+        "name": "HidroFlow",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 105
+      },
+      {
+        "name": "HidroFlow",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 5
+      },
+      {
+        "name": "sin",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 5
+      },
+      {
+        "name": "el",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 5
+      },
+      {
+        "name": "con",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 62
+      },
+      {
+        "name": "trazabilidad",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 70
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 5
+      },
+      {
+        "name": "volTotal",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 33
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 33
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 39
+      },
+      {
+        "name": "sin",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 39
+      },
+      {
+        "name": "trazabilidad",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 39
+      },
+      {
+        "name": "AMC",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 46
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 49
+      },
+      {
+        "name": "severidad",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorIntegrador.md",
+        "line": 25
+      },
+      {
+        "name": "informe",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorIntegrador.md",
+        "line": 41
+      },
+      {
+        "name": "con",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorIntegrador.md",
+        "line": 41
+      },
+      {
+        "name": "data",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 25
+      },
+      {
+        "name": "lag",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 55
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorUnidades.md",
+        "line": 43
+      },
+      {
+        "name": "contratoCuencaState",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 6
+      },
+      {
+        "name": "contratoCuencaState",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 11
+      }
+    ],
+    "guards": [
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "type": "Q5_table",
+        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "domain": "CN",
+    "producers": [
+      {
+        "name": "evaluacionCompetencia",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 62
+      },
+      {
+        "name": "estiloChipEstado",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 411
+      },
+      {
+        "name": "obtenerAuditoriaPendienteMetodo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 618
+      },
+      {
+        "name": "auditoriaPendiente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 713
+      },
+      {
+        "name": "evaluacionCompetencia",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 168
+      },
+      {
+        "name": "estiloChipEstado",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 756
+      },
+      {
+        "name": "obtenerAuditoriaPendienteMetodo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 971
+      },
+      {
+        "name": "auditoriaPendiente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1187
+      },
+      {
+        "name": "peTotalMm",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1314
+      },
+      {
+        "name": "volumenEsperadoM3",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1315
+      },
+      {
+        "name": "peTotalMm",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1877
+      },
+      {
+        "name": "volumenEsperadoM3",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1878
+      },
+      {
+        "name": "formatearNumeroExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1883
+      },
+      {
+        "name": "obtenerEstadoTemporalExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1898
+      },
+      {
+        "name": "obtenerDictamenQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1916
+      },
+      {
+        "name": "metodosQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1929
+      },
+      {
+        "name": "desdeCatalogo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2002
+      },
+      {
+        "name": "construirFilaQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2038
+      },
+      {
+        "name": "estadoTemporal",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2039
+      },
+      {
+        "name": "metodosQ5ValidosParaExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2047
+      },
+      {
+        "name": "filasQ5Markdown",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2049
+      },
+      {
+        "name": "estacionIdfExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2065
+      },
+      {
+        "name": "faltantesExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2075
+      },
+      {
+        "name": "trDisenoActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2136
+      },
+      {
+        "name": "estadoQTrActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2139
+      },
+      {
+        "name": "qTrActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2140
+      },
+      {
+        "name": "faltantesQTrActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2141
+      },
+      {
+        "name": "formatearValorQTrExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2144
+      },
+      {
+        "name": "relacionVolumenQ5Esperado",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2162
+      },
+      {
+        "name": "diagnosticoHelperExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2187
+      }
+    ],
+    "transports": [],
+    "consumers": [
+      {
+        "name": "hallazgo",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoInformeHallazgos.md",
+        "line": 26
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoInformeHallazgos.md",
+        "line": 36
+      },
+      {
+        "name": "Pe",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoInformeHallazgos.md",
+        "line": 37
+      },
+      {
+        "name": "trazabilidad",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 7
+      },
+      {
+        "name": "sin",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 7
+      },
+      {
+        "name": "resultados",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 24
+      },
+      {
+        "name": "sin",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 24
+      },
+      {
+        "name": "archivos",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 29
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 41
+      },
+      {
+        "name": "advertencias",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 85
+      },
+      {
+        "name": "esperado",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 99
+      },
+      {
+        "name": "HidroFlow",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 5
+      },
+      {
+        "name": "sin",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 5
+      },
+      {
+        "name": "el",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 5
+      },
+      {
+        "name": "resultados",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 68
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 5
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 11
+      },
+      {
+        "name": "base",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 11
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 12
+      },
+      {
+        "name": "AMC",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 12
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 13
+      },
+      {
+        "name": "Pe",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 16
+      },
+      {
+        "name": "esperado",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 17
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 21
+      },
+      {
+        "name": "base",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 21
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 22
+      },
+      {
+        "name": "base",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 22
+      },
+      {
+        "name": "AMC",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 23
+      },
+      {
+        "name": "AMC",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 24
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 25
+      }
+    ],
+    "guards": [
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2075,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2078,
+        "type": "expediente_faltantes",
+        "message": "Estación IDF"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2082,
+        "type": "expediente_faltantes",
+        "message": "Área de cuenca"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2086,
+        "type": "expediente_faltantes",
+        "message": "Lluvia efectiva total"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2090,
+        "type": "expediente_faltantes",
+        "message": "Volumen esperado"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2102,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2122,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2130,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2753,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2763,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2779,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2782,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 1349,
+        "type": "expediente_listo",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 2400,
+        "type": "expediente_listo",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 46,
+        "type": "expediente_faltantes",
+        "message": "faltantesexpediente"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 47,
+        "type": "expediente_listo",
+        "message": "expedientelisto"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 54,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 59,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 66,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 73,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 37,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0179_post_adopcion_resumen_q5_auditado.mjs",
+        "line": 43,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "domain": "IDF",
+    "producers": [
+      {
+        "name": "estacionIdfExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2065
+      },
+      {
+        "name": "estaciones",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 212
+      },
+      {
+        "name": "referenciasPendientes",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 216
+      },
+      {
+        "name": "tieneIDF",
+        "file": "01_APP/HIDROFLOW/src/data/matrizCompetenciaComparador.js",
+        "line": 68
+      },
+      {
+        "name": "ESTACIONES_EPM",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 33
+      },
+      {
+        "name": "idfI",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 57
+      },
+      {
+        "name": "calcHietograma",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 113
+      },
+      {
+        "name": "Ptotal",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 114
+      },
+      {
+        "name": "distTable",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 116
+      },
+      {
+        "name": "pPct",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 124
+      },
+      {
+        "name": "I",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 322
+      },
+      {
+        "name": "hiet",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 342
+      },
+      {
+        "name": "e",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 544
+      },
+      {
+        "name": "pdfN",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 545
+      },
+      {
+        "name": "refN",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 546
+      },
+      {
+        "name": "ests",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 581
+      },
+      {
+        "name": "ModIDF",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 823
+      },
+      {
+        "name": "idfData",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 825
+      },
+      {
+        "name": "compData",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 836
+      },
+      {
+        "name": "hiet",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 907
+      },
+      {
+        "name": "types",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 911
+      },
+      {
+        "name": "obj",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 919
+      },
+      {
+        "name": "hiet",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1069
+      },
+      {
+        "name": "hiet",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1248
+      },
+      {
+        "name": "ESTACIONES_SIATA",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1496
+      },
+      {
+        "name": "wR",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1567
+      },
+      {
+        "name": "calcIDFPond",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1575
+      },
+      {
+        "name": "con",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1576
+      },
+      {
+        "name": "activos",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1676
+      },
+      {
+        "name": "pesosMap",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1686
+      }
+    ],
+    "transports": [],
+    "consumers": [
+      {
+        "name": "estacionIdfExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2065
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2066
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2067
+      },
+      {
+        "name": "estacionIDF",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2067
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2068
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2069
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2070
+      },
+      {
+        "name": "idf",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2070
+      },
+      {
+        "name": "nombre",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2070
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2071
+      },
+      {
+        "name": "idf",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2071
+      },
+      {
+        "name": "valor",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2074
+      },
+      {
+        "name": "estacionIdfExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2077
+      },
+      {
+        "name": "faltantesExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2078
+      },
+      {
+        "name": "estacionIdfFallback",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2258
+      },
+      {
+        "name": "estacionIdfExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2258
+      },
+      {
+        "name": "estacionIdfFallback",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2614
+      },
+      {
+        "name": "estacionIdfExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2614
+      },
+      {
+        "name": "idf",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2899
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2899
+      },
+      {
+        "name": "formatearValorQTr",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 3241
+      },
+      {
+        "name": "qTrActivo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 3241
+      },
+      {
+        "name": "formatearValorQTr",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 3242
+      },
+      {
+        "name": "qTrActivo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 3242
+      },
+      {
+        "name": "idf",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 101
+      },
+      {
+        "name": "idf",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 102
+      },
+      {
+        "name": "idf",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 103
+      },
+      {
+        "name": "idf",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 104
+      },
+      {
+        "name": "estiloTarjeta",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 571
+      },
+      {
+        "name": "idf",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 571
+      }
+    ],
+    "guards": [
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2078,
+        "type": "expediente_faltantes",
+        "message": "Estación IDF"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "domain": "Tc",
+    "producers": [
+      {
+        "name": "getContratoCuencaState",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 5
+      },
+      {
+        "name": "setContratoCuencaState",
+        "file": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+        "line": 9
+      },
+      {
+        "name": "TcState",
+        "file": "01_APP/HIDROFLOW/src/agents/tcAgent.js",
+        "line": 5
+      },
+      {
+        "name": "setTcState",
+        "file": "01_APP/HIDROFLOW/src/agents/tcAgent.js",
+        "line": 13
+      },
+      {
+        "name": "getTcState",
+        "file": "01_APP/HIDROFLOW/src/agents/tcAgent.js",
+        "line": 20
+      },
+      {
+        "name": "subscribeTc",
+        "file": "01_APP/HIDROFLOW/src/agents/tcAgent.js",
+        "line": 24
+      },
+      {
+        "name": "tcArray",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 49
+      },
+      {
+        "name": "metodosTc",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 52
+      },
+      {
+        "name": "contextoTc",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 55
+      },
+      {
+        "name": "Tc_final",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 68
+      },
+      {
+        "name": "obtenerTcMetodo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 471
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 500
+      },
+      {
+        "name": "match",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 523
+      },
+      {
+        "name": "match",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 586
+      },
+      {
+        "name": "tcValor",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 697
+      },
+      {
+        "name": "tcArray",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 155
+      },
+      {
+        "name": "metodosTc",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 158
+      },
+      {
+        "name": "contextoTc",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 161
+      },
+      {
+        "name": "Tc_final",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 178
+      },
+      {
+        "name": "obtenerTcMetodo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 816
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 845
+      },
+      {
+        "name": "match",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 868
+      },
+      {
+        "name": "match",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 939
+      },
+      {
+        "name": "tcRaw",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 998
+      },
+      {
+        "name": "tc",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 999
+      },
+      {
+        "name": "relacion",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1017
+      },
+      {
+        "name": "tcValor",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1171
+      },
+      {
+        "name": "tcReferencia",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1246
+      },
+      {
+        "name": "alertaTcTp",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1252
+      },
+      {
+        "name": "tcReferencia",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1899
+      }
+    ],
+    "transports": [],
+    "consumers": [
+      {
+        "name": "sin",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 27
+      },
+      {
+        "name": "verificar",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 27
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 43
+      },
+      {
+        "name": "calcTc",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+        "line": 82
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+        "line": 69
+      },
+      {
+        "name": "con",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 50
+      },
+      {
+        "name": "data",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorPendientes.md",
+        "line": 38
+      },
+      {
+        "name": "auditoriaPendientesTc",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorPendientes.md",
+        "line": 38
+      },
+      {
+        "name": "pendiente",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorPendientes.md",
+        "line": 53
+      },
+      {
+        "name": "calcTc",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 11
+      },
+      {
+        "name": "params",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 11
+      },
+      {
+        "name": "calculado",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 12
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 16
+      },
+      {
+        "name": "pico",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 18
+      },
+      {
+        "name": "est",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 18
+      },
+      {
+        "name": "con",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 18
+      },
+      {
+        "name": "calcTc",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 45
+      },
+      {
+        "name": "lag",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 55
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorUnidades.md",
+        "line": 31
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 3
+      },
+      {
+        "name": "ocurrencias",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 22
+      },
+      {
+        "name": "calcTc",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 22
+      },
+      {
+        "name": "params",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 22
+      },
+      {
+        "name": "la",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 23
+      },
+      {
+        "name": "fuente",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 23
+      },
+      {
+        "name": "calcTc",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 23
+      },
+      {
+        "name": "calcTc",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 24
+      },
+      {
+        "name": "salida",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 26
+      },
+      {
+        "name": "calcTc",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 26
+      },
+      {
+        "name": "resultados",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+        "line": 27
+      }
+    ],
+    "guards": []
+  },
+  {
+    "id": 6,
+    "domain": "Racional",
+    "producers": [
+      {
+        "name": "tieneRacionalPublicado",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2107
+      },
+      {
+        "name": "racionalContextoIndice",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 464
+      },
+      {
+        "name": "resultadosRacionalIndice",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 471
+      },
+      {
+        "name": "resultadoRacionalTrIndice",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 479
+      },
+      {
+        "name": "areaRacionalIndice",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 483
+      },
+      {
+        "name": "coeficienteRacionalTrIndice",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 490
+      },
+      {
+        "name": "qRacionalTrIndice",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 494
+      },
+      {
+        "name": "evaluarMetodoRacional",
+        "file": "01_APP/HIDROFLOW/src/data/matrizCompetenciaComparador.js",
+        "line": 92
+      },
+      {
+        "name": "calcRacional",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 319
+      },
+      {
+        "name": "ModRacional",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1460
+      },
+      {
+        "name": "res",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1463
+      },
+      {
+        "name": "calcRacional",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+        "line": 320
+      },
+      {
+        "name": "ModRacional",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+        "line": 1883
+      },
+      {
+        "name": "res",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+        "line": 1886
+      },
+      {
+        "name": "calcRacional",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 349
+      },
+      {
+        "name": "ModRacional",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 2929
+      },
+      {
+        "name": "res",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 2932
+      },
+      {
+        "name": "metodosTcRacional",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 3830
+      },
+      {
+        "name": "tcRacionalMin",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 3831
+      },
+      {
+        "name": "estacionRacional",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 3837
+      },
+      {
+        "name": "resultadosRacionalExportable",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 3846
+      },
+      {
+        "name": "formatearValorRacionalExpediente",
+        "file": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
+        "line": 178
+      },
+      {
+        "name": "construirLineasTablaMetodoRacionalExpediente",
+        "file": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
+        "line": 195
+      },
+      {
+        "name": "extraerQRacionalActivo",
+        "file": "01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js",
+        "line": 244
+      },
+      {
+        "name": "umbralRacionalKm2",
+        "file": "01_APP/HIDROFLOW/src/services/hidroEngine.js",
+        "line": 576
+      },
+      {
+        "name": "racionalCompetente",
+        "file": "01_APP/HIDROFLOW/src/services/hidroEngine.js",
+        "line": 578
+      },
+      {
+        "name": "resumenRacional",
+        "file": "01_APP/HIDROFLOW/src/services/hidroEngine.js",
+        "line": 582
+      },
+      {
+        "name": "marcadorBloqueSiguiente",
+        "file": "07_TOOLBOX/validaciones/validar_ot0313_salida_real_resumen_q5.mjs",
+        "line": 35
+      },
+      {
+        "name": "marcadorRacional",
+        "file": "07_TOOLBOX/validaciones/validar_ot0319_metodo_racional_contraste.mjs",
+        "line": 19
+      },
+      {
+        "name": "marcadorContraste",
+        "file": "07_TOOLBOX/validaciones/validar_ot0319_metodo_racional_contraste.mjs",
+        "line": 20
+      }
+    ],
+    "transports": [],
+    "consumers": [
+      {
+        "name": "pico",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1815
+      },
+      {
+        "name": "forma",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1815
+      },
+      {
+        "name": "bloque",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1815
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1815
+      },
+      {
+        "name": "nombre",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1932
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2108
+      },
+      {
+        "name": "resultados",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2108
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2109
+      },
+      {
+        "name": "resultados",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2109
+      },
+      {
+        "name": "tieneRacionalPublicado",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2115
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2289
+      },
+      {
+        "name": "resultados",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2289
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2290
+      },
+      {
+        "name": "resultados",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2290
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2293
+      },
+      {
+        "name": "tc_min",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2293
+      },
+      {
+        "name": "formatTc",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2294
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2294
+      },
+      {
+        "name": "tc_min",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2294
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2301
+      },
+      {
+        "name": "resultados",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2301
+      },
+      {
+        "name": "pico",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2313
+      },
+      {
+        "name": "Tr",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2341
+      },
+      {
+        "name": "activo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2341
+      },
+      {
+        "name": "temporal",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2341
+      },
+      {
+        "name": "restricciones",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2341
+      },
+      {
+        "name": "nombre",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 3090
+      },
+      {
+        "name": "tc",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 126
+      },
+      {
+        "name": "contexto",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 465
+      },
+      {
+        "name": "contexto",
+        "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+        "line": 466
+      }
+    ],
+    "guards": [
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2107,
+        "type": "racional_published",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2115,
+        "type": "racional_published",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 45,
+        "type": "racional_published",
+        "message": "tieneracionalpublicado"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "domain": "Expediente",
+    "producers": [
+      {
+        "name": "formatearNumeroExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1883
+      },
+      {
+        "name": "obtenerEstadoTemporalExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1898
+      },
+      {
+        "name": "obtenerDictamenQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1916
+      },
+      {
+        "name": "metodosQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1929
+      },
+      {
+        "name": "desdeCatalogo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2002
+      },
+      {
+        "name": "construirFilaQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2038
+      },
+      {
+        "name": "estadoTemporal",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2039
+      },
+      {
+        "name": "metodosQ5ValidosParaExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2047
+      },
+      {
+        "name": "filasQ5Markdown",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2049
+      },
+      {
+        "name": "tablaQ5Markdown",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2060
+      },
+      {
+        "name": "estacionIdfExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2065
+      },
+      {
+        "name": "faltantesExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2075
+      },
+      {
+        "name": "trDisenoActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2136
+      },
+      {
+        "name": "estadoQTrActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2139
+      },
+      {
+        "name": "qTrActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2140
+      },
+      {
+        "name": "faltantesQTrActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2141
+      },
+      {
+        "name": "formatearValorQTrExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2144
+      },
+      {
+        "name": "diagnosticoHelperExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2187
+      },
+      {
+        "name": "textoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2249
+      },
+      {
+        "name": "textoHelperExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2657
+      },
+      {
+        "name": "marcadoresRuntimeExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2659
+      },
+      {
+        "name": "tokensInvalidosRuntimeExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2672
+      },
+      {
+        "name": "marcadoresFaltantesEnHelper",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2679
+      },
+      {
+        "name": "marcadoresFaltantesEnOperativo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2683
+      },
+      {
+        "name": "tokensHelper",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2687
+      },
+      {
+        "name": "tokensOperativo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2691
+      },
+      {
+        "name": "brechasRuntimeExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2695
+      },
+      {
+        "name": "diagnosticoDocumentalExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2720
+      },
+      {
+        "name": "tokensInvalidosExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2736
+      },
+      {
+        "name": "tokensDetectadosExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2737
+      }
+    ],
+    "transports": [],
+    "consumers": [
+      {
+        "name": "la",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/bitacora_HF_MISION_0001.md",
+        "line": 524
+      },
+      {
+        "name": "trazabilidad",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 1050
+      },
+      {
+        "name": "construirExpedienteHidrologicoMinimo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1
+      },
+      {
+        "name": "adaptarExpedienteDocumental",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 8
+      },
+      {
+        "name": "construirExpedienteHidrologicoMinimo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 9
+      },
+      {
+        "name": "construirLineasIdentificacionExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 10
+      },
+      {
+        "name": "construirExpedienteHidrologicoMinimo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 16
+      },
+      {
+        "name": "construirPayloadExpedienteDesdeEstado",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 25
+      },
+      {
+        "name": "descargarArchivoMarkdownEnNavegador",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 27
+      },
+      {
+        "name": "trazabilidad",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1606
+      },
+      {
+        "name": "salida",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1826
+      },
+      {
+        "name": "Tr",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1835
+      },
+      {
+        "name": "activo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1835
+      },
+      {
+        "name": "trDisenoActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1835
+      },
+      {
+        "name": "el",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1863
+      },
+      {
+        "name": "resumen",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1863
+      },
+      {
+        "name": "textoResumenQ5",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1863
+      },
+      {
+        "name": "resumen",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1868
+      },
+      {
+        "name": "formatearNumeroExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1883
+      },
+      {
+        "name": "valor",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1883
+      },
+      {
+        "name": "resultadoQ",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1898
+      },
+      {
+        "name": "estadoTemporal",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1916
+      },
+      {
+        "name": "metodos",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1929
+      },
+      {
+        "name": "metodosQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2002
+      },
+      {
+        "name": "resultadoQ",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2038
+      },
+      {
+        "name": "estadoTemporal",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2039
+      },
+      {
+        "name": "obtenerEstadoTemporalExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2039
+      },
+      {
+        "name": "resultadoQ",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2039
+      },
+      {
+        "name": "obtenerDictamenQ5Expediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2042
+      },
+      {
+        "name": "nombre",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2042
+      }
+    ],
+    "guards": [
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2075,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2078,
+        "type": "expediente_faltantes",
+        "message": "Estación IDF"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2082,
+        "type": "expediente_faltantes",
+        "message": "Área de cuenca"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2086,
+        "type": "expediente_faltantes",
+        "message": "Lluvia efectiva total"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2090,
+        "type": "expediente_faltantes",
+        "message": "Volumen esperado"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2102,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2122,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2130,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2753,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2763,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2779,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2782,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 1349,
+        "type": "expediente_listo",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 2400,
+        "type": "expediente_listo",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 46,
+        "type": "expediente_faltantes",
+        "message": "faltantesexpediente"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 47,
+        "type": "expediente_listo",
+        "message": "expedientelisto"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 37,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0179_post_adopcion_resumen_q5_auditado.mjs",
+        "line": 43,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "domain": "Contexto",
+    "producers": [
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 28
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 500
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 565
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 68
+      },
+      {
+        "name": "resumenEstructuraHidrogramas",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 264
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 290
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 330
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 910
+      },
+      {
+        "name": "tcRaw",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 998
+      },
+      {
+        "name": "peTotalMm",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1314
+      },
+      {
+        "name": "peTotalMm",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 1877
+      },
+      {
+        "name": "bruto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2019
+      },
+      {
+        "name": "tieneHidrogramasPublicados",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2097
+      },
+      {
+        "name": "trDisenoActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2136
+      },
+      {
+        "name": "estadoQTrActivoExpediente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2139
+      },
+      {
+        "name": "contextoBasePayload",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2836
+      },
+      {
+        "name": "peTotalMm",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 3021
+      },
+      {
+        "name": "peTotalMm",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 3082
+      },
+      {
+        "name": "estadoQTrActivo",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 3197
+      },
+      {
+        "name": "resumenEstructural",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 3735
+      },
+      {
+        "name": "ModHidrogramas",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+        "line": 1045
+      },
+      {
+        "name": "ModHidrogramas",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+        "line": 1394
+      },
+      {
+        "name": "ModHidrogramas",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 2020
+      },
+      {
+        "name": "nombresHidrogramas",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 2148
+      },
+      {
+        "name": "hidrogramasResumen",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 2260
+      },
+      {
+        "name": "hidrogramasQ5Exportables",
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 2342
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
+        "line": 138
+      },
+      {
+        "name": "areaKm2",
+        "file": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
+        "line": 243
+      },
+      {
+        "name": "peTotalMm",
+        "file": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
+        "line": 244
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
+        "line": 503
+      }
+    ],
+    "transports": [],
+    "consumers": [
+      {
+        "name": "volTotal",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 33
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+        "line": 33
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 5
+      },
+      {
+        "name": "pico",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 5
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 16
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+        "line": 41
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+        "line": 16
+      },
+      {
+        "name": "Tc_ref",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0005C_ValidacionComparativa/reporte_OT_0005C_ValidacionComparativa.md",
+        "line": 51
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0005C_ValidacionComparativa/reporte_OT_0005C_ValidacionComparativa.md",
+        "line": 51
+      },
+      {
+        "name": "calcHidroCompleto",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/auditoria_tc_tp_qp_volumen_PC80.md",
+        "line": 60
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/auditoria_tc_tp_qp_volumen_PC80.md",
+        "line": 60
+      },
+      {
+        "name": "qSeries",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/auditoria_tc_tp_qp_volumen_PC80.md",
+        "line": 60
+      },
+      {
+        "name": "Qpico",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/auditoria_tc_tp_qp_volumen_PC80.md",
+        "line": 60
+      },
+      {
+        "name": "tPico",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/auditoria_tc_tp_qp_volumen_PC80.md",
+        "line": 60
+      },
+      {
+        "name": "volTotal",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/auditoria_tc_tp_qp_volumen_PC80.md",
+        "line": 60
+      },
+      {
+        "name": "dtMin",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/auditoria_tc_tp_qp_volumen_PC80.md",
+        "line": 60
+      },
+      {
+        "name": "Qp",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/bitacora_HF_MISION_0001.md",
+        "line": 24
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/bitacora_HF_MISION_0001.md",
+        "line": 24
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/bitacora_HF_MISION_0001.md",
+        "line": 133
+      },
+      {
+        "name": "el",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/bitacora_HF_MISION_0001.md",
+        "line": 141
+      },
+      {
+        "name": "hidrogramas",
+        "file": "01_APP/HIDROFLOW/src/agents/misiones/bitacora_HF_MISION_0001.md",
+        "line": 141
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 28
+      },
+      {
+        "name": "contexto",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 28
+      },
+      {
+        "name": "area",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 39
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 39
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 40
+      },
+      {
+        "name": "CN",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 45
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 45
+      },
+      {
+        "name": "pendiente",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 56
+      },
+      {
+        "name": "contextoBase",
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+        "line": 56
+      }
+    ],
+    "guards": [
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2097,
+        "type": "hidrogramas_published",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2101,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 44,
+        "type": "hidrogramas_published",
+        "message": "tienehidrogramaspublicados"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 48,
+        "type": "Q5_table",
+        "message": "!tieneq5publicado"
+      }
+    ]
+  }
+]

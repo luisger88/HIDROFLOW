@@ -1,0 +1,10 @@
+Impacto de 'filtroNumericoQ5' (1):
+  filtroNumericoQ5              01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:1942 [variable]
+    Referencias directas: 3
+    Guards impactados:
+      01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2090 [expediente_faltantes]
+      01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2093 [Q5_table]
+      01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097 [hidrogramas_published]
+      01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101 [Q5_table]
+      01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2103 [Q5_table]
+    Flujos impactados: Q5, QTr

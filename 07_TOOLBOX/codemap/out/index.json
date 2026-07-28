@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-07-28T00:03:39.084Z",
+  "totals": {
+    "files": 259,
+    "symbols": 5028,
+    "references": 40828,
+    "guards": 48,
+    "flows": 8,
+    "reactFlows": 281,
+    "documentFlows": 1,
+    "aliases": 3,
+    "impactEntries": 3693
+  },
+  "topDomains": [
+    "Q5",
+    "QTr",
+    "CN",
+    "IDF",
+    "Tc",
+    "Racional",
+    "Expediente",
+    "Contexto"
+  ],
+  "queryHelp": "Usa consultar-hidroflow.mjs resumen | variable <n> | flujo <d> | guard <t> | impacto <n>"
+}

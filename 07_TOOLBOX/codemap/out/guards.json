@@ -1,0 +1,610 @@
+[
+  {
+    "id": 1,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2075,
+    "text": "const faltantesExpediente = [];",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": null
+  },
+  {
+    "id": 2,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2078,
+    "text": "faltantesExpediente.push(\"Estación IDF\");",
+    "domains": [
+      "CN",
+      "IDF",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": "Estación IDF"
+  },
+  {
+    "id": 3,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2082,
+    "text": "faltantesExpediente.push(\"Área de cuenca\");",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": "Área de cuenca"
+  },
+  {
+    "id": 4,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2086,
+    "text": "faltantesExpediente.push(\"Lluvia efectiva total\");",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": "Lluvia efectiva total"
+  },
+  {
+    "id": 5,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2090,
+    "text": "faltantesExpediente.push(\"Volumen esperado\");",
+    "domains": [
+      "Q5",
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": "Volumen esperado"
+  },
+  {
+    "id": 6,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2093,
+    "text": "const tieneQ5Publicado =",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": null
+  },
+  {
+    "id": 7,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2097,
+    "text": "const tieneHidrogramasPublicados =",
+    "domains": [
+      "Q5",
+      "Contexto"
+    ],
+    "guardType": "hidrogramas_published",
+    "probableMessage": null
+  },
+  {
+    "id": 8,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2101,
+    "text": "if (!tieneQ5Publicado && !tieneHidrogramasPublicados) {",
+    "domains": [
+      "Q5",
+      "Contexto"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": null
+  },
+  {
+    "id": 9,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2102,
+    "text": "faltantesExpediente.push(",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": null
+  },
+  {
+    "id": 10,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2103,
+    "text": "\"Tabla Q-5 auditada con filas reales\"",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada con filas reales"
+  },
+  {
+    "id": 11,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2107,
+    "text": "const tieneRacionalPublicado =",
+    "domains": [
+      "Racional"
+    ],
+    "guardType": "racional_published",
+    "probableMessage": null
+  },
+  {
+    "id": 12,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2115,
+    "text": "if (!tieneRacionalPublicado) {",
+    "domains": [
+      "Racional"
+    ],
+    "guardType": "racional_published",
+    "probableMessage": null
+  },
+  {
+    "id": 13,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2122,
+    "text": "if (faltantesExpediente.length > 0) {",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": null
+  },
+  {
+    "id": 14,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2130,
+    "text": "...faltantesExpediente.map((item) => `- ${item}`)",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": null
+  },
+  {
+    "id": 15,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2228,
+    "text": "\"Tabla Q-5 auditada:\",",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 16,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2753,
+    "text": "const seccionesFaltantesExpediente = seccionesObligatoriasExpediente.filter((seccion) =>",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": null
+  },
+  {
+    "id": 17,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2763,
+    "text": "seccionesFaltantesExpediente.length > 0 ||",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": null
+  },
+  {
+    "id": 18,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2779,
+    "text": "...(seccionesFaltantesExpediente.length > 0",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": null
+  },
+  {
+    "id": 19,
+    "fileId": 43,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "line": 2782,
+    "text": "...seccionesFaltantesExpediente.map((seccion) => `- ${seccion}`),",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": null
+  },
+  {
+    "id": 20,
+    "fileId": 60,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "line": 1349,
+    "text": "expedienteListo: false",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_listo",
+    "probableMessage": null
+  },
+  {
+    "id": 21,
+    "fileId": 60,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "line": 2400,
+    "text": "expedienteListo:",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_listo",
+    "probableMessage": null
+  },
+  {
+    "id": 22,
+    "fileId": 135,
+    "file": "01_APP/HIDROFLOW/scripts/consumirAdaptadorDocumentalOt0061b.mjs",
+    "line": 30,
+    "text": "\"Tabla Q-5 auditada:\",",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 23,
+    "fileId": 141,
+    "file": "01_APP/HIDROFLOW/scripts/validarAdaptadorDocumentalOt0060f.mjs",
+    "line": 25,
+    "text": "\"Tabla Q-5 auditada:\",",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 24,
+    "fileId": 153,
+    "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+    "line": 43,
+    "text": "if (lower.includes(\"tieneq5publicado\") || lower.includes(\"tabla q-5\")) return \"Q5_table\";",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "tieneq5publicado"
+  },
+  {
+    "id": 25,
+    "fileId": 153,
+    "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+    "line": 44,
+    "text": "if (lower.includes(\"tienehidrogramaspublicados\")) return \"hidrogramas_published\";",
+    "domains": [
+      "Q5",
+      "Contexto"
+    ],
+    "guardType": "hidrogramas_published",
+    "probableMessage": "tienehidrogramaspublicados"
+  },
+  {
+    "id": 26,
+    "fileId": 153,
+    "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+    "line": 45,
+    "text": "if (lower.includes(\"tieneracionalpublicado\")) return \"racional_published\";",
+    "domains": [
+      "Racional"
+    ],
+    "guardType": "racional_published",
+    "probableMessage": "tieneracionalpublicado"
+  },
+  {
+    "id": 27,
+    "fileId": 153,
+    "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+    "line": 46,
+    "text": "if (lower.includes(\"faltantesexpediente\")) return \"expediente_faltantes\";",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_faltantes",
+    "probableMessage": "faltantesexpediente"
+  },
+  {
+    "id": 28,
+    "fileId": 153,
+    "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+    "line": 47,
+    "text": "if (lower.includes(\"expedientelisto\")) return \"expediente_listo\";",
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "expediente_listo",
+    "probableMessage": "expedientelisto"
+  },
+  {
+    "id": 29,
+    "fileId": 153,
+    "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+    "line": 48,
+    "text": "if (lower.includes(\"!tieneq5publicado\") || lower.includes(\"!tienehidrogramaspublicados\")) return \"Q5_negated_guard\";",
+    "domains": [
+      "Q5",
+      "Contexto"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "!tieneq5publicado"
+  },
+  {
+    "id": 30,
+    "fileId": 163,
+    "file": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
+    "line": 50,
+    "text": ": [\"sin tabla Q-5 disponible\"];",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "sin tabla Q-5 disponible"
+  },
+  {
+    "id": 31,
+    "fileId": 163,
+    "file": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
+    "line": 61,
+    "text": "\"Tabla Q-5 auditada:\",",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 32,
+    "fileId": 164,
+    "file": "07_TOOLBOX/validaciones/aplicar_ot0177_diagnostico_resumen_q5_auditado.mjs",
+    "line": 71,
+    "text": "${indent}  \"Tabla Q-5 auditada:\",",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 33,
+    "fileId": 165,
+    "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+    "line": 73,
+    "text": "indice > indiceInicioBloque && linea.includes('\"Tabla Q-5 auditada:\"')",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 34,
+    "fileId": 165,
+    "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+    "line": 79,
+    "text": "\"Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6.\"",
+    "domains": [
+      "Q5",
+      "QTr"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+  },
+  {
+    "id": 35,
+    "fileId": 165,
+    "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+    "line": 136,
+    "text": "desdeTextoActualizado.includes('\"Tabla Q-5 auditada:\"') &&",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 36,
+    "fileId": 181,
+    "file": "07_TOOLBOX/validaciones/comparar_ot0176_resumen_q5_auditado_helper_operativo.mjs",
+    "line": 35,
+    "text": "\"Tabla Q-5 auditada:\",",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 37,
+    "fileId": 222,
+    "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+    "line": 26,
+    "text": "assert.equal(lineas[8], \"Tabla Q-5 auditada:\", `${nombreCaso}: encabezado tabla exacto`);",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 38,
+    "fileId": 222,
+    "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+    "line": 65,
+    "text": "\"sin tabla Q-5 disponible\"",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "sin tabla Q-5 disponible"
+  },
+  {
+    "id": 39,
+    "fileId": 222,
+    "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+    "line": 73,
+    "text": "\"sin tabla Q-5 disponible\"",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "sin tabla Q-5 disponible"
+  },
+  {
+    "id": 40,
+    "fileId": 222,
+    "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+    "line": 83,
+    "text": "\"sin tabla Q-5 disponible\"",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "sin tabla Q-5 disponible"
+  },
+  {
+    "id": 41,
+    "fileId": 223,
+    "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+    "line": 26,
+    "text": "assert.equal(lineas[8], \"Tabla Q-5 auditada:\", `${nombreCaso}: encabezado tabla exacto`);",
+    "domains": [
+      "Q5"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 42,
+    "fileId": 223,
+    "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+    "line": 54,
+    "text": "esperados: [\"sin tabla Q-5 disponible\"]",
+    "domains": [
+      "Q5",
+      "CN"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "sin tabla Q-5 disponible"
+  },
+  {
+    "id": 43,
+    "fileId": 223,
+    "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+    "line": 59,
+    "text": "esperados: [\"sin tabla Q-5 disponible\"]",
+    "domains": [
+      "Q5",
+      "CN"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "sin tabla Q-5 disponible"
+  },
+  {
+    "id": 44,
+    "fileId": 223,
+    "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+    "line": 66,
+    "text": "esperados: [\"sin tabla Q-5 disponible\"]",
+    "domains": [
+      "Q5",
+      "CN"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "sin tabla Q-5 disponible"
+  },
+  {
+    "id": 45,
+    "fileId": 223,
+    "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+    "line": 73,
+    "text": "esperados: [\"sin tabla Q-5 disponible\"]",
+    "domains": [
+      "Q5",
+      "CN"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "sin tabla Q-5 disponible"
+  },
+  {
+    "id": 46,
+    "fileId": 225,
+    "file": "07_TOOLBOX/validaciones/validar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+    "line": 37,
+    "text": "desdeTextoExpediente.includes('\"Tabla Q-5 auditada:\"') &&",
+    "domains": [
+      "Q5",
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 47,
+    "fileId": 226,
+    "file": "07_TOOLBOX/validaciones/validar_ot0179_post_adopcion_resumen_q5_auditado.mjs",
+    "line": 43,
+    "text": "desdeTextoExpediente.includes('\"Tabla Q-5 auditada:\"') &&",
+    "domains": [
+      "Q5",
+      "CN",
+      "Expediente"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada:"
+  },
+  {
+    "id": 48,
+    "fileId": 258,
+    "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+    "line": 217,
+    "text": "!bloqueContraste.includes(\"Tabla Q-5 auditada\")",
+    "domains": [
+      "Q5",
+      "QTr"
+    ],
+    "guardType": "Q5_table",
+    "probableMessage": "Tabla Q-5 auditada"
+  }
+]

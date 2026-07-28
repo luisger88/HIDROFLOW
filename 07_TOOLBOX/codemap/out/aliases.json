@@ -1,0 +1,45 @@
+[
+  {
+    "canonical": "Qp",
+    "domain": "Q5",
+    "aliases": [
+      "qp",
+      "Qpico",
+      "qPico",
+      "q_pico",
+      "caudalPico",
+      "caudal_pico"
+    ],
+    "acceptZero": false,
+    "acceptNull": false
+  },
+  {
+    "canonical": "Tp",
+    "domain": "Q5",
+    "aliases": [
+      "tp",
+      "tPico",
+      "TPico",
+      "t_pico",
+      "tiempoPico",
+      "tiempo_pico"
+    ],
+    "acceptZero": false,
+    "acceptNull": false
+  },
+  {
+    "canonical": "volumen",
+    "domain": "Q5",
+    "aliases": [
+      "vol",
+      "volume",
+      "volTotal",
+      "vol_total",
+      "volumenTotal",
+      "volTotalM3",
+      "V"
+    ],
+    "acceptZero": false,
+    "acceptNull": false
+  }
+]

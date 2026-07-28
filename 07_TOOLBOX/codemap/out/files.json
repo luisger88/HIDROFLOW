@@ -1,0 +1,4255 @@
+[
+  {
+    "id": 1,
+    "path": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoInformeHallazgos.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "1f64439359d6",
+    "lineCount": 58,
+    "domains": [
+      "Q5",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 2,
+    "path": "01_APP/HIDROFLOW/src/agents/auditorJefe/formatoOrdenTrabajo.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "0ce8f35d3cff",
+    "lineCount": 54,
+    "domains": [
+      "QTr"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 3,
+    "path": "01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "9ff434a4d1ea",
+    "lineCount": 106,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 4,
+    "path": "01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "f35da6cac542",
+    "lineCount": 86,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 5,
+    "path": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "0cd504e649e9",
+    "lineCount": 50,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 6,
+    "path": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorHidrogramas.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "9f1dd8746fe7",
+    "lineCount": 55,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 7,
+    "path": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorIntegrador.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "d5090cbea804",
+    "lineCount": 48,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 8,
+    "path": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorPendientes.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "b3cb8dc167ff",
+    "lineCount": 58,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 9,
+    "path": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorTc.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "5e1a74286980",
+    "lineCount": 59,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 10,
+    "path": "01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorUnidades.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "c7bcf32c5fc8",
+    "lineCount": 48,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 11,
+    "path": "01_APP/HIDROFLOW/src/agents/contratoCuencaAgent.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "e69ceacd72f7",
+    "lineCount": 30,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 3
+  },
+  {
+    "id": 12,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/orden_OT_0001_AuditorTc.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "443057d00c2d",
+    "lineCount": 79,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 13,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0001_AuditorTc/reporte_OT_0001_AuditorTc.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "5cbc0c8318c8",
+    "lineCount": 113,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 14,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0003A_MatrizMetodoCampoTc/orden_OT_0003A_MatrizMetodoCampoTc.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "a98849317e7c",
+    "lineCount": 103,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 15,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0003A_MatrizMetodoCampoTc/reporte_OT_0003A_MatrizMetodoCampoTc.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "e162eb7db83a",
+    "lineCount": 95,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 16,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0003_AuditorPendientes/orden_OT_0003_AuditorPendientes.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "41c6517372fe",
+    "lineCount": 91,
+    "domains": [
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 17,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0003_AuditorPendientes/reporte_OT_0003_AuditorPendientes.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "0b461b9de5de",
+    "lineCount": 136,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 18,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0004A_ValidacionNumericaUnidades/reporte_OT_0004A_ValidacionNumericaUnidades.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "8ef2b00349f3",
+    "lineCount": 66,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 19,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0004B_ImpactoNumericoUnidadesTc/reporte_OT_0004B_ImpactoNumericoUnidadesTc.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "dc070c3a5923",
+    "lineCount": 134,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 20,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0004C_RevisionDocumentalKirpich/orden_OT_0004C_RevisionDocumentalKirpich.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "88882818082c",
+    "lineCount": 96,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 21,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0004C_RevisionDocumentalKirpich/reporte_OT_0004C_RevisionDocumentalKirpich.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "508c63da2eb1",
+    "lineCount": 111,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 22,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0004D_A_OrigenPendienteCuenca/orden_OT_0004D_A_OrigenPendienteCuenca.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "de6192c55beb",
+    "lineCount": 37,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 23,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0004D_A_OrigenPendienteCuenca/reporte_OT_0004D_A_OrigenPendienteCuenca.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "5e0d1614c17f",
+    "lineCount": 107,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 24,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0004D_RevisionDocumentalSCSRanser/orden_OT_0004D_RevisionDocumentalSCSRanser.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "3c1c1a1e2ab4",
+    "lineCount": 81,
+    "domains": [
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 25,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0004D_RevisionDocumentalSCSRanser/reporte_OT_0004D_RevisionDocumentalSCSRanser.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "abd0232d9ae5",
+    "lineCount": 139,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 26,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0004_AuditorUnidades/orden_OT_0004_AuditorUnidades.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "789f16f72e4f",
+    "lineCount": 98,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 27,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0004_AuditorUnidades/reporte_OT_0004_AuditorUnidades.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "90769ac21ddc",
+    "lineCount": 168,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 28,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0005A_AdaptadorPendientes/orden_OT_0005A_AdaptadorPendientes.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "b0ff90aeb76a",
+    "lineCount": 33,
+    "domains": [
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 29,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0005A_AdaptadorPendientes/reporte_OT_0005A_AdaptadorPendientes.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "22088a145dfd",
+    "lineCount": 61,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 30,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0005B_ImplementacionAdaptador/reporte_OT_0005B_ImplementacionAdaptador.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "bb742fc01587",
+    "lineCount": 40,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 31,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0005C_ValidacionComparativa/reporte_OT_0005C_ValidacionComparativa.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "e5cba7c384e6",
+    "lineCount": 82,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 32,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0005_NormalizacionPendientes/orden_OT_0005_NormalizacionPendientes.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "55189f53f96e",
+    "lineCount": 46,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 33,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0005_NormalizacionPendientes/reporte_OT_0005_NormalizacionPendientes.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "af2afa0fb356",
+    "lineCount": 63,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 34,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0006B_IntervaloTc/reporte_OT_0006B_IntervaloTc.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "804de07f45b1",
+    "lineCount": 76,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 35,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0006_CompetenciaMetodos/orden_OT_0006_CompetenciaMetodos.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "901c059eb502",
+    "lineCount": 24,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 36,
+    "path": "01_APP/HIDROFLOW/src/agents/evidencias/HF_MISION_0001/OT_0006_CompetenciaMetodos/reporte_OT_0006_CompetenciaMetodos.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "df8b03d21544",
+    "lineCount": 95,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 37,
+    "path": "01_APP/HIDROFLOW/src/agents/misiones/auditoria_tc_tp_qp_volumen_PC80.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "582c595cb4fb",
+    "lineCount": 96,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 38,
+    "path": "01_APP/HIDROFLOW/src/agents/misiones/bitacora_HF_MISION_0001.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "65d862c8d82e",
+    "lineCount": 1136,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 39,
+    "path": "01_APP/HIDROFLOW/src/agents/README.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "b9d9e5a800f0",
+    "lineCount": 33,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 40,
+    "path": "01_APP/HIDROFLOW/src/agents/tcAgent.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "4d0368fccd08",
+    "lineCount": 30,
+    "domains": [
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 3
+  },
+  {
+    "id": 41,
+    "path": "01_APP/HIDROFLOW/src/agents/trAgent.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "d1a1d666c94e",
+    "lineCount": 35,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 3
+  },
+  {
+    "id": 42,
+    "path": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "6a506fbf0ed6",
+    "lineCount": 1195,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 8,
+    "exportsCount": 1
+  },
+  {
+    "id": 43,
+    "path": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "62c7f430239a",
+    "lineCount": 4183,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 29,
+    "exportsCount": 1
+  },
+  {
+    "id": 44,
+    "path": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "17a548289c45",
+    "lineCount": 1043,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 1
+  },
+  {
+    "id": 45,
+    "path": "01_APP/HIDROFLOW/src/components/orquestador/OrquestadorInstitucional.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "e5934d5abd64",
+    "lineCount": 165,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 4,
+    "exportsCount": 1
+  },
+  {
+    "id": 46,
+    "path": "01_APP/HIDROFLOW/src/components/orquestador/OrquestadorInstitucional.pre005b.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "5e1fb4e1cad5",
+    "lineCount": 160,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 3,
+    "exportsCount": 1
+  },
+  {
+    "id": 47,
+    "path": "01_APP/HIDROFLOW/src/components/TablaTcMetodos.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "d6e268c7a0b3",
+    "lineCount": 75,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 48,
+    "path": "01_APP/HIDROFLOW/src/data/auditoriaPendientesTc.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "cc9299cf4cf5",
+    "lineCount": 111,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 4
+  },
+  {
+    "id": 49,
+    "path": "01_APP/HIDROFLOW/src/data/clasificacionCuenca.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "fbb398d9bcc8",
+    "lineCount": 227,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 5
+  },
+  {
+    "id": 50,
+    "path": "01_APP/HIDROFLOW/src/data/contratoCuenca.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "f0845d56cdde",
+    "lineCount": 33,
+    "domains": [
+      "QTr",
+      "CN",
+      "IDF",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 51,
+    "path": "01_APP/HIDROFLOW/src/data/cuencasCatalogo.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "8b97f6aabd64",
+    "lineCount": 428,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 5
+  },
+  {
+    "id": 52,
+    "path": "01_APP/HIDROFLOW/src/data/matrizCompetenciaComparador.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "cc6a5c6ac658",
+    "lineCount": 357,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Contexto"
+    ],
+    "importsCount": 1,
+    "exportsCount": 4
+  },
+  {
+    "id": 53,
+    "path": "01_APP/HIDROFLOW/src/data/matrizPatronLaIguanaPC80.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "45ba9c05c0bb",
+    "lineCount": 193,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 54,
+    "path": "01_APP/HIDROFLOW/src/data/metodosComparadorCatalogo.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "0fc755e8e6a1",
+    "lineCount": 327,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 7
+  },
+  {
+    "id": 55,
+    "path": "01_APP/HIDROFLOW/src/data/orquestadorEstado.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "8f4ad73794c9",
+    "lineCount": 47,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 56,
+    "path": "01_APP/HIDROFLOW/src/data/orquestadorEstado.pre005a.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "640a8e545c7c",
+    "lineCount": 30,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 57,
+    "path": "01_APP/HIDROFLOW/src/data/plantillaMatrizCuencaPatron.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "55916ec2905a",
+    "lineCount": 107,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 58,
+    "path": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "bfd181ee3b51",
+    "lineCount": 2373,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Contexto"
+    ],
+    "importsCount": 2,
+    "exportsCount": 1
+  },
+  {
+    "id": 59,
+    "path": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "d92ca6c8ec24",
+    "lineCount": 2796,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 1
+  },
+  {
+    "id": 60,
+    "path": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "e13bf0c6b72c",
+    "lineCount": 4388,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 14,
+    "exportsCount": 1
+  },
+  {
+    "id": 61,
+    "path": "01_APP/HIDROFLOW/src/HidroFlow_SAFE_BACKUP_and_PATCH/README_BACKUP.md",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".md",
+    "sha1": "7a27200d1717",
+    "lineCount": 19,
+    "domains": [
+      "QTr",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 62,
+    "path": "01_APP/HIDROFLOW/src/main.jsx",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".jsx",
+    "sha1": "b7b083fa308a",
+    "lineCount": 11,
+    "domains": [
+      "QTr"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 63,
+    "path": "01_APP/HIDROFLOW/src/services/apiClient.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "68ba6d0264e4",
+    "lineCount": 10,
+    "domains": [
+      "QTr",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 64,
+    "path": "01_APP/HIDROFLOW/src/services/cn/ejecutarPruebaCN.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "09d79afb8a31",
+    "lineCount": 4,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 65,
+    "path": "01_APP/HIDROFLOW/src/services/cn/obtenerTrazabilidadCN.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "15fe560d0bc8",
+    "lineCount": 56,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 66,
+    "path": "01_APP/HIDROFLOW/src/services/cn/probarTrazabilidadCN.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "58c300defb63",
+    "lineCount": 19,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 67,
+    "path": "01_APP/HIDROFLOW/src/services/cn/validarTrazabilidadCN.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "28fa6aed4a30",
+    "lineCount": 23,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 68,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/adaptarExpedienteDocumental.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "352c349663c1",
+    "lineCount": 215,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 69,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueEscenarioQTrActivoExpediente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "e14096b34e58",
+    "lineCount": 197,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 3
+  },
+  {
+    "id": 70,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueIdentificacionExpedienteMinimo.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "ead661838e85",
+    "lineCount": 55,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 71,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueParametrosHidrologicosBaseExpediente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "c519d677355f",
+    "lineCount": 40,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 72,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueRestriccionesAdvertenciasGeneralesExpediente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "172566ea3eda",
+    "lineCount": 125,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 73,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueResumenQ5AuditadoExpediente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "2d87578a7028",
+    "lineCount": 118,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 4
+  },
+  {
+    "id": 74,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueTiempoConcentracionRolesTcExpediente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "5c6ce990c450",
+    "lineCount": 73,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 1,
+    "exportsCount": 2
+  },
+  {
+    "id": 75,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirBloqueVolumenReferenciaExpediente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "d2b6bacdd159",
+    "lineCount": 97,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 76,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirDescargaMarkdownExpedienteDesdePayload.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "f9ee930b53c8",
+    "lineCount": 18,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 1
+  },
+  {
+    "id": 77,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirExpedienteHidrologicoMinimo.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "1eacbded7373",
+    "lineCount": 549,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 8,
+    "exportsCount": 14
+  },
+  {
+    "id": 78,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirMarkdownExpedienteDesdePayload.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "35ae826db593",
+    "lineCount": 397,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 1
+  },
+  {
+    "id": 79,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "320ca5877714",
+    "lineCount": 589,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 2,
+    "exportsCount": 1
+  },
+  {
+    "id": 80,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/derivarParametrosIDF.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "a76481b14e0a",
+    "lineCount": 10,
+    "domains": [
+      "QTr",
+      "IDF",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 81,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/derivarQDisenoDesdeEscenarioActivo.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "97ac87f0e418",
+    "lineCount": 29,
+    "domains": [
+      "Q5",
+      "QTr"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 82,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/derivarTablaResumenTrDesdeQTrMultiEscenario.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "fc9264c044d4",
+    "lineCount": 92,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 83,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/descargarArchivoMarkdownEnNavegador.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "4735ef1e4e8c",
+    "lineCount": 33,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 84,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaCN.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "568467a08a9f",
+    "lineCount": 15,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 85,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaConsistencia.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "b5981709127d",
+    "lineCount": 14,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 86,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaIDF.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "a46de6ae879e",
+    "lineCount": 17,
+    "domains": [
+      "QTr",
+      "IDF",
+      "Expediente"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 87,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaQ5.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "6841a18bd74b",
+    "lineCount": 15,
+    "domains": [
+      "Q5",
+      "QTr",
+      "Expediente"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 88,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaQTr.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "e08450e65da7",
+    "lineCount": 14,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 89,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativasExpediente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "e43a3ac0b931",
+    "lineCount": 22,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 7,
+    "exportsCount": 2
+  },
+  {
+    "id": 90,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarNarrativaTc.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "741f4de12d91",
+    "lineCount": 14,
+    "domains": [
+      "QTr",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 91,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/generarResumenEjecutivo.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "f47f5f1edb3e",
+    "lineCount": 16,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 92,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/narrativas/_utilsNarrativas.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "37e160d4a56c",
+    "lineCount": 12,
+    "domains": [
+      "QTr"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 93,
+    "path": "01_APP/HIDROFLOW/src/services/documentos/prepararDescargaMarkdownExpediente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "e4d23991317a",
+    "lineCount": 22,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 94,
+    "path": "01_APP/HIDROFLOW/src/services/expediente/CertificacionMCVD.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "fea970109697",
+    "lineCount": 16,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 95,
+    "path": "01_APP/HIDROFLOW/src/services/expediente/DictamenInteligente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "1c7e3389d670",
+    "lineCount": 35,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 96,
+    "path": "01_APP/HIDROFLOW/src/services/expediente/GeneradorExpediente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "c9ce6f0d472f",
+    "lineCount": 79,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 1
+  },
+  {
+    "id": 97,
+    "path": "01_APP/HIDROFLOW/src/services/expediente/index.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "d3a6484efdd1",
+    "lineCount": 15,
+    "domains": [
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 4
+  },
+  {
+    "id": 98,
+    "path": "01_APP/HIDROFLOW/src/services/expediente/IndicadoresRobustez.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "491de670c756",
+    "lineCount": 10,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 99,
+    "path": "01_APP/HIDROFLOW/src/services/gobierno/derivarContratoCuenca.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "8b78c6799cc0",
+    "lineCount": 94,
+    "domains": [
+      "QTr",
+      "CN",
+      "IDF",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 100,
+    "path": "01_APP/HIDROFLOW/src/services/gobierno/derivarContratoCuenca.pre005gc.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "7f10ab157bb3",
+    "lineCount": 62,
+    "domains": [
+      "QTr",
+      "CN",
+      "IDF",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 101,
+    "path": "01_APP/HIDROFLOW/src/services/gobierno/index.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "5a0855ee86fb",
+    "lineCount": 4,
+    "domains": [
+      "QTr"
+    ],
+    "importsCount": 0,
+    "exportsCount": 3
+  },
+  {
+    "id": 102,
+    "path": "01_APP/HIDROFLOW/src/services/gobierno/ManifiestoVerdad.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "9995d34e8f4f",
+    "lineCount": 12,
+    "domains": [],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 103,
+    "path": "01_APP/HIDROFLOW/src/services/gobierno/ManifiestoVerdad.json",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".json",
+    "sha1": "794ba1d018de",
+    "lineCount": 17,
+    "domains": [
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 104,
+    "path": "01_APP/HIDROFLOW/src/services/gobierno/RegistroAuditorias.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "1d5cf0351a8f",
+    "lineCount": 11,
+    "domains": [
+      "QTr"
+    ],
+    "importsCount": 1,
+    "exportsCount": 2
+  },
+  {
+    "id": 105,
+    "path": "01_APP/HIDROFLOW/src/services/gobierno/RegistroAuditorias.json",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".json",
+    "sha1": "5bd7fb2f6e7b",
+    "lineCount": 42,
+    "domains": [],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 106,
+    "path": "01_APP/HIDROFLOW/src/services/gobierno/ValidadorIngenieria.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "28e1316df8c8",
+    "lineCount": 18,
+    "domains": [
+      "QTr"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 107,
+    "path": "01_APP/HIDROFLOW/src/services/hidroEngine.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "e3f29ee25075",
+    "lineCount": 643,
+    "domains": [
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional"
+    ],
+    "importsCount": 0,
+    "exportsCount": 18
+  },
+  {
+    "id": 108,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/adaptarQSeriesHidrogramas.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "f11c6047330a",
+    "lineCount": 257,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 109,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/calcularMetricasMorfologiaQt.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "6470e8e461e3",
+    "lineCount": 163,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 110,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/clasificarFormaQt.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "6185b97b60a3",
+    "lineCount": 201,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 111,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/construirSeccionDiagnosticoTemporalQt.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "2bd74bf553dd",
+    "lineCount": 160,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 112,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/evaluarRiesgoTemporalQt.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "8e19a16ca2b0",
+    "lineCount": 194,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 113,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/prepararGraficaQpTPicoMatrizPatron.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "a04df0031c60",
+    "lineCount": 69,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 114,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/prepararGraficaVelocidadEfectivaMatrizPatron.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "2daf9cc61af5",
+    "lineCount": 87,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 115,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/resumirEstructuraHidrogramas.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "3e48a30ca7d4",
+    "lineCount": 173,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 116,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/sintetizarLecturaComparativaMatrizPatron.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "7e3892c8f054",
+    "lineCount": 113,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 117,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/sintetizarRiesgoTemporalQt.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "25a644ac0961",
+    "lineCount": 174,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 118,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/validarCompletitudMatrizCuencaPatron.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "918f2dd447de",
+    "lineCount": 126,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 119,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/validarMatrizPatronCuenca.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "5d948ef8582d",
+    "lineCount": 99,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 120,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/validarQSeriesMorfologia.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "0155246fd763",
+    "lineCount": 107,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 121,
+    "path": "01_APP/HIDROFLOW/src/services/hidrogramas/validarSeccionDiagnosticoTemporalQt.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "fa19bda2d2bf",
+    "lineCount": 79,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 122,
+    "path": "01_APP/HIDROFLOW/src/services/master/resolverCuencaDesdeCoordenadas.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "01c4f28c2573",
+    "lineCount": 63,
+    "domains": [],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 123,
+    "path": "01_APP/HIDROFLOW/src/services/orquestador/getEstudioActivo.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "570b2e19a86c",
+    "lineCount": 10,
+    "domains": [],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 124,
+    "path": "01_APP/HIDROFLOW/src/services/pendientesAdapter.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "a23c0ea2671e",
+    "lineCount": 26,
+    "domains": [
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 125,
+    "path": "01_APP/HIDROFLOW/src/services/qtr/construirQTrMultiEscenario.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "ecc86c15c6a6",
+    "lineCount": 69,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 126,
+    "path": "01_APP/HIDROFLOW/src/services/qtr/derivarEstadoQTrActivo.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "2d8097935270",
+    "lineCount": 65,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 127,
+    "path": "01_APP/HIDROFLOW/src/services/siata.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "92beac845321",
+    "lineCount": 4,
+    "domains": [
+      "IDF"
+    ],
+    "importsCount": 1,
+    "exportsCount": 1
+  },
+  {
+    "id": 128,
+    "path": "01_APP/HIDROFLOW/src/services/tc/derivarRangoCompetenteTc.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "5e9be3295437",
+    "lineCount": 73,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 129,
+    "path": "01_APP/HIDROFLOW/src/services/tcSelector.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "c382d7ecafff",
+    "lineCount": 112,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 130,
+    "path": "01_APP/HIDROFLOW/src/types/expediente.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "b785b3e375a2",
+    "lineCount": 71,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 2
+  },
+  {
+    "id": 131,
+    "path": "01_APP/HIDROFLOW/src/utils/focusSection.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "1b49f2284616",
+    "lineCount": 25,
+    "domains": [
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 1
+  },
+  {
+    "id": 132,
+    "path": "01_APP/HIDROFLOW/src/utils/formatters.js",
+    "module": "01_APP/HIDROFLOW/src",
+    "ext": ".js",
+    "sha1": "feae3bb8d7de",
+    "lineCount": 12,
+    "domains": [
+      "Q5",
+      "CN",
+      "Tc"
+    ],
+    "importsCount": 0,
+    "exportsCount": 6
+  },
+  {
+    "id": 133,
+    "path": "01_APP/HIDROFLOW/scripts/build-expediente.js",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".js",
+    "sha1": "f064535a23ca",
+    "lineCount": 41,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 134,
+    "path": "01_APP/HIDROFLOW/scripts/compararHelperVsExpedienteOperativo.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "b83d8b5c653a",
+    "lineCount": 189,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 135,
+    "path": "01_APP/HIDROFLOW/scripts/consumirAdaptadorDocumentalOt0061b.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "777eff536b50",
+    "lineCount": 93,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 136,
+    "path": "01_APP/HIDROFLOW/scripts/export-project.js",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".js",
+    "sha1": "db310b3d6be1",
+    "lineCount": 64,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 137,
+    "path": "01_APP/HIDROFLOW/scripts/gov-init.js",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".js",
+    "sha1": "6c87cead80e2",
+    "lineCount": 148,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 138,
+    "path": "01_APP/HIDROFLOW/scripts/project-init.js",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".js",
+    "sha1": "c4af683e3297",
+    "lineCount": 65,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 139,
+    "path": "01_APP/HIDROFLOW/scripts/project-open.js",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".js",
+    "sha1": "8c517c17c0ad",
+    "lineCount": 37,
+    "domains": [
+      "QTr",
+      "CN"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 140,
+    "path": "01_APP/HIDROFLOW/scripts/project-update.js",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".js",
+    "sha1": "65a939883d8a",
+    "lineCount": 57,
+    "domains": [
+      "QTr"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 141,
+    "path": "01_APP/HIDROFLOW/scripts/validarAdaptadorDocumentalOt0060f.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "f7f7dcdf0f27",
+    "lineCount": 106,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 142,
+    "path": "01_APP/HIDROFLOW/scripts/validarAdaptadorQSeriesOt0069c.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "59df49c4956c",
+    "lineCount": 60,
+    "domains": [
+      "Q5",
+      "QTr",
+      "Contexto"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 143,
+    "path": "01_APP/HIDROFLOW/scripts/validarAdaptadorQSeriesOt0069d.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "840da5f24bc0",
+    "lineCount": 196,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Contexto"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 144,
+    "path": "01_APP/HIDROFLOW/scripts/validarContratoBloqueIdentificacionDelegado.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "ddb793347631",
+    "lineCount": 210,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 145,
+    "path": "01_APP/HIDROFLOW/scripts/validarContratoSelloTecnicoDelegado.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "9f1d6b26d047",
+    "lineCount": 195,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 146,
+    "path": "01_APP/HIDROFLOW/scripts/validarHelperExpedienteHidrologicoMinimo.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "6b5389dabbae",
+    "lineCount": 148,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 147,
+    "path": "01_APP/HIDROFLOW/scripts/validarLaIguanaMatrizCuencaPatron.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "850a9f6bb790",
+    "lineCount": 50,
+    "domains": [
+      "Q5",
+      "QTr",
+      "Contexto"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 148,
+    "path": "01_APP/HIDROFLOW/scripts/validarPlantillaMatrizCuencaPatron.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "06d343dc1839",
+    "lineCount": 36,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Contexto"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 149,
+    "path": "01_APP/HIDROFLOW/scripts/validarResumenEstructuraHidrogramasOt0074d.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "dd0fb7931f2d",
+    "lineCount": 131,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Contexto"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 150,
+    "path": "01_APP/HIDROFLOW/scripts/validarSelloTecnicoAuxiliarExpediente.mjs",
+    "module": "01_APP/HIDROFLOW/scripts",
+    "ext": ".mjs",
+    "sha1": "19d131d01863",
+    "lineCount": 149,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 151,
+    "path": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+    "module": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+    "ext": ".mjs",
+    "sha1": "3e05909da84b",
+    "lineCount": 295,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 152,
+    "path": "07_TOOLBOX/codemap/hf-codemap.config.json",
+    "module": "07_TOOLBOX/codemap/hf-codemap.config.json",
+    "ext": ".json",
+    "sha1": "5baeaa7cff52",
+    "lineCount": 62,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 153,
+    "path": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+    "module": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+    "ext": ".mjs",
+    "sha1": "731550df1f04",
+    "lineCount": 364,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 154,
+    "path": "07_TOOLBOX/validaciones/acoplar_ot0311_helper_resumen_q5.cjs",
+    "module": "07_TOOLBOX/validaciones/acoplar_ot0311_helper_resumen_q5.cjs",
+    "ext": ".cjs",
+    "sha1": "b1bc09af4498",
+    "lineCount": 154,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 0,
+    "exportsCount": 0
+  },
+  {
+    "id": 155,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0127_formato_unidades_identificacion.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0127_formato_unidades_identificacion.mjs",
+    "ext": ".mjs",
+    "sha1": "7b83acb7fd1f",
+    "lineCount": 42,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 156,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0133_helper_parametros_base.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0133_helper_parametros_base.mjs",
+    "ext": ".mjs",
+    "sha1": "753f8002e499",
+    "lineCount": 62,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 1
+  },
+  {
+    "id": 157,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0146_diagnostico_tiempo_concentracion.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0146_diagnostico_tiempo_concentracion.mjs",
+    "ext": ".mjs",
+    "sha1": "8d75b72e8128",
+    "lineCount": 103,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 158,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0156_diagnostico_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0156_diagnostico_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "a8cb93878879",
+    "lineCount": 87,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 159,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0158_sustitucion_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0158_sustitucion_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "a55cc68e00be",
+    "lineCount": 44,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 160,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0164_helper_escenario_qtr_activo.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0164_helper_escenario_qtr_activo.mjs",
+    "ext": ".mjs",
+    "sha1": "469568ba9d73",
+    "lineCount": 102,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 1
+  },
+  {
+    "id": 161,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0166_diagnostico_escenario_qtr_activo.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0166_diagnostico_escenario_qtr_activo.mjs",
+    "ext": ".mjs",
+    "sha1": "e877f7634007",
+    "lineCount": 117,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 162,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0168_sustitucion_escenario_qtr_activo.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0168_sustitucion_escenario_qtr_activo.mjs",
+    "ext": ".mjs",
+    "sha1": "a6d79c8e1860",
+    "lineCount": 58,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 163,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
+    "ext": ".mjs",
+    "sha1": "0e673c153263",
+    "lineCount": 74,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 1
+  },
+  {
+    "id": 164,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0177_diagnostico_resumen_q5_auditado.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0177_diagnostico_resumen_q5_auditado.mjs",
+    "ext": ".mjs",
+    "sha1": "85e6686966f0",
+    "lineCount": 104,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 165,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+    "ext": ".mjs",
+    "sha1": "37089a59abc3",
+    "lineCount": 194,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 166,
+    "path": "07_TOOLBOX/validaciones/aplicar_ot0187_saneamiento_helper_identificacion.mjs",
+    "module": "07_TOOLBOX/validaciones/aplicar_ot0187_saneamiento_helper_identificacion.mjs",
+    "ext": ".mjs",
+    "sha1": "21aa97ef36ed",
+    "lineCount": 125,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 167,
+    "path": "07_TOOLBOX/validaciones/auditar_ot0125_anclajes_identificacion.mjs",
+    "module": "07_TOOLBOX/validaciones/auditar_ot0125_anclajes_identificacion.mjs",
+    "ext": ".mjs",
+    "sha1": "762a8a2facf9",
+    "lineCount": 148,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 168,
+    "path": "07_TOOLBOX/validaciones/auditar_ot0182_bloque_identificacion_contexto.mjs",
+    "module": "07_TOOLBOX/validaciones/auditar_ot0182_bloque_identificacion_contexto.mjs",
+    "ext": ".mjs",
+    "sha1": "127702d85daa",
+    "lineCount": 168,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 169,
+    "path": "07_TOOLBOX/validaciones/auditar_ot0191_trazabilidad_parametros_base.mjs",
+    "module": "07_TOOLBOX/validaciones/auditar_ot0191_trazabilidad_parametros_base.mjs",
+    "ext": ".mjs",
+    "sha1": "68755b486530",
+    "lineCount": 201,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 170,
+    "path": "07_TOOLBOX/validaciones/auditar_ot0196_trazabilidad_sello_tecnico_auxiliar.mjs",
+    "module": "07_TOOLBOX/validaciones/auditar_ot0196_trazabilidad_sello_tecnico_auxiliar.mjs",
+    "ext": ".mjs",
+    "sha1": "fc880fa7b7b9",
+    "lineCount": 201,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 171,
+    "path": "07_TOOLBOX/validaciones/auditar_ot0199_trazabilidad_restricciones_advertencias.mjs",
+    "module": "07_TOOLBOX/validaciones/auditar_ot0199_trazabilidad_restricciones_advertencias.mjs",
+    "ext": ".mjs",
+    "sha1": "c91ff0a1de32",
+    "lineCount": 282,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 172,
+    "path": "07_TOOLBOX/validaciones/auditar_ot0201_trazabilidad_tiempo_concentracion_roles_tc.mjs",
+    "module": "07_TOOLBOX/validaciones/auditar_ot0201_trazabilidad_tiempo_concentracion_roles_tc.mjs",
+    "ext": ".mjs",
+    "sha1": "c635521008c9",
+    "lineCount": 174,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 173,
+    "path": "07_TOOLBOX/validaciones/auditar_ot0216_restricciones_advertencias_expediente.mjs",
+    "module": "07_TOOLBOX/validaciones/auditar_ot0216_restricciones_advertencias_expediente.mjs",
+    "ext": ".mjs",
+    "sha1": "445eb6737aaf",
+    "lineCount": 166,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 174,
+    "path": "07_TOOLBOX/validaciones/auditar_ot0232_forma_real_salida_expediente_minimo.mjs",
+    "module": "07_TOOLBOX/validaciones/auditar_ot0232_forma_real_salida_expediente_minimo.mjs",
+    "ext": ".mjs",
+    "sha1": "673574a0e563",
+    "lineCount": 163,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 175,
+    "path": "07_TOOLBOX/validaciones/clasificar_ot0218_restricciones_advertencias_expediente.mjs",
+    "module": "07_TOOLBOX/validaciones/clasificar_ot0218_restricciones_advertencias_expediente.mjs",
+    "ext": ".mjs",
+    "sha1": "bb3c749e434f",
+    "lineCount": 250,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 176,
+    "path": "07_TOOLBOX/validaciones/comparar_ot0126_identificacion_delegada_operativa.mjs",
+    "module": "07_TOOLBOX/validaciones/comparar_ot0126_identificacion_delegada_operativa.mjs",
+    "ext": ".mjs",
+    "sha1": "677ff67907ee",
+    "lineCount": 254,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 177,
+    "path": "07_TOOLBOX/validaciones/comparar_ot0136_parametros_base_delegado_operativo.mjs",
+    "module": "07_TOOLBOX/validaciones/comparar_ot0136_parametros_base_delegado_operativo.mjs",
+    "ext": ".mjs",
+    "sha1": "1cd92e628afd",
+    "lineCount": 212,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 178,
+    "path": "07_TOOLBOX/validaciones/comparar_ot0147_tiempo_concentracion_delegado_operativo.mjs",
+    "module": "07_TOOLBOX/validaciones/comparar_ot0147_tiempo_concentracion_delegado_operativo.mjs",
+    "ext": ".mjs",
+    "sha1": "904ff9ba1eae",
+    "lineCount": 214,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 179,
+    "path": "07_TOOLBOX/validaciones/comparar_ot0157_volumen_referencia_delegado_operativo.mjs",
+    "module": "07_TOOLBOX/validaciones/comparar_ot0157_volumen_referencia_delegado_operativo.mjs",
+    "ext": ".mjs",
+    "sha1": "53b0961cdac6",
+    "lineCount": 185,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 180,
+    "path": "07_TOOLBOX/validaciones/comparar_ot0167_escenario_qtr_activo_delegado_operativo.mjs",
+    "module": "07_TOOLBOX/validaciones/comparar_ot0167_escenario_qtr_activo_delegado_operativo.mjs",
+    "ext": ".mjs",
+    "sha1": "071f17761731",
+    "lineCount": 236,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 181,
+    "path": "07_TOOLBOX/validaciones/comparar_ot0176_resumen_q5_auditado_helper_operativo.mjs",
+    "module": "07_TOOLBOX/validaciones/comparar_ot0176_resumen_q5_auditado_helper_operativo.mjs",
+    "ext": ".mjs",
+    "sha1": "1862e1c43ec0",
+    "lineCount": 196,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 182,
+    "path": "07_TOOLBOX/validaciones/comparar_ot0188_helper_identificacion_ruta_operativa.mjs",
+    "module": "07_TOOLBOX/validaciones/comparar_ot0188_helper_identificacion_ruta_operativa.mjs",
+    "ext": ".mjs",
+    "sha1": "e5ef19ecdfdf",
+    "lineCount": 246,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 183,
+    "path": "07_TOOLBOX/validaciones/comparar_ot0193_helper_parametros_base_ruta_operativa.mjs",
+    "module": "07_TOOLBOX/validaciones/comparar_ot0193_helper_parametros_base_ruta_operativa.mjs",
+    "ext": ".mjs",
+    "sha1": "31ac0975f51d",
+    "lineCount": 220,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 184,
+    "path": "07_TOOLBOX/validaciones/comparar_ot0203_helper_roles_tc_ruta_operativa.mjs",
+    "module": "07_TOOLBOX/validaciones/comparar_ot0203_helper_roles_tc_ruta_operativa.mjs",
+    "ext": ".mjs",
+    "sha1": "179fa7c158c9",
+    "lineCount": 185,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 185,
+    "path": "07_TOOLBOX/validaciones/corregir_ot0156_diagnostico_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/corregir_ot0156_diagnostico_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "4e74a86db2f5",
+    "lineCount": 117,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 186,
+    "path": "07_TOOLBOX/validaciones/corregir_ot0164_helper_escenario_qtr_activo.mjs",
+    "module": "07_TOOLBOX/validaciones/corregir_ot0164_helper_escenario_qtr_activo.mjs",
+    "ext": ".mjs",
+    "sha1": "f79140bdb741",
+    "lineCount": 117,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 1
+  },
+  {
+    "id": 187,
+    "path": "07_TOOLBOX/validaciones/corregir_ot0174_helper_resumen_q5_auditado.mjs",
+    "module": "07_TOOLBOX/validaciones/corregir_ot0174_helper_resumen_q5_auditado.mjs",
+    "ext": ".mjs",
+    "sha1": "1afd29702951",
+    "lineCount": 39,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 188,
+    "path": "07_TOOLBOX/validaciones/corregir_ot0177_entidad_html_resumen_q5_auditado.mjs",
+    "module": "07_TOOLBOX/validaciones/corregir_ot0177_entidad_html_resumen_q5_auditado.mjs",
+    "ext": ".mjs",
+    "sha1": "dfdf1ba4cd21",
+    "lineCount": 43,
+    "domains": [
+      "Q5",
+      "QTr"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 189,
+    "path": "07_TOOLBOX/validaciones/extraer_ot0125_contexto_parche_identificacion.mjs",
+    "module": "07_TOOLBOX/validaciones/extraer_ot0125_contexto_parche_identificacion.mjs",
+    "ext": ".mjs",
+    "sha1": "91c7772299d9",
+    "lineCount": 135,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 190,
+    "path": "07_TOOLBOX/validaciones/extraer_ot0183_identificacion_operativo_diagnostico.mjs",
+    "module": "07_TOOLBOX/validaciones/extraer_ot0183_identificacion_operativo_diagnostico.mjs",
+    "ext": ".mjs",
+    "sha1": "895e3200d93f",
+    "lineCount": 193,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 191,
+    "path": "07_TOOLBOX/validaciones/revalidar_ot0225_helper_restricciones_advertencias_generales.mjs",
+    "module": "07_TOOLBOX/validaciones/revalidar_ot0225_helper_restricciones_advertencias_generales.mjs",
+    "ext": ".mjs",
+    "sha1": "34eb9caa082a",
+    "lineCount": 196,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 192,
+    "path": "07_TOOLBOX/validaciones/revalidar_ot0231_expediente_criterio_ajustado_tokens.mjs",
+    "module": "07_TOOLBOX/validaciones/revalidar_ot0231_expediente_criterio_ajustado_tokens.mjs",
+    "ext": ".mjs",
+    "sha1": "dcb3617a7543",
+    "lineCount": 354,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 193,
+    "path": "07_TOOLBOX/validaciones/revalidar_ot0234_expediente_normalizador_corregido.mjs",
+    "module": "07_TOOLBOX/validaciones/revalidar_ot0234_expediente_normalizador_corregido.mjs",
+    "ext": ".mjs",
+    "sha1": "d3aa0e461152",
+    "lineCount": 371,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 194,
+    "path": "07_TOOLBOX/validaciones/revisar_ot0200_bloques_reales_texto_expediente.mjs",
+    "module": "07_TOOLBOX/validaciones/revisar_ot0200_bloques_reales_texto_expediente.mjs",
+    "ext": ".mjs",
+    "sha1": "1a9b484738bc",
+    "lineCount": 189,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 195,
+    "path": "07_TOOLBOX/validaciones/trazar_ot0184_composicion_identificacion.mjs",
+    "module": "07_TOOLBOX/validaciones/trazar_ot0184_composicion_identificacion.mjs",
+    "ext": ".mjs",
+    "sha1": "a08c403bd3a0",
+    "lineCount": 173,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 196,
+    "path": "07_TOOLBOX/validaciones/validar_ot0124_identificacion.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0124_identificacion.mjs",
+    "ext": ".mjs",
+    "sha1": "f61235a16249",
+    "lineCount": 122,
+    "domains": [
+      "QTr",
+      "CN",
+      "IDF",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 197,
+    "path": "07_TOOLBOX/validaciones/validar_ot0125d_identificacion_diagnostica.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0125d_identificacion_diagnostica.mjs",
+    "ext": ".mjs",
+    "sha1": "47ffb6689905",
+    "lineCount": 72,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 198,
+    "path": "07_TOOLBOX/validaciones/validar_ot0127_unidades_identificacion.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0127_unidades_identificacion.mjs",
+    "ext": ".mjs",
+    "sha1": "eb3288f6cc93",
+    "lineCount": 72,
+    "domains": [
+      "QTr",
+      "CN",
+      "IDF",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 199,
+    "path": "07_TOOLBOX/validaciones/validar_ot0128_sustitucion_identificacion.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0128_sustitucion_identificacion.mjs",
+    "ext": ".mjs",
+    "sha1": "6e5f00238776",
+    "lineCount": 84,
+    "domains": [
+      "QTr",
+      "CN",
+      "IDF",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 200,
+    "path": "07_TOOLBOX/validaciones/validar_ot0129_post_adopcion_identificacion.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0129_post_adopcion_identificacion.mjs",
+    "ext": ".mjs",
+    "sha1": "9b3123acd50d",
+    "lineCount": 62,
+    "domains": [
+      "QTr",
+      "CN",
+      "IDF",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 201,
+    "path": "07_TOOLBOX/validaciones/validar_ot0133_helper_parametros_base.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0133_helper_parametros_base.mjs",
+    "ext": ".mjs",
+    "sha1": "7faf94f1f70a",
+    "lineCount": 87,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 202,
+    "path": "07_TOOLBOX/validaciones/validar_ot0134_helper_parametros_base_reforzada.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0134_helper_parametros_base_reforzada.mjs",
+    "ext": ".mjs",
+    "sha1": "7a41764a0afa",
+    "lineCount": 152,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 203,
+    "path": "07_TOOLBOX/validaciones/validar_ot0135_diagnostica_parametros_base.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0135_diagnostica_parametros_base.mjs",
+    "ext": ".mjs",
+    "sha1": "5eb18a4d49c6",
+    "lineCount": 66,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 204,
+    "path": "07_TOOLBOX/validaciones/validar_ot0137_sustitucion_parametros_base.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0137_sustitucion_parametros_base.mjs",
+    "ext": ".mjs",
+    "sha1": "403b1f997ee4",
+    "lineCount": 83,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 205,
+    "path": "07_TOOLBOX/validaciones/validar_ot0138_post_adopcion_parametros_base.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0138_post_adopcion_parametros_base.mjs",
+    "ext": ".mjs",
+    "sha1": "edb07da4704d",
+    "lineCount": 56,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 206,
+    "path": "07_TOOLBOX/validaciones/validar_ot0143_helper_tiempo_concentracion_roles_tc.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0143_helper_tiempo_concentracion_roles_tc.mjs",
+    "ext": ".mjs",
+    "sha1": "7163f51597c5",
+    "lineCount": 85,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 207,
+    "path": "07_TOOLBOX/validaciones/validar_ot0144_helper_tiempo_concentracion_reforzada.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0144_helper_tiempo_concentracion_reforzada.mjs",
+    "ext": ".mjs",
+    "sha1": "90d842169b95",
+    "lineCount": 156,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 208,
+    "path": "07_TOOLBOX/validaciones/validar_ot0145_fallback_tc_vacio_null.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0145_fallback_tc_vacio_null.mjs",
+    "ext": ".mjs",
+    "sha1": "b6d331234310",
+    "lineCount": 122,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 209,
+    "path": "07_TOOLBOX/validaciones/validar_ot0146_diagnostica_tiempo_concentracion.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0146_diagnostica_tiempo_concentracion.mjs",
+    "ext": ".mjs",
+    "sha1": "18a36bd30425",
+    "lineCount": 66,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 210,
+    "path": "07_TOOLBOX/validaciones/validar_ot0148_sustitucion_tiempo_concentracion.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0148_sustitucion_tiempo_concentracion.mjs",
+    "ext": ".mjs",
+    "sha1": "77ff893ce589",
+    "lineCount": 87,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 211,
+    "path": "07_TOOLBOX/validaciones/validar_ot0149_post_adopcion_tiempo_concentracion.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0149_post_adopcion_tiempo_concentracion.mjs",
+    "ext": ".mjs",
+    "sha1": "2ae1b5be9445",
+    "lineCount": 44,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 212,
+    "path": "07_TOOLBOX/validaciones/validar_ot0154_helper_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0154_helper_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "23dfe1a54329",
+    "lineCount": 96,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 213,
+    "path": "07_TOOLBOX/validaciones/validar_ot0155_helper_volumen_referencia_reforzada.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0155_helper_volumen_referencia_reforzada.mjs",
+    "ext": ".mjs",
+    "sha1": "de1558a43b08",
+    "lineCount": 157,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 214,
+    "path": "07_TOOLBOX/validaciones/validar_ot0156_diagnostica_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0156_diagnostica_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "48813ae3f883",
+    "lineCount": 78,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 215,
+    "path": "07_TOOLBOX/validaciones/validar_ot0158_sustitucion_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0158_sustitucion_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "dcdc4e04c9bc",
+    "lineCount": 47,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 216,
+    "path": "07_TOOLBOX/validaciones/validar_ot0159_post_adopcion_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0159_post_adopcion_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "7f3cc95c191d",
+    "lineCount": 46,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 217,
+    "path": "07_TOOLBOX/validaciones/validar_ot0164_helper_escenario_qtr_activo.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0164_helper_escenario_qtr_activo.mjs",
+    "ext": ".mjs",
+    "sha1": "6c9d373fb5ec",
+    "lineCount": 186,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 218,
+    "path": "07_TOOLBOX/validaciones/validar_ot0165_helper_escenario_qtr_activo_reforzada.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0165_helper_escenario_qtr_activo_reforzada.mjs",
+    "ext": ".mjs",
+    "sha1": "2c2d5ca14ab4",
+    "lineCount": 249,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 219,
+    "path": "07_TOOLBOX/validaciones/validar_ot0166_diagnostica_escenario_qtr_activo.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0166_diagnostica_escenario_qtr_activo.mjs",
+    "ext": ".mjs",
+    "sha1": "72d5d73d351a",
+    "lineCount": 72,
+    "domains": [
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 220,
+    "path": "07_TOOLBOX/validaciones/validar_ot0168_sustitucion_escenario_qtr_activo.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0168_sustitucion_escenario_qtr_activo.mjs",
+    "ext": ".mjs",
+    "sha1": "e1d27b549104",
+    "lineCount": 96,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 221,
+    "path": "07_TOOLBOX/validaciones/validar_ot0169_post_adopcion_escenario_qtr_activo.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0169_post_adopcion_escenario_qtr_activo.mjs",
+    "ext": ".mjs",
+    "sha1": "3dde4408ddf4",
+    "lineCount": 70,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 222,
+    "path": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+    "ext": ".mjs",
+    "sha1": "a1c048b03886",
+    "lineCount": 98,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 223,
+    "path": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+    "ext": ".mjs",
+    "sha1": "a9e89a5199b8",
+    "lineCount": 137,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 2,
+    "exportsCount": 0
+  },
+  {
+    "id": 224,
+    "path": "07_TOOLBOX/validaciones/validar_ot0177_diagnostico_resumen_q5_auditado.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0177_diagnostico_resumen_q5_auditado.mjs",
+    "ext": ".mjs",
+    "sha1": "660722c43bd0",
+    "lineCount": 84,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 225,
+    "path": "07_TOOLBOX/validaciones/validar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+    "ext": ".mjs",
+    "sha1": "2c0d9ef80711",
+    "lineCount": 131,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 226,
+    "path": "07_TOOLBOX/validaciones/validar_ot0179_post_adopcion_resumen_q5_auditado.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0179_post_adopcion_resumen_q5_auditado.mjs",
+    "ext": ".mjs",
+    "sha1": "ec8860d37725",
+    "lineCount": 137,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 227,
+    "path": "07_TOOLBOX/validaciones/validar_ot0186_helper_identificacion_aislada.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0186_helper_identificacion_aislada.mjs",
+    "ext": ".mjs",
+    "sha1": "13e8a8fb1fb9",
+    "lineCount": 212,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 228,
+    "path": "07_TOOLBOX/validaciones/validar_ot0192_helper_parametros_base_aislada.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0192_helper_parametros_base_aislada.mjs",
+    "ext": ".mjs",
+    "sha1": "967a4b6637e2",
+    "lineCount": 239,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 229,
+    "path": "07_TOOLBOX/validaciones/validar_ot0202_helper_roles_tc_aislada.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0202_helper_roles_tc_aislada.mjs",
+    "ext": ".mjs",
+    "sha1": "a492711a3c82",
+    "lineCount": 225,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 230,
+    "path": "07_TOOLBOX/validaciones/validar_ot0223_helper_restricciones_advertencias_generales_expediente.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0223_helper_restricciones_advertencias_generales_expediente.mjs",
+    "ext": ".mjs",
+    "sha1": "abccde6f8299",
+    "lineCount": 202,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 1,
+    "exportsCount": 0
+  },
+  {
+    "id": 231,
+    "path": "07_TOOLBOX/validaciones/validar_ot0229_expediente_restricciones_advertencias_acoplado.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0229_expediente_restricciones_advertencias_acoplado.mjs",
+    "ext": ".mjs",
+    "sha1": "d07f113971e8",
+    "lineCount": 293,
+    "domains": [
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 232,
+    "path": "07_TOOLBOX/validaciones/validar_ot0241_helper_identificacion_expediente.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0241_helper_identificacion_expediente.mjs",
+    "ext": ".mjs",
+    "sha1": "70a01009f4dc",
+    "lineCount": 210,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 3,
+    "exportsCount": 0
+  },
+  {
+    "id": 233,
+    "path": "07_TOOLBOX/validaciones/validar_ot0245_acople_helper_identificacion_expediente.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0245_acople_helper_identificacion_expediente.mjs",
+    "ext": ".mjs",
+    "sha1": "7f5ce2a37b1a",
+    "lineCount": 392,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 234,
+    "path": "07_TOOLBOX/validaciones/validar_ot0254_helper_parametros_hidrologicos_base.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0254_helper_parametros_hidrologicos_base.mjs",
+    "ext": ".mjs",
+    "sha1": "ec8ee3e04a7d",
+    "lineCount": 407,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "IDF",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 235,
+    "path": "07_TOOLBOX/validaciones/validar_ot0258_acople_helper_parametros_hidrologicos_base.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0258_acople_helper_parametros_hidrologicos_base.mjs",
+    "ext": ".mjs",
+    "sha1": "ce394818a2f2",
+    "lineCount": 401,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 236,
+    "path": "07_TOOLBOX/validaciones/validar_ot0260_revalidacion_acople_helper_parametros_hidrologicos_base.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0260_revalidacion_acople_helper_parametros_hidrologicos_base.mjs",
+    "ext": ".mjs",
+    "sha1": "2835a0c19ba7",
+    "lineCount": 394,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 237,
+    "path": "07_TOOLBOX/validaciones/validar_ot0267_helper_tc_roles.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0267_helper_tc_roles.mjs",
+    "ext": ".mjs",
+    "sha1": "faef64e75550",
+    "lineCount": 441,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 238,
+    "path": "07_TOOLBOX/validaciones/validar_ot0271_acople_helper_tc_roles.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0271_acople_helper_tc_roles.mjs",
+    "ext": ".mjs",
+    "sha1": "0a9aec878c20",
+    "lineCount": 366,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 239,
+    "path": "07_TOOLBOX/validaciones/validar_ot0273_revalidacion_acople_helper_tc_roles.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0273_revalidacion_acople_helper_tc_roles.mjs",
+    "ext": ".mjs",
+    "sha1": "a1e1be22c0e2",
+    "lineCount": 393,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 240,
+    "path": "07_TOOLBOX/validaciones/validar_ot0275_runtime_tc_roles.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0275_runtime_tc_roles.mjs",
+    "ext": ".mjs",
+    "sha1": "aaeed569769a",
+    "lineCount": 411,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 241,
+    "path": "07_TOOLBOX/validaciones/validar_ot0281_helper_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0281_helper_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "d62c1d410865",
+    "lineCount": 365,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 242,
+    "path": "07_TOOLBOX/validaciones/validar_ot0283_helper_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0283_helper_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "1f2fdf9272d3",
+    "lineCount": 366,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 243,
+    "path": "07_TOOLBOX/validaciones/validar_ot0287_acople_helper_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0287_acople_helper_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "9b675e8a49b2",
+    "lineCount": 407,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 244,
+    "path": "07_TOOLBOX/validaciones/validar_ot0289_acople_helper_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0289_acople_helper_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "c001ba05d832",
+    "lineCount": 423,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 245,
+    "path": "07_TOOLBOX/validaciones/validar_ot0290_salida_real_helper_volumen_referencia.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0290_salida_real_helper_volumen_referencia.mjs",
+    "ext": ".mjs",
+    "sha1": "d9646a76fdeb",
+    "lineCount": 372,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 246,
+    "path": "07_TOOLBOX/validaciones/validar_ot0296_helper_escenario_qtr.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0296_helper_escenario_qtr.mjs",
+    "ext": ".mjs",
+    "sha1": "373ebf756c8d",
+    "lineCount": 357,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 247,
+    "path": "07_TOOLBOX/validaciones/validar_ot0300_acople_helper_escenario_qtr.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0300_acople_helper_escenario_qtr.mjs",
+    "ext": ".mjs",
+    "sha1": "9e3284026dfa",
+    "lineCount": 421,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 248,
+    "path": "07_TOOLBOX/validaciones/validar_ot0301_salida_real_helper_escenario_qtr.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0301_salida_real_helper_escenario_qtr.mjs",
+    "ext": ".mjs",
+    "sha1": "39b1edad3fca",
+    "lineCount": 379,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 249,
+    "path": "07_TOOLBOX/validaciones/validar_ot0307_helper_resumen_q5.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0307_helper_resumen_q5.mjs",
+    "ext": ".mjs",
+    "sha1": "495e44d3f0a5",
+    "lineCount": 434,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 250,
+    "path": "07_TOOLBOX/validaciones/validar_ot0308_ajuste_criterio_helper_resumen_q5.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0308_ajuste_criterio_helper_resumen_q5.mjs",
+    "ext": ".mjs",
+    "sha1": "cc9db3aee49a",
+    "lineCount": 452,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente"
+    ],
+    "importsCount": 4,
+    "exportsCount": 0
+  },
+  {
+    "id": 251,
+    "path": "07_TOOLBOX/validaciones/validar_ot0312_acople_resumen_q5.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0312_acople_resumen_q5.mjs",
+    "ext": ".mjs",
+    "sha1": "1c6b6ed51b48",
+    "lineCount": 434,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 252,
+    "path": "07_TOOLBOX/validaciones/validar_ot0313_salida_real_resumen_q5.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0313_salida_real_resumen_q5.mjs",
+    "ext": ".mjs",
+    "sha1": "879339a61533",
+    "lineCount": 486,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 253,
+    "path": "07_TOOLBOX/validaciones/validar_ot0316_salida_real_qtr_activo.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0316_salida_real_qtr_activo.mjs",
+    "ext": ".mjs",
+    "sha1": "d2bae217b78d",
+    "lineCount": 448,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 254,
+    "path": "07_TOOLBOX/validaciones/validar_ot0317_correccion_qtr_activo.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0317_correccion_qtr_activo.mjs",
+    "ext": ".mjs",
+    "sha1": "e6f3a952ff3f",
+    "lineCount": 286,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 255,
+    "path": "07_TOOLBOX/validaciones/validar_ot0319_metodo_racional_contraste.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0319_metodo_racional_contraste.mjs",
+    "ext": ".mjs",
+    "sha1": "0c99e5fde2ed",
+    "lineCount": 354,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 256,
+    "path": "07_TOOLBOX/validaciones/validar_ot0320_metodo_racional_corregido.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0320_metodo_racional_corregido.mjs",
+    "ext": ".mjs",
+    "sha1": "ff1bdd07a1d8",
+    "lineCount": 357,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 257,
+    "path": "07_TOOLBOX/validaciones/validar_ot0321_metodo_racional_revalidado.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0321_metodo_racional_revalidado.mjs",
+    "ext": ".mjs",
+    "sha1": "aeed67e3f486",
+    "lineCount": 352,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 258,
+    "path": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+    "ext": ".mjs",
+    "sha1": "7805dd9e99cd",
+    "lineCount": 349,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  },
+  {
+    "id": 259,
+    "path": "07_TOOLBOX/validaciones/validar_ot0323_control_pe_area_volumen_q5.mjs",
+    "module": "07_TOOLBOX/validaciones/validar_ot0323_control_pe_area_volumen_q5.mjs",
+    "ext": ".mjs",
+    "sha1": "2f093675c28a",
+    "lineCount": 393,
+    "domains": [
+      "Q5",
+      "QTr",
+      "CN",
+      "Tc",
+      "Racional",
+      "Expediente",
+      "Contexto"
+    ],
+    "importsCount": 5,
+    "exportsCount": 0
+  }
+]

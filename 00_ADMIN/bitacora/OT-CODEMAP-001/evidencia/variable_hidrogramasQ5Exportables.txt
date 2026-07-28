@@ -1,0 +1,8 @@
+[variable] hidrogramasQ5Exportables en 01_APP/HIDROFLOW/src/HidroFlow.jsx:2342
+  Dominios: Q5, Contexto
+  Referencias (5):
+    01_APP/HIDROFLOW/src/HidroFlow.jsx:2364
+    01_APP/HIDROFLOW/src/HidroFlow.jsx:2383
+    01_APP/HIDROFLOW/src/HidroFlow.jsx:2403
+    01_APP/HIDROFLOW/src/HidroFlow.jsx:2404
+    07_TOOLBOX/codemap/hf-codemap.config.json:25
