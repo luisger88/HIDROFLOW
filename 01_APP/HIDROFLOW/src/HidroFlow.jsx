@@ -1,7 +1,10 @@
 import { CUENCA_DEFAULT_ID, getCuencaById } from "./data/cuencasCatalogo";
 
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
-import { getTrState, subscribeTr } from "./agents/trAgent";
+import { getTrState, setTrState, subscribeTr } from "./agents/trAgent";
+
+import { ORQUESTADOR_ESTADO }
+from "./data/orquestadorEstado";
 
 import {
   LineChart,
@@ -25,8 +28,11 @@ import {
 
 import HidrogramaResultado from "./components/HidrogramaResultado";
 import { getTcState, setTcState } from "./agents/tcAgent";
+import { getContratoCuencaState, setContratoCuencaState } from "./agents/contratoCuencaAgent";
 import { derivarEstadoQTrActivo } from "./services/qtr/derivarEstadoQTrActivo";
 import { construirQTrMultiEscenario } from "./services/qtr/construirQTrMultiEscenario";
+import { derivarContratoCuenca } from "./services/gobierno/derivarContratoCuenca";
+import { cargarContratoCuencaDesdeHFPROJ } from "./services/gobierno/cargarContratoCuencaDesdeHFPROJ";
 
 import {
   calcCNdinamico,
@@ -41,6 +47,7 @@ import {
 import { obtenerTrazabilidadCN } from "./services/cn/obtenerTrazabilidadCN";
 
 import resolverCuencaDesdeCoordenadas
+
 from "./services/master/resolverCuencaDesdeCoordenadas";
 
 
@@ -297,6 +304,9 @@ function calcClarkIUH(area, tc_h, dt_min, kR=1.2){
     return +Math.max(u,0).toFixed(7);
   });
   const tp   = tc_h;  // tiempo al pico
+
+  
+
   const normalizado = normalizarHUaMm(uh, area, dt_min);
   return{tp,qp:normalizado.qp,tc_h,R,kR,uh:normalizado.uh,factorNormalizacion:normalizado.factor,metadata:{nombre:"Clark IUH",color:C.accent4}};
 }
@@ -308,6 +318,8 @@ function calcHidroCompleto(lluvRows, uh_struct, dt_min){
     return v>0 || (a[i-1]>0||a[i+1]>0);
   });
   const peAll = lluvRows.slice(1).map(r=>Math.max(r.PeIncrem||0,0));
+
+
   const qSeries = convolucion(uh_struct.uh, peAll, dt_min);
   const Qpico = Math.max(...qSeries.map(r=>r.Q));
   const tPico = qSeries.find(r=>r.Q>=Qpico*0.9999)?.t || 0;
@@ -1527,6 +1539,7 @@ function ModHietogramas({ est, name, params, setParams }) {
   const [Tr, setTr] = useState(25);
   const [durH, setDurH] = useState(3);
   const [dtMin, setDtMin] = useState(() => +params.dt || 5);
+  
   // Sync dtMin when params.dt changes externally (ej: carga de datos)
   useEffect(() => { if (params.dt && +params.dt !== dtMin) setDtMin(+params.dt); }, [params.dt]);
   const [guardarAMCenPanel, setGuardarAMCenPanel] = useState(false);
@@ -2005,7 +2018,13 @@ useEffect(() => {
 // ═══════════════════════════════════════════════════════════════════════════════
 // MÓDULO HIDROGRAMAS — 5 Métodos con convolución completa (robusto para gráficas)
 // ═══════════════════════════════════════════════════════════════════════════════
-function ModHidrogramas({ params, est, name, onContextoComparador }) {
+function ModHidrogramas({
+  params,
+  est,
+  name,
+  onContextoComparador,
+  contextoComparador
+}) {
 
   // --- DEBUG: blindaje temporal ---
   // Evita crash por referencias residuales a guardarAMCenPanel
@@ -2014,6 +2033,7 @@ function ModHidrogramas({ params, est, name, onContextoComparador }) {
   // ── Controles superiores
   const [Tr, setTr]       = useState(25);
   const [dtMin, setDtMin] = useState(() => +params.dt || 5);
+  
   // --- DEBUG: blindaje temporal ---
   
 
@@ -2074,6 +2094,7 @@ function ModHidrogramas({ params, est, name, onContextoComparador }) {
     [hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark].map(hu => calcHidroCompleto(lluvEfect, hu, dtMin))
   ), [lluvEfect, hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark, dtMin]);
 
+ 
 
 const qTrMultiEscenario = useMemo(() => {
 
@@ -2318,6 +2339,7 @@ const leerT = (punto, indice) => {
   // Por defecto permanece desactivada para conservar el comportamiento actual.
   const publicarQSeries = true;
 
+  
   const hidrogramasQ5Exportables = (hidros || []).map((h) => ({
     metodo: h?.metodo ?? "Método Q-5",
     Qpico: h?.Qpico,
@@ -2336,7 +2358,14 @@ const leerT = (punto, indice) => {
 
   // NO HEREDAR CONTEXTO HIDROLÓGICO ENTRE CUENCAS
 
-  casoActivo: previo?.casoActivo,
+  casoActivo: {
+  ...(previo?.casoActivo ?? {}),
+  hidrogramas: {
+    fuente: "ModHidrogramas",
+    resultados: hidrogramasQ5Exportables
+  }
+},
+
 
   fuente: "motor HidroFlow",
 
@@ -2545,6 +2574,7 @@ const qaStatus = useMemo(() => {
   useEffect(() => {
     if (!import.meta.env.DEV) return;
     console.log('[DEBUG] seriesOK:', seriesOK.map(h => ({ metodo: h.metodo, len: h.qSeries?.length })));
+    
     console.log('[DEBUG] combined len:', combined.length, 'n=', n, 'step=', step);
   }, [seriesOK, combined, n, step]);
 
@@ -2642,6 +2672,7 @@ const qaStatus = useMemo(() => {
               />
               <Tooltip wrapperStyle={{ background:'#0F1624', border:'1px solid #1F2F45' }} />
               <Legend wrapperStyle={{ color:'#9AA4B2' }} />
+              
               {seriesOK.map(h => (
                 <Line
                   key={h.metodo}
@@ -2661,7 +2692,7 @@ const qaStatus = useMemo(() => {
       {/* …si tienes más controles, tarjetas por método y comparativas de HU, déjalos debajo… */}
     </div>
   );
-}
+ }
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // MÓDULO SAR — GT-AS-004 §3 Almacenamiento y Regulación (COMPLETO)
@@ -3130,6 +3161,8 @@ function ModInfluencia({params}){
   }),[pond,activos,excl]);
 
   const estsConPeso=useMemo(()=>ESTACIONES_SIATA.map((e,i)=>({...e,...pesosMap[i]})),[pesosMap]);
+  const dominante =
+  pond.find(e => e.dominante) || null;
 const idfPond=useMemo(()=>calcIDFPond(pond,dMin,Tr),[pond,dMin,Tr]);
   const idfDom=dominante?.epm_key&&ESTACIONES_EPM[dominante.epm_key]?idfI(ESTACIONES_EPM[dominante.epm_key],dMin,Tr):0;
 
@@ -3712,6 +3745,7 @@ export default function HidroFlow({
   tab: tabExterno,
   setTab: setTabExterno,
   onContextoComparador,
+  contextoComparador: contextoLayout,
 }) {
   // ------------------------------------------------------------
 // Manejo de tabs (modo controlado / no controlado)
@@ -3726,9 +3760,25 @@ const tab = tabExterno ?? tabInterno;
 const setTab = setTabExterno ?? setTabInterno;
 
   const [params, setParams] = useState(() => getCuencaById(CUENCA_DEFAULT_ID));
+
+
   const [stn, setStn] = useState("SAN CRISTOBAL");
 
   const [trStateGlobal, setTrStateGlobal] = useState(getTrState());
+
+  const [expediente, setExpediente] = useState(null);
+
+  const [contextoComparador, setContextoComparador] = useState({});
+
+  const resumenExpediente = expediente
+  ? {
+      contrato: expediente.versionContrato,
+      cuenca: expediente.cuenca?.nombre,
+      tc: expediente.tiempoConcentracion?.tcSugeridoMinutos,
+      cn:
+        expediente.lluviaYAbstraccion?.cnEfectivo
+    }
+  : null;
 
   useEffect(() => {
 
@@ -3736,24 +3786,114 @@ const setTab = setTabExterno ?? setTabInterno;
     .then(r => r.json())
     .then(proyecto => {
 
+      // Cargar ContratoCuenca desde HFPROJ_v1 (o legacy)
+      const contratoCargado = cargarContratoCuencaDesdeHFPROJ(proyecto);
+
       if (
-        proyecto?.estado_operativo?.params
-      ) {
+  proyecto?.estado_operativo?.params
+) {
 
-        setParams(
-          proyecto.estado_operativo.params
-        );
+  setParams(prev => ({
+    ...prev,
+    ...proyecto.estado_operativo.params
+  }));
 
+
+}
+
+      if (contratoCargado) {
+        // Sincronizar agentes Tc y Tr
+        if (contratoCargado.tc?.Tc_final_min != null) {
+          setTcState({
+            Tc_final: contratoCargado.tc.Tc_final_min,
+            metodosTc: contratoCargado.tc.metodosTc ?? null,
+            contextoTc: { fuente: "HFPROJ_v1", cargado: new Date().toISOString() }
+          });
+        }
+        if (contratoCargado.qtr?.tr_diseno_activo != null) {
+          setTrState({
+            Tr_activo: contratoCargado.qtr.tr_diseno_activo,
+            fuente: "HFPROJ_v1"
+          });
+        }
+
+        // Restaurar estado local desde ContratoCuenca
+        if (contratoCargado.cuenca?.area_km2 != null) {
+          setParams(prev => ({
+            ...prev,
+            area: contratoCargado.cuenca.area_km2,
+            area_km2: contratoCargado.cuenca.area_km2,
+            nombre_cuenca: contratoCargado.cuenca.nombre ?? prev?.nombre_cuenca,
+            longitud_cauce: contratoCargado.cuenca.longitud_cauce_km ?? prev?.longitud_cauce,
+            cota_mayor_cauce: contratoCargado.cuenca.cota_mayor_cauce_msnm ?? prev?.cota_mayor_cauce,
+            cota_menor_cauce: contratoCargado.cuenca.cota_menor_cauce_msnm ?? prev?.cota_menor_cauce
+          }));
+        }
+        if (contratoCargado.cn?.cnBase != null) {
+          setParams(prev => ({
+            ...prev,
+            cnBase: contratoCargado.cn.cnBase,
+            CN: contratoCargado.cn.cnBase
+          }));
+        }
+        if (contratoCargado.cn?.amc != null) {
+          setParams(prev => ({ ...prev, amcActual: contratoCargado.cn.amc }));
+        }
+        if (contratoCargado.cn?.porcentajeImpermeable != null) {
+          setParams(prev => ({ ...prev, porcentajeImpermeable: contratoCargado.cn.porcentajeImpermeable }));
+        }
+        if (contratoCargado.qtr?.estacion_idf) {
+          setStn(contratoCargado.qtr.estacion_idf);
+        }
+        if (contratoCargado.expediente?.entregable) {
+          setExpediente(contratoCargado.expediente.entregable);
+        }
+
+        onContextoComparador(prev => ({
+          ...(prev ?? {}),
+          contratoCuenca: contratoCargado,
+          area_km2: contratoCargado.cuenca?.area_km2 ?? prev?.area_km2,
+          lluvia_efectiva_total_mm: contratoCargado.hidrogramas?.lluvia_efectiva_total_mm ?? prev?.lluvia_efectiva_total_mm,
+          hidrogramas: contratoCargado.hidrogramas?.resultados?.length > 0
+            ? { fuente: "HFPROJ_v1", resultados: contratoCargado.hidrogramas.resultados }
+            : prev?.hidrogramas,
+          hidrogramas_resumen: contratoCargado.hidrogramas?.resumen ?? prev?.hidrogramas_resumen,
+          tc_global: contratoCargado.tc?.Tc_final_min ?? prev?.tc_global,
+          cnBase: contratoCargado.cn?.cnBase ?? prev?.cnBase,
+          CN: contratoCargado.cn?.cnBase ?? prev?.CN,
+          amcActual: contratoCargado.cn?.amc ?? prev?.amcActual,
+          porcentajeImpermeable: contratoCargado.cn?.porcentajeImpermeable ?? prev?.porcentajeImpermeable,
+          estacion_idf: contratoCargado.qtr?.estacion_idf ?? prev?.estacion_idf,
+          tr_diseno_activo: contratoCargado.qtr?.tr_diseno_activo ?? prev?.tr_diseno_activo,
+          q_tr_activo_estado: contratoCargado.qtr?.q_tr_activo ? {
+            estado: contratoCargado.qtr.estado,
+            q_tr_activo: contratoCargado.qtr.q_tr_activo
+          } : prev?.q_tr_activo_estado,
+          q_tr_multiescenario: contratoCargado.qtr?.q_tr_multiescenario ?? prev?.q_tr_multiescenario,
+          qSeriesPublicadas: contratoCargado.hidrogramas?.qSeriesPublicadas ?? prev?.qSeriesPublicadas,
+          volumenEsperadoM3: contratoCargado.hidrogramas?.volumenEsperadoM3 ?? prev?.volumenEsperadoM3
+        }));
       }
+
+      if (proyecto?.expediente) {
+  setExpediente(
+    proyecto.expediente
+  );
+}
+
 
     })
     .catch(console.error);
 
 }, []);
-  useEffect(() => {
-    const cancelarSuscripcionTr = subscribeTr(setTrStateGlobal);
-    return cancelarSuscripcionTr;
-  }, []);
+
+
+useEffect(() => {
+  const cancelarSuscripcionTr =
+    subscribeTr(setTrStateGlobal);
+
+  return cancelarSuscripcionTr;
+}, []);
 
 useEffect(() => {
   if (typeof onContextoComparador !== "function") return;
@@ -3773,7 +3913,12 @@ useEffect(() => {
 
   const estacionRacional = ESTACIONES_EPM[stn];
 
-
+console.table({
+  estacionRacional: !!estacionRacional,
+  area: Number(params?.area),
+  cn: Number(params?.CN),
+  tcRacionalMin: Number(tcRacionalMin)
+});
 
   const resultadosRacionalExportable =
     estacionRacional &&
@@ -3788,6 +3933,11 @@ useEffect(() => {
           Number(params.CN)
         )
       : [];
+
+      console.log(
+  "AUDITORIA_RESULTADOS_RACIONAL_EXPORTABLE",
+  resultadosRacionalExportable
+);
 
       const trazabilidadCN = obtenerTrazabilidadCN({
   amcActual:
@@ -3804,9 +3954,13 @@ useEffect(() => {
   cnBase
 });
 
+
   onContextoComparador((previo) => ({
-    ...(previo ?? {}),
-	
+  ...(previo ?? {}),
+
+  expediente,
+
+
 	casoActivo:{
   idCaso: previo?.casoActivo?.idCaso ?? "CASO-0001",
   tipo:"CASO_HIDROLOGICO",
@@ -4052,10 +4206,13 @@ q_tr_activo_estado: derivarEstadoQTrActivo({
     previo?.lluvia_efectiva_total_mm ?? null
 }),
 
-    hidrogramas: previo?.hidrogramas ?? {
-      fuente: "pendiente",
-      resultados: []
-    },
+    hidrogramas:
+  previo?.hidrogramas?.resultados?.length > 0
+    ? previo.hidrogramas
+    : previo?.hidrogramas_resumen?.length > 0
+    ? { fuente: "ModHidrogramas", resultados: previo.hidrogramas_resumen }
+    : previo?.hidrogramas ?? null,
+
     hidrogramas_resumen: previo?.hidrogramas_resumen ?? null,
     hidrograma_principal: previo?.hidrograma_principal ?? null,
   }));
@@ -4120,6 +4277,30 @@ useEffect(() => {
       fuente: "hidroflow_base"
     }
   });
+
+  setContratoCuencaState(
+  derivarContratoCuenca({
+    params,
+    trActivo: getTrState()?.Tr_activo ?? 25,
+    periodosRetorno: TR_LIST,
+    puntoControl: "La Iguaná PC_80",
+    contextoBase: contextoLayout,
+
+    contextoInstitucional: {
+      expedienteActivo: null,
+      estadoGobernanza:
+        ORQUESTADOR_ESTADO?.estadoActual ?? null,
+      memoriaTecnicaActiva:
+        ORQUESTADOR_ESTADO?.memoriaTecnica ?? [],
+      oiVigentes:
+        ORQUESTADOR_ESTADO?.oiVigentes ?? []
+    },
+
+    expediente
+
+  })
+);
+
 }, [params]);
   
   // ────────────────── Defaults AMC / %imperv / CNbase (solo si faltan) ──────────────────
@@ -4180,7 +4361,64 @@ useEffect(() => {
       
       <button data-id="blind-hidro" onClick={(e)=>{e.preventDefault(); e.stopPropagation(); setTab("hidro");}}
         style={{padding:"4px 9px",borderRadius:6,border:"none",cursor:"pointer",background:"transparent",color:C.muted, fontSize:9.5,fontWeight:500}}
-        title="Ir a Hidrogramas (SPA)">≋</button></nav>
+        title="Ir a Hidrogramas (SPA)">≋</button>
+      <div style={{width:1,height:16,background:C.border}}/>
+      <button onClick={() => document.getElementById("hfproj-file-input")?.click()}
+        style={{padding:"4px 9px",borderRadius:6,border:`1px solid ${C.border}`,cursor:"pointer",background:"transparent",color:C.accent, fontSize:9.5,fontWeight:600}}
+        title="Abrir archivo .hfproj">Abrir HFPROJ</button>
+      <button onClick={async () => {
+        const cc = getContratoCuencaState();
+        if (!cc) { alert("No hay ContratoCuenca activo. Navegue a algun modulo para generarlo."); return; }
+        try {
+          const r = await fetch("http://localhost:4000/api/proyecto/activo", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ schema: "HFPROJ_v1", version: "1.0.0", createdAt: new Date().toISOString(), projectOwner: "Luis German Montoya", projectStatus: "ACTIVE", contratoCuenca: cc })
+          });
+          if (r.ok) alert("HFPROJ guardado: " + (cc.cuenca?.nombre || "sin nombre"));
+          else alert("Error al guardar: " + r.status);
+        } catch(e) { alert("Error: " + e.message); }
+      }}
+        style={{padding:"4px 9px",borderRadius:6,border:`1px solid ${C.accent}`,cursor:"pointer",background:`${C.accent}15`,color:C.accent2, fontSize:9.5,fontWeight:600}}
+        title="Guardar ContratoCuenca en .hfproj">Guardar HFPROJ</button>
+      <input id="hfproj-file-input" type="file" accept=".hfproj" style={{display:"none"}}
+        onChange={async (e) => {
+          const file = e.target.files?.[0];
+          if (!file) return;
+          try {
+            const text = await file.text();
+            const proyecto = JSON.parse(text);
+            const contratoCargado = cargarContratoCuencaDesdeHFPROJ(proyecto);
+            if (!contratoCargado) { alert("Archivo .hfproj invalido o vacio."); return; }
+            // Replicar logica de restauracion HF-PROD-006A/006B
+            if (contratoCargado.tc?.Tc_final_min != null) {
+              setTcState({ Tc_final: contratoCargado.tc.Tc_final_min, metodosTc: contratoCargado.tc.metodosTc ?? null, contextoTc: { fuente: "hfproj", cargado: new Date().toISOString() } });
+            }
+            if (contratoCargado.qtr?.tr_diseno_activo != null) {
+              setTrState({ Tr_activo: contratoCargado.qtr.tr_diseno_activo, fuente: "hfproj" });
+            }
+            if (contratoCargado.cuenca?.area_km2 != null) {
+              setParams(prev => ({ ...prev, area: contratoCargado.cuenca.area_km2, area_km2: contratoCargado.cuenca.area_km2, nombre_cuenca: contratoCargado.cuenca.nombre ?? prev?.nombre_cuenca, longitud_cauce: contratoCargado.cuenca.longitud_cauce_km ?? prev?.longitud_cauce, cota_mayor_cauce: contratoCargado.cuenca.cota_mayor_cauce_msnm ?? prev?.cota_mayor_cauce, cota_menor_cauce: contratoCargado.cuenca.cota_menor_cauce_msnm ?? prev?.cota_menor_cauce }));
+            }
+            if (contratoCargado.cn?.cnBase != null) setParams(prev => ({ ...prev, cnBase: contratoCargado.cn.cnBase, CN: contratoCargado.cn.cnBase }));
+            if (contratoCargado.cn?.amc != null) setParams(prev => ({ ...prev, amcActual: contratoCargado.cn.amc }));
+            if (contratoCargado.cn?.porcentajeImpermeable != null) setParams(prev => ({ ...prev, porcentajeImpermeable: contratoCargado.cn.porcentajeImpermeable }));
+            if (contratoCargado.qtr?.estacion_idf) setStn(contratoCargado.qtr.estacion_idf);
+            if (contratoCargado.expediente?.entregable) setExpediente(contratoCargado.expediente.entregable);
+            onContextoComparador(prev => ({ ...(prev ?? {}),
+              contratoCuenca: contratoCargado,
+              area_km2: contratoCargado.cuenca?.area_km2 ?? prev?.area_km2,
+              lluvia_efectiva_total_mm: contratoCargado.hidrogramas?.lluvia_efectiva_total_mm ?? prev?.lluvia_efectiva_total_mm,
+              hidrogramas: contratoCargado.hidrogramas?.resultados?.length > 0 ? { fuente: "hfproj", resultados: contratoCargado.hidrogramas.resultados } : prev?.hidrogramas,
+              hidrogramas_resumen: contratoCargado.hidrogramas?.resumen ?? prev?.hidrogramas_resumen,
+              tc_global: contratoCargado.tc?.Tc_final_min ?? prev?.tc_global,
+              cnBase: contratoCargado.cn?.cnBase ?? prev?.cnBase,
+              estacion_idf: contratoCargado.qtr?.estacion_idf ?? prev?.estacion_idf
+            }));
+            e.target.value = "";
+            alert("Proyecto HFPROJ cargado: " + (contratoCargado.cuenca?.nombre || "sin nombre"));
+          } catch (err) { alert("Error al leer .hfproj: " + err.message); }
+        }}/></nav>
     </div>
 
     {/* Accent bar */}
@@ -4215,24 +4453,26 @@ useEffect(() => {
   est={est}
   name={stn}
   onContextoComparador={onContextoComparador}
+  contextoComparador={contextoComparador}
 />
 
 {tab==="hidro" && (
   <></>
 )}
-      {tab==="racional"   &&<ModRacional   params={params} est={est} name={stn} onContextoComparador={onContextoComparador}/>}
+      {tab==="racional" &&
+  <ModRacional
+    params={params}
+    est={est}
+    name={stn}
+    onContextoComparador={onContextoComparador}
+  />
+}
       {tab==="sar"        &&<ModSAR        params={params} est={est} name={stn}/>}
-      {tab === "Influencia" && (
-        <div style={{
-           padding: 20,
-           color: "#9fffe8",
-           fontFamily: "monospace"
-        }}>
-           Módulo de influencia IDF en desarrollo.
-           <br />
-           Próximamente: ponderación espacial (IDW / Thiessen / altitud).
-        </div>
-      )}
+      {tab==="influencia" && (
+  <ModInfluencia
+    params={params}
+  />
+)}
 
       {tab==="siata"      &&<ModSIATA      params={params}/>}
     </div>
@@ -4248,6 +4488,7 @@ useEffect(() => {
     </div>
   </div>);
 }
+
 
 
 

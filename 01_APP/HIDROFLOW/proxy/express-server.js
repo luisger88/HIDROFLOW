@@ -74,10 +74,25 @@ app.post('/api/proyecto/activo', async (req, res) => {
       )
     );
 
+    console.log(
+  "HF-PROD-003C BODY",
+  JSON.stringify(req.body, null, 2)
+);
+
     const actualizado = {
       ...proyecto,
       ...req.body
     };
+
+    console.log(
+  "HF-PROD-003C EXPEDIENTE",
+  JSON.stringify(actualizado.expediente, null, 2)
+);
+
+console.log(
+  "HF-PROD-003C RUTA",
+  rutaProyecto
+);
 
     fs.writeFileSync(
       rutaProyecto,
@@ -88,6 +103,10 @@ app.post('/api/proyecto/activo', async (req, res) => {
       ),
       'utf8'
     );
+
+    console.log(
+  "HF-PROD-003C ESCRITURA EXITOSA"
+);
 
     res.json({
       ok: true

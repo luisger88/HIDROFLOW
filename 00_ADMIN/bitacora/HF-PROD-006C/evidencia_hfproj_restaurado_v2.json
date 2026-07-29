@@ -1,0 +1,36 @@
+{
+  "archivo": "D:/HidroFlow/02_PROYECTOS/OT-HF-003/OT-HF-003.hfproj",
+  "schema": "HFPROJ_v1",
+  "tieneContratoCuenca": true,
+  "cuenca": "Quebrada La Iguana - PC_80",
+  "areaKm2": 46.8516,
+  "cnBase": 88,
+  "cnEfectivo": null,
+  "amc": "II",
+  "tcFinal": 0,
+  "trActivo": 25,
+  "qTrActivo": null,
+  "metodoPrincipal": null,
+  "Qp": null,
+  "Tp": null,
+  "volumen": null,
+  "resultadosCount": 0,
+  "diagnosticos": true,
+  "expediente": true,
+  "hidrogramasKeys": [
+    "resultados",
+    "resumen",
+    "principal",
+    "lluvia_efectiva_total_mm",
+    "peTotalMm",
+    "volumenEsperadoM3",
+    "qSeriesPublicadas"
+  ],
+  "expedienteKeys": [
+    "generado",
+    "entregable",
+    "estadoGuard",
+    "faltantes",
+    "seccionesActivas"
+  ]
+}

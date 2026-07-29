@@ -2,6 +2,7 @@ import { construirLineasResumenQ5AuditadoExpediente } from "../services/document
 import React, { useEffect, useMemo, useState } from "react";
 
 import { setTcState } from "../agents/tcAgent";
+import { getContratoCuencaState, setContratoCuencaState } from "../agents/contratoCuencaAgent";
 import { calcTc, mapTcResultados } from "../services/hidroEngine";
 import { seleccionarTc } from "../services/tcSelector";
 import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteTc";
@@ -1933,70 +1934,86 @@ const handleClickSeguro = (accion) => () => {
           );
 
           const obtenerMetodosQ5Validos = () => {
+            const numeroQ5Positivo = (valor) => {
+              if (valor === null || valor === undefined) return null;
+              const numero = Number(valor);
+              return Number.isFinite(numero) && numero > 0 ? numero : null;
+            };
+
             const filtroNumericoQ5 = (m) =>
-              Number.isFinite(Number(m.Qp)) &&
-              Number.isFinite(Number(m.Tp)) &&
-              Number.isFinite(Number(m.volumen));
+              m?.Qp !== null &&
+              m?.Tp !== null &&
+              m?.volumen !== null &&
+              Number.isFinite(m.Qp) &&
+              Number.isFinite(m.Tp) &&
+              Number.isFinite(m.volumen);
+
+            const construirDesdeFuentes = (fuentes) => {
+              for (const fuente of fuentes) {
+                const candidatos = Array.isArray(fuente)
+                  ? fuente
+                  : fuente && typeof fuente === "object"
+                  ? Object.entries(fuente)
+                      .filter(([, v]) => v && typeof v === "object")
+                      .map(([clave, valor]) => ({
+                        ...valor,
+                        metodo: valor?.metodo ?? valor?.nombre ?? clave,
+                      }))
+                  : [];
+
+                const resultados = candidatos
+                  .map((h) => ({
+                    metodo:
+                      h?.metodo ??
+                      h?.nombre ??
+                      h?.label ??
+                      h?.name ??
+                      h?.clave ??
+                      "Método Q-5",
+                    Qp: numeroQ5Positivo(
+                      h?.Qp ?? h?.qp ?? h?.Qpico ?? h?.qPico ?? h?.q_pico ?? h?.caudalPico ?? h?.caudal_pico
+                    ),
+                    Tp: numeroQ5Positivo(
+                      h?.Tp ?? h?.tp ?? h?.tPico ?? h?.TPico ?? h?.t_pico ?? h?.tiempoPico ?? h?.tiempo_pico
+                    ),
+                    volumen: numeroQ5Positivo(
+                      h?.volumen ?? h?.V ?? h?.vol ?? h?.volume ?? h?.volTotal ?? h?.vol_total ?? h?.volumenTotal
+                    )
+                  }))
+                  .filter(filtroNumericoQ5);
+
+                if (resultados.length > 0) {
+                  return resultados;
+                }
+              }
+
+              return [];
+            };
+
+            const desdeMotor = construirDesdeFuentes([
+              contextoBase?.hidrogramas?.resultados,
+              contextoBase?.hidrogramas_resumen,
+              contextoBase?.hidrogramas
+            ]);
+
+            if (desdeMotor.length > 0) {
+              return desdeMotor;
+            }
 
             const desdeCatalogo = metodosQ5Expediente
               .map((metodo) => {
                 const resultadoQ = obtenerResultadoQMetodo(metodo);
                 return {
                   metodo: metodo?.nombre ?? metodo?.metodo ?? "Método Q-5",
-                  Qp: resultadoQ?.Qp,
-                  Tp: resultadoQ?.Tp,
-                  volumen: resultadoQ?.volumen,
+                  Qp: numeroQ5Positivo(resultadoQ?.Qp),
+                  Tp: numeroQ5Positivo(resultadoQ?.Tp),
+                  volumen: numeroQ5Positivo(resultadoQ?.volumen),
                   _catalogo: metodo
                 };
               })
               .filter(filtroNumericoQ5);
 
-            if (desdeCatalogo.length > 0) {
-              return desdeCatalogo;
-            }
-
-            const fuentes = [
-              contextoBase?.hidrogramas_resumen,
-              contextoBase?.hidrogramas?.resultados,
-              contextoBase?.hidrogramas
-            ];
-
-            for (const fuente of fuentes) {
-              const candidatos = Array.isArray(fuente)
-                ? fuente
-                : fuente && typeof fuente === "object"
-                ? Object.entries(fuente)
-                    .filter(([, v]) => v && typeof v === "object")
-                    .map(([clave, valor]) => ({
-                      ...valor,
-                      metodo: valor?.metodo ?? valor?.nombre ?? clave,
-                    }))
-                : [];
-
-              const resultados = candidatos
-                .map((h) => ({
-                  metodo:
-                    h?.metodo ??
-                    h?.nombre ??
-                    h?.label ??
-                    h?.name ??
-                    h?.clave ??
-                    "Método Q-5",
-                  Qp:
-                    h?.Qp ?? h?.qp ?? h?.Qpico ?? h?.qPico ?? h?.q_pico ?? h?.caudalPico ?? h?.caudal_pico,
-                  Tp:
-                    h?.Tp ?? h?.tp ?? h?.tPico ?? h?.TPico ?? h?.t_pico ?? h?.tiempoPico ?? h?.tiempo_pico,
-                  volumen:
-                    h?.volumen ?? h?.V ?? h?.vol ?? h?.volume ?? h?.volTotal ?? h?.vol_total ?? h?.volumenTotal
-                }))
-                .filter(filtroNumericoQ5);
-
-              if (resultados.length > 0) {
-                return resultados;
-              }
-            }
-
-            return [];
+            return desdeCatalogo.length > 0 ? desdeCatalogo : [];
           };
 
           const obtenerCandidatosQ5Contexto = () => {
@@ -2928,7 +2945,9 @@ try {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        expediente: payloadExpedienteMarkdown
+        schema: "HFPROJ_v1",
+        expediente: payloadExpedienteMarkdown,
+        contratoCuenca: contextoBase?.contratoCuenca ?? getContratoCuencaState()
       })
     }
   );

@@ -1,0 +1,28 @@
+{
+  "schema": "HFPROJ_v1",
+  "tieneContratoCuenca": true,
+  "cuenca": "Quebrada La Iguana - PC_80",
+  "areaKm2": 46.8516,
+  "cnBase": 88,
+  "cnEfectivo": null,
+  "amc": "II",
+  "tcFinal": 0,
+  "trActivo": 25,
+  "qTrActivo": null,
+  "resultadosCount": 5,
+  "metodoPrincipal": "SCS",
+  "Qp": 184.028568,
+  "Tp": 210,
+  "volumen": 2654250.9,
+  "diagnosticos": true,
+  "expediente": true,
+  "hidrogramasKeys": [
+    "resultados",
+    "resumen",
+    "principal",
+    "lluvia_efectiva_total_mm",
+    "peTotalMm",
+    "volumenEsperadoM3",
+    "qSeriesPublicadas"
+  ]
+}
