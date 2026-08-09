@@ -3,7 +3,7 @@ import { CUENCA_DEFAULT_ID, getCuencaById } from "./data/cuencasCatalogo";
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { getTrState, setTrState, subscribeTr } from "./agents/trAgent";
 
-import { SpatialSearchBox, OutletAssistWindow, InfluenceStationsWindow } from "./components/hfExpediente";
+import { SpatialSearchBox, OutletAssistWindow, InfluenceStationsWindow, DrainageMapWindow } from "./components/hfExpediente";
 
 import { ORQUESTADOR_ESTADO }
 from "./data/orquestadorEstado";
@@ -1247,6 +1247,7 @@ function ModParams({ params, setParams }) {
   const set     = k => v => setParams(p => ({ ...p, [k]: v }));
   const [mostrarSearchBox, setMostrarSearchBox] = useState(false);
   const [mostrarOutletAssist, setMostrarOutletAssist] = useState(false);
+  const [mostrarDrainageMap, setMostrarDrainageMap] = useState(false);
   const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
   const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
   
@@ -1434,6 +1435,25 @@ useEffect(() => {
             </button>
           </div>
           {mostrarOutletAssist && <OutletAssistWindow />}
+
+          {/* Boton Ver cuenca (UI-05) */}
+          <div style={{ marginTop: 8 }}>
+            <button
+              onClick={() => setMostrarDrainageMap(!mostrarDrainageMap)}
+              style={{
+                padding: "5px 14px", fontSize: 11, fontWeight: 600,
+                background: "#7c2d12", color: "#f97316", border: "none",
+                borderRadius: 4, cursor: "pointer",
+              }}
+            >
+              🗺️ Ver cuenca
+            </button>
+          </div>
+          {mostrarDrainageMap && <DrainageMapWindow
+            caseName="La Iguaná PC_80"
+            fuente="HF-GEO / Iguana_PC80"
+            areaReferencia="50.76"
+          />}
 
         </Card>
 
