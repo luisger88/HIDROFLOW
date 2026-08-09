@@ -3,6 +3,8 @@ import { CUENCA_DEFAULT_ID, getCuencaById } from "./data/cuencasCatalogo";
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { getTrState, setTrState, subscribeTr } from "./agents/trAgent";
 
+import { SpatialSearchBox, OutletAssistWindow, InfluenceStationsWindow } from "./components/hfExpediente";
+
 import { ORQUESTADOR_ESTADO }
 from "./data/orquestadorEstado";
 
@@ -1243,6 +1245,8 @@ function ModParams({ params, setParams }) {
   // Cálculos de Tc y utilidades locales
   const tc      = useMemo(() => calcTc(params), [params]);
   const set     = k => v => setParams(p => ({ ...p, [k]: v }));
+  const [mostrarSearchBox, setMostrarSearchBox] = useState(false);
+  const [mostrarOutletAssist, setMostrarOutletAssist] = useState(false);
   const tcStats = tc.filter(r => isFinite(r.h) && r.h > 0);
   const tcMed   = tcStats.length ? tcStats.reduce((s, r) => s + r.h, 0) / tcStats.length : 0;
   
@@ -1400,6 +1404,36 @@ useEffect(() => {
             alt={+params.alt_salida || 1702}
             idf={params.idf}
           />
+
+          {/* Boton Ubicar punto (Sprint UI-02) */}
+          <div style={{ marginTop: 10 }}>
+            <button
+              onClick={() => setMostrarSearchBox(!mostrarSearchBox)}
+              style={{
+                padding: "5px 14px", fontSize: 11, fontWeight: 600,
+                background: "#1e3a5f", color: "#60a5fa", border: "none",
+                borderRadius: 4, cursor: "pointer",
+              }}
+            >
+              📍 Ubicar punto
+            </button>
+          </div>
+          {mostrarSearchBox && <SpatialSearchBox />}
+
+          {/* Boton Validar outlet (Sprint UI-03) */}
+          <div style={{ marginTop: 8 }}>
+            <button
+              onClick={() => setMostrarOutletAssist(!mostrarOutletAssist)}
+              style={{
+                padding: "5px 14px", fontSize: 11, fontWeight: 600,
+                background: "#14532d", color: "#4ade80", border: "none",
+                borderRadius: 4, cursor: "pointer",
+              }}
+            >
+              🎯 Validar outlet
+            </button>
+          </div>
+          {mostrarOutletAssist && <OutletAssistWindow />}
 
         </Card>
 
@@ -3766,6 +3800,8 @@ const setTab = setTabExterno ?? setTabInterno;
 
   const [trStateGlobal, setTrStateGlobal] = useState(getTrState());
 
+  const [mostrarInfluenceMap, setMostrarInfluenceMap] = useState(false);
+
   const [expediente, setExpediente] = useState(null);
 
   const [contextoComparador, setContextoComparador] = useState({});
@@ -4469,9 +4505,24 @@ useEffect(() => {
 }
       {tab==="sar"        &&<ModSAR        params={params} est={est} name={stn}/>}
       {tab==="influencia" && (
+  <div>
+    <div style={{ marginBottom: 8 }}>
+      <button
+        onClick={() => setMostrarInfluenceMap(!mostrarInfluenceMap)}
+        style={{
+          padding: "5px 14px", fontSize: 11, fontWeight: 600,
+          background: "#1e3a5f", color: "#60a5fa", border: "none",
+          borderRadius: 4, cursor: "pointer",
+        }}
+      >
+        🛰️ Mapa de estaciones
+      </button>
+    </div>
+    {mostrarInfluenceMap && <InfluenceStationsWindow />}
   <ModInfluencia
     params={params}
   />
+  </div>
 )}
 
       {tab==="siata"      &&<ModSIATA      params={params}/>}

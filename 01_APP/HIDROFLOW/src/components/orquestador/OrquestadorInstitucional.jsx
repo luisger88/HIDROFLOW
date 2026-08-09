@@ -9,6 +9,8 @@ import {
   getContratoCuencaState
 } from "../../agents/contratoCuencaAgent";
 
+import { ExpedienteStatusPanel } from "../hfExpediente";
+
 export default function OrquestadorInstitucional() {
 
   const estudio = getEstudioActivo();
@@ -129,6 +131,10 @@ export default function OrquestadorInstitucional() {
         </ul>
 
       </section>
+
+      {/* EXPEDIENTE HIDROLOGICO */}
+
+      <ExpedienteStatusPanel />
 
       {/* SITUACION */}
 
