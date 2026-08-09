@@ -99,10 +99,8 @@ export default function DrainageMapWindow({
       } catch {
         setEstado("sin_geometria");
       }
-    } else if (!caseName && !puntoAportado && !outlet) {
-      cargar();
     } else {
-      setEstado("placeholder");
+      cargar();
     }
 
     return () => { cancel = true; };
