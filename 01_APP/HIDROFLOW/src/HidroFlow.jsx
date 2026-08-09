@@ -1453,6 +1453,9 @@ useEffect(() => {
             caseName="La Iguaná PC_80"
             fuente="HF-GEO / Iguana_PC80"
             areaReferencia="50.76"
+            outlet={params?.lat_salida && params?.lon_salida
+              ? { lat: Number(params.lat_salida), lon: Number(params.lon_salida) }
+              : null}
           />}
 
         </Card>
