@@ -1,0 +1,13 @@
+{
+  "schema": "HFPROJ_v1",
+  "tieneContratoCuenca": true,
+  "cuenca": "Quebrada La Iguana - PC_80",
+  "areaKm2": 46.8516,
+  "tcFinal": null,
+  "trActivo": 25,
+  "Qp": null,
+  "Tp": null,
+  "volumen": null,
+  "diagnosticos": true,
+  "expediente": true
+}

@@ -1,0 +1,37 @@
+{
+  "version": "1.4.0",
+  "generated": "2026-07-28T04:24:24.551Z",
+  "totals": {
+    "files": 260,
+    "symbols": 5231,
+    "references": 43103,
+    "guards": 52,
+    "flows": 8,
+    "reactFlows": 284,
+    "documentFlows": 1,
+    "aliases": 3,
+    "impactEntries": 3839,
+    "propsFlows": 2618,
+    "stateLinks": 88,
+    "semanticFlows": 96
+  },
+  "classes": {
+    "activeFiles": 145,
+    "runtimeActive": 6,
+    "runtimeSupport": 132,
+    "historicalFiles": 1,
+    "backupFiles": 114,
+    "generatedFiles": 0
+  },
+  "topDomains": [
+    "Q5",
+    "QTr",
+    "CN",
+    "IDF",
+    "Tc",
+    "Racional",
+    "Expediente",
+    "Contexto"
+  ],
+  "queryHelp": "Usa consultar-hidroflow.mjs resumen | variable <n> | flujo <d> | semantic-flow <n> [--active]"
+}

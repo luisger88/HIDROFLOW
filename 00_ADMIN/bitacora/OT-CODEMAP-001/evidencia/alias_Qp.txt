@@ -1,0 +1,3 @@
+Alias para 'Qp' (1):
+  Canonico: Qp [dominio=Q5]
+  Aliases: qp, Qpico, qPico, q_pico, caudalPico, caudal_pico

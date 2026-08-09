@@ -8,7 +8,11 @@
     "build": "vite build",
     "preview": "vite preview",
     "demo:dia3": "tsx src/dominio/_demoDia3.ts",
-    "governance:init": "node scripts/gov-init.js"
+    "governance:init": "node scripts/gov-init.js",
+    "project:init": "node scripts/project-init.js",
+    "project:open": "node scripts/project-open.js",
+    "project:update": "node scripts/project-update.js",
+    "project:export": "node scripts/export-project.js"
   },
   "dependencies": {
     "cors": "^2.8.6",

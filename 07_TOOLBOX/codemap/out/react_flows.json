@@ -1,0 +1,6144 @@
+[
+  {
+    "id": 1,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useState",
+    "line": 24,
+    "dependencies": [],
+    "produces": [
+      "filtroEstado",
+      "setFiltroEstado"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "filtroEstado",
+        "setter": "setFiltroEstado"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 2,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useState",
+    "line": 25,
+    "dependencies": [],
+    "produces": [
+      "filtroTipo",
+      "setFiltroTipo"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "filtroTipo",
+        "setter": "setFiltroTipo"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 3,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 62,
+    "dependencies": [],
+    "produces": [
+      "evaluacionCompetencia"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 4,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useEffect",
+    "line": 70,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 5,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 85,
+    "dependencies": [],
+    "produces": [
+      "metodos"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 6,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 114,
+    "dependencies": [],
+    "produces": [
+      "conteo"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 7,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useState",
+    "line": 64,
+    "dependencies": [],
+    "produces": [
+      "filtroEstado",
+      "setFiltroEstado"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "filtroEstado",
+        "setter": "setFiltroEstado"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 8,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useState",
+    "line": 65,
+    "dependencies": [],
+    "produces": [
+      "filtroTipo",
+      "setFiltroTipo"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "filtroTipo",
+        "setter": "setFiltroTipo"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 9,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 168,
+    "dependencies": [],
+    "produces": [
+      "evaluacionCompetencia"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 10,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 172,
+    "dependencies": [],
+    "produces": [
+      "conceptoCuenca"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 11,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useEffect",
+    "line": 185,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 12,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 202,
+    "dependencies": [],
+    "produces": [
+      "metodos"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 13,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 231,
+    "dependencies": [],
+    "produces": [
+      "conteo"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 14,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 240,
+    "dependencies": [],
+    "produces": [
+      "diagnosticoQSeries"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 15,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 264,
+    "dependencies": [],
+    "produces": [
+      "resumenEstructuraHidrogramas"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 16,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 288,
+    "dependencies": [],
+    "produces": [
+      "diagnosticoMorfologiaQt"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 17,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 328,
+    "dependencies": [],
+    "produces": [
+      "filasMorfologiaQt"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 18,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 377,
+    "dependencies": [],
+    "produces": [
+      "filasDictamenFormaQt"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 19,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 406,
+    "dependencies": [],
+    "produces": [
+      "filasRiesgoTemporalQt"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 20,
+    "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+    "component": "ComparadorMultiMetodo",
+    "hook": "useMemo",
+    "line": 445,
+    "dependencies": [],
+    "produces": [
+      "sintesisRiesgoTemporalQt"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 21,
+    "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+    "component": "IndiceHidrologico",
+    "hook": "useState",
+    "line": 21,
+    "dependencies": [],
+    "produces": [
+      "tcState",
+      "setTcStateLocal"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "tcState",
+        "setter": "setTcStateLocal"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 22,
+    "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+    "component": "IndiceHidrologico",
+    "hook": "useEffect",
+    "line": 23,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 23,
+    "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+    "component": "IndiceHidrologico",
+    "hook": "useState",
+    "line": 423,
+    "dependencies": [],
+    "produces": [
+      "trStateIndice",
+      "setTrStateIndice"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "trStateIndice",
+        "setter": "setTrStateIndice"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 24,
+    "file": "01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx",
+    "component": "IndiceHidrologico",
+    "hook": "useEffect",
+    "line": 425,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 25,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 629,
+    "dependencies": [],
+    "produces": [
+      "tc"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 26,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 825,
+    "dependencies": [],
+    "produces": [
+      "idfData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 27,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 826,
+    "dependencies": [],
+    "produces": [
+      "curvasData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 28,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 836,
+    "dependencies": [],
+    "produces": [
+      "compData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 29,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 900,
+    "dependencies": [],
+    "produces": [
+      "Tr",
+      "setTr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tr",
+        "setter": "setTr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 30,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 901,
+    "dependencies": [],
+    "produces": [
+      "durH",
+      "setDurH"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "durH",
+        "setter": "setDurH"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 31,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 902,
+    "dependencies": [],
+    "produces": [
+      "dtMin",
+      "setDtMin"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "dtMin",
+        "setter": "setDtMin"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 32,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 904,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 33,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 905,
+    "dependencies": [],
+    "produces": [
+      "distType",
+      "setDistType"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "distType",
+        "setter": "setDistType"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 34,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 907,
+    "dependencies": [],
+    "produces": [
+      "hiet"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 35,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 910,
+    "dependencies": [],
+    "produces": [
+      "hietAll"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 36,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 916,
+    "dependencies": [],
+    "produces": [
+      "compData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 37,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 929,
+    "dependencies": [],
+    "produces": [
+      "distMerge"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 38,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1046,
+    "dependencies": [],
+    "produces": [
+      "Tr",
+      "setTr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tr",
+        "setter": "setTr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 39,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1047,
+    "dependencies": [],
+    "produces": [
+      "dtMin",
+      "setDtMin"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "dtMin",
+        "setter": "setDtMin"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 40,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1048,
+    "dependencies": [],
+    "produces": [
+      "CNact"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 41,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 1054,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 42,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1055,
+    "dependencies": [],
+    "produces": [
+      "tcSrc",
+      "setTcSrc"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "tcSrc",
+        "setter": "setTcSrc"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 43,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1056,
+    "dependencies": [],
+    "produces": [
+      "kR",
+      "setKR"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "kR",
+        "setter": "setKR"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 44,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1057,
+    "dependencies": [],
+    "produces": [
+      "Ct",
+      "setCt"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Ct",
+        "setter": "setCt"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 45,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1058,
+    "dependencies": [],
+    "produces": [
+      "Cp",
+      "setCp"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Cp",
+        "setter": "setCp"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 46,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1059,
+    "dependencies": [],
+    "produces": [
+      "CpSCSMod",
+      "setCpSCSMod"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "CpSCSMod",
+        "setter": "setCpSCSMod"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 47,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1061,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 48,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1069,
+    "dependencies": [],
+    "produces": [
+      "hiet"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 49,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1070,
+    "dependencies": [],
+    "produces": [
+      "lluvEfect"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 50,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1073,
+    "dependencies": [],
+    "produces": [
+      "hu_scs"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 51,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1074,
+    "dependencies": [],
+    "produces": [
+      "hu_scsMod"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 52,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1075,
+    "dependencies": [],
+    "produces": [
+      "hu_snyder"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 53,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1076,
+    "dependencies": [],
+    "produces": [
+      "hu_wh"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 54,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1077,
+    "dependencies": [],
+    "produces": [
+      "hu_clark"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 55,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1080,
+    "dependencies": [],
+    "produces": [
+      "hidros"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 56,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1105,
+    "dependencies": [],
+    "produces": [
+      "resumenQ"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 57,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1231,
+    "dependencies": [],
+    "produces": [
+      "Tr",
+      "setTr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tr",
+        "setter": "setTr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 58,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1232,
+    "dependencies": [],
+    "produces": [
+      "durH",
+      "setDurH"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "durH",
+        "setter": "setDurH"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 59,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1233,
+    "dependencies": [],
+    "produces": [
+      "dtMin",
+      "setDtMin"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "dtMin",
+        "setter": "setDtMin"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 60,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 1234,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 61,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1235,
+    "dependencies": [],
+    "produces": [
+      "siPct",
+      "setSiPct"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "siPct",
+        "setter": "setSiPct"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 62,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1236,
+    "dependencies": [],
+    "produces": [
+      "catSAR",
+      "setCatSAR"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "catSAR",
+        "setter": "setCatSAR"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 63,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1237,
+    "dependencies": [],
+    "produces": [
+      "distType",
+      "setDistType"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "distType",
+        "setter": "setDistType"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 64,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1238,
+    "dependencies": [],
+    "produces": [
+      "metodoPost",
+      "setMetodoPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "metodoPost",
+        "setter": "setMetodoPost"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 65,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1248,
+    "dependencies": [],
+    "produces": [
+      "hiet"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 66,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1249,
+    "dependencies": [],
+    "produces": [
+      "lluvPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 67,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1250,
+    "dependencies": [],
+    "produces": [
+      "lluvPre"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 68,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1253,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 69,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1258,
+    "dependencies": [],
+    "produces": [
+      "huPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 70,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1265,
+    "dependencies": [],
+    "produces": [
+      "qPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 71,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1266,
+    "dependencies": [],
+    "produces": [
+      "huPre"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 72,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1267,
+    "dependencies": [],
+    "produces": [
+      "qPre"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 73,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1269,
+    "dependencies": [],
+    "produces": [
+      "volSAR"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 74,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1461,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 75,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1462,
+    "dependencies": [],
+    "produces": [
+      "tc_min"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 76,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1463,
+    "dependencies": [],
+    "produces": [
+      "res"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 77,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1676,
+    "dependencies": [],
+    "produces": [
+      "activos"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 78,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1678,
+    "dependencies": [],
+    "produces": [
+      "pond"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 79,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1686,
+    "dependencies": [],
+    "produces": [
+      "pesosMap"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 80,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1693,
+    "dependencies": [],
+    "produces": [
+      "estsConPeso"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 81,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1695,
+    "dependencies": [],
+    "produces": [
+      "idfPond"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 82,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1699,
+    "dependencies": [],
+    "produces": [
+      "escenarios"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 83,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1711,
+    "dependencies": [],
+    "produces": [
+      "idfCurvas"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 84,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1921,
+    "dependencies": [],
+    "produces": [
+      "pesosVisuales"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 85,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useCallback",
+    "line": 1927,
+    "dependencies": [],
+    "produces": [
+      "consultarAPI"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 86,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow - copia.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 2282,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 87,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 644,
+    "dependencies": [],
+    "produces": [
+      "pctLive",
+      "setPctLive"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "pctLive",
+        "setter": "setPctLive"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 88,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 645,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 89,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useCallback",
+    "line": 648,
+    "dependencies": [],
+    "produces": [
+      "commitPct"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 90,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 743,
+    "dependencies": [],
+    "produces": [
+      "tc"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 91,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 852,
+    "dependencies": [],
+    "produces": [
+      "idfData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 92,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 853,
+    "dependencies": [],
+    "produces": [
+      "curvasData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 93,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 863,
+    "dependencies": [],
+    "produces": [
+      "compData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 94,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 927,
+    "dependencies": [],
+    "produces": [
+      "Tr",
+      "setTr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tr",
+        "setter": "setTr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 95,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 928,
+    "dependencies": [],
+    "produces": [
+      "durH",
+      "setDurH"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "durH",
+        "setter": "setDurH"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 96,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 929,
+    "dependencies": [],
+    "produces": [
+      "dtMin",
+      "setDtMin"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "dtMin",
+        "setter": "setDtMin"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 97,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 931,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 98,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 933,
+    "dependencies": [],
+    "produces": [
+      "distType",
+      "setDistType"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "distType",
+        "setter": "setDistType"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 99,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 936,
+    "dependencies": [],
+    "produces": [
+      "hiet"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 100,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 942,
+    "dependencies": [],
+    "produces": [
+      "hietAll"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 101,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 954,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 102,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 959,
+    "dependencies": [],
+    "produces": [
+      "Tc_sugerido_min"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 103,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 967,
+    "dependencies": [],
+    "produces": [
+      "usarOverrideTc",
+      "setUsarOverrideTc"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "usarOverrideTc",
+        "setter": "setUsarOverrideTc"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 104,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 968,
+    "dependencies": [],
+    "produces": [
+      "Tc_override_min",
+      "setTcOverride"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tc_override_min",
+        "setter": "setTcOverride"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 105,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 974,
+    "dependencies": [],
+    "produces": [
+      "infoTc"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 106,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 988,
+    "dependencies": [],
+    "produces": [
+      "overrideSCS",
+      "setOverrideSCS"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "overrideSCS",
+        "setter": "setOverrideSCS"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 107,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 989,
+    "dependencies": [],
+    "produces": [
+      "CN_ovr",
+      "setCN_ovr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "CN_ovr",
+        "setter": "setCN_ovr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 108,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 990,
+    "dependencies": [],
+    "produces": [
+      "AMC_ovr",
+      "setAMC_ovr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "AMC_ovr",
+        "setter": "setAMC_ovr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 109,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 991,
+    "dependencies": [],
+    "produces": [
+      "pctImp_ovr",
+      "setPctImp_ovr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "pctImp_ovr",
+        "setter": "setPctImp_ovr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 110,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1005,
+    "dependencies": [],
+    "produces": [
+      "usarAMCauto",
+      "setUsarAMCauto"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "usarAMCauto",
+        "setter": "setUsarAMCauto"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 111,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1006,
+    "dependencies": [],
+    "produces": [
+      "hs_demo",
+      "setHsDemo"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "hs_demo",
+        "setter": "setHsDemo"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 112,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1008,
+    "dependencies": [],
+    "produces": [
+      "amcAuto"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 113,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1022,
+    "dependencies": [],
+    "produces": [
+      "guardarAMCenPanel",
+      "setGuardarAMCenPanel"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "guardarAMCenPanel",
+        "setter": "setGuardarAMCenPanel"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 114,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 1025,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 115,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 1038,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 116,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1095,
+    "dependencies": [],
+    "produces": [
+      "compData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 117,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1110,
+    "dependencies": [],
+    "produces": [
+      "distMerge"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 118,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1396,
+    "dependencies": [],
+    "produces": [
+      "Tr",
+      "setTr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tr",
+        "setter": "setTr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 119,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1397,
+    "dependencies": [],
+    "produces": [
+      "dtMin",
+      "setDtMin"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "dtMin",
+        "setter": "setDtMin"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 120,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1400,
+    "dependencies": [],
+    "produces": [
+      "CNact"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 121,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 1407,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 122,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 1418,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 123,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1423,
+    "dependencies": [],
+    "produces": [
+      "tcSrc",
+      "setTcSrc"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "tcSrc",
+        "setter": "setTcSrc"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 124,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1424,
+    "dependencies": [],
+    "produces": [
+      "kR",
+      "setKR"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "kR",
+        "setter": "setKR"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 125,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1425,
+    "dependencies": [],
+    "produces": [
+      "Ct",
+      "setCt"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Ct",
+        "setter": "setCt"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 126,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1426,
+    "dependencies": [],
+    "produces": [
+      "Cp",
+      "setCp"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Cp",
+        "setter": "setCp"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 127,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1427,
+    "dependencies": [],
+    "produces": [
+      "CpSCSMod",
+      "setCpSCSMod"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "CpSCSMod",
+        "setter": "setCpSCSMod"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 128,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1430,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 129,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1438,
+    "dependencies": [],
+    "produces": [
+      "hiet"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 130,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1441,
+    "dependencies": [],
+    "produces": [
+      "lluvEfect"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 131,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1444,
+    "dependencies": [],
+    "produces": [
+      "hu_scs"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 132,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1445,
+    "dependencies": [],
+    "produces": [
+      "hu_scsMod"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 133,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1446,
+    "dependencies": [],
+    "produces": [
+      "hu_snyder"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 134,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1447,
+    "dependencies": [],
+    "produces": [
+      "hu_wh"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 135,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1448,
+    "dependencies": [],
+    "produces": [
+      "hu_clark"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 136,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1451,
+    "dependencies": [],
+    "produces": [
+      "hidros"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 137,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1456,
+    "dependencies": [],
+    "produces": [
+      "resumenQ"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 138,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 1461,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 139,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 1465,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 140,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1478,
+    "dependencies": [],
+    "produces": [
+      "hidrosCorr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 141,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1531,
+    "dependencies": [],
+    "produces": [
+      "lePe"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 142,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1536,
+    "dependencies": [],
+    "produces": [
+      "seriesOK"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 143,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1542,
+    "dependencies": [],
+    "produces": [
+      "n"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 144,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1547,
+    "dependencies": [],
+    "produces": [
+      "step"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 145,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1549,
+    "dependencies": [],
+    "produces": [
+      "combined"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 146,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 1566,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 147,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1654,
+    "dependencies": [],
+    "produces": [
+      "Tr",
+      "setTr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tr",
+        "setter": "setTr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 148,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1655,
+    "dependencies": [],
+    "produces": [
+      "durH",
+      "setDurH"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "durH",
+        "setter": "setDurH"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 149,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1656,
+    "dependencies": [],
+    "produces": [
+      "dtMin",
+      "setDtMin"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "dtMin",
+        "setter": "setDtMin"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 150,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 1657,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 151,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1658,
+    "dependencies": [],
+    "produces": [
+      "siPct",
+      "setSiPct"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "siPct",
+        "setter": "setSiPct"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 152,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1659,
+    "dependencies": [],
+    "produces": [
+      "catSAR",
+      "setCatSAR"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "catSAR",
+        "setter": "setCatSAR"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 153,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1660,
+    "dependencies": [],
+    "produces": [
+      "distType",
+      "setDistType"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "distType",
+        "setter": "setDistType"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 154,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useState",
+    "line": 1661,
+    "dependencies": [],
+    "produces": [
+      "metodoPost",
+      "setMetodoPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "metodoPost",
+        "setter": "setMetodoPost"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 155,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1671,
+    "dependencies": [],
+    "produces": [
+      "hiet"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 156,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1672,
+    "dependencies": [],
+    "produces": [
+      "lluvPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 157,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1673,
+    "dependencies": [],
+    "produces": [
+      "lluvPre"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 158,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1676,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 159,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1681,
+    "dependencies": [],
+    "produces": [
+      "huPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 160,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1688,
+    "dependencies": [],
+    "produces": [
+      "qPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 161,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1689,
+    "dependencies": [],
+    "produces": [
+      "huPre"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 162,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1690,
+    "dependencies": [],
+    "produces": [
+      "qPre"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 163,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1692,
+    "dependencies": [],
+    "produces": [
+      "volSAR"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 164,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1884,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 165,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1885,
+    "dependencies": [],
+    "produces": [
+      "tc_min"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 166,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 1886,
+    "dependencies": [],
+    "produces": [
+      "res"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 167,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 2099,
+    "dependencies": [],
+    "produces": [
+      "activos"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 168,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 2101,
+    "dependencies": [],
+    "produces": [
+      "pond"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 169,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 2109,
+    "dependencies": [],
+    "produces": [
+      "pesosMap"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 170,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 2116,
+    "dependencies": [],
+    "produces": [
+      "estsConPeso"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 171,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 2118,
+    "dependencies": [],
+    "produces": [
+      "idfPond"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 172,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 2122,
+    "dependencies": [],
+    "produces": [
+      "escenarios"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 173,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 2134,
+    "dependencies": [],
+    "produces": [
+      "idfCurvas"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 174,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useMemo",
+    "line": 2344,
+    "dependencies": [],
+    "produces": [
+      "pesosVisuales"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 175,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useCallback",
+    "line": 2350,
+    "dependencies": [],
+    "produces": [
+      "consultarAPI"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 176,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0317.jsx",
+    "component": "calcCNdinamico",
+    "hook": "useEffect",
+    "line": 2705,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 177,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1144,
+    "dependencies": [],
+    "produces": [
+      "pctLive",
+      "setPctLive"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "pctLive",
+        "setter": "setPctLive"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 178,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 1145,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 179,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useCallback",
+    "line": 1148,
+    "dependencies": [],
+    "produces": [
+      "commitPct"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 180,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1243,
+    "dependencies": [],
+    "produces": [
+      "tc"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 181,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 1249,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 182,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 1265,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 183,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1463,
+    "dependencies": [],
+    "produces": [
+      "idfData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 184,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1464,
+    "dependencies": [],
+    "produces": [
+      "curvasData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 185,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1474,
+    "dependencies": [],
+    "produces": [
+      "compData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 186,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1538,
+    "dependencies": [],
+    "produces": [
+      "Tr",
+      "setTr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tr",
+        "setter": "setTr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 187,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1539,
+    "dependencies": [],
+    "produces": [
+      "durH",
+      "setDurH"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "durH",
+        "setter": "setDurH"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 188,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1540,
+    "dependencies": [],
+    "produces": [
+      "dtMin",
+      "setDtMin"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "dtMin",
+        "setter": "setDtMin"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 189,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 1543,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 190,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1544,
+    "dependencies": [],
+    "produces": [
+      "guardarAMCenPanel",
+      "setGuardarAMCenPanel"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "guardarAMCenPanel",
+        "setter": "setGuardarAMCenPanel"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 191,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1545,
+    "dependencies": [],
+    "produces": [
+      "distType",
+      "setDistType"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "distType",
+        "setter": "setDistType"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 192,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1548,
+    "dependencies": [],
+    "produces": [
+      "hiet"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 193,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1554,
+    "dependencies": [],
+    "produces": [
+      "hietAll"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 194,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1566,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 195,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1571,
+    "dependencies": [],
+    "produces": [
+      "Tc_sugerido_min"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 196,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1579,
+    "dependencies": [],
+    "produces": [
+      "usarOverrideTc",
+      "setUsarOverrideTc"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "usarOverrideTc",
+        "setter": "setUsarOverrideTc"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 197,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1580,
+    "dependencies": [],
+    "produces": [
+      "Tc_override_min",
+      "setTcOverride"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tc_override_min",
+        "setter": "setTcOverride"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 198,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1589,
+    "dependencies": [],
+    "produces": [
+      "qaHidro"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 199,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1605,
+    "dependencies": [],
+    "produces": [
+      "infoTc"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 200,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1619,
+    "dependencies": [],
+    "produces": [
+      "overrideSCS",
+      "setOverrideSCS"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "overrideSCS",
+        "setter": "setOverrideSCS"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 201,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1620,
+    "dependencies": [],
+    "produces": [
+      "CN_ovr",
+      "setCN_ovr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "CN_ovr",
+        "setter": "setCN_ovr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 202,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1621,
+    "dependencies": [],
+    "produces": [
+      "AMC_ovr",
+      "setAMC_ovr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "AMC_ovr",
+        "setter": "setAMC_ovr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 203,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1622,
+    "dependencies": [],
+    "produces": [
+      "pctImp_ovr",
+      "setPctImp_ovr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "pctImp_ovr",
+        "setter": "setPctImp_ovr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 204,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1636,
+    "dependencies": [],
+    "produces": [
+      "usarAMCauto",
+      "setUsarAMCauto"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "usarAMCauto",
+        "setter": "setUsarAMCauto"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 205,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 1637,
+    "dependencies": [],
+    "produces": [
+      "hs_demo",
+      "setHsDemo"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "hs_demo",
+        "setter": "setHsDemo"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 206,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1639,
+    "dependencies": [],
+    "produces": [
+      "amcAuto"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 207,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 1664,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 208,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1721,
+    "dependencies": [],
+    "produces": [
+      "compData"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 209,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 1736,
+    "dependencies": [],
+    "produces": [
+      "distMerge"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 210,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2033,
+    "dependencies": [],
+    "produces": [
+      "Tr",
+      "setTr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tr",
+        "setter": "setTr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 211,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2034,
+    "dependencies": [],
+    "produces": [
+      "dtMin",
+      "setDtMin"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "dtMin",
+        "setter": "setDtMin"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 212,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2040,
+    "dependencies": [],
+    "produces": [
+      "CNact"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 213,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 2047,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 214,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 2058,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 215,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2063,
+    "dependencies": [],
+    "produces": [
+      "tcSrc",
+      "setTcSrc"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "tcSrc",
+        "setter": "setTcSrc"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 216,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2064,
+    "dependencies": [],
+    "produces": [
+      "kR",
+      "setKR"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "kR",
+        "setter": "setKR"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 217,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2065,
+    "dependencies": [],
+    "produces": [
+      "Ct",
+      "setCt"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Ct",
+        "setter": "setCt"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 218,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2066,
+    "dependencies": [],
+    "produces": [
+      "Cp",
+      "setCp"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Cp",
+        "setter": "setCp"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 219,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2067,
+    "dependencies": [],
+    "produces": [
+      "CpSCSMod",
+      "setCpSCSMod"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "CpSCSMod",
+        "setter": "setCpSCSMod"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 220,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2070,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 221,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2079,
+    "dependencies": [],
+    "produces": [
+      "hiet"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 222,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2082,
+    "dependencies": [],
+    "produces": [
+      "lluvEfect"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 223,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2085,
+    "dependencies": [],
+    "produces": [
+      "hu_scs"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 224,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2086,
+    "dependencies": [],
+    "produces": [
+      "hu_scsMod"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 225,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2087,
+    "dependencies": [],
+    "produces": [
+      "hu_snyder"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 226,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2088,
+    "dependencies": [],
+    "produces": [
+      "hu_wh"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 227,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2089,
+    "dependencies": [],
+    "produces": [
+      "hu_clark"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 228,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2092,
+    "dependencies": [],
+    "produces": [
+      "hidros"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 229,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2098,
+    "dependencies": [],
+    "produces": [
+      "qTrMultiEscenario"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 230,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 2145,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 231,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2443,
+    "dependencies": [],
+    "produces": [
+      "qaStatus"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 232,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2463,
+    "dependencies": [],
+    "produces": [
+      "resumenQ"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 233,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 2468,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 234,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 2472,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 235,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2485,
+    "dependencies": [],
+    "produces": [
+      "hidrosCorr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 236,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2538,
+    "dependencies": [],
+    "produces": [
+      "lePe"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 237,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2543,
+    "dependencies": [],
+    "produces": [
+      "seriesOK"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 238,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2549,
+    "dependencies": [],
+    "produces": [
+      "n"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 239,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2554,
+    "dependencies": [],
+    "produces": [
+      "step"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 240,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2556,
+    "dependencies": [],
+    "produces": [
+      "combined"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 241,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 2573,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 242,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2700,
+    "dependencies": [],
+    "produces": [
+      "Tr",
+      "setTr"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "Tr",
+        "setter": "setTr"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 243,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2701,
+    "dependencies": [],
+    "produces": [
+      "durH",
+      "setDurH"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "durH",
+        "setter": "setDurH"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 244,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2702,
+    "dependencies": [],
+    "produces": [
+      "dtMin",
+      "setDtMin"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "dtMin",
+        "setter": "setDtMin"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 245,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 2703,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 246,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2704,
+    "dependencies": [],
+    "produces": [
+      "siPct",
+      "setSiPct"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "siPct",
+        "setter": "setSiPct"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 247,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2705,
+    "dependencies": [],
+    "produces": [
+      "catSAR",
+      "setCatSAR"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "catSAR",
+        "setter": "setCatSAR"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 248,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2706,
+    "dependencies": [],
+    "produces": [
+      "distType",
+      "setDistType"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "distType",
+        "setter": "setDistType"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 249,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 2707,
+    "dependencies": [],
+    "produces": [
+      "metodoPost",
+      "setMetodoPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "metodoPost",
+        "setter": "setMetodoPost"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 250,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2717,
+    "dependencies": [],
+    "produces": [
+      "hiet"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 251,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2718,
+    "dependencies": [],
+    "produces": [
+      "lluvPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 252,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2719,
+    "dependencies": [],
+    "produces": [
+      "lluvPre"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 253,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2722,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 254,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2727,
+    "dependencies": [],
+    "produces": [
+      "huPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 255,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2734,
+    "dependencies": [],
+    "produces": [
+      "qPost"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 256,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2735,
+    "dependencies": [],
+    "produces": [
+      "huPre"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 257,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2736,
+    "dependencies": [],
+    "produces": [
+      "qPre"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 258,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2738,
+    "dependencies": [],
+    "produces": [
+      "volSAR"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 259,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2930,
+    "dependencies": [],
+    "produces": [
+      "tcList"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 260,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2931,
+    "dependencies": [],
+    "produces": [
+      "tc_min"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 261,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 2932,
+    "dependencies": [],
+    "produces": [
+      "res"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 262,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 3145,
+    "dependencies": [],
+    "produces": [
+      "activos"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 263,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 3147,
+    "dependencies": [],
+    "produces": [
+      "pond"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 264,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 3155,
+    "dependencies": [],
+    "produces": [
+      "pesosMap"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 265,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 3162,
+    "dependencies": [],
+    "produces": [
+      "estsConPeso"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 266,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 3165,
+    "dependencies": [],
+    "produces": [
+      "idfPond"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 267,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 3169,
+    "dependencies": [],
+    "produces": [
+      "escenarios"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 268,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 3181,
+    "dependencies": [],
+    "produces": [
+      "idfCurvas"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 269,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useMemo",
+    "line": 3391,
+    "dependencies": [],
+    "produces": [
+      "pesosVisuales"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 270,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useCallback",
+    "line": 3397,
+    "dependencies": [],
+    "produces": [
+      "consultarAPI"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 271,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 3751,
+    "dependencies": [],
+    "produces": [
+      "tabInterno",
+      "setTabInterno"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "tabInterno",
+        "setter": "setTabInterno"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 272,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 3760,
+    "dependencies": [],
+    "produces": [
+      "params",
+      "setParams"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "params",
+        "setter": "setParams"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 273,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 3763,
+    "dependencies": [],
+    "produces": [
+      "stn",
+      "setStn"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "stn",
+        "setter": "setStn"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 274,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 3765,
+    "dependencies": [],
+    "produces": [
+      "trStateGlobal",
+      "setTrStateGlobal"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "trStateGlobal",
+        "setter": "setTrStateGlobal"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 275,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 3767,
+    "dependencies": [],
+    "produces": [
+      "expediente",
+      "setExpediente"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "expediente",
+        "setter": "setExpediente"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 276,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useState",
+    "line": 3769,
+    "dependencies": [],
+    "produces": [
+      "contextoComparador",
+      "setContextoComparador"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "contextoComparador",
+        "setter": "setContextoComparador"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 277,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 3781,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 278,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 3814,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 279,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 3821,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 280,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 4145,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 281,
+    "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+    "component": "Field",
+    "hook": "useEffect",
+    "line": 4229,
+    "dependencies": [],
+    "produces": [],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 282,
+    "file": "01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx",
+    "component": "HidroFlowLayout",
+    "hook": "useState",
+    "line": 8,
+    "dependencies": [],
+    "produces": [
+      "tabActiva",
+      "setTabActiva"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "tabActiva",
+        "setter": "setTabActiva"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 283,
+    "file": "01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx",
+    "component": "HidroFlowLayout",
+    "hook": "useState",
+    "line": 9,
+    "dependencies": [],
+    "produces": [
+      "contextoComparador",
+      "setContextoComparador"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "contextoComparador",
+        "setter": "setContextoComparador"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  },
+  {
+    "id": 284,
+    "file": "01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx",
+    "component": "HidroFlowLayout",
+    "hook": "useCallback",
+    "line": 11,
+    "dependencies": [],
+    "produces": [
+      "actualizarContextoComparador"
+    ],
+    "propsReceived": [],
+    "propsPassed": [],
+    "callbacksReceived": [],
+    "callbacksPassed": [],
+    "stateLinks": [
+      {
+        "state": "contextoComparador",
+        "setter": "setContextoComparador",
+        "boundBy": "actualizarContextoComparador"
+      }
+    ],
+    "componentEdges": [],
+    "consumes": [],
+    "callbacks": [],
+    "risk": "low"
+  }
+]

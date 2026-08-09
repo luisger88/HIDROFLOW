@@ -1,0 +1,4 @@
+Archivos que coinciden con 'BACKUP' (3):
+  01_APP/HIDROFLOW/src/components/ComparadorMultiMet1195 lineas [Q5,QTr,CN,Tc,Expediente,Contexto]
+  01_APP/HIDROFLOW/src/HidroFlow.BACKUP.20260316_0312796 lineas [Q5,QTr,CN,IDF,Tc,Racional,Expediente,Contexto]
+  01_APP/HIDROFLOW/src/HidroFlow_SAFE_BACKUP_and_PAT19 lineas [QTr,Tc]

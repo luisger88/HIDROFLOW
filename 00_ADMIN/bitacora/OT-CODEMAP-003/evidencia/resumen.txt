@@ -1,0 +1,18 @@
+=== HF-CODEMAP Resumen ===
+Version: 1.2.0
+Generado: 2026-07-28T03:35:28.114Z
+
+files                 260
+symbols               5146
+references            41190
+guards                48
+flows                 8
+reactFlows            284
+documentFlows         1
+aliases               3
+impactEntries         3781
+propsFlows            2618
+stateLinks            88
+semanticFlows         96
+
+Dominios: Q5, QTr, CN, IDF, Tc, Racional, Expediente, Contexto

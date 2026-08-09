@@ -3,6 +3,7 @@ import { crearPayloadExpedienteVacio } from "../../types/expediente.js";
 import { obtenerTrazabilidadCN } from "../cn/obtenerTrazabilidadCN";
 
 const numeroSeguro = (valor) => {
+  if (valor === null || valor === undefined) return null;
   const numero = Number(valor);
   return Number.isFinite(numero) ? numero : null;
 };
@@ -278,6 +279,7 @@ const extraerQRacionalActivo = (contextoBase = {}) => {
 
 export default function construirPayloadExpedienteDesdeEstado({
   contextoBase = {},
+  contratoCuenca = null,
   metodos = [],
   filasMorfologiaQt = [],
   filasDictamenFormaQt = [],
@@ -288,6 +290,64 @@ export default function construirPayloadExpedienteDesdeEstado({
   fechaGeneracion = "",
   idSimulacion = ""
 } = {}) {
+  // Normalizar desde ContratoCuenca si esta disponible
+  if (contratoCuenca) {
+    const c = contratoCuenca;
+    contextoBase = {
+      ...contextoBase,
+      cuenca: {
+        nombre: c.cuenca?.nombre ?? contextoBase?.cuenca?.nombre,
+        id: c.cuenca?.id ?? contextoBase?.cuenca?.id,
+        lat: c.cuenca?.lat_salida ?? contextoBase?.cuenca?.lat ?? contextoBase?.lat,
+        lon: c.cuenca?.lon_salida ?? contextoBase?.cuenca?.lon ?? contextoBase?.lon,
+        cota_salida: c.geomorfometria?.cota_salida_msnm ?? contextoBase?.cuenca?.cota_salida ?? contextoBase?.cota_salida_msnm,
+        cota_alta: c.geomorfometria?.cota_alta_msnm ?? contextoBase?.cuenca?.cota_alta ?? contextoBase?.cota_alta_msnm
+      },
+      area_km2: c.cuenca?.area_km2 ?? contextoBase?.area_km2,
+      longitud_cauce_km: c.geomorfometria?.longitud_cauce_km ?? contextoBase?.longitud_cauce_km,
+      desnivel_m: c.geomorfometria?.desnivel_m ?? contextoBase?.desnivel_m,
+      pendiente_media_pct: c.geomorfometria?.pendiente_cauce_pct ?? contextoBase?.pendiente_media_pct,
+      lluvia_efectiva_total_mm: c.hidrogramas?.lluvia_efectiva_total_mm ?? contextoBase?.lluvia_efectiva_total_mm,
+      cnBase: c.cn?.cnBase ?? contextoBase?.cnBase,
+      CN: c.cn?.cnBase ?? contextoBase?.CN,
+      amcActual: c.cn?.amc ?? contextoBase?.amcActual,
+      porcentajeImpermeable: c.cn?.porcentajeImpermeable ?? contextoBase?.porcentajeImpermeable,
+      tr_diseno_activo: c.qtr?.tr_diseno_activo ?? contextoBase?.tr_diseno_activo,
+      q_tr_activo_estado: {
+        estado: c.qtr?.estado ?? contextoBase?.q_tr_activo_estado?.estado,
+        q_tr_activo: c.qtr?.q_tr_activo ?? contextoBase?.q_tr_activo_estado?.q_tr_activo
+      },
+      q_tr_multiescenario: c.qtr?.q_tr_multiescenario ?? contextoBase?.q_tr_multiescenario,
+      estacion_idf: c.qtr?.estacion_idf ?? contextoBase?.estacion_idf,
+      metodoIDF: c.qtr?.metodo_idf ?? contextoBase?.metodoIDF,
+      idf: c.qtr ? {
+        k: contextoBase?.idf?.k ?? null,
+        n: contextoBase?.idf?.n ?? null,
+        c: contextoBase?.idf?.c ?? null
+      } : contextoBase?.idf
+    };
+    tcState = {
+      ...tcState,
+      Tc_final: c.tc?.Tc_final_min ?? tcState?.Tc_final,
+      metodosTc: c.tc?.metodosTc ?? tcState?.metodosTc
+    };
+    filasMorfologiaQt = c.diagnosticos?.filasMorfologicas?.length > 0 ? c.diagnosticos.filasMorfologicas : filasMorfologiaQt;
+    filasDictamenFormaQt = c.diagnosticos?.filasForma?.length > 0 ? c.diagnosticos.filasForma : filasDictamenFormaQt;
+    filasRiesgoTemporalQt = c.diagnosticos?.filasRiesgo?.length > 0 ? c.diagnosticos.filasRiesgo : filasRiesgoTemporalQt;
+    sintesisRiesgoTemporalQt = c.diagnosticos?.sintesisRiesgo || sintesisRiesgoTemporalQt;
+    metodos = c.hidrogramas?.resultados?.map(r => ({
+      metodo: r.metodo,
+      Qp: r.Qp,
+      Tp: r.Tp,
+      volumen: r.volumen
+    }))?.length > 0 ? c.hidrogramas.resultados.map(r => ({
+      metodo: r.metodo,
+      Qp: r.Qp,
+      Tp: r.Tp,
+      volumen: r.volumen
+    })) : metodos;
+  }
+
   const payload = crearPayloadExpedienteVacio();
 
   const q5DesdeEscenarioActivo =
@@ -366,6 +426,14 @@ const volumenEsperado =
     )
   };
 
+  payload.identificacion = {
+    nombreCuenca:
+      payload.cuenca?.nombre ??
+      textoSeguro(contextoBase?.cuencaActiva?.nombre),
+    areaKm2:
+      payload.geomorfometria?.areaKm2
+  };
+
   const trazabilidadCN =
   obtenerTrazabilidadCN({
     amcActual:
@@ -433,7 +501,7 @@ if (
   });
 }
 
-  payload.lluviaYAbstraccion = {   
+  payload.lluviaYAbstraccion = {
     estacionIDF: textoSeguro(
   contextoBase?.estacion_idf
 ),
@@ -480,8 +548,11 @@ peTotalMm
 
   numeroSeguro(
     contextoBase?.q_tr_activo?.Q ??
+    contextoBase?.q_tr_activo_estado?.q_tr_activo?.Q ??
     contextoBase?.q_tr_activo?.q ??
-    contextoBase?.q_tr_activo?.caudal
+    contextoBase?.q_tr_activo_estado?.q_tr_activo?.q ??
+    contextoBase?.q_tr_activo?.caudal ??
+    contextoBase?.q_tr_activo_estado?.q_tr_activo?.caudal
   )
 
   ??
@@ -503,12 +574,11 @@ peTotalMm
       : null,
     volumenIntegradoM3: volumenQ5,
     metodosComparados: Array.isArray(metodos) ? metodos : [],
-   
+
     qTrMultiEscenario:
       contextoBase?.q_tr_multiescenario ?? null
 
   };
-
   payload.contrasteRacional = {
     caudalPicoM3s: extraerQRacionalActivo(contextoBase),
     esAdoptivo: false
@@ -575,4 +645,3 @@ payload.advertencias = advertencias;
 
 return payload;
 }
-

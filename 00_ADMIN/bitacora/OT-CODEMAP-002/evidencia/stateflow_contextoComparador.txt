@@ -1,0 +1,12 @@
+=== State flow: contextoComparador ===
+
+State: contextoComparador, Setter: setContextoComparador
+  Definido en: 01_APP/HIDROFLOW/src/HidroFlow.jsx:3769 (Field)
+  Pasado como prop: onContextoComparador de Field a ModHidrogramas en 01_APP/HIDROFLOW/src/HidroFlow.jsx:4320
+  Pasado como prop: onContextoComparador de Field a ModRacional en 01_APP/HIDROFLOW/src/HidroFlow.jsx:4332
+
+State: contextoComparador, Setter: setContextoComparador
+  Definido en: 01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:9 (HidroFlowLayout)
+  Envuelto por: actualizarContextoComparador en 01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:11
+  Pasado como prop: onContextoComparador de Field a ModHidrogramas en 01_APP/HIDROFLOW/src/HidroFlow.jsx:4320
+  Pasado como prop: onContextoComparador de Field a ModRacional en 01_APP/HIDROFLOW/src/HidroFlow.jsx:4332

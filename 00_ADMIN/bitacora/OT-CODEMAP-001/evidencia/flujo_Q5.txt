@@ -1,0 +1,42 @@
+=== Flujo: Q5 ===
+
+--- Productores ---
+  Tc_final                      01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx:68
+  obtenerResultadoQMetodo       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx:545
+  bruto                         01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx:565
+  resultadoQ                    01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx:746
+  resultadoQ                    01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx:766
+  resultadoQ                    01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.BACKUP_antes_restaurar.jsx:786
+  Tc_final                      01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:178
+  diagnosticoQSeries            01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:240
+  resumenEstructuraHidrogramas  01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:264
+  bruto                         01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:290
+
+--- Consumidores ---
+  Qp                            01_APP/HIDROFLOW/src/agents/auditorJefe/formatoInformeHallazgos.md:34
+  sin                           01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md:27
+  verificar                     01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md:27
+  Qp                            01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md:28
+  sin                           01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md:28
+  Qp                            01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md:43
+  esperado                      01_APP/HIDROFLOW/src/agents/auditorJefe/HF_AuditorJefe.md:99
+  Qp                            01_APP/HIDROFLOW/src/agents/auditorJefe/protocoloAuditoria.md:69
+  esperado                      01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md:17
+  esperado                      01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md:32
+  Pe                            01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md:32
+  volTotal                      01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md:33
+  hidrogramas                   01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md:33
+  con                           01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md:49
+  Pe                            01_APP/HIDROFLOW/src/agents/auxiliares/HF_AuditorCN.md:49
+
+--- Guards ---
+  expediente_faltantes01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2090 -> Volumen esperado
+  Q5_table            01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2093
+  hidrogramas_publishe01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+  Q5_table            01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+  Q5_table            01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2103 -> Tabla Q-5 auditada con filas reales
+  Q5_table            01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2228 -> Tabla Q-5 auditada:
+  Q5_table            01_APP/HIDROFLOW/scripts/consumirAdaptadorDocumentalOt0061b.mjs:30 -> Tabla Q-5 auditada:
+  Q5_table            01_APP/HIDROFLOW/scripts/validarAdaptadorDocumentalOt0060f.mjs:25 -> Tabla Q-5 auditada:
+  Q5_table            07_TOOLBOX/codemap/indexar-hidroflow.mjs:43 -> tieneq5publicado
+  hidrogramas_publishe07_TOOLBOX/codemap/indexar-hidroflow.mjs:44 -> tienehidrogramaspublicados

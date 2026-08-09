@@ -1,0 +1,1284 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "createdAt": "2026-07-11T01:04:16.450Z",
+    "otId": "OT-HF-003"
+  },
+  "geografia": {},
+  "hidrologia": {
+    "tc_criterio": {},
+    "cn_trazabilidad": {}
+  },
+  "configuracion": {},
+  "resultados": {},
+  "expediente": {
+    "versionContrato": "HF_EXPEDIENTE_PAYLOAD_V1",
+    "cuenca": {
+      "nombre": "POST_OK",
+      "puntoSalida": {
+        "id": "PC_80",
+        "lat": 6.271785117145225,
+        "lon": -75.59408755595547
+      },
+      "cotaSalidaMsnm": 1511.36,
+      "cotaAltaMsnm": 2819.27
+    },
+    "geomorfometria": {
+      "areaKm2": 46.8516,
+      "longitudCauceKm": 15.524,
+      "desnivelM": 1307.91,
+      "pendienteCaucePorcentaje": 8.43
+    },
+    "lluviaYAbstraccion": {
+      "estacionIDF": "SAN CRISTOBAL",
+      "metodoIDF": "EPM",
+      "parametrosIDF": {
+        "k": 78.7968,
+        "n": 0.9556,
+        "c": 0.4
+      },
+      "condicionAMC": "II",
+      "cnBase": 88,
+      "cnAjustado": 88,
+      "cnEfectivo": 94,
+      "peTotalMm": 56.6523
+    },
+    "tiempoConcentracion": {
+      "tcSugeridoMinutos": 114.23138100000004,
+      "metodoPonderacion": "seleccionarTc(hidrograma)",
+      "metodosValidos": [],
+      "metodosExcluidos": [
+        "SCS-Ranser"
+      ]
+    },
+    "escenarioQTrActivo": {
+      "periodoRetornoTrAnios": 25,
+      "estado": "disponible",
+      "caudalDisenoM3s": 179.434631
+    },
+    "hidrografiaQ5": {
+      "metodoPrincipal": "SCS",
+      "caudalPicoM3s": 179.434631,
+      "tiempoPicoMinutos": 207,
+      "volumenIntegradoM3": 2654250.9,
+      "metodosComparados": [
+        {
+          "metodo": "SCS",
+          "Qp": 179.434631,
+          "Tp": 207,
+          "volumen": 2654250.9
+        },
+        {
+          "metodo": "SCS Mod.",
+          "Qp": 177.558735,
+          "Tp": 207,
+          "volumen": 2654250.9
+        },
+        {
+          "metodo": "Snyder",
+          "Qp": 124.082515,
+          "Tp": 405,
+          "volumen": 2654250.9
+        },
+        {
+          "metodo": "Williams & Hann",
+          "Qp": 492.484988,
+          "Tp": 27,
+          "volumen": 2654250.9
+        },
+        {
+          "metodo": "Clark IUH",
+          "Qp": 94.257321,
+          "Tp": 297,
+          "volumen": 2654250.9
+        }
+      ],
+      "qTrMultiEscenario": {
+        "version": "OT-0344",
+        "tcSugeridoMinutos": 231.51341650104578,
+        "escenarios": [
+          {
+            "Tr": 2.33,
+            "Ptotal": 51.9,
+            "lluviaEfectivaTotalMm": 36.2642,
+            "hidrogramas": [
+              {
+                "metodo": "SCS",
+                "Qp": 114.893653,
+                "Tp": 216,
+                "volumen": 1699035.8
+              },
+              {
+                "metodo": "SCS Mod.",
+                "Qp": 113.692499,
+                "Tp": 216,
+                "volumen": 1699035.8
+              },
+              {
+                "metodo": "Snyder",
+                "Qp": 79.36514,
+                "Tp": 414,
+                "volumen": 1699035.8
+              },
+              {
+                "metodo": "Williams & Hann",
+                "Qp": 300.998326,
+                "Tp": 27,
+                "volumen": 1699035.8
+              },
+              {
+                "metodo": "Clark IUH",
+                "Qp": 60.342593,
+                "Tp": 306,
+                "volumen": 1699035.8
+              }
+            ]
+          },
+          {
+            "Tr": 5,
+            "Ptotal": 59.48,
+            "lluviaEfectivaTotalMm": 43.3821,
+            "hidrogramas": [
+              {
+                "metodo": "SCS",
+                "Qp": 137.4563,
+                "Tp": 216,
+                "volumen": 2032520.8
+              },
+              {
+                "metodo": "SCS Mod.",
+                "Qp": 136.019266,
+                "Tp": 216,
+                "volumen": 2032520.8
+              },
+              {
+                "metodo": "Snyder",
+                "Qp": 94.955123,
+                "Tp": 405,
+                "volumen": 2032520.8
+              },
+              {
+                "metodo": "Williams & Hann",
+                "Qp": 367.968298,
+                "Tp": 27,
+                "volumen": 2032520.8
+              },
+              {
+                "metodo": "Clark IUH",
+                "Qp": 72.184317,
+                "Tp": 297,
+                "volumen": 2032520.8
+              }
+            ]
+          },
+          {
+            "Tr": 10,
+            "Ptotal": 65.64,
+            "lluviaEfectivaTotalMm": 49.2202,
+            "hidrogramas": [
+              {
+                "metodo": "SCS",
+                "Qp": 155.933058,
+                "Tp": 216,
+                "volumen": 2306045.1
+              },
+              {
+                "metodo": "SCS Mod.",
+                "Qp": 154.302859,
+                "Tp": 216,
+                "volumen": 2306045.1
+              },
+              {
+                "metodo": "Snyder",
+                "Qp": 107.772724,
+                "Tp": 405,
+                "volumen": 2306045.1
+              },
+              {
+                "metodo": "Williams & Hann",
+                "Qp": 422.784279,
+                "Tp": 27,
+                "volumen": 2306045.1
+              },
+              {
+                "metodo": "Clark IUH",
+                "Qp": 81.897489,
+                "Tp": 297,
+                "volumen": 2306045.1
+              }
+            ]
+          },
+          {
+            "Tr": 25,
+            "Ptotal": 73.41,
+            "lluviaEfectivaTotalMm": 56.6523,
+            "hidrogramas": [
+              {
+                "metodo": "SCS",
+                "Qp": 179.434631,
+                "Tp": 207,
+                "volumen": 2654250.9
+              },
+              {
+                "metodo": "SCS Mod.",
+                "Qp": 177.558735,
+                "Tp": 207,
+                "volumen": 2654250.9
+              },
+              {
+                "metodo": "Snyder",
+                "Qp": 124.082515,
+                "Tp": 405,
+                "volumen": 2654250.9
+              },
+              {
+                "metodo": "Williams & Hann",
+                "Qp": 492.484988,
+                "Tp": 27,
+                "volumen": 2654250.9
+              },
+              {
+                "metodo": "Clark IUH",
+                "Qp": 94.257321,
+                "Tp": 297,
+                "volumen": 2654250.9
+              }
+            ]
+          },
+          {
+            "Tr": 50,
+            "Ptotal": 79.16,
+            "lluviaEfectivaTotalMm": 62.1818,
+            "hidrogramas": [
+              {
+                "metodo": "SCS",
+                "Qp": 197.076259,
+                "Tp": 207,
+                "volumen": 2913316.8
+              },
+              {
+                "metodo": "SCS Mod.",
+                "Qp": 195.015928,
+                "Tp": 207,
+                "volumen": 2913316.8
+              },
+              {
+                "metodo": "Snyder",
+                "Qp": 136.211567,
+                "Tp": 405,
+                "volumen": 2913316.8
+              },
+              {
+                "metodo": "Williams & Hann",
+                "Qp": 545.733865,
+                "Tp": 18,
+                "volumen": 2913316.8
+              },
+              {
+                "metodo": "Clark IUH",
+                "Qp": 103.449374,
+                "Tp": 297,
+                "volumen": 2913316.8
+              }
+            ]
+          },
+          {
+            "Tr": 100,
+            "Ptotal": 84.87,
+            "lluviaEfectivaTotalMm": 67.6967,
+            "hidrogramas": [
+              {
+                "metodo": "SCS",
+                "Qp": 214.661577,
+                "Tp": 207,
+                "volumen": 3171698.7
+              },
+              {
+                "metodo": "SCS Mod.",
+                "Qp": 212.417401,
+                "Tp": 207,
+                "volumen": 3171698.7
+              },
+              {
+                "metodo": "Snyder",
+                "Qp": 148.303241,
+                "Tp": 405,
+                "volumen": 3171698.7
+              },
+              {
+                "metodo": "Williams & Hann",
+                "Qp": 605.657195,
+                "Tp": 18,
+                "volumen": 3171698.7
+              },
+              {
+                "metodo": "Clark IUH",
+                "Qp": 112.613834,
+                "Tp": 297,
+                "volumen": 3171698.7
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "contrasteRacional": {
+      "caudalPicoM3s": 494.208,
+      "esAdoptivo": false
+    },
+    "controlConsistencia": {
+      "volumenEsperadoTeoricoM3": 2654250.8986799996,
+      "volumenIntegradoQ5M3": 2654250.9,
+      "ratioVolumetrico": 1.0000000004973155,
+      "estadoConsistencia": "consistente"
+    },
+    "diagnosticoQt": {
+      "filasMorfologicas": [
+        {
+          "metodo": "SCS",
+          "estado": "Apta",
+          "motivo": null,
+          "Qp": 179.434631,
+          "tPico": 207,
+          "duracionEfectivaMin": 648,
+          "tiempoAscensoMin": 198,
+          "tiempoRecesoMin": 450,
+          "W50Min": 216,
+          "W25Min": 315,
+          "asimetriaAscensoReceso": 2.272727273
+        },
+        {
+          "metodo": "SCS Mod.",
+          "estado": "Apta",
+          "motivo": null,
+          "Qp": 177.558735,
+          "tPico": 207,
+          "duracionEfectivaMin": 693,
+          "tiempoAscensoMin": 198,
+          "tiempoRecesoMin": 495,
+          "W50Min": 216,
+          "W25Min": 315,
+          "asimetriaAscensoReceso": 2.5
+        },
+        {
+          "metodo": "Snyder",
+          "estado": "Apta",
+          "motivo": null,
+          "Qp": 124.082515,
+          "tPico": 405,
+          "duracionEfectivaMin": 3573,
+          "tiempoAscensoMin": 396,
+          "tiempoRecesoMin": 3177,
+          "W50Min": 288,
+          "W25Min": 468,
+          "asimetriaAscensoReceso": 8.022727273
+        },
+        {
+          "metodo": "Williams & Hann",
+          "estado": "Apta",
+          "motivo": null,
+          "Qp": 492.484988,
+          "tPico": 27,
+          "duracionEfectivaMin": 243,
+          "tiempoAscensoMin": 18,
+          "tiempoRecesoMin": 225,
+          "W50Min": 54,
+          "W25Min": 171,
+          "asimetriaAscensoReceso": 12.5
+        },
+        {
+          "metodo": "Clark IUH",
+          "estado": "Apta",
+          "motivo": null,
+          "Qp": 94.257321,
+          "tPico": 297,
+          "duracionEfectivaMin": 2160,
+          "tiempoAscensoMin": 288,
+          "tiempoRecesoMin": 1872,
+          "W50Min": 378,
+          "W25Min": 621,
+          "asimetriaAscensoReceso": 6.5
+        }
+      ],
+      "filasForma": [
+        {
+          "metodo": "SCS",
+          "estadoMetrico": "Apta",
+          "forma": "Forma persistente",
+          "alerta": "Ancho temporal significativo",
+          "severidad": "Media",
+          "comentario": "Los anchos W50 o W25 sugieren persistencia temporal de caudales significativos. Diagnóstico no adoptivo.",
+          "banderas": [
+            "persistencia_alta",
+            "nucleo_ancho"
+          ]
+        },
+        {
+          "metodo": "SCS Mod.",
+          "estadoMetrico": "Apta",
+          "forma": "Forma persistente",
+          "alerta": "Ancho temporal significativo",
+          "severidad": "Media",
+          "comentario": "Los anchos W50 o W25 sugieren persistencia temporal de caudales significativos. Diagnóstico no adoptivo.",
+          "banderas": [
+            "persistencia_alta",
+            "nucleo_ancho"
+          ]
+        },
+        {
+          "metodo": "Snyder",
+          "estadoMetrico": "Apta",
+          "forma": "Forma prolongada con receso dominante",
+          "alerta": "Recesión extensa",
+          "severidad": "Alta",
+          "comentario": "La duración efectiva y la relación receso/ascenso indican una respuesta prolongada dominada por la recesión. Diagnóstico no adoptivo.",
+          "banderas": [
+            "receso_dominante",
+            "receso_muy_dominante",
+            "ascenso_abrupto",
+            "duracion_prolongada",
+            "pico_temprano"
+          ]
+        },
+        {
+          "metodo": "Williams & Hann",
+          "estadoMetrico": "Apta",
+          "forma": "Forma abrupta altamente asimétrica",
+          "alerta": "Ascenso muy corto y receso extremo",
+          "severidad": "Alta",
+          "comentario": "La forma Q(t) presenta ascenso muy corto frente a una recesión dominante extrema. Diagnóstico no adoptivo; requiere interpretación hidrológica posterior.",
+          "banderas": [
+            "receso_dominante",
+            "receso_muy_dominante",
+            "receso_extremo",
+            "ascenso_abrupto",
+            "persistencia_alta",
+            "nucleo_ancho",
+            "pico_temprano"
+          ]
+        },
+        {
+          "metodo": "Clark IUH",
+          "estadoMetrico": "Apta",
+          "forma": "Forma prolongada con receso dominante",
+          "alerta": "Recesión extensa",
+          "severidad": "Alta",
+          "comentario": "La duración efectiva y la relación receso/ascenso indican una respuesta prolongada dominada por la recesión. Diagnóstico no adoptivo.",
+          "banderas": [
+            "receso_dominante",
+            "receso_muy_dominante",
+            "duracion_prolongada",
+            "persistencia_alta",
+            "nucleo_ancho",
+            "pico_temprano"
+          ]
+        }
+      ],
+      "filasRiesgo": [
+        {
+          "metodo": "SCS",
+          "riesgo": "Persistencia temporal significativa",
+          "nivel": "Medio",
+          "factorDominante": "Anchos W50/W25 relevantes",
+          "comentario": "Los anchos temporales sugieren permanencia de caudales significativos. Diagnóstico comparativo no adoptivo.",
+          "banderasRiesgo": [
+            "riesgo_persistencia_temporal"
+          ]
+        },
+        {
+          "metodo": "SCS Mod.",
+          "riesgo": "Persistencia temporal significativa",
+          "nivel": "Medio",
+          "factorDominante": "Anchos W50/W25 relevantes",
+          "comentario": "Los anchos temporales sugieren permanencia de caudales significativos. Diagnóstico comparativo no adoptivo.",
+          "banderasRiesgo": [
+            "riesgo_persistencia_temporal"
+          ]
+        },
+        {
+          "metodo": "Snyder",
+          "riesgo": "Recesión prolongada dominante",
+          "nivel": "Alto",
+          "factorDominante": "Duración efectiva alta y receso dominante",
+          "comentario": "La respuesta temporal se prolonga por una recesión dominante. Diagnóstico comparativo no adoptivo.",
+          "banderasRiesgo": [
+            "riesgo_recesion_prolongada",
+            "riesgo_ascenso_abrupto",
+            "riesgo_pico_temprano"
+          ]
+        },
+        {
+          "metodo": "Williams & Hann",
+          "riesgo": "Asimetría extrema con concentración abrupta",
+          "nivel": "Alto",
+          "factorDominante": "Receso extremo y ascenso abrupto",
+          "comentario": "La forma temporal combina ascenso muy corto con receso extremo. Este riesgo es comparativo y no adopta método ni levanta el estado global No coherente.",
+          "banderasRiesgo": [
+            "riesgo_asimetria_extrema",
+            "riesgo_recesion_prolongada",
+            "riesgo_ascenso_abrupto",
+            "riesgo_pico_temprano",
+            "riesgo_persistencia_temporal"
+          ]
+        },
+        {
+          "metodo": "Clark IUH",
+          "riesgo": "Recesión prolongada dominante",
+          "nivel": "Alto",
+          "factorDominante": "Duración efectiva alta y receso dominante",
+          "comentario": "La respuesta temporal se prolonga por una recesión dominante. Diagnóstico comparativo no adoptivo.",
+          "banderasRiesgo": [
+            "riesgo_recesion_prolongada",
+            "riesgo_pico_temprano",
+            "riesgo_persistencia_temporal"
+          ]
+        }
+      ],
+      "sintesisRiesgo": "Riesgo temporal alto: Snyder, Williams & Hann, Clark IUH. Riesgo temporal medio: SCS, SCS Mod.. Persistencia temporal significativa: SCS, SCS Mod. (Medio). Recesión prolongada dominante: Snyder, Clark IUH (Alto). Asimetría extrema con concentración abrupta: Williams & Hann (Alto).",
+      "esAdoptivo": false
+    },
+    "idSimulacion": "PC_80",
+    "fechaGeneracion": "28/7/2026, 9:31:55 p. m.",
+    "autorTecnico": "Luis German Montoya Mejía",
+    "identificacion": {
+      "nombreCuenca": "POST_OK",
+      "areaKm2": 46.8516
+    },
+    "advertencias": []
+  },
+  "estado_operativo": {
+    "params": {
+      "CN": 99,
+      "dt": 9,
+      "nombre_cuenca": "POST_OK"
+    }
+  },
+  "schema": "HFPROJ_v1",
+  "contratoCuenca": {
+    "version": "1.0.0",
+    "fuente": "contratoCuenca",
+    "descripcion": "Fuente unica de verdad para todos los dominios hidrologicos de una cuenca activa",
+    "cuenca": {
+      "nombre": "Quebrada La Iguana - PC_80",
+      "id": "iguana_pc80",
+      "lat_salida": 6.271785117145225,
+      "lon_salida": -75.59408755595547,
+      "area_km2": 46.8516,
+      "longitud_cauce_km": 15.524,
+      "desnivel_m": 1307.91,
+      "cota_mayor_cauce_msnm": 2819.27,
+      "cota_menor_cauce_msnm": 1511.36,
+      "pendiente_cauce_pct": null,
+      "perimetro_km": 47.59
+    },
+    "geomorfometria": {
+      "area_km2": 46.8516,
+      "longitud_cauce_km": 15.524,
+      "desnivel_m": 1307.91,
+      "pendiente_cauce_pct": null,
+      "cota_salida_msnm": 1511.36,
+      "cota_alta_msnm": 2819.27
+    },
+    "cn": {
+      "cnBase": 88,
+      "cnAjustado": null,
+      "cnEfectivo": 94,
+      "amc": "II",
+      "porcentajeImpermeable": 60,
+      "S_mm": 16.21,
+      "Ia_mm": 3.24,
+      "trazabilidad": null
+    },
+    "tc": {
+      "Tc_final_min": 114.93861894697008,
+      "tc_h": 1.9156,
+      "metodosTc": {
+        "Temez": 231.513,
+        "Kirpich": 134.519,
+        "California": 85.263,
+        "Giandotti": 105.071,
+        "SCS": 122.024,
+        "Perez": 11.241
+      },
+      "metodosTcCompetentes": null,
+      "rangoCompetenteTc": null,
+      "metodoPonderacion": "seleccionarTc(hidrograma)",
+      "metodosValidos": [],
+      "metodosExcluidos": [
+        "SCS-Ranser"
+      ]
+    },
+    "qtr": {
+      "tr_diseno_activo": 25,
+      "estado": null,
+      "caudalDisenoM3s": null,
+      "estacion_idf": null,
+      "metodo_idf": null,
+      "q_tr_activo": null,
+      "q_tr_multiescenario": null,
+      "faltantes": []
+    },
+    "hidrogramas": {
+      "resultados": [
+        {
+          "metodo": "SCS",
+          "Qpico": 184.028568,
+          "tPico": 210,
+          "volTotal": 2654250.9,
+          "Qp": 184.028568,
+          "Tp": 210,
+          "volumen": 2654250.9,
+          "qSeriesLength": 0
+        },
+        {
+          "metodo": "SCS Mod.",
+          "Qpico": 181.018714,
+          "tPico": 210,
+          "volTotal": 2654250.9,
+          "Qp": 181.018714,
+          "Tp": 210,
+          "volumen": 2654250.9,
+          "qSeriesLength": 0
+        },
+        {
+          "metodo": "Snyder",
+          "Qpico": 124.648255,
+          "tPico": 405,
+          "volTotal": 2654250.9,
+          "Qp": 124.648255,
+          "Tp": 405,
+          "volumen": 2654250.9,
+          "qSeriesLength": 0
+        },
+        {
+          "metodo": "Williams & Hann",
+          "Qpico": 518.088346,
+          "tPico": 20,
+          "volTotal": 2654250.9,
+          "Qp": 518.088346,
+          "Tp": 20,
+          "volumen": 2654250.9,
+          "qSeriesLength": 0
+        },
+        {
+          "metodo": "Clark IUH",
+          "Qpico": 94.276359,
+          "tPico": 300,
+          "volTotal": 2654250.9,
+          "Qp": 94.276359,
+          "Tp": 300,
+          "volumen": 2654250.9,
+          "qSeriesLength": 0
+        }
+      ],
+      "resumen": [
+        {
+          "metodo": "SCS Unit Hydrograph",
+          "Qp": 184.028568,
+          "Tp": 210,
+          "volumen": 2654250.9,
+          "puntos": null
+        },
+        {
+          "metodo": "SCS Modificado",
+          "Qp": 181.018714,
+          "Tp": 210,
+          "volumen": 2654250.9,
+          "puntos": null
+        },
+        {
+          "metodo": "Snyder",
+          "Qp": 124.648255,
+          "Tp": 405,
+          "volumen": 2654250.9,
+          "puntos": null
+        },
+        {
+          "metodo": "Williams & Hann",
+          "Qp": 518.088346,
+          "Tp": 20,
+          "volumen": 2654250.9,
+          "puntos": null
+        },
+        {
+          "metodo": "Clark IUH",
+          "Qp": 94.276359,
+          "Tp": 300,
+          "volumen": 2654250.9,
+          "puntos": null
+        }
+      ],
+      "principal": {
+        "metodo": "SCS",
+        "Qpico": 184.028568,
+        "tPico": 210,
+        "volTotal": 2654250.9
+      },
+      "lluvia_efectiva_total_mm": 0,
+      "peTotalMm": 0,
+      "volumenEsperadoM3": 0,
+      "qSeriesPublicadas": false
+    },
+    "diagnosticos": {
+      "morfologiaQt": null,
+      "filasMorfologicas": [],
+      "filasForma": [],
+      "filasRiesgo": [],
+      "filasDictamenFormaQt": [],
+      "filasRiesgoTemporalQt": [],
+      "sintesisRiesgo": null,
+      "esAdoptivo": false
+    },
+    "expediente": {
+      "generado": true,
+      "entregable": {
+        "versionContrato": "HF_EXPEDIENTE_PAYLOAD_V1",
+        "cuenca": {
+          "nombre": "POST_OK",
+          "puntoSalida": {
+            "id": "PC_80",
+            "lat": 6.271785117145225,
+            "lon": -75.59408755595547
+          },
+          "cotaSalidaMsnm": 1511.36,
+          "cotaAltaMsnm": 2819.27
+        },
+        "geomorfometria": {
+          "areaKm2": 46.8516,
+          "longitudCauceKm": 15.524,
+          "desnivelM": 1307.91,
+          "pendienteCaucePorcentaje": 8.43
+        },
+        "lluviaYAbstraccion": {
+          "estacionIDF": "SAN CRISTOBAL",
+          "metodoIDF": "EPM",
+          "parametrosIDF": {
+            "k": 78.7968,
+            "n": 0.9556,
+            "c": 0.4
+          },
+          "condicionAMC": "II",
+          "cnBase": 88,
+          "cnAjustado": 88,
+          "cnEfectivo": 94,
+          "peTotalMm": 56.6523
+        },
+        "tiempoConcentracion": {
+          "tcSugeridoMinutos": 114.23138100000004,
+          "metodoPonderacion": "seleccionarTc(hidrograma)",
+          "metodosValidos": [],
+          "metodosExcluidos": [
+            "SCS-Ranser"
+          ]
+        },
+        "escenarioQTrActivo": {
+          "periodoRetornoTrAnios": 25,
+          "estado": "disponible",
+          "caudalDisenoM3s": 179.434631
+        },
+        "hidrografiaQ5": {
+          "metodoPrincipal": "SCS",
+          "caudalPicoM3s": 179.434631,
+          "tiempoPicoMinutos": 207,
+          "volumenIntegradoM3": 2654250.9,
+          "metodosComparados": [
+            {
+              "metodo": "SCS",
+              "Qp": 179.434631,
+              "Tp": 207,
+              "volumen": 2654250.9
+            },
+            {
+              "metodo": "SCS Mod.",
+              "Qp": 177.558735,
+              "Tp": 207,
+              "volumen": 2654250.9
+            },
+            {
+              "metodo": "Snyder",
+              "Qp": 124.082515,
+              "Tp": 405,
+              "volumen": 2654250.9
+            },
+            {
+              "metodo": "Williams & Hann",
+              "Qp": 492.484988,
+              "Tp": 27,
+              "volumen": 2654250.9
+            },
+            {
+              "metodo": "Clark IUH",
+              "Qp": 94.257321,
+              "Tp": 297,
+              "volumen": 2654250.9
+            }
+          ],
+          "qTrMultiEscenario": {
+            "version": "OT-0344",
+            "tcSugeridoMinutos": 231.51341650104578,
+            "escenarios": [
+              {
+                "Tr": 2.33,
+                "Ptotal": 51.9,
+                "lluviaEfectivaTotalMm": 36.2642,
+                "hidrogramas": [
+                  {
+                    "metodo": "SCS",
+                    "Qp": 114.893653,
+                    "Tp": 216,
+                    "volumen": 1699035.8
+                  },
+                  {
+                    "metodo": "SCS Mod.",
+                    "Qp": 113.692499,
+                    "Tp": 216,
+                    "volumen": 1699035.8
+                  },
+                  {
+                    "metodo": "Snyder",
+                    "Qp": 79.36514,
+                    "Tp": 414,
+                    "volumen": 1699035.8
+                  },
+                  {
+                    "metodo": "Williams & Hann",
+                    "Qp": 300.998326,
+                    "Tp": 27,
+                    "volumen": 1699035.8
+                  },
+                  {
+                    "metodo": "Clark IUH",
+                    "Qp": 60.342593,
+                    "Tp": 306,
+                    "volumen": 1699035.8
+                  }
+                ]
+              },
+              {
+                "Tr": 5,
+                "Ptotal": 59.48,
+                "lluviaEfectivaTotalMm": 43.3821,
+                "hidrogramas": [
+                  {
+                    "metodo": "SCS",
+                    "Qp": 137.4563,
+                    "Tp": 216,
+                    "volumen": 2032520.8
+                  },
+                  {
+                    "metodo": "SCS Mod.",
+                    "Qp": 136.019266,
+                    "Tp": 216,
+                    "volumen": 2032520.8
+                  },
+                  {
+                    "metodo": "Snyder",
+                    "Qp": 94.955123,
+                    "Tp": 405,
+                    "volumen": 2032520.8
+                  },
+                  {
+                    "metodo": "Williams & Hann",
+                    "Qp": 367.968298,
+                    "Tp": 27,
+                    "volumen": 2032520.8
+                  },
+                  {
+                    "metodo": "Clark IUH",
+                    "Qp": 72.184317,
+                    "Tp": 297,
+                    "volumen": 2032520.8
+                  }
+                ]
+              },
+              {
+                "Tr": 10,
+                "Ptotal": 65.64,
+                "lluviaEfectivaTotalMm": 49.2202,
+                "hidrogramas": [
+                  {
+                    "metodo": "SCS",
+                    "Qp": 155.933058,
+                    "Tp": 216,
+                    "volumen": 2306045.1
+                  },
+                  {
+                    "metodo": "SCS Mod.",
+                    "Qp": 154.302859,
+                    "Tp": 216,
+                    "volumen": 2306045.1
+                  },
+                  {
+                    "metodo": "Snyder",
+                    "Qp": 107.772724,
+                    "Tp": 405,
+                    "volumen": 2306045.1
+                  },
+                  {
+                    "metodo": "Williams & Hann",
+                    "Qp": 422.784279,
+                    "Tp": 27,
+                    "volumen": 2306045.1
+                  },
+                  {
+                    "metodo": "Clark IUH",
+                    "Qp": 81.897489,
+                    "Tp": 297,
+                    "volumen": 2306045.1
+                  }
+                ]
+              },
+              {
+                "Tr": 25,
+                "Ptotal": 73.41,
+                "lluviaEfectivaTotalMm": 56.6523,
+                "hidrogramas": [
+                  {
+                    "metodo": "SCS",
+                    "Qp": 179.434631,
+                    "Tp": 207,
+                    "volumen": 2654250.9
+                  },
+                  {
+                    "metodo": "SCS Mod.",
+                    "Qp": 177.558735,
+                    "Tp": 207,
+                    "volumen": 2654250.9
+                  },
+                  {
+                    "metodo": "Snyder",
+                    "Qp": 124.082515,
+                    "Tp": 405,
+                    "volumen": 2654250.9
+                  },
+                  {
+                    "metodo": "Williams & Hann",
+                    "Qp": 492.484988,
+                    "Tp": 27,
+                    "volumen": 2654250.9
+                  },
+                  {
+                    "metodo": "Clark IUH",
+                    "Qp": 94.257321,
+                    "Tp": 297,
+                    "volumen": 2654250.9
+                  }
+                ]
+              },
+              {
+                "Tr": 50,
+                "Ptotal": 79.16,
+                "lluviaEfectivaTotalMm": 62.1818,
+                "hidrogramas": [
+                  {
+                    "metodo": "SCS",
+                    "Qp": 197.076259,
+                    "Tp": 207,
+                    "volumen": 2913316.8
+                  },
+                  {
+                    "metodo": "SCS Mod.",
+                    "Qp": 195.015928,
+                    "Tp": 207,
+                    "volumen": 2913316.8
+                  },
+                  {
+                    "metodo": "Snyder",
+                    "Qp": 136.211567,
+                    "Tp": 405,
+                    "volumen": 2913316.8
+                  },
+                  {
+                    "metodo": "Williams & Hann",
+                    "Qp": 545.733865,
+                    "Tp": 18,
+                    "volumen": 2913316.8
+                  },
+                  {
+                    "metodo": "Clark IUH",
+                    "Qp": 103.449374,
+                    "Tp": 297,
+                    "volumen": 2913316.8
+                  }
+                ]
+              },
+              {
+                "Tr": 100,
+                "Ptotal": 84.87,
+                "lluviaEfectivaTotalMm": 67.6967,
+                "hidrogramas": [
+                  {
+                    "metodo": "SCS",
+                    "Qp": 214.661577,
+                    "Tp": 207,
+                    "volumen": 3171698.7
+                  },
+                  {
+                    "metodo": "SCS Mod.",
+                    "Qp": 212.417401,
+                    "Tp": 207,
+                    "volumen": 3171698.7
+                  },
+                  {
+                    "metodo": "Snyder",
+                    "Qp": 148.303241,
+                    "Tp": 405,
+                    "volumen": 3171698.7
+                  },
+                  {
+                    "metodo": "Williams & Hann",
+                    "Qp": 605.657195,
+                    "Tp": 18,
+                    "volumen": 3171698.7
+                  },
+                  {
+                    "metodo": "Clark IUH",
+                    "Qp": 112.613834,
+                    "Tp": 297,
+                    "volumen": 3171698.7
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "contrasteRacional": {
+          "caudalPicoM3s": 494.208,
+          "esAdoptivo": false
+        },
+        "controlConsistencia": {
+          "volumenEsperadoTeoricoM3": 2654250.8986799996,
+          "volumenIntegradoQ5M3": 2654250.9,
+          "ratioVolumetrico": 1.0000000004973155,
+          "estadoConsistencia": "consistente"
+        },
+        "diagnosticoQt": {
+          "filasMorfologicas": [
+            {
+              "metodo": "SCS",
+              "estado": "Apta",
+              "motivo": null,
+              "Qp": 179.434631,
+              "tPico": 207,
+              "duracionEfectivaMin": 648,
+              "tiempoAscensoMin": 198,
+              "tiempoRecesoMin": 450,
+              "W50Min": 216,
+              "W25Min": 315,
+              "asimetriaAscensoReceso": 2.272727273
+            },
+            {
+              "metodo": "SCS Mod.",
+              "estado": "Apta",
+              "motivo": null,
+              "Qp": 177.558735,
+              "tPico": 207,
+              "duracionEfectivaMin": 693,
+              "tiempoAscensoMin": 198,
+              "tiempoRecesoMin": 495,
+              "W50Min": 216,
+              "W25Min": 315,
+              "asimetriaAscensoReceso": 2.5
+            },
+            {
+              "metodo": "Snyder",
+              "estado": "Apta",
+              "motivo": null,
+              "Qp": 124.082515,
+              "tPico": 405,
+              "duracionEfectivaMin": 3573,
+              "tiempoAscensoMin": 396,
+              "tiempoRecesoMin": 3177,
+              "W50Min": 288,
+              "W25Min": 468,
+              "asimetriaAscensoReceso": 8.022727273
+            },
+            {
+              "metodo": "Williams & Hann",
+              "estado": "Apta",
+              "motivo": null,
+              "Qp": 492.484988,
+              "tPico": 27,
+              "duracionEfectivaMin": 243,
+              "tiempoAscensoMin": 18,
+              "tiempoRecesoMin": 225,
+              "W50Min": 54,
+              "W25Min": 171,
+              "asimetriaAscensoReceso": 12.5
+            },
+            {
+              "metodo": "Clark IUH",
+              "estado": "Apta",
+              "motivo": null,
+              "Qp": 94.257321,
+              "tPico": 297,
+              "duracionEfectivaMin": 2160,
+              "tiempoAscensoMin": 288,
+              "tiempoRecesoMin": 1872,
+              "W50Min": 378,
+              "W25Min": 621,
+              "asimetriaAscensoReceso": 6.5
+            }
+          ],
+          "filasForma": [
+            {
+              "metodo": "SCS",
+              "estadoMetrico": "Apta",
+              "forma": "Forma persistente",
+              "alerta": "Ancho temporal significativo",
+              "severidad": "Media",
+              "comentario": "Los anchos W50 o W25 sugieren persistencia temporal de caudales significativos. Diagnóstico no adoptivo.",
+              "banderas": [
+                "persistencia_alta",
+                "nucleo_ancho"
+              ]
+            },
+            {
+              "metodo": "SCS Mod.",
+              "estadoMetrico": "Apta",
+              "forma": "Forma persistente",
+              "alerta": "Ancho temporal significativo",
+              "severidad": "Media",
+              "comentario": "Los anchos W50 o W25 sugieren persistencia temporal de caudales significativos. Diagnóstico no adoptivo.",
+              "banderas": [
+                "persistencia_alta",
+                "nucleo_ancho"
+              ]
+            },
+            {
+              "metodo": "Snyder",
+              "estadoMetrico": "Apta",
+              "forma": "Forma prolongada con receso dominante",
+              "alerta": "Recesión extensa",
+              "severidad": "Alta",
+              "comentario": "La duración efectiva y la relación receso/ascenso indican una respuesta prolongada dominada por la recesión. Diagnóstico no adoptivo.",
+              "banderas": [
+                "receso_dominante",
+                "receso_muy_dominante",
+                "ascenso_abrupto",
+                "duracion_prolongada",
+                "pico_temprano"
+              ]
+            },
+            {
+              "metodo": "Williams & Hann",
+              "estadoMetrico": "Apta",
+              "forma": "Forma abrupta altamente asimétrica",
+              "alerta": "Ascenso muy corto y receso extremo",
+              "severidad": "Alta",
+              "comentario": "La forma Q(t) presenta ascenso muy corto frente a una recesión dominante extrema. Diagnóstico no adoptivo; requiere interpretación hidrológica posterior.",
+              "banderas": [
+                "receso_dominante",
+                "receso_muy_dominante",
+                "receso_extremo",
+                "ascenso_abrupto",
+                "persistencia_alta",
+                "nucleo_ancho",
+                "pico_temprano"
+              ]
+            },
+            {
+              "metodo": "Clark IUH",
+              "estadoMetrico": "Apta",
+              "forma": "Forma prolongada con receso dominante",
+              "alerta": "Recesión extensa",
+              "severidad": "Alta",
+              "comentario": "La duración efectiva y la relación receso/ascenso indican una respuesta prolongada dominada por la recesión. Diagnóstico no adoptivo.",
+              "banderas": [
+                "receso_dominante",
+                "receso_muy_dominante",
+                "duracion_prolongada",
+                "persistencia_alta",
+                "nucleo_ancho",
+                "pico_temprano"
+              ]
+            }
+          ],
+          "filasRiesgo": [
+            {
+              "metodo": "SCS",
+              "riesgo": "Persistencia temporal significativa",
+              "nivel": "Medio",
+              "factorDominante": "Anchos W50/W25 relevantes",
+              "comentario": "Los anchos temporales sugieren permanencia de caudales significativos. Diagnóstico comparativo no adoptivo.",
+              "banderasRiesgo": [
+                "riesgo_persistencia_temporal"
+              ]
+            },
+            {
+              "metodo": "SCS Mod.",
+              "riesgo": "Persistencia temporal significativa",
+              "nivel": "Medio",
+              "factorDominante": "Anchos W50/W25 relevantes",
+              "comentario": "Los anchos temporales sugieren permanencia de caudales significativos. Diagnóstico comparativo no adoptivo.",
+              "banderasRiesgo": [
+                "riesgo_persistencia_temporal"
+              ]
+            },
+            {
+              "metodo": "Snyder",
+              "riesgo": "Recesión prolongada dominante",
+              "nivel": "Alto",
+              "factorDominante": "Duración efectiva alta y receso dominante",
+              "comentario": "La respuesta temporal se prolonga por una recesión dominante. Diagnóstico comparativo no adoptivo.",
+              "banderasRiesgo": [
+                "riesgo_recesion_prolongada",
+                "riesgo_ascenso_abrupto",
+                "riesgo_pico_temprano"
+              ]
+            },
+            {
+              "metodo": "Williams & Hann",
+              "riesgo": "Asimetría extrema con concentración abrupta",
+              "nivel": "Alto",
+              "factorDominante": "Receso extremo y ascenso abrupto",
+              "comentario": "La forma temporal combina ascenso muy corto con receso extremo. Este riesgo es comparativo y no adopta método ni levanta el estado global No coherente.",
+              "banderasRiesgo": [
+                "riesgo_asimetria_extrema",
+                "riesgo_recesion_prolongada",
+                "riesgo_ascenso_abrupto",
+                "riesgo_pico_temprano",
+                "riesgo_persistencia_temporal"
+              ]
+            },
+            {
+              "metodo": "Clark IUH",
+              "riesgo": "Recesión prolongada dominante",
+              "nivel": "Alto",
+              "factorDominante": "Duración efectiva alta y receso dominante",
+              "comentario": "La respuesta temporal se prolonga por una recesión dominante. Diagnóstico comparativo no adoptivo.",
+              "banderasRiesgo": [
+                "riesgo_recesion_prolongada",
+                "riesgo_pico_temprano",
+                "riesgo_persistencia_temporal"
+              ]
+            }
+          ],
+          "sintesisRiesgo": "Riesgo temporal alto: Snyder, Williams & Hann, Clark IUH. Riesgo temporal medio: SCS, SCS Mod.. Persistencia temporal significativa: SCS, SCS Mod. (Medio). Recesión prolongada dominante: Snyder, Clark IUH (Alto). Asimetría extrema con concentración abrupta: Williams & Hann (Alto).",
+          "esAdoptivo": false
+        },
+        "idSimulacion": "PC_80",
+        "fechaGeneracion": "28/7/2026, 9:31:55 p. m.",
+        "autorTecnico": "Luis German Montoya Mejía",
+        "identificacion": {
+          "nombreCuenca": "POST_OK",
+          "areaKm2": 46.8516
+        },
+        "advertencias": []
+      },
+      "estadoGuard": "Q5_datos_disponibles",
+      "faltantes": [],
+      "seccionesActivas": []
+    },
+    "persistencia": {
+      "endpoint": "http://localhost:4000/api/proyecto/activo",
+      "ultimoEnvio": null,
+      "estado": null,
+      "expedienteId": null
+    }
+  },
+  "version": "1.0.0",
+  "createdAt": "2026-07-30T00:39:52.054Z",
+  "projectOwner": "Luis German Montoya",
+  "projectStatus": "ACTIVE"
+}

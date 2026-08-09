@@ -1,0 +1,71 @@
+{
+  "version": "1.4.0",
+  "tool": "HF-CODEMAP",
+  "scanRoots": [
+    "01_APP/HIDROFLOW/src",
+    "01_APP/HIDROFLOW/scripts",
+    "07_TOOLBOX"
+  ],
+  "extensions": [".js", ".jsx", ".mjs", ".cjs", ".json", ".md"],
+  "excludeDirs": [
+    "node_modules",
+    "dist",
+    "build",
+    ".git",
+    ".vite",
+    "10_LOGS",
+    "out",
+    "00_ADMIN",
+    "node_modules",
+    "venv",
+    "__pycache__"
+  ],
+  "excludePathPatterns": [
+    "BACKUP", "backup", "Backup",
+    "copia", "Copia",
+    ".bak", ".old", "OLD", "LEGACY",
+    ".pre", "pre005",
+    "00_ADMIN/HF-ARQ", "00_ADMIN/HF-PROD", "00_ADMIN/bitacora",
+    "07_TOOLBOX/validaciones",
+    "07_TOOLBOX/codemap/out",
+    "dist", "build", "node_modules"
+  ],
+  "domains": {
+    "Q5": {
+      "terms": ["q5", "Q5", "Q-5", "hidrograma", "hidrogramas", "Qp", "Qpico", "Tp", "tPico", "volumen", "volTotal", "qSeries", "filtroNumericoQ5", "filasQ5Markdown", "tieneQ5Publicado", "obtenerResultadoQMetodo", "obtenerMetodosQ5Validos", "metodosQ5Payload", "hidrogramasQ5Exportables", "hidrogramasResumen", "construirFilaQ5Expediente"],
+      "aliases": {
+        "Qp": ["qp", "Qpico", "qPico", "q_pico", "caudalPico", "caudal_pico"],
+        "Tp": ["tp", "tPico", "TPico", "t_pico", "tiempoPico", "tiempo_pico"],
+        "volumen": ["vol", "volume", "volTotal", "vol_total", "volumenTotal", "volTotalM3", "V"]
+      }
+    },
+    "QTr": {
+      "terms": ["q_tr", "qTr", "QTr", "Tr", "periodoRetorno", "caudalDiseno", "escenarioQTrActivo", "q_tr_activo_estado", "q_tr_activo", "q_tr_multiescenario", "extraerQTrActivo", "extraerQTrActivoDesdeEscenarios", "qTrMultiEscenario", "trDisenoActivoExpediente"]
+    },
+    "CN": {
+      "terms": ["CN", "cnBase", "cnAjustado", "cnEfectivo", "AMC", "lluviaEfectiva", "Pe", "PeIncrem", "lluvia_efectiva_total_mm", "calcCNdinamico", "calcLluviaEfectiva", "calcRetencionSCS"]
+    },
+    "IDF": {
+      "terms": ["IDF", "idf", "estacion", "estacionIDF", "estacion_idf", "EPM", "SAN CRISTOBAL", "calcHietograma", "idfI", "metodoIDF"]
+    },
+    "Tc": {
+      "terms": ["Tc", "tc", "tcAgent", "tiempoConcentracion", "seleccionarTc", "Tc_final", "tc_min", "tc_h", "tcState"]
+    },
+    "Racional": {
+      "terms": ["racional", "MetodoRacional", "Q racional", "caudalRacional", "contrasteRacional", "extraerQRacionalActivo", "metodo_racional"]
+    },
+    "Expediente": {
+      "terms": ["expediente", "payload", "markdown", "copiar", "construirPayload", "construirDescarga", "generarResumenEjecutivo", "payloadExpedienteMarkdown", "construirExpedienteHidrologicoMinimo", "textoExpediente", "expedienteListo"]
+    },
+    "Contexto": {
+      "terms": ["contextoBase", "contextoComparador", "onContextoComparador", "hidrogramas_resumen", "hidrogramas", "contextoHidrologico", "setContextoComparador", "actualizarContextoComparador", "contextoBasePayload"]
+    }
+  },
+  "guards": [
+    "tieneQ5Publicado",
+    "tieneHidrogramasPublicados",
+    "tieneRacionalPublicado",
+    "faltantesExpediente",
+    "expedienteListo"
+  ]
+}

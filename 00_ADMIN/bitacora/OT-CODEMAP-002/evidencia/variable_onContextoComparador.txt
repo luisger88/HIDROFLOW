@@ -1,0 +1,14 @@
+'onContextoComparador' no es variable clasica, pero es prop/callback:
+  [callback_prop] onContextoComparador en 01_APP/HIDROFLOW/src/HidroFlow.jsx:2019
+    parent -> ModHidrogramas
+  [callback_prop] onContextoComparador en 01_APP/HIDROFLOW/src/HidroFlow.jsx:3742
+    parent -> HidroFlow
+  [callback_prop] onContextoComparador en 01_APP/HIDROFLOW/src/HidroFlow.jsx:4320
+    Field -> ModHidrogramas
+    valor: setContextoComparador
+  [callback_prop] onContextoComparador en 01_APP/HIDROFLOW/src/HidroFlow.jsx:4332
+    Field -> ModRacional
+    valor: setContextoComparador
+  [callback_prop] onContextoComparador en 01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:88
+    HidroFlowLayout -> HidroFlow
+    valor: actualizarContextoComparador

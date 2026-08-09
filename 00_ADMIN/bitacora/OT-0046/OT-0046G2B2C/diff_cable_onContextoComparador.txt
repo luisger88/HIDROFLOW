@@ -1,0 +1,86 @@
+
+   
+   
+   // ═══════════════════════════════════════════════════════════════════════════════
+   // MÓDULO HIDROGRAMAS — 5 Métodos con convolución completa (robusto para gráficas)
+   // ═══════════════════════════════════════════════════════════════════════════════
+> -function ModHidrogramas({ params, est, name, onContextoComparador }) {
+  +function ModHidrogramas({
+  +  params,
+  +  est,
+  +  name,
+> +  onContextoComparador,
+  +  contextoComparador
+  +}) {
+   
+     // --- DEBUG: blindaje temporal ---
+     // Evita crash por referencias residuales a guardarAMCenPanel
+     // --- DEBUG: blindaje temporal ---
+     
+   
+     // ── CN efectivo (CNact) con default coherente a la UI (60 % imperv.)
+     const CNact = useMemo(() => calcCNdinamico({
+> @@ -2072,10 +2091,11 @@ function ModHidrogramas({ params, est, name, onContextoComparador }) {
+     // ── Convolución (Pe * HU) → hidrogramas por método
+     const hidros = useMemo(() => (
+       [hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark].map(hu => calcHidroCompleto(lluvEfect, hu, dtMin))
+     ), [lluvEfect, hu_scs, hu_scsMod, hu_snyder, hu_wh, hu_clark, dtMin]);
+   
+  +
+  +  return cancelarSuscripcionTr;
+  +}, []);
+   
+   useEffect(() => {
+>    if (typeof onContextoComparador !== "function") return;
+   
+     const cnBase = Number.isFinite(params?.cnBase)
+  @@ -3771,11 +3834,16 @@ useEffect(() => {
+           metodosTcRacional.length
+         : null;
+   
+     cnBase
+   });
+   
+  +
+>    onContextoComparador((previo) => ({
+  -    ...(previo ?? {}),
+  -	
+  +  ...(previo ?? {}),
+  +
+  +  expediente,
+  +    : previo?.hidrogramas ?? null,
+  +
+       hidrogramas_resumen: previo?.hidrogramas_resumen ?? null,
+       hidrograma_principal: previo?.hidrograma_principal ?? null,
+     }));
+>  }, [onContextoComparador, params, stn, trStateGlobal?.Tr_activo]);
+   // Publicación base Tc para despertar el Índice Hidrológico global.
+  @@ -4118,10 +4198,33 @@ useEffect(() => {
+           null,
+         CN: params?.CN ?? params?.cnBase ?? null,
+         fuente: "hidroflow_base"
+  @@ -4213,28 +4316,30 @@ useEffect(() => {
+   <ModHidrogramas
+     params={params}
+     est={est}
+     name={stn}
+>    onContextoComparador={onContextoComparador}
+  +  contextoComparador={contextoComparador}
+   />
+   
+   {tab==="hidro" && (
+     <></>
+   )}
+> -      {tab==="racional"   &&<ModRacional   params={params} est={est} name={stn} onContextoComparador={onContextoComparador}/>}
+  +      {tab==="racional" &&
+  +  <ModRacional
+  +    params={params}
+  +    est={est}
+  +    name={stn}
+> +    onContextoComparador={onContextoComparador}
+  +  />
+  +}
+         {tab==="sar"        &&<ModSAR        params={params} est={est} name={stn}/>}
+  -      {tab === "Influencia" && (
+  -        <div style={{
+

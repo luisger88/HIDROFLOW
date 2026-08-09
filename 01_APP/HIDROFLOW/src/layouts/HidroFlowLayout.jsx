@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import IndiceHidrologico from "../components/IndiceHidrologico";
 import HidroFlow from "../HidroFlow";
 import ComparadorMultiMetodo from "../components/ComparadorMultiMetodo";
@@ -7,6 +7,42 @@ import OrquestadorInstitucional from "../components/orquestador/OrquestadorInsti
 export default function HidroFlowLayout() {
   const [tabActiva, setTabActiva] = useState("params");
   const [contextoComparador, setContextoComparador] = useState(null);
+
+  const actualizarContextoComparador = useCallback((nuevoOResolvedor) => {
+    setContextoComparador((previo) => {
+      const resuelto =
+        typeof nuevoOResolvedor === "function"
+          ? nuevoOResolvedor(previo)
+          : nuevoOResolvedor;
+
+      const hidrogramasNuevoTieneDatos =
+        resuelto?.hidrogramas?.resultados?.length > 0;
+
+      const resumenNuevoTieneDatos =
+        resuelto?.hidrogramas_resumen?.length > 0;
+
+      const hidrogramasPrevioTieneDatos =
+        previo?.hidrogramas?.resultados?.length > 0;
+
+      const resumenPrevioTieneDatos =
+        previo?.hidrogramas_resumen?.length > 0;
+
+      return {
+        ...(previo ?? {}),
+        ...(resuelto ?? {}),
+        hidrogramas: hidrogramasNuevoTieneDatos
+          ? resuelto.hidrogramas
+          : hidrogramasPrevioTieneDatos
+          ? previo.hidrogramas
+          : resuelto?.hidrogramas ?? previo?.hidrogramas ?? null,
+        hidrogramas_resumen: resumenNuevoTieneDatos
+          ? resuelto.hidrogramas_resumen
+          : resumenPrevioTieneDatos
+          ? previo.hidrogramas_resumen
+          : resuelto?.hidrogramas_resumen ?? previo?.hidrogramas_resumen ?? null
+      };
+    });
+  }, []);
 
   const estilos = {
     contenedor: {
@@ -49,7 +85,8 @@ maxWidth: "320px",
       <HidroFlow
         tab={tabActiva}
         setTab={setTabActiva}
-        onContextoComparador={setContextoComparador}
+        onContextoComparador={actualizarContextoComparador}
+        contextoComparador={contextoComparador}
       />
     );
   };

@@ -1,0 +1,17 @@
+diff --git a/01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js b/01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js
+index 72c3e5b..32e66d1 100644
+--- a/01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js
++++ b/01_APP/HIDROFLOW/src/services/documentos/construirPayloadExpedienteDesdeEstado.js
+@@ -488,8 +488,11 @@ peTotalMm
+
+   numeroSeguro(
+     contextoBase?.q_tr_activo?.Q ??
++    contextoBase?.q_tr_activo_estado?.q_tr_activo?.Q ??
+     contextoBase?.q_tr_activo?.q ??
+-    contextoBase?.q_tr_activo?.caudal
++    contextoBase?.q_tr_activo_estado?.q_tr_activo?.q ??
++    contextoBase?.q_tr_activo?.caudal ??
++    contextoBase?.q_tr_activo_estado?.q_tr_activo?.caudal
+   )
+
+   ??

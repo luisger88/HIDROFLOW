@@ -1,0 +1,189 @@
+=== Ruta semantica priorizada: onContextoComparador (Tc) ===
+Modo: active | Score total: 1220 | Confianza: 0.9
+
+[prop_pass]           onContextoComparador={setContextoComparador} [100]
+                       Field -> ModHidrogramas
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:4320
+                       -> onContextoComparador={setContextoComparador}
+
+[prop_pass]           onContextoComparador={setContextoComparador} [100]
+                       Field -> ModRacional
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:4332
+                       -> onContextoComparador={setContextoComparador}
+
+[wrapper]             actualizarContextoComparador (useCallback) [100]
+                       HidroFlowLayout
+                       01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:11
+                       -> useCallback wrapping setContextoComparador
+
+[state_setter]        setContextoComparador [100]
+                       Field
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:3769
+                       -> setter for contextoComparador
+
+[state]               contextoComparador (useState) [100]
+                       Field
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:3769
+                       -> state variable
+
+[prop_pass]           onContextoComparador={actualizarContextoComparador} [100]
+                       HidroFlowLayout -> HidroFlow
+                       01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:88
+                       -> onContextoComparador={actualizarContextoComparador}
+
+[callback_receive]    onContextoComparador recibido por ModHidrogramas [100]
+                       ModHidrogramas
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:2019
+                       -> prop declaration
+
+[callback_receive]    onContextoComparador recibido por HidroFlow [100]
+                       HidroFlow
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:3742
+                       -> prop declaration
+
+[callback_receive]    onContextoComparador recibido por ModHidrogramas [100]
+                       ModHidrogramas
+                       01_APP/HIDROFLOW/src/HidroFlow.jsx:4320
+                       -> prop declaration
+
+[guard]               hidrogramas_published [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+                       -> const tieneHidrogramasPublicados =
+
+[guard]               Q5_table [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+                       -> if (!tieneQ5Publicado && !tieneHidrogramasPublicados) {
+
+[guard]               Q5_table: tieneQ5Publicado [40]
+                       07_TOOLBOX/codemap/consultar-hidroflow.mjs:600
+                       -> const guardTerms = ["tieneQ5Publicado", "tieneHidrogramasPublicados", "faltantesExpediente", "Tabla Q-5"];
+
+[guard]               Q5_table [40]
+                       07_TOOLBOX/codemap/consultar-hidroflow.mjs:612
+                       -> push(li("tieneQ5Publicado y tieneHidrogramasPublicados en ComparadorMultiMetodo.jsx:2093-2101."));
+
+[guard]               Q5_table [40]
+                       07_TOOLBOX/codemap/consultar-hidroflow.mjs:616
+                       -> push("El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo
+
+--- Guards (5) ---
+  [hidrogramas_published] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+  [Q5_table] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+  [Q5_table] 07_TOOLBOX/codemap/consultar-hidroflow.mjs:600 -> tieneQ5Publicado
+  [Q5_table] 07_TOOLBOX/codemap/consultar-hidroflow.mjs:612
+  [Q5_table] 07_TOOLBOX/codemap/consultar-hidroflow.mjs:616
+
+=== Ruta semantica priorizada: Expediente (Expediente) ===
+Modo: active | Score total: 1150 | Confianza: 0.8
+
+[producer]            formatearNumeroExpediente [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:1883
+                       -> const formatearNumeroExpediente = (valor, decimales = 2) => {
+
+[producer]            obtenerEstadoTemporalExpediente [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:1898
+                       -> const obtenerEstadoTemporalExpediente = (resultadoQ) => {
+
+[producer]            obtenerDictamenQ5Expediente [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:1916
+                       -> const obtenerDictamenQ5Expediente = (metodo, estadoTemporal) =>
+
+[producer]            metodosQ5Expediente [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:1929
+                       -> const metodosQ5Expediente = metodos.filter(
+
+[producer]            desdeCatalogo [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2002
+                       -> const desdeCatalogo = metodosQ5Expediente
+
+[consumer]            construirExpedienteHidrologicoMinimo [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:1
+                       -> import { construirLineasResumenQ5AuditadoExpediente } from "../services/documentos/construirExpedien
+
+[consumer]            adaptarExpedienteDocumental [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:8
+                       -> import adaptarExpedienteDocumental from "../services/documentos/adaptarExpedienteDocumental";
+
+[consumer]            construirExpedienteHidrologicoMinimo [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:9
+                       -> import construirExpedienteHidrologicoMinimo, {
+
+[guard]               expediente_faltantes [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2075
+                       -> const faltantesExpediente = [];
+
+[guard]               expediente_faltantes: Estación IDF [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2078
+                       -> faltantesExpediente.push("Estación IDF");
+
+[guard]               expediente_faltantes: Área de cuenca [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2082
+                       -> faltantesExpediente.push("Área de cuenca");
+
+[guard]               expediente_faltantes: Lluvia efectiva total [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2086
+                       -> faltantesExpediente.push("Lluvia efectiva total");
+
+[guard]               expediente_faltantes: Volumen esperado [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2090
+                       -> faltantesExpediente.push("Volumen esperado");
+
+--- Guards (10) ---
+  [expediente_faltantes] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2075
+  [expediente_faltantes] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2078 -> Estación IDF
+  [expediente_faltantes] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2082 -> Área de cuenca
+  [expediente_faltantes] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2086 -> Lluvia efectiva total
+  [expediente_faltantes] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2090 -> Volumen esperado
+
+--- Salida documental ---
+  expediente_hidrologico_minimo (source: contextoBase)
+
+=== Ruta semantica priorizada: contexto (Contexto) ===
+Modo: active | Score total: 620 | Confianza: 0.9
+
+[prop_pass]           contexto={contextoComparador} [100]
+                       HidroFlowLayout -> ComparadorMultiMetodo
+                       01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:81
+                       -> return <ComparadorMultiMetodo contexto={contextoComparador} />;
+
+[prop_pass]           contexto={contextoComparador} [100]
+                       HidroFlowLayout -> IndiceHidrologico
+                       01_APP/HIDROFLOW/src/layouts/HidroFlowLayout.jsx:98
+                       -> <IndiceHidrologico contexto={contextoComparador}
+
+[callback_receive]    contexto recibido por ComparadorMultiMetodo [100]
+                       ComparadorMultiMetodo
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:56
+                       -> prop declaration
+
+[callback_receive]    contexto recibido por IndiceHidrologico [100]
+                       IndiceHidrologico
+                       01_APP/HIDROFLOW/src/components/IndiceHidrologico.jsx:8
+                       -> prop declaration
+
+[guard]               hidrogramas_published [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+                       -> const tieneHidrogramasPublicados =
+
+[guard]               Q5_table [100]
+                       01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+                       -> if (!tieneQ5Publicado && !tieneHidrogramasPublicados) {
+
+[guard]               Q5_table: tieneQ5Publicado [40]
+                       07_TOOLBOX/codemap/consultar-hidroflow.mjs:600
+                       -> const guardTerms = ["tieneQ5Publicado", "tieneHidrogramasPublicados", "faltantesExpediente", "Tabla Q-5"];
+
+[guard]               Q5_table [40]
+                       07_TOOLBOX/codemap/consultar-hidroflow.mjs:612
+                       -> push(li("tieneQ5Publicado y tieneHidrogramasPublicados en ComparadorMultiMetodo.jsx:2093-2101."));
+
+[guard]               Q5_table [40]
+                       07_TOOLBOX/codemap/consultar-hidroflow.mjs:616
+                       -> push("El flujo activo muestra que Q-5 depende de la publicacion de hidrogramas hacia contextoComparador y de su consumo
+
+--- Guards (5) ---
+  [hidrogramas_published] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2097
+  [Q5_table] 01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx:2101
+  [Q5_table] 07_TOOLBOX/codemap/consultar-hidroflow.mjs:600 -> tieneQ5Publicado
+  [Q5_table] 07_TOOLBOX/codemap/consultar-hidroflow.mjs:612
+  [Q5_table] 07_TOOLBOX/codemap/consultar-hidroflow.mjs:616

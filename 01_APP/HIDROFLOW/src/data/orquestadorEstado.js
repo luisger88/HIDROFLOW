@@ -1,14 +1,46 @@
+import { CONTRATO_CUENCA_V1 } from "./contratoCuenca";
+
 export const ORQUESTADOR_ESTADO = {
-  "puntoControl": "La Iguaná PC_80",
-  "estadoActual": "OT-XYZ abierta",
-  "conocimientoDisponible": [
+
+  contratoCuenca: CONTRATO_CUENCA_V1,
+
+  puntoControl: "La Iguaná PC_80",
+
+  estadoActual: "OT-GOV-002C abierta",
+
+  faseActual: "Apertura",
+
+  responsable: "Ingeniería Hidrológica",
+
+  estadoCertificacion: "Pendiente",
+
+  conocimientoDisponible: [
     "Formulación inicial"
   ],
-  "memoriaTecnica": [
-    "OT-XYZ · Apertura"
+
+  memoriaTecnica: [
+    "OT-GOV-002C · Apertura"
   ],
-  "situacionActual": {
-    "siguientePaso": "Formular hipótesis",
-    "generable": "OT-XYZ_APERTURA.md"
+
+  oiVigentes: [
+    "OI-0031",
+    "OI-0035"
+  ],
+
+  riesgos: [
+    "Hipótesis no validada",
+    "Sin certificación técnica"
+  ],
+
+  validacionesPendientes: [
+    "Línea base",
+    "Hipótesis",
+    "Build"
+  ],
+
+  situacionActual: {
+    siguientePaso: "Formular hipótesis",
+    generable: "OT-GOV-002C_APERTURA.md"
   }
+
 };

@@ -1,0 +1,319 @@
+[
+  {
+    "id": 1,
+    "domain": "Expediente",
+    "source": "contextoBase",
+    "payloadFields": [
+      "hidrogramas",
+      "hidrogramas_resumen",
+      "lluvia_efectiva_total_mm",
+      "q_tr_activo_estado"
+    ],
+    "markdownFields": [
+      "cuenca",
+      "geomorfometria",
+      "lluviaYAbstraccion",
+      "escenarioQTrActivo",
+      "hidrografiaQ5",
+      "controlConsistencia",
+      "diagnosticoQt"
+    ],
+    "guards": [
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2075,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2078,
+        "type": "expediente_faltantes",
+        "message": "Estación IDF"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2082,
+        "type": "expediente_faltantes",
+        "message": "Área de cuenca"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2086,
+        "type": "expediente_faltantes",
+        "message": "Lluvia efectiva total"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2090,
+        "type": "expediente_faltantes",
+        "message": "Volumen esperado"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2093,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2097,
+        "type": "hidrogramas_published",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2101,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2102,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2103,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada con filas reales"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2122,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2130,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2228,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2753,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2763,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2779,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/components/ComparadorMultiMetodo.jsx",
+        "line": 2782,
+        "type": "expediente_faltantes",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 1349,
+        "type": "expediente_listo",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/src/HidroFlow.jsx",
+        "line": 2400,
+        "type": "expediente_listo",
+        "message": null
+      },
+      {
+        "file": "01_APP/HIDROFLOW/scripts/consumirAdaptadorDocumentalOt0061b.mjs",
+        "line": 30,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "01_APP/HIDROFLOW/scripts/validarAdaptadorDocumentalOt0060f.mjs",
+        "line": 25,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 600,
+        "type": "Q5_table",
+        "message": "tieneQ5Publicado"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 612,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 616,
+        "type": "Q5_table",
+        "message": null
+      },
+      {
+        "file": "07_TOOLBOX/codemap/consultar-hidroflow.mjs",
+        "line": 621,
+        "type": "Q5_table",
+        "message": "Simbolo foco: "
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 45,
+        "type": "Q5_table",
+        "message": "tieneq5publicado"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 46,
+        "type": "hidrogramas_published",
+        "message": "tienehidrogramaspublicados"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 48,
+        "type": "expediente_faltantes",
+        "message": "faltantesexpediente"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 49,
+        "type": "expediente_listo",
+        "message": "expedientelisto"
+      },
+      {
+        "file": "07_TOOLBOX/codemap/indexar-hidroflow.mjs",
+        "line": 50,
+        "type": "Q5_table",
+        "message": "!tieneq5publicado"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 50,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 61,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0177_diagnostico_resumen_q5_auditado.mjs",
+        "line": 71,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 73,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 79,
+        "type": "Q5_table",
+        "message": "Debe encontrarse la línea Tabla Q-5 auditada dentro del bloque ## 6."
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/aplicar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 136,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/comparar_ot0176_resumen_q5_auditado_helper_operativo.mjs",
+        "line": 35,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 26,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 65,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 73,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0174_helper_resumen_q5_auditado.mjs",
+        "line": 83,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 26,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 54,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 59,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 66,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0175_helper_resumen_q5_auditado_reforzada.mjs",
+        "line": 73,
+        "type": "Q5_table",
+        "message": "sin tabla Q-5 disponible"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0178_sustitucion_resumen_q5_auditado.mjs",
+        "line": 37,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0179_post_adopcion_resumen_q5_auditado.mjs",
+        "line": 43,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada:"
+      },
+      {
+        "file": "07_TOOLBOX/validaciones/validar_ot0322_contraste_q5_racional.mjs",
+        "line": 217,
+        "type": "Q5_table",
+        "message": "Tabla Q-5 auditada"
+      }
+    ],
+    "outputSection": "expediente_hidrologico_minimo"
+  }
+]

@@ -5,9 +5,16 @@ import {
   getEstudioActivo
 } from "../../services/orquestador/getEstudioActivo";
 
+import {
+  getContratoCuencaState
+} from "../../agents/contratoCuencaAgent";
+
+import { ExpedienteStatusPanel } from "../hfExpediente";
+
 export default function OrquestadorInstitucional() {
 
   const estudio = getEstudioActivo();
+  const contrato = getContratoCuencaState();
 
   return (
 
@@ -41,14 +48,54 @@ export default function OrquestadorInstitucional() {
 
       {/* ESTADO */}
 
-      <section className="hf-orq-block hf-orq-mini">
+                  {/* GOBERNANZA */}
+
+      <section className="hf-orq-block hf-orq-small">
 
         <div className="hf-orq-block-title">
-          🧭 Estado del Estudio
+          🏛 Gobernanza
         </div>
 
         <div className="hf-orq-block-content">
-          {estudio.estadoActual}
+
+          <strong>Fase</strong>
+          <br />
+          {estudio.faseActual}
+
+          <br />
+          <br />
+
+          <strong>Certificación</strong>
+          <br />
+          {estudio.estadoCertificacion}
+
+          <br />
+          <br />
+
+          <strong>OI vigentes</strong>
+
+          <ul className="hf-orq-list">
+            {estudio.oiVigentes.map((oi) => (
+              <li key={oi}>{oi}</li>
+            ))}
+          </ul>
+
+          <strong>Riesgos</strong>
+
+          <ul className="hf-orq-list">
+            {estudio.riesgos.map((riesgo) => (
+              <li key={riesgo}>{riesgo}</li>
+            ))}
+          </ul>
+
+          <strong>Validaciones pendientes</strong>
+
+          <ul className="hf-orq-list">
+            {estudio.validacionesPendientes.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+
         </div>
 
       </section>
@@ -84,6 +131,10 @@ export default function OrquestadorInstitucional() {
         </ul>
 
       </section>
+
+      {/* EXPEDIENTE HIDROLOGICO */}
+
+      <ExpedienteStatusPanel />
 
       {/* SITUACION */}
 

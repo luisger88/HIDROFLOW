@@ -1,5 +1,6 @@
 import construirMarkdownExpedienteDesdePayload from "./construirMarkdownExpedienteDesdePayload.js";
 import prepararDescargaMarkdownExpediente from "./prepararDescargaMarkdownExpediente.js";
+import { formatTc } from "../../utils/formatters";
 
 export default function construirDescargaMarkdownExpedienteDesdePayload(payload = {}) {
   const markdown = construirMarkdownExpedienteDesdePayload(payload);
