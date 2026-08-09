@@ -2,7 +2,7 @@ import { construirLineasResumenQ5AuditadoExpediente } from "../services/document
 import React, { useEffect, useMemo, useState } from "react";
 
 import { setTcState } from "../agents/tcAgent";
-import { getContratoCuencaState, setContratoCuencaState } from "../agents/contratoCuencaAgent";
+import { getContratoCuencaState } from "../agents/contratoCuencaAgent";
 import { calcTc, mapTcResultados } from "../services/hidroEngine";
 import { seleccionarTc } from "../services/tcSelector";
 import { derivarRangoCompetenteTc } from "../services/tc/derivarRangoCompetenteTc";
@@ -174,9 +174,11 @@ const conceptoCuenca = useMemo(() => {
   return conceptuarCuenca(contextoBase);
 }, [contextoBase]);
 
-// ✅ Tc FINAL
-
-const Tc_final = seleccionarTc("hidrograma", metodosTc, contextoTc);
+// ✅ Tc FINAL — preferir contratoCuenca o contexto, recalcular solo si no hay
+const Tc_final =
+  contextoBase?.contratoCuenca?.tc?.Tc_final_min ??
+  contextoBase?.tc_global ??
+  seleccionarTc("hidrograma", metodosTc, contextoTc);
 
 const { metodosTcCompetentes, rangoCompetenteTc } = derivarRangoCompetenteTc(
   metodosTc,

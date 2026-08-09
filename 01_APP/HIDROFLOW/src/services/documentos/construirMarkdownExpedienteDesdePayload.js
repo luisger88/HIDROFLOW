@@ -281,6 +281,18 @@ narrativas.qtr,
 narrativas.q5,
 
 "",
+
+narrativas.diagnosticoHidrologico,
+
+"",
+
+narrativas.justificacionTecnica,
+
+"",
+
+narrativas.interpretacionFisica,
+
+"",
     "## 7. Método Racional — contraste no adoptivo",
 "",
 `Q racional: ${numero(payload?.contrasteRacional?.caudalPicoM3s, 2)} m³/s`,

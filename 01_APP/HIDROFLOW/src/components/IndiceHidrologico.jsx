@@ -5,7 +5,8 @@ import {
   formatPendiente
 } from "../utils/formatters";
 import { getTcState, subscribeTc } from "../agents/tcAgent";
-import { getTrState, setTrState, subscribeTr } from "../agents/trAgent";
+import { setTrState } from "../agents/trAgent";
+import { getContratoCuencaState } from "../agents/contratoCuencaAgent";
 
 export default function IndiceHidrologico({
   goToTab: goToTabProp,
@@ -17,15 +18,33 @@ export default function IndiceHidrologico({
   cambiarTab,
   navegarA,
 }) {
-  // --- Estado reactivo del Agente Tc ---
-  const [tcState, setTcStateLocal] = useState(getTcState());
+  // --- Estado Tc desde ContratoCuenca (fallback agente) ---
+  const [tcState, setTcStateLocal] = useState(() => {
+    const cc = getContratoCuencaState();
+    const ccTc = cc?.tc;
+    if (ccTc?.Tc_final_min != null) return {
+      Tc_final: ccTc.Tc_final_min,
+      metodosTc: ccTc.metodosTc ?? ccTc.metodosValidos,
+      metodosTcCompetentes: ccTc.metodosTcCompetentes,
+      rangoCompetenteTc: ccTc.rangoCompetenteTc
+    };
+    return getTcState();
+  });
 
   useEffect(() => {
     const unsubscribe = subscribeTc(setTcStateLocal);
     return () => unsubscribe();
   }, []);
 
-  const valoresTcAgente = Object.values(tcState?.metodosTc || {})
+  const ccTc = getContratoCuencaState()?.tc;
+  const tcDisplay = {
+    Tc_final: ccTc?.Tc_final_min ?? tcState?.Tc_final,
+    metodosTc: ccTc?.metodosTc ?? ccTc?.metodosValidos ?? (tcState?.metodosTc || {}),
+    metodosTcCompetentes: ccTc?.metodosTcCompetentes ?? tcState?.metodosTcCompetentes,
+    rangoCompetenteTc: ccTc?.rangoCompetenteTc ?? tcState?.rangoCompetenteTc
+  };
+
+  const valoresTcAgente = Object.values(tcDisplay.metodosTc || {})
   .map((valor) => Number(valor))
   .filter((valor) => Number.isFinite(valor) && valor > 0);
 
@@ -420,17 +439,10 @@ const rangoTcAgente =
     };
   };
 
-  const [trStateIndice, setTrStateIndice] = useState(getTrState());
-
-  useEffect(() => {
-    const cancelarSuscripcionTr = subscribeTr(setTrStateIndice);
-    return cancelarSuscripcionTr;
-  }, []);
-
   const periodosTrIndice = periodos.length > 0 ? periodos : [2.33, 5, 10, 25, 50, 100];
 
   const trActivoIndice = Number(
-    trStateIndice?.Tr_activo ??
+    contexto?.tr_diseno_activo ??
       contexto?.tr_diseno_activo ??
       25
   );
@@ -732,7 +744,7 @@ const rangoTcAgente =
     <span style={estilos.label}>Tc sugerido</span>
     <span style={estilos.value}>
       {tcState?.Tc_final !== null && tcState?.Tc_final !== undefined
-        ? `${formatNumero(tcState.Tc_final, 1)} min`
+        ? `${formatNumero(tcDisplay.Tc_final, 1)} min`
         : "—"}
     </span>
   </div>
@@ -770,8 +782,8 @@ const rangoTcAgente =
           <span style={estilos.label}>Rango competente Tc</span>
           <span style={estilos.value}>
             {tcState?.rangoCompetenteTc
-              ? formatNumero(tcState.rangoCompetenteTc.min, 1) + "–" +
-                formatNumero(tcState.rangoCompetenteTc.max, 1) + " min"
+              ? formatNumero(tcDisplay.rangoCompetenteTc.min, 1) + "–" +
+                formatNumero(tcDisplay.rangoCompetenteTc.max, 1) + " min"
               : "—"}
           </span>
         </div>
@@ -780,9 +792,9 @@ const rangoTcAgente =
           tcState?.Tc_final !== undefined &&
           tcState?.rangoCompetenteTc?.min !== undefined &&
           tcState?.rangoCompetenteTc?.max !== undefined &&
-          tcState.rangoCompetenteTc.max > tcState.rangoCompetenteTc.min &&
-          (tcState.Tc_final - tcState.rangoCompetenteTc.min) /
-            (tcState.rangoCompetenteTc.max - tcState.rangoCompetenteTc.min) <= 0.15 ? (
+          tcDisplay.rangoCompetenteTc.max > tcDisplay.rangoCompetenteTc.min &&
+          (tcDisplay.Tc_final - tcDisplay.rangoCompetenteTc.min) /
+            (tcDisplay.rangoCompetenteTc.max - tcDisplay.rangoCompetenteTc.min) <= 0.15 ? (
           <p style={estilos.muted}>
             ⚠ Advertencia técnica: el Tc sugerido está cerca del borde inferior del rango competente. Se recomienda revisar sensibilidad con escenario rápido, sugerido y lento antes de adoptarlo como valor único robusto.
           </p>

@@ -5,10 +5,16 @@ import { generarNarrativaIDF } from "./generarNarrativaIDF";
 import { generarNarrativaTc } from "./generarNarrativaTc";
 import { generarNarrativaQTr } from "./generarNarrativaQTr";
 import { generarNarrativaQ5 } from "./generarNarrativaQ5";
+import { generarDiagnosticoHidrologico } from "./generarDiagnosticoHidrologico";
+import { generarJustificacionTecnica } from "./generarJustificacionTecnica";
+import { generarInterpretacionFisicaCuenca } from "./generarInterpretacionFisicaCuenca";
 
-export function generarNarrativasExpediente(payload = {}) {
+export function generarNarrativasExpediente(payload = {}, contratoCuenca = null) {
   return {
-    resumenEjecutivo: generarResumenEjecutivo(payload),
+    resumenEjecutivo: generarResumenEjecutivo(payload, contratoCuenca),
+    diagnosticoHidrologico: generarDiagnosticoHidrologico(payload, contratoCuenca),
+    justificacionTecnica: generarJustificacionTecnica(payload, contratoCuenca),
+    interpretacionFisica: generarInterpretacionFisicaCuenca(payload, contratoCuenca),
     consistencia: generarNarrativaConsistencia(payload),
     cn: generarNarrativaCN(payload),
     idf: generarNarrativaIDF(payload),

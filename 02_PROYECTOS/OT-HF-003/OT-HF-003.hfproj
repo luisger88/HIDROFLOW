@@ -582,17 +582,26 @@
     "cn": {
       "cnBase": 88,
       "cnAjustado": null,
-      "cnEfectivo": null,
+      "cnEfectivo": 94,
       "amc": "II",
       "porcentajeImpermeable": 60,
-      "S_mm": null,
-      "Ia_mm": null,
+      "S_mm": 16.21,
+      "Ia_mm": 3.24,
       "trazabilidad": null
     },
     "tc": {
-      "Tc_final_min": 0,
-      "tc_h": 0,
-      "metodosTc": null,
+      "Tc_final_min": 114.93861894697008,
+      "tc_h": 1.9156,
+      "metodosTc": {
+        "Temez": 231.513,
+        "Kirpich": 134.519,
+        "California": 85.263,
+        "Giandotti": 105.071,
+        "SCS": 122.024,
+        "Perez": 11.241
+      },
+      "metodosTcCompetentes": null,
+      "rangoCompetenteTc": null,
       "metodoPonderacion": "seleccionarTc(hidrograma)",
       "metodosValidos": [],
       "metodosExcluidos": [
@@ -619,7 +628,7 @@
           "Qp": 184.028568,
           "Tp": 210,
           "volumen": 2654250.9,
-          "qSeriesLength": 128
+          "qSeriesLength": 0
         },
         {
           "metodo": "SCS Mod.",
@@ -629,7 +638,7 @@
           "Qp": 181.018714,
           "Tp": 210,
           "volumen": 2654250.9,
-          "qSeriesLength": 137
+          "qSeriesLength": 0
         },
         {
           "metodo": "Snyder",
@@ -639,7 +648,7 @@
           "Qp": 124.648255,
           "Tp": 405,
           "volumen": 2654250.9,
-          "qSeriesLength": 737
+          "qSeriesLength": 0
         },
         {
           "metodo": "Williams & Hann",
@@ -649,7 +658,7 @@
           "Qp": 518.088346,
           "Tp": 20,
           "volumen": 2654250.9,
-          "qSeriesLength": 54
+          "qSeriesLength": 0
         },
         {
           "metodo": "Clark IUH",
@@ -659,7 +668,7 @@
           "Qp": 94.276359,
           "Tp": 300,
           "volumen": 2654250.9,
-          "qSeriesLength": 432
+          "qSeriesLength": 0
         }
       ],
       "resumen": [
@@ -1269,7 +1278,7 @@
     }
   },
   "version": "1.0.0",
-  "createdAt": "2026-07-29T03:11:51.056Z",
+  "createdAt": "2026-07-30T00:39:52.054Z",
   "projectOwner": "Luis German Montoya",
   "projectStatus": "ACTIVE"
 }

@@ -1,4 +1,5 @@
 import { crearContratoCuencaVacio } from "../../data/contratoCuenca";
+import { derivarRangoCompetenteTc } from "../tc/derivarRangoCompetenteTc";
 
 function numeroSeguro(valor) {
   const n = Number(valor);
@@ -19,6 +20,8 @@ export function derivarContratoCuenca({
   contextoBase = {},
   Tc_final = null,
   metodosTc = null,
+  metodosTcCompetentes = null,
+  rangoCompetenteTc = null,
   CNact = null,
   hidros = null,
   lluvEfect = null,
@@ -68,9 +71,10 @@ export function derivarContratoCuenca({
   contrato.cn.cnBase = numeroSeguro(params?.cnBase ?? params?.CN ?? params?.cn_base ?? 75);
   contrato.cn.amc = textoSeguro(params?.amcActual ?? params?.AMC ?? params?.amc ?? "II");
   contrato.cn.porcentajeImpermeable = numeroSeguro(params?.porcentajeImpermeable ?? params?.porcentaje_impermeable ?? 60);
-  if (CNact !== null && CNact !== undefined) {
-    contrato.cn.cnEfectivo = numeroSeguro(CNact);
-    const cnEf = typeof CNact === "number" ? CNact : Number(CNact);
+  const cnEfectivoFuente = CNact ?? numeroSeguro(contextoBase?.cnEfectivo ?? contextoBase?.CN_efectivo ?? contextoBase?.cn_efectivo);
+  if (cnEfectivoFuente !== null && cnEfectivoFuente !== undefined) {
+    contrato.cn.cnEfectivo = numeroSeguro(cnEfectivoFuente);
+    const cnEf = typeof cnEfectivoFuente === "number" ? cnEfectivoFuente : Number(cnEfectivoFuente);
     if (Number.isFinite(cnEf) && cnEf > 0) {
       const S = 25400 / cnEf - 254;
       contrato.cn.S_mm = +S.toFixed(2);
@@ -80,8 +84,17 @@ export function derivarContratoCuenca({
   contrato.cn.cnAjustado = numeroSeguro(params?.cnAjustado ?? params?.CN_ajustado);
 
   // --- Tc ---
-  contrato.tc.Tc_final_min = numeroSeguro(Tc_final);
+  contrato.tc.Tc_final_min = numeroSeguro(Tc_final ?? numeroSeguro(contextoBase?.tc_global));
   contrato.tc.metodosTc = metodosTc || null;
+  contrato.tc.metodosTcCompetentes = metodosTcCompetentes || null;
+  contrato.tc.rangoCompetenteTc = rangoCompetenteTc || null;
+
+  if (contrato.tc.metodosTc && (!contrato.tc.metodosTcCompetentes || !contrato.tc.rangoCompetenteTc)) {
+    const derivado = derivarRangoCompetenteTc(contrato.tc.metodosTc);
+    if (!contrato.tc.metodosTcCompetentes) contrato.tc.metodosTcCompetentes = derivado.metodosTcCompetentes || null;
+    if (!contrato.tc.rangoCompetenteTc) contrato.tc.rangoCompetenteTc = derivado.rangoCompetenteTc || null;
+  }
+
   if (contrato.tc.Tc_final_min !== null) {
     contrato.tc.tc_h = +(contrato.tc.Tc_final_min / 60).toFixed(4);
   }
@@ -90,15 +103,16 @@ export function derivarContratoCuenca({
   contrato.tc.metodosExcluidos = ["SCS-Ranser"];
 
   // --- Q-Tr ---
-  contrato.qtr.tr_diseno_activo = trActivo;
-  contrato.qtr.q_tr_activo = qTrActivo || null;
-  if (qTrActivo) {
-    contrato.qtr.estado = textoSeguro(qTrActivo?.estado ?? "no_publicado");
-    contrato.qtr.caudalDisenoM3s = numeroSeguro(qTrActivo?.Q ?? qTrActivo?.q ?? qTrActivo?.caudal ?? qTrActivo?.caudalDisenoM3s);
-    contrato.qtr.estacion_idf = textoSeguro(qTrActivo?.estacion_idf ?? qTrActivo?.estacionIDF);
-    contrato.qtr.metodo_idf = textoSeguro(qTrActivo?.metodo_idf ?? qTrActivo?.metodoIDF);
+  const qTrActivoFuente = qTrActivo || contextoBase?.q_tr_activo_estado?.q_tr_activo || null;
+  contrato.qtr.tr_diseno_activo = trActivo || numeroSeguro(contextoBase?.tr_diseno_activo) || 25;
+  contrato.qtr.q_tr_activo = qTrActivoFuente;
+  if (qTrActivoFuente) {
+    contrato.qtr.estado = textoSeguro(qTrActivoFuente?.estado ?? contextoBase?.q_tr_activo_estado?.estado ?? "no_publicado");
+    contrato.qtr.caudalDisenoM3s = numeroSeguro(qTrActivoFuente?.Q ?? qTrActivoFuente?.q ?? qTrActivoFuente?.caudal ?? qTrActivoFuente?.caudalDisenoM3s);
+    contrato.qtr.estacion_idf = textoSeguro(qTrActivoFuente?.estacion_idf ?? qTrActivoFuente?.estacionIDF ?? contextoBase?.estacion_idf);
+    contrato.qtr.metodo_idf = textoSeguro(qTrActivoFuente?.metodo_idf ?? qTrActivoFuente?.metodoIDF ?? contextoBase?.metodoIDF);
   }
-  contrato.qtr.q_tr_multiescenario = qTrMultiEscenario || null;
+  contrato.qtr.q_tr_multiescenario = qTrMultiEscenario || contextoBase?.q_tr_multiescenario || null;
   contrato.qtr.faltantes = qTrActivo?.faltantes ?? [];
 
   // --- HIDROGRAMAS ---

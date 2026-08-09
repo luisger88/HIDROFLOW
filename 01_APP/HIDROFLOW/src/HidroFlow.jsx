@@ -1,7 +1,7 @@
 import { CUENCA_DEFAULT_ID, getCuencaById } from "./data/cuencasCatalogo";
 
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
-import { getTrState, setTrState, subscribeTr } from "./agents/trAgent";
+import { getTrState, setTrState } from "./agents/trAgent";
 
 import { SpatialSearchBox, OutletAssistWindow, InfluenceStationsWindow, DrainageMapWindow } from "./components/hfExpediente";
 
@@ -2416,11 +2416,7 @@ const leerT = (punto, indice) => {
   // NO HEREDAR CONTEXTO HIDROLÓGICO ENTRE CUENCAS
 
   casoActivo: {
-  ...(previo?.casoActivo ?? {}),
-  hidrogramas: {
-    fuente: "ModHidrogramas",
-    resultados: hidrogramasQ5Exportables
-  }
+  ...(previo?.casoActivo ?? {})
 },
 
 
@@ -3820,14 +3816,9 @@ const setTab = setTabExterno ?? setTabInterno;
 
 
   const [stn, setStn] = useState("SAN CRISTOBAL");
-
-  const [trStateGlobal, setTrStateGlobal] = useState(getTrState());
-
   const [mostrarInfluenceMap, setMostrarInfluenceMap] = useState(false);
 
   const [expediente, setExpediente] = useState(null);
-
-  const [contextoComparador, setContextoComparador] = useState({});
 
   const resumenExpediente = expediente
   ? {
@@ -3947,12 +3938,7 @@ const setTab = setTabExterno ?? setTabInterno;
 }, []);
 
 
-useEffect(() => {
-  const cancelarSuscripcionTr =
-    subscribeTr(setTrStateGlobal);
 
-  return cancelarSuscripcionTr;
-}, []);
 
 useEffect(() => {
   if (typeof onContextoComparador !== "function") return;
@@ -4110,7 +4096,7 @@ idf: {
 metodoIDF: "EPM",
     estacionesAdoptadas: stn ? [{ nombre: stn, peso: 1 }] : [],
     distribucionTemporal: "EPM Q1",
-    tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
+    tr_diseno_activo: contextoLayout?.qtr?.tr_diseno_activo ?? contextoLayout?.tr_diseno_activo ?? 25,
     periodos_retorno: TR_LIST,
     metodo_racional: {
       fuente: "calcRacional",
@@ -4205,7 +4191,7 @@ lluvia_efectiva_total_mm:
 
 q_tr_activo_estado: derivarEstadoQTrActivo({
   ...(previo ?? {}),
-  tr_diseno_activo: trStateGlobal?.Tr_activo ?? 25,
+  tr_diseno_activo: contextoLayout?.qtr?.tr_diseno_activo ?? contextoLayout?.tr_diseno_activo ?? 25,
   estacion_idf: stn,
 
   idf: {
@@ -4275,7 +4261,7 @@ q_tr_activo_estado: derivarEstadoQTrActivo({
     hidrogramas_resumen: previo?.hidrogramas_resumen ?? null,
     hidrograma_principal: previo?.hidrograma_principal ?? null,
   }));
-}, [onContextoComparador, params, stn, trStateGlobal?.Tr_activo]);
+}, [onContextoComparador, params, stn, contextoLayout?.qtr?.tr_diseno_activo]);
 // Publicación base Tc para despertar el Índice Hidrológico global.
 // No reemplaza el estado especializado publicado por ComparadorMultiMetodo.
 useEffect(() => {
@@ -4341,9 +4327,15 @@ useEffect(() => {
   derivarContratoCuenca({
     params,
     trActivo: getTrState()?.Tr_activo ?? 25,
+    Tc_final: getTcState()?.Tc_final ?? null,
+    metodosTc: getTcState()?.metodosTc ?? null,
+    metodosTcCompetentes: getTcState()?.metodosTcCompetentes ?? null,
+    rangoCompetenteTc: getTcState()?.rangoCompetenteTc ?? null,
     periodosRetorno: TR_LIST,
     puntoControl: "La Iguaná PC_80",
     contextoBase: contextoLayout,
+    qTrActivo: contextoLayout?.q_tr_activo_estado?.q_tr_activo ?? null,
+    qTrMultiEscenario: contextoLayout?.q_tr_multiescenario ?? null,
 
     contextoInstitucional: {
       expedienteActivo: null,
@@ -4512,7 +4504,7 @@ useEffect(() => {
   est={est}
   name={stn}
   onContextoComparador={onContextoComparador}
-  contextoComparador={contextoComparador}
+  contextoComparador={contextoLayout}
 />
 
 {tab==="hidro" && (

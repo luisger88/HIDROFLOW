@@ -60,6 +60,8 @@ export function cargarContratoCuencaDesdeHFPROJ(proyecto) {
     contrato.tc.Tc_final_min = numeroValido(c.tc.Tc_final_min);
     contrato.tc.tc_h = numeroValido(c.tc.tc_h);
     contrato.tc.metodosTc = c.tc.metodosTc ?? null;
+    contrato.tc.metodosTcCompetentes = c.tc.metodosTcCompetentes ?? null;
+    contrato.tc.rangoCompetenteTc = c.tc.rangoCompetenteTc ?? null;
     contrato.tc.metodoPonderacion = c.tc.metodoPonderacion ?? "seleccionarTc(hidrograma)";
     contrato.tc.metodosValidos = Array.isArray(c.tc.metodosValidos) ? c.tc.metodosValidos : [];
     contrato.tc.metodosExcluidos = Array.isArray(c.tc.metodosExcluidos) ? c.tc.metodosExcluidos : ["SCS-Ranser"];

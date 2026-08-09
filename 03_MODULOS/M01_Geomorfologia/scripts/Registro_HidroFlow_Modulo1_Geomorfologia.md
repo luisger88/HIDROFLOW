@@ -521,3 +521,30 @@ Se ejecuto HFGeomorfologia_Modulo1_Run_v1.py hasta Parametros_Geomorf_Iguana, in
 ## RUN v1 probado con Bloques 00-18 - 2026-05-24 01:35:05
 
 Se ejecuto HFGeomorfologia_Modulo1_Run_v1.py hasta exportaciones auditables, consolidando el flujo del Modulo 1 desde insumos base hasta productos tabulares externos.
+
+---
+
+## Hito: Fundación Curva Hipsométrica — 2026-07-31
+
+### Script creado
+
+`HFGeomorfologia_CurvaHipsometrica_v1.py` — 6 bloques que computan la curva hipsométrica completa desde el MDT y la cuenca existentes.
+
+### Flujo del script
+
+1. **Recorte**: MDT_Fill_Base recortado a Cuenca_Obra_Iguana → MDT_Recortado_Iguana
+2. **Reclasificación**: franjas altimétricas cada 50 m → MDT_Reclasif_Hipsom_Iguana
+3. **Tabulate Area**: área (m²) por franja altimétrica → Tabla_Area_Hipsom_Iguana
+4. **Curva**: área acumulada descendente, fracción de área y altura → Curva_Hipsometrica_Iguana
+5. **Integral**: método de trapecios sobre curva normalizada → clasificación ciclo de Davis
+6. **Exportación**: XLSX + CSV a carpeta de exportaciones
+
+### Productos generados (si se ejecuta en ArcGIS Pro)
+
+- `Curva_Hipsometrica_Iguana` (tabla GDB)
+- `Parametros_Hipsom_Iguana` (tabla GDB con integral, ciclo, rango)
+- Exportaciones XLSX/CSV en `02_Tablas`
+
+### Pendiente de ejecución
+
+El script requiere ArcGIS Pro con licencia Spatial Analyst y acceso a la GDB `MDT_Terreno_Base.gdb`. No ha sido ejecutado desde este entorno.

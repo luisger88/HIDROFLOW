@@ -41,6 +41,8 @@ export const CONTRATO_CUENCA_V1 = {
     Tc_final_min: null,
     tc_h: null,
     metodosTc: null,
+    metodosTcCompetentes: null,
+    rangoCompetenteTc: null,
     metodoPonderacion: null,
     metodosValidos: [],
     metodosExcluidos: []
