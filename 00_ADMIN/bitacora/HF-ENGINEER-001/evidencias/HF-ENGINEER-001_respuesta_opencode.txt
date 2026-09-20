@@ -1,0 +1,19 @@
+EVIDENCIA CRUDA PENDIENTE DE INCORPORACIÓN MANUAL
+
+---
+
+OT: OT-HF-003-CSTATE-001A
+Incremento: E1
+Fecha UTC: 2026-09-20
+Rama: ot-hf-003-cstate-001a
+Modelo: Big Pickle (opencode)
+
+La respuesta literal completa de la sesión de OpenCode no puede recuperarse
+de forma fiable desde el transcripto actual para transcribirla de manera
+verbatim. Por decisión documental de la OT, este archivo NO inventa contenido:
+queda marcado como PENDIENTE de incorporación manual por el profesional
+responsable (HF-ENGINEER-001).
+
+Estado: EVIDENCIA CRUDA PENDIENTE DE INCORPORACIÓN MANUAL.
+
+---

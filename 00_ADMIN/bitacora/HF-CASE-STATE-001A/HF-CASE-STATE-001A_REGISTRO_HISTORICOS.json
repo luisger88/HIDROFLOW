@@ -1,0 +1,115 @@
+{
+  "ot": "OT-HF-003-CSTATE-001A",
+  "incremento": "E1",
+  "fecha_utc": "2026-09-20",
+  "rama_base": {
+    "nombre": "main",
+    "head": "5014cf653114fdec913125414fd8579a6640aadf"
+  },
+  "rama_trabajo": "ot-hf-003-cstate-001a",
+  "identidad": {
+    "id": "iguana_pc80",
+    "nombre_oficial": "Quebrada La Iguaná - PC_80",
+    "otId": "OT-HF-003",
+    "d03": {
+      "latitud": 6.271785117145225,
+      "longitud": -75.59408755595547,
+      "cota_msnm": 1511.36,
+      "rol": "Punto de control y salida hidrológica La Iguaná PC_80"
+    }
+  },
+  "casos_históricos": {
+    "expediente_historico": {
+      "ruta": "07_TOOLBOX/datos_gobernados/HF_EXPEDIENTE_001.json",
+      "hash_expediente": "cd98512feb2ffca76ffde98f40f6dcce875f461efe098626d06da1f386c7921f",
+      "motor": "HF-GOV-004",
+      "conservado": true,
+      "no_sobrescrito": true
+    },
+    "hash_insumos_antecedente": {
+      "cn": "3235bd2f67b8f9be98c7f55d5904d639c4399f7db704e2528f0b23e1a11ed37b",
+      "pe": "a2ad1c3d31de330c78c97b97bb1c9ad3be2586225e6ed40355cd5095cea7e7d3",
+      "qp": "3aefd68f80f20b994629622d130a0b77aa223b55a6a4422e698004cd0629ef75",
+      "tc": "03098e6cc9246498040e53980d84efc71baee6b34a3fce65a972b0c38cf619a6",
+      "tp": "24fcb25b12c35ba8de2aa31470338d366a52886648cdf4fbc910ec7cd48f913c",
+      "volumen": "fc98cdb668428fdfa61b72e29f0bc93b64d96f77a3a433cb9b45f9f2583e953e"
+    },
+    "geometria_historica_referida": {
+      "area_km2": 50.6718,
+      "perimetro_km": 37.195,
+      "lcp_div_km": 15.6665,
+      "dh_m": 1662.9,
+      "sc_m_m": 0.10567,
+      "clasificacion": "corpus histórico precursor (no adoptado como constante global en los productores corregidos)"
+    }
+  },
+  "referencias_divergentes_clasificadas": [
+    {
+      "id": "div_PK_OPS_004",
+      "ubicacion": "OT-HF-003.hfproj -> estado_operativo.params.nombre_cuenca",
+      "valor": "POST_OK",
+      "clasificacion": "referencia operativa histórica; no identidad vigente"
+    },
+    {
+      "id": "div_evidencia_validacion",
+      "ubicacion": "OT-HF-003.hfproj -> evidenciaValidacion.outlet",
+      "valor": {
+        "lat": 6.21698682679494,
+        "lon": -75.5627319497491
+      },
+      "clasificacion": "residual; no pertenece al caso La Iguaná PC_80"
+    },
+    {
+      "id": "div_parametros_cien_pesos",
+      "ubicacion": "OT-HF-003.hfproj -> parametros.area_km2 (0.1818)",
+      "valor": 0.1818,
+      "clasificacion": "Cien Pesos; fuera de esta consolidación (D-02)"
+    },
+    {
+      "id": "div_cuenca_inferior",
+      "ubicacion": "OT-HF-003.hfproj -> cuenca",
+      "valor": {
+        "lat_salida": 6.21380474954716,
+        "lon_salida": -75.5693404588773
+      },
+      "clasificacion": "residual; no pertenece al caso La Iguaná PC_80"
+    }
+  ],
+  "estado_archivos_inmutables": {
+    "caso_activo_json": {
+      "ruta": "02_CORE/config/caso_activo.json",
+      "content_sha256_inicio": "76AF14F62C3AFF8F4656F0C6DD51A4C37D9A310FDB169718C763DFB2F06EE522",
+      "modificada_por_ot": false
+    },
+    "ot_hf_003_hfproj": {
+      "ruta": "02_PROYECTOS/OT-HF-003/OT-HF-003.hfproj",
+      "content_sha256_inicio": "87F3943BC3B49DD4ECECC48E04C8FFB874ABD7676E65A8F74238A7BBA43B7841",
+      "modificada_por_ot": false
+    }
+  },
+  "gate1": {
+    "resultado": "PASS",
+    "checks": {
+      "id": true,
+      "nombre": true,
+      "otId": true,
+      "punto_d03": true,
+      "post_ok_no_identidad": true,
+      "cien_pesos_fuera": true,
+      "divergencias_clasificadas": true,
+      "no_modifica_caso_activo": true,
+      "no_modifica_estado_caso": true,
+      "no_adopta_d04_d10": true,
+      "no_genera_expediente_canonico": true,
+      "no_abre_hf_converse": true
+    }
+  },
+  "gate2": {
+    "estado": "PREPARADO_SIN_EJECUTAR",
+    "punto": {
+      "latitud": 6.271785117145225,
+      "longitud": -75.59408755595547,
+      "cota_msnm": 1511.36
+    }
+  }
+}
