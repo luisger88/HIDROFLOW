@@ -1,0 +1,19 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -75.59399508939445,
+      6.271507914220566
+    ]
+  },
+  "properties": {
+    "tipo": "punto_snapped",
+    "crs": "EPSG:4326",
+    "fila": 1028,
+    "columna": 946,
+    "distancia_m": 32.307,
+    "acumulacion_celdas": 55024.0,
+    "elevacion_mdt_msnm": 1517.117
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "identidad_caso": {
+    "caso_id": "iguana_pc80",
+    "nombre_caso": "Quebrada La Iguaná - PC_80",
+    "ot": "OT-HF-003",
+    "ot_incremento": "OT-HF-003-CSTATE-001A",
+    "incremento": "E2",
+    "decision": "D-03"
+  },
+  "punto_original": {
+    "lat": 6.271785117145225,
+    "lon": -75.59408755595547,
+    "cota_contractual_msnm": 1511.36
+  },
+  "punto_proyectado": {
+    "crs": "EPSG:32618",
+    "x": 434284.8061275369,
+    "y": 693285.6561281983,
+    "metodo": "rasterio.warp.transform EPSG:4326 -> EPSG:32618"
+  },
+  "inclusion_mdt": true,
+  "mdt": {
+    "ruta": "D:\\HidroFlow\\01_DEM_HIDRO\\00_BASE\\DEM_Copernicus_GLO30_Aburra.tif",
+    "sha256": "1b12e9db53af9474407ecbcad846a6fa16e35fdb0aad53d81529c025e22b0800",
+    "crs": "EPSG:32618",
+    "shape": [
+      2583,
+      2400
+    ],
+    "res_m": [
+      30.0,
+      30.0
+    ],
+    "nodata": null,
+    "dtype": "float32"
+  },
+  "umbral_red_celdas": 500,
+  "contrato": {
+    "ruta": "D:\\HidroFlow\\07_TOOLBOX\\hf_geo\\config\\contrato_snap_D03.json",
+    "sha256": "e84331acf4700ead49fb87845da86d45a28d805ed402e154e9a946cd6f9cf803",
+    "version": "1.0",
+    "validacion": "OK"
+  }
+}

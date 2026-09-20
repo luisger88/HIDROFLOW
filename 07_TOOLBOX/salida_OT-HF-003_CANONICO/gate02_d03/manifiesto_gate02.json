@@ -1,0 +1,101 @@
+{
+  "ot": "OT-HF-003-CSTATE-001A",
+  "incremento": "E2",
+  "fecha_utc": "2026-09-20T19:55:13+00:00",
+  "rama": "ot-hf-003-cstate-001a",
+  "head": "3886ccf4547972b42d8ac052b14e2f9d60a4ee99",
+  "clasificacion_gate2": "CONDICIONAL",
+  "razones": [
+    "distancia 30–136 m (PF-02)",
+    "segmento correcto: misma cuenca y cauce por traza D8",
+    "requiere decisión profesional explícita (acta)",
+    "cadena detenida hasta la decisión"
+  ],
+  "duracion_s": 2.5,
+  "versiones": {
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "rasterio": "1.5.0",
+    "geopandas": "1.1.4",
+    "shapely": "2.1.2",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.6",
+    "whitebox_tools": "WhiteboxTools v2.4.0 (c) Dr. John Lindsay 2017-2023"
+  },
+  "archivos": [
+    {
+      "nombre": "REGISTRO_HASHES_GATE02.json",
+      "bytes": 2145,
+      "sha256": "7b485e42a3228626a18f9aac6bfbd47d88defac2abaa1d8d307a406cb9d7454a"
+    },
+    {
+      "nombre": "caso_entrada_D03.json",
+      "bytes": 1190,
+      "sha256": "becebe6d629f8a2996eab3234630acbb76199d6c9266f786542a356489aaf17c"
+    },
+    {
+      "nombre": "contraste_snap_D03.json",
+      "bytes": 579,
+      "sha256": "9a8fe5e736cc42de537a9eb6ae5a0db61698de8507ae68312ab85c1113d82801"
+    },
+    {
+      "nombre": "manifiesto_gate02.json",
+      "bytes": 2737,
+      "sha256": "1c199d932684a895978e22962d8953bb01ee7ca9491d2ef4d128f8926eb3b951"
+    },
+    {
+      "nombre": "punto_original_D03.geojson",
+      "bytes": 337,
+      "sha256": "e9b34fc4a444cbd0d07a877dcaae32ca80db1fef7b4e7d5748e8ab99d845c6e3"
+    },
+    {
+      "nombre": "punto_snap_D03.geojson",
+      "bytes": 371,
+      "sha256": "f3a6c5d7b4d17d097858d81a899fc25109ef4b4b95652ad9b6a60bc1f68977ab"
+    },
+    {
+      "nombre": "red_gate02_D03.geojson",
+      "bytes": 1106092,
+      "sha256": "ce398aef4d6e1d413101a95298d25e01181c40ec748a8471220a302e3c85f2dc"
+    },
+    {
+      "nombre": "segmento_candidato_D03.geojson",
+      "bytes": 3309799,
+      "sha256": "5fcce071ce8ce642b32f34bed71fdb0b93b369e5e245996b2a087dbc1e4b2711"
+    },
+    {
+      "nombre": "snap_registro_D03.json",
+      "bytes": 10238,
+      "sha256": "0412c167c455299c6f461ea93eb0cbb3cc159c6fa58a83fc9c91bcfd20d82945"
+    },
+    {
+      "nombre": "stderr_gate02.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "nombre": "stdout_gate02.txt",
+      "bytes": 1317,
+      "sha256": "b9f9cb6dcdfe75ba93eef114de5c8c30859d53a436b620d04aa8f52ce7c00447"
+    },
+    {
+      "nombre": "verificacion_D03.geojson",
+      "bytes": 1109,
+      "sha256": "0a1452bcdce29a9894ec92f5723e19f045d2dd7ed4aa8906a66fd4b3e138922f"
+    },
+    {
+      "nombre": "verificacion_D03.kml",
+      "bytes": 1571743,
+      "sha256": "375e01493835868ca1e1d64b012c6caee1e345f52f7214694d9a2f70ac9dbe82"
+    },
+    {
+      "nombre": "verificacion_D03.png",
+      "bytes": 171941,
+      "sha256": "a7a60fdaeb3fd3c48114a97658eb94de47d684cebc14ba790dec18cfa5c19b26"
+    }
+  ],
+  "scripts_operativos": {
+    "ejecutar_gate02_d03.py": "04c26f956a1343cb5ab53e9a16e8d0887fd93ad8a0c711d0f09c77a9f45c518c",
+    "contraste_snap.py": "01543a7f2561f36056fb1cabacf4393ff2063d6679325fa0a7ab4aa2e6aef37f"
+  }
+}

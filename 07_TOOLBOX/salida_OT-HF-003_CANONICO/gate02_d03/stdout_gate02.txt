@@ -1,0 +1,36 @@
+[PASO 0] contrato: OK
+[PASO 1] MDT sha256=1b12e9db53af9474… coincide=True (2583, 2400)
+[PASO 2] (434284.806, 693285.656) dentro_mdt=True
+[PASO 4] M01/M02/M03 {'M01_fill': 0.7717803999985335, 'M02_flowdir': 0.17015559999890684, 'M03_flowacc': 0.36436849999881815}
+[PASO 5] red autorizada celdas: 179231
+[PASO 6] segmentos conexos: 92
+[PASO 7-8] snap (1028,946) dist=32.31 m acc=55024
+[PASO 11] continuidad: celdas 2078 fuera_red 0
+[PASO 12] punto original dentro de la cuenca del snap: True
+[PASO 6] candidatos: 34 | segmentos en ventana: 1
+[OK] caso_entrada_D03.json
+[OK] punto_original / punto_snap / segmento_candidato geojson
+[OK] red_gate02_D03.geojson (ventana ±10 km)
+[OK] snap_registro_D03.json
+[OK] verificacion_D03.png
+[OK] verificacion_D03.kml
+[OK] verificacion_D03.geojson
+[OK] REGISTRO_HASHES_GATE02.json y manifiesto_gate02.json
+
+===== RESUMEN FINAL =====
+{
+  "clasificacion_gate2": "CONDICIONAL",
+  "distancia_m": 32.307,
+  "fila": 1028,
+  "columna": 946,
+  "segmento": 24,
+  "acumulacion": 55024.0,
+  "elev_orig": 1518.766,
+  "elev_snap": 1517.117,
+  "razones": [
+    "distancia 30–136 m (PF-02)",
+    "segmento correcto: misma cuenca y cauce por traza D8",
+    "requiere decisión profesional explícita (acta)",
+    "cadena detenida hasta la decisión"
+  ]
+}

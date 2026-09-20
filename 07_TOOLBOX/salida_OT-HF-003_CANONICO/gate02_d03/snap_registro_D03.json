@@ -1,0 +1,369 @@
+{
+  "identidad_caso": {
+    "caso_id": "iguana_pc80",
+    "nombre_caso": "Quebrada La Iguaná - PC_80",
+    "ot": "OT-HF-003",
+    "ot_incremento": "OT-HF-003-CSTATE-001A",
+    "incremento": "E2",
+    "decision": "D-03"
+  },
+  "punto_original": {
+    "lat": 6.271785117145225,
+    "lon": -75.59408755595547,
+    "cota_contractual_msnm": 1511.36
+  },
+  "fecha_utc": "2026-09-20T19:52:28+00:00",
+  "salida": "D:\\HidroFlow\\07_TOOLBOX\\salida_OT-HF-003_CANONICO\\gate02_d03",
+  "umbral_red_celdas": 500,
+  "contrato": {
+    "ruta": "D:\\HidroFlow\\07_TOOLBOX\\hf_geo\\config\\contrato_snap_D03.json",
+    "sha256": "e84331acf4700ead49fb87845da86d45a28d805ed402e154e9a946cd6f9cf803",
+    "version": "1.0",
+    "validacion": "OK"
+  },
+  "mdt": {
+    "ruta": "D:\\HidroFlow\\01_DEM_HIDRO\\00_BASE\\DEM_Copernicus_GLO30_Aburra.tif",
+    "sha256": "1b12e9db53af9474407ecbcad846a6fa16e35fdb0aad53d81529c025e22b0800",
+    "sha256_esperado": "1B12E9DB53AF9474407ECBCAD846A6FA16E35FDB0AAD53D81529C025E22B0800",
+    "coincide": true,
+    "crs": "EPSG:32618",
+    "shape": [
+      2583,
+      2400
+    ],
+    "res_m": [
+      30.0,
+      30.0
+    ],
+    "bounds": [
+      405900.0,
+      646620.0,
+      477900.0,
+      724110.0
+    ],
+    "nodata": null,
+    "dtype": "float32"
+  },
+  "punto_proyectado": {
+    "crs": "EPSG:32618",
+    "x": 434284.8061275369,
+    "y": 693285.6561281983,
+    "metodo": "rasterio.warp.transform EPSG:4326 -> EPSG:32618"
+  },
+  "inclusion_mdt": true,
+  "duraciones_m01_m03": {
+    "M01_fill": 0.7717803999985335,
+    "M02_flowdir": 0.17015559999890684,
+    "M03_flowacc": 0.36436849999881815
+  },
+  "red": {
+    "mdt": "1b12e9db53af9474407ecbcad846a6fa16e35fdb0aad53d81529c025e22b0800",
+    "crs": "EPSG:32618",
+    "umbral_celdas": 500,
+    "celdas_acc_ge_umbral": 179424,
+    "celdas_extract_streams_wbt": 179231,
+    "celdas_red_autorizada": 179231,
+    "duracion_extract_streams_s": 0.2,
+    "convencion_flujo": {
+      "origen": "WhiteboxTools D8 (d8_pointer)",
+      "verificacion": "gradiente máximo en 40.000 muestras; 100% coincidencia",
+      "codigos": {
+        "1": "NE",
+        "2": "E",
+        "4": "SE",
+        "8": "S",
+        "16": "SW",
+        "32": "W",
+        "64": "NW",
+        "128": "N"
+      },
+      "offsets": {
+        "1": [
+          -1,
+          1
+        ],
+        "2": [
+          0,
+          1
+        ],
+        "4": [
+          1,
+          1
+        ],
+        "8": [
+          1,
+          0
+        ],
+        "16": [
+          1,
+          -1
+        ],
+        "32": [
+          0,
+          -1
+        ],
+        "64": [
+          -1,
+          -1
+        ],
+        "128": [
+          -1,
+          0
+        ]
+      }
+    },
+    "num_segmentos": 92
+  },
+  "punto_snappeado": {
+    "fila": 1028,
+    "columna": 946,
+    "x_utm": 434295.0,
+    "y_utm": 693255.0,
+    "lon_wgs84": -75.59399508939445,
+    "lat_wgs84": 6.271507914220566
+  },
+  "resultado_snap": {
+    "distancia_m": 32.307,
+    "distancia_traza_m": 30.0,
+    "elevacion_mdt_original_msnm": 1518.766,
+    "elevacion_mdt_snapped_msnm": 1517.117,
+    "fila": 1028,
+    "columna": 946,
+    "segmento": 24,
+    "acumulacion_celdas": 55024.0,
+    "umbral": 500,
+    "outlet_retenido": true
+  },
+  "continuidad_cauce": {
+    "n_celdas": 2078,
+    "todas_en_red": true,
+    "celdas_fuera_red": 0,
+    "llega_a_borde_mdt": false,
+    "acc_min_en_traza": 55024.0,
+    "longitud_km": 71.99,
+    "metodo": "traza D8 aguas abajo; en una red dendrítica D8 la acumulación es monótona creciente, por lo que toda la traza pertenece al mismo cauce"
+  },
+  "verificacion_divisoria": {
+    "punto_original_dentro_cuenca_snap": true,
+    "cuenca_snap_celdas": 55024,
+    "metodo": "WBT watershed desde la célula snappeada; el punto D-03 queda dentro de su propia cuenca de aporte ⇒ sin cruce de divisoria ni cambio de unidad hidrográfica"
+  },
+  "candidatos": {
+    "radio_celdas": 10,
+    "radio_m": 300,
+    "n_candidatos": 34,
+    "n_segmentos": 1,
+    "mas_cercano": {
+      "fila": 1027,
+      "columna": 945,
+      "distancia_m": 19.82,
+      "acumulacion": 55019.0,
+      "segmento": 24
+    },
+    "elegido": {
+      "fila": 1028,
+      "columna": 946,
+      "distancia_m": 32.31
+    },
+    "el_mas_cercano_es_elegido": false,
+    "por_segmento": {
+      "24": {
+        "fila": 1027,
+        "columna": 945,
+        "distancia_m": 19.82,
+        "acumulacion": 55019.0,
+        "segmento": 24
+      }
+    }
+  },
+  "clasificacion_contrato_con_acta": {
+    "veredicto": "PASS_CONDICIONAL",
+    "motivo": "distancia 32.3 m entre tolerancia primaria y excepción máxima 136 m con acta profesional documentada",
+    "distancia_m": 32.30655091311105
+  },
+  "clasificacion_gate2": "CONDICIONAL",
+  "razones": [
+    "distancia 30–136 m (PF-02)",
+    "segmento correcto: misma cuenca y cauce por traza D8",
+    "requiere decisión profesional explícita (acta)",
+    "cadena detenida hasta la decisión"
+  ],
+  "estado_decisión_profesional": "PENDIENTE — requiere decisión profesional explícita (acta)",
+  "versiones_herramientas": {
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "rasterio": "1.5.0",
+    "geopandas": "1.1.4",
+    "shapely": "2.1.2",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.6",
+    "whitebox_tools": "WhiteboxTools v2.4.0 (c) Dr. John Lindsay 2017-2023"
+  },
+  "restricciones": [
+    "no se ejecutó GATE 3",
+    "no se delimitó cuenca canónica",
+    "no se calculó geomorfología ni hidrología",
+    "no se modificó el estado del caso",
+    "outlet retenido = D-03"
+  ],
+  "duracion_gate_s": 2.5,
+  "paso_a_paso": {
+    "PASO_0_contrato": {
+      "ruta": "D:\\HidroFlow\\07_TOOLBOX\\hf_geo\\config\\contrato_snap_D03.json",
+      "sha256": "e84331acf4700ead49fb87845da86d45a28d805ed402e154e9a946cd6f9cf803",
+      "version": "1.0",
+      "validacion": "OK"
+    },
+    "PASO_1_mdt": {
+      "sha256": "1b12e9db53af9474407ecbcad846a6fa16e35fdb0aad53d81529c025e22b0800",
+      "coincide": true,
+      "crs": "EPSG:32618",
+      "shape": [
+        2583,
+        2400
+      ],
+      "res_m": [
+        30.0,
+        30.0
+      ]
+    },
+    "PASO_2_reproyeccion": {
+      "punto_proyectado": {
+        "crs": "EPSG:32618",
+        "x": 434284.8061275369,
+        "y": 693285.6561281983,
+        "metodo": "rasterio.warp.transform EPSG:4326 -> EPSG:32618"
+      },
+      "inclusion_mdt": true
+    },
+    "PASO_4_flujo": {
+      "m01_fill": "C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\gate02_d03\\_wbt_run\\fill.tif",
+      "m02_flowdir": "C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\gate02_d03\\_wbt_run\\flowdir.tif",
+      "m03_flowacc": "C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\gate02_d03\\_wbt_run\\flowacc.tif",
+      "duraciones_s": {
+        "M01_fill": 0.7717803999985335,
+        "M02_flowdir": 0.17015559999890684,
+        "M03_flowacc": 0.36436849999881815
+      }
+    },
+    "PASO_5_red": {
+      "umbral_celdas": 500,
+      "celdas_red_autorizada": 179231,
+      "convencion_flujo": {
+        "origen": "WhiteboxTools D8 (d8_pointer)",
+        "verificacion": "gradiente máximo en 40.000 muestras; 100% coincidencia",
+        "codigos": {
+          "1": "NE",
+          "2": "E",
+          "4": "SE",
+          "8": "S",
+          "16": "SW",
+          "32": "W",
+          "64": "NW",
+          "128": "N"
+        },
+        "offsets": {
+          "1": [
+            -1,
+            1
+          ],
+          "2": [
+            0,
+            1
+          ],
+          "4": [
+            1,
+            1
+          ],
+          "8": [
+            1,
+            0
+          ],
+          "16": [
+            1,
+            -1
+          ],
+          "32": [
+            0,
+            -1
+          ],
+          "64": [
+            -1,
+            -1
+          ],
+          "128": [
+            -1,
+            0
+          ]
+        }
+      }
+    },
+    "PASO_6_segmentos": {
+      "num_segmentos": 92,
+      "fila_columna_original": [
+        1027,
+        946
+      ]
+    },
+    "PASO_7_distancia": 32.307,
+    "PASO_8_eleccion": {
+      "metodo": "traza D8 — se elige la primera célula de la red que recibe el flujo del punto D-03 (mismo cauce, sin salto lateral)",
+      "fila_columna_snap": [
+        1028,
+        946
+      ],
+      "distancia_m": 32.307
+    },
+    "PASO_11_continuidad": {
+      "n_celdas": 2078,
+      "todas_en_red": true,
+      "celdas_fuera_red": 0,
+      "llega_a_borde_mdt": false,
+      "acc_min_en_traza": 55024.0,
+      "longitud_km": 71.99,
+      "metodo": "traza D8 aguas abajo; en una red dendrítica D8 la acumulación es monótona creciente, por lo que toda la traza pertenece al mismo cauce"
+    },
+    "PASO_12_divisoria": {
+      "punto_original_dentro_cuenca_snap": true,
+      "cuenca_snap_celdas": 55024,
+      "metodo": "WBT watershed desde la célula snappeada; el punto D-03 queda dentro de su propia cuenca de aporte ⇒ sin cruce de divisoria ni cambio de unidad hidrográfica"
+    },
+    "PASO_6_candidatos": {
+      "radio_celdas": 10,
+      "radio_m": 300,
+      "n_candidatos": 34,
+      "n_segmentos": 1,
+      "mas_cercano": {
+        "fila": 1027,
+        "columna": 945,
+        "distancia_m": 19.82,
+        "acumulacion": 55019.0,
+        "segmento": 24
+      },
+      "elegido": {
+        "fila": 1028,
+        "columna": 946,
+        "distancia_m": 32.31
+      },
+      "el_mas_cercano_es_elegido": false,
+      "por_segmento": {
+        "24": {
+          "fila": 1027,
+          "columna": 945,
+          "distancia_m": 19.82,
+          "acumulacion": 55019.0,
+          "segmento": 24
+        }
+      }
+    },
+    "PASO_10_clasificacion": {
+      "gate": "CONDICIONAL",
+      "razones": [
+        "distancia 30–136 m (PF-02)",
+        "segmento correcto: misma cuenca y cauce por traza D8",
+        "requiere decisión profesional explícita (acta)",
+        "cadena detenida hasta la decisión"
+      ]
+    }
+  }
+}

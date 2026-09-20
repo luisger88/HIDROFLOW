@@ -1,0 +1,16 @@
+{
+  "metodo_oficial": "traza D8",
+  "snap_oficial": {
+    "fila": 1028,
+    "columna": 946,
+    "distancia_m": 32.31
+  },
+  "candidato_mas_cercano": {
+    "fila": 1027,
+    "columna": 945,
+    "distancia_m": 19.82,
+    "contiene_punto_D03": false
+  },
+  "nota": "El candidato espacialmente más cercano (1027,945) NO recibe el flujo del punto D-03; su cuenca de aporte no contiene el punto. El snap oficial preserva el drenaje real del punto (outlet retenido = D-03).",
+  "wbt_snap_pour_points": "contraste documentado; no es la fuente de decisión del contrato"
+}

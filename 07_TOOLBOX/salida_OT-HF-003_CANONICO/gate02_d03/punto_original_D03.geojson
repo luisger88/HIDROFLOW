@@ -1,0 +1,17 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -75.59408755595547,
+      6.271785117145225
+    ]
+  },
+  "properties": {
+    "tipo": "punto_original",
+    "crs": "EPSG:4326",
+    "identificador": "D-03",
+    "cota_contractual_msnm": 1511.36,
+    "elevacion_mdt_msnm": 1518.766
+  }
+}
