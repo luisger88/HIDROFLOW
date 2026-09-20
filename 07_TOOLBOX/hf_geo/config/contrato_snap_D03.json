@@ -1,0 +1,66 @@
+{
+  "criterios_pass_fail": [
+    {
+      "id": "PF-01",
+      "regla": "0 ≤ distancia ≤ 30 m",
+      "veredicto": "PASS"
+    },
+    {
+      "id": "PF-02",
+      "regla": "30 m < distancia ≤ 136 m con acta profesional",
+      "veredicto": "PASS_CONDICIONAL"
+    },
+    {
+      "id": "PF-03",
+      "regla": "distancia > 136 m o sin acta",
+      "veredicto": "FAIL"
+    }
+  ],
+  "crs_operativo": "EPSG:32618",
+  "crs_original": "EPSG:4326",
+  "decision": "D-03",
+  "mdt": {
+    "resolucion_m": 30,
+    "ruta": "01_DEM_HIDRO/00_BASE/DEM_Copernicus_GLO30_Aburra.tif",
+    "sha256": "1B12E9DB53AF9474407ECBCAD846A6FA16E35FDB0AAD53D81529C025E22B0800"
+  },
+  "ot": "OT-HF-003-CSTATE-001A",
+  "prohibicion": "El snap no puede seleccionar automáticamente un outlet distinto del punto D-03; cualquier desviación requiere acta profesional y registro explícito.",
+  "punto_original": {
+    "cota_msnm": 1511.36,
+    "lat": 6.271785117145225,
+    "lon": -75.59408755595547
+  },
+  "punto_snappeado": null,
+  "resolucion_ambiguedad": [
+    {
+      "clasificacion": "tolerancia primaria (1 celda de resolución operativa)",
+      "valor_m": 30.0
+    },
+    {
+      "clasificacion": "tolerancia legada hardcodeada (mod_04_snap); descartada como límite canónico",
+      "valor_m": 200.0
+    },
+    {
+      "clasificacion": "distancias históricas observadas; admitidas solo bajo excepción profesional documentada (acta)",
+      "rango": "128-136",
+      "valor_m": 132.0
+    }
+  ],
+  "resultado_snap": {
+    "columna": null,
+    "distancia_m": null,
+    "elevacion_msnm": null,
+    "fila": null,
+    "outlet_retenido": true,
+    "segmento": null
+  },
+  "tolerancia": {
+    "excepcion_profesional_max_m": 136,
+    "regla": "tolerancia primaria = resolución (1 celda = 30 m); excepción profesional documentada hasta 136 m con acta; bloqueo si se supera sin acta",
+    "resolucion_m": 30,
+    "tolerancia_primaria_m": 30
+  },
+  "umbral_red_celdas": 500,
+  "version": "1.0"
+}
