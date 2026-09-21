@@ -59,7 +59,7 @@
       "restricciones": [
         "contrato hf.manifest.v1"
       ],
-      "tamano_bytes": 20961
+      "tamano_bytes": 28969
     },
     {
       "id": "decision-log",
@@ -481,6 +481,70 @@
       "estado": "vigente",
       "restricciones": [
         "documentación de estructura"
+      ]
+    },
+    {
+      "id": "spatial-README",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "spatial/README.md",
+      "hash": "2eea72d552a2d68be56123ca5f7b948a471ae8820e1826fda3273214b4911b94",
+      "tamano_bytes": 1285,
+      "fuente": "OT-HF-SIG-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación del inventario espacial"
+      ]
+    },
+    {
+      "id": "spatial-data-registry",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/spatial-data-registry.json",
+      "hash": "66c2d4965a3afd75d337ad0d8c884b4ade086ce66fd0a765efcdcc7fda855eeb",
+      "tamano_bytes": 12143,
+      "fuente": "OT-HF-SIG-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "contrato hf.spatial-data.v1; inventario espacial gobernado"
+      ]
+    },
+    {
+      "id": "spatial-qa-README",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "spatial/qa/README.md",
+      "hash": "b74c75f1929feda3b2f3bdc4a56d281c7892c5db54224d2acf83c240c1944dec",
+      "tamano_bytes": 1247,
+      "fuente": "OT-HF-SIG-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación del QA piloto"
+      ]
+    },
+    {
+      "id": "spatial-qa-ledger",
+      "clase": "A_CANONICO",
+      "formato": "JSONL",
+      "ruta_relativa": "spatial/qa/qa-ledger.jsonl",
+      "hash": "584f85dfb4317869f8d64a667fa8959bfcf617b4f54c079537732a2940f91d72",
+      "tamano_bytes": 7049,
+      "fuente": "OT-HF-SIG-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "append_only",
+      "restricciones": [
+        "append-only; no reescribir líneas"
       ]
     }
   ],
