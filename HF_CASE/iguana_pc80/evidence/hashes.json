@@ -1,0 +1,51 @@
+{
+  "schema": "hf.hashes.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "descripcion": "Hashes de referencia de activos externos del caso portable (no copiados al paquete) y de inmutables verificados",
+  "nota": "Solo se listan aquí activos FUERA del paquete. Los archivos INSIDE el paquete se verifican con checksums.sha256.",
+  "activables_mdt": {
+    "mdt_copernicus_glo30_aburra": {
+      "ruta_relativa": "01_DEM_HIDRO/00_BASE/DEM_Copernicus_GLO30_Aburra.tif",
+      "sha256": "1b12e9db53af9474407ecbcad846a6fa16e35fdb0aad53d81529c025e22b0800",
+      "crs": "EPSG:32618",
+      "resolucion_m": 30,
+      "class": "B_COMPUTACIONAL",
+      "portabilidad": "no_portable_datos_privados",
+      "regenerabilidad": "no_regenerable",
+      "restriccion": "no copiado; referenciado por hash"
+    }
+  },
+  "salidas_canonicas_gate02_d03": {
+    "manifiesto_gate02.json": "d32cfb6259520d6871e63febc7c9924f7ef6452d86c1ad553f154123f0fa3626",
+    "REGISTRO_HASHES_GATE02.json": "7b485e42a3228626a18f9aac6bfbd47d88defac2abaa1d8d307a406cb9d7454a",
+    "caso_entrada_D03.json": "becebe6d629f8a2996eab3234630acbb76199d6c9266f786542a356489aaf17c",
+    "contraste_snap_D03.json": "9a8fe5e736cc42de537a9eb6ae5a0db61698de8507ae68312ab85c1113d82801",
+    "punto_original_D03.geojson": "e9b34fc4a444cbd0d07a877dcaae32ca80db1fef7b4e7d5748e8ab99d845c6e3",
+    "punto_snap_D03.geojson": "f3a6c5d7b4d17d097858d81a899fc25109ef4b4b95652ad9b6a60bc1f68977ab",
+    "red_gate02_D03.geojson": "ce398aef4d6e1d413101a95298d25e01181c40ec748a8471220a302e3c85f2dc",
+    "segmento_candidato_D03.geojson": "5fcce071ce8ce642b32f34bed71fdb0b93b369e5e245996b2a087dbc1e4b2711",
+    "snap_registro_D03.json": "0412c167c455299c6f461ea93eb0cbb3cc159c6fa58a83fc9c91bcfd20d82945",
+    "stderr_gate02.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_gate02.txt": "b9f9cb6dcdfe75ba93eef114de5c8c30859d53a436b620d04aa8f52ce7c00447",
+    "verificacion_D03.geojson": "0a1452bcdce29a9894ec92f5723e19f045d2dd7ed4aa8906a66fd4b3e138922f",
+    "verificacion_D03.kml": "375e01493835868ca1e1d64b012c6caee1e345f52f7214694d9a2f70ac9dbe82",
+    "verificacion_D03.png": "a7a60fdaeb3fd3c48114a97658eb94de47d684cebc14ba790dec18cfa5c19b26"
+  },
+  "inmutables_verificados": {
+    "02_CORE/config/caso_activo.json": "76af14f62c3aff8f4656f0c6dd51a4c37d9a310fdb169718c763dfb2f06ee522",
+    "02_PROYECTOS/OT-HF-003/OT-HF-003.hfproj": "87f3943bc3b49dd4ececc48e04c8ffb874abd7676e65a8f74238a7bba43b7841",
+    "07_TOOLBOX/hf_geo/config/contrato_snap_D03.json": "e84331acf4700ead49fb87845da86d45a28d805ed402e154e9a946cd6f9cf803",
+    "07_TOOLBOX/datos_gobernados/HF_EXPEDIENTE_001.json": "5f6d84888327f824758033fe3abfd05d647864664a9206dbb105c9bf914ed6db",
+    "00_ADMIN/bitacora/HF-CASE-STATE-001A/HF-CASE-STATE-001A_REGISTRO_HISTORICOS.json": "3bdd2be3f4c0d9318baa1424a074d3ee6c9a65219cf8acbee52ea386b57f0e76"
+  },
+  "evidencia_historica_verificacion_D03_png": {
+    "ruta_relativa": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/verificacion_D03.png",
+    "sha256": "a7a60fdaeb3fd3c48114a97658eb94de47d684cebc14ba790dec18cfa5c19b26",
+    "class": "EVIDENCIA",
+    "estado": "historic",
+    "qa": "FAIL_ORIENTATION",
+    "decision_use": "NOT_SUITABLE",
+    "nota": "preservada en su ubicación original; no corregida ni sobrescrita"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "hf.source-manifest.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "descripcion": "Registro conceptual de las fuentes referenciales del caso. NINGUNA fuente externa se descarga ni copia en esta OT.",
+  "regla_general": "Una referencia no se vuelve canónica por estar disponible. Uso prohibido de adopción automática.",
+  "fuentes": [
+    {
+      "id": "mapgis",
+      "clase": "C_REFERENCIAL",
+      "nombre": "MapGIS",
+      "autoridad": "Distrito de Medellín",
+      "cobertura": "limitada al Distrito",
+      "fortaleza": "identidad, clasificación, orden y jerarquía",
+      "limitacion": "posible desplazamiento geométrico",
+      "uso_prohibido": "adopción automática del outlet",
+      "fuente_registro": "00_ADMIN/bitacora/HF-GEO-DIAG-002.md, HF-GEO-DIAG-004.md (referencias AMVA/MapGIS)"
+    },
+    {
+      "id": "ortofoto_y_google_earth",
+      "clase": "C_REFERENCIAL_VISUAL",
+      "nombre": "Ortofoto / Google Earth",
+      "autoridad": "AMVA (ortofoto) / Google Earth (visual)",
+      "cobertura": "territorio del Valle de Aburrá",
+      "fortaleza": "alineamiento territorial aparente",
+      "limitacion": "canalizaciones ocultas, desfases, ausencia de red computacional",
+      "uso_prohibido": "adopción automática",
+      "fuente_registro": "docs/interface/HF_CARTOGRAFIA_CAPACIDAD_OPERATIVA.md, 00_ADMIN/bitacora/HF-COVER-005.md"
+    },
+    {
+      "id": "red_hf",
+      "clase": "B_COMPUTACIONAL",
+      "nombre": "Red hidrológica HF (GATE 2 E2)",
+      "autoridad": "HidroFlow - Ingeniero Digital (Big Pickle)",
+      "cobertura": "MDT Copernicus GLO30, umbral 500 celdas",
+      "reproducible": true,
+      "competencia_territorial": "NOT_DEMONSTRATED",
+      "uso_permitido": "generación de candidatos",
+      "uso_prohibido": "celda canónica sin decisión profesional",
+      "evidencia": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/red_gate02_D03.geojson",
+      "hash": "ce398aef4d6e1d413101a95298d25e01181c40ec748a8471220a302e3c85f2dc"
+    },
+    {
+      "id": "mdt_copernicus_glo30",
+      "clase": "B_COMPUTACIONAL",
+      "nombre": "MDT Copernicus GLO30 - Aburrá",
+      "autoridad": "Copernicus (via operación institucional)",
+      "cobertura": "Valle de Aburrá",
+      "regenerabilidad": "no_regenerable",
+      "portabilidad": "no_portable (dato pesado privado)",
+      "referencia": "por hash; NO copiado",
+      "ruta_relativa_repo": "01_DEM_HIDRO/00_BASE/DEM_Copernicus_GLO30_Aburra.tif",
+      "hash_sha256": "1b12e9db53af9474407ecbcad846a6fa16e35fdb0aad53d81529c025e22b0800",
+      "crs": "EPSG:32618",
+      "resolucion_m": 30
+    },
+    {
+      "id": "expediente_historico",
+      "clase": "A_CANONICO_EXTERNO",
+      "nombre": "Expediente hidrológico HF_EXPEDIENTE_001",
+      "autoridad": "HF-FACTORY (motor HF-GOV-004)",
+      "inmutable": true,
+      "externo_al_paquete": true,
+      "ruta_relativa_repo": "07_TOOLBOX/datos_gobernados/HF_EXPEDIENTE_001.json",
+      "hash_sha256": "5f6d84888327f824758033fe3abfd05d647864664a9206dbb105c9bf914ed6db"
+    }
+  ],
+  "licencias": {
+    "nota": "No inventar licencias. Se usa null/unknown cuando no existe evidencia.",
+    "mapgis": "unknown",
+    "ortofoto": "unknown",
+    "google_earth": "unknown",
+    "mdt_copernicus_glo30": "Copernicus Open Access (referencial)",
+    "red_hf": "propiedad del proyecto HidroFlow (autoridad ingeniero digital)"
+  }
+}

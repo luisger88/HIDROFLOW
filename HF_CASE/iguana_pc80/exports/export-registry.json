@@ -1,0 +1,9 @@
+{
+  "schema": "hf.exports.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "descripcion": "Registro de exportaciones/entregables del caso. Vacio por ahora: ninguna exportación canónica emitida.",
+  "exports": [],
+  "nota": "Las exportaciones pesadas de este caso (si existieran) se registrarían con ruta relativa o referencia configurable, id, hash y clases A/B/C/D. Ninguna exportación se incorpora a Git por política de datos pesados.",
+  "politica": "./...: no commitear exportaciones pesadas; solo contratos de referencia."
+}

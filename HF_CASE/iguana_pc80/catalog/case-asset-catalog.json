@@ -1,0 +1,53 @@
+{
+  "schema": "hf.catalog.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "descripcion": "Catálogo resumido de activos del caso portable por clase A/B/C/D. El inventario detallado vive en manifest.json.",
+  "contabilidad": {
+    "A_CANONICO": 6,
+    "B_COMPUTACIONAL": 6,
+    "C_REFERENCIAL": 3,
+    "D_CACHE": 0,
+    "EVIDENCIA_HISTORICA": 1
+  },
+  "resumen_clases": {
+    "A_CANONICO": [
+      "identidad del caso",
+      "punto contractual D-03 (projet-location)",
+      "decisiones ratificadas (D-01, D-02, D-03)",
+      "estado de gates persistido",
+      "hashes de estado",
+      "expediente histórico (externo)"
+    ],
+    "B_COMPUTACIONAL": [
+      "MDT (referenciado, no copiado)",
+      "red HF gate02",
+      "segmento candidato",
+      "proposed_cell",
+      "punto snap",
+      "caso_entrada"
+    ],
+    "C_REFERENCIAL": [
+      "MapGIS (institucional, cobertura limitada)",
+      "Ortofoto / Google Earth (visual)",
+      "redes institucionales AMVA"
+    ],
+    "D_CACHE": [
+      "teselas",
+      "previews",
+      "temporales",
+      "vistas regenerables",
+      "sin autoridad"
+    ],
+    "EVIDENCIA_HISTORICA": [
+      "verificacion_D03.png (FAIL_ORIENTATION, NOT_SUITABLE; preservada)"
+    ]
+  },
+  "reglas": [
+    "la caché puede eliminarse sin perder el caso",
+    "una referencia no se vuelve canónica por estar disponible",
+    "un resultado computacional no se vuelve canónico sin decisión profesional",
+    "adopted-cell.geojson NO debe crearse con geometría nula; si no hay adopción se registra ausencia en spatial-decision.json"
+  ],
+  "nota": "Contabilidad manual; la autoridad es manifest.json."
+}

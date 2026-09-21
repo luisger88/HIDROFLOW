@@ -1,0 +1,55 @@
+{
+  "schema": "hf.reference.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "activo": {
+    "id": "red_hf_gate02_d03",
+    "clase": "B_COMPUTACIONAL",
+    "formato": "GeoJSON",
+    "nombre": "Red hidrológica HF — GATE 2 E2 (D-03)",
+    "competencia_territorial": "NOT_DEMONSTRATED",
+    "uso_permitido": "generación de candidatos",
+    "uso_prohibido": "celda canónica sin decisión profesional"
+  },
+  "localizacion": {
+    "tipo": "repository",
+    "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/red_gate02_D03.geojson",
+    "copia_en_paquete": false,
+    "nota": "GeoJSON de red 1.1 MB; no se copia, se referencia por hash."
+  },
+  "identificador": {
+    "sha256": "ce398aef4d6e1d413101a95298d25e01181c40ec748a8471220a302e3c85f2dc",
+    "bytes": 1106092,
+    "fuente_hash": "REGISTRO_HASHES_GATE02.json"
+  },
+  "especificacion": {
+    "umbral_red_celdas": 500,
+    "celdas_red_autorizada": 179231,
+    "num_segmentos": 92,
+    "segmento_candidato": 24,
+    "convencion_flujo": "WhiteboxTools D8 (d8_pointer)",
+    "crs": "EPSG:32618"
+  },
+  "regenerabilidad": {
+    "regenerable": true,
+    "condiciones": [
+      "MDT Copernicus GLO30 con hash 1b12e9db...",
+      "umbral 500 celdas",
+      "punto D-03",
+      "versiones WBT v2.4.0 / rasterio 1.5.0 / python 3.13.9"
+    ],
+    "criterio": "La red se reproduce con el mismo MDT y contrato; NO se vuelve canónica sin decisión profesional."
+  },
+  "gobernanza": {
+    "fuente": "HidroFlow - Ingeniero Digital (Big Pickle)",
+    "autoridad": "Ingeniero Digital (Big Pickle)",
+    "procedencia": "GATE 2 E2 ejecutado en ot-hf-003-cstate-001a",
+    "licencia": null,
+    "portabilidad": "referenciada",
+    "restricciones": [
+      "no copiada al paquete",
+      "competencia territorial no demostrada",
+      "NO adoptar segmento 24"
+    ]
+  }
+}

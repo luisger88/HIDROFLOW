@@ -1,0 +1,119 @@
+{
+  "schema": "hf.case.v1",
+  "schema_version": "1.0",
+  "caso": {
+    "id": "iguana_pc80",
+    "nombre": "Quebrada La Iguaná - PC_80",
+    "ot": "OT-HF-003",
+    "dominio": "HIDROLOGIA_Y_GEOMATICA",
+    "version": "1.0.0",
+    "portable": true
+  },
+  "estado": {
+    "clasificacion": "CANONICO",
+    "resumen": "Identidad ratificada (D-01, D-03); GATE 1 PASS; GATE 2 CONDICIONAL con decisión profesional pendiente; GATE 3 BLOQUEADO.",
+    "decision_profesional": null,
+    "network_competence": "NOT_DEMONSTRATED",
+    "adopted_cell": null
+  },
+  "origen_control": {
+    "rama": "ot-hf-003-cstate-001a",
+    "commit_base": "5b279635247f0238333cb6d1b8ae2a843ba36465",
+    "ot_incremento": "OT-HF-003-CSTATE-001A",
+    "incrementos_preservados": [
+      "E1",
+      "E2"
+    ],
+    "fecha_empaquetado_utc": "2026-09-20"
+  },
+  "ubicacion_contractual": {
+    "decision": "D-03",
+    "latitud": 6.271785117145225,
+    "longitud": -75.59408755595547,
+    "cota_msnm": 1511.36,
+    "elemento": "punto_contractual_ratificado",
+    "adoptado": true
+  },
+  "crs": {
+    "geodesico": "EPSG:4326",
+    "operativo": "EPSG:32618"
+  },
+  "gates": {
+    "GATE_1": {
+      "veredicto": "PASS",
+      "evidencia": "HF-CASE-STATE-001A_GATE01_IDENTIDAD.md"
+    },
+    "GATE_2": {
+      "veredicto": "CONDICIONAL",
+      "evidencia": "HF-CASE-STATE-001A_GATE02_DICTAMEN.md",
+      "decision_profesional": null,
+      "pf_aplicado": "PF-02",
+      "distancia_m": 32.307,
+      "condicion": "Acta profesional explícita requerida para adoptar el snap de D-03",
+      "celda_propuesta": {
+        "fila": 1028,
+        "columna": 946,
+        "segmento": 24,
+        "distancia_m": 32.307,
+        "acumulacion_celdas": 55024,
+        "clasificacion": "PROPUESTA, NO ADOPTADA"
+      }
+    },
+    "GATE_3": {
+      "veredicto": "BLOQUEADO",
+      "condicion_desbloqueo": "competencia territorial de la red demostrada, segundo clic profesional, celda adoptada y persistida"
+    }
+  },
+  "activos_vigentes": {
+    "canonicos": {
+      "identidad": "iguana_pc80",
+      "punto_contractual": "D-03",
+      "decisiones": [
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-11",
+        "D-12",
+        "D-13"
+      ]
+    },
+    "computacionales": {
+      "proposed_cell": "fila 1028, columna 946, segmento 24, distancia 32.307 m, acumulación 55024",
+      "status": "PROPUESTA, NO ADOPTADA",
+      "regenerable": true
+    },
+    "referenciales": {
+      "mapgis": "referencia institucional de cobertura limitada (Distrito de Medellín)",
+      "ortofoto": "referencia visual (no adoptiva)",
+      "red_hf": "computacional con competencia territorial NO demostrada"
+    }
+  },
+  "decisiones_vigentes": {
+    "D-01": "Identidad del caso iguana_pc80 / Quebrada La Iguaná - PC_80 / OT-HF-003",
+    "D-02": "Caso objetivo OT-HF-003; Cien Pesos excluida",
+    "D-03": "Punto hidrológico ratificado (6.271785117145225, -75.59408755595547, 1511.36 msnm)",
+    "D-11": "Q-5 = hidrografía principal con SCS-HU como método principal",
+    "D-12": "Método Racional referencial, no adoptivo",
+    "D-13": "Prohibido mezclar familias geométricas incompatibles"
+  },
+  "restricciones": [
+    "No se adoptó la celda propuesta (1028, 946)",
+    "No se presentan 32.307 m como distancia aceptada",
+    "No se ejecutará GATE 3 sin decisión profesional y acta PF-02",
+    "verificacion_D03.png es evidencia histórica QA FAIL_ORIENTATION; NO apta para decisión cartográfica",
+    "La red HF es computacional regenerable; competencia territorial NO demostrada",
+    "MapGIS es referencial; prohibida la adopción automática del outlet",
+    "Ortofoto/Google Earth son referenciales visuales; prohibida la adopción automática"
+  ],
+  "expediente": {
+    "vigente": true,
+    "inmutable": "07_TOOLBOX/datos_gobernados/HF_EXPEDIENTE_001.json",
+    "hash": "5f6d84888327f824758033fe3abfd05d647864664a9206dbb105c9bf914ed6db",
+    "clase": "A_CANONICO",
+    "externo_al_paquete": true,
+    "referencia_relativa": "07_TOOLBOX/datos_gobernados/HF_EXPEDIENTE_001.json",
+    "hash_registrado": "5f6d84888327f824758033fe3abfd05d647864664a9206dbb105c9bf914ed6db"
+  },
+  "estado_hash": "d753dd56c09e2014ed450d0442979f01e7bba4568ca9bf1e312b474f8868009d",
+  "nota_estado_hash": "SHA-256 determinista de los contratos de estado del paquete (excluye case.json, manifest.json, checksums.sha256, cache/ y exports/); ver 02_CORE/portability/resolver.py::estado_hash_paquete y docs/contratos/hf-case-v1.md"
+}

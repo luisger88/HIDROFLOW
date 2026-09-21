@@ -1,0 +1,36 @@
+{
+  "schema": "hf.reference.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "activo": {
+    "id": "expediente_historico",
+    "clase": "A_CANONICO",
+    "formato": "JSON",
+    "nombre": "Expediente histórico hidrológico HF_EXPEDIENTE_001",
+    "inmutable": true,
+    "externo_al_paquete": true
+  },
+  "localizacion": {
+    "tipo": "repository_external",
+    "ruta_relativa_repo": "07_TOOLBOX/datos_gobernados/HF_EXPEDIENTE_001.json",
+    "copia_en_paquete": false,
+    "nota": "Expediente inmutable externo al paquete; se referencia con su hash y ruta relativa al repositorio."
+  },
+  "identificador": {
+    "sha256": "5f6d84888327f824758033fe3abfd05d647864664a9206dbb105c9bf914ed6db",
+    "hash_expediente_interno": "cd98512feb2ffca76ffde98f40f6dcce875f461efe098626d06da1f386c7921f"
+  },
+  "gobernanza": {
+    "fuente": "HF-FACTORY",
+    "motor_version": "HF-GOV-004",
+    "autoridad": "Distrito de Medellín / operación HF",
+    "procedencia": "Expediente histórico del caso La Iguana PC80",
+    "estado": "inmutable",
+    "regenerabilidad": "no_regenerable",
+    "restricciones": [
+      "no modificar",
+      "no reescribir",
+      "referencia externa declarada"
+    ]
+  }
+}

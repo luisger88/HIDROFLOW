@@ -1,0 +1,769 @@
+{
+  "schema": "hf.manifest.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "nombre": "Quebrada La Iguaná - PC_80",
+  "ot": "OT-HF-003",
+  "fecha_manifest_utc": "2026-09-20",
+  "descripcion": "Inventario del 100 % de los activos incorporados o referenciados por el caso portable. Autoridad de clasificación A/B/C/D.",
+  "criterio": "Los activos dentro del paquete tienen copia aquí. Los activos pesados o externos se referencian por ruta relativa, id, hash, fuente, autoridad, portabilidad, regenerabilidad y restricción; NO se copian.",
+  "activadores": {
+    "class": "A_CANONICO",
+    "referencia_estado": "case.json",
+    "reference_hash": "estado_hash en case.json"
+  },
+  "activos_incorporados": [
+    {
+      "id": "hfcase-marker",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": ".hfcase",
+      "hash": "cf53da3acc0e6ee9d59b6a759aa842b01eda547632b0b6d619a9c3895463b4da",
+      "tamano_bytes": 376,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "no_aplica",
+      "estado": "vigente",
+      "restricciones": [
+        "marca la raíz del caso portable"
+      ]
+    },
+    {
+      "id": "case-json",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "case.json",
+      "hash": "b24fea974753630431d50f650f31a1510d5e0b0f1fba885db75de13355d63a14",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "no_aplica",
+      "estado": "vigente",
+      "restricciones": [
+        "contrato raíz hf.case.v1"
+      ],
+      "tamano_bytes": 4584
+    },
+    {
+      "id": "manifest-json",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "manifest.json",
+      "hash": "self",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "no_aplica",
+      "estado": "vigente",
+      "restricciones": [
+        "contrato hf.manifest.v1"
+      ],
+      "tamano_bytes": 20961
+    },
+    {
+      "id": "decision-log",
+      "clase": "A_CANONICO",
+      "formato": "JSONL",
+      "ruta_relativa": "decision-log.jsonl",
+      "hash": "dd1049354e6d6b5d0f0d34db6ba3818d880f59d711a51131e9e54eaf0cbbf2c1",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "no_aplica",
+      "estado": "append_only",
+      "restricciones": [
+        "append-only; no reescribir líneas"
+      ],
+      "tamano_bytes": 5343
+    },
+    {
+      "id": "checksums",
+      "clase": "A_CANONICO",
+      "formato": "TEXT",
+      "ruta_relativa": "checksums.sha256",
+      "hash": "self",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "vigente",
+      "restricciones": [
+        "recálculo determinista"
+      ],
+      "tamano_bytes": 2702
+    },
+    {
+      "id": "gates-jsonl",
+      "clase": "A_CANONICO",
+      "formato": "JSONL",
+      "ruta_relativa": "state/gates.jsonl",
+      "hash": "5d3048d9a6a7b24d0fa3aa9efc021dc36ec037e8ca0460d7185650352b00ec9e",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "GATE 1 PASS; GATE 2 CONDICIONAL; GATE 3 BLOQUEADO"
+      ],
+      "tamano_bytes": 1302
+    },
+    {
+      "id": "project-location",
+      "clase": "A_CANONICO",
+      "formato": "GeoJSON",
+      "ruta_relativa": "geometry/project-location.geojson",
+      "hash": "a117c8954a23ab8456ec18aa0525ed696e0814889fa2abd9234d5d40289696b3",
+      "crs": "EPSG:4326",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "punto contractual D-03 ratificado"
+      ],
+      "tamano_bytes": 992
+    },
+    {
+      "id": "proposed-cell",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "GeoJSON",
+      "ruta_relativa": "geometry/proposed-cell.geojson",
+      "hash": "5f5e8a4f1c03adaf1c9d297337adf1b8fb57919602174162e8983f24f27e5bce",
+      "crs": "EPSG:4326",
+      "fuente": "E2 GATE 2 (punto_snap_D03)",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "PROPUESTA, NO ADOPTADA",
+      "restricciones": [
+        "NO crear geometry/adopted-cell.geojson hasta adopción profesional"
+      ],
+      "tamano_bytes": 1211
+    },
+    {
+      "id": "spatial-decision",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "decision/spatial-decision.json",
+      "hash": "187b4c7ef407f04db8dc111c33afaf9689849883c32f79474fdba9a301245c18",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "PENDING_PROFESSIONAL_DECISION",
+      "restricciones": [
+        "adopted_cell null; acquisition_aoi null; professional_click null"
+      ],
+      "tamano_bytes": 3686
+    },
+    {
+      "id": "provenance",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "evidence/provenance.json",
+      "hash": "f2b1618e1f553fb86a2e1785c3d5388a008c171f5603a5ffd519aecb7b051c52",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [],
+      "tamano_bytes": 3094
+    },
+    {
+      "id": "hashes-evidence",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "evidence/hashes.json",
+      "hash": "632e3a2ff8d6dafd1ac1d8c7b9950070db9922d96a5d7da1a71574e36faf3cf2",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [],
+      "tamano_bytes": 3320
+    },
+    {
+      "id": "source-manifest",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "references/source-manifest.json",
+      "hash": "e95c1c69c9d0cf2a0ebb06804505d91834db69f5fb26871ca8f59bfb41ddf73e",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [],
+      "tamano_bytes": 3396
+    },
+    {
+      "id": "mdt-reference",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "terrain/mdt-reference.json",
+      "hash": "4721de98949a74e3b811bca39bb331060f4c5b508d30a20495ce8d97daeb5a78",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "referencia al MDT; NO copia"
+      ],
+      "tamano_bytes": 1541
+    },
+    {
+      "id": "network-reference",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "network/hf-network-reference.json",
+      "hash": "284dc7e5fb1d647d705a114d0fbd5069f0e6325316d30cfc7bcc57ffb718c706",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "red HF competencia NO demostrada"
+      ],
+      "tamano_bytes": 1840
+    },
+    {
+      "id": "gate02-outputs-reference",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "outputs/gate02-outputs-reference.json",
+      "hash": "1b4c4cfe16e20f7c3ffd92256f3da36334458018c8b7fe7233acc734f5c866c7",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "referencias a salida canónica; NO copia"
+      ],
+      "tamano_bytes": 3474
+    },
+    {
+      "id": "caso-entrada-reference",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "source/caso-entrada-D03-reference.json",
+      "hash": "f53907f8461eb3a73faa0bd722348178def0f8a5de9c84e8948770d5aa2ace11",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [],
+      "tamano_bytes": 1397
+    },
+    {
+      "id": "expediente-reference",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "source/expediente-reference.json",
+      "hash": "4ea626b81373abe1f5e1b7591478152645fd6360dc07fb64d379d2c43d12f247",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "expediente histórico externo al paquete"
+      ],
+      "tamano_bytes": 1196
+    },
+    {
+      "id": "catalog",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "catalog/case-asset-catalog.json",
+      "hash": "d6621075bfbbdc6b83d7d755e69d1e7e1c6586b97aa3c3ce37d9f589f9e844fe",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [],
+      "tamano_bytes": 1649
+    },
+    {
+      "id": "export-registry",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "exports/export-registry.json",
+      "hash": "bac1d34a3ada1d93357b2b25615f37e0deafec744022da1c87e5d3dd80c44948",
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [],
+      "tamano_bytes": 547
+    },
+    {
+      "id": "readme-catalog",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "catalog/README.md",
+      "hash": "d6cac54cdcd39f0069e79c6189f9ec178d42bbf0f44bb01e15405f0fc3feedd1",
+      "tamano_bytes": 100,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    },
+    {
+      "id": "readme-decision",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "decision/README.md",
+      "hash": "74dcd56796c26169473c0af413d7d82f46f56ae66a79977bdcadf150268d1d5d",
+      "tamano_bytes": 110,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    },
+    {
+      "id": "readme-evidence",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "evidence/README.md",
+      "hash": "7d1a4ce292507e0bd39452ff749f8f8f1c89cf5c5305b01584138dd4ab17a36a",
+      "tamano_bytes": 180,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    },
+    {
+      "id": "readme-exports",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "exports/README.md",
+      "hash": "8fc3d7dc3295ac3825d8c1708e7975f93d18570372e89e9ebf4cca7327fd2360",
+      "tamano_bytes": 87,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    },
+    {
+      "id": "readme-geometry",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "geometry/README.md",
+      "hash": "930c609e148c3829915a12ae2e15ce794b9f505ec5ac8ae50b564325c74be423",
+      "tamano_bytes": 140,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    },
+    {
+      "id": "readme-network",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "network/README.md",
+      "hash": "79908932d4145c3d3f573ee5ac9118670652f7dd8526b23df41e9c306a62e2bc",
+      "tamano_bytes": 103,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    },
+    {
+      "id": "readme-outputs",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "outputs/README.md",
+      "hash": "65adef86e683e3e1b8570c4979d12ea97e7e1ebc4b2fed4556b9c57377b18d36",
+      "tamano_bytes": 93,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    },
+    {
+      "id": "readme-references",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "references/README.md",
+      "hash": "c3f9d40f55cf49a14f425212f22a403a2d616992f8f3fb2b5053489b548a70b1",
+      "tamano_bytes": 105,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    },
+    {
+      "id": "readme-source",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "source/README.md",
+      "hash": "6ee7bd9759154c82cf59b1fdec4a875b53f434b421051345bf311916c752b5ac",
+      "tamano_bytes": 97,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    },
+    {
+      "id": "readme-state",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "state/README.md",
+      "hash": "ca88f211e62fd2a696b4ca884398950f20663171f7f528b19879a203c9967681",
+      "tamano_bytes": 90,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    },
+    {
+      "id": "readme-terrain",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "terrain/README.md",
+      "hash": "1588a3f855ba9502b313fc3540114c2d52e87456ed52c1d8d881261f69d9b43b",
+      "tamano_bytes": 114,
+      "fuente": "OT-HF-PORT-002",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "documentación de estructura"
+      ]
+    }
+  ],
+  "activos_referenciados_pesados": [
+    {
+      "id": "mdt_copernicus_glo30",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "GeoTIFF",
+      "ruta_relativa_repo": "01_DEM_HIDRO/00_BASE/DEM_Copernicus_GLO30_Aburra.tif",
+      "hash": "1b12e9db53af9474407ecbcad846a6fa16e35fdb0aad53d81529c025e22b0800",
+      "tamano_bytes": null,
+      "crs": "EPSG:32618",
+      "resolucion_m": 30,
+      "fuente": "Copernicus GLO30",
+      "autoridad": "Copernicus / operación institucional",
+      "fecha": null,
+      "vigencia": "no_definida",
+      "licencia": "Copernicus Open Access (referencial)",
+      "portabilidad": "no_portable_datos_privados",
+      "regenerabilidad": "no_regenerable",
+      "procedencia": "operación institucional HidroFlow",
+      "estado": "referenciado",
+      "restricciones": [
+        "NO copiado",
+        "verificar por hash"
+      ]
+    },
+    {
+      "id": "red_gate02_d03",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "GeoJSON",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/red_gate02_D03.geojson",
+      "hash": "ce398aef4d6e1d413101a95298d25e01181c40ec748a8471220a302e3c85f2dc",
+      "tamano_bytes": 1106092,
+      "crs": "EPSG:32618",
+      "fuente": "GATE 2 E2",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "referenciada",
+      "regenerabilidad": "regenerable",
+      "estado": "computacional_no_demostrado",
+      "restricciones": [
+        "NO celda canónica sin decisión profesional"
+      ]
+    },
+    {
+      "id": "segmento_candidato_d03",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "GeoJSON",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/segmento_candidato_D03.geojson",
+      "hash": "5fcce071ce8ce642b32f34bed71fdb0b93b369e5e245996b2a087dbc1e4b2711",
+      "tamano_bytes": 3309799,
+      "crs": "EPSG:32618",
+      "fuente": "GATE 2 E2",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "referenciada",
+      "regenerabilidad": "regenerable",
+      "estado": "CANDIDATO_NO_DEMOSTRADO",
+      "restricciones": [
+        "segmento 24 NO adoptado"
+      ]
+    },
+    {
+      "id": "verificacion_D03.png",
+      "clase": "EVIDENCIA",
+      "formato": "PNG",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/verificacion_D03.png",
+      "hash": "a7a60fdaeb3fd3c48114a97658eb94de47d684cebc14ba790dec18cfa5c19b26",
+      "tamano_bytes": 171941,
+      "fuente": "GATE 2 E2",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "referenciada",
+      "regenerabilidad": "inmutable",
+      "estado": "historic",
+      "qa": "FAIL_ORIENTATION",
+      "decision_use": "NOT_SUITABLE",
+      "restricciones": [
+        "NO corregir",
+        "NO sobrescribir",
+        "evidencia histórica, no caché"
+      ]
+    },
+    {
+      "id": "verificacion_D03.kml",
+      "clase": "EVIDENCIA",
+      "formato": "KML",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/verificacion_D03.kml",
+      "hash": "375e01493835868ca1e1d64b012c6caee1e345f52f7214694d9a2f70ac9dbe82",
+      "fuente": "GATE 2 E2",
+      "estado": "historic",
+      "restricciones": [
+        "evidencia histórica"
+      ]
+    },
+    {
+      "id": "verificacion_D03.geojson",
+      "clase": "EVIDENCIA",
+      "formato": "GeoJSON",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/verificacion_D03.geojson",
+      "hash": "0a1452bcdce29a9894ec92f5723e19f045d2dd7ed4aa8906a66fd4b3e138922f",
+      "fuente": "GATE 2 E2",
+      "estado": "historic",
+      "restricciones": [
+        "evidencia histórica"
+      ]
+    },
+    {
+      "id": "snap_registro_D03.json",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/snap_registro_D03.json",
+      "hash": "0412c167c455299c6f461ea93eb0cbb3cc159c6fa58a83fc9c91bcfd20d82945",
+      "tamano_bytes": 10238,
+      "fuente": "GATE 2 E2",
+      "estado": "registro_ejecucion",
+      "restricciones": []
+    },
+    {
+      "id": "manifiesto_gate02.json",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/manifiesto_gate02.json",
+      "hash": "d32cfb6259520d6871e63febc7c9924f7ef6452d86c1ad553f154123f0fa3626",
+      "tamano_bytes": 3312,
+      "fuente": "GATE 2 E2",
+      "estado": "manifiesto_e2",
+      "restricciones": []
+    },
+    {
+      "id": "REGISTRO_HASHES_GATE02.json",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/REGISTRO_HASHES_GATE02.json",
+      "hash": "7b485e42a3228626a18f9aac6bfbd47d88defac2abaa1d8d307a406cb9d7454a",
+      "tamano_bytes": 2145,
+      "fuente": "GATE 2 E2",
+      "estado": "registro_hashes_e2",
+      "restricciones": []
+    },
+    {
+      "id": "caso_entrada_D03.json",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/caso_entrada_D03.json",
+      "hash": "becebe6d629f8a2996eab3234630acbb76199d6c9266f786542a356489aaf17c",
+      "tamano_bytes": 1190,
+      "fuente": "GATE 2 E2",
+      "estado": "entrada_caso",
+      "restricciones": []
+    },
+    {
+      "id": "contraste_snap_D03.json",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/contraste_snap_D03.json",
+      "hash": "9a8fe5e736cc42de537a9eb6ae5a0db61698de8507ae68312ab85c1113d82801",
+      "tamano_bytes": 579,
+      "fuente": "GATE 2 E2",
+      "estado": "contraste",
+      "restricciones": []
+    },
+    {
+      "id": "punto_original_D03.geojson",
+      "clase": "A_CANONICO",
+      "formato": "GeoJSON",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/punto_original_D03.geojson",
+      "hash": "e9b34fc4a444cbd0d07a877dcaae32ca80db1fef7b4e7d5748e8ab99d845c6e3",
+      "tamano_bytes": 337,
+      "fuente": "GATE 2 E2",
+      "estado": "punto_contractual",
+      "restricciones": []
+    },
+    {
+      "id": "punto_snap_D03.geojson",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "GeoJSON",
+      "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/punto_snap_D03.geojson",
+      "hash": "f3a6c5d7b4d17d097858d81a899fc25109ef4b4b95652ad9b6a60bc1f68977ab",
+      "tamano_bytes": 371,
+      "fuente": "GATE 2 E2",
+      "estado": "PROPUESTA_NO_ADOPTADA",
+      "restricciones": [
+        "NO adoptar"
+      ]
+    },
+    {
+      "id": "contrato_snap_D03.json",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa_repo": "07_TOOLBOX/hf_geo/config/contrato_snap_D03.json",
+      "hash": "e84331acf4700ead49fb87845da86d45a28d805ed402e154e9a946cd6f9cf803",
+      "tamano_bytes": null,
+      "fuente": "E1 C-03",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "referenciada",
+      "regenerabilidad": "inmutable",
+      "estado": "inmutable",
+      "restricciones": [
+        "NO modificar"
+      ]
+    },
+    {
+      "id": "caso_activo.json",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa_repo": "02_CORE/config/caso_activo.json",
+      "hash": "76af14f62c3aff8f4656f0c6dd51a4c37d9a310fdb169718c763dfb2f06ee522",
+      "fuente": "config_HF",
+      "autoridad": "HidroFlow",
+      "portabilidad": "referenciada",
+      "regenerabilidad": "inmutable",
+      "estado": "inmutable",
+      "restricciones": [
+        "NO modificar"
+      ]
+    },
+    {
+      "id": "OT-HF-003.hfproj",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa_repo": "02_PROYECTOS/OT-HF-003/OT-HF-003.hfproj",
+      "hash": "87f3943bc3b49dd4ececc48e04c8ffb874abd7676e65a8f74238a7bba43b7841",
+      "fuente": "OT-HF-003",
+      "autoridad": "HidroFlow",
+      "portabilidad": "referenciada",
+      "regenerabilidad": "inmutable",
+      "estado": "inmutable",
+      "restricciones": [
+        "NO modificar"
+      ]
+    },
+    {
+      "id": "HF_EXPEDIENTE_001.json",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa_repo": "07_TOOLBOX/datos_gobernados/HF_EXPEDIENTE_001.json",
+      "hash": "5f6d84888327f824758033fe3abfd05d647864664a9206dbb105c9bf914ed6db",
+      "fuente": "HF-FACTORY",
+      "autoridad": "HF-FACTORY (motor HF-GOV-004)",
+      "portabilidad": "referenciada",
+      "regenerabilidad": "inmutable",
+      "estado": "inmutable",
+      "restricciones": [
+        "NO modificar"
+      ]
+    },
+    {
+      "id": "HF-CASE-STATE-001A_REGISTRO_HISTORICOS.json",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa_repo": "00_ADMIN/bitacora/HF-CASE-STATE-001A/HF-CASE-STATE-001A_REGISTRO_HISTORICOS.json",
+      "hash": "3bdd2be3f4c0d9318baa1424a074d3ee6c9a65219cf8acbee52ea386b57f0e76",
+      "fuente": "HF-CASE-STATE-001A",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "referenciada",
+      "regenerabilidad": "inmutable",
+      "estado": "inmutable",
+      "restricciones": [
+        "NO modificar"
+      ]
+    }
+  ],
+  "referencias_externas_configurables": {
+    "mapgis": {
+      "clase": "C_REFERENCIAL",
+      "formato": "institucional_catastro",
+      "autoridad": "Distrito de Medellín",
+      "cobertura": "limitada al Distrito",
+      "referencia": "configurable_por_usuario",
+      "uso_prohibido": "adopción automática del outlet"
+    },
+    "ortofoto": {
+      "clase": "C_REFERENCIAL_VISUAL",
+      "formato": "imagen_georreferenciada",
+      "autoridad": "AMVA",
+      "referencia": "configurable_por_usuario",
+      "uso_prohibido": "adopción automática"
+    },
+    "google_earth": {
+      "clase": "C_REFERENCIAL_VISUAL",
+      "formato": "visual",
+      "autoridad": "Google Earth",
+      "referencia": "configurable_por_usuario",
+      "uso_prohibido": "adopción automática"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "type": "FeatureCollection",
+  "name": "project-location",
+  "properties": {
+    "schema": "hf.geojson.v1",
+    "caso_id": "iguana_pc80",
+    "ot": "OT-HF-003",
+    "descripcion": "Ubicación contractual ratificada D-03 del caso iguana_pc80",
+    "crs_semantico": "EPSG:4326",
+    "crs_operativo": "EPSG:32618"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "d03-project-location",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.59408755595547,
+          6.271785117145225
+        ]
+      },
+      "properties": {
+        "tipo": "project_location",
+        "decision": "D-03",
+        "cota_contractual_msnm": 1511.36,
+        "cms": "EPSG:4326",
+        "crs_operativo": "EPSG:32618",
+        "x_utm": 434284.8061275369,
+        "y_utm": 693285.6561281983,
+        "adoptado": true,
+        "estado": "RATIFICADO",
+        "fuente": "OT-HF-003.hfproj contratoCuenca; HF-CASE-STATE-001A_DECISIONES_RATIFICADAS.md"
+      }
+    }
+  ]
+}

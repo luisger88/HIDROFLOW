@@ -1,0 +1,49 @@
+{
+  "schema": "hf.reference.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "activo": {
+    "id": "caso_entrada_D03",
+    "clase": "B_COMPUTACIONAL",
+    "formato": "JSON",
+    "nombre": "Entrada computacional del caso D-03 (contrato de ejecución)"
+  },
+  "localizacion": {
+    "tipo": "repository",
+    "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/caso_entrada_D03.json",
+    "copia_en_paquete": false
+  },
+  "identificador": {
+    "sha256": "becebe6d629f8a2996eab3234630acbb76199d6c9266f786542a356489aaf17c",
+    "bytes": 1190
+  },
+  "especificacion": {
+    "identidad_caso": {
+      "caso_id": "iguana_pc80",
+      "nombre_caso": "Quebrada La Iguaná - PC_80",
+      "ot": "OT-HF-003",
+      "decision": "D-03"
+    },
+    "punto_original": {
+      "lat": 6.271785117145225,
+      "lon": -75.59408755595547,
+      "cota_contractual_msnm": 1511.36
+    },
+    "punto_proyectado": {
+      "crs": "EPSG:32618",
+      "x": 434284.8061275369,
+      "y": 693285.6561281983
+    },
+    "mdt": "Copernicus GLO30 (EPSG:32618, 30 m)",
+    "umbral_red_celdas": 500,
+    "contrato_snap": "contrato_snap_D03.json v1.0"
+  },
+  "gobernanza": {
+    "fuente": "GATE 2 E2",
+    "autoridad": "Ingeniero Digital (Big Pickle)",
+    "restricciones": [
+      "referencia externa ejecutable para reproducción del gate; NO es decisión",
+      "no se copia al paquete"
+    ]
+  }
+}

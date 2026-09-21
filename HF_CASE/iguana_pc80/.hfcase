@@ -1,0 +1,8 @@
+{
+  "schema": "hf.case-marker.v1",
+  "caso_id": "iguana_pc80",
+  "nombre": "Quebrada La Iguaná - PC_80",
+  "ot": "OT-HF-003",
+  "descripcion": "Marcador de raíz del caso portable HidroFlow. La presencia de este archivo permite descubrir la raíz del caso sin rutas absolutas.",
+  "regla": "No mover este archivo sin revalidar el paquete (resolvedor portable y checksums)."
+}

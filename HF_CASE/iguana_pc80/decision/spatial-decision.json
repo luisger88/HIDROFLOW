@@ -1,0 +1,114 @@
+{
+  "schema": "hf.spatial-decision.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "ot": "OT-HF-003",
+  "project_location": {
+    "decision": "D-03",
+    "estado": "RATIFICADO",
+    "latitud": 6.271785117145225,
+    "longitud": -75.59408755595547,
+    "cota_msnm": 1511.36,
+    "crs": "EPSG:4326",
+    "adoptado": true
+  },
+  "acquisition_aoi": null,
+  "professional_click": null,
+  "proposed_cell": {
+    "fila": 1028,
+    "columna": 946,
+    "segmento": 24,
+    "distancia_m": 32.307,
+    "acumulacion_celdas": 55024,
+    "clasificacion": "PROPUESTA, NO ADOPTADA",
+    "status": "CANDIDATO_NO_DEMOSTRADO",
+    "crs_operativo": "EPSG:32618",
+    "coordenadas_utm": {
+      "x_utm": 434295.0,
+      "y_utm": 693255.0
+    },
+    "coordenadas_geodesicas": {
+      "latitud": 6.271507914220566,
+      "longitud": -75.59399508939445
+    },
+    "origen": "GATE 2 E2 snap D-03 (punto_snap_D03.geojson; snap_registro_D03.json)"
+  },
+  "adopted_cell": null,
+  "snap_distance": {
+    "valor_m": 32.307,
+    "estado": "NO_ACEPTADA",
+    "clasificacion_contractual": "PF-02 PASS_CONDICIONAL (requiere acta profesional)",
+    "nota": "No presentar como distancia aceptada"
+  },
+  "elevation": {
+    "cota_contractual_msnm": 1511.36,
+    "elevacion_mdt_original_msnm": 1518.766,
+    "elevacion_mdt_snapped_msnm": 1517.117
+  },
+  "flow": {
+    "metodo": "traza D8",
+    "outlet_retenido": true,
+    "continuidad_cauce_celdas": 2078,
+    "todas_en_red": true
+  },
+  "accumulation": {
+    "n_celdas": 55024
+  },
+  "network": {
+    "competence": "NOT_DEMONSTRATED",
+    "clasificacion": "COMPUTACIONAL",
+    "reproducible": true,
+    "umbral_red_celdas": 500,
+    "num_segmentos": 92,
+    "segmento_candidato": 24,
+    "segmento_24_estado": "CANDIDATO_NO_DEMOSTRADO"
+  },
+  "references_examined": {
+    "mapgis": {
+      "clase": "REFERENCIAL",
+      "autoridad": "Distrito de Medellín",
+      "cobertura": "limitada al Distrito",
+      "observacion": "posible desplazamiento geométrico; prohibida adopción automática del outlet"
+    },
+    "ortofoto": {
+      "clase": "REFERENCIAL_VISUAL",
+      "observacion": "canalizaciones ocultas, desfases; prohibida adopción automática"
+    },
+    "google_earth": {
+      "clase": "REFERENCIAL_VISUAL",
+      "observacion": "referencia conceptual; prohibida adopción automática"
+    }
+  },
+  "alternatives": {
+    "candidato_mas_cercano": {
+      "fila": 1027,
+      "columna": 945,
+      "segmento": 24,
+      "distancia_m": 19.82,
+      "acumulacion_celdas": 55019,
+      "rechazado": true,
+      "razon": "su cuenca de aporte no contiene el punto D-03"
+    },
+    "opciones_documentadas": [
+      "A. Adoptar snap a 32.307 m con acta PF-02",
+      "B. No adoptar / solicitar MDT de mayor resolución",
+      "C. Revisar tolerancia primaria (requiere acta de cambio de contrato)"
+    ]
+  },
+  "evidence": {
+    "manifesto_e2": "manifiesto_gate02.json (salida_OT-HF-003_CANONICO/gate02_d03)",
+    "registro_hashes_e2": "REGISTRO_HASHES_GATE02.json",
+    "snap_registro": "snap_registro_D03.json",
+    "contrato_snap": "contrato_snap_D03.json",
+    "geometria_punto_snap": "punto_snap_D03.geojson",
+    "imagen_historica": "verificacion_D03.png (estado historic; qa FAIL_ORIENTATION; decision_use NOT_SUITABLE)"
+  },
+  "constraints": [
+    "GATE 3 bloqueado",
+    "no delimitar cuenca canónica",
+    "no calcular parámetros geomorfológicos/hidrológicos hasta decisión profesional",
+    "no modificar el estado del caso"
+  ],
+  "verdict": "PENDING_PROFESSIONAL_DECISION",
+  "nota_integridad": "Los valores ausentes (acquisition_aoi, professional_click, adopted_cell) se registran como null explícito; no se rellenan por inferencia."
+}

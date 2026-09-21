@@ -1,0 +1,42 @@
+{
+  "type": "FeatureCollection",
+  "name": "proposed-cell",
+  "properties": {
+    "schema": "hf.geojson.v1",
+    "caso_id": "iguana_pc80",
+    "ot": "OT-HF-003",
+    "descripcion": "Celda propuesta por el snap computacional E2 de D-03. NO ADOPTADA. CANDIDATO NO DEMOSTRADO.",
+    "crs_semantico": "EPSG:4326",
+    "crs_operativo": "EPSG:32618"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "proposed-cell-1028-946",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.59399508939445,
+          6.271507914220566
+        ]
+      },
+      "properties": {
+        "tipo": "proposed_cell",
+        "clasificacion": "PROPUESTA, NO ADOPTADA",
+        "status": "CANDIDATO_NO_DEMOSTRADO",
+        "fila": 1028,
+        "columna": 946,
+        "segmento": 24,
+        "distancia_m": 32.307,
+        "acumulacion_celdas": 55024,
+        "cms": "EPSG:4326",
+        "crs_operativo": "EPSG:32618",
+        "x_utm": 434295.0,
+        "y_utm": 693255.0,
+        "elevacion_mdt_msnm": 1517.117,
+        "adoptado": false,
+        "fuente_verificacion": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/punto_snap_D03.geojson y snap_registro_D03.json (E2)"
+      }
+    }
+  ]
+}

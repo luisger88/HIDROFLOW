@@ -1,0 +1,44 @@
+{
+  "schema": "hf.reference.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "activo": {
+    "id": "mdt_copernicus_glo30_aburra",
+    "clase": "B_COMPUTACIONAL",
+    "formato": "GeoTIFF",
+    "nombre": "MDT Copernicus GLO30 - Valle de Aburrá"
+  },
+  "localizacion": {
+    "tipo": "repository_external",
+    "ruta_relativa_repo": "01_DEM_HIDRO/00_BASE/DEM_Copernicus_GLO30_Aburra.tif",
+    "copia_en_paquete": false,
+    "nota": "No se duplica el MDT en el paquete por política de datos pesados y portabilidad."
+  },
+  "identificador": {
+    "sha256": "1b12e9db53af9474407ecbcad846a6fa16e35fdb0aad53d81529c025e22b0800",
+    "fuente_hash": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03/REGISTRO_HASHES_GATE02.json"
+  },
+  "tecnica": {
+    "crs": "EPSG:32618",
+    "resolucion_m": 30,
+    "shape": [2583, 2400],
+    "dtype": "float32",
+    "bounds_m": [405900.0, 646620.0, 477900.0, 724110.0]
+  },
+  "gobernanza": {
+    "fuente": "Copernicus GLO30 (via operación institucional)",
+    "autoridad": "Copernicus / operación institucional HidroFlow",
+    "licencia": "Copernicus Open Access (referencial)",
+    "portabilidad": "no_portable_datos_privados",
+    "regenerabilidad": "no_regenerable",
+    "reproducibilidad": "no_reproducible_externo",
+    "restricciones": [
+      "activo pesado externo al paquete",
+      "referenciado por hash; no copiado"
+    ]
+  },
+  "verificacion": {
+    "metodo": "comparar sha256 registrado contra el archivo en la ruta relativa del repositorio",
+    "requiere_raiz_repositorio": true
+  }
+}

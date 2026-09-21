@@ -1,0 +1,96 @@
+{
+  "schema": "hf.reference.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "activo": {
+    "id": "salida_canonica_gate02_d03",
+    "clase": "B_COMPUTACIONAL",
+    "formato": "conjunto_json_geojson_png_kml",
+    "nombre": "Salida canónica GATE 2 E2 — snap D-03",
+    "inmutable": true,
+    "autoridad": "Ingeniero Digital (Big Pickle)",
+    "procedencia": "OT-HF-003-CSTATE-001A / E2"
+  },
+  "localizacion": {
+    "tipo": "repository",
+    "ruta_relativa_repo": "07_TOOLBOX/salida_OT-HF-003_CANONICO/gate02_d03",
+    "copia_en_paquete": false,
+    "nota": "Directorio de salida canónica del GATE 2; NO se copia. Se referencian todos sus artefactos por hash."
+  },
+  "artefactos": {
+    "manifiesto_gate02.json": {
+      "sha256": "d32cfb6259520d6871e63febc7c9924f7ef6452d86c1ad553f154123f0fa3626",
+      "bytes": 3312
+    },
+    "REGISTRO_HASHES_GATE02.json": {
+      "sha256": "7b485e42a3228626a18f9aac6bfbd47d88defac2abaa1d8d307a406cb9d7454a",
+      "bytes": 2145
+    },
+    "caso_entrada_D03.json": {
+      "sha256": "becebe6d629f8a2996eab3234630acbb76199d6c9266f786542a356489aaf17c",
+      "bytes": 1190
+    },
+    "contraste_snap_D03.json": {
+      "sha256": "9a8fe5e736cc42de537a9eb6ae5a0db61698de8507ae68312ab85c1113d82801",
+      "bytes": 579
+    },
+    "punto_original_D03.geojson": {
+      "sha256": "e9b34fc4a444cbd0d07a877dcaae32ca80db1fef7b4e7d5748e8ab99d845c6e3",
+      "bytes": 337
+    },
+    "punto_snap_D03.geojson": {
+      "sha256": "f3a6c5d7b4d17d097858d81a899fc25109ef4b4b95652ad9b6a60bc1f68977ab",
+      "bytes": 371
+    },
+    "red_gate02_D03.geojson": {
+      "sha256": "ce398aef4d6e1d413101a95298d25e01181c40ec748a8471220a302e3c85f2dc",
+      "bytes": 1106092
+    },
+    "segmento_candidato_D03.geojson": {
+      "sha256": "5fcce071ce8ce642b32f34bed71fdb0b93b369e5e245996b2a087dbc1e4b2711",
+      "bytes": 3309799
+    },
+    "snap_registro_D03.json": {
+      "sha256": "0412c167c455299c6f461ea93eb0cbb3cc159c6fa58a83fc9c91bcfd20d82945",
+      "bytes": 10238
+    },
+    "stdout_gate02.txt": {
+      "sha256": "b9f9cb6dcdfe75ba93eef114de5c8c30859d53a436b620d04aa8f52ce7c00447",
+      "bytes": 1317
+    },
+    "stderr_gate02.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "verificacion_D03.geojson": {
+      "sha256": "0a1452bcdce29a9894ec92f5723e19f045d2dd7ed4aa8906a66fd4b3e138922f",
+      "bytes": 1109
+    },
+    "verificacion_D03.kml": {
+      "sha256": "375e01493835868ca1e1d64b012c6caee1e345f52f7214694d9a2f70ac9dbe82",
+      "bytes": 1571743
+    },
+    "verificacion_D03.png": {
+      "sha256": "a7a60fdaeb3fd3c48114a97658eb94de47d684cebc14ba790dec18cfa5c19b26",
+      "bytes": 171941,
+      "clase": "EVIDENCIA",
+      "estado": "historic",
+      "qa": "FAIL_ORIENTATION",
+      "decision_use": "NOT_SUITABLE",
+      "nota": "Imagen histórica defectuosa; preservada como evidencia, NO como caché descartable. No corregir ni sobrescribir."
+    }
+  },
+  "gobernanza": {
+    "restricciones": [
+      "salida inmutable; no modificar",
+      "prohibido reconstruir el snap como decisión (requiere acta profesional)",
+      "verificacion_D03.png NO apta para decisión cartográfica"
+    ],
+    "licencia": null,
+    "portabilidad": "referenciada",
+    "regenerabilidad": {
+      "regenerable": true,
+      "critica": "La regleneración física en otra máquina queda fuera de alcance y será certificada posteriormente (OT-HF-PORT-002 §18)."
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "hf.provenance.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "descripcion": "Procedencia gobernada de los activos incorporados y referenciados por el caso portable",
+  "ramas_origen": {
+    "rama_base": "ot-hf-003-cstate-001a",
+    "commit_base": "5b279635247f0238333cb6d1b8ae2a843ba36465",
+    "incremento_origen": "OT-HF-003-CSTATE-001A",
+    "incrementos": ["E1", "E2"]
+  },
+  "procedencia": [
+    {
+      "referencia": "punto_contractual_D-03",
+      "fuente": "OT-HF-003.hfproj -> contratoCuenca.cuenca",
+      "class": "A_CANONICO",
+      "estado_anterior": "ratificado en E1 (DECISIONES_RATIFICADAS)"
+    },
+    {
+      "referencia": "proposed_cell",
+      "fuente": "GATE 2 E2 snap D-03 (punto_snap_D03.geojson)",
+      "class": "B_COMPUTACIONAL",
+      "estado": "PROPUESTA, NO ADOPTADA",
+      "regenerable": true,
+      "reproducibilidad": "WhiteboxTools v2.4.0 / rasterio 1.5.0 / python 3.13.9 (ver manifiesto_gate02.json)"
+    },
+    {
+      "referencia": "red_HF",
+      "fuente": "GATE 2 E2 (red_gate02_D03.geojson)",
+      "class": "B_COMPUTACIONAL",
+      "competencia_territorial": "NOT_DEMONSTRATED",
+      "uso": "generadora de candidatos; NUNCA celda canónica sin decisión profesional"
+    },
+    {
+      "referencia": "imagen_historica_verificacion_D03_png",
+      "fuente": "GATE 2 E2 (verificacion_D03.png)",
+      "class": "EVIDENCIA_HISTORICA",
+      "qa": "FAIL_ORIENTATION",
+      "decision_use": "NOT_SUITABLE",
+      "nota": "Se preserva en su ubicación original; NO se corrige ni sobrescribe en esta OT"
+    },
+    {
+      "referencia": "expediente_hidrologico",
+      "fuente": "07_TOOLBOX/datos_gobernados/HF_EXPEDIENTE_001.json",
+      "class": "A_CANONICO",
+      "inmutable": true,
+      "externo_al_paquete": true,
+      "autoridad": "HF-FACTORY (motor HF-GOV-004)"
+    },
+    {
+      "referencia": "contrato_snap_D03",
+      "fuente": "07_TOOLBOX/hf_geo/config/contrato_snap_D03.json",
+      "class": "A_CANONICO",
+      "inmutable": true,
+      "hash_registrado": "e84331acf4700ead49fb87845da86d45a28d805ed402e154e9a946cd6f9cf803"
+    },
+    {
+      "referencia": "mdt_copernicus_glo30",
+      "fuente": "01_DEM_HIDRO/00_BASE/DEM_Copernicus_GLO30_Aburra.tif",
+      "class": "B_COMPUTACIONAL",
+      "externo_al_paquete": true,
+      "referencia": "por hash; NO copiado",
+      "regenerable": false,
+      "reproducible": false
+    },
+    {
+      "referencia": "mapgis",
+      "fuente": "referencia institucional externa (Distrito de Medellín / AMVA)",
+      "class": "C_REFERENCIAL",
+      "cobertura": "limitada al Distrito",
+      "uso_prohibido": "adopción automática del outlet"
+    },
+    {
+      "referencia": "ortofoto_google_earth",
+      "fuente": "referencias visuales externas",
+      "class": "C_REFERENCIAL",
+      "limitacion": "canalizaciones ocultas, desfases, ausencia de red computacional",
+      "uso_prohibido": "adopción automática"
+    }
+  ],
+  "regla": "Una referencia no se vuelve canónica por estar disponible. Un resultado computacional no se vuelve canónico sin decisión profesional."
+}
