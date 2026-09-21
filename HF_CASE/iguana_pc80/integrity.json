@@ -6,8 +6,8 @@
   "descripcion": "Integridad separada del estado, del paquete y de la evidencia.",
   "hashes": {
     "state_hash": "5f9bf470eee69079c5d05d695013d8132dcd5d1592c12f508e07e70713e8853d",
-    "package_hash": "d72fd8d7219c3e044902b322dcad6854cefdae2b6048597a582c91b7bc5a82c4",
-    "evidence_hash": "d9506c52afddcb52145c0e9f79e6606209b56ee5519e3c9acb2cf1c5c100fd2c"
+    "package_hash": "ef0535cf41a191c95c997641b137080c06118779f370067f4e1b7488006f61ed",
+    "evidence_hash": "363b1fb1c6ad6bbab57c582c96ad6e0bbb7f2bb0016387aff8a3a124a8e8e1e8"
   },
   "cobertura": {
     "state": [
