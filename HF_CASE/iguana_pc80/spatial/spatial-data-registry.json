@@ -9,7 +9,7 @@
   "activadores": {
     "class": "A_CANONICO",
     "referencia_estado": "case.json",
-    "reference_hash": "estado_hash en case.json"
+    "reference_hash": "state_hash en case.json"
   },
   "activos": [
     {

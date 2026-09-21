@@ -1,0 +1,20 @@
+{
+  "schema": "hf.restrictions.v1",
+  "schema_version": "1.0",
+  "caso_id": "iguana_pc80",
+  "ot": "OT-HF-SIG-002B",
+  "fecha_utc": "2026-09-20",
+  "descripcion": "Registro explícito de restricciones vigentes del caso portable. Consolida las restricciones de case.json y spatial-decision.json. Participa en el cálculo del state_hash como contrato de decisión.",
+  "restricciones": [
+    "No se adoptó la celda propuesta (1028, 946)",
+    "No se presentan 32.307 m como distancia aceptada",
+    "No se ejecutará GATE 3 sin decisión profesional y acta PF-02",
+    "verificacion_D03.png es evidencia histórica QA FAIL_ORIENTATION; NO apta para decisión cartográfica",
+    "La red HF es computacional regenerable; competencia territorial NO demostrada",
+    "MapGIS es referencial; prohibida la adopción automática del outlet",
+    "Ortofoto/Google Earth son referenciales visuales; prohibida la adopción automática",
+    "decision_profesional, adopted_cell, acquisition_aoi y professional_click permanecen null hasta acta profesional PF-02",
+    "No se crea geometry/adopted-cell.geojson hasta adopción profesional",
+    "GATE 3 permanece BLOQUEADO hasta demostrar competencia territorial y adoptar la celda"
+  ]
+}

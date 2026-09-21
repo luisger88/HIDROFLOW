@@ -34,6 +34,11 @@ from resolver import (
     leer_jsonl,
     sha256_archivo,
     ruta_interna,
+    state_hash_paquete,
+    package_hash_paquete,
+    evidence_hash_paquete,
+    leer_integridad,
+    generar_integridad,
 )
 
 CLASES_VALIDAS = {"A_CANONICO", "B_COMPUTACIONAL", "C_REFERENCIAL", "D_CACHE"}
@@ -62,6 +67,8 @@ SCHEMAS = {
     "manifest": "hf.manifest.v1",
     "decision_log": "hf.decision-log.v1",
     "spatial_decision": "hf.spatial-decision.v1",
+    "restrictions": "hf.restrictions.v1",
+    "integrity": "hf.integrity.v1",
 }
 
 DRIVE_RE = re.compile(r"^(?:[A-Za-z]:[/\\]|[/\\]|//)")
@@ -103,6 +110,17 @@ def validar_case(raiz) -> tuple[bool, list[str]]:
         errores.append("estado.adopted_cell debe ser null")
     if est.get("network_competence") != "NOT_DEMONSTRATED":
         errores.append("network_competence != NOT_DEMONSTRATED")
+
+    # Integridad (migración técnica OT-HF-SIG-002B): sin estado_hash legacy,
+    # con state_hash explícito y referencia a integrity.json.
+    if "estado_hash" in doc:
+        errores.append("'estado_hash' debe migrar a 'state_hash'")
+    if not doc.get("state_hash"):
+        errores.append("state_hash ausente")
+    if doc.get("integridad", {}).get("schema") != SCHEMAS["integrity"]:
+        errores.append("case.integridad.schema != hf.integrity.v1")
+    if doc.get("integridad", {}).get("referencia") != "integrity.json":
+        errores.append("case.integridad.referencia != integrity.json")
 
     return not errores, errores
 
@@ -260,6 +278,86 @@ def validar_gates(raiz) -> tuple[bool, list[str]]:
     return not errores, errores
 
 
+def validar_restrictions(raiz) -> tuple[bool, list[str]]:
+    errores: list[str] = []
+    try:
+        doc = leer_json(raiz, "decision/restrictions.json")
+    except PortabilityError as exc:
+        return False, [str(exc)]
+
+    if doc.get("schema") != SCHEMAS["restrictions"]:
+        errores.append(f"schema restrictions inválido: {doc.get('schema')}")
+    if doc.get("caso_id") != "iguana_pc80":
+        errores.append("restrictions.caso_id != iguana_pc80")
+    restricciones = doc.get("restricciones", [])
+    if not isinstance(restricciones, list) or not restricciones:
+        errores.append("restricciones vacía o no lista")
+    else:
+        for r in restricciones:
+            if not isinstance(r, str) or not r.strip():
+                errores.append("restricción no textual")
+
+    return not errores, errores
+
+
+def validar_integridad(raiz) -> tuple[bool, list[str]]:
+    """
+    Integridad triple (hf.integrity.v1): state_hash, package_hash y
+    evidence_hash deben coincidir con el cálculo real del resolver.
+    Sin tolerancia de drift.
+    """
+    errores: list[str] = []
+    try:
+        doc = leer_integridad(raiz)
+    except PortabilityError as exc:
+        return False, [str(exc)]
+
+    if doc.get("schema") != SCHEMAS["integrity"]:
+        errores.append("schema integrity != hf.integrity.v1")
+    if doc.get("caso_id") != "iguana_pc80":
+        errores.append("integrity.caso_id != iguana_pc80")
+
+    hashes = doc.get("hashes", {})
+    for campo in ("state_hash", "package_hash", "evidence_hash"):
+        if not hashes.get(campo):
+            errores.append(f"integrity.hashes.{campo} ausente")
+
+    # Sin tolerancia: el cálculo real debe coincidir con el registrado.
+    calculados = {
+        "state_hash": state_hash_paquete(raiz),
+        "package_hash": package_hash_paquete(raiz),
+        "evidence_hash": evidence_hash_paquete(raiz),
+    }
+    for campo, real in calculados.items():
+        registrado = hashes.get(campo)
+        if registrado and registrado != real:
+            errores.append(
+                f"integrity.hashes.{campo} registrado != calculado: "
+                f"{registrado} vs {real}"
+            )
+
+    # El state_hash persistido en case.json debe coincidir con el calculado.
+    try:
+        caso = leer_json(raiz, "case.json")
+    except PortabilityError as exc:
+        errores.append(str(exc))
+    else:
+        registrado_case = caso.get("state_hash")
+        if registrado_case and registrado_case != calculados["state_hash"]:
+            errores.append(
+                f"case.state_hash != calculado: {registrado_case} vs "
+                f"{calculados['state_hash']}"
+            )
+
+    # Coherencia de cobertura: los contratos de estado y evidencia existen.
+    cobertura = doc.get("cobertura", {})
+    for rel in cobertura.get("state", []) + cobertura.get("evidence", []):
+        if not ruta_interna(raiz, rel).is_file():
+            errores.append(f"cobertura apunta a archivo ausente: {rel}")
+
+    return not errores, errores
+
+
 def validar_contratos(raiz) -> dict:
     """Ejecuta todos los validadores; devuelve resumen."""
     resultados = {
@@ -267,6 +365,8 @@ def validar_contratos(raiz) -> dict:
         "manifest": validar_manifest(raiz),
         "decision_log": validar_decision_log(raiz),
         "spatial_decision": validar_spatial_decision(raiz),
+        "restrictions": validar_restrictions(raiz),
+        "integrity": validar_integridad(raiz),
         "gates": validar_gates(raiz),
     }
     ok = all(res[0] for res in resultados.values())
@@ -279,6 +379,8 @@ __all__ = [
     "validar_manifest",
     "validar_decision_log",
     "validar_spatial_decision",
+    "validar_restrictions",
+    "validar_integridad",
     "validar_gates",
     "validar_contratos",
 ]

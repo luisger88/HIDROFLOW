@@ -19,7 +19,7 @@ operativamente** durante OT-HF-SIG-002.
 | Evidencia / orientación | FAIL_ORIENTATION preservado (NOT_SUITABLE) |
 | Referencias visuales | CONDICIONAL (uso visual; prohibida adopción) |
 | Gobernanza / hashes | PASS (baselines S10/S12) |
-| estado_hash | CONDICIONAL (drift documentado; case.json intacto) |
+| Integridad triple (OT-HF-SIG-002B) | PASS (state_hash/package_hash/evidence_hash coherentes; P1-P5 y S1-S12 + I1-I8 sin excepciones) |
 
 ## Normas
 

@@ -41,6 +41,44 @@ from pathlib import Path, PurePath
 MARKER = ".hfcase"
 ENV_ROOT = "HF_CASE_ROOT"
 
+# --- Modelo de integridad triple (OT-HF-SIG-002B) ---------------------------
+# state_hash: contratos de decisión del caso (lista inclusiva y explícita).
+CONTRATOS_ESTADO = [
+    "decision-log.jsonl",
+    "state/gates.jsonl",
+    "decision/spatial-decision.json",
+    "decision/restrictions.json",
+    "geometry/project-location.geojson",
+    "geometry/proposed-cell.geojson",
+]
+# adopted-cell se añade automáticamente cuando exista (adopción futura).
+CONTRATOS_ESTADO_ADICIONALES = ["geometry/adopted-cell.geojson"]
+
+# evidence_hash: contratos de evidencia (futuro spatial/comparisons/**).
+CONTRATOS_EVIDENCIA = [
+    "evidence/hashes.json",
+    "evidence/provenance.json",
+    "spatial/spatial-data-registry.json",
+    "spatial/qa/qa-ledger.jsonl",
+]
+
+# Meta que nunca forma parte del material de package_hash (corta ciclos).
+META_PAQUETE = {
+    "case.json",
+    "integrity.json",
+    "manifest.json",
+    "checksums.sha256",
+}
+# Directorios excluidos del material de package_hash (caché/exportaciones).
+DIRS_EXCLUIDOS_PAQUETE = ("cache", "exports")
+# Entradas del manifest que la proyección canónica elimina (meta / self).
+ENTRADAS_MANIFEST_META = {
+    "case.json",
+    "integrity.json",
+    "manifest.json",
+    "checksums.sha256",
+}
+
 
 class PortabilityError(Exception):
     """Error gobernado de portabilidad. Mensaje explícito, sin fallback."""
@@ -205,58 +243,180 @@ def manifest_activos(raiz: Path) -> list[dict]:
     return manifest[clave]
 
 
-def _calcula_estado_hash(raiz: Path, excluidos: set[str]) -> str:
-    """
-    estado_hash determinista sobre los archivos de estado del paquete:
-    para cada archivo pequeño del paquete (recursivo, positivo), ordenado por
-    ruta con '/', concatena 'ruta::sha256\\n'. Excluye los archivos que
-    generan auto-referencia (case.json, manifest.json, checksums.sha256,
-    caché y exportaciones).
-    """
-    lineas: list[str] = []
+def _hash_cuerpo(lineas: list[str]) -> str:
+    """SHA-256 determinista de un cuerpo de líneas 'ruta::sha256' (UTF-8)."""
+    cuerpo = "\n".join(lineas)
+    return hashlib.sha256(cuerpo.encode("utf-8")).hexdigest()
+
+
+def _rel_posix(rel: str) -> str:
+    """Normaliza una ruta relativa a formato posix, sin prefijo './'."""
+    return rel.replace("\\", "/").lstrip("./")
+
+
+def _archivos_estado(raiz: Path) -> list[str]:
+    """Contratos de decisión ordenados (incluye adopted-cell si existe)."""
     base = raiz.resolve()
+    rels = list(CONTRATOS_ESTADO)
+    for extra in CONTRATOS_ESTADO_ADICIONALES:
+        if (base / _rel_posix(extra)).is_file():
+            rels.append(extra)
+    return sorted(rels)
+
+
+def _archivos_evidencia(raiz: Path) -> list[str]:
+    """Contratos de evidencia ordenados (incluye spatial/comparisons/**)."""
+    base = raiz.resolve()
+    rels = list(CONTRATOS_EVIDENCIA)
+    comparaciones = base / "spatial" / "comparisons"
+    if comparaciones.is_dir():
+        for path in sorted(comparaciones.rglob("*")):
+            if path.is_file():
+                rels.append(path.relative_to(base).as_posix())
+    return sorted(rels)
+
+
+def _archivos_paquete(raiz: Path) -> list[str]:
+    """Composición física del paquete sin meta ni caché/exportaciones."""
+    base = raiz.resolve()
+    rels: list[str] = []
     for path in sorted(base.rglob("*")):
         if not path.is_file():
             continue
         rel = path.relative_to(base).as_posix()
         rel_low = rel.lower()
-        if rel_low in excluidos:
+        if rel_low in META_PAQUETE:
             continue
         if rel_low.startswith("cache/") or rel_low.startswith("exports/"):
             continue
-        hak = sha256_archivo(path)
-        lineas.append(f"{rel}::{hak}")
-    cuerpo = "\n".join(lineas)
+        rels.append(rel)
+    return sorted(rels)
+
+
+def _lineas_hash(raiz: Path, relativas: list[str]) -> list[str]:
+    """Líneas 'ruta::sha256' para un conjunto de rutas relativas."""
+    lineas: list[str] = []
+    for rel in sorted(relativas):
+        target = ruta_interna(raiz, rel)
+        if not target.is_file():
+            raise PortabilityError(f"Contrato de integridad ausente: '{rel}'")
+        lineas.append(f"{rel}::{sha256_archivo(target)}")
+    return lineas
+
+
+def _proyeccion_manifest(raiz: Path) -> str:
+    """SHA-256 de la proyección canónica de manifest.json.
+
+    La proyección elimina las entradas meta (case.json, integrity.json,
+    manifest.json y checksums.sha256) para no crear ciclos y conserva las
+    restantes ordenadas por ruta_relativa con serialización canónica.
+    """
+    manifest = leer_json(raiz, "manifest.json")
+    proyectados = [
+        a for a in manifest.get("activos_incorporados", [])
+        if _rel_posix(a.get("ruta_relativa", "")) not in ENTRADAS_MANIFEST_META
+    ]
+    cuerpo = "\n".join(
+        json.dumps(a, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+        for a in sorted(
+            proyectados, key=lambda e: _rel_posix(e.get("ruta_relativa", ""))
+        )
+    )
     return hashlib.sha256(cuerpo.encode("utf-8")).hexdigest()
 
 
+def state_hash_paquete(raiz: Path) -> str:
+    """SHA-256 determinista de los contratos de decisión del paquete."""
+    return _hash_cuerpo(_lineas_hash(raiz, _archivos_estado(raiz)))
+
+
+def package_hash_paquete(raiz: Path) -> str:
+    """SHA-256 determinista de la composición física del paquete sin meta."""
+    lineas = _lineas_hash(raiz, _archivos_paquete(raiz))
+    lineas.append(f"manifest.json::{_proyeccion_manifest(raiz)}")
+    return _hash_cuerpo(lineas)
+
+
+def evidence_hash_paquete(raiz: Path) -> str:
+    """SHA-256 determinista de los contratos de evidencia."""
+    return _hash_cuerpo(_lineas_hash(raiz, _archivos_evidencia(raiz)))
+
+
 def estado_hash_paquete(raiz: Path) -> str:
-    """Calcula el estado_hash del paquete (misma regla que case.json)."""
-    excluidos = {"case.json", "manifest.json", "checksums.sha256"}
-    return _calcula_estado_hash(raiz, excluidos)
+    """Alias legacy de state_hash_paquete (OT-HF-SIG-002B)."""
+    return state_hash_paquete(raiz)
+
+
+def leer_integridad(raiz: Path) -> dict:
+    """Lee integrity.json como contrato hf.integrity.v1."""
+    doc = leer_json(raiz, "integrity.json")
+    if doc.get("schema") != "hf.integrity.v1":
+        raise PortabilityError("integrity.json no es hf.integrity.v1")
+    return doc
+
+
+def generar_integridad(raiz: Path) -> dict:
+    """Reconstruye el contrato hf.integrity.v1 a partir del contenido real.
+
+    Solo informativo: integrity.json nunca forma parte del material hasheado
+    (ver META_PAQUETE). No incluye marcas de tiempo para que la regeneración
+    sea byte-idéntica.
+    """
+    return {
+        "schema": "hf.integrity.v1",
+        "schema_version": "1.0",
+        "hash_version": 2,
+        "caso_id": "iguana_pc80",
+        "descripcion": "Integridad separada del estado, del paquete y de la evidencia.",
+        "hashes": {
+            "state_hash": state_hash_paquete(raiz),
+            "package_hash": package_hash_paquete(raiz),
+            "evidence_hash": evidence_hash_paquete(raiz),
+        },
+        "cobertura": {
+            "state": _archivos_estado(raiz),
+            "evidence": _archivos_evidencia(raiz),
+            "paquete_excluidos_meta": sorted(META_PAQUETE),
+            "paquete_dirs_excluidos": list(DIRS_EXCLUIDOS_PAQUETE),
+            "manifest_referenciado_por": "proyección canónica sin entradas meta",
+        },
+        "generator": (
+            "02_CORE/portability/resolver.py::state_hash_paquete, "
+            "package_hash_paquete, evidence_hash_paquete"
+        ),
+    }
 
 
 def abrir_caso(ejplicit: str | os.PathLike | None = None) -> dict:
     """
-    Abre el caso portable: resuelve la raíz, lee case.json y devuelve un
-    resumen verificado (identidad, gates, decisión espacial).
+    Abre el caso portable: resuelve la raíz y devuelve un resumen verificado
+    de integridad (state_hash, package_hash, evidence_hash) junto con la
+    identidad, gates y decisión espacial.
     """
     raiz = resolver_raiz_caso(ejplicit)
     caso = leer_json(raiz, "case.json")
     espacial = leer_json(raiz, "decision/spatial-decision.json")
+    try:
+        integ = leer_integridad(raiz)
+        hashes_registrados = integ.get("hashes", {})
+    except PortabilityError:
+        hashes_registrados = {}
 
-    resumen = {
+    return {
         "case_root": str(raiz),
         "schema": caso.get("schema"),
         "caso": caso.get("caso", {}),
         "gates": caso.get("gates", {}),
-        "estado_hash_registrado": caso.get("estado_hash"),
-        "estado_hash_calculado": estado_hash_paquete(raiz),
+        "state_hash_registrado": caso.get("state_hash"),
+        "state_hash_calculado": state_hash_paquete(raiz),
+        "package_hash_registrado": hashes_registrados.get("package_hash"),
+        "package_hash_calculado": package_hash_paquete(raiz),
+        "evidence_hash_registrado": hashes_registrados.get("evidence_hash"),
+        "evidence_hash_calculado": evidence_hash_paquete(raiz),
         "veredicto_espacial": espacial.get("verdict"),
         "adopted_cell": espacial.get("adopted_cell"),
         "proposed_cell": espacial.get("proposed_cell", {}),
     }
-    return resumen
 
 
 def verificar_hashes(raiz: Path) -> dict:
@@ -314,9 +474,20 @@ __all__ = [
     "leer_json",
     "leer_jsonl",
     "manifest_activos",
+    "state_hash_paquete",
+    "package_hash_paquete",
+    "evidence_hash_paquete",
     "estado_hash_paquete",
+    "leer_integridad",
+    "generar_integridad",
     "abrir_caso",
     "verificar_hashes",
+    "CONTRATOS_ESTADO",
+    "CONTRATOS_ESTADO_ADICIONALES",
+    "CONTRATOS_EVIDENCIA",
+    "META_PAQUETE",
+    "DIRS_EXCLUIDOS_PAQUETE",
+    "ENTRADAS_MANIFEST_META",
     "MARKER",
     "ENV_ROOT",
 ]

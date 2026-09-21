@@ -114,6 +114,11 @@
     "referencia_relativa": "07_TOOLBOX/datos_gobernados/HF_EXPEDIENTE_001.json",
     "hash_registrado": "5f6d84888327f824758033fe3abfd05d647864664a9206dbb105c9bf914ed6db"
   },
-  "estado_hash": "d753dd56c09e2014ed450d0442979f01e7bba4568ca9bf1e312b474f8868009d",
-  "nota_estado_hash": "SHA-256 determinista de los contratos de estado del paquete (excluye case.json, manifest.json, checksums.sha256, cache/ y exports/); ver 02_CORE/portability/resolver.py::estado_hash_paquete y docs/contratos/hf-case-v1.md"
+  "state_hash": "5f9bf470eee69079c5d05d695013d8132dcd5d1592c12f508e07e70713e8853d",
+  "integridad": {
+    "schema": "hf.integrity.v1",
+    "referencia": "integrity.json"
+  },
+  "nota_state_hash": "SHA-256 determinista de los contratos de decisión (decision-log.jsonl, state/gates.jsonl, decision/spatial-decision.json, decision/restrictions.json, geometry/project-location.geojson, geometry/proposed-cell.geojson y geometry/adopted-cell.geojson si existe); excluye case.json, manifest.json, checksums.sha256, integrity.json, cache/ y exports/ para evitar ciclos. Ver 02_CORE/portability/resolver.py::state_hash_paquete y docs/contratos/hf-integrity-v1.md",
+  "nota_migracion": "Migración técnica OT-HF-SIG-002B: 'estado_hash' (d753dd56c09e2014ed450d0442979f01e7bba4568ca9bf1e312b474f8868009d) se renombra 'state_hash' y pasa a cubrir solo contratos de decisión; package_hash y evidence_hash se registran en integrity.json. Las decisiones, gates y geometrías no cambiaron (S10 verifica hashes inmutables); las restricciones se consolidaron en decision/restrictions.json."
 }

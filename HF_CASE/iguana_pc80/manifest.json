@@ -10,7 +10,7 @@
   "activadores": {
     "class": "A_CANONICO",
     "referencia_estado": "case.json",
-    "reference_hash": "estado_hash en case.json"
+    "reference_hash": "state_hash en case.json"
   },
   "activos_incorporados": [
     {
@@ -34,7 +34,7 @@
       "clase": "A_CANONICO",
       "formato": "JSON",
       "ruta_relativa": "case.json",
-      "hash": "b24fea974753630431d50f650f31a1510d5e0b0f1fba885db75de13355d63a14",
+      "hash": "69c6a0a63125ee776175e17a26a126ae56da325eed8123c4f296c6897cadf1ea",
       "fuente": "OT-HF-PORT-002",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -43,7 +43,7 @@
       "restricciones": [
         "contrato raíz hf.case.v1"
       ],
-      "tamano_bytes": 4584
+      "tamano_bytes": 5335
     },
     {
       "id": "manifest-json",
@@ -60,6 +60,22 @@
         "contrato hf.manifest.v1"
       ],
       "tamano_bytes": 28969
+    },
+    {
+      "id": "integrity-json",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "integrity.json",
+      "hash": "d4fca501a93d7a8d75d00e3df871268371f7c63404ac9177909f0a6f3e90489e",
+      "tamano_bytes": 1329,
+      "fuente": "OT-HF-SIG-002B",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "contrato hf.integrity.v1; state/package/evidence hashes"
+      ]
     },
     {
       "id": "decision-log",
@@ -158,6 +174,22 @@
         "adopted_cell null; acquisition_aoi null; professional_click null"
       ],
       "tamano_bytes": 3686
+    },
+    {
+      "id": "restrictions-json",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "decision/restrictions.json",
+      "hash": "2dcd3ce89d0a096f95ab4d84fc721bf1b66158338bcffbe1bb7d9049a3b37d0a",
+      "tamano_bytes": 1225,
+      "fuente": "OT-HF-SIG-002B",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "contrato hf.restrictions.v1; consolida restricciones del caso"
+      ]
     },
     {
       "id": "provenance",
@@ -488,8 +520,8 @@
       "clase": "A_CANONICO",
       "formato": "Markdown",
       "ruta_relativa": "spatial/README.md",
-      "hash": "2eea72d552a2d68be56123ca5f7b948a471ae8820e1826fda3273214b4911b94",
-      "tamano_bytes": 1285,
+      "hash": "99f2c407187a6b903cc9b3b590652386366b70ef422b4d31c56cfdf3bcb4131b",
+      "tamano_bytes": 1510,
       "fuente": "OT-HF-SIG-002",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -504,8 +536,8 @@
       "clase": "A_CANONICO",
       "formato": "JSON",
       "ruta_relativa": "spatial/spatial-data-registry.json",
-      "hash": "66c2d4965a3afd75d337ad0d8c884b4ade086ce66fd0a765efcdcc7fda855eeb",
-      "tamano_bytes": 12143,
+      "hash": "f4e3e4ffc741711ef848526799b7dbec0433d44abceb8ec150155c2e21eab5bb",
+      "tamano_bytes": 12142,
       "fuente": "OT-HF-SIG-002",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -520,8 +552,8 @@
       "clase": "A_CANONICO",
       "formato": "Markdown",
       "ruta_relativa": "spatial/qa/README.md",
-      "hash": "b74c75f1929feda3b2f3bdc4a56d281c7892c5db54224d2acf83c240c1944dec",
-      "tamano_bytes": 1247,
+      "hash": "28f21ae6594562b99fdb00e67dd38852a0b9c5fea975dbf63610572ef5981350",
+      "tamano_bytes": 1315,
       "fuente": "OT-HF-SIG-002",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -536,8 +568,8 @@
       "clase": "A_CANONICO",
       "formato": "JSONL",
       "ruta_relativa": "spatial/qa/qa-ledger.jsonl",
-      "hash": "584f85dfb4317869f8d64a667fa8959bfcf617b4f54c079537732a2940f91d72",
-      "tamano_bytes": 7049,
+      "hash": "96dc6d2f3f21a3f8e6f0e464f1b738e52387918252b2e3bde09b2fba536ed76e",
+      "tamano_bytes": 7583,
       "fuente": "OT-HF-SIG-002",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",

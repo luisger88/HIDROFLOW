@@ -105,3 +105,54 @@ en `case.json` (inmutable). Decisión:
 - Habilitar el contraste externo (hf.comparison.v1) como paso previo a
   competencia territorial y apertura de HF-GEO-QA y HF-CARTO-001.
 - Inventariar con los mismos esquemas los próximos casos portables.
+
+---
+
+# Addendum — OT-HF-SIG-002B (Conciliación de integridad)
+
+- **Fecha UTC:** 2026-09-20
+- **Alcance:** separar `state_hash`, `package_hash` y `evidence_hash`
+  (regeneración del contrato `hf.integrity.v1`).
+
+## A.1 Resultado
+
+**PASS SIN EXCEPCIONES.** El drift de `estado_hash` quedó **resuelto** con el
+modelo triple de integridad. `P1-P5` pasan estrictos y `S1-S12 + I1-I8` pasan.
+
+```
+RESULTADO_P1_P5: PASS
+RESULTADO_S1_S12_I1_I8: PASS
+```
+
+## A.2 Migración técnica de case.json
+
+`estado_hash` (`d753dd56c09e2014ed450d0442979f01e7bba4568ca9bf1e312b474f8868009d`)
+se sustituye por `state_hash`
+(`5f9bf470eee69079c5d05d695013d8132dcd5d1592c12f508e07e70713e8853d`) +
+`package_hash`
+(`d72fd8d7219c3e044902b322dcad6854cefdae2b6048597a582c91b7bc5a82c4`) +
+`evidence_hash`
+(`d9506c52afddcb52145c0e9f79e6606209b56ee5519e3c9acb2cf1c5c100fd2c`).
+
+El `package_hash` se calcula con el manifest reconciliado (hashes reales del
+registro espacial, el ledger y los README del paquete en la proyección
+canónica). Solo se modificó `case.json` (migración técnica); ningún contrato de
+decisión, gate, restricción o geometría cambió (S10 verifica los seis
+inmutables y los cinco ARCHIVOS_DECISION con sus hashes originales).
+
+## A.3 Contratos y pruebas nuevas
+
+- `docs/contratos/hf-integrity-v1.md` — contrato `hf.integrity.v1`.
+- `HF_CASE/iguana_pc80/integrity.json` — registro triple de hashes.
+- `HF_CASE/iguana_pc80/decision/restrictions.json` — `hf.restrictions.v1`
+  (restricciones vigentes del caso).
+- Pruebas **I1-I8** en `02_CORE/sig_engineering/tests/run_sig_engineering_tests.py`
+  (comportamiento de los tres hashes, copia portable, anti-ciclos,
+  determinismo y rutas relativas).
+- `02_CORE/portability/generar_integridad.py` — regeneración determinista.
+- Ledger `spatial/qa/qa-ledger.jsonl` línea 23 (PASS, modelo triple).
+
+## A.4 Estado del caso
+
+Identidad, veredictos, gates (GATE 1 PASS · GATE 2 CONDICIONAL · GATE 3
+BLOQUEADO), red, segmento 24 y decisión espacial permanecen **sin cambios**.

@@ -2,6 +2,8 @@
 
 - **Contrato rector:** `hf.spatial-data.v1` (OT-HF-SIG-002)
 - **Caso:** `HF_CASE/iguana_pc80`
+- **Integridad:** modelo triple (`state_hash`, `package_hash`,
+  `evidence_hash`) desde OT-HF-SIG-002B (`hf.integrity.v1`)
 
 ## Contenido
 
@@ -9,7 +11,7 @@
 |---|---|
 | `spatial/spatial-data-registry.json` | Inventario espacial gobernado (10 activos). Esquema `hf.spatial-data.v1`. |
 | `spatial/qa/README.md` | Guía de QA del inventario. |
-| `spatial/qa/qa-ledger.jsonl` | Ledger de QA piloto (22 entradas; línea base de diseño, no ejecución operativa HF-GEO-QA). |
+| `spatial/qa/qa-ledger.jsonl` | Ledger de QA piloto (23 entradas; línea base de diseño, no ejecución operativa HF-GEO-QA). |
 
 ## Reglas del inventario
 
@@ -20,9 +22,10 @@
 5. `verificacion_D03.png` se preserva como histórica (`FAIL_ORIENTATION`, `NOT_SUITABLE`).
 6. Cero rutas absolutas nuevas en este directorio.
 
-## Conflicto administrado (sección 11 de la OT-HF-SIG-002)
+## Integridad y drift resuelto (OT-HF-SIG-002B)
 
-Registrar `spatial/*` en `manifest.json` y `checksums.sha256` modifica el
-`estado_hash` calculado por el resolver, pero `case.json` es inmutable y no se
-modifica. El conflicto está documentado en la entrada 18 del ledger y en el
-cierre de la OT; NO se corrige `case.json`.
+El registro de `spatial/*` en el paquete ya no altera la coherencia de hashes:
+`state_hash` cubre solo los contratos de decisión; el inventario y el ledger
+forman parte de `evidence_hash`; `package_hash` cubre la composición física.
+`case.json` se migró técnicamente (bloque `integridad` → `integrity.json`).
+P1-P5 y S1-S12 + I1-I8 pasan sin excepciones (ledger, líneas 18 y 23).

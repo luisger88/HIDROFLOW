@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Validadores aislados de ingeniería SIG (OT-HF-SIG-002).
+Validadores aislados de ingeniería SIG (OT-HF-SIG-002 / OT-HF-SIG-002B).
 
 Validan contratos transversales SIG v1, inventario espacial gobernado y los
 estados espaciales del caso iguana_pc80 sin modificar nada.
 
 El nombre sig_validators evita colisión con el módulo validators de
 02_CORE/portability (S9 importa ambos).
+
+OT-HF-SIG-002B: el modelo de integridad queda separado en state_hash,
+package_hash y evidence_hash; case.json sufrió una migración técnica (no
+semántica) que se verifica en S10 sin tolerancia de drift.
 
 Baseline de motores e inmutables = estado del árbol de trabajo al inicio de la
 OT-HF-SIG-002 (incluye modificaciones preexistentes no atribuibles a la OT).
@@ -74,13 +78,23 @@ INMUTABLES_BASELINE = [
     ("00_ADMIN/bitacora/HF-CASE-STATE-001A/HF-CASE-STATE-001A_REGISTRO_HISTORICOS.json", "3bdd2be3f4c0d9318baa1424a074d3ee6c9a65219cf8acbee52ea386b57f0e76"),
 ]
 
-INMUTABLES_CASO = [
-    ("case.json", "b24fea974753630431d50f650f31a1510d5e0b0f1fba885db75de13355d63a14"),
+# Contratos de decisión del caso que permanecen estrictamente inmutables.
+# case.json NO se incluye: en OT-HF-SIG-002B sufrió migración TÉCNICA
+# (estado_hash -> state_hash + referencia a integrity.json), verificada como
+# semántica en validar_migracion_case_tecnica.
+ARCHIVOS_DECISION = [
     ("decision-log.jsonl", "dd1049354e6d6b5d0f0d34db6ba3818d880f59d711a51131e9e54eaf0cbbf2c1"),
     ("state/gates.jsonl", "5d3048d9a6a7b24d0fa3aa9efc021dc36ec037e8ca0460d7185650352b00ec9e"),
     ("decision/spatial-decision.json", "187b4c7ef407f04db8dc111c33afaf9689849883c32f79474fdba9a301245c18"),
     ("geometry/project-location.geojson", "a117c8954a23ab8456ec18aa0525ed696e0814889fa2abd9234d5d40289696b3"),
     ("geometry/proposed-cell.geojson", "5f5e8a4f1c03adaf1c9d297337adf1b8fb57919602174162e8983f24f27e5bce"),
+]
+
+
+CLAVES_SEMANTICAS_CASO = [
+    "caso", "estado", "origen_control", "ubicacion_contractual", "crs",
+    "gates", "activos_vigentes", "decisiones_vigentes", "restricciones",
+    "expediente",
 ]
 
 
@@ -246,6 +260,59 @@ def validar_gates() -> tuple[bool, list[str]]:
     return (not fallos, fallos)
 
 
+def validar_restrictions() -> tuple[bool, list[str]]:
+    """decision/restrictions.json (hf.restrictions.v1) presente y válido."""
+    ruta = CASO / "decision" / "restrictions.json"
+    if not ruta.is_file():
+        return (False, ["decision/restrictions.json ausente"])
+    fallos: list[str] = []
+    try:
+        doc = leer_json(ruta)
+    except ValueError as exc:
+        return (False, [f"restrictions inválido: {exc}"])
+    if doc.get("schema") != "hf.restrictions.v1":
+        fallos.append("schema != hf.restrictions.v1")
+    if doc.get("caso_id") != "iguana_pc80":
+        fallos.append("caso_id != iguana_pc80")
+    r = doc.get("restricciones", [])
+    if not isinstance(r, list) or not r or not all(
+        isinstance(x, str) and x.strip() for x in r
+    ):
+        fallos.append("restricciones vacía o no textual")
+    if ruta_absoluta_nueva(json.dumps(doc, ensure_ascii=False)):
+        fallos.append("ruta absoluta en restrictions.json")
+    return (not fallos, fallos)
+
+
+def validar_migracion_case_tecnica() -> tuple[bool, list[str]]:
+    """case.json fue migrado solo TÉCNICAMENTE en OT-HF-SIG-002B.
+
+    Se requiere: ausencia de 'estado_hash', presencia de 'state_hash',
+    referencia a integrity.json y campos semánticos intactos.
+    """
+    fallos: list[str] = []
+    try:
+        doc = leer_json(CASO / "case.json")
+    except (ValueError, FileNotFoundError) as exc:
+        return (False, [f"case.json inválido: {exc}"])
+    if "estado_hash" in doc:
+        fallos.append("persiste 'estado_hash' en case.json")
+    if not doc.get("state_hash"):
+        fallos.append("state_hash ausente en case.json")
+    integ = doc.get("integridad", {})
+    if integ.get("schema") != "hf.integrity.v1":
+        fallos.append("case.integridad.schema != hf.integrity.v1")
+    if integ.get("referencia") != "integrity.json":
+        fallos.append("case.integridad.referencia != integrity.json")
+    for clave in CLAVES_SEMANTICAS_CASO:
+        if clave not in doc:
+            fallos.append(f"campo semántico ausente: {clave}")
+    restricciones = doc.get("restricciones", [])
+    if not isinstance(restricciones, list) or len(restricciones) < 7:
+        fallos.append("restricciones del caso incompletas")
+    return (not fallos, fallos)
+
+
 def verificar_hashes(rel_hash: list[tuple[str, str]], raiz: Path = RAIZ_REPO) -> tuple[bool, list[str]]:
     fallos: list[str] = []
     for rel, esperado in rel_hash:
@@ -263,9 +330,10 @@ __all__ = [
     "RAIZ_REPO", "CASO",
     "CONTRATOS_GIS", "CLASES_VALIDAS", "CAMPOS_OBLIGATORIOS_REGISTRO",
     "MOTORES_INVENTARIADOS",
-    "INMUTABLES_BASELINE", "INMUTABLES_CASO",
+    "INMUTABLES_BASELINE", "ARCHIVOS_DECISION", "CLAVES_SEMANTICAS_CASO",
     "sha256_archivo", "leer_json", "leer_jsonl", "ruta_absoluta_nueva",
     "validar_registro_espacial", "validar_estado_red", "validar_segmento_24",
     "validar_adopted_cell_null", "validar_fail_orientation", "validar_gates",
+    "validar_restrictions", "validar_migracion_case_tecnica",
     "verificar_hashes",
 ]

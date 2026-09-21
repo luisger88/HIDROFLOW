@@ -3,7 +3,8 @@
 Pruebas P1-P5 del caso portable HidroFlow (OT-HF-PORT-002).
 
 P1. Estructura     — el paquete contiene todos los contratos obligatorios.
-P2. Integridad     — los hashes coinciden (checksums.sha256 y estado_hash).
+P2. Integridad     — los hashes coinciden (checksums.sha256, state_hash,
+                     package_hash, evidence_hash; sin tolerancia de drift).
 P3. Clasificación  — todos los activos incorporados tienen clase válida A/B/C/D.
 P4. Decisión       — GATE 2 pendiente; adopted_cell null/ausente; segmento 24
                      no adoptado; decision_profesional de GATE 2 null.
@@ -36,6 +37,7 @@ from validators import (  # noqa: E402
     validar_case,
     validar_contratos,
     validar_decision_log,
+    validar_integridad,
     validar_manifest,
     validar_spatial_decision,
     validar_gates,
@@ -47,10 +49,12 @@ CONTRATOS_OBLIGATORIOS = [
     "manifest.json",
     "decision-log.jsonl",
     "checksums.sha256",
+    "integrity.json",
     "state/gates.jsonl",
     "geometry/project-location.geojson",
     "geometry/proposed-cell.geojson",
     "decision/spatial-decision.json",
+    "decision/restrictions.json",
     "evidence/provenance.json",
     "evidence/hashes.json",
     "references/source-manifest.json",
@@ -76,24 +80,29 @@ def p1_estructura(raiz: Path) -> list[str]:
 
 
 def p2_integridad(raiz: Path) -> list[str]:
-    """P2 — Integridad: hashes coinciden y columna archivo del caso portable."""
+    """P2 — Integridad: checksums y los tres hashes del caso coinciden."""
     fallos: list[str] = []
     vh = verificar_hashes(raiz)
     if not vh["ok"]:
         fallos.extend(_fallo(d) for d in vh["diferencias"])
-    # estado_hash debe coincidir
+    # state_hash, package_hash y evidence_hash deben coincidir sin excepción
     try:
         resumen = abrir_caso(raiz)
     except PortabilityError as exc:
         return [_fallo(f"no es posible abrir caso: {exc}")]
-    if resumen["estado_hash_registrado"] != resumen["estado_hash_calculado"]:
-        fallos.append(
-            _fallo(
-                "estado_hash registrado != calculado: "
-                f"{resumen['estado_hash_registrado']} vs "
-                f"{resumen['estado_hash_calculado']}"
+    for campo in ("state_hash", "package_hash", "evidence_hash"):
+        reg = resumen.get(f"{campo}_registrado")
+        calc = resumen.get(f"{campo}_calculado")
+        if reg != calc:
+            fallos.append(
+                _fallo(
+                    f"{campo} registrado != calculado: "
+                    f"{reg} vs {calc}"
+                )
             )
-        )
+    ok_i, errs_i = validar_integridad(raiz)
+    if not ok_i:
+        fallos.extend(_fallo(e) for e in errs_i)
     return fallos
 
 

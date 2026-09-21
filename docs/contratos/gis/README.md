@@ -6,6 +6,11 @@
 - **HEAD base:** `53a2747df83bc0588e5214fb858cac9de3e79528`
 - **Fecha UTC:** 2026-09-20
 
+La integridad del caso portable se gobierna con el modelo triple
+(`state_hash`, `package_hash`, `evidence_hash`) definido en
+[`hf-integrity-v1.md`](../hf-integrity-v1.md) (OT-HF-SIG-002B). El drift de
+`estado_hash` quedó resuelto: P1-P5 pasan estrictos, sin excepciones.
+
 ---
 
 ## 1. Propósito
@@ -39,7 +44,8 @@ GATE 2 ni GATE 3**.
 Los contratos SIG v1 respetan `hf.case.v1` (caso portable) y sus esquemas
 materializados (`hf.case.v1`, `hf.manifest.v1`, `hf.decision-log.v1`,
 `hf.spatial-decision.v1`, `hf.reference.v1`, `hf.provenance.v1`,
-`hf.hashes.v1`, `hf.source-manifest.v1`, `hf.catalog.v1`, `hf.exports.v1`).
+`hf.hashes.v1`, `hf.source-manifest.v1`, `hf.catalog.v1`, `hf.exports.v1`,
+`hf.integrity.v1`, `hf.restrictions.v1`).
 
 Reglas transversales preservadas:
 
@@ -69,8 +75,9 @@ HF-GEO-QA (diseñado en `hf-geo-qa-v1.md`) podrá abrirse operativamente solo cu
 2. El inventario espacial del caso piloto valide (registro y ledger).
 3. Los validadores `02_CORE/sig_engineering` pasen en su totalidad (S1-S12) o sus
    desviaciones queden documentadas como restricción explícita.
-4. P1-P5 de portabilidad sigan PASS (con el conflicto documentado de `estado_hash`
-   conforme a la sección 11 de la OT-HF-SIG-002 si aplica).
+4. P1-P5 de portabilidad sigan PASS estrictos (los tres hashes de integridad
+   —state/package/evidence— sin excepciones, OT-HF-SIG-002B) o sus
+   desviaciones queden documentadas como restricción explícita.
 5. No se modifiquen los motores productivos ni se ejecuten comparaciones espaciales
    antes de esta apertura.
 

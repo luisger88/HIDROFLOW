@@ -27,7 +27,8 @@ Construye el contrato que esas capacidades respetarán posteriormente.
 ```
 HF_CASE/<caso_id>/
   .hfcase                          marcador de raíz (descubrimiento portable)
-  case.json                        hf.case.v1 (identidad, estado, gates)
+  case.json                        hf.case.v1 (identidad, estado, gates, state_hash)
+  integrity.json                   hf.integrity.v1 (state/package/evidence)
   manifest.json                    hf.manifest.v1 (inventario 100 % A/B/C/D)
   decision-log.jsonl               hf.decision-log.v1 (append-only, UTF-8)
   checksums.sha256                 hashes SHA-256 deterministas
@@ -36,6 +37,7 @@ HF_CASE/<caso_id>/
   source/                          referencias a entradas y expediente
   terrain/                         referencia al MDT por hash (no copiado)
   decision/spatial-decision.json   hf.spatial-decision.v1
+  decision/restrictions.json       hf.restrictions.v1 (restricciones vigentes)
   network/                         referencia a la red HF (computacional)
   references/source-manifest.json  fuentes referenciales externas
   catalog/                         catálogo de activos (resumen)
@@ -116,10 +118,13 @@ celda vigente" respecto a (1028, 946).
    externos. Cálculo determinista; verificación tras copiar a otra ubicación.
 2. Hashes de activos pesados no copiados se registran en el manifest y en
    `evidence/hashes.json`; no se agregan al checksum como si estuvieran dentro.
-3. `estado_hash` se calcula sobre los contratos de estado del paquete
-   (excluye `case.json`, `manifest.json`, `checksums.sha256`, `cache/` y
-   `exports/` para evitar auto-referencia), mediante
-   `resolver.estado_hash_paquete`.
+3. La integridad del caso se modela con **tres hashes** (OT-HF-SIG-002B):
+   `state_hash` (decisiones/estado), `package_hash` (composición física) y
+   `evidence_hash` (evidencia), calculados por el resolver de portabilidad
+   (`state_hash_paquete`, `package_hash_paquete`, `evidence_hash_paquete`) y
+   registrados en `integrity.json` (`hf.integrity.v1`). `case.json` conserva
+   `state_hash` como migración técnica. Detalle y anti-ciclos en
+   `hf-integrity-v1.md`.
 4. Todos los GeoJSON son válidos (RFC 7946), declaran CRS semántico cuando es
    necesario y registran hashes.
 5. JSONL siempre línea = un objeto JSON. Append-only. UTF-8.
@@ -146,7 +151,7 @@ celda vigente" respecto a (1028, 946).
 
 ```
 P1. Estructura      contratos obligatorios presentes
-P2. Integridad      hashes coinciden; estado_hash consistente
+P2. Integridad      state/package/evidence coinciden (sin tolerancia de drift)
 P3. Clasificación   todas las clases A/B/C/D válidas
 P4. Decisión        GATE 2 pendiente; adopted_cell null; segmento 24 no adoptado
 P5. Portabilidad    copia temporal externa reabierta y validada, luego eliminada
