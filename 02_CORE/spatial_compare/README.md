@@ -35,6 +35,49 @@ Contrato normativo: `docs/contratos/gis/hf-spatial-comparison-result-v1.md`
 
 Reglas de cobertura C1 validadas por `registry.validar_registry`.
 
+## Contraste limitado post-assessment (OT-HF-SPATIAL-COMPARE-002)
+
+`COMPARE_LIMITED_EXTERNAL_V1` es un perfil **fuera del catálogo V1** (no se
+declara en el registry; vive en `spatial/comparisons/profiles/`) que permite el
+contraste territorial de una fuente externa **únicamente después** de un
+assessment válido (`hf.spatial-source-assessment.v1`) y solo hasta
+`PARTIALLY_COMPARABLE`. Nunca emite resultados adoptivos y bloquea además
+`CARTOGRAPHIC_REPORT` y `HYDRO_CONSUMPTION`.
+
+Puerta: `governance.cumplimiento_metricas_limitadas(entrada, assessment)`
+exige como mínimo: `estado=CONDITIONALLY_APT_FOR_COMPARISON`,
+`aptitud.apto_para_comparacion=true`, `apto_para_metricas_plenas=false`,
+quorum QA sin FAIL, escalón CRS formalizado `PASS`, `crs=EPSG:9377`
+(`always_xy`), cobertura de ventana positiva y restricciones no vacías.
+
+Lectura de la fuente (GeoPackage, read-only, sin copias):
+
+- Conexión `sqlite3` en modo `ro` + `PRAGMA query_only=ON`.
+- Preselección por el **índice rtree nativo del archivo**
+  (`rtree_<capa>_<col>`) vía SQL puro (fiona/GDAL ignora el filtro `bbox`
+  cuando el srs_id interno no es map-compatible).
+- Lectura con `pyogrio.read_dataframe(sql="SELECT fid, geom … ORDER BY fid")`.
+- Reducción `reducir_xyz_xy` (Z→XY), `bounds_en_crs` y `transformar_lineas`
+  EPSG:9377→EPSG:32618, todo en memoria.
+
+Punto de entrada:
+
+```powershell
+$env:PYTHONPATH = "02_CORE"
+python -m spatial_compare.cli run-limited HF_CASE/iguana_pc80
+```
+
+Persiste `runs/`, `evidence/`, el perfil limitado y el ledger (línea nueva),
+inventariando en `manifest.json` los cuatro artefactos con fuente
+`OT-HF-SPATIAL-COMPARE-002` y regenerando la integridad con `state_hash`
+invariante.
+
+Regla de resultado (en `limited._clasificar_limitado`): pct del target dentro
+del corredor de 30 m respecto a la fuente ≥ 40 → `PARTIALLY_COMPARABLE`;
+20–40 → `CORRESPONDENCE_OBSERVED`; 0–20 → `DIVERGENCE_OBSERVED` (salvo sin
+segmentos sin homólogo); 0 → `NOT_COMPARABLE`; sin fuentes → 
+`INSUFFICIENT_EVIDENCE`.
+
 ## Uso
 
 ```powershell
@@ -60,6 +103,9 @@ integridad del caso verificando que `state_hash` queda invariante.
 ```powershell
 $env:PYTHONPATH = "02_CORE"
 python -X utf8 02_CORE/spatial_compare/tests/run_spatial_compare_tests.py
+python -X utf8 02_CORE/spatial_compare/tests/run_spatial_compare_limited_tests.py
 ```
 
 C1-C20 + E1-E6; C18 re-ejecuta Q1-Q16, P1-P5 y S1-S12/I1-I8.
+T1-T20 + B1-B12 cubren la vía limitada post-assessment (T15 re-ejecuta el run
+completo y verifica determinismo; `HF_SKIP_T15=1` omite esa re-ejecución).

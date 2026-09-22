@@ -7,6 +7,7 @@ Uso:
     python -m spatial_compare.cli run <perfil> <case_root> <question> <source> [target] [--repo-root R] [--clasificacion C]
     python -m spatial_compare.cli pilot-interno <case_root> [--repo-root R]
     python -m spatial_compare.cli pilot-territorial <case_root> [--repo-root R]
+    python -m spatial_compare.cli run-limited <case_root> [--repo-root R]
 
 Exit codes: 0 éxito; 1 error de uso; 2 error de invariantes.
 """
@@ -17,6 +18,7 @@ import json
 import sys
 
 from . import result as R
+from .limited import registar_comparacion_limitada
 from .models import (
     COMPUTATIONAL_INTERNAL_COMPARISON,
     TERRITORIAL_CONTRAST_AUDIT,
@@ -104,6 +106,19 @@ def main(argv: list[str] | None = None) -> int:
                 source_asset_id="streams_urban_1000_medellin",
                 repo=repo, clasificacion=TERRITORIAL_CONTRAST_AUDIT,
             )
+        print(json.dumps(resumen, ensure_ascii=False))
+        return 0
+    if comando == "run-limited":
+        if len(args) < 2:
+            print(f"uso: {comando} <case_root> [--repo-root R]", file=sys.stderr)
+            return 1
+        caso = args[1]
+        repo = _uso_raiz(args)
+        try:
+            resumen = registar_comparacion_limitada(caso, repo=repo)
+        except RuntimeError as e:
+            print(f"ERROR DE INVARIANTES: {e}", file=sys.stderr)
+            return 2
         print(json.dumps(resumen, ensure_ascii=False))
         return 0
     print(f"comando desconocido: {comando!r}", file=sys.stderr)

@@ -66,8 +66,8 @@
       "clase": "A_CANONICO",
       "formato": "JSON",
       "ruta_relativa": "integrity.json",
-      "hash": "1ffced1a0daa0b37238efab22968b0e7f0b493ea3e3d6a83de5257dd694d6035",
-      "tamano_bytes": 2591,
+      "hash": "a377f245941ae20d11d349dc7ab35709b5ebafec7e6cbc712c67849920cfe35e",
+      "tamano_bytes": 2941,
       "fuente": "OT-HF-SIG-002B",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -600,8 +600,8 @@
       "clase": "A_CANONICO",
       "formato": "JSONL",
       "ruta_relativa": "spatial/comparisons/comparison-ledger.jsonl",
-      "hash": "fe9c7063a9f193723af826b66640509a0447f34e2e9515d8efc13f295f233c84",
-      "tamano_bytes": 1670,
+      "hash": "1bc2fcb4d020845cd946083978cd0a424d15ab9123e2d3ffb12f577426095af2",
+      "tamano_bytes": 2276,
       "fuente": "OT-HF-SPATIAL-COMPARE-001",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -882,6 +882,70 @@
       "restricciones": [
         "state_change=false; professional_decision=null; sin autoridad territorial"
       ]
+    },
+    {
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "clase": "B_COMPUTACIONAL",
+      "estado": "EMITIDO_POR_MOTOR",
+      "formato": "JSON",
+      "fuente": "OT-HF-SPATIAL-COMPARE-002",
+      "hash": "c3a7d36e6a9fa9460167e3dff4008b4034923e4aadb1aba7b019aa9e2c3a0a04",
+      "id": "limited-run-externo-streams-1000",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial; máx PARTIALLY_COMPARABLE"
+      ],
+      "ruta_relativa": "spatial/comparisons/runs/EXTERNO_STREAMS_URBAN_1000_LIMITED_COMPARISON.json",
+      "tamano_bytes": 11171
+    },
+    {
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "clase": "B_COMPUTACIONAL",
+      "estado": "EMITIDO_POR_MOTOR",
+      "formato": "JSON",
+      "fuente": "OT-HF-SPATIAL-COMPARE-002",
+      "hash": "9d5099ab15bbb3828285214b2d4e9811925fbb417b433509bbeb46824f901e60",
+      "id": "limited-sources-externo-streams-1000",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial; máx PARTIALLY_COMPARABLE"
+      ],
+      "ruta_relativa": "spatial/comparisons/evidence/EXTERNO_STREAMS_URBAN_1000_LIMITED_COMPARISON_sources.json",
+      "tamano_bytes": 3049
+    },
+    {
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "clase": "B_COMPUTACIONAL",
+      "estado": "EMITIDO_POR_MOTOR",
+      "formato": "MD",
+      "fuente": "OT-HF-SPATIAL-COMPARE-002",
+      "hash": "f445bf34bdbf626aa74db6ab297cbd006598ac185fc2157568bc61b6fe2909e4",
+      "id": "limited-audit-externo-streams-1000",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial; máx PARTIALLY_COMPARABLE"
+      ],
+      "ruta_relativa": "spatial/comparisons/evidence/EXTERNO_STREAMS_URBAN_1000_LIMITED_COMPARISON_audit.md",
+      "tamano_bytes": 4788
+    },
+    {
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "clase": "A_CANONICO",
+      "estado": "vigente",
+      "formato": "JSON",
+      "fuente": "OT-HF-SPATIAL-COMPARE-002",
+      "hash": "65ff7a309d922a94681188664f7761ed6caf1ed5996dac4b836f37c9aa6fbac9",
+      "id": "limited-profile-externo-v1",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial; máx PARTIALLY_COMPARABLE"
+      ],
+      "ruta_relativa": "spatial/comparisons/profiles/COMPARE_LIMITED_EXTERNAL_V1.json",
+      "tamano_bytes": 2365
     }
   ],
   "activos_referenciados_pesados": [

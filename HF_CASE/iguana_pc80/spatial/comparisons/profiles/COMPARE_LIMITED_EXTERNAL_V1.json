@@ -1,0 +1,78 @@
+{
+  "clasificaciones_permitidas": [
+    "TERRITORIAL_CONTRAST_AUDIT"
+  ],
+  "confianza_default": "BAJA",
+  "consumidores_bloqueados": [
+    "PF02_ADOPTION",
+    "GATE_3",
+    "CANONICAL_WATERSHED",
+    "HYDRO_CONSUMPTION",
+    "DECISION_PROFESIONAL",
+    "CARTOGRAPHIC_REPORT",
+    "EXPEDIENTE",
+    "TERRITORIAL_COMPETENCE"
+  ],
+  "consumidores_permitidos": [
+    "HF_GEO_QA",
+    "HF_CARTO_DIAGNOSTIC",
+    "HISTORICAL_AUDIT",
+    "DIAGNOSTIC",
+    "COMPARISON",
+    "RUPTURE_EVIDENCE"
+  ],
+  "fuentes": {
+    "source": "GeoPackage externo evaluado (Channel Network)",
+    "target": "red HF"
+  },
+  "id": "COMPARE_LIMITED_EXTERNAL_V1",
+  "interpretaciones_prohibidas": [
+    "TRUE_NETWORK",
+    "CORRECT_CHANNEL",
+    "ADOPTED_SEGMENT",
+    "ADOPTED_CELL",
+    "TERRITORIALLY_COMPETENT"
+  ],
+  "metricas_obligatorias": [
+    "longitud_fuente",
+    "longitud_target",
+    "cobertura_comun",
+    "longitud_coincidente",
+    "pct_dentro_corredor",
+    "pct_target_dentro_corredor",
+    "hausdorff",
+    "orientacion_local_mediana",
+    "nodos_cercanos",
+    "continuidad_target",
+    "distancias_fuente_red_percentiles",
+    "n_divergentes"
+  ],
+  "nombre": "Contraste territorial limitado post-assessment (fuente externa condicional)",
+  "objetivo": "Contraste gobernado de una fuente externa evaluada (CONDITIONALLY_APT_FOR_COMPARISON) contra la red de referencia HF dentro de la ventana del assessment, con métricas limitadas y resultado máximo PARTIALLY_COMPARABLE. Sin competencia ni adopción; fuente externa NO copiada, enlazada por hash; reducción Z y reproyección en memoria.",
+  "qa_previo": [],
+  "reglas": [
+    "máximo PARTIALLY_COMPARABLE; nunca adopción ni competencia territorial",
+    "preselección por índice rtree nativo en modo read-only; fuente no copiada",
+    "reducción Z->XY y reproyección en memoria; archivos intactos",
+    "corredores 30/60/90/136 m como tolerancias de análisis"
+  ],
+  "resultado_maximo": "PARTIALLY_COMPARABLE",
+  "tipo": "limited_external_network",
+  "tolerancias_default": [
+    {
+      "pf": "PF-01",
+      "rango_m": "0-30"
+    },
+    {
+      "exige_acta": true,
+      "pf": "PF-02",
+      "rango_m": "30-136"
+    },
+    {
+      "exige_acta": true,
+      "pf": "PF-03",
+      "rango_m": ">136"
+    }
+  ],
+  "version": "1.0"
+}
