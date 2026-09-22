@@ -38,6 +38,8 @@ GATE 2 ni GATE 3**.
 | `hf-spatial-decision-v1.md` | `hf.spatial-decision.v1` | Decisión espacial profesional y persistencia |
 | `hf-interoperability-v1.md` | `hf.interoperability.v1` | Formatos abiertos e interoperabilidad |
 | `hf-geo-qa-v1.md` | `hf.geo-qa.v1` | Diseño del aseguramiento de calidad espacial (sin ejecución) |
+| `hf-spatial-comparison-result-v1.md` | `hf.spatial-comparison.result.v1` | Resultado gobernado de una comparación espacial (OT-HF-SPATIAL-COMPARE-001) |
+| `hf-spatial-source-assessment-v1.md` | `hf.spatial-source-assessment.v1` | Evaluación de aptitud de una fuente espacial externa (OT-HF-SPATIAL-SOURCE-001) |
 
 ## 3. Relación con hf.case.v1
 
