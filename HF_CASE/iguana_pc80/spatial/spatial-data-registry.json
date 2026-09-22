@@ -2,8 +2,8 @@
   "schema": "hf.spatial-data.v1",
   "schema_version": "1.0",
   "caso_id": "iguana_pc80",
-  "ot": "OT-HF-SIG-002",
-  "fecha_utc": "2026-09-20",
+  "ot": "OT-HF-SIG-002 / OT-HF-SPATIAL-COMPARE-001",
+  "fecha_utc": "2026-09-21",
   "descripcion": "Inventario espacial gobernado del caso portable iguana_pc80. Registra todo activo espacial referenciado o incorporado por el caso: clase, CRS, datum, axis order, resolución, extensión, hash y procedencia.",
   "criterio": "Clasificación coherente con manifest.json de hf.case.v1. Los activos pesados se referencian por ruta relativa y hash; NO se copian.",
   "activadores": {
@@ -305,6 +305,35 @@
       "portabilidad": "referenciada",
       "restricciones": [],
       "estado": "MANIFIESTO_E2"
+    },
+    {
+      "id": "streams_urban_1000_medellin",
+      "nombre": "Red de drenajes urbanos 1:1000 del Distrito de Medellín (Streams)",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "GeoPackage",
+      "ruta_relativa_repo": "01_DEM_HIDRO/04_STREAMS_VECTOR/streams_urban_1000_medellin.gpkg",
+      "fuente": "externa (Distrito de Medellín)",
+      "autoridad": null,
+      "cobertura": "zona urbana y rural verificada del Distrito de Medellín",
+      "fecha": null,
+      "vigencia": "no_definida",
+      "licencia": "UNKNOWN",
+      "crs": null,
+      "datum": null,
+      "axis_order": null,
+      "resolucion": null,
+      "escala": "1:1000",
+      "extension": null,
+      "nodata": null,
+      "precision_conocida": "capa 'Channel Network'; 3D MultiLineString Z; srs_id interno 100000 con params EPSG:9377 y organization NONE (vínculo SRID no formalizado)",
+      "tamano": null,
+      "sha256": "3B2B91CF02CB1DCC3243ACA74DD5BA8AE05B1FB52737264AEDA45D99B16C3482",
+      "procedencia": "copia local referenciada por hash; procedencia externa no gobernada",
+      "transformaciones": ["sin transformación autorizada"],
+      "regenerabilidad": "no_regenerable",
+      "portabilidad": "no_portable_datos_privados",
+      "restricciones": ["SIN_GOBERNANZA: licencia UNKNOWN y vínculo SRID sin organización formal; NO produce métricas; uso exclusivo para contraste/auditoría"],
+      "estado": "SIN_GOBERNANZA"
     }
   ]
 }
