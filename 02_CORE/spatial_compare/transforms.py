@@ -11,6 +11,7 @@ Reglas (hf.spatial-reference.v1 + hf.spatial-comparison.result.v1):
 
 from __future__ import annotations
 
+import math
 import re
 from typing import Any
 
@@ -186,11 +187,97 @@ def registro_transformacion_dict(record: TransformationRecord) -> dict[str, Any]
     return record.as_dict()
 
 
+def reducir_xyz_xy(geoms: list[Any]) -> tuple[list[Any], dict[str, Any]]:
+    """Reduce LineString/MultiLineString (posible dimensión Z) a LineString XY.
+
+    Solo operación en memoria: descarta la dimensión Z del material de lectura,
+    conserva el orden de vértices y rechaza coordenadas no finitas. No modifica
+    el archivo fuente.
+    """
+    n_con_z = 0
+    n_vertices = 0
+    salida: list[Any] = []
+    for g in geoms:
+        lineas = list(g.geoms) if g.geom_type == "MultiLineString" else [g]
+        for ln in lineas:
+            if ln.geom_type != "LineString":
+                raise SpatialCompareError(f"geometría no soportada en reducir_xyz_xy: {ln.geom_type}")
+            coords = [(float(c[0]), float(c[1])) for c in ln.coords]
+            for x, y in coords:
+                if not (math.isfinite(x) and math.isfinite(y)):
+                    raise SpatialCompareError("coordenadas no finitas en reducir_xyz_xy")
+            if ln.has_z:
+                n_con_z += 1
+            n_vertices += len(coords)
+            if len(coords) >= 2:
+                salida.append(LineString_crear(coords))
+    resumen = {
+        "metodo": "reducir_xyz_xy",
+        "n_geometrias_entrada": len(geoms),
+        "n_con_z": n_con_z,
+        "n_vertices": n_vertices,
+        "n_salida_xy": len(salida),
+        "unidad": "n",
+    }
+    return salida, resumen
+
+
+def registro_reduccion_z(resumen: dict[str, Any]) -> dict[str, Any]:
+    """Registro determinista de la reducción Z->XY para evidencia/métricas."""
+    return {
+        "transformacion": "reduccion_z_a_xy",
+        "origen": "dimensionalidad nativa del archivo (posible Z)",
+        "destino": "LineString XY en el CRS nativo",
+        "en_memoria": True,
+        "n_geometrias_entrada": resumen.get("n_geometrias_entrada"),
+        "n_con_z": resumen.get("n_con_z"),
+        "n_vertices": resumen.get("n_vertices"),
+        "n_salida_xy": resumen.get("n_salida_xy"),
+        "unidad": "n",
+    }
+
+
+def bounds_en_crs(
+    ventana: tuple[float, float, float, float],
+    origen_epsg: str,
+    destino_epsg: str,
+    pad_m: float = 10.0,
+) -> tuple[float, float, float, float]:
+    """Envolvente en `destino_epsg` de los vértices de un rectángulo 2D dado en
+    `origen_epsg`, expandida con `pad_m`. Todo en memoria."""
+    origen = crs_epsg_gobernado(origen_epsg)
+    destino = crs_epsg_gobernado(destino_epsg)
+    if origen is None:
+        raise SpatialCompareError(f"CRS de origen no gobernado: {origen_epsg!r}")
+    if destino is None:
+        raise SpatialCompareError(f"CRS de destino no gobernado: {destino_epsg!r}")
+    if len(ventana) != 4:
+        raise SpatialCompareError("ventana debe ser (minx, miny, maxx, maxy)")
+    minx, miny, maxx, maxy = (float(v) for v in ventana)
+    if origen == destino:
+        return (minx - pad_m, miny - pad_m, maxx + pad_m, maxy + pad_m)
+    import pyproj  # import bajo demanda
+
+    tr = pyproj.Transformer.from_crs(origen, destino, always_xy=True)
+    xs: list[float] = []
+    ys: list[float] = []
+    for x, y in ((minx, miny), (maxx, miny), (minx, maxy), (maxx, maxy)):
+        nx, ny = tr.transform(x, y)
+        if not (math.isfinite(nx) and math.isfinite(ny)):
+            raise SpatialCompareError("coordenadas no finitas en bounds_en_crs")
+        xs.append(nx)
+        ys.append(ny)
+    return (min(xs) - pad_m, min(ys) - pad_m, max(xs) + pad_m, max(ys) + pad_m)
+
+
 __all__ = [
     "crs_epsg_gobernado",
     "es_crs_gobernado",
     "transformar_lineas",
     "transformar_puntos",
     "registro_transformacion_dict",
+    "reducir_xyz_xy",
+    "registro_reduccion_z",
+    "bounds_en_crs",
     "DATUM_POR_EPSG",
 ]
