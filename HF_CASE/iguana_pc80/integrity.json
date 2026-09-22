@@ -6,8 +6,8 @@
   "descripcion": "Integridad separada del estado, del paquete y de la evidencia.",
   "hashes": {
     "state_hash": "5f9bf470eee69079c5d05d695013d8132dcd5d1592c12f508e07e70713e8853d",
-    "package_hash": "a122fb19c4249e64f257f286e01ed16b7e844ed1de965a55df23c2f4f0aa04db",
-    "evidence_hash": "86373befa426621fb14b85bbcef822cf916a7e5b2d29a097d3d9c397345804d5"
+    "package_hash": "9aff727c5c8a0b1a7def97c521e43d775219cad432d973224ee62352b07160ca",
+    "evidence_hash": "6c50479a9ed475f3f4e1a3a1821911ba20ddc4c740ffb6d2c23c720a0852bff7"
   },
   "cobertura": {
     "state": [
@@ -21,6 +21,20 @@
     "evidence": [
       "evidence/hashes.json",
       "evidence/provenance.json",
+      "spatial/comparisons/README.md",
+      "spatial/comparisons/comparison-ledger.jsonl",
+      "spatial/comparisons/evidence/EXTERNO_STREAMS_URBAN_1000_AUDIT_audit.md",
+      "spatial/comparisons/evidence/EXTERNO_STREAMS_URBAN_1000_AUDIT_sources.json",
+      "spatial/comparisons/evidence/INTERNO_RED_VS_SEGMENTO_24_audit.md",
+      "spatial/comparisons/evidence/INTERNO_RED_VS_SEGMENTO_24_sources.json",
+      "spatial/comparisons/profiles/COMPARE_D03_CANDIDATES_V1.json",
+      "spatial/comparisons/profiles/COMPARE_NETWORK_TO_TERRAIN_V1.json",
+      "spatial/comparisons/profiles/COMPARE_POINT_TO_NETWORKS_V1.json",
+      "spatial/comparisons/profiles/COMPARE_SEGMENT_CORRESPONDENCE_V1.json",
+      "spatial/comparisons/profiles/COMPARE_VECTOR_NETWORKS_V1.json",
+      "spatial/comparisons/profiles/REGISTER_VISUAL_REFERENCE_V1.json",
+      "spatial/comparisons/runs/EXTERNO_STREAMS_URBAN_1000_AUDIT.json",
+      "spatial/comparisons/runs/INTERNO_RED_VS_SEGMENTO_24.json",
       "spatial/qa/qa-ledger.jsonl",
       "spatial/spatial-data-registry.json"
     ],

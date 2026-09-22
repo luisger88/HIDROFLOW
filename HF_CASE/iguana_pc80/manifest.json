@@ -4,7 +4,7 @@
   "caso_id": "iguana_pc80",
   "nombre": "Quebrada La Iguaná - PC_80",
   "ot": "OT-HF-003",
-  "fecha_manifest_utc": "2026-09-20",
+  "fecha_manifest_utc": "2026-09-21",
   "descripcion": "Inventario del 100 % de los activos incorporados o referenciados por el caso portable. Autoridad de clasificación A/B/C/D.",
   "criterio": "Los activos dentro del paquete tienen copia aquí. Los activos pesados o externos se referencian por ruta relativa, id, hash, fuente, autoridad, portabilidad, regenerabilidad y restricción; NO se copian.",
   "activadores": {
@@ -66,8 +66,8 @@
       "clase": "A_CANONICO",
       "formato": "JSON",
       "ruta_relativa": "integrity.json",
-      "hash": "1343d7321401de15f2cf9c0c112b22073beedc754691c216c78b8592ef7c2210",
-      "tamano_bytes": 1329,
+      "hash": "bbd4384ef2917cbb18b2fbdc12c778db0378a116444b04246ed1a962dda6f042",
+      "tamano_bytes": 2322,
       "fuente": "OT-HF-SIG-002B",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -536,8 +536,8 @@
       "clase": "A_CANONICO",
       "formato": "JSON",
       "ruta_relativa": "spatial/spatial-data-registry.json",
-      "hash": "f4e3e4ffc741711ef848526799b7dbec0433d44abceb8ec150155c2e21eab5bb",
-      "tamano_bytes": 12142,
+      "hash": "95c046db956e2e1a9568d0be040f9ea1cfeba151d49dc7111816880e86fef086",
+      "tamano_bytes": 13599,
       "fuente": "OT-HF-SIG-002",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -577,6 +577,230 @@
       "estado": "append_only",
       "restricciones": [
         "append-only; no reescribir líneas"
+      ]
+    },
+    {
+      "id": "comparison-readme",
+      "clase": "A_CANONICO",
+      "formato": "Markdown",
+      "ruta_relativa": "spatial/comparisons/README.md",
+      "hash": "12ad83e5d4c03d3e72018dbea7e961c68d76e48cd1bce21fe9aef4634ee164c1",
+      "tamano_bytes": 1739,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-ledger",
+      "clase": "A_CANONICO",
+      "formato": "JSONL",
+      "ruta_relativa": "spatial/comparisons/comparison-ledger.jsonl",
+      "hash": "381540056c7a526970755897e7d982646f448f1f41782f3c952c3c9a956964cc",
+      "tamano_bytes": 1091,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "inmutable",
+      "estado": "vigente",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-run-interno-red-vs-segmento-24",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/runs/INTERNO_RED_VS_SEGMENTO_24.json",
+      "hash": "5feb2464980f28b3efc6f988fbd1f3cf69e57b17456441ad4b3c0e3201ee7968",
+      "tamano_bytes": 8126,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-run-externo-streams-1000-audit",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/runs/EXTERNO_STREAMS_URBAN_1000_AUDIT.json",
+      "hash": "086458ae6c34cb4771b5219496a6749f1278c10de6dd822301f94c69b2e15890",
+      "tamano_bytes": 3687,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-sources-interno-red-vs-segmento-24",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/evidence/INTERNO_RED_VS_SEGMENTO_24_sources.json",
+      "hash": "dcd7afb15cd04d15f1cbb36e60ef55e64cb383401bf4594e8bb9fcf184a49a28",
+      "tamano_bytes": 1947,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-audit-interno-red-vs-segmento-24",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "Markdown",
+      "ruta_relativa": "spatial/comparisons/evidence/INTERNO_RED_VS_SEGMENTO_24_audit.md",
+      "hash": "570283716ff8f52e13e3f3576fbf8d5a617a6db21035f1a366a808712b365563",
+      "tamano_bytes": 3150,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-sources-externo-streams-1000-audit",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/evidence/EXTERNO_STREAMS_URBAN_1000_AUDIT_sources.json",
+      "hash": "fbff6ce570d5b449f298d26c7901d09a1ad75ddaf2d4066f59ab3fdd87f0d190",
+      "tamano_bytes": 1645,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-audit-externo-streams-1000-audit",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "Markdown",
+      "ruta_relativa": "spatial/comparisons/evidence/EXTERNO_STREAMS_URBAN_1000_AUDIT_audit.md",
+      "hash": "ace59029ab4fcf750b15d03c8091881a4648d81500b2bafe44c072e0a0a272d0",
+      "tamano_bytes": 1613,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-profile-vector-networks-v1",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/profiles/COMPARE_VECTOR_NETWORKS_V1.json",
+      "hash": "e9efc4bacd52ff1ce5fca31301445276eb712c033adbcbaebb9edd5b3fd861ab",
+      "tamano_bytes": 1418,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "vigente",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-profile-point-to-networks-v1",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/profiles/COMPARE_POINT_TO_NETWORKS_V1.json",
+      "hash": "00ba237ae9c4d8a968b273cda2a0fdbeb38fe2b9e637f73292cecc47e69abb07",
+      "tamano_bytes": 1247,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "vigente",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-profile-segment-correspondence-v1",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/profiles/COMPARE_SEGMENT_CORRESPONDENCE_V1.json",
+      "hash": "be857b9417b28e18ccd93d7830ab7306d8e0c26e1b26b40f42b81685a6e0bb0c",
+      "tamano_bytes": 1498,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "vigente",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-profile-network-to-terrain-v1",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/profiles/COMPARE_NETWORK_TO_TERRAIN_V1.json",
+      "hash": "e55ad78aabc927597f65ae29fa21cf3a045b9837eda74d2d8056a7818763a0d4",
+      "tamano_bytes": 1387,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "vigente",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-profile-register-visual-reference-v1",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/profiles/REGISTER_VISUAL_REFERENCE_V1.json",
+      "hash": "646bf09e07608c04ab9212cf57fe4c1f6df00da4d43c63ef786514c95bfeb83d",
+      "tamano_bytes": 1128,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "vigente",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "comparison-profile-d03-candidates-v1",
+      "clase": "A_CANONICO",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/profiles/COMPARE_D03_CANDIDATES_V1.json",
+      "hash": "a039c6e22f614089ff770d4086ca13fb6392f2b181c6042d4400a6c2bd80663e",
+      "tamano_bytes": 1310,
+      "fuente": "OT-HF-SPATIAL-COMPARE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "vigente",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
       ]
     }
   ],
