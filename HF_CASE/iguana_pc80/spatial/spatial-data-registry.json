@@ -38,7 +38,9 @@
       "transformaciones": [],
       "regenerabilidad": "inmutable",
       "portabilidad": "internal",
-      "restricciones": ["punto contractual D-03 ratificado; NO mover"],
+      "restricciones": [
+        "punto contractual D-03 ratificado; NO mover"
+      ],
       "estado": "RATIFICADO"
     },
     {
@@ -63,10 +65,14 @@
       "tamano": 1211,
       "sha256": "5f5e8a4f1c03adaf1c9d297337adf1b8fb57919602174162e8983f24f27e5bce",
       "procedencia": "GATE 2 E2 snap D-03",
-      "transformaciones": ["EPSG:32618 -> EPSG:4326 (rasterio.warp.transform, always_xy=True)"],
+      "transformaciones": [
+        "EPSG:32618 -> EPSG:4326 (rasterio.warp.transform, always_xy=True)"
+      ],
       "regenerabilidad": "regenerable",
       "portabilidad": "internal",
-      "restricciones": ["PROPUESTA NO ADOPTADA; NO crear adopted-cell.geojson"],
+      "restricciones": [
+        "PROPUESTA NO ADOPTADA; NO crear adopted-cell.geojson"
+      ],
       "estado": "PROPUESTA_NO_ADOPTADA"
     },
     {
@@ -85,14 +91,17 @@
       "datum": "WGS84",
       "axis_order": "x_easting_y_northing",
       "resolucion": "30 m",
-      "escala": "n/a (raster original)", 
+      "escala": "n/a (raster original)",
       "extension": {
         "west": 405900.0,
         "south": 646620.0,
         "east": 477900.0,
         "north": 724110.0
       },
-      "shape": [2583, 2400],
+      "shape": [
+        2583,
+        2400
+      ],
       "dtype": "float32",
       "nodata": null,
       "precision_conocida": "resolución original GLO30; sin precisión posicional certificada",
@@ -102,7 +111,9 @@
       "transformaciones": [],
       "regenerabilidad": "no_regenerable",
       "portabilidad": "no_portable_datos_privados",
-      "restricciones": ["referenciado por hash; NO copiado"],
+      "restricciones": [
+        "referenciado por hash; NO copiado"
+      ],
       "estado": "REFERENCIADO"
     },
     {
@@ -131,7 +142,9 @@
       "transformaciones": [],
       "regenerabilidad": "regenerable",
       "portabilidad": "referenciada",
-      "restricciones": ["competencia territorial NO demostrada"],
+      "restricciones": [
+        "competencia territorial NO demostrada"
+      ],
       "estado": "INTERNALLY_VALIDATED"
     },
     {
@@ -160,7 +173,9 @@
       "transformaciones": [],
       "regenerabilidad": "regenerable",
       "portabilidad": "referenciada",
-      "restricciones": ["CANDIDATO_NO_DEMOSTRADO; NO adoptar"],
+      "restricciones": [
+        "CANDIDATO_NO_DEMOSTRADO; NO adoptar"
+      ],
       "estado": "CANDIDATO_NO_DEMOSTRADO"
     },
     {
@@ -185,10 +200,15 @@
       "tamano": null,
       "sha256": null,
       "procedencia": "configurable_por_usuario",
-      "transformaciones": ["EPSG:32618 -> EPSG:4326 (solo verificación visual)"],
+      "transformaciones": [
+        "EPSG:32618 -> EPSG:4326 (solo verificación visual)"
+      ],
       "regenerabilidad": "no_aplica",
       "portabilidad": "no_portable",
-      "restricciones": ["configurable_por_usuario", "uso visual; NO adopción automática"],
+      "restricciones": [
+        "configurable_por_usuario",
+        "uso visual; NO adopción automática"
+      ],
       "estado": "REFERENCIAL"
     },
     {
@@ -213,10 +233,15 @@
       "tamano": null,
       "sha256": null,
       "procedencia": "configurable_por_usuario",
-      "transformaciones": ["EPSG:3116 -> EPSG:4326 (pyproj oficial, solo verificación visual)"],
+      "transformaciones": [
+        "EPSG:3116 -> EPSG:4326 (pyproj oficial, solo verificación visual)"
+      ],
       "regenerabilidad": "no_aplica",
       "portabilidad": "no_portable",
-      "restricciones": ["configurable_por_usuario", "uso visual; NO adopción automática"],
+      "restricciones": [
+        "configurable_por_usuario",
+        "uso visual; NO adopción automática"
+      ],
       "estado": "REFERENCIAL_VISUAL"
     },
     {
@@ -245,7 +270,9 @@
       "transformaciones": [],
       "regenerabilidad": "inmutable",
       "portabilidad": "referenciada",
-      "restricciones": ["NO corregir; NO sobrescribir; evidencia histórica, no caché"],
+      "restricciones": [
+        "NO corregir; NO sobrescribir; evidencia histórica, no caché"
+      ],
       "estado": "HISTORICO"
     },
     {
@@ -274,7 +301,9 @@
       "transformaciones": [],
       "regenerabilidad": "inmutable",
       "portabilidad": "referenciada",
-      "restricciones": ["NO modificar"],
+      "restricciones": [
+        "NO modificar"
+      ],
       "estado": "INMUTABLE"
     },
     {
@@ -329,11 +358,59 @@
       "tamano": null,
       "sha256": "3B2B91CF02CB1DCC3243ACA74DD5BA8AE05B1FB52737264AEDA45D99B16C3482",
       "procedencia": "copia local referenciada por hash; procedencia externa no gobernada",
-      "transformaciones": ["sin transformación autorizada"],
+      "transformaciones": [
+        "sin transformación autorizada"
+      ],
       "regenerabilidad": "no_regenerable",
       "portabilidad": "no_portable_datos_privados",
-      "restricciones": ["SIN_GOBERNANZA: licencia UNKNOWN y vínculo SRID sin organización formal; NO produce métricas; uso exclusivo para contraste/auditoría"],
+      "restricciones": [
+        "SIN_GOBERNANZA: licencia UNKNOWN y vínculo SRID sin organización formal; NO produce métricas; uso exclusivo para contraste/auditoría"
+      ],
       "estado": "SIN_GOBERNANZA"
+    },
+    {
+      "id": "streams_urban_1000_medellin_assessed",
+      "nombre": "Red de drenajes urbanos 1:1000 del Distrito de Medellín (Streams) — evaluada",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "GeoPackage",
+      "ruta_relativa_repo": "01_DEM_HIDRO/04_STREAMS_VECTOR/streams_urban_1000_medellin.gpkg",
+      "fuente": "externa (Distrito de Medellín)",
+      "autoridad": null,
+      "cobertura": "zona urbana y rural verificada del Distrito de Medellín",
+      "fecha": null,
+      "vigencia": "no_definida",
+      "licencia": "UNKNOWN",
+      "crs": "EPSG:9377",
+      "datum": "Marco Geocentrico Nacional de Referencia",
+      "axis_order": "x_easting_y_northing",
+      "resolucion": null,
+      "escala": "1:1000",
+      "extension": {
+        "minx": 4698998.942,
+        "miny": 2239453.57,
+        "maxx": 4726820.942,
+        "maxy": 2263380.57
+      },
+      "nodata": null,
+      "precision_conocida": "capa 'Channel Network'; MULTILINESTRING 2D; srs_id interno 100000 con params EPSG:9377; assessment 263de2c49ca9d392; formalización externa pyproj autoridad ['ESRI', '103599'] (parámetros idénticos a EPSG:9377)",
+      "tamano": 189460480,
+      "sha256": "3b2b91cf02cb1dcc3243aca74dd5ba8ae05b1fb52737264aeda45d99b16c3482",
+      "procedencia": "assessment OT-HF-SPATIAL-SOURCE-001 (EXTERNO_STREAMS_URBAN_1000_POST_ASSESSMENT)",
+      "transformaciones": [
+        "MAGNA-SIRGAS Origen Nacional -> EPSG:4326 (always_xy, pyproj)",
+        "MAGNA-SIRGAS Origen Nacional -> EPSG:32618 (always_xy, pyproj)"
+      ],
+      "regenerabilidad": "no_regenerable",
+      "portabilidad": "no_portable_datos_privados",
+      "restricciones": [
+        "uso condicional para contraste; máx. PARTIALLY_COMPARABLE",
+        "licencia UNKNOWN: sin métricas territoriales plenas",
+        "state_change=false; sin autoridad territorial; sin adopción",
+        "QA: QA_SPATIAL_REFERENCE_V1=PASS | QA_VECTOR_GEOMETRY_V1=PASS | QA_NETWORK_INTERNAL_V1=PASS"
+      ],
+      "estado": "CONDITIONALLY_APT_FOR_COMPARISON",
+      "assessment_id": "263de2c49ca9d392",
+      "assessment_ref": "spatial/sources/assessments/streams_urban_1000_medellin_assessed.json"
     }
   ]
 }

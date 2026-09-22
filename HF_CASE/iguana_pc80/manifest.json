@@ -66,8 +66,8 @@
       "clase": "A_CANONICO",
       "formato": "JSON",
       "ruta_relativa": "integrity.json",
-      "hash": "bbd4384ef2917cbb18b2fbdc12c778db0378a116444b04246ed1a962dda6f042",
-      "tamano_bytes": 2322,
+      "hash": "1ffced1a0daa0b37238efab22968b0e7f0b493ea3e3d6a83de5257dd694d6035",
+      "tamano_bytes": 2591,
       "fuente": "OT-HF-SIG-002B",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -536,8 +536,8 @@
       "clase": "A_CANONICO",
       "formato": "JSON",
       "ruta_relativa": "spatial/spatial-data-registry.json",
-      "hash": "95c046db956e2e1a9568d0be040f9ea1cfeba151d49dc7111816880e86fef086",
-      "tamano_bytes": 13599,
+      "hash": "644fe3dd6cfcbdaa097edbac64bc647e54f891e9b1c1c860f4a54b68b24d4272",
+      "tamano_bytes": 16458,
       "fuente": "OT-HF-SIG-002",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -600,8 +600,8 @@
       "clase": "A_CANONICO",
       "formato": "JSONL",
       "ruta_relativa": "spatial/comparisons/comparison-ledger.jsonl",
-      "hash": "381540056c7a526970755897e7d982646f448f1f41782f3c952c3c9a956964cc",
-      "tamano_bytes": 1091,
+      "hash": "fe9c7063a9f193723af826b66640509a0447f34e2e9515d8efc13f295f233c84",
+      "tamano_bytes": 1670,
       "fuente": "OT-HF-SPATIAL-COMPARE-001",
       "autoridad": "Ingeniero Digital (Big Pickle)",
       "portabilidad": "internal",
@@ -799,6 +799,86 @@
       "portabilidad": "internal",
       "regenerabilidad": "regenerable",
       "estado": "vigente",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "spatial-source-assessment-streams-1000",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/sources/assessments/streams_urban_1000_medellin_assessed.json",
+      "hash": "0ad932bfbeb7141b48191ea8fdb824ebb6e82c350a8dff4c22fa6fb4a3368859",
+      "tamano_bytes": 15497,
+      "fuente": "OT-HF-SPATIAL-SOURCE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "post-assessment-run-externo-streams-1000",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/runs/EXTERNO_STREAMS_URBAN_1000_POST_ASSESSMENT.json",
+      "hash": "5812a1a581c82ce2053a56ab9cb09823880a7dba676915ea81aaf0fed66e3d94",
+      "tamano_bytes": 4048,
+      "fuente": "OT-HF-SPATIAL-SOURCE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "post-assessment-sources-externo-streams-1000",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSON",
+      "ruta_relativa": "spatial/comparisons/evidence/EXTERNO_STREAMS_URBAN_1000_POST_ASSESSMENT_sources.json",
+      "hash": "82a69ffc3c268bb203e2f89ecb85065b782c30a04d60204ba89c91c55d215dd1",
+      "tamano_bytes": 1934,
+      "fuente": "OT-HF-SPATIAL-SOURCE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "post-assessment-audit-externo-streams-1000",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "Markdown",
+      "ruta_relativa": "spatial/comparisons/evidence/EXTERNO_STREAMS_URBAN_1000_POST_ASSESSMENT_audit.md",
+      "hash": "f3f36e4cc3a1839b546e7c9e26f60a6743f4828e62e3515f0292f6759077e5e7",
+      "tamano_bytes": 1798,
+      "fuente": "OT-HF-SPATIAL-SOURCE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
+      "restricciones": [
+        "state_change=false; professional_decision=null; sin autoridad territorial"
+      ]
+    },
+    {
+      "id": "spatial-source-assessment-ledger",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "JSONL",
+      "ruta_relativa": "spatial/sources/assessments/spatial-source-assessment-ledger.jsonl",
+      "hash": "5fb0b4d3261c87d9771554f00cd72f1715a56f3ab6daec532bcaca4806350e1b",
+      "tamano_bytes": 673,
+      "fuente": "OT-HF-SPATIAL-SOURCE-001",
+      "autoridad": "Ingeniero Digital (Big Pickle)",
+      "portabilidad": "internal",
+      "regenerabilidad": "regenerable",
+      "estado": "EMITIDO_POR_MOTOR",
       "restricciones": [
         "state_change=false; professional_decision=null; sin autoridad territorial"
       ]
@@ -1059,6 +1139,29 @@
       "estado": "inmutable",
       "restricciones": [
         "NO modificar"
+      ]
+    },
+    {
+      "id": "streams_urban_1000_medellin_assessed",
+      "clase": "B_COMPUTACIONAL",
+      "formato": "GeoPackage",
+      "ruta_relativa_repo": "01_DEM_HIDRO/04_STREAMS_VECTOR/streams_urban_1000_medellin.gpkg",
+      "hash": "3b2b91cf02cb1dcc3243aca74dd5ba8ae05b1fb52737264aeda45d99b16c3482",
+      "tamano_bytes": 189460480,
+      "crs": "EPSG:9377",
+      "fuente": "externa (Distrito de Medellín)",
+      "autoridad": null,
+      "fecha": null,
+      "vigencia": "no_definida",
+      "licencia": "UNKNOWN",
+      "portabilidad": "no_portable_datos_privados",
+      "regenerabilidad": "no_regenerable",
+      "procedencia": "assessment OT-HF-SPATIAL-SOURCE-001",
+      "estado": "CONDITIONALLY_APT_FOR_COMPARISON",
+      "restricciones": [
+        "NO copiado",
+        "verificar por hash",
+        "máx. PARTIALLY_COMPARABLE (licencia UNKNOWN)"
       ]
     }
   ],
